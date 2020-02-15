@@ -1,32 +1,40 @@
 <?php
-
 namespace App;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Database\Eloquent\Model;
-use Laravel\Lumen\Auth\Authorizable;
-
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class User extends API
 {
-    use Authenticatable, Authorizable;
+    public static $me;
+    public function callAuth($request)
+    {
+        if ($request->cookie('token')) {
+            API::$token = $request->cookie('token');
+            $me = $this->callMe();
+            User::$me = $me;
+        }
+    }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email',
-    ];
+    public function callMe()
+    {
+        return $this->execute("me");
+    }
+    public function callLogin($params = [])
+    {
+        $auth = $this->execute('login', $params, 'post');
+        if(isset($auth->url))
+        {
+            $auth->url = $this->localUrl($auth->url);
+        }
+        return $auth;
+    }
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-    ];
+    public function callLoginKey($password, $key)
+    {
+        $auth = $this->execute("login/$key", ['password' => $password], 'post');
+        return $auth;
+    }
+
+    public function callTest()
+    {
+        return $this->execute('ssdafsdf');
+    }
 }
