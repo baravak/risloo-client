@@ -9,12 +9,16 @@ use App\Exceptions\APIException;
 class API extends Models\ApiResponse
 {
     public static $token;
-    const PATH = 'http://localhost:8000/api/';
     protected $path, $data;
+    public function path()
+    {
+        return env('SERVER_URL', 'http://risloo.local/api/');
+    }
+
     public function execute($endpoint, $data = [], $method = 'GET')
     {
         $method = strtoupper($method);
-        $url = $pure_url = static::PATH . trim($endpoint, '\/');
+        $url = $pure_url = $this->path() . trim($endpoint, '\/');
         if ($method == 'GET' && !empty($data))
         {
             $parse_url = parse_url($pure_url);
@@ -90,6 +94,6 @@ class API extends Models\ApiResponse
 
     public function localUrl($url)
     {
-         return str_replace(static::PATH, app('request')->getSchemeAndHttpHost() . '/', $url);
+         return str_replace($this->path(), app('request')->getSchemeAndHttpHost() . '/', $url);
     }
 }
