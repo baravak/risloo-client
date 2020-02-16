@@ -1,6 +1,8 @@
 <?php
 namespace App;
 
+use Symfony\Component\HttpFoundation\Cookie;
+
 class User extends API
 {
     public static $me;
@@ -8,7 +10,11 @@ class User extends API
     {
         if ($request->cookie('token')) {
             API::$token = $request->cookie('token');
-            $me = $this->callMe();
+            try {
+                $me = $this->callMe();
+            } catch (\Throwable $th) {
+                return redirect()->route('login')->withCookies([new Cookie('token', null)])->send();
+            }
             User::$me = $me;
         }
     }
