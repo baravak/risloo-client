@@ -15,7 +15,6 @@ class Controller extends BaseController
         $this->data['title'] = $request->route()[1]['as'] ?? 'Title';
         $this->data['display'] = (object) [];
         $this->data['display']->app = $request->ajax() ? 'app-xhr' : 'app';
-        User::auth($request);
     }
 
     public function index(Request $request)
