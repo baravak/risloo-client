@@ -27,3 +27,7 @@ $router->post('/login/{key}', [
 $router->get('/register', [
     'as' => 'register', 'uses' => 'AuthController@register'
 ]);
+
+$router->get('/dashboard/users', [
+    'as' => 'users', 'uses' => 'UserController@index'
+]);
