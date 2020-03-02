@@ -2,20 +2,20 @@
 
 @section('content')
     <div class="card mb-3">
-        <div class="card-header">کاربران</div>
+        <div class="card-header">{{ __('users') }}</div>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>نام</th>
-                            <th>رایانامه</th>
-                            <th>تلفن همراه</th>
-                            <th>جنسیت</th>
-                            <th>وضعیت</th>
-                            <th>نوع</th>
-                            <th>شناسه کاربری</th>
+                            <th>{{ __('users.name') }}</th>
+                            <th>{{ __('users.email') }}</th>
+                            <th>{{ __('users.mobile') }}</th>
+                            <th>{{ __('users.gender') }}</th>
+                            <th>{{ __('users.status') }}</th>
+                            <th>{{ __('users.type') }}</th>
+                            <th>{{ __('users.username') }}</th>
                         </tr>
                     </thead>
                     <tbody>
