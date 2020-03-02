@@ -1,10 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
-class UserController
+use Illuminate\Http\Request;
+use App\User;
+class UserController extends Controller
 {
     public function index()
     {
-        return view('dashboard.users.index');
+        return view('dashboard.users.index', $this->data);
     }
 }
