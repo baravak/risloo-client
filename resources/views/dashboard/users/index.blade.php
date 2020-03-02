@@ -1,4 +1,4 @@
-@extends('dashboard.app')
+@extends($display->dashboard)
 
 @section('content')
     <div class="card mb-3">
@@ -8,23 +8,23 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>{{ __('users.name') }}</th>
-                            <th>{{ __('users.email') }}</th>
-                            <th>{{ __('users.mobile') }}</th>
-                            <th>{{ __('users.gender') }}</th>
-                            <th>{{ __('users.status') }}</th>
-                            <th>{{ __('users.type') }}</th>
-                            <th>{{ __('users.username') }}</th>
+                            <th>@sortView($users,'id', '#')</th>
+                            <th>@sortView($users,'name', __('users.name'))</th>
+                            <th>@sortView($users,'email', __('users.email'))</th>
+                            <th>@sortView($users,'mobile', __('users.mobile'))</th>
+                            <th>@sortView($users,'gender', __('users.gender'))</th>
+                            <th>@sortView($users,'status', __('users.status'))</th>
+                            <th>@sortView($users,'type', __('users.type'))</th>
+                            <th>@sortView($users,'username', __('users.username'))</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->idView }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->mobile }}</td>
+                                <td>{{ $user->mobileView }}</td>
                                 <td>{{ $user->gender }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ $user->type }}</td>

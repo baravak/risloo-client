@@ -16,6 +16,7 @@ class API extends Model
     public function __construct(array $attributes = [], ApiResponse $response = null)
     {
         parent::__construct($attributes);
+        $this->casts['id'] = 'string';
         $this->response = $response;
     }
 
@@ -96,7 +97,7 @@ class API extends Model
             {
                 $paginator = new ApiPaginator($response, $items, $response->meta->total, $response->meta->per_page, $response->meta->current_page);
                 $parse_url = parse_url($response->meta->path);
-                $path = app('request')->getSchemeAndHttpHost() . substr($parse_url['path'], 4);
+                $path = app('request')->getSchemeAndHttpHost() . '/' . app('request')->path();
                 $paginator->withPath($path);
                 return $paginator;
             }
@@ -162,5 +163,25 @@ class API extends Model
             return $this->flush(lcfirst(substr($method, 5)), ...$parameters);
         }
         return parent::__call($method, $parameters);
+    }
+
+    public function getSerialAttribute()
+    {
+        return [substr($this->id, 0, 2), substr($this->id, 2)];
+    }
+
+    public function getIdViewAttribute()
+    {
+        $serial = $this->serial;
+        return view('components.id', ['model' => $this, 'prefix' => $serial[0], 'serial' => $serial[1]]);
+    }
+
+    public function getMobileViewAttribute()
+    {
+        if($mobile = Mobile::parse($this->mobile))
+        {
+            return view('components.mobile', ['model' => $this, 'mobile' => $mobile[0], 'country' => $mobile[1], 'code' => $mobile[2]]);
+        }
+        return null;
     }
 }

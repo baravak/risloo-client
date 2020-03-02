@@ -21,7 +21,8 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
+$app->alias('blade.compiler', Illuminate\View\Compilers\BladeCompiler::class);
 
 $app->withEloquent();
 
@@ -76,7 +77,7 @@ $app->routeMiddleware([
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -97,5 +98,9 @@ $app->router->group([
     require __DIR__.'/../routes/web.php';
 });
 
+config([
+    'app.locale' => 'fa_IR',
+    'app.fallback_locale' => 'fa_IR'
+    ]);
 
 return $app;

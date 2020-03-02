@@ -25,4 +25,10 @@ class ApiPaginator extends LengthAwarePaginator
     {
         return $text ? $this->response('messageText') : $this->response('message');
     }
+
+    public function sortView($key, $title = null)
+    {
+
+        return view('components.sort', ['model' => $this, 'key' => $key, 'title' => $title ?: __($key)]);
+    }
 }

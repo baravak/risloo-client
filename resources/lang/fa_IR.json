@@ -1,0 +1,13 @@
+{
+  "Verify": "تأیید اکانت",
+  "Login": "ورود",
+  "Register": "عضویت",
+  "Forgot Password" : "فراموشی کلمه عبور",
+  "Enter" : "ورود",
+  "Phone, Email or Username" : "موبایل، ایمیل یا نام کاربری",
+  "required" : "تست",
+  "validation.required": "تست",
+  "validation": {
+      "required" : "تست"
+  }
+}

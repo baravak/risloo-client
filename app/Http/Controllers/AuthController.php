@@ -72,4 +72,9 @@ class AuthController extends Controller
             }
         }
     }
+
+    public function register(Request $request)
+    {
+        return view('auth.register', $this->data);
+    }
 }
