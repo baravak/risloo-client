@@ -38,7 +38,11 @@ class Authenticate
     {
         User::$token = $request->cookie('token');
         if ($guard == 'force' && $this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+            return $request->ajax() ? response()->json([
+                'is_ok' => false,
+                'message' => 'Unauthorized',
+                'message_text' => 'Unauthorized',
+            ], 401) : redirect()->route('login')->send();
         }
 
         return $next($request);

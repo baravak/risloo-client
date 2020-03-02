@@ -13,7 +13,7 @@
                     <a href="#" class="text-white text-decoration-none fs-14">Username</a>
                 </div>
                 <div class="profile-dropdown-body p-3">
-                    <a href="#" class="btn btn-primary btn-block">Logout</a>
+                    <a href="{{route('logout')}}" data-lijax='click' data-method='post' class="btn btn-primary btn-block direct">Logout</a>
                 </div>
             </div>
         </div>

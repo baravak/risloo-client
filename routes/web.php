@@ -7,6 +7,11 @@ $router->group([
         'as' => 'home', 'uses' => 'HomeController@index'
     ]);
 });
+
+$router->post('/logout', [
+    'middleware' => ['auth:force'],
+    'as' => 'logout', 'uses' => 'AuthController@logout'
+]);
 $router->group([
     'prefix' => 'dashboard',
     'namespace' => 'Dashbaord',

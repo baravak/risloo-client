@@ -36,7 +36,7 @@ class API extends Model
 
     public static function path()
     {
-        return env('SERVER_URL', 'http://risloo.local/api/');
+        return trim(env('SERVER_URL', 'http://risloo.local/api/'), '/') . '/';
     }
 
     public function endpoint($endpoint = null, array $data = [], $method = 'GET')
@@ -107,7 +107,7 @@ class API extends Model
             return new static((array) $response->data, $response);
         }
 
-        return $this;
+        return $response;
     }
 
     public function cache(...$parameters)
