@@ -1,5 +1,7 @@
-<body class="d-flex flex-column rtl">
-    @include('layouts.aside')
-    @include('layouts.main')
-    @include('layouts.scripts')
-</body>
+@section('body')
+    <body class="d-flex flex-column rtl">
+        @yield('aside')
+        @yield('main')
+        @yield('scripts')
+    </body>
+@endsection

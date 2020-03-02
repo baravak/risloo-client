@@ -1,33 +1,16 @@
 <?php
-
-$router->get('/',[
-    'as' => 'home', 'uses' => 'Controller@index'
-]);
-
-$router->get('/login', [
-    'as' => 'loginForm', 'uses' => 'AuthController@loginForm'
-]);
-
-$router->post('/login', [
-    'as' => 'login', 'uses' => 'AuthController@login'
-]);
-
-$router->get('/login/recovery', [
-    'as' => 'login.recovery', 'uses' => 'AuthController@recovery'
-]);
-
-$router->get('/login/{key}', [
-    'as' => 'loginKeyForm', 'uses' => 'AuthController@loginKeyForm'
-]);
-
-$router->post('/login/{key}', [
-    'as' => 'loginKeyForm', 'uses' => 'AuthController@loginKey'
-]);
-
-$router->get('/register', [
-    'as' => 'register', 'uses' => 'AuthController@register'
-]);
-
-$router->get('/dashboard/users', [
-    'as' => 'users', 'uses' => 'UserController@index'
-]);
+$router->group([
+    'middleware' => ['auth'],
+], function() use ($router){
+    include('entry.php');
+    $router->get('/',[
+        'as' => 'home', 'uses' => 'HomeController@index'
+    ]);
+});
+$router->group([
+    'prefix' => 'dashboard',
+    'namespace' => 'Dashbaord',
+    'middleware' => ['auth:force'],
+], function() use ($router){
+    include('auth.php');
+});

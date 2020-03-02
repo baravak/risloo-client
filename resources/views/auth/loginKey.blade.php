@@ -1,4 +1,3 @@
-@extends(app('request')->ajax() ? 'auth.xhr' : 'auth.template')
 @section('auth-form')
     <form action="" method="POST" data-form-page="password">
             <div class="form-group">
@@ -21,3 +20,4 @@
         </form>
     </div>
 @endsection
+@extends(app('request')->ajax() ? 'auth.xhr' : 'auth.app')

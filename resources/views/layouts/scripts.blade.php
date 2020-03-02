@@ -10,4 +10,7 @@
     <script src="/dist/vendors/amcharts4/lang/en.js"></script>
 
     <script src="/dist/js/sarkoot.min.js"></script>
-@show
+
+    <script src="js/dashio.min.js"></script>
+    <script src="js/app.js"></script>
+@endsection

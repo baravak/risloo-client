@@ -1,8 +1,7 @@
-@extends(app('request')->ajax() ? 'auth.xhr' : 'auth.template')
 @section('auth-form')
     <form action="{{route('login')}}" method="POST" data-form-page="login" class="active">
             <div class="form-group">
-                <input type="text" class="form-control" id="username" name="username" placeholder="{{__('Phone, Email or Username')}}">
+                <input type="text" class="form-control" id="username" name="username" value="{{app('request')->username}}" placeholder="{{__('Phone, Email or Username')}}">
             </div>
 
             <button class="btn btn-dark btn-block btn-login mb-3">{{__('Enter')}}</button>
@@ -15,3 +14,4 @@
         </form>
     </div>
 @endsection
+@extends(app('request')->ajax() ? 'auth.xhr' : 'auth.app')

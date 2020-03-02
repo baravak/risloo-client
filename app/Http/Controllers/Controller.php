@@ -6,21 +6,15 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\API;
 use App\User;
-use Illuminate\Database\Connection;
+
 class Controller extends BaseController
 {
     public $data = [];
     public function __construct(Request $request)
     {
         $this->data['title'] = $request->route()[1]['as'] ?? 'Title';
+        $this->data['description'] = $request->route()[1]['as'] ?? 'Description';
         $this->data['display'] = (object) [];
-        $this->data['display']->app = $request->ajax() ? 'app-xhr' : 'app';
-    }
-
-    public function index(Request $request)
-    {
-        $users = User::index();
-        $this->data['users'] = $users;
-        return view('home', $this->data);
+        $this->data['display']->app = $request->ajax() ? 'layouts.app-xhr' : 'layouts.app';
     }
 }

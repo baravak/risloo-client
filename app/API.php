@@ -1,99 +1,166 @@
 <?php
 namespace App;
 
-use App\Models\ApiResponse;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Illuminate\Support\Collection;
-use App\Exceptions\APIException;
 
-class API extends Models\ApiResponse
+use App\Models\ApiResponse;
+use App\Models\ApiCollection;
+use App\Models\ApiPaginator;
+
+class API extends Model
 {
-    public static $token;
-    protected $path, $data;
-    public function path()
+    protected $response, $endpoint;
+    protected static $_cache = [];
+
+    public function __construct(array $attributes = [], ApiResponse $response = null)
+    {
+        parent::__construct($attributes);
+        $this->response = $response;
+    }
+
+    public function response($key = null)
+    {
+        return $key ? $this->response->$key : $this->response;
+    }
+
+    public function isOK()
+    {
+        return $this->response('is_ok');
+    }
+
+    public function message($text = null)
+    {
+        return $text ? $this->response('messageText') : $this->response('message');
+    }
+
+    public static function path()
     {
         return env('SERVER_URL', 'http://risloo.local/api/');
     }
 
-    public function execute($endpoint, $data = [], $method = 'GET')
+    public function endpoint($endpoint = null, array $data = [], $method = 'GET')
     {
-        $method = strtoupper($method);
-        $url = $pure_url = $this->path() . trim($endpoint, '\/');
-        if ($method == 'GET' && !empty($data))
+        if($this->endpoint)
         {
+            return $this->endpoint;
+        }
+        $endpoint = $endpoint ? (substr($endpoint, 0, 2) == '%s' ? $this->getTable() . substr($endpoint, 2) : $endpoint) : $this->getTable();
+        $method = strtoupper($method);
+        $this->endpoint = $pure_url = static::path() . trim($endpoint, '\/');
+        if ($method == 'GET' && !empty($data)) {
             $parse_url = parse_url($pure_url);
 
             $parse_url['query'] = isset($parse_url['query']) ? $parse_url['query'] . '&' . http_build_query($data) : http_build_query($data);
-            $url = $parse_url['scheme']
-            . '://'
-            . $parse_url['host']
-            . (isset($parse_url['port']) ? ':'. $parse_url['port'] : '')
-            . (isset($parse_url['path']) ? $parse_url['path'] : '/')
-            . (isset($parse_url['query']) ? '?' . $parse_url['query'] : '');
+            $this->endpoint = $parse_url['scheme']
+                . '://'
+                . $parse_url['host']
+                . (isset($parse_url['port']) ? ':' . $parse_url['port'] : '')
+                . (isset($parse_url['path']) ? $parse_url['path'] : '/')
+                . (isset($parse_url['query']) ? '?' . $parse_url['query'] : '');
         }
+        return $this->endpoint;
+    }
+
+    public function execute($endpoint = null, array $data = [], $method = 'GET')
+    {
+
+        $endpoint = $this->endpoint(...func_get_args());
+
         $headers       = array(
             'Accept: application/json',
             'Content-Type: application/json',
             'charset: utf-8'
         );
-        if(isset(static::$token))
+        if(User::$token)
         {
-            $headers[] = 'Authorization: Bearer ' . static::$token;
+            $headers[] = 'Authorization: Bearer ' . User::$token;
         }
-        $curl = curl_init($url);
+        $curl = curl_init($endpoint);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, strtoupper($method));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         if($method != 'GET')
         {
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data ? json_encode($data) : null);
         }
 
-        $response     = curl_exec($curl);
-        $code         = $this->code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        $content_type = $this->content_type = curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
-        $curl_errno   = $this->errno = curl_errno($curl);
-        $curl_error   = $this->error = curl_error($curl);
-        if ($curl_errno) {
-            throw new \Exception($curl_error);
-        }
-        $json_response = json_decode($response);
-        if ($code != 200 && is_null($json_response)) {
-            throw new \Exception("Request have errors");
-        } else {
-            $this->response = $json_response;
-            $this->curl = $json_response;
-            if ($code != 200) {
-                throw new APIException($this);
+        $response     = new ApiResponse($curl, curl_exec($curl));
+        if (is_array($response->data))
+        {
+            $items = [];
+            foreach ($response->data as $key => $value) {
+                $items[] = new static((array) $value);
             }
-            $this->data();
-            return $this->response;
+            if($response->links)
+            {
+                $paginator = new ApiPaginator($response, $items, $response->meta->total, $response->meta->per_page, $response->meta->current_page);
+                $parse_url = parse_url($response->meta->path);
+                $path = app('request')->getSchemeAndHttpHost() . substr($parse_url['path'], 4);
+                $paginator->withPath($path);
+                return $paginator;
+            }
+            return new ApiCollection($response, $items);
         }
+        else
+        {
+            return new static((array) $response->data, $response);
+        }
+
+        return $this;
     }
 
-    public function callIndex($params = [])
+    public function cache(...$parameters)
     {
-        $path = $this->path ?? Str::snake(Str::pluralStudly(class_basename($this)));
-        $this->execute($path, $params, 'GET');
-        return $this->data;
+        $url = md5($this->endpoint(...$parameters));
+        if(isset(static::$_cache[$url]))
+        {
+            return static::$_cache[$url];
+        }
+        static::$_cache[$url] = $this->execute(...$parameters);
+        return static::$_cache[$url];
     }
 
-    public function callShow($id, $params = [])
+    public function flush($opr, ...$parameters)
     {
-        $path = $this->path ?? Str::snake(Str::pluralStudly(class_basename($this))) . '/' . $id;
-        $this->execute($path, $params, 'GET');
-        return $this->data;
+        $url = md5($this->endpoint(...$parameters));
+        if (isset(static::$_cache[$url])) {
+            unset(static::$_cache[$url]);
+        }
+        return $this->cache(...$parameters);
     }
 
-    public static function __callStatic($name, $arguments)
+    public static function apiIndex(array $params = [])
     {
-        $name = "call" . ucfirst($name);
-        $class = new static;
-        return $class->$name(...$arguments);
+        return (new static)->cache(null, $params);
     }
 
-    public function localUrl($url)
+    public static function apiShow($id, array $params = [])
     {
-         return str_replace($this->path(), app('request')->getSchemeAndHttpHost() . '/', $url);
+        return (new static)->cache('%s' .$id, $params);
+    }
+
+    public static function apiUpdate($id, array $params = [])
+    {
+        return (new static)->cache('%s' .$id, $params, 'put');
+    }
+
+    public static function apitStore($id, array $params = [])
+    {
+        return (new static)->cache(null, $params, 'post');
+    }
+
+    public static function apiDelete($id, array $params = [])
+    {
+        return (new static)->execute('%s' .$id, $params, 'delete');
+    }
+
+    public function __call($method, $parameters)
+    {
+        if(substr($method, 0, 5) == 'flush')
+        {
+            return $this->flush(lcfirst(substr($method, 5)), ...$parameters);
+        }
+        return parent::__call($method, $parameters);
     }
 }

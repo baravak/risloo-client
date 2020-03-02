@@ -1,51 +1,73 @@
 <?php
 namespace App\Models;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
-class ApiResponse
+use Illuminate\Contracts\Support\Arrayable;
+use Symfony\Component\HttpFoundation\Cookie;
+
+use App\Exceptions\APIException;
+
+use App\User;
+use App\API;
+
+class ApiResponse implements Arrayable
 {
-    public function isOk()
+    protected $curl, $response, $code, $content_type;
+    public function __construct($curl, $response)
     {
-        return $this->response->is_ok;
+        if (false === is_resource($curl) && \get_resource_type($curl) != 'curl') {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Argument must be a valid curl resource type. %s given.',
+                    gettype($curl)
+                )
+            );
+        }
+        $this->curl = $curl;
+        $this->code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $this->content_type = curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
+        $curl_errno   = curl_errno($curl);
+        $curl_error   = curl_error($curl);
+        if ($curl_errno) {
+            throw new \Exception($curl_error);
+        }
+
+        $this->response = json_decode($response);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new \JsonException('Could not parse data');
+        }
+        if (!$this->response) {
+            throw new \JsonException('Response is null');
+        }
+
+        if (isset($this->response->url)) {
+            $this->response->url = str_replace(API::path(), app('request')->getSchemeAndHttpHost() . '/', $this->response->url);
+        }
+        if($this->response->message == 'UNAUTHENTICATED')
+        {
+            return redirect()->route('login')->withCookies([new Cookie('token', null)])->send();
+        }
+        if (!$this->response->is_ok)
+        {
+            throw new APIException($this);
+        }
     }
 
     public function statusCode()
     {
-       return $this->code;
+        return $this->code;
     }
 
-    public function message()
+    public function json(array $params = [])
     {
-        return isset($this->response->message) ? $this->response->message : null;
+        return response()->json(array_merge_recursive((array) $this->response, $params), $this->code);
     }
 
-    public function messageText()
+    public function toArray()
     {
-        return isset($this->response->message_text) ? $this->response->message_text : null;
-    }
-
-    public function data()
-    {
-        $data = isset($this->response->data) ? $this->response->data : null;
-        if(is_array($data) && isset($this->response->links))
-        {
-            $collection = new Collection($data);
-            $paginator = new LengthAwarePaginator($collection, $this->response->meta->total, $this->response->meta->per_page, $this->response->meta->current_page);
-            $parse_url = parse_url($this->response->meta->path);
-            $path = app('request')->getSchemeAndHttpHost() . substr($parse_url['path'], 4);
-            $paginator->withPath($path);
-            $data = $paginator;
-        }
-        elseif(is_object($data))
-        {
-            $data = $data;
-        }
-        $this->data = $data;
+        return (array) $this->response;
     }
 
     public function __get($name)
     {
-        return isset($this->data->$name) ? $this->data->$name : null;
+        return isset($this->response->$name) ? $this->response->$name : null;
     }
 }
