@@ -9,9 +9,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Library</li>
                     </ol>
                 </nav>
-                <div class="mx-2">
-                    <a href="#" class="badge badge-success">{{ __('Create') }}</a>
-                </div>
+                <a href="#" class="badge badge-success mx-2">ثبت کاربر جدید</a>
             </div>
             <div></div>
         </div>
