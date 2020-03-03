@@ -98,6 +98,7 @@ class API extends Model
                 $paginator = new ApiPaginator($response, $items, $response->meta->total, $response->meta->per_page, $response->meta->current_page);
                 $path = app('request')->getSchemeAndHttpHost() . '/' . app('request')->path();
                 $paginator->withPath($path);
+                // dd($paginator->response('meta')->filters->current);
                 foreach ($paginator->response('meta')->filters->allowed as $key => $value) {
                     $paginator->appends($key, app('request')->$key);
                 }
