@@ -1,1 +1,2 @@
-@extends('dashboard.app')
+@extends($display->dashboard)
+

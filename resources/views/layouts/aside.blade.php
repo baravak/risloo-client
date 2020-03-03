@@ -2,14 +2,19 @@
     <aside id="aside">
         <div class="aside-brand d-flex justify-content-center align-items-center px-3">
             <h1 class="mb-0">
-                <a href="#" class="text-white text-decoration-none">{{__('App Title')}}</a>
+                <a href="/" class="text-white text-decoration-none" target="_blank">{{__('App Title')}}</a>
             </h1>
         </div>
 
         <ul class="nav aside-nav flex-column flex-nowrap overflow-hidden p-0">
             <li class="nav-item">
-                <a class="nav-link text-truncate" href="#">
-                    <span class="d-sm-inline">Home</span>
+                <a class="nav-link text-truncate" href="{{route('dashboard')}}">
+                    <span class="d-sm-inline">{{__('Dashboard')}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-truncate" href="{{route('dashboard.users.index')}}">
+                    <span class="d-sm-inline">{{__('Users')}}</span>
                 </a>
             </li>
             <li class="nav-item">

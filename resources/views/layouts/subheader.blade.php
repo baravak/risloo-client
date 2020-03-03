@@ -1,4 +1,4 @@
-<div id="subheader" class="subheader py-3">
+<div id="subheader" class="subheader py-3" data-xhr="subheader">
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-baseline">
             <div class="d-flex align-items-baseline">

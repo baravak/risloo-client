@@ -3,3 +3,5 @@
         @yield('content')
     </div>
 </div>
+
+@include('layouts.subheader')
