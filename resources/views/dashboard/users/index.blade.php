@@ -15,7 +15,8 @@
                             <th>@sortView($users,'gender', __('users.gender'))</th>
                             <th>
                                 @sortView($users,'status', __('users.status'))
-                                <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-sm btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-filter"></i>
                                 </button>
                                 <div class="dropdown-menu">
                                     @foreach ($users->response('meta')->filters->allowed->status as $item)
