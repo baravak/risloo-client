@@ -9,5 +9,10 @@
   "Users": "کاربران",
   "Dashboard" : "داشبورد",
   "dashboard.users.create": "کاربر جدید",
-  "App Title" : "ریسلو"
+  "App Title" : "ریسلو",
+  "users.name": "نام",
+  "users.email": "رایانامه",
+  "users.mobile": "تلفن همراه",
+  "users.gender": "جنسیت",
+  "users.username": "شناسه کاربری"
 }

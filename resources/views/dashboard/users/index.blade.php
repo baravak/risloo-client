@@ -13,8 +13,20 @@
                             <th>@sortView($users,'email', __('users.email'))</th>
                             <th>@sortView($users,'mobile', __('users.mobile'))</th>
                             <th>@sortView($users,'gender', __('users.gender'))</th>
-                            <th>@sortView($users,'status', __('users.status'))</th>
-                            <th>@sortView($users,'type', __('users.type'))</th>
+                            <th>
+                                <select name="" id="" class="form-control form-control-sm">
+                                    <option value="">A</option>
+                                    <option value="">B</option>
+                                    <option value="">C</option>
+                                </select>
+                            </th>
+                            <th>
+                                <select name="" id="" class="form-control form-control-sm">
+                                    <option value="">A</option>
+                                    <option value="">B</option>
+                                    <option value="">C</option>
+                                </select>
+                            </th>
                             <th>@sortView($users,'username', __('users.username'))</th>
                         </tr>
                     </thead>
