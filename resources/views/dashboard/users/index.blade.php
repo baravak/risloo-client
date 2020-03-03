@@ -16,11 +16,11 @@
                             <th>
                                 @sortView($users,'status', __('users.status'))
                                 <button class="btn btn-sm btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-filter"></i>
+                                    <i class="fas fa-filter fs-12"></i>
                                 </button>
                                 <div class="dropdown-menu">
                                     @foreach ($users->response('meta')->filters->allowed->status as $item)
-                                        <a class="dropdown-item" href="#">{{__("status.$item")}}</a>
+                                        <a class="dropdown-item fs-12" href="#">{{__("status.$item")}}</a>
                                     @endforeach
                                 </div>
                             </th>
