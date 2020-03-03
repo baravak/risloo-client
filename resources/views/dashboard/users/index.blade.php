@@ -15,7 +15,7 @@
                             <th>@sortView($users,'gender', __('users.gender'))</th>
                             <th>
                                 @sortView($users,'status', __('users.status'))
-                                <button class="btn btn-sm btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-filter fs-12"></i>
                                 </button>
                                 <div class="dropdown-menu">
