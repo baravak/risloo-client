@@ -5,9 +5,9 @@
   "Forgot Password" : "فراموشی کلمه عبور",
   "Enter" : "ورود",
   "Phone, Email or Username" : "موبایل، ایمیل یا نام کاربری",
-  "required" : "تست",
-  "validation.required": "تست",
-  "validation": {
-      "required" : "تست"
-  }
+  "Home" : "خانه",
+  "Users": "کاربران",
+  "Dashboard" : "داشبورد",
+  "dashboard.users.create": "کاربر جدید",
+  "App Title" : "ریسلو"
 }

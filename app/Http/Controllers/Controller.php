@@ -17,5 +17,11 @@ class Controller extends BaseController
         $this->data['display'] = (object) [];
         $this->data['display']->app = $request->ajax() ? 'layouts.app-xhr' : 'layouts.app';
         $this->data['display']->dashboard = $request->ajax() ? 'dashboard.xhr' : 'dashboard.app';
+
+        $this->data['module'] = (object) [];
+        $as = explode('.', $request->route()[1]['as']);
+        array_pop($as);
+        $this->data['module']->namespace = join('.', $as);
+
     }
 }

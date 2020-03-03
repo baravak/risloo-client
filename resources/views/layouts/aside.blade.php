@@ -2,7 +2,7 @@
     <aside id="aside">
         <div class="aside-brand d-flex justify-content-center align-items-center px-3">
             <h1 class="mb-0">
-                <a href="#" class="text-white text-decoration-none">App Title</a>
+                <a href="#" class="text-white text-decoration-none">{{__('App Title')}}</a>
             </h1>
         </div>
 

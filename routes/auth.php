@@ -1,7 +1,12 @@
 <?php
 $router->get(null, [
-    'as' => 'dashboard', 'uses' => 'HomeController@index'
+    'uses' => 'HomeController@index'
 ]);
 $router->get('/users', [
-    'as' => 'users', 'uses' => 'UserController@index'
+    'as' => 'users.index', 'uses' => 'UserController@index'
 ]);
+
+$router->get('/users/create', [
+    'as' => 'users.create', 'uses' => 'UserController@create'
+]);
+

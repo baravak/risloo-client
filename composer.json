@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": "^7.2",
+        "baravak/lumen-breadcrumbs": "^5.3",
         "laravel/lumen-framework": "^6.0"
     },
     "require-dev": {

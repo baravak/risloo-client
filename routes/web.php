@@ -15,6 +15,7 @@ $router->post('/logout', [
 $router->group([
     'prefix' => 'dashboard',
     'namespace' => 'Dashbaord',
+    'as' => 'dashboard',
     'middleware' => ['auth:force'],
 ], function() use ($router){
     include('auth.php');

@@ -2,14 +2,13 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-baseline">
             <div class="d-flex align-items-baseline">
-                <h3 class="subheader-title">Dashboard</h3>
-                <nav aria-label="breadcrumb" class="subheader-breadcrumbs">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Library</li>
-                    </ol>
-                </nav>
-                <a href="#" class="badge badge-success mx-2">ثبت کاربر جدید</a>
+                <h3 class="subheader-title">{{__('Dashboard')}}</h3>
+                @if (DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::exists(app('request')->route()[1]['as']))
+                    {{ DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render(app('request')->route()[1]['as'], get_defined_vars()) }}
+                @endif
+                @isset(app('router')->namedRoutes["$module->namespace.create"])
+                    <a href="{{route("$module->namespace.create")}}" class="badge badge-success mx-2">{{__("$module->namespace.create")}}</a>
+                @endif
             </div>
             <div></div>
         </div>
