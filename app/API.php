@@ -96,9 +96,13 @@ class API extends Model
             if($response->links)
             {
                 $paginator = new ApiPaginator($response, $items, $response->meta->total, $response->meta->per_page, $response->meta->current_page);
-                $parse_url = parse_url($response->meta->path);
                 $path = app('request')->getSchemeAndHttpHost() . '/' . app('request')->path();
                 $paginator->withPath($path);
+                foreach ($paginator->response('meta')->filters->allowed as $key => $value) {
+                    $paginator->appends($key, app('request')->$key);
+                }
+                $paginator->appends('order', app('request')->order);
+                $paginator->appends('sort', app('request')->sort);
                 return $paginator;
             }
             return new ApiCollection($response, $items);

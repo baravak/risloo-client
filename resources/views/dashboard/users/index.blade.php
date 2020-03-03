@@ -12,24 +12,47 @@
                             <th>@sortView($users,'name', __('users.name'))</th>
                             <th>@sortView($users,'email', __('users.email'))</th>
                             <th>@sortView($users,'mobile', __('users.mobile'))</th>
-                            <th>@sortView($users,'gender', __('users.gender'))</th>
                             <th>
-                                @sortView($users,'status', __('users.status'))
-                                <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-filter fs-12"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    @foreach ($users->response('meta')->filters->allowed->status as $item)
-                                        <a class="dropdown-item fs-12" href="#">{{__("status.$item")}}</a>
-                                    @endforeach
-                                </div>
+                                @sortView($users,'gender', __('users.gender'))
+                                @isset($users->response('meta')->filters->allowed->gender)
+                                    <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-filter fs-12"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item fs-12 {{!app('request')->gender ? 'active' : ''}}" href="{{app('request')->create($users->url($users->currentPage()), 'GET', ['gender' => null])->getUri()}}">{{__("All Items")}}</a>
+                                        @foreach ($users->response('meta')->filters->allowed->gender as $item)
+                                            <a class="dropdown-item fs-12 {{app('request')->gender == $item ? 'active' : ''}}" href="{{app('request')->create($users->url($users->currentPage()), 'GET', ['gender' => $item])->getUri()}}">{{__("gender.$item")}}</a>
+                                        @endforeach
+                                    </div>
+                                @endisset
                             </th>
                             <th>
-                                <select name="" id="" class="form-control form-control-sm">
-                                    <option value="">A</option>
-                                    <option value="">B</option>
-                                    <option value="">C</option>
-                                </select>
+                                @sortView($users,'status', __('users.status'))
+                                @isset($users->response('meta')->filters->allowed->status)
+                                    <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-filter fs-12"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item fs-12 {{!app('request')->status ? 'active' : ''}}" href="{{app('request')->create($users->url($users->currentPage()), 'GET', ['status' => null])->getUri()}}">{{__("All Items")}}</a>
+                                        @foreach ($users->response('meta')->filters->allowed->status as $item)
+                                            <a class="dropdown-item fs-12 {{app('request')->status == $item ? 'active' : ''}}" href="{{app('request')->create($users->url($users->currentPage()), 'GET', ['status' => $item])->getUri()}}">{{__("status.$item")}}</a>
+                                        @endforeach
+                                    </div>
+                                @endisset
+                            </th>
+                            <th>
+                                @sortView($users,'type', __('users.type'))
+                                @isset($users->response('meta')->filters->allowed->type)
+                                    <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-filter fs-12"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item fs-12 {{!app('request')->type ? 'active' : ''}}" href="{{app('request')->create($users->url($users->currentPage()), 'GET', ['type' => null])->getUri()}}">{{__("All Items")}}</a>
+                                        @foreach ($users->response('meta')->filters->allowed->type as $item)
+                                            <a class="dropdown-item fs-12 {{app('request')->type == $item ? 'active' : ''}}" href="{{app('request')->create($users->url($users->currentPage()), 'GET', ['type' => $item])->getUri()}}">{{__("type.$item")}}</a>
+                                        @endforeach
+                                    </div>
+                                @endisset
                             </th>
                             <th>@sortView($users,'username', __('users.username'))</th>
                         </tr>
