@@ -18,5 +18,5 @@
   "users.status" : "وضعیت",
   "status.awaiting" : "در انتظار",
   "status.active" : "فعال",
-  "status.block": "بسته شده"
+  "status.blocked": "بسته شده"
 }

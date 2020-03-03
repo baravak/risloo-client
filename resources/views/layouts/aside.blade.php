@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse"
+                <a class="nav-link collapsed text-truncate direct" href="#submenu1" data-toggle="collapse"
                     data-target="#submenu1">
                     <span class="d-sm-inline">Reports</span>
                 </a>
