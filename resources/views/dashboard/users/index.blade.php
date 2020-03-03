@@ -33,14 +33,14 @@
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{ $user->idView }}</td>
+                                <td>@id($user)</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->mobileView }}</td>
+                                <td>@email($user->email)</td>
+                                <td>@mobile($user->mobile)</td>
                                 <td>{{ $user->gender }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ $user->type }}</td>
-                                <td>{{ $user->username }}</td>
+                                <td>@username($user->username)</td>
                             </tr>
                         @endforeach
                     </tbody>

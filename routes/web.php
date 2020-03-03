@@ -20,3 +20,7 @@ $router->group([
 ], function() use ($router){
     include('auth.php');
 });
+
+$router->get('info', function(){
+    phpinfo();
+});
