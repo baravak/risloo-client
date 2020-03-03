@@ -3,9 +3,9 @@
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-            {{ __('users') }}
-            <span class="badge badge-secondary">
-                <i class="fas fa-times align-middle"></i>
+            {{ __('Users') }}
+            <span class="badge badge-secondary font-weight-normal">
+                <i class="fal fa-times align-middle"></i>
                 وضعیت: فعال
             </span>
         </div>
