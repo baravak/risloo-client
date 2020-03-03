@@ -18,7 +18,7 @@
                                 <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-filter fs-12"></i>
                                 </button>
-                                <div class="dropdown-menu">
+                                <div class="dropdown-menu dropdown-menu-right">
                                     @foreach ($users->response('meta')->filters->allowed->status as $item)
                                         <a class="dropdown-item fs-12" href="#">{{__("status.$item")}}</a>
                                     @endforeach
