@@ -14,11 +14,14 @@
                             <th>@sortView($users,'mobile', __('users.mobile'))</th>
                             <th>@sortView($users,'gender', __('users.gender'))</th>
                             <th>
-                                <select name="" id="" class="form-control form-control-sm">
-                                    <option value="">A</option>
-                                    <option value="">B</option>
-                                    <option value="">C</option>
-                                </select>
+                                @sortView($users,'status', __('users.status'))
+                                <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu">
+                                    @foreach ($users->response('meta')->filters->allowed->status as $item)
+                                        <a class="dropdown-item" href="#">{{__("status.$item")}}</a>
+                                    @endforeach
+                                </div>
                             </th>
                             <th>
                                 <select name="" id="" class="form-control form-control-sm">
