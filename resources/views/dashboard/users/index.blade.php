@@ -2,7 +2,13 @@
 
 @section('content')
     <div class="card mb-3">
-        <div class="card-header">{{ __('users') }}</div>
+        <div class="card-header">
+            {{ __('users') }}
+            <span class="badge badge-secondary">
+                <i class="fas fa-times align-middle"></i>
+                وضعیت: فعال
+            </span>
+        </div>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table">
