@@ -3,7 +3,7 @@
         <span class="d-none d-md-inline">
             <span class="d-none d-lg-inline">+{{$mobile[2]}}</span>{{$mobile[0]}}
         </span>
-        <span class="d-lg-inline">
+        <span class="d-md-none">
             <i class="fas fa-phone"></i>
         </span>
     </a>
