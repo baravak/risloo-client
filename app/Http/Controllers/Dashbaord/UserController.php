@@ -11,4 +11,9 @@ class UserController extends Controller
         $this->data['users'] = User::apiIndex($request->all(['order', 'sort', 'status', 'type', 'gender']));
         return view('dashboard.users.index', $this->data);
     }
+
+    public function create(Request $request)
+    {
+        return view('dashboard.users.create', $this->data);
+    }
 }
