@@ -20,8 +20,9 @@ class AppServiceProvider extends ServiceProvider
         app('view');
         app('blade.compiler')->directive('sortView', function ($args) {
             $args = explode(',', $args);
-            $args[2] = isset($args[2]) ? $args[2] : null;
-            return "<?php echo e($args[0]->sortView($args[1], $args[2]))?>";
+            $args[2] = isset($args[2]) ? $args[2] : 'null';
+            $args[3] = isset($args[3]) ? $args[3] : 'null';
+            return "<?php echo \$__env->make('components.sort', ['model' => $args[0], 'key' => $args[1], 'title' => ($args[2] ?: __($args[1])), 'short_title' => $args[3]], [\Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])])->render(); ?>";
         });
 
         app('blade.compiler')->directive('id', function ($model) {

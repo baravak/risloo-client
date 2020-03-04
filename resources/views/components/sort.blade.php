@@ -4,12 +4,13 @@
     @else
         <a href="{{app('request')->create($model->url($model->currentPage()), 'GET', ['order' => $key, 'sort' => 'desc'])->getUri()}}"><i class="fas text-primary fa-sort-up"></i></a>
     @endif
-    {{$title}}
 @elseif(in_array($key, $model->response('meta')->orders->allowed))
-        <a href="{{app('request')->create($model->url($model->currentPage()), 'GET', ['order' => $key, 'sort' => 'desc'])->getUri()}}"><i class="fas text-black-50 fa-sort"></i></a> {{$title}}
+        <a href="{{app('request')->create($model->url($model->currentPage()), 'GET', ['order' => $key, 'sort' => 'desc'])->getUri()}}"><i class="fas text-black-50 fa-sort"></i></a>
+@endisset
+@if ($short_title)
+    <span class="d-none d-md-inline">{{$title}}</span>
+    <span class="d-md-none">{!!$short_title!!}</span>
 @else
     {{$title}}
-@endisset
-{{-- @if(isset(app('request')->order) && strtolower(app('request')->order) == strtolower($key))
+@endif
 
-    @if(isset(app('request')->sort) && strtolower(app('request')->sort) == 'asc')? '<a href=\"'. order_link('$key', 'desc') .'\"><i class=\"fas text-primary fa-sort-up\"></i></a>' : '<a href=\"'. order_link('$key', 'asc') .'\"><i class=\"fas text-primary fa-sort-down\"></i></a>') : '<a href=\"'. order_link('$key', 'desc') .'\"><i class=\"fas fa-sort text-black-50\"></i></a>' --}}
