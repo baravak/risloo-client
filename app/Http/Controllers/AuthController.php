@@ -81,6 +81,7 @@ class AuthController extends Controller
     public function loginAs(Request $request, $user)
     {
         $loginAs = User::loginAs($user);
-        return $loginAs->response()->json(['redirect' => rout('dashboard'), 'direct' => true])->withCookie(new Cookie('token', $loginAs->response('token')));
+        return $loginAs->response()->json(['redirect' => route('dashboard'), 'direct' => true])
+        ->withCookie(new Cookie('token', $loginAs->response('token')));
     }
 }
