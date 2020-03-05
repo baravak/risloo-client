@@ -9,8 +9,8 @@
     <script src="/dist/vendors/amcharts4/themes/amcharts.js"></script>
     <script src="/dist/vendors/amcharts4/lang/en.js"></script>
 
-    <script src="/dist/js/sarkoot.min.js"></script>
+    <script src="@staticVersion('/dist/js/sarkoot.min.js')"></script>
 
-    <script src="js/dashio.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="@staticVersion('js/dashio.min.js')"></script>
+    <script src="@staticVersion('js/app.js')"></script>
 @endsection

@@ -51,6 +51,8 @@ class AppServiceProvider extends ServiceProvider
             list($key, $value) = explode(',', $args);
             return "<?php echo isset($key) && $key == $value ? 'checked=\"checked\"' : ''?>";
         });
-
+        app('blade.compiler')->directive('staticVersion', function ($file) {
+            return "<?php echo $file . '?v='. filemtime(app()->basePath(join(DIRECTORY_SEPARATOR, ['public', rtrim($file, '/')])))?>";
+        });
     }
 }
