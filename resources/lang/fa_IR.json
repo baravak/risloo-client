@@ -51,5 +51,9 @@
   "anonymous" : "بی‌نام",
   "Logout" : "خروج",
   "Login to this..." : "ورود به کاربری...",
-  "users.update.form" : "ویرایش کاربر"
+  "users.update.form" : "ویرایش کاربر",
+
+  "Documents" : "اسناد و مدارک",
+  "Reserve" : "رزرو",
+  "View": "نمایش"
 }

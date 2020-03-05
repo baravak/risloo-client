@@ -30,4 +30,8 @@ class User extends API
     {
         return (new static)->execute("login/$key", ['password' => $password], 'post');
     }
+    public function isAdmin()
+    {
+        return $this->type == 'admin';
+    }
 }
