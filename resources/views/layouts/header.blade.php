@@ -9,11 +9,19 @@
             <img src="dist/images/avatar/avatar.jpg" alt="Avatar" class="profile rounded-circle" width="32" height="32">
             <!-- <span class="profile profile-placeholder d-flex justify-content-center align-items-center">S</span> -->
             <div class="profile-dropdown shadow">
-                <div class="profile-dropdown-header p-3 d-flex align-items-center">
-                    <a href="#" class="text-white text-decoration-none fs-14">Username</a>
+                <div class="profile-dropdown-header p-3 d-flex flex-column align-items-center">
+                    <a href="#" class="text-white text-decoration-none fs-14">{{app('request')->user()->name ?: app('request')->user()->id}}</a>
+                    @if (app('request')->user()->response('current'))
+                        <a href="#" class="text-white text-decoration-none fs-14">{{app('request')->user()->response('current')->name ?: app('request')->user()->response('current')->id}}</a>
+                    @endif
                 </div>
                 <div class="profile-dropdown-body p-3">
-                    <a href="{{route('logout')}}" data-lijax='click' data-method='post' class="btn btn-primary btn-block direct">Logout</a>
+                    @if (app('request')->user()->response('current'))
+                        <a href="{{route('logout')}}" data-lijax='click' data-method='post' class="btn btn-primary direct">{{__('Logout')}}</a>
+                        <a href="{{route('logout')}}" data-lijax='click' data-method='post' class="btn btn-primary direct">{{__('Admin')}}</a>
+                    @else
+                        <a href="{{route('logout')}}" data-lijax='click' data-method='post' class="btn btn-primary btn-block direct">{{__('Logout')}}</a>
+                    @endif
                 </div>
             </div>
         </div>

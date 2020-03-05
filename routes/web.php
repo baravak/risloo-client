@@ -12,6 +12,11 @@ $router->post('/logout', [
     'middleware' => ['auth:force'],
     'as' => 'logout', 'uses' => 'AuthController@logout'
 ]);
+$router->get('login/user/{id}', [
+    'middleware' => ['auth:force'],
+    'as' => 'login.as', 'uses' => 'AuthController@loginAs'
+]);
+
 $router->group([
     'prefix' => 'dashboard',
     'namespace' => 'Dashbaord',

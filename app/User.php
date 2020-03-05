@@ -17,6 +17,10 @@ class User extends API
     {
         return (new static)->execute('login', $params, 'post');
     }
+    public static function loginAs($user, $params = [])
+    {
+        return (new static)->execute('login/user/'. $user, $params, 'get');
+    }
 
     public static function loginKey($password, $key)
     {

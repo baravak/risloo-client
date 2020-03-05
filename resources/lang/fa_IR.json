@@ -11,6 +11,8 @@
   "Users": "کاربران",
   "users.index": "کاربران",
   "users.create": "ثبت کاربر جدید",
+  "Edit": "ویرایش",
+  "users.update": "ذخیره",
   "users.create.form": "فرم ثبت کاربر جدید",
   "Dashboard" : "داشبورد",
   "dashboard.users.create": "کاربر جدید",
@@ -32,6 +34,7 @@
   "users.type" : "نوع",
   "type": "نوع",
   "type.admin" : "ادمین",
+  "Admin": "ادمین",
   "type.manager": "مدیر",
   "type.operator": "اپراتور",
   "type.client" : "مراجع",
@@ -44,5 +47,8 @@
   "male" : "مرد",
   "female" : "زن",
   "password" : "کلمه عبور",
-  "position": "موقعیت شغلی"
+  "position": "موقعیت شغلی",
+  "anonymous" : "بی‌نام",
+  "Logout" : "خروج",
+  "Login to this..." : "ورود به کاربری..."
 }

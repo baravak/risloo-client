@@ -45,14 +45,14 @@
                 </label>
             </div>
             <div class="richak richak-sm richak-secondary">
-                <input type="radio" name="status" id="status-awaiting" value="awaiting" @radioSelected($user->status, 'active')>
+                <input type="radio" name="status" id="status-awaiting" value="awaiting" @radioSelected($user->status, 'awaiting')>
                 <label for="status-awaiting">
                     <i class="fal fa-user-clock richak-icon"></i>
                     {{__('status.awaiting')}}
                 </label>
             </div>
             <div class="richak richak-sm richak-secondary">
-                <input type="radio" name="status" id="status-blocked" value="blocked" @radioSelected($user->status, 'active')>
+                <input type="radio" name="status" id="status-blocked" value="blocked" @radioSelected($user->status, 'blocked')>
                 <label for="status-blocked">
                     <i class="fal fa-user-lock richak-icon"></i>
                     {{__('status.blocked')}}

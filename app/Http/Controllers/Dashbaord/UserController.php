@@ -29,4 +29,8 @@ class UserController extends Controller
         $this->data['user'] = User::apiShow($user);
         return view('dashboard.users.create', $this->data);
     }
+    public function update(Request $request, $user)
+    {
+        return User::apiUpdate($user, $request->except('_method'))->response()->json(['redirect' => route('dashboard.users.edit', ['id'=>$user])]);
+    }
 }

@@ -58,9 +58,19 @@
                                 </td>
                                 <td>@username($user->username)</td>
                                 <td>
-                                    <a href="{{route('dashboard.users.edit', ['id' => $user->id])}}">
-                                        <i class="far fa-user-cog"></i>
-                                    </a>
+                                    <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="far fa-cogs fs-12 text-primary"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a href="{{route('dashboard.users.edit', ['id' => $user->id])}}" title="{{__('Edit')}}" class="dropdown-item fs-12">
+                                            <i class="far fa-user-cog text-primary"></i> {{__('Edit')}}
+                                        </a>
+                                        @if (app('request')->user()->type == 'admin')
+                                        <a href="{{route('login.as', ['id' => $user->id])}}" class="dropdown-item fs-12">
+                                            <i class="fal fa-user-secret text-primary"></i> {{__('Login to this...')}}
+                                        </a>
+                                        @endif
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

@@ -10,7 +10,7 @@ use App\Models\ApiPaginator;
 
 class API extends Model
 {
-    protected $response, $endpoint;
+    protected $response, $endpoint, $fake = false;
     protected static $_cache = [];
 
     public function __construct(array $attributes = [], ApiResponse $response = null)
@@ -67,7 +67,10 @@ class API extends Model
     {
 
         $endpoint = $this->endpoint(...func_get_args());
-
+        if($this->fake)
+        {
+            return $endpoint;
+        }
         $headers       = array(
             'Accept: application/json',
             'Content-Type: application/json',
@@ -118,6 +121,10 @@ class API extends Model
     public function cache(...$parameters)
     {
         $url = md5($this->endpoint(...$parameters));
+        if($this->fake)
+        {
+            return $this->execute(...$parameters);
+        }
         if(isset(static::$_cache[$url]))
         {
             return static::$_cache[$url];
@@ -135,29 +142,29 @@ class API extends Model
         return $this->cache(...$parameters);
     }
 
-    public static function apiIndex(array $params = [])
+    public function _index(array $params = [])
     {
-        return (new static)->cache(null, $params);
+        return $this->cache(null, $params);
     }
 
-    public static function apiShow($id, array $params = [])
+    public function _show($id, array $params = [])
     {
-        return (new static)->cache('%s/' .$id, $params);
+        return $this->cache('%s/' .$id, $params);
     }
 
-    public static function apiUpdate($id, array $params = [])
+    public function _update($id, array $params = [])
     {
-        return (new static)->cache('%s/' .$id, $params, 'put');
+        return $this->cache('%s/' .$id, $params, 'put');
     }
 
-    public static function apiStore(array $params = [])
+    public function _store(array $params = [])
     {
-        return (new static)->cache(null, $params, 'post');
+        return $this->execute(null, $params, 'post');
     }
 
-    public static function apiDelete($id, array $params = [])
+    public function _delete($id, array $params = [])
     {
-        return (new static)->execute('%s/' .$id, $params, 'delete');
+        return $this->execute('%s/' .$id, $params, 'delete');
     }
 
     public function __call($method, $parameters)
@@ -165,6 +172,25 @@ class API extends Model
         if(substr($method, 0, 5) == 'flush')
         {
             return $this->flush(lcfirst(substr($method, 5)), ...$parameters);
+        }
+        elseif(substr($method, 0, 5) == 'route')
+        {
+            return $this->{'_' . substr($method, 5)}(...$parameters);
+        }
+        return parent::__call($method, $parameters);
+    }
+
+    public static function __callStatic($method, $parameters)
+    {
+        if (substr($method, 0, 3) == 'api') {
+            $clone = new static;
+            return $clone->{'_'.substr($method, 3)}(...$parameters);
+        }
+        elseif (substr($method, 0, 5) == 'route')
+        {
+            $clone = new static;
+            $clone->fake = true;
+            return $clone->{'route' . ucfirst(substr($method, 5))}(...$parameters);
         }
         return parent::__call($method, $parameters);
     }
