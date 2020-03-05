@@ -25,7 +25,7 @@
     </div>
 
     <div class="form-group form-group-m">
-        <input type="text" class="form-control form-control-m text-left direction-ltr" id="position" name="position" @formValue($user->position) placeholder="&nbsp;" autocomplete="off">
+        <input type="text" class="form-control form-control-m" id="position" name="position" @formValue($user->position) placeholder="&nbsp;" autocomplete="off">
         <label for="position">{{__('position')}}</label>
     </div>
 

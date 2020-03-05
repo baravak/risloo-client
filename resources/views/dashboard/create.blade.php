@@ -11,7 +11,7 @@
                         @yield('form_content')
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">@yield('create_submit', __('Create'))</button>
+                        <button type="submit" class="btn {{$__env->yieldContent('form_method') == 'POST' || !$__env->yieldContent('form_method') ? 'btn-primary' : 'btn-success' }}">@yield('create_submit', __('Create'))</button>
                         @isset(app('router')->namedRoutes["$module->namespace.index"])
                             <a href="{{route("$module->namespace.index")}}" class="btn btn-light">{{ __('Cancel') }}</a>
                         @endisset

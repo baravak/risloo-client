@@ -50,5 +50,6 @@
   "position": "موقعیت شغلی",
   "anonymous" : "بی‌نام",
   "Logout" : "خروج",
-  "Login to this..." : "ورود به کاربری..."
+  "Login to this..." : "ورود به کاربری...",
+  "users.update.form" : "ویرایش کاربر"
 }
