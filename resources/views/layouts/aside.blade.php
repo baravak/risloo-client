@@ -26,7 +26,7 @@
                     <div class="collapse" id="documents-nav" aria-expanded="false">
                         <ul class="flex-column nav p-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{route('dashboard.documents.index')}}">
                                     <span>{{__('View')}}</span>
                                 </a>
                                 <a class="nav-link" href="#">
