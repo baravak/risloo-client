@@ -1,4 +1,16 @@
 function statio_each(event, base, context){
+    $('.user-types [name=type]', this).on('change', function(){
+        if ($(this).val() == 'psychologist')
+        {
+            $('#position').attr('disabled', 'disable').parents('.form-group').addClass('d-none');
+            $('#psychologist-position').removeAttr('disabled').parents('.form-group').removeClass('d-none');
+        }
+        else if ($('#position').attr('disabled'))
+        {
+            $('#position').removeAttr('disabled').parents('.form-group').removeClass('d-none');
+            $('#psychologist-position').attr('disabled', 'disabled').parents('.form-group').addClass('d-none');
+        }
+    });
     $('[data-Lijax], .lijax', this).each(function () {
         new Lijax(this);
     });

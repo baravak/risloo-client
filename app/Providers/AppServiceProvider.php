@@ -47,9 +47,13 @@ class AppServiceProvider extends ServiceProvider
         app('blade.compiler')->directive('formValue', function ($model) {
             return "<?php echo isset($model) ? 'value=\"' . ($model) .'\"' : '' ?>";
         });
-        app('blade.compiler')->directive('radioSelected', function ($args) {
+        app('blade.compiler')->directive('radioChecked', function ($args) {
             list($key, $value) = explode(',', $args);
             return "<?php echo isset($key) && $key == $value ? 'checked=\"checked\"' : ''?>";
+        });
+        app('blade.compiler')->directive('selectChecked', function ($args) {
+            list($key, $value) = explode(',', $args);
+            return "<?php echo isset($key) && $key == $value ? 'selected=\"selected\"' : ''?>";
         });
         app('blade.compiler')->directive('staticVersion', function ($file) {
             return "<?php echo $file . '?v='. filemtime(app()->basePath(join(DIRECTORY_SEPARATOR, ['public', rtrim($file, '/')])))?>";
