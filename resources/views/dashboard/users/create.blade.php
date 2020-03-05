@@ -27,9 +27,9 @@
         <input type="text" class="form-control form-control-m" id="position" name="position" @if(!isset($user) || (isset($user) && $user->type !='psychologist'))@formValue($user->position) @endif placeholder="&nbsp;" autocomplete="off"  {{isset($user) && $user->type =='psychologist' ? 'disabled' : ''}}>
         <label for="position">{{__('position')}}</label>
     </div>
-    <div class="form-group  {{isset($user) && $user->type !='psychologist' ? 'd-none' : ''}}">
-        <label for="psychologist-position"></label>
-        <select name="position" id="psychologist-position" {{isset($user) && $user->type !='psychologist' ? 'disabled' : ''}}>
+    <div class="form-group form-group-m {{isset($user) && $user->type !='psychologist' ? 'd-none' : ''}}">
+        <label for="psychologist-position">{{__('position')}}</label>
+        <select name="position" id="psychologist-position" {{isset($user) && $user->type !='psychologist' ? 'disabled' : ''}} class="form-control form-control-m">
             <option value="supervisor" @selectChecked($user->position, 'supervisor')>{{__('supervisor')}}</option>
             <option value="therapist" @selectChecked($user->position, 'therapist')>{{__('therapist')}}</option>
             <option value="under_supervision" @selectChecked($user->position, 'under_supervision')>{{__('under_supervision')}}</option>
