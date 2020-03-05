@@ -5,7 +5,7 @@
         </button>
     </div>
     <div class="d-flex align-items-center">
-        <div class="profile-div">
+        <div class="profile-div {{app('request')->user()->response('current') ? 'profile-div-danger' : ''}}">
             <img src="dist/images/avatar/avatar.jpg" alt="Avatar" class="profile rounded-circle" width="32" height="32">
             <!-- <span class="profile profile-placeholder d-flex justify-content-center align-items-center">S</span> -->
             <div class="profile-dropdown shadow">
