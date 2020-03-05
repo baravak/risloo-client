@@ -12,7 +12,6 @@ class Controller extends BaseController
     public $data = [];
     public function __construct(Request $request)
     {
-        // dd(app('config'));
         $this->data['title'] = $request->route()[1]['as'] ?? 'Title';
         $this->data['description'] = $request->route()[1]['as'] ?? 'Description';
         $this->data['display'] = (object) [];

@@ -44,5 +44,13 @@ class AppServiceProvider extends ServiceProvider
         app('blade.compiler')->directive('filterBadge', function ($model) {
             return "<?php echo \$__env->make('components._filterBadge', ['model'=> $model], [\Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])])->render(); ?>";
         });
+        app('blade.compiler')->directive('formValue', function ($model) {
+            return "<?php echo isset($model) ? 'value=\"' . ($model) .'\"' : '' ?>";
+        });
+        app('blade.compiler')->directive('radioSelected', function ($args) {
+            list($key, $value) = explode(',', $args);
+            return "<?php echo isset($key) && $key == $value ? 'checked=\"checked\"' : ''?>";
+        });
+
     }
 }

@@ -28,6 +28,7 @@
                                 @filterView($users, 'type')
                             </th>
                             <th>@sortView($users,'username', __('users.username'), '<i class="fas fa-at"></i>')</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,6 +57,11 @@
                                     </span>
                                 </td>
                                 <td>@username($user->username)</td>
+                                <td>
+                                    <a href="{{route('dashboard.users.edit', ['id' => $user->id])}}">
+                                        <i class="far fa-user-cog"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -98,7 +98,6 @@ class API extends Model
                 $paginator = new ApiPaginator($response, $items, $response->meta->total, $response->meta->per_page, $response->meta->current_page);
                 $path = app('request')->getSchemeAndHttpHost() . '/' . app('request')->path();
                 $paginator->withPath($path);
-                // dd($paginator->response('meta')->filters->current);
                 foreach ($paginator->response('meta')->filters->allowed as $key => $value) {
                     $paginator->appends($key, app('request')->$key);
                 }
@@ -143,22 +142,22 @@ class API extends Model
 
     public static function apiShow($id, array $params = [])
     {
-        return (new static)->cache('%s' .$id, $params);
+        return (new static)->cache('%s/' .$id, $params);
     }
 
     public static function apiUpdate($id, array $params = [])
     {
-        return (new static)->cache('%s' .$id, $params, 'put');
+        return (new static)->cache('%s/' .$id, $params, 'put');
     }
 
-    public static function apitStore($id, array $params = [])
+    public static function apiStore(array $params = [])
     {
         return (new static)->cache(null, $params, 'post');
     }
 
     public static function apiDelete($id, array $params = [])
     {
-        return (new static)->execute('%s' .$id, $params, 'delete');
+        return (new static)->execute('%s/' .$id, $params, 'delete');
     }
 
     public function __call($method, $parameters)
@@ -173,20 +172,5 @@ class API extends Model
     public function getSerialAttribute()
     {
         return [substr($this->id, 0, 2), substr($this->id, 2)];
-    }
-
-    public function getIdViewAttribute()
-    {
-        $serial = $this->serial;
-        return view('components.id', ['model' => $this, 'prefix' => $serial[0], 'serial' => $serial[1]]);
-    }
-
-    public function getMobileViewAttribute()
-    {
-        if($mobile = Mobile::parse($this->mobile))
-        {
-            return view('components.mobile', ['model' => $this, 'mobile' => $mobile[0], 'country' => $mobile[1], 'code' => $mobile[2]]);
-        }
-        return null;
     }
 }
