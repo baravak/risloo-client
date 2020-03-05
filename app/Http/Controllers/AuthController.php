@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         parent::__construct($request);
         $this->data['display']->app = $request->ajax() ? 'auth.xhr' : 'auth.app';
-        if (User::$token && !(isset($request->route()[1]['as']) && in_array($request->route()[1]['as'], ['logout', 'login.as']))) {
+        if (User::$token && !(isset($request->route()[1]['as']) && in_array($request->route()[1]['as'], ['logout', 'login.as', 'login.to']))) {
             return redirect()->route('home')->send();
         }
     }
@@ -83,5 +83,11 @@ class AuthController extends Controller
         $loginAs = User::loginAs($user);
         return $loginAs->response()->json(['redirect' => route('dashboard'), 'direct' => true])
         ->withCookie(new Cookie('token', $loginAs->response('token')));
+    }
+    public function loginTo(Request $request)
+    {
+        $loginAs = User::loginTo();
+        return $loginAs->response()->json(['redirect' => route('dashboard'), 'direct' => true])
+            ->withCookie(new Cookie('token', $loginAs->response('token')));
     }
 }

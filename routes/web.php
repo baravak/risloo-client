@@ -16,6 +16,10 @@ $router->get('login/user/{id}', [
     'middleware' => ['auth:force'],
     'as' => 'login.as', 'uses' => 'AuthController@loginAs'
 ]);
+$router->post('logout/login', [
+    'middleware' => ['auth:force'],
+    'as' => 'login.to', 'uses' => 'AuthController@loginTo'
+]);
 
 $router->group([
     'prefix' => 'dashboard',
