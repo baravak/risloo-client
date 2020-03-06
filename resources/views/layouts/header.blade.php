@@ -3,6 +3,15 @@
         <button id="aside-btn" class="btn btn-light d-lg-none">
             <i class="far fa-bars align-middle"></i>
         </button>
+
+        <div class="search-container">
+            <form action="">
+                <input type="text" id="search" class="fs-12">
+                <label for="search">
+                    <i class="fal fa-search"></i>
+                </label>
+            </form>
+        </div>
     </div>
     <div class="d-flex align-items-center">
         <div class="profile-div {{app('request')->user()->response('current') ? 'profile-div-danger' : ''}}">
