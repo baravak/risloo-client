@@ -44,6 +44,12 @@ class AppServiceProvider extends ServiceProvider
         app('blade.compiler')->directive('filterBadge', function ($model) {
             return "<?php echo \$__env->make('components._filterBadge', ['model'=> $model], [\Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])])->render(); ?>";
         });
+        app('blade.compiler')->directive('termBadge', function ($term) {
+            return "<?php echo \$__env->make('components._termBadge', ['term'=> $term], [\Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])])->render(); ?>";
+        });
+        app('blade.compiler')->directive('displayName', function ($user) {
+            return "<?php echo e(($user)->name ?: ($user)->id) ?>";
+        });
         app('blade.compiler')->directive('formValue', function ($model) {
             return "<?php echo isset($model) ? 'value=\"' . ($model) .'\"' : '' ?>";
         });

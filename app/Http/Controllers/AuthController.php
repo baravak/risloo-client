@@ -20,12 +20,12 @@ class AuthController extends Controller
     }
     public function loginForm(Request $request)
     {
-        return view('auth.login', $this->data);
+        return $this->view($request, 'auth.login');
     }
 
     public function loginKeyForm(Request $request)
     {
-        return view('auth.loginKey', $this->data);
+        return $this->view($request, 'auth.loginKey');
     }
 
     public function login(Request $request)
@@ -75,7 +75,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        return view('auth.register', $this->data);
+        return $this->view($request, 'auth.register');
     }
 
     public function loginAs(Request $request, $user)

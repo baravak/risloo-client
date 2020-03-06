@@ -9,12 +9,12 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->data['users'] = User::apiIndex($request->all(['order', 'sort', 'status', 'type', 'gender']));
-        return view('dashboard.users.index', $this->data);
+        return $this->view($request, 'dashboard.users.index');
     }
 
     public function create(Request $request)
     {
-        return view('dashboard.users.create', $this->data);
+        return $this->view($request, 'dashboard.users.create');
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class UserController extends Controller
     public function edit(Request $request, $user)
     {
         $this->data['user'] = User::apiShow($user);
-        return view('dashboard.users.create', $this->data);
+        return $this->view($request, 'dashboard.users.create');
     }
     public function update(Request $request, $user)
     {

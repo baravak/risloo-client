@@ -24,6 +24,8 @@ $app = new Laravel\Lumen\Application(
 $app->withFacades();
 $app->alias('blade.compiler', Illuminate\View\Compilers\BladeCompiler::class);
 
+class_alias(Illuminate\Support\Str::class, 'Str');
+
 $app->withEloquent();
 
 /*

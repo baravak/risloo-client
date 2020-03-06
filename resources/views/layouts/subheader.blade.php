@@ -6,8 +6,8 @@
                 @if (DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::exists(app('request')->route()[1]['as']))
                     {{ DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::render(app('request')->route()[1]['as'], get_defined_vars()) }}
                 @endif
-                @if(isset(app('router')->namedRoutes["$module->namespace.create"]) && app('request')->route()[1]['as'] != "$module->namespace.create")
-                    <a href="{{route("$module->namespace.create")}}" class="badge badge-success mx-2">{{__("$module->namespace.create")}}</a>
+                @if(isset(app('router')->namedRoutes["$module->resource.create"]) && app('request')->route()[1]['as'] != "$module->resource.create")
+                    <a href="{{route("$module->resource.create")}}" class="badge badge-success mx-2">{{__("Create new " . Str::singular($module->name))}}</a>
                 @endif
             </div>
             <div></div>
