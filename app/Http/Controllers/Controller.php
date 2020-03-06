@@ -41,32 +41,35 @@ class Controller extends BaseController
         $this->data['layouts']->dashboard = $request->ajax() ? 'dashboard.xhr' : 'dashboard.app';
     }
 
-    public function view($request, $name)
+    public function view($request, $name = null)
     {
-        if ($request->ajax() && !strstr($request->header('accept'), 'application/json')) {
-            $this->data['layouts']->mode = $request->header('data-xhr-base') ?: 'xhr';
-        } elseif ($request->ajax() && strstr($request->header('accept'), 'application/json')) {
-            $this->data['layouts']->mode = 'json';
-        }
-
-        $view = $as = $request->route()[1]['as'];
-        $views = method_exists($this, 'views') ? $this->views() : (isset($this->views) ? $this->views : [
-            $this->data['module']->resource . '.index' => $this->data['module']->resource . '.index',
-            $this->data['module']->resource . '.show' => $this->data['module']->resource . '.show',
-            $this->data['module']->resource . '.create' => $this->data['module']->resource . '.create',
-            $this->data['module']->resource . '.edit' => $this->data['module']->resource . '.create'
-        ]);
-
-        if (isset($views[$as])) {
-            $view = $views[$as];
-        }
-
-        if($this->data['layouts']->mode != 'html' && view()->exists($views[$as] . '-' . $this->data['layouts']->mode))
+        if(!$name)
         {
-            $view = $views[$as] . '-' . $this->data['layouts']->mode;
+            if ($request->ajax() && !strstr($request->header('accept'), 'application/json')) {
+                $this->data['layouts']->mode = $request->header('data-xhr-base') ?: 'xhr';
+            } elseif ($request->ajax() && strstr($request->header('accept'), 'application/json')) {
+                $this->data['layouts']->mode = 'json';
+            }
+
+            $view = $as = $request->route()[1]['as'];
+            $views = method_exists($this, 'views') ? $this->views() : (isset($this->views) ? $this->views : [
+                $this->data['module']->resource . '.index' => $this->data['module']->resource . '.index',
+                $this->data['module']->resource . '.show' => $this->data['module']->resource . '.show',
+                $this->data['module']->resource . '.create' => $this->data['module']->resource . '.create',
+                $this->data['module']->resource . '.edit' => $this->data['module']->resource . '.create'
+            ]);
+
+            if (isset($views[$as])) {
+                $view = $views[$as];
+            }
+
+            if($this->data['layouts']->mode != 'html' && view()->exists($views[$as] . '-' . $this->data['layouts']->mode))
+            {
+                $view = $views[$as] . '-' . $this->data['layouts']->mode;
+            }
         }
 
-        $response = response(view($view, $this->data));
+        $response = response(view($name ?: $view, $this->data));
         if($this->data['layouts']->mode == 'xhr') {
             $content = $response->getContent();
             $data = json_encode($this->data['global']);

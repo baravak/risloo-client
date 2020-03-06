@@ -10,10 +10,11 @@ use App\User;
 
 class AuthController extends Controller
 {
+
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $this->data['display']->app = $request->ajax() ? 'auth.xhr' : 'auth.app';
+        $this->data['layouts']->app = $request->ajax() ? 'auth.xhr' : 'auth.app';
         if (User::$token && !(isset($request->route()[1]['as']) && in_array($request->route()[1]['as'], ['logout', 'login.as', 'login.to']))) {
             return redirect()->route('home')->send();
         }

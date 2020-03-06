@@ -1,2 +1,2 @@
-@extends($display->dashboard)
+@extends($layouts->dashboard)
 
