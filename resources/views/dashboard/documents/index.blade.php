@@ -16,7 +16,7 @@
                             <th>@sortView($documents,'notic', __('Notic'))</th>
                             <th>@sortView($documents,'user', __('User'), '<i class="fas fa-at"></i>')</th>
                             <th>@sortView($documents,'term', __('Term'), '<i class="far fa-tags"></i>')</th>
-                            <th>@sortView($documents,'document', __('Attachment'))</th>
+                            <th>@sortView($documents,'document', __('Attachment'), '<i class="far fa-paperclip"></i>')</th>
                             <th></th>
                         </tr>
                     </thead>
