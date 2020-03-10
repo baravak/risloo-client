@@ -35,7 +35,7 @@
                                 </td>
                                 <td>
                                     @foreach ($term->parents as $parent)
-                                        <span class="badge badge-secondary fs-10">{{$parent->title}}</span>
+                                        <a href="{{ route('dashboard.terms.show', ['id' => $parent]) }}"  class="badge badge-secondary">{{ $parent->title }}</a>
                                     @endforeach
                                 </td>
                                 <td>

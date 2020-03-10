@@ -34,4 +34,10 @@ class TermController extends Controller
     {
         return Term::apiUpdate($term, $request->except('_method'))->response()->json(['redirect' => route('dashboard.terms.edit', ['id'=>$term])]);
     }
+
+    public function show(Request $request, $term)
+    {
+        $this->data['term'] = Term::apiShow($term);
+        return $this->view($request);
+    }
 }
