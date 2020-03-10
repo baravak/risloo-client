@@ -56,5 +56,8 @@
   "Create user" : "ثبت کاربر",
   "Update user": "ویرایش کاربر",
   "Attachment" : "ضمیمه",
-  "Name": "نام"
+  "Name": "نام",
+  "Parent" : "والد",
+  "Parents" : "والدها",
+  "Creator" : "سازنده"
 }

@@ -62,6 +62,7 @@ function statio_each(event, base, context){
             allowClear: $(this).is('[data-allowClear]') || $(this).is('.has-clear'),
             dir: "rtl",
             tags: $(this).is('.tag-type'),
+            dropdownParent: $('#' + $(this).attr('data-dropdownParent')).length ? $('#' + $(this).attr('data-dropdownParent')) : undefined
         };
         $(this).attr('data-mr-value', $('[name=' + $(this).attr('data-multi-round') + ']').val());
         $('[name=' + $(this).attr('data-multi-round') + ']').remove();
@@ -119,5 +120,10 @@ function statio_each(event, base, context){
             };
         }
         $(this).select2(options);
+    });
+    // $('#filter-parent.select2-select', this).on('change', function(){
+    // });
+    $('.dropdown-menu.keep-open', this).on('click', function (event) {
+        event.stopPropagation();
     });
 }

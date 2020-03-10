@@ -8,4 +8,14 @@ class Term extends API
         'creator' => User::class,
         'parents' => Term::class
     ];
+
+    public $filterWith = [
+        'creator' => User::class,
+        'parent' => Term::class
+    ];
+
+    public function indexCallback($response)
+    {
+        dd(10);
+    }
 }

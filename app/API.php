@@ -7,12 +7,12 @@ use Illuminate\Support\Str;
 use App\Models\ApiResponse;
 use App\Models\ApiCollection;
 use App\Models\ApiPaginator;
-
+use Closure;
 class API extends Model
 {
     protected $response, $endpoint, $fake = false;
     protected static $_cache = [];
-    public $with = [];
+    public $filterWith, $with = [];
 
     public function __construct(array $attributes = [], ApiResponse $response = null)
     {
@@ -85,7 +85,7 @@ class API extends Model
         return $this->endpoint;
     }
 
-    public function execute($endpoint = null, array $data = [], $method = 'GET')
+    public function execute($endpoint = null, array $data = [], $method = 'GET', Closure $callback = null)
     {
 
         $endpoint = $this->endpoint(...func_get_args());
@@ -111,7 +111,9 @@ class API extends Model
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data ? json_encode($data) : null);
         }
 
-        $response     = new ApiResponse($curl, curl_exec($curl));
+        $response     = new ApiResponse($curl, curl_exec($curl), [
+            'filterWith' => $this->filterWith
+        ]);
         if (is_array($response->data))
         {
             $items = [];
@@ -220,5 +222,14 @@ class API extends Model
     public function getSerialAttribute()
     {
         return [substr($this->id, 0, 2), substr($this->id, 2)];
+    }
+
+    public function __toString()
+    {
+        if(!isset($this->isFilter))
+        {
+            return parent::__toString();
+        }
+        return $this->title ?: $this->name ?: $this->id ;
     }
 }

@@ -13,8 +13,14 @@
                         <tr>
                             <th>@sortView($terms, 'id', '#')</th>
                             <th>@sortView($terms, 'title')</th>
-                            <th>@sortView($terms, 'parents')</th>
-                            <th>@sortView($terms, 'creator')</th>
+                            <th>
+                                @sortView($terms, 'parent')
+                                @filterView($terms, 'parent')
+                            </th>
+                            <th>
+                                @sortView($terms, 'creator')
+                                @filterView($terms, 'creator')
+                            </th>
                             <th></th>
                         </tr>
                     </thead>
