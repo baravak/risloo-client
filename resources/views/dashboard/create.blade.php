@@ -7,7 +7,7 @@
                 <div class="card-header">
                     {{__(ucfirst(Str::singular($module->name)) . ($module->action == 'create' ? " creation form" : ' editing form'))}}
                 </div>
-                <form action="@yield('form_action', '')" method="POST">
+                <form action="@yield('form_action', route($module->route, $module->action == 'edit' ? ['id' => ${$module->result}->id] : null))" method="POST">
                     <input type="hidden" name="_method" value="{{$module->action == 'edit' ? 'PUT' : 'POST'}}">
                     <div class="card-body">
                         @yield('form_content')

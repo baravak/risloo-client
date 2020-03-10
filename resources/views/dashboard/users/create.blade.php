@@ -1,8 +1,4 @@
 @extends('dashboard.create')
-@section('form_action', isset($user) ? route('dashboard.users.update', ['id' => $user->id]) : route('dashboard.users.store'))
-@section('create_title', isset($user) ? __('users.update.form') : __('users.create.form'))
-@section('create_submit', isset($user) ? __('users.update') : __('users.create'))
-@section('form_method', isset($user) ? 'PUT' : null)
 @section('form_content')
     <div class="form-group form-group-m">
         <input type="text" class="form-control form-control-m" id="name" name="name" @formValue($user->name) placeholder="&nbsp;" autocomplete="off">

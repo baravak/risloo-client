@@ -16,35 +16,19 @@ class Controller extends BaseController
         parent::__construct($request);
         $this->data['layouts']->app = $request->ajax() ? 'layouts.app-xhr' : 'layouts.app';
         $this->data['layouts']->dashboard = $request->ajax() ? 'dashboard.xhr' : 'dashboard.app';
-        $namespace = null;
-        $name = null;
-        $action = null;
-        $this->data['titles'] = (object) [];
-        if(isset($request->route()[1]['as']))
-        {
-            $module = explode('.', $request->route()[1]['as']);
-            $namespace = $module[0];
-            $name = isset($module[1]) ? $module[1] : null;
-            $action = isset($module[2]) ? $module[2] : null;
-        }
-
-        $this->data['module']->name = $name;
-        $this->data['module']->action = $action;
-        $this->data['module']->moduleAction = Str::singular($name) . '.' . $action;
-
         $title = '';
-        switch ($action) {
+        switch ($this->data['module']->action) {
             case 'index':
-                $title = __(ucfirst($name));
+                $title = __(ucfirst($this->data['module']->result));
                 break;
             case 'create':
-                $title = __('Create new '. $name);
+                $title = __('Create new '. $this->data['module']->result);
                 break;
             case 'edit':
-                $title = __('Edit ' . $name);
+                $title = __('Edit ' . $this->data['module']->result);
                 break;
             case 'show':
-                $title = __('Show ' . $name);
+                $title = __('Show ' . $this->data['module']->result);
                 break;
         }
         $this->data['global']->title = $title;

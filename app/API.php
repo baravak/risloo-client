@@ -12,9 +12,31 @@ class API extends Model
 {
     protected $response, $endpoint, $fake = false;
     protected static $_cache = [];
+    public $with = [];
 
     public function __construct(array $attributes = [], ApiResponse $response = null)
     {
+        if($attributes && !empty($this->with))
+        {
+            foreach ($attributes as $key => $value) {
+                if(key_exists($key, $this->with) && key_exists($key, $attributes))
+                {
+                    $model = $this->with[$key];
+                    if(is_array($value))
+                    {
+                        $value = $this->newCollection(array_map(function($data) use ($model){
+                            return new $model((array) $data);
+                        }, $value));
+                    }
+                    else
+                    {
+                        $value = new $model((array) $value);
+                    }
+                    $this->setRelation($key, $value);
+                    unset($attributes[$key]);
+                }
+            }
+        }
         parent::__construct($attributes);
         $this->casts['id'] = 'string';
         $this->response = $response;

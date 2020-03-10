@@ -9,12 +9,12 @@ class TermController extends Controller
     public function index(Request $request)
     {
         $this->data['terms'] = Term::apiIndex($request->all(['order', 'sort']));
-        return view('dashboard.terms.index', $this->data);
+        return $this->view($request);
     }
 
     public function create(Request $request)
     {
-        return view('dashboard.terms.create', $this->data);
+        return $this->view($request);
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class TermController extends Controller
     public function edit(Request $request, $term)
     {
         $this->data['term'] = Term::apiShow($term);
-        return view('dashboard.terms.create', $this->data);
+        return $this->view($request);
     }
 
     public function update(Request $request, $term)
