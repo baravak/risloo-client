@@ -21,6 +21,11 @@ Breadcrumbs::for('dashboard.users.edit', function ($trail, $data) {
     $trail->push(__('Edit'), route('dashboard.users.edit', ['id' => $data['user']->id]));
 });
 
+Breadcrumbs::for('dashboard.users.me', function ($trail, $data) {
+    $trail->parent('dashboard.users.index', $data);
+    $trail->push(__('Me'), route('dashboard.users.index'));
+});
+
 Breadcrumbs::for('dashboard.documents.index', function ($trail, $data) {
     $trail->parent('dashboard', $data);
     $trail->push(__('Documents'), route('dashboard.documents.index'));

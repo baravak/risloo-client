@@ -6,6 +6,9 @@ use App\User;
 
 class UserController extends Controller
 {
+    public $views =[
+        'dashboard.users.me' => 'dashboard.users.show'
+    ];
     public function index(Request $request)
     {
         $this->data['users'] = User::apiIndex($request->all(['order', 'sort', 'status', 'type', 'gender']));
@@ -32,5 +35,17 @@ class UserController extends Controller
     public function update(Request $request, $user)
     {
         return User::apiUpdate($user, $request->except('_method'))->response()->json(['redirect' => route('dashboard.users.edit', ['id'=>$user])]);
+    }
+
+    public function show(Request $request, $user)
+    {
+        $this->data['user'] = User::apiShow($user);
+        return $this->view($request);
+    }
+
+    public function me(Request $request)
+    {
+        $this->data['user'] = User::me();
+        return $this->view($request);
     }
 }

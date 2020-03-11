@@ -18,6 +18,9 @@ $router->group([
     $router->get('users/{id}', [
         'as' => 'show', 'uses' => 'UserController@show'
     ]);
+    $router->get("me", [
+        'as' => 'me', 'uses' => 'UserController@me'
+    ]);
     $router->get("users/{id}/edit", [
         'as' => 'edit', 'uses' => 'UserController@edit'
     ]);

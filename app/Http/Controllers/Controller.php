@@ -47,12 +47,13 @@ class Controller extends BaseController
             }
 
             $view = $as = $request->route()[1]['as'];
-            $views = method_exists($this, 'views') ? $this->views() : (isset($this->views) ? $this->views : [
+            $default = [
                 $this->data['module']->resource . '.index' => $this->data['module']->resource . '.index',
                 $this->data['module']->resource . '.show' => $this->data['module']->resource . '.show',
                 $this->data['module']->resource . '.create' => $this->data['module']->resource . '.create',
                 $this->data['module']->resource . '.edit' => $this->data['module']->resource . '.create'
-            ]);
+            ];
+            $views = method_exists($this, 'views') ? $this->views() : (isset($this->views) ? array_merge($default, $this->views) : $default);
 
             if (isset($views[$as])) {
                 $view = $views[$as];
