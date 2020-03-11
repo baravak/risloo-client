@@ -31,5 +31,5 @@ $router->group([
 });
 
 $router->get('info', function(){
-    phpinfo();
+    return 'GDwK6qvs6n9U8coEmcHN';
 });
