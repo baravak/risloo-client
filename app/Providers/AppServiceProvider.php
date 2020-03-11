@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         app('blade.compiler')->directive('id', function ($model) {
-            return "<?php echo \$__env->make('components._id', ['id'=> ($model)->serial], [\Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])])->render(); ?>";
+            return "<?php echo \$__env->make('components._id', ['model' => $model, 'id'=> ($model)->serial], [\Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])])->render(); ?>";
         });
         app('blade.compiler')->directive('mobile', function ($mobile) {
             return "<?php echo \$__env->make('components._mobile', ['mobile'=> App\Mobile::parse($mobile)], [\Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])])->render(); ?>";

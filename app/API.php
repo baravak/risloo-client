@@ -3,19 +3,33 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use App\Models\ApiResponse;
 use App\Models\ApiCollection;
 use App\Models\ApiPaginator;
 use Closure;
 class API extends Model
 {
-    protected $response, $endpoint, $fake = false;
+    protected $route, $can, $response, $endpoint, $fake = false;
     protected static $_cache = [];
     public $filterWith, $with = [];
 
     public function __construct(array $attributes = [], ApiResponse $response = null)
     {
+        if(!empty($attributes))
+        {
+            foreach (['index', 'show', 'edit', 'create', 'delete', 'update', 'store'] as $value) {
+                $route = 'dashboard.' . $this->getTable() . '.' . $value;
+                if(isset(app('router')->namedRoutes[$route])){
+                    $this->route[$value] = route($route, !in_array($value, ['index', 'create', 'store']) ? ['id' => $attributes['id']] : null);
+                }
+            }
+        }
+        if(isset($attributes['can']))
+        {
+            $this->can = $attributes['can'];
+            unset($attributes['can']);
+        }
         if($attributes && !empty($this->with))
         {
             foreach ($attributes as $key => $value) {
@@ -197,10 +211,6 @@ class API extends Model
         {
             return $this->flush(lcfirst(substr($method, 5)), ...$parameters);
         }
-        elseif(substr($method, 0, 5) == 'route')
-        {
-            return $this->{'_' . substr($method, 5)}(...$parameters);
-        }
         return parent::__call($method, $parameters);
     }
 
@@ -210,12 +220,6 @@ class API extends Model
             $clone = new static;
             return $clone->{'_'.substr($method, 3)}(...$parameters);
         }
-        elseif (substr($method, 0, 5) == 'route')
-        {
-            $clone = new static;
-            $clone->fake = true;
-            return $clone->{'route' . ucfirst(substr($method, 5))}(...$parameters);
-        }
         return parent::__call($method, $parameters);
     }
 
@@ -224,6 +228,26 @@ class API extends Model
         return [substr($this->id, 0, 2), substr($this->id, 2)];
     }
 
+    public function route($route)
+    {
+        if(isset($this->route[$route]))
+        {
+            return $this->route[$route];
+        }
+        return null;
+    }
+
+    public function can($action)
+    {
+        return in_array($action, $this->can);
+    }
+    public function check($action)
+    {
+        if(!$this->can($action)){
+            throw new AccessDeniedHttpException(__('THIS ACTION IS UNAUTHORIZED'));
+        }
+        return $this;
+    }
     public function __toString()
     {
         if(!isset($this->isFilter))

@@ -42,9 +42,11 @@
                                     {{ $term->creator->name ?: $term->creator->id }}
                                 </td>
                                 <td>
-                                    <a href="{{route('dashboard.terms.edit', ['id' => $term->id])}}" title="{{__('Edit')}}">
-                                        <i class="far fa-user-cog text-primary"></i>
-                                    </a>
+                                    @if ($term->can('edit'))
+                                        <a href="{{route('dashboard.terms.edit', ['id' => $term->id])}}" title="{{__('Edit')}}">
+                                            <i class="far fa-user-cog text-primary"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

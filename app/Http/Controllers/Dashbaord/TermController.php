@@ -26,7 +26,7 @@ class TermController extends Controller
 
     public function edit(Request $request, $term)
     {
-        $this->data['term'] = Term::apiShow($term);
+        $this->data['term'] = Term::apiShow($term)->check('edit');
         return $this->view($request);
     }
 

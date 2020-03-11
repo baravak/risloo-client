@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function edit(Request $request, $user)
     {
-        $this->data['user'] = User::apiShow($user);
+        $this->data['user'] = User::apiShow($user)->check('edit');
         return $this->view($request, 'dashboard.users.create');
     }
     public function update(Request $request, $user)
