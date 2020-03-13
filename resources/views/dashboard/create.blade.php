@@ -5,9 +5,9 @@
         <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-4">
             <div class="card">
                 <div class="card-header">
-                    {{__(($module->action == 'create' ? "Create " : 'Edit ') . ucfirst(Str::singular($module->name)))}}
+                    {{__(($module->action == 'create' ? "Create " : 'Edit ') . Str::singular($module->name))}}
                 </div>
-                <form action="@yield('form_action', route($module->route, $module->action == 'edit' ? ['id' => ${$module->result}->id] : null))" method="POST">
+                <form action="@yield('form_action', route($module->resource . ($module->action == 'edit' ? '.update' : '.store'), $module->action == 'edit' ? ['id' => ${$module->result}->id] : null))" method="POST">
                     <input type="hidden" name="_method" value="{{$module->action == 'edit' ? 'PUT' : 'POST'}}">
                     <div class="card-body">
                         @yield('form_content')

@@ -10,9 +10,10 @@ use App\Models\ApiPaginator;
 use Closure;
 class API extends Model
 {
-    protected $route, $can, $response, $endpoint, $fake = false;
+    protected $endpointPath, $route, $can, $response, $endpoint, $fake = false;
     protected static $_cache = [];
     public $filterWith, $with = [];
+    protected $guarded = [];
 
     public function __construct(array $attributes = [], ApiResponse $response = null)
     {
@@ -78,11 +79,12 @@ class API extends Model
 
     public function endpoint($endpoint = null, array $data = [], $method = 'GET')
     {
-        if($this->endpoint)
+        if($this->endpoint && !$endpoint)
         {
             return $this->endpoint;
         }
-        $endpoint = $endpoint ? (substr($endpoint, 0, 2) == '%s' ? $this->getTable() . substr($endpoint, 2) : $endpoint) : $this->getTable();
+        $path = isset($this->endpointPath) ? $this->endpointPath : $this->getTable();
+        $endpoint = $endpoint ? (substr($endpoint, 0, 2) == '%s' ? $path . substr($endpoint, 2) : $endpoint) : $path;
         $method = strtoupper($method);
         $this->endpoint = $pure_url = static::path() . trim($endpoint, '\/');
         if ($method == 'GET' && !empty($data)) {

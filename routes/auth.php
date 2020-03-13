@@ -74,3 +74,31 @@ $router->group([
         'as' => 'update', 'uses' => 'TermController@update'
     ]);
 });
+
+$router->group([
+    'as' => 'samples',
+    'prefix' => '$/samples/'
+], function () use ($router) {
+    $router->get('/', [
+        'as' => 'index', 'uses' => 'SampleController@index'
+    ]);
+    $router->get('/create', [
+        'as' => 'create', 'uses' => 'SampleController@create'
+    ]);
+    $router->post('/', [
+        'as' => 'store', 'uses' => 'SampleController@store'
+    ]);
+});
+
+$router->group([
+    'as' => 'assessments',
+    'prefix' => '$'
+], function () use ($router) {
+    $router->get('/', [
+        'as' => 'index', 'uses' => 'AssessmentController@index'
+    ]);
+    $router->get('/{id}', [
+        'as' => 'show', 'uses' => 'AssessmentController@show'
+    ]);
+});
+

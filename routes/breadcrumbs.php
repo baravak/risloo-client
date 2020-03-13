@@ -42,3 +42,32 @@ Breadcrumbs::for('dashboard.documents.edit', function ($trail, $data) {
     $trail->parent('dashboard.documents.show', $data);
     $trail->push(__('Edit'), route('dashboard.documents.edit', ['id' => $data['user']->id]));
 });
+
+Breadcrumbs::for('dashboard.assessments.index', function ($trail, $data) {
+    $trail->parent('dashboard', $data);
+    $trail->push(__('Assessments'), route('dashboard.assessments.index'));
+});
+Breadcrumbs::for('dashboard.assessments.create', function ($trail, $data) {
+    $trail->parent('dashboard.assessments.index', $data);
+    $trail->push(__('Create new document'), route('dashboard.assessments.create'));
+});
+Breadcrumbs::for('dashboard.assessments.show', function ($trail, $data) {
+    $trail->parent('dashboard.assessments.index', $data);
+    $trail->push($data['assessment']->title ?: __('anonymous'), route('dashboard.assessments.show', ['id' => substr($data['assessment']->id, 1)]));
+});
+Breadcrumbs::for('dashboard.assessments.edit', function ($trail, $data) {
+    $trail->parent('dashboard.assessments.show', $data);
+    $trail->push(__('Edit'), route('dashboard.assessments.edit', ['id' => $data['user']->id]));
+});
+
+Breadcrumbs::for('dashboard.samples.create', function ($trail, $data) {
+    if(isset($data['assessment']))
+    {
+        $trail->parent('dashboard.assessments.show', $data);
+    }
+    else
+    {
+        $trail->parent('dashboard.assessments.index', $data);
+    }
+    $trail->push(__('Create new sample'), route('dashboard.assessments.index'));
+});

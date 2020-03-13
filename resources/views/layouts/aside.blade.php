@@ -42,6 +42,21 @@
                     <span class="d-sm-inline">{{__('Terms')}}</span>
                 </a>
             </li>
+            <li class="nav-item">
+                    <a class="nav-link collapsed text-truncate direct" href="#assessments-nav" data-toggle="collapse"
+                        data-target="#assessments-nav">
+                        <span class="d-sm-inline">{{__('Assessments')}}</span>
+                    </a>
+                    <div class="collapse" id="assessments-nav" aria-expanded="false">
+                        <ul class="flex-column nav p-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('dashboard.assessments.index')}}">
+                                    <span>{{__('View')}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
         </ul>
     </aside>
 @endsection
