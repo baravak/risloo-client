@@ -1,5 +1,14 @@
 @extends('dashboard.create')
 @section('form_content')
+    <div class="form-group d-flex">
+        <div class="media media-xl rounded-circle">
+            <input type="file" class="hide-input input-avatar" id="avatar">
+            <label for="avatar" class="m-0">
+                <img src="dist/images/avatar/user.png" alt="">
+            </label>
+        </div>
+    </div>
+
     <div class="form-group form-group-m">
         <input type="text" class="form-control form-control-m" id="name" name="name" @formValue($user->name) placeholder="&nbsp;" autocomplete="off">
         <label for="name">{{__('Display name')}}</label>
