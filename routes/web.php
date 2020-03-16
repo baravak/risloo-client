@@ -12,13 +12,13 @@ $router->post('/logout', [
     'middleware' => ['auth:force'],
     'as' => 'logout', 'uses' => 'AuthController@logout'
 ]);
-$router->get('login/user/{id}', [
+$router->get('auth/as/{id}', [
     'middleware' => ['auth:force'],
-    'as' => 'login.as', 'uses' => 'AuthController@loginAs'
+    'as' => 'auth.as', 'uses' => 'AuthController@authAs'
 ]);
-$router->post('logout/login', [
+$router->post('auth/admin/back', [
     'middleware' => ['auth:force'],
-    'as' => 'login.to', 'uses' => 'AuthController@loginTo'
+    'as' => 'auth.back', 'uses' => 'AuthController@authBack'
 ]);
 
 $router->group([

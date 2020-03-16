@@ -66,5 +66,11 @@
   "Edition" : "ویرایش",
   "Version" : "نسخه",
   "Create sample": "ایجاد نمونه",
-  "Create new sample" : "ایجاد نمونه جدید"
+  "Create new sample" : "ایجاد نمونه جدید",
+  "Send recovery code" : "ارسال کد بازیابی",
+  "Submit" : "ارسال",
+  "Enter mobile code" : "کد موبایل را وارد کنید",
+  "Enter new password" : "کلمه عبور جدید را وارد کنید",
+  "Send verification code": "ارسال کد اعتبارسنجی",
+  "Mobile verify" : "تأیید موبایل"
 }

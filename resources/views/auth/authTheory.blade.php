@@ -13,7 +13,7 @@
             <button class="btn btn-dark btn-block btn-login mb-3">{{__('Login')}}</button>
 
             <div class="d-flex justify-content-center">
-                <a href="{{route('login.recovery')}}" class="text-light text-decoration-none fs-14">{{__('Forgot Password')}}</a>
+                <a href="{{route('auth.recovery')}}" class="text-light text-decoration-none fs-14">{{__('Forgot Password')}}</a>
                 <span class="px-2 text-white">|</span>
                 <a href="{{route('register')}}" class="text-light text-decoration-none font-weight-bold fs-14">{{__('Register')}}</a>
             </div>

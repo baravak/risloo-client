@@ -18,6 +18,6 @@ class APIException extends Exception
 
     public function __get($name)
     {
-        $this->response->$name;
+        return $this->response->$name;
     }
 }

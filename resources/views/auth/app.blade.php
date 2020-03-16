@@ -7,7 +7,7 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="text-center mb-2">
-                            <a href="{{route(\App\User::$token ? 'dashboard' : 'login')}}" class="enter-logo direct">
+                            <a href="{{route(\App\User::$token ? 'dashboard' : 'auth')}}" class="enter-logo direct">
                                 <img src="images/logo/logo.svg" alt="Logo">
                             </a>
                         </div>
