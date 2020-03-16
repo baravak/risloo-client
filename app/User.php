@@ -27,7 +27,7 @@ class User extends API
     }
     public static function authAs($user, $params = [])
     {
-        return (new static)->execute('auth/as/'. $user, $params, 'get');
+        return (new static)->execute('auth/as/'. $user, $params, 'post');
     }
     public static function authBack($params = [])
     {

@@ -66,7 +66,7 @@
                                             <i class="far fa-user-cog text-primary"></i> {{__('Edit')}}
                                         </a>
                                         @if (app('request')->user()->type == 'admin')
-                                        <a href="{{route('login.as', ['id' => $user->id])}}" class="dropdown-item fs-12">
+                                        <a href="{{route('auth.as', ['id' => $user->id])}}" class="dropdown-item fs-12">
                                             <i class="fal fa-user-secret text-primary"></i> {{__('Login to this...')}}
                                         </a>
                                         @endif

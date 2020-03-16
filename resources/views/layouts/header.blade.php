@@ -28,7 +28,7 @@
                 <div class="profile-dropdown-body p-3">
                     @if (app('request')->user()->response('current'))
                         <a href="{{route('logout')}}" data-lijax='click' data-method='post' class="btn btn-primary direct">{{__('Logout')}}</a>
-                        <a href="{{route('login.to')}}" data-lijax='click' data-method='post' class="btn btn-primary direct">{{__('Admin')}}</a>
+                        <a href="{{route('auth.back')}}" data-lijax='click' data-method='post' class="btn btn-primary direct">{{__('Admin')}}</a>
                     @else
                         <a href="{{route('logout')}}" data-lijax='click' data-method='post' class="btn btn-primary btn-block direct">{{__('Logout')}}</a>
                     @endif
