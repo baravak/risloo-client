@@ -10,7 +10,7 @@
                     <div class="col-sm-6 col-lg-6 col-xl-3 profile-separator">
                         <div class="d-flex align-items-center mb-3">
                             <div href="#" class="media media-xl rounded-circle">
-                                <img src="dist/images/avatar/avatar.jpg" alt="Avatar">
+                                <img src="{{$user->avatar_url->url('large')}}" alt="Avatar">
                             </div>
                             <div class="px-3">
                                 <div class="fs-14 font-weight-bold">{{$user->name ?: __('Anonymouse')}}</div>

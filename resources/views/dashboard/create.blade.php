@@ -7,6 +7,7 @@
                 <div class="card-header">
                     {{__(($module->action == 'create' ? "Create " : 'Edit ') . Str::singular($module->name))}}
                 </div>
+                @yield('before_content')
                 <form action="@yield('form_action', route($module->resource . ($module->action == 'edit' ? '.update' : '.store'), $module->action == 'edit' ? ['id' => ${$module->result}->id] : null))" method="POST">
                     <input type="hidden" name="_method" value="{{$module->action == 'edit' ? 'PUT' : 'POST'}}">
                     <div class="card-body">

@@ -1,4 +1,7 @@
 function statio_each(event, base, context){
+    $('.input-avatar', this).change(function () {
+        readURL(this);
+    });
     $('.user-types [name=type]', this).on('change', function(){
         if ($(this).val() == 'psychologist')
         {

@@ -6,6 +6,9 @@ use Symfony\Component\HttpFoundation\Cookie;
 class User extends API
 {
     protected $guarded = [];
+    public $with = [
+        'avatar' => File::class
+    ];
     public static $token;
 
     public static function me()
@@ -45,5 +48,9 @@ class User extends API
     public function isAdmin()
     {
         return $this->type == 'admin';
+    }
+    public function getAvatarUrlAttribute()
+    {
+        return new Avatar($this->avatar);
     }
 }

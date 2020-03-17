@@ -44,7 +44,7 @@ class ApiResponse implements Arrayable
         }
         if($this->response->message == 'UNAUTHENTICATED')
         {
-            return redirect()->route('login')->withCookies([new Cookie('token', null)])->send();
+            return redirect()->route('auth')->withCookies([new Cookie('token', null)])->send();
         }
         if (!$this->response->is_ok)
         {

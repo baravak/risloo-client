@@ -16,7 +16,7 @@
     <div class="d-flex align-items-center">
         <div class="profile-div {{app('request')->user()->response('current') ? 'profile-div-danger' : ''}}">
             <div class="pulse">
-                <img src="dist/images/avatar/avatar.jpg" alt="Avatar" class="profile rounded-circle" width="32" height="32">
+                <img src="{{app('request')->user()->avatar_url->url('small')}}" alt="Avatar" class="profile rounded-circle" width="32" height="32">
             </div>
             <div class="profile-dropdown shadow">
                 <div class="profile-dropdown-header p-3 d-flex flex-column align-items-center">

@@ -1,14 +1,24 @@
 @extends('dashboard.create')
-@section('form_content')
-    <div class="form-group d-flex">
-        <div class="media media-xl rounded-circle">
-            <input type="file" class="hide-input input-avatar" id="avatar">
-            <label for="avatar" class="m-0">
-                <img src="dist/images/avatar/user.png" alt="">
-            </label>
+@isset ($user)
+    @section('before_content')
+    <form action="{{route('dashboard.users.store.avatar', ['id' => $user->id])}}" method="POST">
+        <div class="card-body">
+            <div class="form-group d-flex">
+                <div class="media media-xl rounded-circle">
+                    <input type="file" class="hide-input input-avatar" id="avatar" name="avatar">
+                    <label for="avatar" class="m-0">
+                        <img src="{{$user->avatar_url->url('small')}}" alt="">
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary fs-10">
+                {{__('Save avatar')}}
+            </button>
         </div>
-    </div>
-
+    </form>
+    @endsection
+@endisset
+@section('form_content')
     <div class="form-group form-group-m">
         <input type="text" class="form-control form-control-m" id="name" name="name" @formValue($user->name) placeholder="&nbsp;" autocomplete="off">
         <label for="name">{{__('Display name')}}</label>

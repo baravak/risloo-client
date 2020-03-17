@@ -15,6 +15,10 @@ $router->group([
     $router->post('/users', [
         'as' => 'store', 'uses' => 'UserController@store'
     ]);
+    $router->post('/users/{id}/avatar', [
+        'as' => 'store.avatar', 'uses' => 'UserController@avatar'
+    ]);
+
     $router->get('users/{id}', [
         'as' => 'show', 'uses' => 'UserController@show'
     ]);

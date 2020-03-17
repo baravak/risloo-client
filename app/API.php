@@ -8,6 +8,8 @@ use App\Models\ApiResponse;
 use App\Models\ApiCollection;
 use App\Models\ApiPaginator;
 use Closure;
+use Illuminate\Http\UploadedFile;
+
 class API extends Model
 {
     protected $endpointPath, $route, $can, $response, $endpoint, $fake = false;
@@ -37,15 +39,22 @@ class API extends Model
                 if(key_exists($key, $this->with) && key_exists($key, $attributes))
                 {
                     $model = $this->with[$key];
-                    if(is_array($value))
+                    if(method_exists($model, 'resource'))
                     {
-                        $value = $this->newCollection(array_map(function($data) use ($model){
-                            return new $model((array) $data);
-                        }, $value));
+                        $value = $model::resource($value);
                     }
                     else
                     {
-                        $value = new $model((array) $value);
+                        if(is_array($value))
+                        {
+                            $value = $this->newCollection(array_map(function($data) use ($model){
+                                return new $model((array) $data);
+                            }, $value));
+                        }
+                        else
+                        {
+                            $value = new $model((array) $value);
+                        }
                     }
                     $this->setRelation($key, $value);
                     unset($attributes[$key]);
@@ -79,6 +88,7 @@ class API extends Model
 
     public function endpoint($endpoint = null, array $data = [], $method = 'GET')
     {
+        $method = strtoupper($method);
         if($this->endpoint && !$endpoint)
         {
             return $this->endpoint;
@@ -103,7 +113,7 @@ class API extends Model
 
     public function execute($endpoint = null, array $data = [], $method = 'GET', Closure $callback = null)
     {
-
+        $method = strtoupper($method);
         $endpoint = $this->endpoint(...func_get_args());
         if($this->fake)
         {
@@ -111,7 +121,6 @@ class API extends Model
         }
         $headers       = array(
             'Accept: application/json',
-            'Content-Type: application/json',
             'charset: utf-8'
         );
         if(User::$token)
@@ -119,14 +128,31 @@ class API extends Model
             $headers[] = 'Authorization: Bearer ' . User::$token;
         }
         $curl = curl_init($endpoint);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, strtoupper($method));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         if($method != 'GET')
         {
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data ? json_encode($data) : null);
+            $hasFile = false;
+            if (in_array($method, ['PUT', 'PATCH', 'POST']))
+            {
+                foreach ($data as $key => $value) {
+                    if($value instanceof UploadedFile)
+                    {
+                        $hasFile = true;
+                        $data[$key] = new \CURLFile($value->getPathname(), $value->getMimeType(), $value->getClientOriginalName());;
+                        $method = 'POST';
+                    }
+                }
+            }
+            if ($hasFile) {
+                $headers[] = 'Content-Type: multipart/form-data';
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            } else {
+                $headers[] = 'Content-Type: application/json';
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data ? json_encode($data) : null);
+            }
         }
-
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         $response     = new ApiResponse($curl, curl_exec($curl), [
             'filterWith' => $this->filterWith
         ]);

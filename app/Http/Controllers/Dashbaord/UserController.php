@@ -27,6 +27,12 @@ class UserController extends Controller
         ]);
     }
 
+    public function avatar(Request $request, $user)
+    {
+        $avatar = new User;
+        return $avatar->execute("%s/$user/avatar", $request->all('avatar'), 'POST')->response()->json();
+    }
+
     public function edit(Request $request, $user)
     {
         $this->data['user'] = User::apiShow($user)->check('edit');
