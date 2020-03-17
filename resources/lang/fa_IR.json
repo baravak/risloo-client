@@ -72,5 +72,12 @@
   "Enter mobile code" : "کد موبایل را وارد کنید",
   "Enter new password" : "کلمه عبور جدید را وارد کنید",
   "Send verification code": "ارسال کد اعتبارسنجی",
-  "Mobile verify" : "تأیید موبایل"
+  "Mobile verify" : "تأیید موبایل",
+  "Admin profile" : "پروفایل ادمین",
+  "Manager profile" : "پروفایل مدیر",
+  "Operator profile" : "پروفایل اپراتور",
+  "Psychologist profile" : "پروفایل روان‌شناسی",
+  "Client profile" : "پروفایل مراجع",
+  "Supservisor profile" : "پروفایل کاربر سیستمی",
+  "Save avatar" : "ویرایش آواتار"
 }

@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card mb-3">
-            <div class="card-header">مشخصات مشاور</div>
+            <div class="card-header">{{__(ucfirst($user->type) . ' profile')}} <a class="badge badge-primary fs-10" href="{{route('dashboard.users.edit', ['id' => $user->id])}}">{{__('Edit')}}</a></div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6 col-lg-6 col-xl-3 profile-separator">
