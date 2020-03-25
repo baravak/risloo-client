@@ -872,10 +872,6 @@ function readURL(input) {
     }
   }
 
-$('.input-avatar').change(function() {
-    readURL(this);
-});
-
 var datepicker = function (elementID, opt) {
 
     // check arguments
@@ -1390,6 +1386,9 @@ $(document).ready(function () {
 });
 $(document).on('statio:global:renderResponse', function (event, base, context) {
 	base.each(function () {
+		$('.input-avatar', this).change(function () {
+			readURL(this);
+		});
 		$('.dropdown-menu.keep-open', this).on('click', function (event) {
 			event.stopPropagation();
 		});
@@ -1426,7 +1425,6 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 			}
 		});
 		$(".select2-select", this).each(function () {
-			var template = $('[data-template=' + $(this).attr('id') + ']');
 			var options = {
 				width: '100%',
 				amdLanguageBase: 'dist/vendors/select2-4.0.13/dist/js/i18n',
@@ -1435,7 +1433,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 				allowClear: $(this).is('[data-allowClear]') || $(this).is('.has-clear'),
 				dir: "rtl",
 				tags: $(this).is('.tag-type'),
-				templateResult: template.length ? select2template.bind(template.html()) : undefined,
+				templateResult: $(this).is('[data-type]') ? window['select2' + $(this).attr('data-type')] : undefined,
 				dropdownParent: $('#' + $(this).attr('data-dropdownParent')).length ? $('#' + $(this).attr('data-dropdownParent')) : undefined
 			};
 			$(this).attr('data-mr-value', $('[name=' + $(this).attr('data-multi-round') + ']').val());
@@ -1498,34 +1496,25 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 	});
 });
 
-function select2template(data, li){
-	if(!data.all)
+function select2users(data, option)
+{
+	if (data.all)
 	{
-		return data.text;
-	}
-	var template = this.replace(/\$\{([^\}]+)\}/gim, function(a, name){
-		if (name.indexOf('.') >= 0)
+		var span = $('<div class="d-flex align-items-center fs-12"><span class="media media-sm media-primary"><img alt="A"></span><div class="p-2"></div></div>');
+		if (data.all.avatar.tiny || data.all.avatar.small)
 		{
-			var nested = name.split('.');
-			var nData = data.all;
-			for (var i = 0; i < nested.length; i++) {
-				if (!nData[nested[i]])
-				{
-					nData = null;
-					break;
-				}
-				else
-				{
-					console.log(nData[nested[i]], nested[i]);
-					nData = nData[nested[i]];
-					console.log(nData);
-				}
-			}
-			return nData || '';
+			var avatar = data.all.avatar.tiny || data.all.avatar.small;
+			$('img', span).attr('src', avatar.url);
 		}
-		return data.all[name] || '';
-	});
-	return $(template);
+		else
+		{
+			$('img', span).remove();
+			$('.media', span).html('<span>' + (data.all.name ? data.all.name.substr(0, 1) : 'IR')   + '</span>');
+		}
+		$('div', span).html(data.all.name || data.all.id);
+		return span;
+	}
+	return data.text;
 }
 function responsive_menu() {
     $('#menu').removeClass('d-none').addClass('d-flex');

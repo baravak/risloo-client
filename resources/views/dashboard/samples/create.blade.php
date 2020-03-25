@@ -1,13 +1,10 @@
 @extends('dashboard.create')
 @section('form_content')
     <div class="form-group form-group-m">
-        <select class="select2-select" name="user_id" id="user_id" data-url="{{route('dashboard.users.index')}}">
+        <select class="select2-select form-control form-control-m" data-type="users" name="user_id" data-title="name id" id="user_id" data-url="{{route('dashboard.users.index')}}">
+            <option value="">پرسشنامه 16 عاملی شخصیت کتل</option>
         </select>
-        <div data-template="user_id">
-            <span>
-                <img src="${avatar.small.url}" alt="Avatar" class="profile rounded-circle" width="16" height="16"> ${name} - ${id}
-            </span>
-        </div>
+        <label for="name">{{__('Assessment')}}</label>
     </div>
     @isset($assessment)
         <div class="form-group form-group-m">
@@ -17,7 +14,7 @@
     </div>
     @else
         <div class="form-group form-group-m">
-            <select class="select2-select" name="assessment_id" id="assessment_id" data-url="{{route('dashboard.terms.index')}}">
+            <select class="select2-select" name="assessment_id" id="assessment_id" data-url="{{route('dashboard.assessments.index')}}">
             </select>
         </div>
     @endisset
