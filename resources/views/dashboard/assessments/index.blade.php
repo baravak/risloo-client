@@ -35,7 +35,7 @@
                                 </td>
                                 <td>
                                     <a href="{{route('dashboard.samples.create', ['scale' => substr($assessment->id, 1)])}}" class="text-decoration-none">
-                                        <i class="far fa-plus-square fs-14"></i> {{__('Create sample')}}
+                                        <i class="fas fa-flask fs-14"></i> {{__('Create sample')}}
                                     </a>
                                 </td>
                             </tr>

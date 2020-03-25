@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Assessment;
+use App\User;
 use Illuminate\Http\Request;
 
 class SampleController extends Controller
@@ -16,7 +17,10 @@ class SampleController extends Controller
     {
         if(isset($request->scale))
         {
-            $this->data->assessment = Assessment::apiShow($request->scale);
+            $this->data->scale = Assessment::apiShow($request->scale);
+        }
+        if (isset($request->client)) {
+            $this->data->client = User::apiShow($request->client);
         }
         return $this->view($request, 'dashboard.samples.create');
     }
