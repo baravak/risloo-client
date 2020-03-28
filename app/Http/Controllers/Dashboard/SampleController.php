@@ -20,8 +20,17 @@ class SampleController extends Controller
             $this->data->scale = Assessment::apiShow($request->scale);
         }
         if (isset($request->client)) {
-            $this->data->client = User::apiShow($request->client);
+            $client = User::apiShow($request->client);
+            if($client->type == 'client')
+            {
+                $this->data->client = $client;
+            }
         }
         return $this->view($request, 'dashboard.samples.create');
+    }
+
+    public function store(Request $request)
+    {
+
     }
 }

@@ -31,7 +31,7 @@
     </div>
     @else
         <div class="form-group form-group-m">
-        <select class="select2-select form-control form-control-m has-clear" multiple data-template="users" name="client_id" data-title="name id" id="client_id" data-url="{{route('dashboard.users.index', ['typex' => 'client'])}}">
+        <select class="select2-select form-control form-control-m has-clear" multiple data-template="users" name="client_id" data-title="name id" id="client_id" data-url="{{route('dashboard.users.index', ['type' => 'client'])}}" data-placeholder="{{__('Without specified client')}}">
         </select>
         <label for="name">{{__('Client')}}</label>
     </div>
