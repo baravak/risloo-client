@@ -3,7 +3,7 @@
     "Manager": "مدیر",
     "Operator": "اپراتور",
     "Client": "مراجع",
-    "Psychologist": "روان‌درمانگر",
+    "Psychologist": "روان‌شناس",
     "User position": "موقعیت شغلی",
     "Documents": "اسناد و مدارک",
     "Reserve": "رزرو",
@@ -28,8 +28,17 @@
     "Create new sample": "ایجاد نمونه جدید",
     "Manager profile": "پروفایل مدیر",
     "Operator profile": "پروفایل اپراتور",
-    "Psychologist profile": "پروفایل روان‌شناسی",
+    "Psychologist profile": "پروفایل روان‌شناس",
     "Client profile": "پروفایل مراجع",
     "Samples" : "نمونه‌ها",
-    "Create new sampel" : "ایجاد نمونه جدید"
+    "Create new sampel" : "ایجاد نمونه جدید",
+    "Clinic" : "کلینیک",
+    "Relationships" : "ارتباطات",
+    "Position" : "موقعیت",
+    "Relationship users" : "زیرارتباط کاربران",
+    "Create relationship-user" : "ایجاد زیرارتباط کاربر",
+    "Create new relationship-user": "ایجاد زیرارتباط جدید کاربر",
+    "Create relationship" : "ایجاد ارتباط",
+    "Create new relationship" : "ایجاد ارتباط جدید"
+
 }

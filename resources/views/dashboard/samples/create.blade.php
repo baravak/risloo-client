@@ -4,7 +4,7 @@
         <div class="form-group form-group-m">
         <input type="hidden" id="scale_id" name="scale_id" value="{{$scale->id}}">
         <input type="text" class="form-control form-control-m" value="{{$scale->title}}" disabled placeholder="&nbsp;" autocomplete="off">
-        <label for="name">{{__('Scale')}}</label>
+        <label for="scale_id">{{__('Scale')}}</label>
     </div>
     @else
         <div class="form-group form-group-m">
@@ -33,9 +33,13 @@
         <div class="form-group form-group-m">
         <select class="select2-select form-control form-control-m has-clear" multiple data-template="users" name="client_id" data-title="name id" id="client_id" data-url="{{route('dashboard.users.index', ['type' => 'client'])}}" data-placeholder="{{__('Without specified client')}}">
         </select>
-        <label for="name">{{__('Client')}}</label>
+        <label for="client_id">{{__('Client')}}</label>
     </div>
     @endisset
 
-
+    <div class="form-group form-group-m">
+        <select class="select2-select form-control form-control-m tag-type" multiple name="term_id" id="term_id" data-url="{{route('dashboard.terms.index', auth()->user()->type != 'admin' ? ['creator' => auth()->user()->id] : null)}}">
+        </select>
+        <label for="term_id">{{__('Scale')}}</label>
+    </div>
 @endsection
