@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class Relationship extends API
+class Clinic extends API
 {
     public $with = [
         'owner' => User::class,
@@ -13,4 +13,9 @@ class Relationship extends API
         'accepted_at' => 'datetime',
         'joined_at' => 'datetime',
     ];
+
+    public static function request($clinic_id)
+    {
+        return (new static)->execute('clinics/request', ['clinic_id' => $clinic_id], 'POST');
+    }
 }

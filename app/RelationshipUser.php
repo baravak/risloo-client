@@ -9,4 +9,8 @@ class RelationshipUser extends API
         'user' => User::class,
         'creator' => User::class
     ];
+    protected $casts = [
+        'kicked_at' => 'datetime',
+        'accepted_at' => 'datetime',
+    ];
 }

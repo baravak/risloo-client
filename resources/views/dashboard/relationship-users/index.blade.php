@@ -89,38 +89,16 @@
                     <thead>
                         <tr>
                             <th>@sortView($users, 'id', '#')</th>
-                            <th>@sortView($users, 'creator')</th>
                             <th>@sortView($users, 'user')</th>
+                            <th>@sortView($users, 'creator')</th>
                             <th>@sortView($users, 'position')</th>
-                            <th></th>
+                            <th>@sortView($users, 'accepted_at')</th>
+                            <th>@sortView($users, 'status')</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                            <tr>
-                                <td>
-                                    @id($user)
-                                </td>
-                                <td>
-                                    <a href="{{$user->creator->route('show')}}">
-                                        @displayName($user->creator)
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{$user->user->route('show')}}">
-                                        @displayName($user->user)
-                                    </a>
-                                </td>
-                                <td>
-                                    {{__(ucfirst($user->position))}}
-                                </td>
-                                <td>
-                                    {{-- <a href="{{route('dashboard.user-users.index')}}" class="fs-14 text-decoration-none">
-                                        <i class="far fa-address-book"></i>
-                                        {{__('Users')}}
-                                    </a> --}}
-                                </td>
-                            </tr>
+                            @include('dashboard.relationship-users.list')
                         @endforeach
                     </tbody>
                 </table>

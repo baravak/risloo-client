@@ -4,7 +4,7 @@ return [
         'admin' => [
             'icon' => 'far fa-users-crown'
         ],
-        'clinic' => [
+        'counseling_center' => [
             'icon' => 'far fa-hospital-alt'
         ],
         // 'manager' => [

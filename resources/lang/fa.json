@@ -39,6 +39,18 @@
     "Create relationship-user" : "ایجاد زیرارتباط کاربر",
     "Create new relationship-user": "ایجاد زیرارتباط جدید کاربر",
     "Create relationship" : "ایجاد ارتباط",
-    "Create new relationship" : "ایجاد ارتباط جدید"
+    "Create new relationship" : "ایجاد ارتباط جدید",
+    "Clinics and Psychologists" : "کلینیک‌ها و مشاوران",
+    "Clinic name" : "نام کلینیک",
+    "Personal_clinic" : "کلینیک شخصی",
+    "Acception request" : "درخواست پذیرش",
+    "Accepted": "پذیرش شده",
+    "Counseling_center": "مرکز مشاوره",
+    "Counseling_centers": "مراکز مشاوره",
+    "Kicked" : "تعلیق شده",
+    "Accepted_at" : "زمان پذیرش",
+    "Kicked_at": "تعلیق شده در",
+    "Kick": "تعلیق",
+    "Accept" : "پذیرش"
 
 }
