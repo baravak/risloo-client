@@ -29,10 +29,10 @@
         <input type="text" class="form-control form-control-m text-left direction-ltr" id="email" name="email" @formValue($user->email) placeholder="&nbsp;" autocomplete="off">
         <label for="email">{{__('Email')}}</label>
     </div>
-    @can('update', $user->counseling_center)
+    @can('update', $user->center)
     <div class="form-group form-group-m">
         <select class="select2-select form-control form-control-m" data-template="users" name="manager_id" data-title="name id" id="manager_id" data-url="{{route('dashboard.users.index', ['type' => ['psychologist', 'operator']])}}">
-            <option value="{{$user->counseling_center->manager->id}}">{{$user->counseling_center->manager->name ?: $user->counseling_center->manager->id}}</option>
+            <option value="{{$user->center->manager->id}}">{{$user->center->manager->name ?: $user->center->manager->id}}</option>
         </select>
         <label for="manager_id">{{__('Manager')}}</label>
     </div>

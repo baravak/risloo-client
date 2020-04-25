@@ -7,6 +7,7 @@ class Relationship extends API
         'owner' => User::class,
         'manager' => User::class,
         'creator' => User::class,
+        'acception' => RelationshipUser::class
     ];
     protected $casts = [
         'kicked_at' => 'datetime',

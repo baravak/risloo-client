@@ -16,14 +16,22 @@ class RelationshipPolicy
     }
     public function create(User $user)
     {
-        if (!in_array($user->type, ['admin', 'operator', 'psychologist'])) {
-            return false;
-        }
-        return true;
+        return $user->type == 'admin';
+        return Relationship::apiAllows('create');
     }
 
-    public function update(User $user, Relationship $relationship)
+    public function update(User $user, $relationship)
     {
-        return $relationship->can('edit');
+        return $relationship->can('update');
+    }
+
+    public function acception(User $user, $relationship)
+    {
+        return $relationship->can('acception');
+    }
+
+    public function details(User $user, $relationship)
+    {
+        return $relationship->can('details');
     }
 }

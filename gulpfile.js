@@ -32,13 +32,20 @@ function dashboardJs() {
         }))
         .pipe(dest('public/js', { sourcemaps: false }))
 }
+function DashboardCss() {
+    return src('resources/sass/dashboard.scss')
+        .pipe(sass())
+        .pipe(minifyCSS())
+        .pipe(dest('public/css'))
+}
 function watchFile()
 {
     watch('resources/sass/**/*.scss', css);
+    watch('resources/sass/**/*.scss', DashboardCss);
     watch('resources/js/app/**/*.js', js);
     watch('resources/js/dashboard/**/*.js', dashboardJs);
 }
 exports.js = js;
 exports.css = css;
 exports.watchFile = watchFile;
-exports.default = parallel(js, dashboardJs, css, watchFile);
+exports.default = parallel(js, dashboardJs, css, DashboardCss, watchFile);

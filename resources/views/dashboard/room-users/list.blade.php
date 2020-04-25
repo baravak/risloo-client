@@ -36,9 +36,9 @@
     </td>
     <td>
         @if($user->allows('status'))
-            <button class="btn btn-light btn-sm fs-10" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="far fa-cog"></i>
-                <span>
+            <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="far fa-cogs fs-12 text-primary"></i>
+                <span class="fs-12">
                     @if($user->kicked_at)
                         {{__('Kicked') . ' '. $user->kicked_at}}
                     @elseif(!$user->accepted_at)
@@ -50,8 +50,8 @@
             </button>
             <div class="dropdown-menu">
                 @foreach ($user->allows('status') as $acception)
-                    <a href="{{route('dashboard.relationship.users.update', ['relationshipUser'=> $user->id])}}" class="dropdown-item fs-10" data-lijax="click" data-method="PUT" data-name="status" data-value="{{$acception}}">
-                        <i class="fal fa-user-secret"></i> {{__(ucfirst($acception))}}
+                    <a href="{{route('dashboard.relationship.users.update', ['relationshipUser'=> $user->id])}}" class="dropdown-item fs-12" data-lijax="click" data-method="PUT" data-name="status" data-value="{{$acception}}">
+                        <i class="fal fa-user-secret text-primary"></i> {{__(ucfirst($acception))}}
                     </a>
                 @endforeach
             </div>

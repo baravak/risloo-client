@@ -14,6 +14,12 @@
         </div>
     @endisset
 
+    <div class="form-group form-group-m">
+        <select class="select2-select form-control form-control-m" data-template="room" name="psychologist_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="psychologist_id" data-url="{{route('dashboard.rooms.index')}}">
+        </select>
+        <label for="psychologist_id">{{__('Room')}}</label>
+    </div>
+
     @isset($client)
     <div class="d-flex align-items-center fs-12 d-inline-block">
         <input type="hidden" id="client_id" name="client_id" value="{{$client->id}}">
@@ -30,7 +36,7 @@
         </div>
     </div>
     @else
-        <div class="form-group form-group-m">
+    <div class="form-group form-group-m">
         <select class="select2-select form-control form-control-m has-clear" multiple data-template="users" name="client_id" data-title="name id" id="client_id" data-url="{{route('dashboard.users.index', ['type' => 'client'])}}" data-placeholder="{{__('Without specified client')}}">
         </select>
         <label for="client_id">{{__('Client')}}</label>

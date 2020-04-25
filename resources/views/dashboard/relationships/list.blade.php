@@ -3,7 +3,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>@sortView($relationships, 'id', '#')</th>
                 <th>@sortView($relationships, 'creator')</th>
                 <th>@sortView($relationships, 'owner')</th>
                 <th>@sortView($relationships, 'manager')</th>
@@ -14,9 +13,6 @@
         <tbody>
             @foreach ($relationships as $relationship)
                 <tr>
-                    <td>
-                        @id($relationship)
-                    </td>
                     <td>
                         <a href="{{$relationship->creator->route('show')}}">
                             @displayName($relationship->creator)
@@ -36,10 +32,12 @@
                         {{__(ucfirst($relationship->type))}}
                     </td>
                     <td>
-                        <a href="{{route('dashboard.relationship.users.index', $relationship->id)}}" class="fs-14 text-decoration-none">
-                            <i class="far fa-address-book"></i>
-                            {{__('Users')}}
-                        </a>
+                        @can('details', $relationship)
+                            <a href="{{route('dashboard.relationship.users.index', $relationship->id)}}" class="text-primary text-decoration-none">
+                                <i class="far fa-address-book"></i>
+                                {{__('Members')}}
+                            </a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

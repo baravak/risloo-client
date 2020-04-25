@@ -11,7 +11,7 @@ class RelationshipUserController extends Controller
 {
     public function index(Request $request, $relationship)
     {
-        $this->data->users = RelationshipUser::apiIndex($relationship, $request->all(['order', 'sort', 'parent', 'creator']));
+        $this->data->users = RelationshipUser::apiIndex($relationship, $request->all());
         $this->data->relationship = new Relationship((array) $this->data->users->response('relationship'));
         return $this->view($request, 'dashboard.relationship-users.index');
     }

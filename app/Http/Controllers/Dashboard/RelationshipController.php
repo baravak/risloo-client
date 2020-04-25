@@ -9,7 +9,7 @@ class RelationshipController extends Controller
 {
     public function index(Request $request)
     {
-        $this->data->relationships = Relationship::apiIndex($request->all(['order', 'sort', 'parent', 'creator']));
+        $this->data->relationships = Relationship::apiIndex($request->all());
         if(count($this->data->relationships) === 1)
         {
             if($request->ajax() && strpos(strtolower($request->headers->get('accept')), 'application/json') == false)

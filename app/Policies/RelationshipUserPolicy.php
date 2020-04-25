@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Relationship;
 use App\RelationshipUser;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -15,29 +16,25 @@ class RelationshipUserPolicy
         return true;
     }
 
-    public function update(User $user, RelationshipUser $relationship)
+    public function update(User $user, RelationshipUser $relationshipUser)
     {
-        return $relationship->can('update');
+        return $relationshipUser->can('update');
     }
-    public function create(User $user)
+    public function create(User $user, Relationship $relationship)
     {
-        return true;
+        $relationship->can('add');
     }
 
-    public function changePosition(User $user, RelationshipUser $relationship)
+    public function validPosition(User $user, RelationshipUser $relationshipUser)
     {
-        if($relationship->can('changePosition'))
-        {
-            return $relationship->can('changePosition');
-        }
-        return $relationship->can('changePosition');
+        return $relationshipUser->can('validPosition');
     }
-    public function changeStatus(User $user, RelationshipUser $relationship)
+    public function changeStatus(User $user, RelationshipUser $relationshipUser)
     {
-        return $relationship->can('changeStatus');
+        return $relationshipUser->can('validStatus');
     }
-    public function updateCreator(User $user, RelationshipUser $relationship)
+    public function updateCreator(User $user, RelationshipUser $relationshipUser)
     {
-        return $relationship->can('updateCreator');
+        return $relationshipUser->can('updateCreator');
     }
 }

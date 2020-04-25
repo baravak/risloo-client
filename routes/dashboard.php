@@ -9,5 +9,15 @@ Route::resource('relationships', 'RelationshipController', ['except' => ['destro
 Route::resource('relationships/{relationship}/users', 'RelationshipUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'relationship']);
 Route::put('relationship-users/{relationshipUser}', 'RelationshipUserController@update')->name('relationship.users.update');
 
-Route::resource('clinics', 'ClinicController', ['except' => ['destroy', 'update', 'edit', 'store', 'create']]);
-Route::post('clinics/request', 'ClinicController@request')->name('clinics.request');
+Route::resource('centers', 'CenterController', ['except' => ['destroy', 'update', 'edit', 'store', 'create']]);
+Route::post('centers/request', 'CenterController@request')->name('centers.request');
+Route::post('centers/accept', 'CenterController@accept')->name('centers.accept');
+
+Route::resource('rooms', 'RoomController');
+Route::resource('rooms/{room}/users', 'RoomUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'room']);
+
+
+Route::resource('cases', 'CaseController');
+
+Route::post('users/request', 'UserController@request')->name('users.request');
+Route::post('users/accept', 'UserController@accept')->name('users.accept');
