@@ -20,18 +20,23 @@
 <div class="row">
     @foreach ($centers as $center)
         <div class="col-xl-2">
-            <div class="card mb-3">
+            <div class="card mb-3 h-100">
                 <div style="position: relative">
                     <img src="{{ asset('images/wall.jpg') }}" alt="" class="w-100" style="border-top-right-radius: .25rem; border-top-left-radius: .25rem;">
                     <img src="{{ asset('images/avatar/user.png') }}" alt="" style="width: 50px; position: absolute; top: calc(50% - 25px); right: 15px;">
                 </div>
                 <div class="card-body">
                     <div>
-                        <a href="{{$center->owner->route('show')}}" class="text-decoration-none">
+                        <a href="{{$center->owner->route('show')}}" class="text-decoration-none text-dark font-weight-bold fs-14">
                             @displayName($center->owner)
                         </a>
-                        <span class="badge badge-light">{!!$center->owner->type == 'psychologist' ? '<span class="text-dark font-weight-bold fs-12"> '.__('Clinic').'</span>' : ''!!}</span>
                     </div>
+                    <div>
+                        {!!$center->owner->type != 'psychologist' ? '<span class="fs-12">مدیر مرکز درمانی</span> <a href="" class="text-dark font-weight-bold fs-12">دکتر جان‌بزرگی</a>' : ''!!}
+                    </div>
+                    @if (false)
+                        <span class="badge badge-light">{!!$center->owner->type == 'psychologist' ? '<span class="text-dark font-weight-bold fs-12"> '.__('Clinic').'</span>' : ''!!}</span>
+                    @endif
                     <div>
                         @can('acception', $center)
                             @if ($center->allows('acception') == 'request')
