@@ -20,10 +20,14 @@
 <div class="row">
     @foreach ($centers as $center)
         <div class="col-xl-3">
-            <div class="card mb-3 h-100">
-                <div style="position: relative">
-                    <img src="{{ asset('images/wall.jpg') }}" alt="" class="w-100" style="border-top-right-radius: .25rem; border-top-left-radius: .25rem;">
-                    <img src="{{ asset('images/avatar/user.png') }}" alt="" style="width: 50px; position: absolute; top: calc(50% - 25px); right: 15px;">
+            <div class="card mb-3">
+                <div class="card-wall d-flex align-items-center px-3 border-bottom">
+                    <div class="card-wall-media shadow-sm">
+                        <a href="#" class="media media-primary rounded-circle">
+                            <span>ح</span>
+                        </a>
+                    </div>
+                    <div class="px-3 fs-12">شما <strong>مراجع</strong> این مرکز درمانی هستید.</div>
                 </div>
                 <div class="card-body">
                     <div>
@@ -31,8 +35,23 @@
                             @displayName($center->owner)
                         </a>
                     </div>
+                    <div class="mb-3">
+                        {!!$center->owner->type != 'psychologist' ? '<span class="fs-12">مدیر مرکز درمانی</span> <a href="" class="text-decoration-none text-dark font-weight-bold fs-12">دکتر جان‌بزرگی</a>' : '&nbsp;'!!}
+                    </div>
+                    <div class="mb-2">
+                        <a href="#" class="text-decoration-none text-dark fs-14">
+                            <i class="far fa-at"></i>
+                            username
+                        </a>
+                    </div>
+                    <div class="mb-2">
+                        <a href="tel:+989121111111" class="fs-14 text-decoration-none text-dark">
+                            <i class="far fa-mobile"></i>
+                            +989121111111
+                        </a>
+                    </div>
                     <div>
-                        {!!$center->owner->type != 'psychologist' ? '<span class="fs-12">مدیر مرکز درمانی</span> <a href="" class="text-decoration-none text-dark font-weight-bold fs-12">دکتر جان‌بزرگی</a>' : ''!!}
+                        <address class="fs-14 mb-0"><i class="far fa-map-marker-alt"></i> ایران، تهران، درب اول، پلاک یک</address>
                     </div>
                     @if (false)
                         <span class="badge badge-light">{!!$center->owner->type == 'psychologist' ? '<span class="text-dark font-weight-bold fs-12"> '.__('Clinic').'</span>' : ''!!}</span>

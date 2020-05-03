@@ -17,3 +17,22 @@
 {
     animation: 150ms statio-fold forwards;
 }
+
+.card-wall {
+  position: relative;
+  height: 99px;
+  background-image: url(../images/patterns/leaves-pattern.png);
+}
+
+.card-wall-media {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.media.rounded-circle {
+  span {
+    border-radius: 50%;
+  }
+}
