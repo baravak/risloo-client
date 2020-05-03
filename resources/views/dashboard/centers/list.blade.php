@@ -27,7 +27,9 @@
                             <span>ح</span>
                         </a>
                     </div>
-                    <div class="px-3 fs-12">شما <strong>مراجع</strong> این مرکز درمانی هستید.</div>
+                    @isset($center->acception->position)
+                        <div class="px-3 fs-12">شما <strong>{{__(ucfirst($center->acception->position))}}</strong> این مرکز درمانی هستید.</div>
+                    @endisset
                 </div>
                 <div class="card-body">
                     <div>
@@ -59,7 +61,7 @@
                     <div>
                         @can('acception', $center)
                             @if ($center->allows('acception') == 'request')
-                                <a href="{{route('dashboard.centers.request')}}" class="btn btn-sm btn-secondary mt-2" data-lijax="click" data-method="POST" data-name="center_id" data-value="{{$center->id}}">
+                                <a href="{{route('dashboard.centers.request')}}" class="btn btn-block btn-sm btn-secondary mt-3" data-lijax="click" data-method="POST" data-name="center_id" data-value="{{$center->id}}">
                                     <i class="far fa-plug fs-12"></i> {{__('Acception request')}}
                                 </a>
                             @elseif($center->allows('acception') == 'accept')
@@ -71,13 +73,8 @@
                             @if ($center->acception && $center->acception->kicked_at)
                                 <i class="far fa-minus-circle text-muted fs-12"></i> <span class="text-muted">{{__('Kicked')}}</span>
                             @elseif($center->acception && !$center->acception->accepted_at)
-                            <span class="fs-10">
-                                {{__('Awaiting')}}
-                            </span>
-                            @elseif($center->acception && $center->acception->accepted_at)
-                                <span class="badge badge-light align-middle">
-                                    <i class="far fa-badge-check text-primary fs-12 pt-1"></i>
-                                    <span>{{__(ucfirst($center->acception->position))}}</span>
+                                <span class="fs-10">
+                                    {{__('Awaiting')}}
                                 </span>
                             @endif
                         @endcan
