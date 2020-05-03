@@ -32,7 +32,7 @@
                         </a>
                     </div>
                     <div>
-                        {!!$center->owner->type != 'psychologist' ? '<span class="fs-12">مدیر مرکز درمانی</span> <a href="" class="text-dark font-weight-bold fs-12">دکتر جان‌بزرگی</a>' : ''!!}
+                        {!!$center->owner->type != 'psychologist' ? '<span class="fs-12">مدیر مرکز درمانی</span> <a href="" class="text-decoration-none text-dark font-weight-bold fs-12">دکتر جان‌بزرگی</a>' : ''!!}
                     </div>
                     @if (false)
                         <span class="badge badge-light">{!!$center->owner->type == 'psychologist' ? '<span class="text-dark font-weight-bold fs-12"> '.__('Clinic').'</span>' : ''!!}</span>
