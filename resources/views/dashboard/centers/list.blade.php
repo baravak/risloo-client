@@ -19,7 +19,7 @@
 
 <div class="row">
     @foreach ($centers as $center)
-        <div class="col-xl-2">
+        <div class="col-xl-3">
             <div class="card mb-3 h-100">
                 <div style="position: relative">
                     <img src="{{ asset('images/wall.jpg') }}" alt="" class="w-100" style="border-top-right-radius: .25rem; border-top-left-radius: .25rem;">
