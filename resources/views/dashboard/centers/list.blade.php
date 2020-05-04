@@ -22,7 +22,7 @@
         <div class="col-xl-3">
             <div class="card mb-3">
                 <div class="card-wall d-flex align-items-center px-3 border-bottom">
-                    <div class="card-wall-media shadow-sm">
+                    <div class="card-wall-media">
                         <a href="#" class="media media-primary rounded-circle">
                             <span>ح</span>
                         </a>
@@ -32,6 +32,7 @@
                     @endisset
                 </div>
                 <div class="card-body">
+                    
                     <div>
                         <a href="{{$center->owner->route('show')}}" class="text-decoration-none text-dark font-weight-bold fs-14">
                             @displayName($center->owner)
@@ -40,21 +41,24 @@
                     <div class="mb-3">
                         {!!$center->owner->type != 'psychologist' ? '<span class="fs-12">مدیر مرکز درمانی</span> <a href="" class="text-decoration-none text-dark font-weight-bold fs-12">دکتر جان‌بزرگی</a>' : '&nbsp;'!!}
                     </div>
-                    <div class="mb-2">
-                        <a href="#" class="text-decoration-none text-dark fs-14">
-                            <i class="far fa-at"></i>
-                            username
-                        </a>
-                    </div>
-                    <div class="mb-2">
-                        <a href="tel:+989121111111" class="fs-14 text-decoration-none text-dark">
-                            <i class="far fa-mobile"></i>
-                            +989121111111
-                        </a>
-                    </div>
-                    <div>
-                        <address class="fs-14 mb-0"><i class="far fa-map-marker-alt"></i> ایران، تهران، درب اول، پلاک یک</address>
-                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <i class="far fa-at ml-2"></i>
+                            <a href="#" class="text-decoration-none text-dark fs-14">
+                                username
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="far fa-mobile ml-2"></i>
+                            <a href="tel:+989121111111" class="fs-14 text-decoration-none text-dark">
+                                +989121111111
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="far fa-map-marker-alt ml-2"></i>
+                            <address class="d-inline-block fs-14 mb-0">ایران، تهران، درب اول، پلاک یک</address>
+                        </li>
+                    </ul>
                     @if (false)
                         <span class="badge badge-light">{!!$center->owner->type == 'psychologist' ? '<span class="text-dark font-weight-bold fs-12"> '.__('Clinic').'</span>' : ''!!}</span>
                     @endif
