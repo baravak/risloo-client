@@ -2,13 +2,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>@sortView($rooms, 'id', '#')</th>
+                <th>@sortView($cases, 'id', '#')</th>
                 <th>{{__('Title')}}</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($rooms as $room)
-            @include('dashboard.rooms.listRaw')
+            @foreach ($cases as $case)
+            @include('dashboard.cases.listRaw')
             @endforeach
         </tbody>
     </table>

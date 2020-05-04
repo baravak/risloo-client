@@ -3,11 +3,11 @@
 @section('content')
     <div class="card mb-3">
         <div class="card-header">
-            {{ __('Therapy rooms') }} <sup>({{ $rooms->total() }})</sup>
-            @filterBadge($rooms)
+            {{ __('Cases') }} <sup>({{ $cases->total() }})</sup>
+            @filterBadge($cases)
         </div>
         <div class="card-body p-0">
-            @include($rooms->count() ? 'dashboard.rooms.list' : 'dashboard.emptyContent')
+            @include($cases->count() ? 'dashboard.cases.list' : 'dashboard.emptyContent')
         </div>
     </div>
 @endsection

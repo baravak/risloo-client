@@ -1,12 +1,6 @@
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     base.each(function () {
-        $('#counseling_center_id', this).on('select2:select', function (e) {
-            var url = $('#psychologist_id').attr('data-url-pattern').replace('%%', $(this).val());
-            $('#psychologist_id').attr('data-url', url);
-            $('#psychologist_id').select2('destroy');
-            $('#psychologist_id *').remove();
-            select2element.call($('#psychologist_id')[0]);
-        });
+
     });
 });
 

@@ -2,7 +2,7 @@
 @section('form_content')
 
     <div class="form-group form-group-m">
-        <select class="select2-select form-control form-control-m" name="counseling_center_id" data-title="owner.name" id="counseling_center_id" data-url="{{route('dashboard.centers.index', ['my' => 1, 'type' => 'counseling_center'])}}" data-placeholder="{{__('Select therapy center')}}">
+        <select class="select2-select form-control form-control-m" name="counseling_center_id" data-title="owner.name" id="counseling_center_id" data-url="{{route('dashboard.centers.index', ['my' => 1, 'type' => 'counseling_center'])}}" data-relation="psychologist_id" data-placeholder="{{__('Select therapy center')}}">
         </select>
         <label for="counseling_center_id">{{__('Therapy center')}}</label>
     </div>

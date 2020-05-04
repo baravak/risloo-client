@@ -71,7 +71,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('dashboard.rooms.index')}}">
+                    <a class="nav-link" href="{{route('dashboard.cases.index')}}">
                         <span class="d-sm-inline">{{__('Cases')}}</span>
                     </a>
                 </li>

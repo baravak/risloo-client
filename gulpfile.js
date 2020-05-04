@@ -12,11 +12,11 @@ function css() {
 }
 
 function js() {
-    return src('resources/js/app/**/*.js', {sourcemaps: true})
+    return src('resources/js/app/*.js', {sourcemaps: true})
         .pipe(concat('app.js'))
         .pipe(minify({
             ext: {
-                min: '.js'
+                min: '.min.js'
             },
         }))
         .pipe(dest('public/js', { sourcemaps: false }))
@@ -27,7 +27,7 @@ function dashboardJs() {
         .pipe(concat('dashboard.js'))
         .pipe(minify({
             ext: {
-                min: '.js'
+                min: '.min.js'
             },
         }))
         .pipe(dest('public/js', { sourcemaps: false }))
@@ -42,7 +42,7 @@ function watchFile()
 {
     watch('resources/sass/**/*.scss', css);
     watch('resources/sass/**/*.scss', DashboardCss);
-    watch('resources/js/app/**/*.js', js);
+    watch('resources/js/app/*.js', js);
     watch('resources/js/dashboard/**/*.js', dashboardJs);
 }
 exports.js = js;
