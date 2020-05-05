@@ -55,6 +55,7 @@
     "Counseling center" : "مرکز مشاوره",
     "My clinic" : "کلینیک من",
     "Therapy rooms" : "اتاق‌های درمان",
+    "Therapy room": "اتاق درمان",
     "Awaiting for acception" : "در انتظار برای پذیرش",
     "You are is :position of this cenetr" : "شما :position این مرکز درمانی هستید",
     "My :type profile": "پروفایل :type من",
@@ -71,5 +72,9 @@
     "Sessions" : "جلسات",
     "Personal clinic of :user" : "کلینیک شخصی :user",
     "Therapy room of :user": "اتاق درمان :user",
-    "in" : "در"
+    "in" : "در",
+    "Create new room": "ایجاد اتاق درمان جدید",
+    "Create room": "ایجاد اتاق درمان",
+    "Select :attribute" : "انتخاب :attribute",
+    ":type users" : "کاربران :type"
 }
