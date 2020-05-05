@@ -1,6 +1,6 @@
 <div class="row">
     @foreach ($centers as $center)
-        <div class="col-xl-3">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
             <div class="card mb-3">
                 <div class="card-wall d-flex align-items-center px-3 border-bottom">
                     <div class="card-wall-media">
