@@ -40,24 +40,24 @@
                     <div class="mb-3">
                         {!!$center->owner->type != 'psychologist' ? '<span class="fs-12">مدیر مرکز درمانی</span> <a href="" class="text-decoration-none text-dark font-weight-bold fs-12">دکتر جان‌بزرگی</a>' : '&nbsp;'!!}
                     </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">
+                    <div class="p-3">
+                        <div class="border-bottom py-3">
                             <i class="far fa-at ml-2"></i>
                             <a href="#" class="text-decoration-none text-dark fs-14">
                                 username
                             </a>
-                        </li>
-                        <li class="list-group-item">
+                        </div>
+                        <div class="border-bottom py-3">
                             <i class="far fa-mobile ml-2"></i>
                             <a href="tel:+989121111111" class="fs-14 text-decoration-none text-dark">
                                 +989121111111
                             </a>
-                        </li>
-                        <li class="list-group-item">
+                        </div>
+                        <div class="py-3">
                             <i class="far fa-map-marker-alt ml-2"></i>
                             <address class="d-inline-block fs-14 mb-0">ایران، تهران، درب اول، پلاک یک</address>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
