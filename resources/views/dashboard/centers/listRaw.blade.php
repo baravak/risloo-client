@@ -3,7 +3,9 @@
         <div class="card-wall d-flex align-items-center px-3 border-bottom">
             <div class="card-wall-media">
                 <a href="#" class="media media-primary rounded-circle">
-                    <span>ح</span>
+                    <span>
+                        {{mb_substr($center->owner->name, 0, 2)}}
+                    </span>
                 </a>
             </div>
             <div class="px-3">
