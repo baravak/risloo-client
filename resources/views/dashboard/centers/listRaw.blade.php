@@ -1,6 +1,6 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" data-xhr="center-list-{{$center->id}}">
-    <div class="card card-center mb-3">
-        <div class="card-wall d-flex align-items-center px-3 border-bottom">
+    <div class="card card-center mb-3 overflow-hidden">
+        <div class="card-wall d-flex align-items-center px-3 border-bottom trianglify-0">
             <div class="card-wall-media">
                 <a href="#" class="media media-primary rounded-circle">
                     <span>
