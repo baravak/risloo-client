@@ -48,14 +48,14 @@
                     <i class="far fa-map-marker-alt fs-12"></i> <address class="d-inline fs-12 mb-0">ایران، تهران، درب اول، پلاک یک</address>
                 </div>
                 <div class="col-5 text-left direction-ltr">
-                    <div class="row">
-                        <div class="col-12">
+                    <div>
+                        <div>
                             <i class="far fa-at fs-12"></i>
                             <a href="#" class="text-decoration-none text-dark fs-14">
                                 {{$center->owner->username}}
                             </a>
                         </div>
-                        <div class="col-12">
+                        <div>
                             <i class="far fa-mobile fs-12"></i>
                             <a href="tel:+989121111111" class="fs-14 text-decoration-none text-dark">
                                 {{$center->owner->mobile ?: '-'}}
