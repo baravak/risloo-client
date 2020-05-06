@@ -1,8 +1,8 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" data-xhr="center-list-{{$center->id}}">
     <div class="card card-center mb-3 overflow-hidden">
-        <div class="card-wall d-flex align-items-center px-3 border-bottom trianglify-{{$center->created_at->timestamp % 16}}">
+        <div class="card-wall d-flex align-items-center px-3 border-bottom trianglify-pattern-{{$center->created_at->timestamp % 16}}">
             <div class="card-wall-media">
-                <a href="#" class="media media-primary rounded-circle">
+                <a href="#" class="media media-light rounded-circle">
                     <span>
                         {{mb_substr($center->owner->name, 0, 2)}}
                     </span>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body trianglify-color-{{$center->created_at->timestamp % 16}}">
             <div class="row">
                 <div class="col-7">
                     <i class="far fa-map-marker-alt fs-12"></i> <address class="d-inline fs-12 mb-0">ایران، تهران، درب اول، پلاک یک</address>
