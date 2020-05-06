@@ -7,14 +7,14 @@
                 </a>
             </div>
             <div class="px-3">
-                <div class="row px-3">
-                    <h6>
+                <div>
+                    <h6 class="font-weight-bolder">
                         <a href="{{$center->owner->route('show')}}" class="text-decoration-none text-dark">
                             @displayName($center->owner)
                         </a>
                     </h6>
                 </div>
-                <div class="row px-3">
+                <div>
                     @isset($center->acception->position)
                         <div class="fs-10">شما <strong>{{__(ucfirst($center->acception->position))}}</strong> این مرکز درمانی هستید</div>
                     @endisset
@@ -60,7 +60,6 @@
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
