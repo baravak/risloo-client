@@ -17,9 +17,10 @@
                     </h6>
                 </div>
                 <div>
-                    @isset($center->acception->position)
-                        <div class="fs-10">شما <strong>{{__(ucfirst($center->acception->position))}}</strong> این مرکز درمانی هستید</div>
-                    @endisset
+                    @if(isset($center->acception->position) && $center->acception->accepted_at && !$center->acception->kicked_at)
+
+                        <div class="fs-10"><strong>{{__('You are is :position of this cenetr', ['position' => ucfirst($center->acception->position)])}}</strong></div>
+                    @endif
                     @can('acception', $center)
                         @if ($center->allows('acception') == 'request')
                             <a href="{{route('dashboard.centers.request')}}" class="btn btn-sm btn-primary fs-10" data-lijax="click" data-method="POST" data-name="center_id" data-value="{{$center->id}}">

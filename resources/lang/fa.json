@@ -43,6 +43,7 @@
     "Therapy centers" : "مراکز درمانی",
     "Clinic name" : "نام کلینیک",
     "Personal_clinic" : "کلینیک شخصی",
+    "Personal clinic": "کلینیک شخصی",
     "Acception request" : "درخواست پذیرش",
     "Accepted": "پذیرش شده",
     "Counseling_center": "مرکز مشاوره",
@@ -76,5 +77,6 @@
     "Create new room": "ایجاد اتاق درمان جدید",
     "Create room": "ایجاد اتاق درمان",
     "Select :attribute" : "انتخاب :attribute",
-    ":type users" : "کاربران :type"
+    ":type users" : "کاربران :type",
+    "Clients" : "مراجعان"
 }

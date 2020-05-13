@@ -8,5 +8,7 @@ class TherapyCase extends API
         'owner' => User::class,
         'manager' => User::class,
         'creator' => User::class,
+        'clients' => RelationshipUser::class,
+        'room' => Room::class
     ];
 }

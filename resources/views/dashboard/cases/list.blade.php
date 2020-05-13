@@ -3,7 +3,8 @@
         <thead>
             <tr>
                 <th>@sortView($cases, 'id', '#')</th>
-                <th>{{__('Title')}}</th>
+                <th>{{__('Room')}}</th>
+                <th>{{__('Clients')}}</th>
             </tr>
         </thead>
         <tbody>

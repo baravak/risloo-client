@@ -1,19 +1,27 @@
-<tr data-xhr="room-list-{{$room->id}}">
+<tr data-xhr="case-list-{{$case->id}}">
     <td>
-        @id($room)
+        @id($case)
     </td>
     <td>
-        <a href="{{$room->manager->route('show')}}" class="text-decoration-none d-block pl-2">
-            @if ($room->type == 'clinic')
-                {{__('Personal clinic of :user', ['user' => $room->manager->name])}}
+        <a href="{{$case->manager->route('show')}}" class="text-decoration-none d-block">
+            {{$case->manager->name}}
+        </a>
+        <a href="{{$case->room->center->owner->route('show')}}" class="badge badge-light">
+            @if ($case->room->type == 'room')
+                {{$case->room->center->owner->name}}
             @else
-                {{__('Therapy room of :user', ['user' => $room->manager->name])}}
+                {{__('Personal clinic')}}
             @endif
         </a>
-        @if ($room->type != 'clinic')
-        <a href="{{$room->owner->route('show')}}" class="badge badge-light p-2">
-            @displayName($room->owner)
-        </a>
-        @endif
+    </td>
+    <td>
+        @foreach ($case->clients as $item)
+            <a href="{{$item->user->route('show')}}" class="text-decoration-none d-inline-block">
+                {{$item->user->name}}
+            </a>
+            @if (!$loop->last)
+                -
+            @endif
+        @endforeach
     </td>
 </tr>
