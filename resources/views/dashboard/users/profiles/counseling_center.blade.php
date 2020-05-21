@@ -21,8 +21,12 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-6 col-xl-3 profile-separator">
                         <div class="d-flex align-items-center mb-3">
-                            <div href="#" class="media media-xl rounded-circle">
-                                <img src="{{$user->avatar_url->url('large')}}" alt="Avatar">
+                            <div href="#" class="media media-primary media-xl rounded-circle" title="{{ $user->name ?: __('?') }}">
+                                @if (isset($user->name))
+                                    <span>{{ Illuminate\Support\Str::substr($user->name, 0, 1) }}</span>
+                                @else
+                                    <span>?</span>
+                                @endif
                             </div>
                             <div class="px-3">
                                 <div class="fs-14 font-weight-bold">{{$user->name ?: __('Anonymouse')}}</div>
