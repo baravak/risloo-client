@@ -24,9 +24,7 @@
                                     </a>
                                 @endif
                             </div>
-                            <div class="fs-14 font-weight-bold mb-1">
-                                #1310
-                            </div>
+                            <div class="fs-14 font-weight-bold mb-1">#1310</div>
                             @include('dashboard.users.profiles.centerAcception', ['center' => $user->center])
                         </div>
                     </div>

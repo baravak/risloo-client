@@ -17,9 +17,7 @@
                 {{__('Awaiting for acception')}}
             </span>
             @elseif($center->acception && $center->acception->accepted_at)
-            <span class="d-flex align-items-baseline">
                 <span class="fs-12">{{__("You are is :position of this cenetr", ['position' => __(ucfirst($center->acception->position))])}}</span>
-            </span>
         @endif
     @endcan
 </div>
