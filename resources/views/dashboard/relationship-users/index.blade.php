@@ -11,8 +11,8 @@
                             <h6>{{__('Creator')}}</h6>
                             <div class="d-flex align-items-center mb-3">
                                 <h1></h1>
-                                <div href="#" class="media media-xl rounded-circle">
-                                    <img src="{{$relationship->creator->avatar_url->url('large')}}" alt="Avatar">
+                                <div class="media media-lg media-primary rounded-circle">
+                                    <span>{{ mb_substr($relationship->creator->name, 0, 2) }}</span>
                                 </div>
                                 <div class="px-3">
                                     <div class="fs-14 font-weight-bold">
@@ -27,8 +27,8 @@
                         <div class="col-sm-6 col-lg-6 col-xl-3 profile-separator">
                             <h6>{{__('Owner')}}</h6>
                             <div class="d-flex align-items-center mb-3">
-                                <div href="#" class="media media-xl rounded-circle">
-                                    <img src="{{$relationship->owner->avatar_url->url('large')}}" alt="Avatar">
+                                <div class="media media-lg media-primary rounded-circle">
+                                    <span>{{ mb_substr($relationship->owner->name, 0, 2) }}</span>
                                 </div>
                                 <div class="px-3">
                                     <div class="fs-14 font-weight-bold">
@@ -43,8 +43,8 @@
                         <div class="col-sm-6 col-lg-6 col-xl-3 profile-separator">
                             <h6>{{__('Manager')}}</h6>
                             <div class="d-flex align-items-center mb-3">
-                                <div href="#" class="media media-xl rounded-circle">
-                                    <img src="{{$relationship->manager->avatar_url->url('large')}}" alt="Avatar">
+                                <div class="media media-lg media-primary rounded-circle">
+                                    <span>{{ mb_substr($relationship->manager->name, 0, 2) }}</span>
                                 </div>
                                 <div class="px-3">
                                     <div class="fs-14 font-weight-bold">
