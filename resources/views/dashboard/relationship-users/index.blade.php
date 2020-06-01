@@ -20,7 +20,9 @@
                                             {{$relationship->creator->name ?: __('Anonymouse')}}
                                         </a>
                                     </div>
-                                    <div class="fs-12 direction-ltr text-left d-inline-block text-color-1">@username($relationship->creator->username)</div>
+                                    @isset($relationship->creator->username)
+                                        <div class="fs-12 direction-ltr text-left d-inline-block text-color-1">@username($relationship->creator->username)</div>
+                                    @endisset
                                 </div>
                             </div>
                         </div>
@@ -36,7 +38,9 @@
                                             {{$relationship->owner->name ?: __('Anonymouse')}}
                                         </a>
                                     </div>
-                                    <div class="fs-12 direction-ltr text-left d-inline-block text-color-1">@username($relationship->owner->username)</div>
+                                    @isset($relationship->owner->username)
+                                        <div class="fs-12 direction-ltr text-left d-inline-block text-color-1">@username($relationship->owner->username)</div>
+                                    @endisset
                                 </div>
                             </div>
                         </div>
@@ -52,7 +56,9 @@
                                             {{$relationship->manager->name ?: __('Anonymouse')}}
                                         </a>
                                     </div>
-                                    <div class="fs-12 direction-ltr text-left d-inline-block text-color-1">@username($relationship->manager->username)</div>
+                                    @isset($relationship->manager->username)
+                                        <div class="fs-12 direction-ltr text-left d-inline-block text-color-1">@username($relationship->manager->username)</div>
+                                    @endisset
                                 </div>
                             </div>
                         </div>
