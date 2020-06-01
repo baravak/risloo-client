@@ -109,8 +109,8 @@
         @foreach ($users as $user)
             <div class="col-xl-2">
                 <div class="card">
-                    <div class="card-header">
-                            <a href="#" class="fs-14 font-weight-bold">@displayName($user->user)</a>
+                    <div class="card-header trianglify-pattern-2">
+                        <a href="#" class="fs-14 font-weight-bold text-dark text-decoration-none">@displayName($user->user)</a>
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-3">
@@ -122,7 +122,7 @@
                                         @endforeach
                                     </select>
                                 @else
-                                    <a href="{{ $user->creator->route('show') }}">
+                                    <a href="{{ $user->creator->route('show') }}" class="font-weight-bold">
                                         @displayName($user->creator)
                                     </a>
                                 @endif
@@ -145,7 +145,7 @@
                             {{__(ucfirst($user->accepted_at))}}
                         </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer bg-white">
                         <div class="fs-12">
                             @if($user->allows('status'))
                                 <button class="btn btn-light btn-sm fs-10" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
