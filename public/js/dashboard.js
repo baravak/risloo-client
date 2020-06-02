@@ -1,6 +1,8 @@
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     base.each(function () {
-
+        // $('#room_id.sample-create', this).on('change', function(){
+        //     console.log(this);
+        // });
     });
 });
 
@@ -27,4 +29,13 @@ function select2result_room(data, option){
         return span;
     }
     return data.text;
+}
+
+function select2result_case_clients(data, option) {
+    if (!data.all) return data.text;
+    var clients = [];
+    data.all.clients.forEach(function(client){
+        clients.push(client.user.name || client.user.id);
+    });
+    return $('<span></span>').text(clients.join('- ')).addClass('fs-12');
 }

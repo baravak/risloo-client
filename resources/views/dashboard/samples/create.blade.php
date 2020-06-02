@@ -15,9 +15,15 @@
     @endisset
 
     <div class="form-group form-group-m">
-        <select class="select2-select form-control form-control-m" data-template="room" name="psychologist_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="psychologist_id" data-url="{{route('dashboard.rooms.index')}}">
+        <select class="select2-select form-control form-control-m sample-create" data-relation="case_id" data-template="room" name="room_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{route('dashboard.rooms.index')}}">
         </select>
-        <label for="psychologist_id">{{__('Room')}}</label>
+        <label for="room_id">{{__('Room')}}</label>
+    </div>
+
+    <div class="form-group form-group-m">
+        <select class="select2-select form-control form-control-m has-clear" data-relation="client_id" data-template="case_clients" name="case_id" data-title="manager.name manager.id" id="case_id" data-url-pattern="{{route('dashboard.cases.index', ['room' => '%%'])}}">
+        </select>
+        <label for="case_id">{{__('Case')}}</label>
     </div>
 
     @isset($client)
@@ -42,10 +48,4 @@
         <label for="client_id">{{__('Client')}}</label>
     </div>
     @endisset
-
-    <div class="form-group form-group-m">
-        <select class="select2-select form-control form-control-m tag-type" multiple name="term_id" id="term_id" data-url="{{route('dashboard.terms.index', auth()->user()->type != 'admin' ? ['creator' => auth()->user()->id] : null)}}">
-        </select>
-        <label for="term_id">{{__('Scale')}}</label>
-    </div>
 @endsection

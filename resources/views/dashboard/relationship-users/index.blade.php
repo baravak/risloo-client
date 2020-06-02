@@ -115,9 +115,9 @@
         @foreach ($users as $user)
             <div class="col-xl-3">
                 <div class="card">
-                    <div class="card-header trianglify-pattern-2 d-flex align-items-center">
+                    <div class="card-header trianglify-pattern-{{$user->user->color}} d-flex align-items-center">
                         <div class="media media-light rounded-circle ml-3">
-                            <span>{{mb_substr($user->name, 0, 2)}}</span>
+                            <span>@avatarOrName($user->user)</span>
                         </div>
                         <a href="#" class="fs-16 font-weight-bold text-dark text-decoration-none">@displayName($user->user)</a>
                     </div>

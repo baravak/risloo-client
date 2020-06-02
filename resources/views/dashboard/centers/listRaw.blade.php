@@ -4,7 +4,7 @@
             <div class="card-wall-media">
                 <a href="#" class="media media-light rounded-circle">
                     <span>
-                        {{mb_substr($center->owner->name, 0, 2)}}
+                        @avatarOrName($center->owner)
                     </span>
                 </a>
             </div>
