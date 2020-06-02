@@ -113,10 +113,13 @@
     </div>
     <div class="row">
         @foreach ($users as $user)
-            <div class="col-xl-2">
+            <div class="col-xl-3">
                 <div class="card">
-                    <div class="card-header trianglify-pattern-2">
-                        <a href="#" class="fs-14 font-weight-bold text-dark text-decoration-none">@displayName($user->user)</a>
+                    <div class="card-header trianglify-pattern-2 d-flex align-items-center">
+                        <div class="media media-light rounded-circle ml-3">
+                            <span>{{mb_substr($user->name, 0, 2)}}</span>
+                        </div>
+                        <a href="#" class="fs-16 font-weight-bold text-dark text-decoration-none">@displayName($user->user)</a>
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-3">
