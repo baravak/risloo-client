@@ -1,8 +1,20 @@
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     base.each(function () {
-        // $('#room_id.sample-create', this).on('change', function(){
-        //     console.log(this);
-        // });
+        $('#room-tab', this).on('show.bs.tab', function(){
+            $('input, select, checkbox, radio', '#room').removeAttr('disabled');
+            $('input, select, checkbox, radio', '#case').attr('disabled', 'disabled');
+        }).on('hide.bs.tab', function(){
+            $('input, select, checkbox, radio', '#case').removeAttr('disabled');
+            $('input, select, checkbox, radio', '#room').attr('disabled', 'disabled');
+        });
+        $('#room_id.sample-create', this).on('change', function(){
+            // var relation = $('#' + relation_id);
+            // var url = unescape(relation.attr('data-url-pattern')).replace('%%', $(this).val());
+            // relation.attr('data-url', url);
+            // relation.select2('destroy');
+            // $('*', relation).remove();
+            // select2element.call(relation[0]);
+        });
     });
 });
 
