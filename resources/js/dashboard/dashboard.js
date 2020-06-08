@@ -1,11 +1,48 @@
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     base.each(function () {
         $('#room-tab', this).on('show.bs.tab', function(){
-            $('input, select, checkbox, radio', '#room').removeAttr('disabled');
-            $('input, select, checkbox, radio', '#case').attr('disabled', 'disabled');
+            $('input, select, checkbox, radio', '#room').each(function(){
+                if($(this).is('.disabled:disabled')){
+                    $(this).removeAttr('disabled').removeClass('disabled');
+                }
+            });
+            $('input, select, checkbox, radio', '#case').each(function () {
+                if (!$(this).is(':disabled')) {
+                    $(this).attr('disabled', 'disabled').addClass('disabled');
+                }
+            });
         }).on('hide.bs.tab', function(){
-            $('input, select, checkbox, radio', '#case').removeAttr('disabled');
-            $('input, select, checkbox, radio', '#room').attr('disabled', 'disabled');
+            $('input, select, checkbox, radio', '#room').each(function(){
+                if(!$(this).is(':disabled'))
+                {
+                    $(this).attr('disabled', 'disabled').addClass('disabled');
+                }
+            });
+            $('input, select, checkbox, radio', '#case').each(function () {
+                if ($(this).is('.disabled:disabled')) {
+                    $(this).removeAttr('disabled').removeClass('disabled');
+                }
+            });
+        });
+
+
+        $('#room_client_id.sample-page', this).on('change', function(){
+            if (!$(this).val() || !$(this).val().length)
+            {
+                $('#count').removeAttr('disabled');
+            }
+            else
+            {
+                $('#count').attr('disabled', 'disabled');
+            }
+        });
+        $('#count.sample-page', this).on('change', function () {
+            if (!$(this).val()) {
+                $('#room_client_id.sample-page').removeAttr('disabled');
+            }
+            else {
+                $('#room_client_id.sample-page').attr('disabled', 'disabled');
+            }
         });
         $('#room_id.sample-create', this).on('change', function(){
             // var relation = $('#' + relation_id);

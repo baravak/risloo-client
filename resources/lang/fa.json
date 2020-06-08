@@ -78,5 +78,7 @@
     "Create room": "ایجاد اتاق درمان",
     "Select :attribute" : "انتخاب :attribute",
     ":type users" : "کاربران :type",
-    "Clients" : "مراجعان"
+    "Clients" : "مراجعان",
+    "Count" : "تعداد",
+    "Without specified client" : "بدون مراجع مشخص شده"
 }

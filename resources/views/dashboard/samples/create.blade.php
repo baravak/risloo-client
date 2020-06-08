@@ -38,9 +38,13 @@
             </label>
         </div>
         <div class="form-group form-group-m">
-            <select class="select2-select form-control form-control-m has-clear" multiple data-template="users" id="room_client_id" name="room_client_id" data-title="name id" id="client_id" data-url-pattern="{{route('dashboard.room.users.index', ['room' => '%%'])}}" data-placeholder="{{__('Without specified client')}}">
+            <select class="select2-select form-control form-control-m has-clear sample-page" multiple data-template="users" id="room_client_id" name="room_client_id" data-title="name id" id="client_id" data-url-pattern="{{route('dashboard.room.users.index', ['room' => '%%'])}}" data-placeholder="{{__('Without specified client')}}">
             </select>
             <label for="client_id">{{__('Client')}}</label>
+        </div>
+        <div class="form-group form-group-m">
+            <input type="text" class="form-control form-control-m sample-page" id="count" name="count" placeholder="&nbsp;" autocomplete="off">
+            <label for="count">{{__('Count')}}</label>
         </div>
     </div>
 
