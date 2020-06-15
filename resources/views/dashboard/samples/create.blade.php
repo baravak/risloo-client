@@ -29,33 +29,7 @@
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active pt-3" id="room" role="tabpanel" aria-labelledby="room-tab">
-        <div class="richak richak-xs richak-secondary richak-checkbox">
-            <input type="checkbox" name="create_case" id="create_case">
-            <label for="create_case">
-                <span class="richak-icon"></span>
-                ساخت پرونده جدید قبل از انجام تست
-            </label>
-        </div>
-        <div class="form-group form-group-m">
-            <select class="select2-select form-control form-control-m has-clear sample-page" multiple data-template="users" id="room_client_id" name="room_client_id" data-title="name id" id="client_id" data-url-pattern="{{route('dashboard.room.users.index', ['room' => '%%'])}}" data-placeholder="{{__('Without specified client')}}">
-            </select>
-            <label for="client_id">{{__('Client')}}</label>
-        </div>
-        <div class="form-group form-group-m">
-            <input type="text" class="form-control form-control-m sample-page" id="count" name="count" placeholder="&nbsp;" autocomplete="off">
-            <label for="count">{{__('Count')}}</label>
-        </div>
-    </div>
-
-    <div class="tab-pane fade pt-3" id="case" role="tabpanel" aria-labelledby="case-tab">
-        <div class="form-group form-group-m">
-            <select class="select2-select form-control form-control-m has-clear" data-relation="client_id" data-template="case_clients" name="case_id" data-title="manager.name manager.id" id="case_id" data-url-pattern="{{route('dashboard.cases.index', ['room' => '%%'])}}">
-            </select>
-            <label for="case_id">{{__('Case')}}</label>
-        </div>
-    </div>
+    @include('dashboard.samples.createRoom')
+    @include('dashboard.samples.createCase')
 </div>
-
-
 @endsection

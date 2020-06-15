@@ -1,57 +1,91 @@
-$(document).on('statio:global:renderResponse', function (event, base, context) {
-    base.each(function () {
-        $('#room-tab', this).on('show.bs.tab', function(){
-            $('input, select, checkbox, radio', '#room').each(function(){
-                if($(this).is('.disabled:disabled')){
-                    $(this).removeAttr('disabled').removeClass('disabled');
-                }
-            });
-            $('input, select, checkbox, radio', '#case').each(function () {
-                if (!$(this).is(':disabled')) {
-                    $(this).attr('disabled', 'disabled').addClass('disabled');
-                }
-            });
-        }).on('hide.bs.tab', function(){
-            $('input, select, checkbox, radio', '#room').each(function(){
-                if(!$(this).is(':disabled'))
-                {
-                    $(this).attr('disabled', 'disabled').addClass('disabled');
-                }
-            });
-            $('input, select, checkbox, radio', '#case').each(function () {
-                if ($(this).is('.disabled:disabled')) {
-                    $(this).removeAttr('disabled').removeClass('disabled');
-                }
-            });
+$('[data-page=dashboard-samples-create]').on('statio:body:ready', function(){
+    $('#room-tab').on('show.bs.tab', function () {
+        $('input, select, checkbox, radio', '#room').each(function () {
+            if ($(this).is('.disabled:disabled')) {
+                $(this).removeAttr('disabled').removeClass('disabled');
+            }
         });
+        $('input, select, checkbox, radio', '#case').each(function () {
+            if (!$(this).is(':disabled')) {
+                $(this).attr('disabled', 'disabled').addClass('disabled');
+            }
+        });
+    }).on('hide.bs.tab', function () {
+        $('input, select, checkbox, radio', '#room').each(function () {
+            if (!$(this).is(':disabled')) {
+                $(this).attr('disabled', 'disabled').addClass('disabled');
+            }
+        });
+        $('input, select, checkbox, radio', '#case').each(function () {
+            if ($(this).is('.disabled:disabled')) {
+                $(this).removeAttr('disabled').removeClass('disabled');
+            }
+        });
+    });
 
 
-        $('#room_client_id.sample-page', this).on('change', function(){
-            if (!$(this).val() || !$(this).val().length)
+    $('#room_client_id.sample-page').on('change', function () {
+        if (!$(this).val() || !$(this).val().length) {
+            $('#count').removeAttr('disabled');
+        }
+        else {
+            $('#count').attr('disabled', 'disabled');
+        }
+    });
+    $('#count.sample-page').on('change', function () {
+        if (!$(this).val()) {
+            $('#room_client_id.sample-page').removeAttr('disabled');
+        }
+        else {
+            $('#room_client_id.sample-page').attr('disabled', 'disabled');
+        }
+    });
+
+    $('#case_id').on('select2:select', function(event){
+        $('#client-null-tamplate').hide();
+        event.params.data.all.clients.forEach(function(e, i){
+            var template = $('#client-template').clone();
+            template.removeAttr('id');
+            template.removeClass('d-none');
+            $('.data-name', template).text(e.user.name);
+            var avatar = e.user.avatar ? e.user.avatar.small : null;
+            if(avatar)
             {
-                $('#count').removeAttr('disabled');
+                $('img', template).attr('src', e.user.avatar.small.url);
             }
             else
             {
-                $('#count').attr('disabled', 'disabled');
+                $('img', template).remove();
+                $('.media', template).append('<span>' + (e.user.name.substr(0, 1)) + '</span>');
             }
+            $('input', template).attr('id', 'client-' + e.user.id).attr('name', 'client_id[]').attr('value', e.id);
+            $('label', template).attr('for', 'client-' + e.user.id);
+            template.appendTo('#client-list');
         });
-        $('#count.sample-page', this).on('change', function () {
-            if (!$(this).val()) {
-                $('#room_client_id.sample-page').removeAttr('disabled');
+    });
+    $('#case_id').on('change', function(){
+        $('#client-list .richak').remove();
+        if (!$(this).val())
+        {
+            $('#client-null-tamplate').show();
+        }
+    });
+});
+
+$(document).on('statio:global:renderResponse', function (event, base, context) {
+    var selectedTab = location.hash;
+    var tabNav = $('[data-toggle=tab][href$="' + selectedTab + '"]');
+    tabNav.trigger('click');
+
+    base.each(function () {
+        $('[data-toggle=tab]', base).on('click', function () {
+            var href = $(this).attr('href').match(/(\#.+)$/);
+            if (href) {
+                location.hash = href[1];
             }
-            else {
-                $('#room_client_id.sample-page').attr('disabled', 'disabled');
-            }
+
         });
-        $('#room_id.sample-create', this).on('change', function(){
-            // var relation = $('#' + relation_id);
-            // var url = unescape(relation.attr('data-url-pattern')).replace('%%', $(this).val());
-            // relation.attr('data-url', url);
-            // relation.select2('destroy');
-            // $('*', relation).remove();
-            // select2element.call(relation[0]);
-        });
+
     });
 });
 
