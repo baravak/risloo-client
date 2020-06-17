@@ -10,7 +10,7 @@ class SampleController extends Controller
 {
     public function index(Request $request)
     {
-        $this->data->assessments = Assessment::apiIndex($request->all(['order', 'sort', 'parent', 'creator']));
+        $this->data->samples = Sample::apiIndex($request->all(['order', 'sort', 'parent', 'creator']));
         return $this->view($request, 'dashboard.samples.index');
     }
 

@@ -32,6 +32,17 @@ function dashboardJs() {
         }))
         .pipe(dest('public/js', { sourcemaps: false }))
 }
+
+function sampleEngine() {
+    return src('resources/js/sampleEngine.js', { sourcemaps: true })
+        .pipe(concat('sampleEngine.js'))
+        .pipe(minify({
+            ext: {
+                min: '.min.js'
+            },
+        }))
+        .pipe(dest('public/js', { sourcemaps: false }))
+}
 function DashboardCss() {
     return src('resources/sass/dashboard.scss')
         .pipe(sass())
@@ -44,8 +55,9 @@ function watchFile()
     watch('resources/sass/**/*.scss', DashboardCss);
     watch('resources/js/app/*.js', js);
     watch('resources/js/dashboard/**/*.js', dashboardJs);
+    watch('resources/js/sampleEngine.js', sampleEngine);
 }
 exports.js = js;
 exports.css = css;
 exports.watchFile = watchFile;
-exports.default = parallel(js, dashboardJs, css, DashboardCss, watchFile);
+exports.default = parallel(js, dashboardJs, css, DashboardCss, sampleEngine, watchFile);

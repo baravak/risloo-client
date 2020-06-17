@@ -4,6 +4,11 @@ namespace App;
 class Sample extends API
 {
     public $endpointPath = '$/samples';
+
+    public static function form($serial)
+    {
+        return (new static)->execute("%s/$serial");
+    }
     // public function route($name)
     // {
     //     $route = parent::route($name);
@@ -13,8 +18,8 @@ class Sample extends API
     //     }
     //     return $route;
     // }
-    // public function getSerialAttribute()
-    // {
-    //     return [substr($this->id, 0, 1), substr($this->id, 1)];
-    // }
+    public function getSerialAttribute()
+    {
+        return [substr($this->id, 0, 1), substr($this->id, 1)];
+    }
 }
