@@ -42,7 +42,7 @@
             if (status != 'success')
             {
                 $('#sync_alert').removeClass('d-none');
-                $("#sync_status").text('خطا! تلاش دوباره...');
+                $("#sync_status").text('درحال تلاش دوباره...');
                 for (var i = 0; i < data.length; i++) {
                     sync_log.push(data[i]);
                 }
@@ -85,10 +85,22 @@
             blockEvents = false;
             return;
         }
+        else if(current > items.length)
+        {
+            panel = 'close';
+            itemElement.hide();
+            $('#description').hide();
+            $('#title').html('پایان نمونه‌گیری');
+            $('#close').show();
+            globalDesign();
+            blockEvents = false;
+            return;
+        }
         var item = items[current-1];
-        if (panel == 'description')
+        if (panel != 'item')
         {
             $('#description').hide();
+            $('#close').hide();
             panel = 'item';
             itemElement.show();
         }
@@ -107,17 +119,22 @@
 
     function next()
     {
-        current = parseInt(Math.min(Math.max(0, ++current), items.length));
-        location.hash = '#' + current
+        current = parseInt(Math.min(Math.max(0, ++current), items.length + 1));
+        location.hash = '#' + current;
     }
 
     function prev() {
-        current = parseInt(Math.min(Math.max(0, --current), items.length));
+        current = parseInt(Math.min(Math.max(0, --current), items.length + 1));
         location.hash = '#' + current;
     }
     function globalDesign()
     {
-        $('#nav-count').text(current);
+        $('#nav-count option').removeAttr('selected');
+        if ($('#nav-count select').is(':disabled'))
+        {
+            $('#nav-count select').removeAttr('disabled');
+        }
+        $('option[value=' + current +']').attr('selected', 'selected');
         var progress = (current * 100) / items.length;
         $("#progress").css('width', progress + '%').attr('aria-valuenow', progress);
         if (current == 0)
@@ -128,7 +145,7 @@
         {
             $('#nav-prev').removeClass('disabled').attr('href', '#' + (current - 1));
         }
-        if (current == items.length) {
+        if (current > items.length) {
             $('#nav-next').addClass('disabled').removeAttr('href');
         }
         else
@@ -215,11 +232,24 @@
         current = parseInt(location.hash.replace('#', ''));
         display();
     });
-    if(/^#\d+$/.test(location.hash))
-    {
-        $(window).trigger('hashchange');
-    }
     $(document).ready(function () {
+        var navigation_selection = $('<select class="form-control"></select>');
+        navigation_selection.on('change', function(){
+            if (blockEvents){
+                return false;
+            }
+            location.hash = '#' + $(this).val();
+            $(this).attr('disabled', 'disabled');
+        });
+        $('<option value="0">#</option>').appendTo(navigation_selection);
+        items.forEach(function(item, index) {
+            $('<option value="' + (index + 1) + '">' + (index + 1) + '</option>').appendTo(navigation_selection);
+        });
+        $('<option value="' + (items.length + 1) + '">پایان</option>').appendTo(navigation_selection);
+        $('#nav-count').append(navigation_selection);
+        if (/^#\d+$/.test(location.hash)) {
+            $(window).trigger('hashchange');
+        }
         if (typeof (Storage) !== "undefined") {
             data = [];
             if ((sData = localStorage.getItem(sample_id))) {

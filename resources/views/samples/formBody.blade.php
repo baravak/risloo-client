@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-md-5">
     <div class="card test-card shadow-sm mb-3">
         <div class="card-body">
             <div class="card-title" id="title">{{$sample->scale}} <sup><small>{{$sample->edition}}</small></sup></div>
@@ -13,6 +13,10 @@
                     <li>برای رفتن به تست قبلی از کلید‌ <kbd>→</kbd> استفاده کنید</li>
                 </ul>
             </div>
+            <div class="mb-5" style="display: none" id="close">
+                اگر از اتمام تست مطمئن هستید و به تمامی گزینه‌ها پاسخ داده‌اید می‌توانید دکمه پایان را بزنید. بعد از زدن این دکمه، دیگر قادر به ویرایش تست نمی‌باشید
+            </div>
+
             <div id="item" class="mb-5" style="display: none"></div>
             <div id="template" style="display: none">
                 <div class="radio">
@@ -28,8 +32,8 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-baseline">
-                <div class="d-flex">
-                    <span class="font-weight-bold" id="nav-count">0</span>
+                <div class="d-flex align-items-center">
+                    <span class="font-weight-bold" id="nav-count"></span>
                     <span class="px-1">از</span>
                     <span class="font-weight-bold">{{count($sample->items)}}</span>
                 </div>
