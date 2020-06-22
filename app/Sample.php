@@ -5,9 +5,9 @@ class Sample extends API
 {
     public $endpointPath = '$/samples';
 
-    public static function form($serial)
+    public static function postItems($serial, $items)
     {
-        return (new static)->execute("%s/$serial");
+        return (new static)->execute("%s/$serial/items", ['items' => $items], 'POST');
     }
     // public function route($name)
     // {

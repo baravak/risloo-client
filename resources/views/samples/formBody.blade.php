@@ -35,7 +35,7 @@
                 </div>
 
                 <div>
-                    <span class="text-color-2 ml-2 fs-14">بدون تغییر</span>
+                    <span class="text-color-2 ml-2 fs-10" id="sync_status" title="وضعیت ذخیره‌سازی روی سرور">بدون تغییر</span>
                     <a class="btn btn-sm btn-light disabled direct" style="min-width: 50px;" id="nav-prev">
                         <i class="far fa-chevron-right align-middle"></i>
                     </a>
@@ -46,9 +46,26 @@
             </div>
         </div>
     </div>
-    <div class="alert alert-warning" role="alert">
-        در صورت قطع ارتباط با سرور می‌توانید تست را تا آخر ادامه داده و نتیجه را ذخیره کنید.
-        <a href="#" class="btn btn-sm btn-warning">دریافت فایل تست</a>
+    <div class="alert alert-info d-none" role="alert" id="sync_alert">
+        ارتباط شما با سرور قطع شده است!
+        <ul>
+            <li>شما می‌توانید بدون مشکل به کار خود ادامه دهید</li>
+            <li>سیستم به صورت خودکار این ارتباط را چک می‌کند و در صورت اتصال گزینه‌های پاسخ‌داده شده را ذخیره می‌کند</li>
+            <li>
+                اگر تا انتهای نمونه‌گیری ارتباط شما برقرار نشد طبق مراحل زیر عمل کنید
+                <ol>
+                    <li>
+                        بر روی <a href="#" class="btn btn-sm btn-info fs-10 direct" id="download">دریافت فایل تست</a> کلیک کنید
+                    </li>
+                    <li>
+                        فایل دانلودی را پیش خود نگه‌داری کنید
+                    </li>
+                    <li>
+                        فایل را به صورت دستی به روان‌شناس یا اپراتور مرکز مشاوره تحویل داده یا مستقما در پنل کاربری خود بارگزاری کنید
+                    </li>
+                </ol>
+            </li>
+        </ul>
     </div>
 </div>
 

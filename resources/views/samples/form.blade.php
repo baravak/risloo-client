@@ -8,9 +8,10 @@
 
 @include('layouts.public-scripts')
 @section('body')
-    <body class="rtl pt-5" data-page="{{isset($global->page) ? $global->page : ''}}">
+    <body class="rtl pt-5 mt-md-5" data-page="{{isset($global->page) ? $global->page : ''}}">
         @include('samples.formBody')
         <script>
+            var sample_id = '{{substr($sample->id, 1)}}';
             var items = {!! $items !!};
         </script>
         @yield('scripts')

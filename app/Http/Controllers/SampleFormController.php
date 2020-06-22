@@ -56,4 +56,10 @@ class SampleFormController extends Controller
             $js .= $key ? "\"$key\" : $value" : "$value";
         }
     }
+
+    public function storeItems(Request $request, $serial)
+    {
+        $sync = Sample::postItems($serial, $request->items);
+        return $sync->response()->json();
+    }
 }
