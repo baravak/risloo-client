@@ -9,6 +9,11 @@ class Sample extends API
     {
         return (new static)->execute("%s/$serial/items", ['items' => $items], 'POST');
     }
+
+    public static function close($serial)
+    {
+        return (new static)->execute("%s/$serial/close", [], 'POST');
+    }
     // public function route($name)
     // {
     //     $route = parent::route($name);

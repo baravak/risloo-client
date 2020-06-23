@@ -14,7 +14,19 @@
                 </ul>
             </div>
             <div class="mb-5" style="display: none" id="close">
+                <p>
                 اگر از اتمام تست مطمئن هستید و به تمامی گزینه‌ها پاسخ داده‌اید می‌توانید دکمه پایان را بزنید. بعد از زدن این دکمه، دیگر قادر به ویرایش تست نمی‌باشید
+                </p>
+                <div id="empty_list">
+
+                </div>
+                <div id="close-btn" class="d-none">
+                    <p>
+                    اگر با خطا مواجه شدید، بر روی دریافت تست بزنید و فایل دریافتی را به روان‌شناس یا اپراتور مرکزمشاوره تحویل دهید
+                    </p>
+                    <a href="{!! urldecode(route('samples.close', substr($sample->id, 1)))!!}" data-method="POST" data-lijax class="btn btn-primary">اتمام تست</a>
+                    <a id="download-close" href="#" class="btn btn-secondary">دریافت فایل تست</a>
+                </div>
             </div>
 
             <div id="item" class="mb-5" style="display: none"></div>
@@ -46,6 +58,11 @@
                     <a href="#1" class="btn btn-sm btn-light direct" style="min-width: 50px;" id="nav-next">
                         <i class="far fa-chevron-left align-middle"></i>
                     </a>
+                    <div>
+                        <label class="fs-10">
+                            <input type="checkbox" id="skip"> پرش روی تست‌های خالی
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

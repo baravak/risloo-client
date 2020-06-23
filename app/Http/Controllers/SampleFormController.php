@@ -19,6 +19,10 @@ class SampleFormController extends Controller
         $js = preg_replace("#,$#", '', $js);
         $js .= '];';
         $this->data->items = $js;
+        if($sample->status == 'closed')
+        {
+            return $this->view($request, 'samples.closed');
+        }
         return $this->view($request, 'samples.form');
     }
 
@@ -61,5 +65,14 @@ class SampleFormController extends Controller
     {
         $sync = Sample::postItems($serial, $request->items);
         return $sync->response()->json();
+    }
+
+    public function close(Request $request, $serial)
+    {
+        $close = Sample::close($serial);
+        return $close->response()->json([
+            'redirect' => urldecode(route('samples.form', $serial)),
+            'direct' => true
+        ]);
     }
 }

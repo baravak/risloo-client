@@ -7,6 +7,7 @@
     var blockEvents = false;
     var sync = false;
     var sync_log = [];
+    var skip = false;
     // var trysts = [0, 1, 2, 3, 4, 5, 10, 15];
     var trysts = [0, 1, 2];
     var try_count = 0;
@@ -30,9 +31,9 @@
     function send()
     {
         sync = true;
-        $("#sync_status").text('درحال ذخیره سازی...');
         var data = sync_log;
         sync_log = [];
+        $("#sync_status").text('درحال ذخیره سازی...');
         $.ajax({
             dataType: "json",
             url: '/$/' + sample_id + '/items',
@@ -87,10 +88,27 @@
         }
         else if(current > items.length)
         {
+            if(!$('#skip').is(':checked')){
+                $('#skip').trigger('click');
+            }
             panel = 'close';
             itemElement.hide();
             $('#description').hide();
             $('#title').html('پایان نمونه‌گیری');
+            $('#empty_list *').remove();
+            var hasEmpty = false;
+            items.forEach(function(item, index){
+                if (!item.user_answered)
+                {
+                    hasEmpty = true;
+                    $('#empty_list').append('<a class="d-inline-block m-2" href="#'+ (index + 1) +'">' + (index + 1) + '</a>');
+                }
+            });
+            console.log(hasEmpty);
+            if (!hasEmpty)
+            {
+                $('#close-btn').removeClass('d-none');
+            }
             $('#close').show();
             globalDesign();
             blockEvents = false;
@@ -186,6 +204,16 @@
         });
     }
 
+    function firstEmpty(){
+        for (var i = 0; i < items.length; i++) {
+            if (!items[i].user_answered)
+            {
+                return i;
+            }
+        }
+        return undefined;
+    }
+
     function answerSelect(id){
         id = parseInt(id);
         items[current - 1].user_answered = id;
@@ -198,6 +226,7 @@
                 $(this).fadeTo('fast', .2);
             }
         });
+        current = skip ? (firstEmpty() || items.length  ) : current;
         setTimeout(next, 500);
     }
 
@@ -233,6 +262,16 @@
         display();
     });
     $(document).ready(function () {
+        $('#skip').on('click', function(){
+            if($(this).is(':checked'))
+            {
+                skip = true;
+            }
+            else
+            {
+                skip = false;
+            }
+        });
         var navigation_selection = $('<select class="form-control"></select>');
         navigation_selection.on('change', function(){
             if (blockEvents){
@@ -268,14 +307,14 @@
         }
     });
 
-    $('#download').on('click', function(){
+    $('#download, #download-close').on('click', function(){
         var data = [sample_id];
         for (var i = 0; i < items.length; i++) {
             data.push(items[i].user_answered);
         }
-        var text = data.join(',');
+        var text = data.join('\n');
         var fileType = 'plain/text';
-        var fileName = sample_id + '.risloo';
+        var fileName = sample_id + '.csv';
         var blob = new Blob([text], { type: fileType });
 
         var a = document.createElement('a');
