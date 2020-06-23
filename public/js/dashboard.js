@@ -45,8 +45,8 @@ $('[data-page=dashboard-samples-create]').on('statio:body:ready', function(){
         $('#client-null-tamplate').hide();
         event.params.data.all.clients.forEach(function(e, i){
             var template = $('#client-template').clone();
-            template.removeAttr('id');
             template.removeClass('d-none');
+            template.removeAttr('id');
             $('.data-name', template).text(e.user.name);
             var avatar = e.user.avatar ? e.user.avatar.small : null;
             if(avatar)
