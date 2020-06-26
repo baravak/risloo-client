@@ -58,9 +58,10 @@
                     <a href="#1" class="btn btn-sm btn-light direct" style="min-width: 50px;" id="nav-next">
                         <i class="far fa-chevron-left align-middle"></i>
                     </a>
-                    <div>
-                        <label class="fs-10">
-                            <input type="checkbox" id="skip"> پرش روی تست‌های خالی
+                    <div class="custom-control custom-checkbox mt-3">
+                        <input type="checkbox" class="custom-control-input" id="skip">
+                        <label class="custom-control-label fs-10 align-middle" for="skip">
+                            <span style="display: inline-block; margin-top: 5px;">پرش روی تست‌های خالی</span>
                         </label>
                     </div>
                 </div>
