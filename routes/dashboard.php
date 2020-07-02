@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::resource('samples', 'SampleController', ['except' => ['delete', 'show', 'edit', 'update']]);
+Route::resource('samples', 'SampleController', ['except' => ['delete', 'edit', 'update']]);
 Route::resource('assessments', 'AssessmentController', ['except' => ['destroy', 'create', 'store', 'update']]);
 Route::resource('relationships', 'RelationshipController', ['except' => ['destroy', 'show']]);
 Route::resource('relationships/{relationship}/users', 'RelationshipUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'relationship']);
@@ -21,3 +21,5 @@ Route::resource('cases', 'CaseController');
 
 Route::post('users/request', 'UserController@request')->name('users.request');
 Route::post('users/accept', 'UserController@accept')->name('users.accept');
+
+Route::post('samples/{sample}/scoring', 'SampleController@scoring')->middleware('auth')->name('samples.scoring');

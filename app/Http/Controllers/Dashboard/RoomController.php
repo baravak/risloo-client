@@ -19,7 +19,7 @@ class RoomController extends Controller
     }
     public function store(Request $request)
     {
-        return Room::apiStore($request->all());
+        return Room::apiStore($request->all())->response()->json(['redirect' => route('dashboard.rooms.index')]);
     }
 
     public function show(Request $request, $relationship)

@@ -19,7 +19,7 @@ class CaseController extends Controller
     }
     public function store(Request $request)
     {
-        return TherapyCase::apiStore($request->all());
+        return TherapyCase::apiStore($request->all())->response()->json(['redirect' => route('dashboard.cases.index')]);
     }
 
     public function show(Request $request, $relationship)

@@ -10,15 +10,17 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>@sortView($samples, 'id', '#')</th>
-                            <th>@sortView($samples, 'title')</th>
+                            <th>@sortView($samples, 'id', __('Serial'))</th>
+                            <th>@sortView($samples, 'sample')</th>
+                            <th>@sortView($samples, 'client')</th>
                             <th>
-                                @sortView($samples, 'parent')
-                                @filterView($samples, 'parent')
+                                @sortView($samples, 'room')
                             </th>
                             <th>
-                                @sortView($samples, 'creator')
-                                @filterView($samples, 'creator')
+                                @sortView($samples, 'case')
+                            </th>
+                            <th>
+                                @sortView($samples, 'status')
                             </th>
                             <th></th>
                         </tr>
@@ -30,15 +32,39 @@
                                     @id($sample)
                                 </td>
                                 <td>
-                                    {{ $sample->title }}
+                                    {{ $sample->scale->title }} <sup>{{$sample->version}}</sup> <small>{{$sample->edition}}</small>
                                 </td>
                                 <td>
-
+                                    @displayName($sample->client)
                                 </td>
                                 <td>
+                                    <div class="d-flex align-items-center fs-12">
+                                        <div class="ml-2">
+                                            <a href="#" class="media media-light rounded-circle">
+                                            <span>
+                                                @avatarOrName($sample->room->manager)
+                                            </span>
+                                        </a>
+                                        </div>
+                                        <div>
+                                            <div class="font-weight-bold">
+                                                @displayName($sample->room->manager)
+                                            </div>
+                                            <div>
+                                                @if ($sample->room->manager->id == $sample->room->owner->id)
+                                                    {{__('Personal clinic')}}
+                                                @else
+                                                    @displayName($sample->room->owner)
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td>
-
+                                    {{$sample->case->id}}
+                                </td>
+                                <td>
+                                    {{__(ucfirst($sample->status))}}
                                 </td>
                             </tr>
                         @endforeach

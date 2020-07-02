@@ -84,5 +84,8 @@
     "Create a case before doing the sample" : "ساخت پرونده قبل از انجام نمونه",
     "Without create case": "بدون ساختن پرونده جدید",
     "Create individual case": "ساخت پرونده درمانی به ازای هر نمونه",
-    "Create group case": "ساخت یک پرونده گروهی برای همه نمونه‌ها"
+    "Create group case": "ساخت یک پرونده گروهی برای همه نمونه‌ها",
+    "Open" : "باز",
+    "Seald" : "بازنشده",
+    "Scoring" : "نمرده‌دهی"
 }

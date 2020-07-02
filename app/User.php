@@ -32,6 +32,13 @@ class User extends _User
 
     public function getColorAttribute()
     {
-        return $this->created_at->timestamp % 16;
+        if($this->created_at)
+        {
+            return $this->created_at->timestamp % 16;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }

@@ -1,7 +1,7 @@
 @extends('dashboard.create')
 @section('form_content')
 @isset($scale)
-    <div class="form-group form-group-m">
+<div class="form-group form-group-m">
     <input type="hidden" id="scale_id" name="scale_id" value="{{$scale->id}}">
     <input type="text" class="form-control form-control-m" value="{{$scale->title}}" disabled placeholder="&nbsp;" autocomplete="off">
     <label for="scale_id">{{__('Scale')}}</label>

@@ -10,7 +10,7 @@ class SampleFormController extends Controller
     public function form(Request $request, $serial)
     {
         $sample = $this->data->sample = Sample::apiShow($serial);
-        $this->data->global->title = $sample->scale . '-' . $sample->edition;
+        $this->data->global->title = $sample->scale->title . '-' . $sample->edition;
         $js = '[';
         foreach ($this->data->sample->items as $key => $value) {
             $this->jsObjectGenerate(null, $value, $js);
@@ -19,6 +19,20 @@ class SampleFormController extends Controller
         $js = preg_replace("#,$#", '', $js);
         $js .= '];';
         $this->data->items = $js;
+
+        $js = 'null';
+        if($this->data->sample->prerequisite)
+        {
+            $js = '[';
+            foreach ($this->data->sample->prerequisite as $key => $value) {
+                $this->jsObjectGenerate(null, $value, $js);
+                $js .= ',';
+            }
+            $js = preg_replace("#,$#", '', $js);
+            $js .= ']';
+        }
+        $this->data->prerequisite = $js;
+
         if($sample->status == 'closed')
         {
             return $this->view($request, 'samples.closed');
@@ -63,7 +77,7 @@ class SampleFormController extends Controller
 
     public function storeItems(Request $request, $serial)
     {
-        $sync = Sample::postItems($serial, $request->items);
+        $sync = Sample::postItems($serial, $request->all());
         return $sync->response()->json();
     }
 

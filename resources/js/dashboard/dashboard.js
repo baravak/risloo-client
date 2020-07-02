@@ -1,3 +1,16 @@
+$('[data-page=dashboard-samples-show]').on('statio:body:ready', function () {
+    $('#editable', this).on('change', function(){
+        if ($(this).is(':checked'))
+        {
+            $('.form-items').removeAttr('disabled');
+        }
+        else
+        {
+            $('.form-items').attr('disabled', 'disabled');
+        }
+    });
+});
+
 $('[data-page=dashboard-samples-create]').on('statio:body:ready', function(){
     $('#room-tab').on('show.bs.tab', function () {
         $('input, select, checkbox, radio', '#room').each(function () {
@@ -83,9 +96,12 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
             if (href) {
                 location.hash = href[1];
             }
-
         });
-
+        $('.score_data', this).each(function(){
+            var score = JSON.parse($(this).text());
+            var chart_function = ($(this).attr('data-scale-id'));
+            score_chart[chart_function].call(this, score);
+        });
     });
 });
 

@@ -32,8 +32,21 @@ class SampleController extends Controller
 
     public function store(Request $request)
     {
-        $sample = Sample::apiStore($request->all());
-        dd($sample);
+        return Sample::apiStore($request->all());
+    }
 
+    public function show(Request $request, $serial){
+        $sample = $this->data->sample = Sample::apiShow($serial);
+        $this->data->global->title = $sample->scale->title . ' - ' . $sample->client->name;
+        return $this->view($request, 'dashboard.samples.show');
+    }
+
+    public function scoring(Request $request, $serial)
+    {
+        $scoring = $this->data->sample = Sample::scoring($serial);
+        return $scoring->response()->json([
+            'replace' => true,
+            'redirect' => urldecode(route('dashboard.samples.show', $serial))
+            ]);
     }
 }

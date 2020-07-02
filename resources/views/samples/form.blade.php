@@ -12,6 +12,7 @@
         @include('samples.formBody')
         <script>
             var sample_id = '{{substr($sample->id, 1)}}';
+            var prerequisite = {!! $prerequisite !!};
             var items = {!! $items !!};
         </script>
         @yield('scripts')
