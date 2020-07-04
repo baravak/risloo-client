@@ -125,7 +125,8 @@
         }
         var current_view = $('#nav-count option[value=' + (panel == 'item' ? current : panel) + ']');
         current_view.attr('selected', 'selected');
-        var progress = (current * 100) / items.length;
+        var progress = panel == 'item' ? (current * 100) / items.length : 0;
+
         $("#progress").css('width', progress + '%').attr('aria-valuenow', progress);
 
         if (current_view.prev()[0])
@@ -291,9 +292,14 @@
     $('#download, #download-close').on('click', function(){
         var data = [sample_id];
         for (var i = 0; i < items.length; i++) {
-            data.push(items[i].user_answered);
+            data.push(items[i].user_answered || null);
         }
         var text = data.join('\n');
+        var information = [];
+        $('input, select, textarea', '[data-panel=information] form').each(function(){
+            information.push($(this).val().replace(',', ''));
+        });
+        text = text.replace(/^([^\n]+)/, "$1," + information.join(','));
         var fileType = 'plain/text';
         var fileName = sample_id + '.csv';
         var blob = new Blob([text], { type: fileType });
