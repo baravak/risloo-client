@@ -73,6 +73,8 @@
     "Sessions" : "جلسات",
     "Personal clinic of :user" : "کلینیک شخصی :user",
     "Therapy room of :user": "اتاق درمان :user",
+    "Therapy room of :user in :center": "اتاق درمان :user در :center",
+    ":user in :center": ":user در :center",
     "in" : "در",
     "Create new room": "ایجاد اتاق درمان جدید",
     "Create room": "ایجاد اتاق درمان",
