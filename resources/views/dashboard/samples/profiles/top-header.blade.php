@@ -15,17 +15,16 @@
                 <br>@displayName($sample->owner)
             </div>
         </td>
-        <td class="pr-2">
+        <td class="pr-2" style="width: 85%">
             <div class="row ">
-
             @foreach ($sample->prerequisite as $item)
                 @isset($item->user_answered)
                 <div class="col-4">
                     <span>{{$item->text}}</span>
                     <strong>
-                            {{in_array($item->answer->type, ['option', 'select']) ? $item->answer->options[$item->user_answered - 1] : $item->user_answered}}
-                        </strong>
-                    </div>
+                        {{in_array($item->answer->type, ['option', 'select']) ? $item->answer->options[$item->user_answered - 1] : $item->user_answered}}
+                    </strong>
+                </div>
                 @endisset
             @endforeach
             </div>
