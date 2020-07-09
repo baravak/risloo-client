@@ -265,7 +265,7 @@ score_chart['16PF-93'] = function(scores){
 
 }
 
-$('[data-page=dashboard-samples-show]').on('statio:body:ready', function () {
+$('body').on('statio:dashboard:samples:show', function () {
     $('#editable', this).on('change', function(){
         if ($(this).is(':checked'))
         {
@@ -278,7 +278,11 @@ $('[data-page=dashboard-samples-show]').on('statio:body:ready', function () {
     });
 });
 
-$('[data-page=dashboard-samples-create]').on('statio:body:ready', function(){
+$('body').on('statio:dashboard:reserves:create', function () {
+
+});
+
+$('body').on('statio:dashboard:samples:create', function(){
     $('#room-tab').on('show.bs.tab', function () {
         $('input, select, checkbox, radio', '#room').each(function () {
             if ($(this).is('.disabled:disabled')) {
@@ -374,6 +378,11 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 
 
 function select2result_room(data, option){
+    if (!data.all && data.element)
+    {
+        data.all = JSON.parse($(data.element).attr('data-json'));
+        $(data.element).attr('data-json', '');
+    }
     if (data.all) {
         var span = $('<div class="d-flex align-items-center fs-12 d-inline-block"><span class="media media-sm media-primary"><img alt="A"></span><div class="pr-1"><div class="font-weight-bold data-name"></div><div class="fs-10 data-id"></div></div></div>');
         var avatar = select2find_data(data.all, $(this).attr('data-avatar') || 'avatar.tiny.url avatar.small.url');

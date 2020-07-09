@@ -24,3 +24,6 @@ Route::post('users/accept', 'UserController@accept')->name('users.accept');
 
 Route::post( 'samples/{sample}/scoring', 'SampleController@scoring')->middleware('auth')->name('samples.scoring');
 Route::get('samples/{sample}/profile', 'SampleController@profile')->middleware('auth')->name('samples.profile');
+
+
+Route::resource('reserves', 'ReserveController');

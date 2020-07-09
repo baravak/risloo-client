@@ -89,5 +89,11 @@
     "Create group case": "ساخت یک پرونده گروهی برای همه نمونه‌ها",
     "Open" : "باز",
     "Seald" : "بازنشده",
-    "Scoring" : "نمرده‌دهی"
+    "Scoring" : "نمرده‌دهی",
+    "Reservation" : "نوبت‌دهی",
+    "Week" : "هفته",
+    "Start time" : "زمان شروع",
+    "Finish time": "زمان پایان",
+    "Session duration" : "مدت‌زمان جلسه",
+    "Calendar" : "تقویم"
 }

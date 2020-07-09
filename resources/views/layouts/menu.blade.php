@@ -84,6 +84,11 @@
             </ul>
         </div>
     </li>
+    <li class="nav-item">
+            <a class="nav-link text-truncate" href="{{route('dashboard.reserves.index')}}">
+                <span class="d-sm-inline">{{__('Reservation')}}</span>
+            </a>
+        </li>
 @endif
 @parent
     @can('dashboard.assessments.viewAny')
