@@ -14,4 +14,8 @@ class RoomPolicy
             return true;
         }
     }
+
+    public function create(){
+        return true;
+    }
 }
