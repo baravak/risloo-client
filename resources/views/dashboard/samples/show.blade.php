@@ -5,9 +5,21 @@
     <div class="card-header">
         <h5 class="card-title">
             {{ $sample->scale->title }} <small> / {{$sample->client->name}}</small>
-            <a href="{!!urldecode(route('dashboard.samples.scoring', $sample->id))!!}" data-method="POST" class="badge badge-info fs-12 p-1 lijax">
-                {{__("Scoring")}}
-            </a>
+            @if ($sample->status != 'scored')
+                <a href="{!!urldecode(route('dashboard.samples.scoring', $sample->id))!!}" data-method="POST" class="badge badge-info fs-12 p-1 lijax">
+                    {{__("Scoring")}}
+                </a>
+            @endif
+            @isset($sample->attachments->profile_png)
+                <a href="{!!$sample->attachments->profile_png->url!!}" target="_blank" class="badge badge-info fs-10 p-1">
+                    {{__("Download profile as image")}}
+                </a>
+            @endisset
+            @isset($sample->attachments->profile_pdf)
+                <a href="{!!$sample->attachments->profile_pdf->url!!}" target="_blank" class="badge badge-info fs-10 p-1">
+                    {{__("Download profile as pdf")}}
+                </a>
+            @endisset
         </h5>
         <div class="text-center col-12 col-xl-10 mx-auto">
             @isset($sample->attachments->profile_svg)

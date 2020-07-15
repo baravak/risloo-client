@@ -96,5 +96,7 @@
     "Finish time": "زمان پایان",
     "Session duration" : "مدت‌زمان جلسه",
     "Calendar" : "تقویم",
-    "Create reserve" : "ساختن نوبت"
+    "Create reserve" : "ساختن نوبت",
+    "Download profile as image" : "تصویری",
+    "Download profile as pdf": "PDF"
 }
