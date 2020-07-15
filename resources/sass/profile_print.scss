@@ -1,18 +1,18 @@
-@page {
-    size: A4;
-    margin: 10mm 10mm 10mm 10mm;
-}
-div.page:last-of-type{
-    margin-bottom: 1.5cm;
-}
-@media print {
-    div.page{
-        page-break-after: always;
-        &:not(:first-of-type){
-            margin-top: 1.5cm;
-        }
-    }
-}
+// @page {
+//     size: A4;
+//     margin: 10mm 10mm 10mm 10mm;
+// }
+// div.page:last-of-type{
+//     margin-bottom: 1.5cm;
+// }
+// @media print {
+//     div.page{
+//         page-break-after: always;
+//         &:not(:first-of-type){
+//             margin-top: 1.5cm;
+//         }
+//     }
+// }
 
 div.page{
     color: #2f2f2f;

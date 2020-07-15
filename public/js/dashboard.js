@@ -279,7 +279,30 @@ $('body').on('statio:dashboard:samples:show', function () {
 });
 
 $('body').on('statio:dashboard:reserves:create', function () {
+    $('#started_at').on('change', function(event, picker, unix){
+        var start = $("#calendar").attr('data-from');
+        var end = $("#calendar").attr('data-to');
+        var val = $(this).val();
+        if (start <= val && end >= val){
 
+        }
+        else
+        {
+            new Statio({
+                type: 'render',
+                context: this,
+                ajax: {
+                    cache: false,
+                    method: 'get',
+                    data: {
+                        room_id: $('#room_id').val(),
+                        time: val
+                    }
+                },
+                url: $("#calendar").attr('data-url')
+            });
+        }
+    });
 });
 
 $('body').on('statio:dashboard:samples:create', function(){

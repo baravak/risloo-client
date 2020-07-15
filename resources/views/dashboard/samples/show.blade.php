@@ -9,6 +9,11 @@
                 {{__("Scoring")}}
             </a>
         </h5>
+        <div class="text-center col-12 col-xl-10 mx-auto">
+            @isset($sample->attachments->profile_svg)
+                <img src="{{$sample->attachments->profile_svg->url}}" style="width: 100%;height: auto;">
+            @endisset
+        </div>
     </div>
     <div class="card-body">
         @include('dashboard.samples.scales.' . substr($sample->scale->id, 1))

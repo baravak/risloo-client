@@ -17,6 +17,12 @@
         @endif
     </td>
     <td>
+        <a href="{{route('dashboard.reserves.create', ['room_id' => $room->id])}}" class="text-primary text-decoration-none">
+            <i class="far fa-address-book"></i>
+            {{__('Members')}}
+        </a>
+    </td>
+    <td>
         @can('details', $room)
             <a href="{{route('dashboard.room.users.index', $room->id)}}" class="text-primary text-decoration-none">
                 <i class="far fa-address-book"></i>

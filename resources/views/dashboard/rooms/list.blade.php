@@ -4,6 +4,8 @@
             <tr>
                 <th>@sortView($rooms, 'id', '#')</th>
                 <th>{{__('Title')}}</th>
+                <th>{{__('Reservation')}}</th>
+                <th>تنظیمات</th>
             </tr>
         </thead>
         <tbody>

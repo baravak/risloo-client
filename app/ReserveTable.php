@@ -7,15 +7,7 @@ class ReserveTable
     public function __construct($reserves)
     {
         $hours = $this->fillHours($reserves);
-        $hours = $this->minLength($hours);
-        $hours = $this->spaces($hours);
-        foreach ($hours as $key => $hour) {
-            if(!is_int($hour)){
-                $hours[$key] = '...';
-            }
-        }
         $this->hours = $hours;
-        $positions = [];
         $this->group = $groups = $this->groupByDay($reserves);
         $this->tablePosition($groups);
     }
@@ -28,6 +20,13 @@ class ReserveTable
         }
         $hours = array_unique($hours);
         sort($hours);
+        $hours = $this->minLength($hours);
+        $hours = $this->spaces($hours);
+        foreach ($hours as $key => $hour) {
+            if (!is_int($hour)) {
+                $hours[$key] = '...';
+            }
+        }
         return $hours;
     }
 
@@ -59,6 +58,10 @@ class ReserveTable
             if($hours[$i] - $hours[$i - 1] > 3)
             {
                 $change[] = $hours[$i - 1] + .3;
+            }
+            elseif ($hours[$i] - $hours[$i - 1] == 2)
+            {
+                $change[] = $hours[$i -1 ] + 1;
             }
         }
         sort($change);

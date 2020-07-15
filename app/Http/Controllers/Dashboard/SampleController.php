@@ -49,13 +49,4 @@ class SampleController extends Controller
             'redirect' => urldecode(route('dashboard.samples.show', $serial))
             ]);
     }
-
-    public function profile(Request $request, $serial){
-        $sample = $this->data->sample = Sample::apiShow($serial);
-        $this->data->global->title = $sample->id;
-        if($request->has('single')){
-            $this->data->global->title .= '-single';
-        }
-        return $this->view($request, 'dashboard.samples.profile');
-    }
 }

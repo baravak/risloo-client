@@ -33,5 +33,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource('dashboard.relationships', 'App\Policies\RelationshipPolicy');
         Gate::resource('dashboard.assessments', 'App\Policies\AssessmentPolicy');
         Gate::resource('dashboard.relationship.users', 'App\Policies\RelationshipUserPolicy');
+        Gate::resource('dashboard.rooms', 'App\Policies\RoomPolicy');
+        Gate::define('dashboard.rooms.admin', 'App\Policies\RoomPolicy@admin');
     }
 }
