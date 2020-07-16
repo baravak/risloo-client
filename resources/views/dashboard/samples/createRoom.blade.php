@@ -1,4 +1,4 @@
-<div class="tab-pane fade show active pt-3" id="room" role="tabpanel" aria-labelledby="room-tab">
+<div class="tab-pane fade pt-3" id="room" role="tabpanel" aria-labelledby="room-tab">
     <div class="form-group mb-0">
         <label>{{__('Create a case before doing the sample')}}</label>
         <div class="richak richak-xs richak-secondary richak-radio">

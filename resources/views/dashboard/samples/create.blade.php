@@ -21,15 +21,15 @@
 </div>
 
 <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+    {{-- <li class="nav-item">
+        <a class="nav-link direct fs-14" id="room-tab" data-toggle="tab" href="#room" role="tab" aria-controls="room" aria-selected="true">{{__('Room')}}</a>
+    </li> --}}
     <li class="nav-item">
-        <a class="nav-link active direct fs-14" id="room-tab" data-toggle="tab" href="#room" role="tab" aria-controls="room" aria-selected="true">{{__('Room')}}</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link direct fs-14" id="case-tab" data-toggle="tab" href="#case" role="tab" aria-controls="case" aria-selected="false">{{__('Case')}}</a>
+        <a class="nav-link direct fs-14 active" id="case-tab" data-toggle="tab" href="#case" role="tab" aria-controls="case" aria-selected="false">{{__('Case')}}</a>
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-    @include('dashboard.samples.createRoom')
+    {{-- @include('dashboard.samples.createRoom') --}}
     @include('dashboard.samples.createCase')
 </div>
 @endsection

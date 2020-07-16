@@ -1,3 +1,6 @@
+@section('form-title')
+    {{__('Create new room-user')}}
+@endsection
 @extends('dashboard.create')
 @section('form_content')
     <div class="form-group form-group-m">

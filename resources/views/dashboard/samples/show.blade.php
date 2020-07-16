@@ -21,9 +21,9 @@
                 </a>
             @endisset
         </h5>
-        <div class="text-center col-12 col-xl-10 mx-auto">
+        <div class="text-center col-12 col-xl-6 mx-auto">
             @isset($sample->attachments->profile_svg)
-                <img src="{{$sample->attachments->profile_svg->url}}" style="width: 100%;height: auto;">
+                <img src="{{$sample->attachments->profile_svg->url}}" style="width: 100%;height: auto;" id="x">
             @endisset
         </div>
     </div>
@@ -68,4 +68,37 @@
         </form>
     </div>
 </div>
+{{-- <style>
+    body{
+        overflow: hidden;
+    }
+    .frame {
+        background: rgba(0, 0, 0, .8);
+        box-shadow: 0 0 0px 10000px rgba(0, 0, 0, .8);
+        height: 100vh;
+        width: 100vw;
+
+        text-align: center;
+        margin: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+        z-index: 999;
+        direction: ltr;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .frame img {
+        margin: auto;
+        display: block
+    }
+</style>
+<div class="frame">
+
+    @isset($sample->attachments->profile_svg)
+        <img src="{{$sample->attachments->profile_svg->url}}" style="width: auto; height: 95%;;">
+    @endisset
+</div> --}}
 @endsection

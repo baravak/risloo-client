@@ -10,7 +10,7 @@ class SampleController extends Controller
 {
     public function index(Request $request)
     {
-        $this->data->samples = Sample::apiIndex($request->all(['order', 'sort', 'parent', 'creator']));
+        $this->data->samples = Sample::apiIndex($request->all());
         return $this->view($request, 'dashboard.samples.index');
     }
 
@@ -32,7 +32,10 @@ class SampleController extends Controller
 
     public function store(Request $request)
     {
-        return Sample::apiStore($request->all());
+        $sample = Sample::apiStore($request->all());
+        return $sample->response()->json([
+            'redirect' => urldecode(route('dashboard.samples.index', ['ids' => $sample->pluck('id')->toArray()]))
+        ]);
     }
 
     public function show(Request $request, $serial){

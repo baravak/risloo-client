@@ -16,7 +16,7 @@ class ReserveController extends Controller
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $this->data->module->result = 'reserve';
+        $this->data->module->singular = 'reserve';
     }
     public function index(Request $request)
     {
@@ -50,6 +50,7 @@ class ReserveController extends Controller
 
     public function create(Request $request)
     {
+        $this->data->global->title = __('Create new reserve');
         // dd((new User())->execute('me'));
         // dd(auth()->user());
         $this->viewMode($request);

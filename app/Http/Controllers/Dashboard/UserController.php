@@ -12,6 +12,7 @@ class UserController extends _UserController
 {
     public function showPsychologist(Request $request, User $user)
     {
+
         $this->data->rooms = Room::apiIndex($request->all());
     }
     public function showCounselingCenter(Request $request, User $user)
@@ -31,6 +32,10 @@ class UserController extends _UserController
     {
         $this->data->center = Center::accept($request->Ccenter_id);
         return $this->view($request, 'dashboard.users.profiles.centerAcception');
+    }
+
+    public function index(Request $request){
+        return parent::index($request);
     }
 
 }

@@ -1,4 +1,4 @@
-<div class="tab-pane fade pt-3" id="case" role="tabpanel" aria-labelledby="case-tab">
+<div class="tab-pane fade show active pt-3" id="case" role="tabpanel" aria-labelledby="case-tab">
     <div class="form-group form-group-m">
         <select class="select2-select form-control form-control-m has-clear" data-template="case_clients" name="case_id" data-title="manager.name manager.id" id="case_id" data-url-pattern="{{route('dashboard.cases.index', ['room' => '%%'])}}">
         </select>

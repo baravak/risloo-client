@@ -56,11 +56,20 @@ Breadcrumbs::for('dashboard.rooms.create', function ($trail, $data) {
 
 Breadcrumbs::for('dashboard.room.users.index', function ($trail, $data) {
     $trail->parent('dashboard.rooms.index', $data);
-    $trail->push(request()->route()->parameters['room']);
+    $trail->push($data['room']->id);
     $trail->push(__(':type users', ['type' => __('Therapy room')]), route('dashboard.rooms.index'));
 });
 
 Breadcrumbs::for('dashboard.room.users.create', function ($trail, $data) {
     $trail->parent('dashboard.room.users.index', $data);
     $trail->push(__('Create new room-user'), route('dashboard.room.users.create', request()->route()->parameters['room']));
+});
+
+Breadcrumbs::for('dashboard.reserves.index', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+    $trail->push(__('Reservation'), route('dashboard.reserves.index'));
+});
+Breadcrumbs::for('dashboard.reserves.create', function ($trail, $data) {
+    $trail->parent('dashboard.reserves.index', $data);
+    $trail->push(__('Create new reserve'), route('dashboard.reserves.create'));
 });
