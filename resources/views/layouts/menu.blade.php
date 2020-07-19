@@ -24,20 +24,26 @@
     }
     @endphp
     @if ($authCenters->count())
-        @if ($authCenters->where('type' , 'counseling_center')->count() == 1)
+        @if ($authCenters->count() == 1)
             <li class="nav-item">
-                <a class="nav-link text-truncate" href="{{route('dashboard.users.show', $authCenters->where('type' , 'counseling_center')->first()->owner->id)}}">
-                    <span class="d-sm-inline">{{$authCenters->where('type' , 'counseling_center')->first()->owner->name}}</span>
+                <a class="nav-link text-truncate" href="{{route('dashboard.users.show', $authCenters->first()->owner->id)}}">
+                    <span>
+                        @if ($authCenters->first()->owner->type != 'counseling_center')
+                            {{__("Personal clinic of :user", ['user' => $authCenters->first()->owner->name])}}
+                        @else
+                            {{$authCenters->first()->owner->name}}
+                        @endif
+                    </span>
                 </a>
             </li>
-        @elseif ($authCenters->where('type' , 'counseling_center')->count() < 4)
+        @elseif ($authCenters->count() < 4)
             <li class="nav-item">
                 <a class="nav-link text-truncate direct" href="{{route('dashboard.home')}}#my-therapy-centers-menu" data-toggle="collapse" data-target="#my-therapy-centers-menu" aria-expanded="true">
                     <span class="d-sm-inline">{{__('My therapy centers')}}</span>
                 </a>
                 <div class="collapse show" id="my-therapy-centers-menu" aria-expanded="false">
                     <ul class="flex-column nav p-0">
-                        @foreach (auth()->user()->centers->where('type' , 'counseling_center') as $item)
+                        @foreach (auth()->user()->centers as $item)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('dashboard.users.show', $item->owner->id)}}">
                                     <span>{{$item->owner->name}}</span>

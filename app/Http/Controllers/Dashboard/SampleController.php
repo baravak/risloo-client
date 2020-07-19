@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Assessment;
+use App\Policies\SamplePolicy;
 use App\Sample;
 use App\User;
 use Illuminate\Http\Request;
@@ -40,6 +41,7 @@ class SampleController extends Controller
 
     public function show(Request $request, $serial){
         $sample = $this->data->sample = Sample::apiShow($serial);
+        $this->authorize('dashboard.samples.management', $sample);
         $this->data->global->title = $sample->scale->title . ' - ' . $sample->client->name;
         return $this->view($request, 'dashboard.samples.show');
     }

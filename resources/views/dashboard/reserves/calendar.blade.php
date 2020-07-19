@@ -38,6 +38,9 @@
                                 از <strong>{{$itemReserve->started_at->format('H:i')}}</strong>
                                 تا <strong>{{$itemReserve->finished_at->format('H:i')}}</strong>
                                 به مدت <strong>{{$itemReserve->finished_at->diffInMinutes($itemReserve->started_at)}}</strong> دقیقه
+                                <a href="" class="text-hover-danger">
+                                    <i class="far fa-times-circle fs-12"></i>
+                                </a>
                             </div>
                         @endforeach
                     </td>
