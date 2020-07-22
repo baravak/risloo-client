@@ -40,10 +40,10 @@
                         <a class="nav-link fs-14" href="#endorsement">نظر اساتید</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#target">جامعه هدف</a>
+                        <a class="nav-link fs-14" href="#services">سرویس‌ها</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#services">سرویس‌ها</a>
+                        <a class="nav-link fs-14" href="#target">جامعه هدف</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-14" href="#price">هزینه‌ها</a>
