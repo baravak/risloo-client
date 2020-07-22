@@ -29,7 +29,13 @@
                         @foreach ($samples as $sample)
                             <tr>
                                 <td>
-                                    @id($sample)
+                                    @can('dashboard.samples.management', $sample)
+                                        @id($sample)
+                                    @elseif(in_array($sample->status, ['seald', 'open']))
+                                        @include('components._id', ['href' => route('samples.form', $sample->id), 'id' => $sample->serial])
+                                    @else
+                                        @include('components._id', ['id' => $sample->serial])
+                                    @endcan
                                 </td>
                                 <td>
                                     {{ $sample->scale->title }} <sup>{{$sample->version}}</sup> <small>{{$sample->edition}}</small>
