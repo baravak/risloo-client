@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="dist/images/logo/logo.svg" alt="" height="32">
+                <img src="{{ asset('/public/images/logo/logo.svg') }}" alt="" height="32">
                 <span class="font-weight-bold">ریسلو</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
