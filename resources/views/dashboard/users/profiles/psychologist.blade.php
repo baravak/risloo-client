@@ -96,19 +96,42 @@
             <div class="card-header">اتاق‌های درمان</div>
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table mb-0">
-                        <thead>
+                    <table class="table mb-0 fs-12">
+                        @foreach ($rooms as $room)
                             <tr>
-                                <th>
-                                    {{__('Title')}}
-                                </th>
-                                <th>
-                                    {{__('Manager')}}
-                                </th>
-                                <th>
-                                </th>
+                                @if ($room->owner->id == $room->manager->id)
+                                    <td>
+                                        <a href="{{route('dashboard.users.show', $room->manager->id)}}" class="text-decoration-none">
+                                            <div class="d-flex align-items-center">
+                                                <div href="#" class="media media-light rounded-circle pl-2">
+                                                    <span>
+                                                        @avatarOrName($room->manager)
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    {{__('Personal clinic of :user', ['user' => $room->manager->name])}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                @else
+                                    <td>
+                                        <a href="{{route('dashboard.users.show', $room->owner->id)}}" class="text-decoration-none">
+                                            <div class="d-flex align-items-center">
+                                                <div href="#" class="media media-light rounded-circle pl-2">
+                                                    <span>
+                                                        @avatarOrName($room->owner)
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    {{$room->owner->name}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                @endif
                             </tr>
-                        </thead>
+                        @endforeach
                     </table>
                 </div>
             </div>
