@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('public.app')
 
-<head>
-    @include('public.head')
-</head>
-
-<body class="rtl">
-    @include('public.header')
-
+@section('content')
     <section class="section-header section-padding" id="home">
         <div class="container">
             <div class="row justify-content-center">
@@ -546,19 +539,4 @@
             </div>
         </div>
     </section>
-
-    @include('public.footer')
-    @include('public.scripts')
-
-    <script>
-        $(document).on("click","a.nav-link",function(e) {
-            e.preventDefault();
-            var id = $(this).attr("href");
-            $('html, body').animate({
-                scrollTop: $(id).offset().top
-            }, 1000);
-        });
-    </script>
-</body>
-
-</html>
+@endsection

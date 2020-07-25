@@ -1,7 +1,13 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+@include('public.head-styles')
 
-<link rel="stylesheet" href="@staticVersion('/public/vendors/bootstrap-4.4.1/css/bootstrap.min.css')">
-<link rel="stylesheet" href="@staticVersion('/public/css/app.css')">
+@section('head')
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Risloo | ریسلو</title>
+        @yield('head-styles')
+
+        <title>@yield('title', isset($global->title) ? $global->title : null )</title>
+    </head>
+@endsection
