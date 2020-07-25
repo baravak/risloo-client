@@ -11,7 +11,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link fs-14" href="#home">خانه</a>
                     </li>
                     <li class="nav-item">
@@ -36,10 +36,10 @@
                         <a class="nav-link fs-14" href="#price">هزینه‌ها</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#price">ورود</a>
+                        <a class="nav-link fs-14" href="/auth">ورود</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#price">عضویت</a>
+                        <a class="nav-link fs-14" href="/register">عضویت</a>
                     </li>
                 </ul>
             </div>
