@@ -57,7 +57,7 @@
                     <div class="col-xl-4">
                         <div class="text-center mb-3 mb-xl-0">
                             <a href="#">
-                                <img src="dist/images/logo/logo.png" alt="">
+                                <img src="{{ asset('/public/images/logo/logo.png') }}" alt="">
                             </a>
                         </div>
                     </div>
