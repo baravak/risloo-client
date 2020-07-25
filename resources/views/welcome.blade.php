@@ -528,13 +528,13 @@
                     <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" style="height: 64px;">
                 </a>
                 <a href="#" class="m-3">
-                    <img src="{{ asset('/public/images/brands/codeinwp.svg') }}" alt="" style="height: 64px;">
+                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" style="height: 64px;">
                 </a>
                 <a href="#" class="m-3">
-                    <img src="{{ asset('/public/images/brands/frontend-masters.png') }}" alt="" style="height: 64px;">
+                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" style="height: 64px;">
                 </a>
                 <a href="#" class="m-3">
-                    <img src="{{ asset('/public/images/brands/icons8.svg') }}" alt="" style="height: 64px;">
+                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" style="height: 64px;">
                 </a>
             </div>
         </div>
