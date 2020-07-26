@@ -36,10 +36,10 @@
                         <a class="nav-link fs-14" href="#price">هزینه‌ها</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="/auth">ورود</a>
+                        <a class="nav-link fs-14" href="/auth" target="_blank">ورود</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="/register">عضویت</a>
+                        <a class="nav-link fs-14" href="/register" target="_blank">عضویت</a>
                     </li>
                 </ul>
             </div>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "159d200fc139539fd55fd0f75f989033",
+    "content-hash": "5209816b83c7d2c60c4ce00598f8af44",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1425,16 +1425,16 @@
         },
         {
             "name": "majazeh/maravel-client",
-            "version": "0.2",
+            "version": "0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/majazeh/maravel-client.git",
-                "reference": "4ed87cc585b776ff2ce2d78b4395a8466a543506"
+                "reference": "a62d6ef6d6c7499f974994eafe87ba607c6af26e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/majazeh/maravel-client/zipball/4ed87cc585b776ff2ce2d78b4395a8466a543506",
-                "reference": "4ed87cc585b776ff2ce2d78b4395a8466a543506",
+                "url": "https://api.github.com/repos/majazeh/maravel-client/zipball/a62d6ef6d6c7499f974994eafe87ba607c6af26e",
+                "reference": "a62d6ef6d6c7499f974994eafe87ba607c6af26e",
                 "shasum": ""
             },
             "require": {
@@ -1471,7 +1471,7 @@
                 }
             ],
             "description": "Majazeh Maravel Client",
-            "time": "2020-03-25T02:51:19+00:00"
+            "time": "2020-07-25T15:19:23+00:00"
         },
         {
             "name": "monolog/monolog",
