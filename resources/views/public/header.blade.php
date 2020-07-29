@@ -1,5 +1,5 @@
 @section('header')
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-main">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('/public/images/logo/logo.svg') }}" alt="" height="32">
