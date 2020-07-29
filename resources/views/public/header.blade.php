@@ -27,7 +27,7 @@
                         <a class="nav-link fs-14" href="#endorsement">نظر اساتید</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#services">سرویس‌ها</a>
+                        <a class="nav-link fs-14" href="#services">خدمات</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-14" href="#target">جامعه هدف</a>
