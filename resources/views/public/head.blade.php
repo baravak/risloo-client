@@ -23,6 +23,6 @@
 
         @yield('head-styles')
 
-        <title>@yield('title', isset($global->title) ? $global->title : null )</title>
+        <title>@yield('title', isset($global->title) ? $global->title : 'ریسلو' )</title>
     </head>
 @endsection
