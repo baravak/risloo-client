@@ -942,14 +942,16 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 				for (var id in d.errors) {
 					var elementBase = $('#' + id + ':not(.hide-input), [data-alias~=' + id + '], [name=' + id +']:not(.hide-input)', this);
 					elementBase.addClass('is-invalid');
-					if (elementBase.is('.form-control-m'))
-					{
-						$('<div class="invalid-feedback">' + d.errors[id][0] + '</div>').insertAfter(elementBase.next('label'));
-					}
-					else
-					{
-						$('<div class="invalid-feedback">' + d.errors[id][0] + '</div>').insertAfter(elementBase);
-					}
+					elementBase.each(function(){
+						if ($(this).is('.form-control-m'))
+						{
+							$('<div class="invalid-feedback">' + d.errors[id][0] + '</div>').insertAfter($(this).next('label'));
+						}
+						else
+						{
+							$('<div class="invalid-feedback">' + d.errors[id][0] + '</div>').insertAfter($(this));
+						}
+					});
 				}
 			}
 		});

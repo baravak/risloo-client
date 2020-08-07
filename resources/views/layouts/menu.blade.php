@@ -1,65 +1,56 @@
 @section('default-menu')
-@if (auth()->user()->type == 'counseling_center')
+@parent
+@php
+    $_centers = auth()->user()->centers ? clone auth()->user()->centers : new Illuminate\Database\Eloquent\Collection();
+    $personal_clinic = null;
+    foreach($_centers as $key => $_center){
+        if($_center->type == 'personal_clinic' && $_center->manager->id == auth()->id())
+        {
+            $_centers->forget($key);
+            $personal_clinic = $_center;
+        }
+    }
+@endphp
+@if ($personal_clinic)
     <li class="nav-item">
-        <a class="nav-link text-truncate" href="{{route('dashboard.users.me')}}">
-            <span class="d-sm-inline">{{auth()->user()->name}}</span>
-        </a>
-    </li>
-@elseif (auth()->user()->type == 'psychologist')
-    <li class="nav-item">
-        <a class="nav-link text-truncate" href="{{route('dashboard.users.me')}}">
-            <span class="d-sm-inline">{{__('My clinic')}}</span>
+        <a class="nav-link text-truncate" href="{{route('dashboard.centers.show', $personal_clinic->id)}}">
+            <span class="d-sm-inline">{{__('My personal clinic')}}</span>
         </a>
     </li>
 @endif
 
-@if (auth()->user()->centers)
-    @php
-    $authCenters = clone auth()->user()->centers;
-    foreach ($authCenters as $key => $value) {
-        if($value->owner->id == auth()->id())
-        {
-            $authCenters->forget($key);
-        }
-    }
-    @endphp
-    @if ($authCenters->count())
-        @if ($authCenters->count() == 1)
-            <li class="nav-item">
-                <a class="nav-link text-truncate" href="{{route('dashboard.users.show', $authCenters->first()->owner->id)}}">
-                    <span>
-                        @if ($authCenters->first()->owner->type != 'counseling_center')
-                            {{__("Personal clinic of :user", ['user' => $authCenters->first()->owner->name])}}
-                        @else
-                            {{$authCenters->first()->owner->name}}
-                        @endif
-                    </span>
-                </a>
-            </li>
-        @elseif ($authCenters->count() < 4)
-            <li class="nav-item">
-                <a class="nav-link text-truncate direct" href="{{route('dashboard.home')}}#my-therapy-centers-menu" data-toggle="collapse" data-target="#my-therapy-centers-menu" aria-expanded="true">
-                    <span class="d-sm-inline">{{__('My therapy centers')}}</span>
-                </a>
-                <div class="collapse show" id="my-therapy-centers-menu" aria-expanded="false">
-                    <ul class="flex-column nav p-0">
-                        @foreach (auth()->user()->centers as $item)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('dashboard.users.show', $item->owner->id)}}">
-                                    <span>{{$item->owner->name}}</span>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </li>
-        @else
+@if ($_centers->count())
+    @if ($_centers->count() == 1)
         <li class="nav-item">
-            <a class="nav-link text-truncate" href="{{route('dashboard.centers.index', ['my' => 1])}}">
-                <span class="d-sm-inline">{{__('My therapy centers')}}</span>
+            <a class="nav-link text-truncate" href="{{route('dashboard.centers.show', $_centers->first()->id)}}">
+                <span>
+                    {{$_centers->first()->detail->title}}
+                </span>
             </a>
         </li>
-        @endif
+    @elseif ($_centers->count() < 4)
+        <li class="nav-item">
+            <a class="nav-link text-truncate direct" href="{{route('dashboard.home')}}#my-therapy-centers-menu" data-toggle="collapse" data-target="#my-therapy-centers-menu" aria-expanded="true">
+                <span class="d-sm-inline">{{__('My therapy centers')}}</span>
+            </a>
+            <div class="collapse show" id="my-therapy-centers-menu" aria-expanded="false">
+                <ul class="flex-column nav p-0">
+                    @foreach ($_centers as $item)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('dashboard.centers.show', $item->id)}}">
+                                <span>{{$item->detail->title}}</span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </li>
+    @else
+    <li class="nav-item">
+        <a class="nav-link text-truncate" href="{{route('dashboard.centers.index', ['my' => 'yes'])}}">
+            <span class="d-sm-inline">{{__('My therapy centers')}}</span>
+        </a>
+    </li>
     @endif
 @endif
 
@@ -96,7 +87,6 @@
             </a>
         </li>
 @endif
-@parent
     @can('dashboard.assessments.viewAny')
         <li class="nav-item">
             <a class="nav-link text-truncate" href="{{route('dashboard.assessments.index')}}">
@@ -121,6 +111,5 @@
             <span class="d-sm-inline">{{__('Therapy centers')}}</span>
         </a>
     </li>
-
 @endsection
 @include('layouts.default-menu')

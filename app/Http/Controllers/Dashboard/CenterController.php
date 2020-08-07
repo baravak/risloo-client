@@ -3,36 +3,52 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Center;
-use App\RelationshipUser;
+use App\CenterUser;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class CenterController extends Controller
 {
     public function index(Request $request)
     {
-        $query = array_merge($request->all(), ['type' => in_array($request->type, ['clinic' , 'counseling_center']) ? $request->type : 'center']);
-
-        $this->data->centers = Center::apiIndex($query);
+        $this->data->centers = Center::apiIndex($request->all());
         return $this->view($request, 'dashboard.centers.index');
     }
 
     public function show(Request $request, $center)
     {
-        $this->data->users = RelationshipUser::apiIndex($center, $request->all());
-        $this->data->relationship = new Center((array) $this->data->users->response('relationship'));
-        return $this->view($request, 'dashboard.relationship-users.index');
+        $center = $this->data->center = Center::apiShow($center);
+        // $this->data->users = CenterUser::apiIndex($center, $request->all());
+        return $this->view($request, 'dashboard.centers.show');
     }
 
-    public function request(Request $request)
+    public function request(Request $request, $center)
     {
-        $this->data->center = Center::request($request->center_id);
+        $this->data->center = Center::request($center);
         return $this->view($request, 'dashboard.centers.listRaw');
     }
 
-    public function accept(Request $request)
+    public function create(Request $request)
     {
-        $this->data->center = Center::accept($request->Ccenter_id);
-        return $this->view($request, 'dashboard.centers.listRaw');
+        $this->authorize('dashboard.centers.create');
+        return $this->view( $request, 'dashboard.centers.create');
+    }
+
+    public function store(Request $request){
+        $this->authorize('dashboard.centers.create');
+        return Center::apiStore($request->all())->response()->json();
+    }
+
+    public function edit(Request $request, $center)
+    {
+        $center = $this->data->center = Center::apiShow($center, array_merge($request->all(), ['summary' => '']));
+        $this->authorize('dashboard.centers.update', [$center, $center]);
+        return $this->view($request, 'dashboard.centers.create');
+    }
+
+    public function update(Request $request, $center)
+    {
+        return Center::apiUpdate($center, $request->all())->response()->json();
     }
 }

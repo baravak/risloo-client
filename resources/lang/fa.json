@@ -9,7 +9,6 @@
     "Reserve": "رزرو",
     "View": "نمایش",
     "Title": "عنوان",
-    "Notic": "توضیحات",
     "User": "کاربر",
     "Term": "دسته‌بندی",
     "Terms": "دسته‌بندی‌ها",
@@ -99,5 +98,13 @@
     "Create reserve" : "ساختن نوبت",
     "Create new reserve": "ساختن پنل نوبت",
     "Download profile as image" : "تصویری",
-    "Download profile as pdf": "PDF"
+    "Download profile as pdf": "PDF",
+    "Unverified" : "تأیید نشده",
+    "Verified": "تأیید شده",
+    "Verify" : "تأیید",
+    "Unverify": "رد کردن",
+    "No attachment" : "بدون ضمیمه",
+    "Use the default user avatar" : "استفاده از تصویر پیش‌فرض کاربر",
+    "Address" : "آدرس",
+    "Optional" : "غیرضروری"
 }

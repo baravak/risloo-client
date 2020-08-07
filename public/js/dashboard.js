@@ -265,6 +265,70 @@ score_chart['16PF-93'] = function(scores){
 
 }
 
+$('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', function(){
+    $('[name=type]', this).on('change', function(event, start){
+        var manage_field = $('#manager_id');
+        var endpoint = manage_field.attr('data-url');
+        var data_url = endpoint;
+        endpoint = url.parse(endpoint);
+        endpoint.get = endpoint.get ? endpoint.get : {};
+        if ($('#type-personal_clinic[name=type]').is(':checked'))
+        {
+            endpoint.get.personal_clinic = 'no';
+        }
+        else
+        {
+            if(!start)
+            {
+                $('#title').val('');
+            }
+            endpoint.get.personal_clinic = 'yes';
+        }
+
+        $('#user-avatar').trigger('change');
+        $('#manager_id').trigger('change');
+        if (url.build(endpoint) != data_url) {
+            manage_field.attr('data-url', url.build(endpoint));
+            $('*', manage_field).remove();
+            manage_field.select2('destroy');
+            select2element.call(manage_field[0]);
+        }
+    });
+    $("#user-avatar").on('change', function(){
+        if (!$('#type-personal_clinic[name=type]').is(':checked'))
+        {
+            $(this).prop('disabled', true);
+            $(this).prop('checked', false);
+            $('#avatar').prop('disabled', false);
+            return true;
+        }
+        else
+        {
+            $(this).prop('disabled', false);
+        }
+        if($(this).is(':checked'))
+        {
+            $('#avatar').prop('disabled', true);
+        }
+        else
+        {
+            $('#avatar').prop('disabled', false);
+        }
+    });
+    $('#manager_id').on('change', function(){
+        if ($('#type-personal_clinic[name=type]').is(':checked')) {
+            $('#title').prop('disabled', true);
+            if ($(this).val())
+            {
+                $('#title').val(i18n('Personal clinic') + ' ' + $('option[value=' + $(this).val() + ']', this).html());
+            }
+        }
+        else {
+            $('#title').prop('disabled', false);
+        }
+    });
+    $('[name=type]').eq(0).trigger('change', [true]);
+});
 $('body').on('statio:dashboard:samples:show', function () {
     $('#editable', this).on('change', function(){
         if ($(this).is(':checked'))

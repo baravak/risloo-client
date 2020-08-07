@@ -3,14 +3,14 @@ namespace App;
 
 class Center extends Relationship
 {
-    public $endpointPath = 'relationships';
-    public static function request($clinic_id)
+    public $with = [
+        'manager' => User::class,
+        'creator' => User::class,
+        'acception' => RelationshipUser::class,
+        'detail' => CenterDetail::class
+    ];
+    public static function request($center)
     {
-        return (new static)->execute('relationships/request', ['clinic_id' => $clinic_id], 'POST');
-    }
-
-    public static function accept($clinic_id)
-    {
-        return (new static)->execute('relationships/accept', ['clinic_id' => $clinic_id], 'POST');
+        return (new static)->execute("centers/$center/request", [], 'POST');
     }
 }
