@@ -389,7 +389,7 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">روان‌درمان‌گرها</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل کارهای اتاق درمان روان‌درمان‌گران</p>
@@ -398,7 +398,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">روان‌شناس‌ها</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل کارهای آموزشی و پژوهشی</p>
@@ -407,7 +407,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">روان‌سنج‌ها</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل اجرای آزمونها، کارهای آماری و اصول روان‌سنجی</p>
@@ -416,7 +416,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">دانشجوها</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل کارهای آموزشی، پژوهشی و پایان‌نامه‌های دانشجویان</p>
@@ -425,7 +425,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">مراکز مشاوره و درمانی</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل اداره مراکز مشاوره و درمانی و مدیریت آن</p>
@@ -434,7 +434,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right text-center text-lg-right">مراجعین مراکز درمانی</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right text-center text-lg-right">تسهیل رزرو و ارتباط مراجع با درمانگر و مرکز درمانی</p>
@@ -443,7 +443,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">افراد عادی برای مهارت‌افزایی</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">آموزش آسان مباحث کاربردی روان‌شناسی برای عموم افراد</p>
@@ -452,7 +452,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">پژوهشگران</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل کارهای پژوهشگران حوزه روان‌شناسی در جهت معرفی منابع، کارهای آماری، ارائه جامعه آماری معتبر، ترجمه منابع معتبر و...</p>
@@ -461,7 +461,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">مشاوران</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل کارهای مشاوران در رابطه با مراجعین خودشان</p>
@@ -470,7 +470,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">راهنمایان مدارس</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل کارهای ارتباطی راهنمایان مدارس با دانش‌آموزان</p>
@@ -479,7 +479,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">مدارس</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">اجرای آزمون‌های روان‌شناختی و آموزش و مهارت‌اموزی دانش‌آموزان مدارس با ریسلو</p>
@@ -488,7 +488,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
-                        <div class="bg-white shadow rounded mb-3 mb-sm-0" style="width: 100px; min-width: 100px; height: 100px;"></div>
+                        <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
                             <h3 class="fs-16 font-weight-bolder text-center text-lg-right">دانشگاه‌</h3>
                             <p class="fs-14 mb-0 text-center text-lg-right">تسهیل آموزش و پژوهش در حوزه روان‌شناسی برای استفاده دانشگاه</p>
@@ -525,16 +525,16 @@
         <div class="container">
             <div class="d-flex flex-wrap justify-content-center">
                 <a href="#" class="m-3">
-                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" style="height: 64px;">
+                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" class="brand-img">
                 </a>
                 <a href="#" class="m-3">
-                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" style="height: 64px;">
+                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" class="brand-img">
                 </a>
                 <a href="#" class="m-3">
-                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" style="height: 64px;">
+                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" class="brand-img">
                 </a>
                 <a href="#" class="m-3">
-                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" style="height: 64px;">
+                    <img src="{{ asset('/public/images/brands/chrome.svg') }}" alt="" class="brand-img">
                 </a>
             </div>
         </div>

@@ -1,5 +1,5 @@
 @section('header')
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-main">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('/public/images/logo/logo.svg') }}" alt="" height="32">
@@ -27,7 +27,7 @@
                         <a class="nav-link fs-14" href="#endorsement">نظر اساتید</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#services">سرویس‌ها</a>
+                        <a class="nav-link fs-14" href="#services">خدمات</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-14" href="#target">جامعه هدف</a>
