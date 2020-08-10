@@ -3,11 +3,16 @@
 @php
     $_centers = auth()->user()->centers ? clone auth()->user()->centers : new Illuminate\Database\Eloquent\Collection();
     $personal_clinic = null;
+    $_admin = false;
     foreach($_centers as $key => $_center){
         if($_center->type == 'personal_clinic' && $_center->manager->id == auth()->id())
         {
             $_centers->forget($key);
             $personal_clinic = $_center;
+        }
+        if(in_array($_center->acception->position, config('users.room_managers')))
+        {
+            $_admin = true;
         }
     }
 @endphp
@@ -54,7 +59,7 @@
     @endif
 @endif
 
-@if (in_array(auth()->user()->type,['psychologist', 'operator', 'counseling_center']))
+@if ($_admin)
     <li class="nav-item">
         <a class="nav-link text-truncate direct" href="{{route('dashboard.home')}}#my-therapy-menu" data-toggle="collapse" data-target="#my-therapy-menu" aria-expanded="true">
             <span class="d-sm-inline">{{__('Therapy')}}</span>
@@ -62,7 +67,7 @@
         <div class="collapse show" id="my-therapy-menu" aria-expanded="false">
             <ul class="flex-column nav p-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('dashboard.rooms.index')}}">
+                    <a class="nav-link" href="{{route('dashboard.rooms.index', ['my' => 'yes'])}}">
                         <span class="d-sm-inline">{{__('Therapy rooms')}}</span>
                     </a>
                 </li>

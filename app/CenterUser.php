@@ -19,4 +19,8 @@ class CenterUser extends API
     {
         return $this->cache(sprintf($this->endpointPath.'/%s', $center, $user), $params, 'put');
     }
+    public function _childshow($center, $user)
+    {
+        return $this->cache(sprintf($this->endpointPath . '/%s', $center, $user));
+    }
 }

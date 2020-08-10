@@ -1,13 +1,10 @@
-@extends($layouts->dashboard)
+@section('create-nav-link')
+{{-- @if(Gate::allows("create", $room) && Route::has("$module->resource.create") && \Route::getCurrentRoute()->getAction('as') != "$module->resource.create") --}}
+    <a href="{{route("dashboard.rooms.create", ['center' => request()->center])}}" class="badge badge-success mx-2">{{__("Create new " . $module->singular)}}</a>
+{{-- @endif --}}
+@endsection
 
+@extends($layouts->dashboard)
 @section('content')
-    <div class="card mb-3">
-        <div class="card-header">
-            {{ __('Therapy rooms') }} <sup>({{ $rooms->total() }})</sup>
-            @filterBadge($rooms)
-        </div>
-        <div class="card-body p-0">
-            @include($rooms->count() ? 'dashboard.rooms.list' : 'dashboard.emptyContent')
-        </div>
-    </div>
+    @include($rooms->count() ? 'dashboard.rooms.list' : 'dashboard.emptyContent')
 @endsection

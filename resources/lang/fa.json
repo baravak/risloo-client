@@ -106,5 +106,8 @@
     "No attachment" : "بدون ضمیمه",
     "Use the default user avatar" : "استفاده از تصویر پیش‌فرض کاربر",
     "Address" : "آدرس",
-    "Optional" : "غیرضروری"
+    "Optional" : "غیرضروری",
+    "short_position" : "موق",
+    "short_status": "وضع",
+    "Time" : "زمان"
 }

@@ -21,10 +21,16 @@ class CenterPolicy
     }
 
     public function update(User $user, Center $center){
-        if($user->isAdmin() || ($center->acception && in_array($center->acception->position, ['manager', 'owner', 'operator'])))
+        if($user->isAdmin())
         {
             return true;
         }
+        if($center->acception && $center->acception->accepted_at && !$center->acception->kicked_at && in_array($center->acception->position, ['manager', 'owner', 'operator']))
+        {
+            return true;
+        }
+        return false;
+
     }
 
     public function create(User $user)

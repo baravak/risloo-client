@@ -19,7 +19,6 @@ class CenterController extends Controller
     public function show(Request $request, $center)
     {
         $center = $this->data->center = Center::apiShow($center);
-        // $this->data->users = CenterUser::apiIndex($center, $request->all());
         return $this->view($request, 'dashboard.centers.show');
     }
 

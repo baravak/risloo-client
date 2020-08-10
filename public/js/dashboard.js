@@ -275,6 +275,8 @@ $('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', fu
         if ($('#type-personal_clinic[name=type]').is(':checked'))
         {
             endpoint.get.personal_clinic = 'no';
+            $('#avatar, #title').prop('disabled', true);
+            $('#avatar, #title').parents('.form-group').fadeOut('fast');
         }
         else
         {
@@ -282,49 +284,16 @@ $('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', fu
             {
                 $('#title').val('');
             }
+            $('#avatar, #title').prop('disabled', false);
+            $('#avatar, #title').parents('.form-group').fadeIn('fast');
             endpoint.get.personal_clinic = 'yes';
         }
 
-        $('#user-avatar').trigger('change');
-        $('#manager_id').trigger('change');
         if (url.build(endpoint) != data_url) {
             manage_field.attr('data-url', url.build(endpoint));
             $('*', manage_field).remove();
             manage_field.select2('destroy');
             select2element.call(manage_field[0]);
-        }
-    });
-    $("#user-avatar").on('change', function(){
-        if (!$('#type-personal_clinic[name=type]').is(':checked'))
-        {
-            $(this).prop('disabled', true);
-            $(this).prop('checked', false);
-            $('#avatar').prop('disabled', false);
-            return true;
-        }
-        else
-        {
-            $(this).prop('disabled', false);
-        }
-        if($(this).is(':checked'))
-        {
-            $('#avatar').prop('disabled', true);
-        }
-        else
-        {
-            $('#avatar').prop('disabled', false);
-        }
-    });
-    $('#manager_id').on('change', function(){
-        if ($('#type-personal_clinic[name=type]').is(':checked')) {
-            $('#title').prop('disabled', true);
-            if ($(this).val())
-            {
-                $('#title').val(i18n('Personal clinic') + ' ' + $('option[value=' + $(this).val() + ']', this).html());
-            }
-        }
-        else {
-            $('#title').prop('disabled', false);
         }
     });
     $('[name=type]').eq(0).trigger('change', [true]);
@@ -488,6 +457,30 @@ function select2result_room(data, option){
             clinic = i18n('Personal clinic');
         }
         $('div.data-id', span).html(clinic);
+        return span;
+    }
+    return data.text;
+}
+
+function select2result_center(data, option) {
+    if (!data.all && data.element) {
+        data.all = JSON.parse($(data.element).attr('data-json'));
+        $(data.element).attr('data-json', '');
+    }
+    if (data.all) {
+        var span = $('<div class="d-flex align-items-center fs-12 d-inline-block"><span class="media media-sm media-primary"><img alt="A"></span><div class="pr-1"><div class="font-weight-bold data-name"></div><div class="fs-10 data-id"></div></div></div>');
+        var avatar = select2find_data(data.all, $(this).attr('data-avatar') || 'detail.avatar.tiny.url detail.avatar.small.url');
+        if (avatar) {
+            $('img', span).attr('src', avatar);
+        }
+        else {
+            $('img', span).remove();
+            $('.media', span).html('<span>' + (data.text ? data.text.substr(0, 1) : 'RS') + '</span>');
+        }
+        var name = select2find_data(data.all, $(this).attr('data-title') || 'detail.title');
+        $('div.data-name', span).html(name);
+        var clinic = data.text;
+        $('div.data-id', span).html(data.id);
         return span;
     }
     return data.text;

@@ -1,33 +1,43 @@
-<tr data-xhr="room-list-{{$room->id}}">
-    <td>
-        @id($room)
-    </td>
-    <td>
-        <a href="{{$room->manager->route('show')}}" class="text-decoration-none d-block pl-2">
-            @if ($room->type == 'clinic')
-                {{__('Personal clinic of :user', ['user' => $room->manager->name])}}
-            @else
-                {{__('Therapy room of :user', ['user' => $room->manager->name])}}
-            @endif
-        </a>
-        @if ($room->type != 'clinic')
-        <a href="{{$room->owner->route('show')}}" class="badge badge-light p-2">
-            @displayName($room->owner)
-        </a>
-        @endif
-    </td>
-    <td>
-        <a href="{{route('dashboard.reserves.create', ['room_id' => $room->id])}}" class="text-primary text-decoration-none">
-            <i class="far fa-address-book"></i>
-            {{__('Members')}}
-        </a>
-    </td>
-    <td>
-        @can('details', $room)
-            <a href="{{route('dashboard.room.users.index', $room->id)}}" class="text-primary text-decoration-none">
-                <i class="far fa-address-book"></i>
-                {{__('Members')}}
-            </a>
-        @endcan
-    </td>
-</tr>
+<div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" data-xhr="center-list-{{$room->id}}">
+    <div class="card card-center mb-3 overflow-hidden">
+        <div class="card-header d-flex align-items-center trianglify-pattern-{{$room->created_at->timestamp % 16}}">
+            <div class="card-wall-media">
+                <a href="#" class="media media-light rounded-circle">
+                    <span>
+                        @avatarOrName($room->manager)
+                    </span>
+                </a>
+            </div>
+            <div class="px-3">
+                <div>
+                    <h6 class="font-weight-bolder">
+                        <a href="{{$room->route('show')}}" class="text-decoration-none text-dark">
+                            @displayName($room->manager)
+                        </a>
+                        @php
+                            $acception = auth()->user()->centers->where('id', $room->center->id)->first();
+                            if($acception)
+                            {
+                                $acception = $acception->acception;
+                            }
+                        @endphp
+                        @if (auth()->isAdmin() || (auth()->user()->centers && $acception && in_array($acception->position, config('users.room_managers'))))
+                            <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.room.users.index', $room->id)}}"><i class="far fa-users"></i></a>
+                        @endif
+                    </h6>
+                </div>
+                <div>
+                    <span class="fs-10">
+                        @if ($room->type == 'room')
+                            <a href="{{route('dashboard.centers.show', $room->center->id)}}" class="text-decoration-none text-dark">
+                                {{$room->center->detail->title}}
+                            </a>
+                        @else
+                            {{__('Personal_clinic')}}
+                        @endif
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -15,7 +15,22 @@ class RoomPolicy
         }
     }
 
-    public function create(){
-        return true;
+    public function create(User $user){
+        if($user->isAdmin())
+        {
+            return true;
+        }
+        if(!$user->centers || !$user->centers->count())
+        {
+            return false;
+        }
+        $allows = false;
+        foreach ($user->centers as $key => $value) {
+            if($value->acception && $value->acception->position == 'manager')
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

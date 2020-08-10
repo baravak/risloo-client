@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Dashboard;
 use App\Room;
 use App\RoomUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class RoomUserController extends Controller
 {
@@ -18,12 +17,15 @@ class RoomUserController extends Controller
     public function create(Request $request, Room $room)
     {
         $this->data->room = $room;
+        $this->data->center = $room->center;
         return $this->view($request, 'dashboard.room-users.create');
     }
 
     public function store(Request $request, $room)
     {
-        return RoomUser::apiStore($room, $request->all())->response()->json();
+        return RoomUser::apiStore($room, $request->all())->response()->json([
+            'redirect' => route('dashboard.room.users.index', $room)
+        ]);
     }
 
     public function update(Request $request, $RoomUser)

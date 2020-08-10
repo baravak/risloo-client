@@ -4,10 +4,26 @@
             <tr>
                 <th>@sortView($users, 'id', '#')</th>
                 <th>@sortView($users, 'user')</th>
-                <th>@sortView($users, 'creator')</th>
-                <th>@sortView($users, 'position')</th>
-                <th>@sortView($users, 'accepted_at')</th>
-                <th>@sortView($users, 'status')</th>
+                <th class="d-none d-md-table-cell">@sortView($users, 'creator')</th>
+                <th>
+                    <span class="d-none d-md-inline">
+                        @sortView($users, 'position') /
+                        @sortView($users, 'status')
+                    </span>
+                    <span class="d-md-none">
+                        @sortView($users, 'position', __('short_position')) /
+                        @sortView($users, 'status', __('short_status'))
+                    </span>
+                </th>
+                <th>
+                    <span class="d-none d-md-inline">
+                        @sortView($users, 'accepted_at')
+                    </span>
+                    <span class="d-md-none">
+                        @sortView($users, 'accepted_at', __('Time'))
+                    </span>
+                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

@@ -10,7 +10,10 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class CenterUserPolicy
 {
     use HandlesAuthorization;
-
+    public function viewAny(User $user, CenterUser $centerUser)
+    {
+        return true;
+    }
     public function update(User $user, CenterUser $centerUser, $option = null){
         $center = $centerUser->parentModel;
         $acception = $center->acception;

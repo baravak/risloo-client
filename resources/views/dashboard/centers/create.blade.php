@@ -1,6 +1,6 @@
 @extends('dashboard.create')
 @section('form_content')
-<div class="form-group mb-0 {{isset($center) && !auth()->isAdmin() ? 'd-none' : ''}}">
+<div class="form-group mb-0 {{isset($center) ? 'd-none' : ''}}">
     <label>{{__('Clinic type')}}</label>
     <div class="d-flex flex-wrap">
         <div class="richak richak-sm richak-secondary">
@@ -19,9 +19,9 @@
         </div>
     </div>
 </div>
-@if (auth()->isAdmin())
+@if (auth()->isAdmin() && (!isset($center) || (isset($center) && $center->type == 'counseling_center')))
     <div class="form-group form-group-m">
-        <select class="select2-select form-control form-control-m" data-template="users" data-id="id" name="manager_id" data-title="name" data-avatar="avatar.small.url" id="manager_id" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}" {!!isset($center) && $center->type =='personal_clinic' ? 'disabled' : ''!!}>
+        <select class="select2-select form-control form-control-m" data-template="users" data-id="id" name="manager_id" data-title="name" data-avatar="avatar.small.url" id="manager_id" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}">
             @isset($center)
                 <option value="{{$center->manager->id}}" data-json="{{$center->manager}}" selected>{{$center->manager->name}}</option>
             @endisset
@@ -29,26 +29,17 @@
         <label for="manager_id" data-alias="manager_id">{{__('Manager')}}</label>
     </div>
 @endif
-<div class="form-group form-group-m">
-    <input type="text" class="form-control form-control-m" id="title" name="title" placeholder="&nbsp;" autocomplete="off" @formValue($center->detail->title)>
-    <label for="title">{{__('Title')}}</label>
-</div>
-
-<div class="form-group form-group-m">
-    <input type="file" class="form-control form-control-m" id="avatar" name="avatar" placeholder="&nbsp;" autocomplete="off">
-    <label for="avatar">{{__('Avatar')}} <span class="text-info">({{__('Optional')}})</span></label>
-</div>
-<div class="form-group mb-0 mr-5 {{isset($center) && $center->type != 'personal_clinic' ? 'd-none' : ''}}">
-    <div class="richak richak-xs richak-secondary richak-checkbox">
-        <input type="checkbox" id="user-avatar">
-        <label for="user-avatar">
-            <span class="richak-icon"></span>
-            <span>
-                {{__('Use the default user avatar')}}
-            </span>
-        </label>
+@if (!isset($center) || (isset($center) && $center->type == 'counseling_center'))
+    <div class="form-group form-group-m">
+        <input type="text" class="form-control form-control-m" id="title" name="title" placeholder="&nbsp;" autocomplete="off" @formValue($center->detail->title)>
+        <label for="title">{{__('Title')}}</label>
     </div>
-</div>
+    <div class="form-group form-group-m">
+        <input type="file" class="form-control form-control-m" id="avatar" name="avatar" placeholder="&nbsp;" autocomplete="off">
+        <label for="avatar">{{__('Avatar')}} <span class="text-info">({{__('Optional')}})</span></label>
+    </div>
+@endif
+
 <div class="form-group form-group-m">
     <input type="text" class="form-control form-control-m" id="description" name="description" placeholder="&nbsp;" autocomplete="off" @formValue($center->detail->description)>
     <label for="description">{{__('Description')}} <span class="text-info">({{__('Optional')}})</span></label>

@@ -19,5 +19,7 @@ return [
         'client' => [
             'icon' => 'far fa-user-shield'
         ]
-    ]
+    ],
+
+    'room_managers' => ['manager', 'operator', 'psychologist', 'under_supervision']
 ];

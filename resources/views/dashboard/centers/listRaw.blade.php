@@ -36,7 +36,7 @@
                     @endcan
                     @can('update', $center)
                         <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.centers.edit', $center->id)}}"><i class="far fa-edit"></i></a>
-                        <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.center-users.index', $center->id)}}"><i class="far fa-users"></i></a>
+                        <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.center.users.index', $center->id)}}"><i class="far fa-users"></i></a>
                     @endcan
                 </div>
             </div>
@@ -52,6 +52,11 @@
                     <div class="col-7">
                         <span class="fs-12">{{__('Manager')}}:</span> <address class="d-inline fs-12 mb-0">{{$center->manager->name}}</address>
                     </div>
+                @endif
+                @if ($center->type == 'counseling_center')
+                <div class="col-7">
+                    <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.rooms.index', ['center' => $center->id])}}">{{__('Therapy rooms')}}</a>
+                </div>
                 @endif
                 <div class="col-7">
                     <i class="far fa-map-marker-alt fs-12"></i> <address class="d-inline fs-12 mb-0">{{$center->detail->address}}</address>
