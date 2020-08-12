@@ -49,9 +49,9 @@
                 </span>
             </button>
             <div class="dropdown-menu">
-                @foreach ($user->allows('status') as $acception)
-                    <a href="{{route('dashboard.relationship.users.update', ['relationshipUser'=> $user->id])}}" class="dropdown-item fs-10" data-lijax="click" data-method="PUT" data-name="status" data-value="{{$acception}}">
-                        <i class="fal fa-user-secret"></i> {{__(ucfirst($acception))}}
+                @foreach ($user->allows('status') as $acceptation)
+                    <a href="{{route('dashboard.relationship.users.update', ['relationshipUser'=> $user->id])}}" class="dropdown-item fs-10" data-lijax="click" data-method="PUT" data-name="status" data-value="{{$acceptation}}">
+                        <i class="fal fa-user-secret"></i> {{__(ucfirst($acceptation))}}
                     </a>
                 @endforeach
             </div>

@@ -25,9 +25,9 @@ class RelationshipPolicy
         return $relationship->can('update');
     }
 
-    public function acception(User $user, $relationship)
+    public function acceptation(User $user, $relationship)
     {
-        return $relationship->can('acception');
+        return $relationship->can('acceptation');
     }
 
     public function details(User $user, $relationship)

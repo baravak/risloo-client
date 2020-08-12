@@ -56,7 +56,7 @@
                         <i class="fal fa-minus-circle text-danger"></i> {{__('Kick')}}
                     </a>
                 @endif
-                @if ((auth()->isAdmin() || $room->acception->position == 'manager') && in_array($user->position, ['manager', 'psychologist', 'operator']) && !isset($user->meta->room_id))
+                @if ((auth()->isAdmin() || $room->acceptation->position == 'manager') && in_array($user->position, ['manager', 'psychologist', 'operator']) && !isset($user->meta->room_id))
                     <a href="{{route('dashboard.rooms.create', ['room' => $room->id, 'user'=> $user->id])}}" class="dropdown-item fs-12">
                         <i class="fal fa-home-heart text-primary"></i> {{__('Create room')}}
                     </a>

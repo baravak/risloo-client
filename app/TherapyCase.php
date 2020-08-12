@@ -11,4 +11,10 @@ class TherapyCase extends API
         'clients' => RelationshipUser::class,
         'room' => Room::class
     ];
+
+    public static function apiStore($room, array $params)
+    {
+        $store = new static;
+        return $store->execute(sprintf("rooms/%s/cases", $room ?: '-'), $params, 'post');
+    }
 }

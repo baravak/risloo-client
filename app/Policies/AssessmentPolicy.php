@@ -12,14 +12,12 @@ class AssessmentPolicy
 
     public function viewAny(User $user)
     {
-        if (!in_array($user->type, ['admin', 'manager', 'operator', 'psychologist', 'counseling_center'])) {
-            return false;
-        }
         return true;
     }
 
     public function view(User $user, Assessment $assessment)
     {
+        return false;
         if (!in_array($user->type, ['admin', 'manager', 'operator', 'psychologist', 'counseling_center'])) {
             return false;
         }
@@ -28,6 +26,7 @@ class AssessmentPolicy
 
     public function create(User $user)
     {
+        return false;
         if (!in_array($user->type, ['admin', 'manager', 'operator', 'psychologist', 'counseling_center'])) {
             return false;
         }

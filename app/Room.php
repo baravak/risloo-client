@@ -8,7 +8,7 @@ class Room extends API
         'manager' => User::class,
         'creator' => User::class,
         'center' => Center::class,
-        'acception' => RoomUser::class,
+        'acceptation' => RoomUser::class,
     ];
 
     public $filterWith = [

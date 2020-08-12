@@ -6,7 +6,7 @@ class Center extends Relationship
     public $with = [
         'manager' => User::class,
         'creator' => User::class,
-        'acception' => RoomUser::class,
+        'acceptation' => RoomUser::class,
         'detail' => CenterDetail::class
     ];
     public static function request($center)

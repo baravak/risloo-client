@@ -15,15 +15,15 @@
                             @displayName($room->manager)
                         </a>
                         @php
-                            $acception = auth()->user()->centers->where('id', $room->center->id)->first();
-                            if($acception)
+                            $acceptation = auth()->user()->centers->where('id', $room->center->id)->first();
+                            if($acceptation)
                             {
-                                $acception = $acception->acception;
+                                $acceptation = $acceptation->acceptation;
                             }
                         @endphp
-                        @if (auth()->isAdmin() || (auth()->user()->centers && $acception && in_array($acception->position, config('users.room_managers'))))
+                        @can('viewAny', [\App\RoomUser::class, $room])
                             <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.room.users.index', $room->id)}}"><i class="far fa-users"></i></a>
-                        @endif
+                        @endcan
                     </h6>
                 </div>
                 <div>

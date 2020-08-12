@@ -10,7 +10,7 @@
             $_centers->forget($key);
             $personal_clinic = $_center;
         }
-        if(in_array($_center->acception->position, config('users.room_managers')))
+        if(in_array($_center->acceptation->position, config('users.room_managers')))
         {
             $_admin = true;
         }
@@ -59,7 +59,7 @@
     @endif
 @endif
 
-@if ($_admin)
+@if ($_admin || auth()->isAdmin())
     <li class="nav-item">
         <a class="nav-link text-truncate direct" href="{{route('dashboard.home')}}#my-therapy-menu" data-toggle="collapse" data-target="#my-therapy-menu" aria-expanded="true">
             <span class="d-sm-inline">{{__('Therapy')}}</span>
@@ -77,12 +77,6 @@
                         <span class="d-sm-inline">{{__('Cases')}}</span>
                     </a>
                 </li>
-
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="{{route('dashboard.rooms.index')}}">
-                        <span class="d-sm-inline">{{__('Sessions')}}</span>
-                    </a>
-                </li> --}}
             </ul>
         </div>
     </li>

@@ -25,7 +25,7 @@ class CenterPolicy
         {
             return true;
         }
-        if($center->acception && $center->acception->accepted_at && !$center->acception->kicked_at && in_array($center->acception->position, ['manager', 'owner', 'operator']))
+        if($center->acceptation && $center->acceptation->accepted_at && !$center->acceptation->kicked_at && in_array($center->acceptation->position, ['manager', 'owner', 'operator']))
         {
             return true;
         }
@@ -41,8 +41,8 @@ class CenterPolicy
         }
         return false;
     }
-    public function acception(User $user, $center){
-        if(!$center->acception)
+    public function acceptation(User $user, $center){
+        if(!$center->acceptation)
         {
             return true;
         }

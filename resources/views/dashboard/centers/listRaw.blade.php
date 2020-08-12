@@ -17,18 +17,18 @@
                     </h6>
                 </div>
                 <div>
-                    @if(isset($center->acception->position) && $center->acception->accepted_at && !$center->acception->kicked_at)
+                    @if(isset($center->acceptation->position) && $center->acceptation->accepted_at && !$center->acceptation->kicked_at)
 
-                        <div class="fs-10"><strong>{{__('You are is :position of this cenetr', ['position' => __(ucfirst($center->acception->position))])}}</strong></div>
+                        <div class="fs-10"><strong>{{__('You are is :position of this cenetr', ['position' => __(ucfirst($center->acceptation->position))])}}</strong></div>
                     @endif
-                    @can('acception', $center)
+                    @can('acceptation', $center)
                         <a href="{{route('dashboard.centers.request', $center->id)}}" class="btn btn-sm btn-primary fs-10" data-lijax="click" data-method="POST">
-                            {{__('Acception request')}}
+                            {{__('Acceptation request')}}
                         </a>
                     @else
-                        @if ($center->acception && $center->acception->kicked_at)
+                        @if ($center->acceptation && $center->acceptation->kicked_at)
                             <i class="far fa-minus-circle text-muted fs-12"></i> <span class="text-muted">{{__('Kicked')}}</span>
-                        @elseif($center->acception && !$center->acception->accepted_at)
+                        @elseif($center->acceptation && !$center->acceptation->accepted_at)
                             <span class="fs-10">
                                 {{__('Awaiting')}}
                             </span>

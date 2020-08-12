@@ -184,11 +184,7 @@ function select2result_room(data, option){
         }
         var name = data.text || data.id;
         $('div.data-name', span).html(name);
-        var clinic = data.all.owner.name;
-        if (data.all.type == 'clinic')
-        {
-            clinic = i18n('Personal clinic');
-        }
+        var clinic = data.all.center.detail.title;
         $('div.data-id', span).html(clinic);
         return span;
     }

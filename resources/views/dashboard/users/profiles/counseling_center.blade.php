@@ -25,10 +25,10 @@
                                 @endif
                             </div>
                             <div class="fs-14 font-weight-bold mb-1">#1310</div>
-                            @include('dashboard.users.profiles.centerAcception', ['center' => $user->center])
+                            @include('dashboard.users.profiles.centerAcceptation', ['center' => $user->center])
                         </div>
                     </div>
-                    <div data-xhr="center-acception">
+                    <div data-xhr="center-acceptation">
                         @can('details', $user->center)
                             <a href="{{ route('dashboard.relationship.users.index', $user->center->id) }}" class="btn btn-sm btn-outline-dark mt-3 m-sm-0">
                                 <i class="far fa-address-book align-middle ml-1"></i>

@@ -16,7 +16,7 @@ class CenterUserPolicy
     }
     public function update(User $user, CenterUser $centerUser, $option = null){
         $center = $centerUser->parentModel;
-        $acception = $center->acception;
+        $acceptation = $center->acceptation;
         if($user->id == $centerUser->user->id && !$user->isAdmin())
         {
             return false;
@@ -25,7 +25,7 @@ class CenterUserPolicy
             return false;
         }
 
-        if(!$user->isAdmin() && (!$acception || !in_array($acception->position, ['manager', 'operator'])))
+        if(!$user->isAdmin() && (!$acceptation || !in_array($acceptation->position, ['manager', 'operator'])))
         {
             return false;
         }
@@ -42,10 +42,10 @@ class CenterUserPolicy
         {
             return false;
         }
-        if ($centerUser->position != 'client' && $acception->position != 'manager') {
+        if ($centerUser->position != 'client' && $acceptation->position != 'manager') {
             return false;
         }
-        if($option == 'position' && $acception->position != 'manager')
+        if($option == 'position' && $acceptation->position != 'manager')
         {
             return false;
         }
@@ -58,11 +58,11 @@ class CenterUserPolicy
         {
             return true;
         }
-        if(!$center->acception)
+        if(!$center->acceptation)
         {
             return false;
         }
-        if(in_array($center->acception->position, ['manager', 'operator']))
+        if(in_array($center->acceptation->position, ['manager', 'operator']))
         {
             return true;
         }

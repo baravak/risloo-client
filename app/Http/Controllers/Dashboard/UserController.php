@@ -25,13 +25,13 @@ class UserController extends _UserController
     public function request(Request $request)
     {
         $this->data->center = Center::request($request->center_id);
-        return $this->view($request, 'dashboard.users.profiles.centerAcception');
+        return $this->view($request, 'dashboard.users.profiles.centerAcceptation');
     }
 
     public function accept(Request $request)
     {
         $this->data->center = Center::accept($request->Ccenter_id);
-        return $this->view($request, 'dashboard.users.profiles.centerAcception');
+        return $this->view($request, 'dashboard.users.profiles.centerAcceptation');
     }
 
     public function index(Request $request){

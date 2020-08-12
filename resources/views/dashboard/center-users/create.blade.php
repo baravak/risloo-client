@@ -8,7 +8,7 @@
     <input type="text" class="form-control form-control-m direction-ltr" id="mobile" name="mobile" placeholder="&nbsp;" autocomplete="off">
     <label for="mobile">{{__('Mobile')}}</label>
 </div>
-@if (auth()->isAdmin() || $center->acception->position == 'manager')
+@if (auth()->isAdmin() || $center->acceptation->position == 'manager')
     <div class="form-group form-group-m">
         <select class="form-control form-control-m" name="position" id="position">
             <option value="manager">{{__('Manager')}}</option>

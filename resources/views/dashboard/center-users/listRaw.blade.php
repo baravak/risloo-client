@@ -21,7 +21,7 @@
                         if(!auth()->isAdmin() && $center->manager->id != auth()->id())
                         {
                             array_shift($positions);
-                            if($center->acception->position != 'manager')
+                            if($center->acceptation->position != 'manager')
                             {
                                 array_shift($positions);
                             }
@@ -75,7 +75,7 @@
                         <i class="fal fa-minus-circle text-danger"></i> {{__('Kick')}}
                     </a>
                 @endif
-                @can('create', \App\Room::class)
+                @can('create', [\App\Room::class, $user])
                     @isset($user->meta->room_id)
                         <a href="{{route('dashboard.rooms.show', ['room' => $user->meta->room_id])}}" class="dropdown-item fs-12">
                             <i class="fal fa-home-heart text-primary"></i> {{__('Therapy room of :user', ['user' => $user->user->name])}}
@@ -87,7 +87,7 @@
                     @endisset
                 @endcan
             </div>
-        @elsecan('create', \App\Room::class)
+        @elsecan('create', [\App\Room::class, $user])
             <button class="btn btn-sm btn-clear p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="far fa-cogs fs-12 text-primary"></i>
             </button>

@@ -41,7 +41,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('dashboard.samples.management', 'App\Policies\SamplePolicy@management');
 
         Gate::resource('dashboard.centers', 'App\Policies\CenterPolicy');
-        Gate::define('dashboard.centers.acception', 'App\Policies\CenterPolicy@acception');
+        Gate::define('dashboard.centers.acceptation', 'App\Policies\CenterPolicy@acceptation');
         Gate::resource('dashboard.center.users', 'App\Policies\CenterUserPolicy');
 
     }
