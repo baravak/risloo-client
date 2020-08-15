@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
     {
         \Carbon\Carbon::setWeekEndsAt(\Carbon\Carbon::FRIDAY);
         \Carbon\Carbon::setWeekStartsAt(\Carbon\Carbon::SATURDAY);
-
+        Blade::directive('room', function ($room) {
+            return "<?php echo \$__env->make('components._room', ['room' => $room])->render(); ?>";
+        });
     }
 }

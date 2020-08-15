@@ -3,6 +3,7 @@ namespace App;
 
 class TherapyCase extends API
 {
+    protected $routeResource = 'cases';
     public $endpointPath = 'cases';
     public $with = [
         'owner' => User::class,

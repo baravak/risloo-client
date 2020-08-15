@@ -31,6 +31,47 @@
         @include('dashboard.samples.scales.' . substr($sample->scale->id, 1))
     </div>
 </div>
+<div class="card mb-3">
+    <div class="card-header">
+        <h6 class="card-title">
+            پیش‌نیازها
+        </h6>
+    </div>
+    <div class="card-body">
+        @if (in_array($sample->status, ['open', 'seald']))
+            <div class="richak richak-xs richak-secondary richak-checkbox">
+                <input type="checkbox" id="editable">
+                <label for="editable">
+                    <span class="richak-icon"></span>
+                    <span>
+                        <div class="d-flex align-items-center fs-12 d-inline-block">
+                            <div class="pr-1">
+                                قابلیت ویرایش فرم
+                            </div>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        @endif
+        <form action="" method="post">
+            @foreach ($sample->prerequisites as $prerequisite)
+            <div class="form-group form-group-m">
+                @if (in_array($prerequisite->answer->type, ['options', 'select']))
+                    <select type="text" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-prerequisite="{{$loop->index + 1}}" data-name="prerequisite[{{$loop->index}}][1]" data-merge='{"prerequisites[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="prerequisite-{{$loop->index}}" class="form-items form-control form-control-m font-weight-bold d-notification" placeholder="&nbsp;" disabled>
+                        <option></option>
+                        @foreach ($prerequisite->answer->options as $option)
+                            <option {{isset($prerequisite->user_answered) && $prerequisite->user_answered == $loop->index +1 ? 'selected' : ''}} value="{{$loop->index + 1}}" @selectChecked($prerequisite->user_answered, $loop->index + 1)>{{$loop->index + 1}}: {{$option}}</option>
+                        @endforeach
+                    </select>
+                @elseif (in_array($prerequisite->answer->type, ['text', 'number']))
+                    <input @formValue($prerequisite->user_answered) disabled class="form-control form-control-m" type="{{$prerequisite->answer->type}}" id="prerequisite-{{$loop->index}}" placeholder="&nbsp;">
+                @endif
+                <label for="prerequisite-{{$loop->index}}">{{$loop->index + 1}} - {{$prerequisite->text}}</label>
+            </div>
+            @endforeach
+        </form>
+    </div>
+</div>
 <div class="card">
     <div class="card-header">
         <h6 class="card-title">

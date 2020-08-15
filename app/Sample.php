@@ -8,7 +8,7 @@ class Sample extends API
         'user' => User::class,
         'client' => User::class,
         'room' => Room::class,
-        'case' => Relationship::class,
+        'case' => TherapyCase::class,
     ];
     public static function postItems($serial, $items)
     {

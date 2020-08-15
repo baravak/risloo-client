@@ -11,4 +11,8 @@
     </select>
     <label for="client_id">{{__('Client')}}</label>
 </div>
+<div class="form-group form-group-m">
+    <input type="text" class="form-control form-control-m" id="chief_complaint" name="chief_complaint" placeholder="&nbsp;" autocomplete="off" @formValue($case->chief_complaint)>
+    <label for="chief_complaint">{{__('Chief complaint')}}</label>
+</div>
 @endsection

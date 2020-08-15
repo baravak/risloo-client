@@ -2,7 +2,7 @@
     <div class="card test-card shadow-sm mb-3">
         <div class="card-body">
             @include('samples.panel.description')
-            @includeWhen($sample->prerequisite, 'samples.panel.information')
+            @includeWhen($sample->prerequisites, 'samples.panel.information')
             @include('samples.panel.items')
             @include('samples.panel.close')
 

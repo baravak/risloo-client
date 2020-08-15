@@ -30,8 +30,12 @@ class SamplePolicy
         {
             return true;
         }
-        $position = $user->centers->where('id', $sample->room->center->id)->first();
-        if(in_array($position, ['operator', 'manager', 'psychologist']))
+        if($sample->room->manager->id == $user->id)
+        {
+            return true;
+        }
+        $currentCenter = $user->centers->where('id', $sample->room->center->id)->whereIn('acceptation.position', ['operator', 'manager', 'psychologist'])->first();
+        if($currentCenter)
         {
             return true;
         }

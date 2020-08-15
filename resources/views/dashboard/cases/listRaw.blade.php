@@ -3,14 +3,7 @@
         @id($case)
     </td>
     <td>
-        <a href="{{$case->room->route('show')}}" class="text-decoration-none d-block">
-            {{$case->manager->name}}
-        </a>
-        @if ($case->room->type == 'room')
-            <a href="{{$case->room->center->route('show')}}" class="badge badge-light">
-                {{$case->room->center->detail->title}}
-            </a>
-        @endif
+        @room($case->room)
     </td>
     <td>
         @foreach ($case->clients as $item)

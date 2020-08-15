@@ -68,6 +68,7 @@
     "Level" : "سطح",
     "Cases" : "پرونده‌ها",
     "Case" : "پرونده",
+    "Case of :users": "پرونده درمانی :users",
     "Therapy" : "درمان",
     "Sessions" : "جلسات",
     "Personal clinic of :user" : "کلینیک شخصی :user",
@@ -109,5 +110,8 @@
     "Optional" : "غیرضروری",
     "short_position" : "موق",
     "short_status": "وضع",
-    "Time" : "زمان"
+    "Time" : "زمان",
+    "Chief complaint" : "شکایت اصلی",
+    "Select client" : "انتخاب مراجع",
+    "Add client" : "افزودن مراجع"
 }

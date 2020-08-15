@@ -22,8 +22,10 @@ class CaseController extends Controller
         return TherapyCase::apiStore($request->room_id, $request->except('room_id'))->response()->json();
     }
 
-    public function show(Request $request, $relationship)
+    public function show(Request $request, TherapyCase $case)
     {
-        return TherapyCase::apiShow($relationship);
+        $this->data->case = $case;
+        return $this->view($request, 'dashboard.cases.show');
+
     }
 }

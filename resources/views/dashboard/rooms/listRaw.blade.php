@@ -15,7 +15,7 @@
                             @displayName($room->manager)
                         </a>
                         @php
-                            $acceptation = auth()->user()->centers->where('id', $room->center->id)->first();
+                            $acceptation = auth()->user()->centers ? auth()->user()->centers->where('id', $room->center->id)->first() : false;
                             if($acceptation)
                             {
                                 $acceptation = $acceptation->acceptation;

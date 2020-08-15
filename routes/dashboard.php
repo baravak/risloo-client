@@ -22,6 +22,7 @@ Route::resource('rooms/{room}/users', 'RoomUserController', ['except' => ['destr
 
 
 Route::resource('cases', 'CaseController');
+Route::resource('cases/{case}/users', 'CaseUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'case']);
 
 Route::post('users/request', 'UserController@request')->name('users.request');
 Route::post('users/accept', 'UserController@accept')->name('users.accept');

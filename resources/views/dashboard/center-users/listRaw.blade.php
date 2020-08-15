@@ -47,10 +47,10 @@
     </td>
     <td>
         <div>
-            @time($user->accepted_at)
+            @responsiveTime($user->accepted_at)
         </div>
         <div class="text-danger">
-            @time($user->kicked_at)
+            @responsiveTime($user->kicked_at)
         </div>
     </td>
     <td>

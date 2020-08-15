@@ -1,6 +1,6 @@
 <form action="{{urldecode(route('samples.storeItems', $sample->id))}}" method="post" id="prerequisite" class="d-notification">
     <div class="col-6">
-    @foreach ($sample->prerequisite as $item)
+    @foreach ($sample->prerequisites as $item)
     @php
         $itemKey = $loop->index;
     @endphp

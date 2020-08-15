@@ -21,17 +21,17 @@ class SampleFormController extends Controller
         $this->data->items = $js;
 
         $js = 'null';
-        if($this->data->sample->prerequisite)
+        if($this->data->sample->prerequisites)
         {
             $js = '[';
-            foreach ($this->data->sample->prerequisite as $key => $value) {
+            foreach ($this->data->sample->prerequisites as $key => $value) {
                 $this->jsObjectGenerate(null, $value, $js);
                 $js .= ',';
             }
             $js = preg_replace("#,$#", '', $js);
             $js .= ']';
         }
-        $this->data->prerequisite = $js;
+        $this->data->prerequisites = $js;
 
         if($sample->status == 'closed')
         {
