@@ -14,6 +14,10 @@
     <td>
         @if ($sample->client)
             @displayName($sample->client)
+        @else
+        <span class="fs-10">
+            {{__('Code')}}: {{$sample->code}}
+        </span>
         @endif
     </td>
     <td>

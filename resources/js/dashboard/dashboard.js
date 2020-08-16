@@ -95,6 +95,7 @@ $('body').on('statio:dashboard:samples:create', function(){
             }
         });
     });
+    $('#room-tab').trigger(($('#room-tab').is('.active') ? 'show' : 'hide') + '.bs.tab');
 
 
     $('#room_client_id.sample-page').on('change', function () {
@@ -216,6 +217,10 @@ function select2result_center(data, option) {
 }
 
 function select2result_case_clients(data, option) {
+    if (!data.all && data.element) {
+        data.all = JSON.parse($(data.element).attr('data-json'));
+        $(data.element).attr('data-json', '');
+    }
     if (!data.all) return data.text;
     var clients = [];
     data.all.clients.forEach(function(client){

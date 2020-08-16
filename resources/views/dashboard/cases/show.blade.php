@@ -91,7 +91,10 @@
                 @foreach ($case->clients as $client)
                     <div class="d-flex align-items-center bg-light p-2">
                         <div class="px-3">
-                            <div class="fs-12 font-weight-bold">@displayName($client->user)</div>
+                            <div class="fs-12 font-weight-bold">
+                                @displayName($client->user)
+                                <a href="{{route('dashboard.samples.create', ['case' => $case->id, 'client' => $client->id])}}#case" class="badge badge-primary p-1">{{__('Create sampel')}}</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

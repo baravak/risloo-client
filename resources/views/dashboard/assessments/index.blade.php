@@ -25,7 +25,7 @@
                                     @id($assessment)
                                 </td>
                                 <td>
-                                    {{$assessment->scale->title}}
+                                    {{$assessment->title}}
                                 </td>
                                 <td>
                                     {{$assessment->edition}}

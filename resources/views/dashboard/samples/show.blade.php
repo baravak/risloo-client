@@ -4,7 +4,7 @@
 <div class="card mb-3">
     <div class="card-header">
         <h5 class="card-title">
-            {{ $sample->scale->title }} <small> / {{$sample->client->name}}</small>
+            {{ $sample->scale->title }} <small> / {{$sample->client ? $sample->client->name: ''}}</small>
             @if ($sample->status != 'scored' || auth()->isAdmin())
                 <a href="{!!urldecode(route('dashboard.samples.scoring', $sample->id))!!}" data-method="POST" class="badge badge-info fs-12 p-1 lijax">
                     {{__("Scoring")}}

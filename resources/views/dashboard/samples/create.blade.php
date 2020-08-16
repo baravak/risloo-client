@@ -11,6 +11,9 @@
 
 <div class="form-group form-group-m">
     <select class="select2-select form-control form-control-m sample-create" data-relation="case_id room_client_id" data-template="room" name="room_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{route('dashboard.rooms.index' , ['my_management' => 1])}}">
+        @isset($case)
+            <option value="{{$case->room->id}}" data-json="{{$case->room}}" selected>{{$case->room->manager->name}}</option>
+        @endisset
     </select>
     <label for="room_id">{{__('Room')}}</label>
 </div>

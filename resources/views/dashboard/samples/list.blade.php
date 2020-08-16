@@ -3,7 +3,10 @@
         <thead>
             <tr>
                 <th>@sortView($samples, 'id', __('Serial'))</th>
-                <th>@sortView($samples, 'sample')</th>
+                <th>
+                    @sortView($samples, 'scale')
+                    @filterView($samples, 'scale')
+                </th>
                 <th>@sortView($samples, 'client')</th>
                 <th>
                     @sortView($samples, 'room')
@@ -13,6 +16,7 @@
                 </th>
                 <th>
                     @sortView($samples, 'status')
+                    @filterView($samples, 'status')
                 </th>
                 <th></th>
             </tr>

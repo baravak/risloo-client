@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Assessment;
 use App\Policies\SamplePolicy;
 use App\Sample;
+use App\TherapyCase;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -21,12 +22,8 @@ class SampleController extends Controller
         {
             $this->data->scale = Assessment::apiShow($request->scale);
         }
-        if (isset($request->client)) {
-            $client = User::apiShow($request->client);
-            if($client->type == 'client')
-            {
-                $this->data->client = $client;
-            }
+        if (isset($request->case)) {
+            $this->data->case = TherapyCase::apiShow($request->case);
         }
         return $this->view($request, 'dashboard.samples.create');
     }
@@ -42,7 +39,7 @@ class SampleController extends Controller
     public function show(Request $request, $serial){
         $sample = $this->data->sample = Sample::apiShow($serial);
         $this->authorize('dashboard.samples.management', $sample);
-        $this->data->global->title = $sample->scale->title . ' - ' . $sample->client->name;
+        $this->data->global->title = $sample->scale->title . ' - ' . ($sample->client ? $sample->client->name : '');
         return $this->view($request, 'dashboard.samples.show');
     }
 
