@@ -9,6 +9,7 @@ class Sample extends API
         'client' => User::class,
         'room' => Room::class,
         'case' => TherapyCase::class,
+        'profiles' => File::class
     ];
     public static function postItems($serial, $items)
     {
@@ -17,7 +18,12 @@ class Sample extends API
 
     public static function close($serial)
     {
-        return (new static)->execute("%s/$serial/close", [], 'POST');
+        return (new static)->execute("%s/$serial/close", [], 'PUT');
+    }
+
+    public static function open($serial)
+    {
+        return (new static)->execute("%s/$serial/open", [], 'PUT');
     }
 
     public static function scoring($serial)

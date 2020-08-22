@@ -31,7 +31,7 @@
         <label for="client_id">{{__('Client')}}</label>
     </div>
     <div class="form-group form-group-m">
-        <input type="text" class="form-control form-control-m sample-page" id="countx" name="count" placeholder="&nbsp;" autocomplete="off">
-        <label for="countx">{{__('Count')}}</label>
+        <input type="text" class="form-control form-control-m sample-page" id="count" name="count" placeholder="&nbsp;" autocomplete="off">
+        <label for="count">{{__('Count')}}</label>
     </div>
 </div>

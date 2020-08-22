@@ -2,11 +2,14 @@
     <td>
         @can('dashboard.samples.management', $sample)
             @id($sample)
-        @elseif(in_array($sample->status, ['seald', 'open']))
-            @include('components._id', ['href' => route('samples.form', $sample->id), 'id' => $sample->serial])
         @else
             @include('components._id', ['id' => $sample->serial])
         @endcan
+        @if(in_array($sample->status, ['seald', 'open']))
+        <div>
+            <a class="badge badge-primary" href="{{urldecode(route('samples.form', $sample->id))}}" target="_blank">{{__('Perform sample')}}</a>
+        </div>
+        @endif
     </td>
     <td>
         {{ $sample->scale->title }} <sup>{{$sample->version}}</sup> <small>{{$sample->edition}}</small>

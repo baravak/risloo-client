@@ -324,7 +324,6 @@
 $('[data-panel=information] form').on('statio:done', function (event, res) {
     var _self = this;
     if (res.is_ok) {
-        console.log(this);
         $(this).attr('data-on-request', 'false');
         return;
     }

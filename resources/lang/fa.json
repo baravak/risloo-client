@@ -99,8 +99,7 @@
     "Calendar" : "تقویم",
     "Create reserve" : "ساختن نوبت",
     "Create new reserve": "ساختن پنل نوبت",
-    "Download profile as image" : "تصویری",
-    "Download profile as pdf": "PDF",
+    "Download profile as :type" : ":type",
     "Unverified" : "تأیید نشده",
     "Verified": "تأیید شده",
     "Verify" : "تأیید",
@@ -114,5 +113,13 @@
     "Time" : "زمان",
     "Chief complaint" : "شکایت اصلی",
     "Select client" : "انتخاب مراجع",
-    "Add client" : "افزودن مراجع"
+    "Add client" : "افزودن مراجع",
+    "Sample code" : "گذرواژه نمونه",
+    "At the end of this step, your personal details will be visible to the managers of therapy centers and therapy rooms." : "با اتمام این مرحله مشخصات فردی شما برای مدیران مراکز درمانی و اتاق درمان قابل مشاهده می‌باشد",
+    "Enter the sample" : "ورود به نمونه",
+    "Perform sample" : "انجام نمونه",
+    "Closed" : "بسته",
+    "Scored" : "دارای نمره",
+    "Close sample" : "بستن آزمون",
+    "Open sample": "بازکردن آزمون"
 }

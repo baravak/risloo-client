@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Assessment;
 use App\Policies\SamplePolicy;
 use App\Sample;
+use App\scoreResult;
 use App\TherapyCase;
 use App\User;
 use Illuminate\Http\Request;
@@ -46,9 +47,33 @@ class SampleController extends Controller
     public function scoring(Request $request, $serial)
     {
         $scoring = $this->data->sample = Sample::scoring($serial);
+        return $scoring->response()->json();
+    }
+    public function close(Request $request, $serial)
+    {
+        $scoring = $this->data->sample = Sample::close($serial);
         return $scoring->response()->json([
             'replace' => true,
             'redirect' => urldecode(route('dashboard.samples.show', $serial))
-            ]);
+        ]);
+    }
+
+    public function update(Request $request, $serial)
+    {
+        return Sample::apiUpdate($serial, $request->all())->response()->json();
+    }
+
+    public function open(Request $request, $serial)
+    {
+        $scoring = $this->data->sample = Sample::open($serial);
+        return $scoring->response()->json([
+            'replace' => true,
+            'redirect' => urldecode(route('dashboard.samples.show', $serial))
+        ]);
+    }
+
+    public function scoreResult(Request $request, $serial){
+        $scoring = $this->data->sample = scoreResult::result($serial);
+        return $scoring->response()->json();
     }
 }

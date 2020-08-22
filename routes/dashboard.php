@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::resource('samples', 'SampleController', ['except' => ['delete', 'edit', 'update']]);
+Route::resource('samples', 'SampleController', ['except' => ['delete', 'edit']]);
 Route::resource('assessments', 'AssessmentController', ['except' => ['destroy', 'create', 'store', 'update']]);
 Route::resource('relationships', 'RelationshipController', ['except' => ['destroy', 'show']]);
 Route::resource('relationships/{relationship}/users', 'RelationshipUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'relationship']);
@@ -28,6 +28,9 @@ Route::post('users/request', 'UserController@request')->name('users.request');
 Route::post('users/accept', 'UserController@accept')->name('users.accept');
 
 Route::post( 'samples/{sample}/scoring', 'SampleController@scoring')->middleware('auth')->name('samples.scoring');
+Route::get('samples/{sample}/scoring', 'SampleController@scoreResult')->middleware('auth')->name('samples.scoring.show');
+Route::put('samples/{sample}/close', 'SampleController@close')->middleware('auth')->name('samples.close');
+Route::put('samples/{sample}/open', 'SampleController@open')->middleware('auth')->name('samples.open');
 
 
 Route::get('reserves/calendar', 'ReserveController@calendar')->name('reserves.calendar');

@@ -11,7 +11,7 @@
             <p>
             اگر با خطا مواجه شدید، بر روی دریافت تست بزنید و فایل دریافتی را به روان‌شناس یا اپراتور مرکزمشاوره تحویل دهید
             </p>
-            <a href="{!! urldecode(route('samples.close', substr($sample->id, 1)))!!}" data-method="POST" data-lijax class="btn btn-primary">اتمام تست</a>
+            <a href="{!! urldecode(route('samples.close', substr($sample->id, 1)))!!}" data-method="PUT" data-lijax class="btn btn-primary">اتمام تست</a>
             <a id="download-close" href="#" class="btn btn-secondary">دریافت فایل تست</a>
         </div>
     </div>

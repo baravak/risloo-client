@@ -265,6 +265,34 @@ score_chart['16PF-93'] = function(scores){
 
 }
 
+$('body').on('statio:dashboard:samples:show', function(){
+    $('#scoring-btn', this).on('statio:jsonResponse', function (event, response, jqXHR) {
+        if (response.is_ok)
+        {
+            $('#profile-export i').removeClass('d-none');
+            $('#profile_svg *').remove();
+            $('.profile-link').hide().removeClass('d-none');
+            $('#profile_svg').append($('<i class="fas fa-cog fa-spin"></i>'));
+            scoringResult.call(this, response);
+        }
+        else
+        {
+            $('.status-action').show();
+        }
+    }).on('statio:init', function(){
+        $('.status-action').hide();
+        $('#profile-export-menu').addClass('d-none');
+    });
+    if (['scoring', 'craeting_files'].indexOf($("#sample-show").attr('data-status')) >= 0)
+    {
+        $('.profile-link.d-none').hide().removeClass('d-none');
+        if ($("#sample-show").attr('data-status') == 'scoring')
+        {
+            $('#scoring-btn').addClass('lijax-preload');
+        }
+        scoringResultAwaiting.call($('#scoring-btn')[0], { data: { id: $("#sample-show").attr('data-sample')}});
+    }
+});
 $('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', function(){
     $('[name=type]', this).on('change', function(event, start){
         var manage_field = $('#manager_id');
@@ -494,4 +522,69 @@ function select2result_case_clients(data, option) {
         clients.push(client.user.name || client.user.id);
     });
     return $('<span></span>').text(clients.join('- ')).addClass('fs-12');
+}
+
+function scoringResult(response)
+{
+    var _self = this;
+    if (response.data.score)
+    {
+        if($(this).is('.lijax-preload'))
+        {
+            var preload = $('#' + $(this).attr('data-lijax-preload')).eq(0);
+            preload.fadeOut('fast', function(){
+                $('#profile-export-menu').hide().removeClass('d-none').fadeIn('fast');
+            });
+            $(this).removeClass('lijax-preload');
+        }
+    }
+    if (!response.data.score || !response.data.profiles)
+    {
+        setTimeout(function(){
+            scoringResultAwaiting.call(_self, response);
+        }, 2000);
+        return;
+    }
+    var results = $('.profile-link').map(function () {
+        return $(this).attr('data-type');
+    });
+    for (var i = 0; i < results.length; i++) {
+        if (response.data.profiles['profile_' + results[i]] && $('.profile-link.profile-' + results[i]).attr('href') != response.data.profiles['profile_' + results[i]].url) {
+            $('.profile-link.profile-' + results[i]).attr('href', response.data.profiles['profile_' + results[i]].url).fadeIn('fast');
+        }
+    }
+
+    for (var i = 0; i < results.length; i++) {
+        if (!response.data.profiles['profile_'+results[i]])
+        {
+            setTimeout(function () {
+                scoringResultAwaiting.call(_self, response);
+            }, 5000);
+            break;
+        }
+    }
+    if (i == results.length)
+    {
+        $('#profile-export i').fadeOut('fast', function () {
+            $(this).addClass('d-none');
+        });
+    }
+    if (response.data.profiles.profile_svg && !$('#profile_svg img').length)
+    {
+        $('#profile_svg *').remove();
+        $('#profile_svg').append($('<img src="' + response.data.profiles.profile_svg.url + '" class="d-none">'));
+        $('#profile_svg img').hide().removeClass('d-none').fadeIn('slow').addClass('d-block');
+    }
+
+}
+
+function scoringResultAwaiting(response)
+{
+    $.ajax({
+        context : this,
+        url: '/dashboard/samples/' + response.data.id + '/scoring',
+        success : function(data){
+            scoringResult.call(this, data);
+        }
+    });
 }

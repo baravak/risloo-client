@@ -1,29 +1,75 @@
 @extends($layouts->dashboard)
 
 @section('content')
-<div class="card mb-3">
+<div class="card mb-3" id="sample-show" data-status="{{$sample->status}}" data-sample="{{$sample->id}}">
     <div class="card-header">
         <h5 class="card-title">
             {{ $sample->scale->title }} <small> / {{$sample->client ? $sample->client->name: ''}}</small>
-            @if ($sample->status != 'scored' || auth()->isAdmin())
-                <a href="{!!urldecode(route('dashboard.samples.scoring', $sample->id))!!}" data-method="POST" class="badge badge-info fs-12 p-1 lijax">
-                    {{__("Scoring")}}
+            <a href="{!!urldecode(route('dashboard.samples.scoring', $sample->id))!!}" data-lijax-preload="scoring-preload" data-lijax-succsess="" id="scoring-btn" data-method="POST" class="badge badge-info fs-12 p-1 lijax {{$sample->status =='closed' || (auth()->isAdmin() && $sample->status == 'done') || $sample->score_last_version != $sample->score_current_version ? '' : 'd-none'}}">
+                {{__("Scoring")}}
+            </a>
+            <span id="scoring-preload" class="badge badge-light fs-12 p-1 {{$sample->status == 'scoring' ? '' : 'd-none'}}">
+                <i class="fas fa-cog fa-spin"></i> {{__("Scoring")}}...
+            </span>
+            @if (in_array($sample->status, ['seald', 'open']))
+                <a href="{!! urldecode(route('dashboard.samples.close', $sample->id))!!}" class="badge badge-info fs-12 p-1 lijax status-action" data-method="PUT">
+                    {{__('Close sample')}}
+                </a>
+            @elseif($sample->status == 'closed')
+                <a href="{!! urldecode(route('dashboard.samples.open', $sample->id))!!}" class="badge badge-secondary fs-12 p-1 lijax status-action" data-method="PUT">
+                    {{__('Open sample')}}
                 </a>
             @endif
-            @isset($sample->attachments->profile_png)
-                <a href="{!!$sample->attachments->profile_png->url!!}" target="_blank" class="badge badge-info fs-10 p-1">
-                    {{__("Download profile as image")}}
-                </a>
-            @endisset
-            @isset($sample->attachments->profile_pdf)
-                <a href="{!!$sample->attachments->profile_pdf->url!!}" target="_blank" class="badge badge-info fs-10 p-1">
-                    {{__("Download profile as pdf")}}
-                </a>
-            @endisset
+            @if (config('app.env') == 'local' && in_array($sample->status, ['seald', 'open']))
+            <span class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle fs-12 p-1" type="button" id="assessmentFill" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    پرکردن
+                </button>
+                <div class="dropdown-menu" aria-labelledby="assessmentFill">
+                    <form action="{{config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1)}}" class="fs-12 p-1">
+                        <label class="d-block">
+                            <input type="checkbox" name="replace" checked>
+                            <span>ویرایش داده‌های قبلی</span>
+                        </label>
+                        <label class="d-block">
+                            <input type="checkbox" name="empty">
+                            <span>فیلد خالی</span>
+                        </label>
+                        <label class="d-block">
+                            <input type="checkbox" name="validity">
+                            <span>اعتبارسنجی</span>
+                        </label>
+                        <button type="submit">پرکردن</button>
+                    </form>
+                </div>
+            </span>
+            @endif
+            <span class="dropdown {{in_array($sample->status, ['seald', 'open', 'closed', 'scoring']) ? 'd-none' : ''}}" id="profile-export-menu">
+                <button class="btn btn-secondary dropdown-toggle fs-12 p-1" type="button" id="profile-export" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-cog fa-spin {{$sample->status == 'done' ? 'd-none' : ''}}"></i>
+                    خروجی‌ها
+                </button>
+                <div class="dropdown-menu" aria-labelledby="profile-export">
+                    @foreach (['svg', 'png', 'html', 'pdf'] as $item)
+                        @isset($sample->profiles->{'profile_' . $item})
+                            <a href="{!!$sample->profiles->{'profile_' . $item}->url!!}" target="_blank" data-type="{{$item}}" class="dropdown-item fs-12 profile-link profile-{{$item}}">
+                                {{__("Download profile as :type", ['type' => strtoupper($item)])}}
+                            </a>
+                        @else
+                            <a href="" target="_blank" data-type="{{$item}}" class="dropdown-item fs-12 profile-link profile-{{$item}} d-none">
+                                {{__("Download profile as :type", ['type' => strtoupper($item)])}}
+                            </a>
+                        @endisset
+                    @endforeach
+                </div>
+            </span>
         </h5>
-        <div class="text-center col-12 col-xl-6 mx-auto">
-            @isset($sample->attachments->profile_svg)
-                <img src="{{$sample->attachments->profile_svg->url}}" style="width: 100%;height: auto;" id="x">
+        <div class="text-center col-12 col-xl-6 mx-auto" id="profile_svg">
+            @if ($sample->status == 'scoring')
+                <i class="fas fa-cog fa-spin"></i>
+            @endif
+            @isset($sample->profiles->profile_svg)
+                <img src="{{$sample->profiles->profile_svg->url}}" class="d-block profile-svg">
             @endisset
         </div>
     </div>
@@ -33,80 +79,81 @@
 </div>
 <div class="card mb-3">
     <div class="card-header">
-        <h6 class="card-title">
-            پیش‌نیازها
-        </h6>
+        <h5 class="card-title">
+            مواد آزمون
+        </h5>
     </div>
     <div class="card-body">
         @if (in_array($sample->status, ['open', 'seald']))
-            <div class="richak richak-xs richak-secondary richak-checkbox">
-                <input type="checkbox" id="editable">
-                <label for="editable">
-                    <span class="richak-icon"></span>
-                    <span>
-                        <div class="d-flex align-items-center fs-12 d-inline-block">
-                            <div class="pr-1">
-                                قابلیت ویرایش فرم
-                            </div>
-                        </div>
-                    </span>
-                </label>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="richak richak-xs richak-secondary richak-checkbox">
+                        <input type="checkbox" id="editable">
+                        <label for="editable">
+                            <span class="richak-icon"></span>
+                            <span>
+                                <div class="d-flex align-items-center fs-12 d-inline-block">
+                                    <div class="pr-1">
+                                        قابلیت ویرایش فرم
+                                    </div>
+                                </div>
+                            </span>
+                        </label>
+                    </div>
+                </div>
             </div>
         @endif
-        <form action="" method="post">
+        <div class="row">
+            <div class="col-12">
+                <h6>عمومی</h6>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="form-group form-group-m">
+                    <input @formValue($sample->cornometer) disabled class="form-control form-control-m d-notification form-items font-weight-bold" type="number" name="cornometer" id="cornometer" placeholder="&nbsp;" data-lijax="500" data-method="put">
+                    <label for="cornometer">زمان انجام <sup>دقیقه</sup></label>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <h6>پیش‌نیازها</h6>
+            </div>
             @foreach ($sample->prerequisites as $prerequisite)
-            <div class="form-group form-group-m">
-                @if (in_array($prerequisite->answer->type, ['options', 'select']))
-                    <select type="text" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-prerequisite="{{$loop->index + 1}}" data-name="prerequisite[{{$loop->index}}][1]" data-merge='{"prerequisites[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="prerequisite-{{$loop->index}}" class="form-items form-control form-control-m font-weight-bold d-notification" placeholder="&nbsp;" disabled>
-                        <option></option>
-                        @foreach ($prerequisite->answer->options as $option)
-                            <option {{isset($prerequisite->user_answered) && $prerequisite->user_answered == $loop->index +1 ? 'selected' : ''}} value="{{$loop->index + 1}}" @selectChecked($prerequisite->user_answered, $loop->index + 1)>{{$loop->index + 1}}: {{$option}}</option>
-                        @endforeach
-                    </select>
-                @elseif (in_array($prerequisite->answer->type, ['text', 'number']))
-                    <input @formValue($prerequisite->user_answered) disabled class="form-control form-control-m" type="{{$prerequisite->answer->type}}" id="prerequisite-{{$loop->index}}" placeholder="&nbsp;">
-                @endif
-                <label for="prerequisite-{{$loop->index}}">{{$loop->index + 1}} - {{$prerequisite->text}}</label>
+            <div class="col-12 col-lg-6">
+                <div class="form-group form-group-m">
+                    @if (in_array($prerequisite->answer->type, ['options', 'select']))
+                        <select type="text" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-prerequisite="{{$loop->index + 1}}" data-name="prerequisites[{{$loop->index}}][1]" data-merge='{"prerequisites[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="prerequisite-{{$loop->index}}" class="form-items form-control form-control-m font-weight-bold d-notification" placeholder="&nbsp;" disabled>
+                            <option></option>
+                            @foreach ($prerequisite->answer->options as $option)
+                                <option {{isset($prerequisite->user_answered) && $prerequisite->user_answered == $loop->index +1 ? 'selected' : ''}} value="{{$loop->index + 1}}" @selectChecked($prerequisite->user_answered, $loop->index + 1)>{{$loop->index + 1}}: {{$option}}</option>
+                            @endforeach
+                        </select>
+                    @elseif (in_array($prerequisite->answer->type, ['text', 'number']))
+                        <input @formValue($prerequisite->user_answered) disabled class="form-items form-control form-control-m font-weight-bold d-notification" type="{{$prerequisite->answer->type}}" id="prerequisite-{{$loop->index}}" placeholder="&nbsp;">
+                    @endif
+                    <label for="prerequisite-{{$loop->index}}">{{$loop->index + 1}} - {{$prerequisite->text}}</label>
+                </div>
             </div>
             @endforeach
-        </form>
-    </div>
-</div>
-<div class="card">
-    <div class="card-header">
-        <h6 class="card-title">
-            گویه‌ها
-        </h6>
-    </div>
-    <div class="card-body">
-        @if (in_array($sample->status, ['open', 'seald']))
-            <div class="richak richak-xs richak-secondary richak-checkbox">
-                <input type="checkbox" id="editable">
-                <label for="editable">
-                    <span class="richak-icon"></span>
-                    <span>
-                        <div class="d-flex align-items-center fs-12 d-inline-block">
-                            <div class="pr-1">
-                                قابلیت ویرایش فرم
-                            </div>
-                        </div>
-                    </span>
-                </label>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <h6>گویه‌ها</h6>
             </div>
-        @endif
-        <form action="" method="post">
             @foreach ($sample->items as $item)
-            <div class="form-group form-group-m">
-                <select type="text" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-item="{{$loop->index + 1}}" data-name="items[{{$loop->index}}][1]" data-merge='{"items[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="item-{{$loop->index}}" class="form-items form-control form-control-m font-weight-bold d-notification" placeholder="&nbsp;" disabled>
-                    <option></option>
-                    @foreach ($item->answer->options as $option)
-                        <option {{isset($item->user_answered) && $item->user_answered == $loop->index +1 ? 'selected' : ''}} value="{{$loop->index + 1}}">{{$loop->index + 1}}: {{$option}}</option>
-                    @endforeach
-                </select>
-                <label for="item-{{$loop->index}}">{{$loop->index + 1}} - {{$item->text}}</label>
-            </div>
+                <div class="col-12 col-xl-6">
+                    <div class="form-group form-group-m">
+                        <select type="text" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-item="{{$loop->index + 1}}" data-name="items[{{$loop->index}}][1]" data-merge='{"items[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="item-{{$loop->index}}" class="form-items form-control form-control-m font-weight-bold d-notification" placeholder="&nbsp;" disabled>
+                            <option></option>
+                            @foreach ($item->answer->options as $option)
+                                <option {{isset($item->user_answered) && $item->user_answered == $loop->index +1 ? 'selected' : ''}} value="{{$loop->index + 1}}">{{$loop->index + 1}}: {{$option}}</option>
+                            @endforeach
+                        </select>
+                        <label for="item-{{$loop->index}}">{{$loop->index + 1}} - {{$item->text}}</label>
+                    </div>
+                </div>
             @endforeach
-        </form>
+        </div>
     </div>
 </div>
 @endsection
