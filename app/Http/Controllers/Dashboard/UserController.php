@@ -17,8 +17,6 @@ class UserController extends _UserController
     }
     public function showCounselingCenter(Request $request, User $user)
     {
-        // dd(auth()->user()->centers);
-        // dd(auth()->user()->centers->where('type', 'counseling_center')->load('owner'));
         // $this->data->members = RelationshipUser::apiIndex($user->center->id);
     }
 

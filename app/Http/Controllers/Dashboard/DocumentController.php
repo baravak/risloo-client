@@ -10,7 +10,6 @@ class DocumentController extends Controller
     public function index(Request $request)
     {
         $documents = $this->data->documents = Document::apiIndex($request->all());
-        // dd($documents->get(0)->attachments->get('original')->getAttributes());
         return $this->view($request, 'dashboard.documents.index');
     }
 

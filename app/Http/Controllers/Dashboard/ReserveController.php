@@ -51,8 +51,6 @@ class ReserveController extends Controller
     public function create(Request $request)
     {
         $this->data->global->title = __('Create new reserve');
-        // dd((new User())->execute('me'));
-        // dd(auth()->user());
         $this->viewMode($request);
         return $this->view($request, 'dashboard.reserves.create');
     }
