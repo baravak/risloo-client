@@ -10,7 +10,7 @@ class AssessmentController extends Controller
     public function index(Request $request)
     {
         $this->authorize('dashboard.assessments.viewAny');
-        $this->data->assessments = Assessment::apiIndex($request->all(['order', 'sort', 'parent', 'creator']));
+        $this->data->assessments = Assessment::apiIndex($request->all());
         return $this->view($request, 'dashboard.assessments.index');
     }
 
