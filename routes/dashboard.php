@@ -33,8 +33,8 @@ Route::put('samples/{sample}/close', 'SampleController@close')->middleware('auth
 Route::put('samples/{sample}/open', 'SampleController@open')->middleware('auth')->name('samples.open');
 
 
-Route::get('reserves/calendar', 'ReserveController@calendar')->name('reserves.calendar');
-Route::resource('reserves', 'ReserveController');
+Route::get('sessions/calendar', 'SessionController@calendar')->name('sessions.calendar');
+Route::resource('sessions', 'SessionController');
 
 Route::resource('documents', 'DocumentController');
 

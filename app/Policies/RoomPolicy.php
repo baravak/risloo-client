@@ -10,9 +10,19 @@ class RoomPolicy
 {
     use HandlesAuthorization;
     public function admin(User $user, $room){
-        if($room->can('add')){
+        if($user->isAdmin())
+        {
             return true;
         }
+        if($room->manager->id == $user->id)
+        {
+            return true;
+        }
+        if(in_array($room->center->acception, ['manager', 'operator']))
+        {
+            return true;
+        }
+        return false;
     }
 
     public function create(User $user, CenterUser $roomUser = null){

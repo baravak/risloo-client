@@ -265,6 +265,43 @@ score_chart['16PF-93'] = function(scores){
 
 }
 
+$('body').on('statio:dashboard:sessions:create', function () {
+    $('#myTab > li > a').on('hide.bs.tab', function (e) {
+        $('.fai', this).removeClass('fa-dot-circle').addClass('fa-circle');
+        if ($('#case').is('.active.show') && this == $('#reserve-tab')[0]) return;
+        var panel = $(e.target).attr("href");
+        $('input, select, checkbox, radio', panel).each(function () {
+            if (!$(this).is(':disabled')) {
+                $(this).attr('disabled', 'disabled').addClass('disabled');
+            }
+        });
+    }).on('shown.bs.tab', function(e){
+        $('.fai', this).addClass('fa-dot-circle').removeClass('fa-circle');
+        var panel = $(e.target).attr("href");
+        if ($(this).is('#case-tab')) {
+            $('#reserve').addClass('active').addClass('show');
+            $("#reserve small.text-muted").removeClass('d-block').hide();
+            panel += ', #reserve';
+        }
+        if($(this).is('#reserve-tab'))
+        {
+            $("#reserve small.text-muted").addClass('d-block');
+        }
+        if ($(this).is('#client-tab'))
+        {
+            $('#reserve').removeClass('active').removeClass('show');
+            $('#reserve-tab').trigger('hide.bs.tab');
+        }
+        $('input, select, checkbox, radio', panel).each(function () {
+            if ($(this).is('.disabled:disabled')) {
+                $(this).removeAttr('disabled').removeClass('disabled');
+            }
+        });
+    });
+    $('#myTab > li > a').each(function(){
+        $(this).trigger(($(this).is('.active') ? 'shown' : 'hide') + '.bs.tab');
+    });
+});
 $('body').on('statio:dashboard:samples:show', function(){
     $('#scoring-btn', this).on('statio:jsonResponse', function (event, response, jqXHR) {
         if (response.is_ok)

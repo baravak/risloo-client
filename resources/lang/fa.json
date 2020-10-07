@@ -121,5 +121,10 @@
     "Closed" : "بسته",
     "Scored" : "دارای نمره",
     "Close sample" : "بستن آزمون",
-    "Open sample": "بازکردن آزمون"
+    "Open sample": "بازکردن آزمون",
+    "Therapy session" : "جلسه درمانی",
+    "Therapy sessions": "جلسات درمانی",
+    "Queue" : "صف",
+    "Create session" : "ساختن جلسه درمان",
+    "Create new session": "ساختن جلسه درمانی جدید"
 }

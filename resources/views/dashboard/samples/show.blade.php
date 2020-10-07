@@ -50,7 +50,7 @@
                     خروجی‌ها
                 </button>
                 <div class="dropdown-menu" aria-labelledby="profile-export">
-                    @foreach (['svg', 'png', 'html', 'pdf'] as $item)
+                    @foreach (['svg', 'png', 'html', 'pdf', 'json', 'xlsx'] as $item)
                         @isset($sample->profiles->{'profile_' . $item})
                             <a href="{!!$sample->profiles->{'profile_' . $item}->url!!}" target="_blank" data-type="{{$item}}" class="dropdown-item fs-12 profile-link profile-{{$item}}">
                                 {{__("Download profile as :type", ['type' => strtoupper($item)])}}

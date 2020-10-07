@@ -88,3 +88,19 @@ Breadcrumbs::for('dashboard.reserves.create', function ($trail, $data) {
     $trail->parent('dashboard.reserves.index', $data);
     $trail->push(__('Create new reserve'), route('dashboard.reserves.create'));
 });
+
+
+Breadcrumbs::for('dashboard.sessions.index', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+    if(isset($data['room']))
+    {
+        $trail->push(($data['room']->center ?: $data['room'])->detail->title, route('dashboard.centers.show', ($data['room']->center ?: $data['room'])->id));
+        $trail->push($data['room']->type == 'room' ? __('Therapy room of :user', ['user' => $data['room']->manager->name]) : __('Personal'), route('dashboard.rooms.show', $data['room']->id));
+    }
+    $trail->push(__('Therapy sessions'), route('dashboard.sessions.index'));
+});
+
+Breadcrumbs::for('dashboard.sessions.create', function ($trail, $data) {
+    $trail->parent('dashboard.sessions.index', $data);
+    $trail->push(__('Create session'), route('dashboard.sessions.index'));
+});

@@ -81,8 +81,8 @@
         </div>
     </li>
     <li class="nav-item">
-            <a class="nav-link text-truncate" href="{{route('dashboard.reserves.index')}}">
-                <span class="d-sm-inline">{{__('Reservation')}}</span>
+            <a class="nav-link text-truncate" href="{{route('dashboard.sessions.index')}}">
+                <span class="d-sm-inline">{{__('Therapy sessions')}}</span>
             </a>
         </li>
 @endif
