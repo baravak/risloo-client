@@ -49,18 +49,14 @@
                     <i class="fas fa-cog fa-spin {{$sample->status == 'done' ? 'd-none' : ''}}"></i>
                     خروجی‌ها
                 </button>
-                <div class="dropdown-menu" aria-labelledby="profile-export">
-                    @foreach (['svg', 'png', 'html', 'pdf', 'json', 'xlsx'] as $item)
-                        @isset($sample->profiles->{'profile_' . $item})
-                            <a href="{!!$sample->profiles->{'profile_' . $item}->url!!}" target="_blank" data-type="{{$item}}" class="dropdown-item fs-12 profile-link profile-{{$item}}">
-                                {{__("Download profile as :type", ['type' => strtoupper($item)])}}
-                            </a>
-                        @else
-                            <a href="" target="_blank" data-type="{{$item}}" class="dropdown-item fs-12 profile-link profile-{{$item}} d-none">
-                                {{__("Download profile as :type", ['type' => strtoupper($item)])}}
-                            </a>
-                        @endisset
-                    @endforeach
+                <div class="dropdown-menu" aria-labelledby="profile-export" id="profile-export-list">
+                    @if ($sample->profiles)
+                        @foreach ($sample->profiles->getAttributes() as $key => $item)
+                        <a href="{!!$item->url!!}" target="_blank" data-type="{{$key}}" class="dropdown-item fs-12 profile-link profile-{{$key}}">
+                            {{ strtoupper(str_replace('_', ' ', str_replace('profile_', '', $key)))}}
+                        </a>
+                        @endforeach
+                    @endif
                 </div>
             </span>
         </h5>
@@ -73,9 +69,11 @@
             @endisset
         </div>
     </div>
-    <div class="card-body">
-        @include('dashboard.samples.scales.' . substr($sample->scale->id, 1))
-    </div>
+    @if (\View::exists('dashboard.samples.scales.' . substr($sample->scale->id, 1)))
+        <div class="card-body" id="scale-content-{{ substr($sample->scale->id, 1) }}">
+            @include('dashboard.samples.scales.' . substr($sample->scale->id, 1))
+        </div>
+    @endif
 </div>
 <div class="card mb-3">
     <div class="card-header">

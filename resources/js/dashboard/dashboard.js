@@ -37,13 +37,13 @@ $('body').on('statio:dashboard:sessions:create', function () {
 });
 $('body').on('statio:dashboard:samples:show', function(){
     $('#scoring-btn', this).on('statio:jsonResponse', function (event, response, jqXHR) {
+        $('.profile-link').remove();
         if (response.is_ok)
         {
             $('#profile-export i').removeClass('d-none');
             $('#profile_svg *').remove();
-            $('.profile-link').hide().removeClass('d-none');
             $('#profile_svg').append($('<i class="fas fa-cog fa-spin"></i>'));
-            scoringResult.call(this, response);
+            scoringResult.call(this, response, jqXHR);
         }
         else
         {
@@ -55,7 +55,6 @@ $('body').on('statio:dashboard:samples:show', function(){
     });
     if (['scoring', 'craeting_files'].indexOf($("#sample-show").attr('data-status')) >= 0)
     {
-        $('.profile-link.d-none').hide().removeClass('d-none');
         if ($("#sample-show").attr('data-status') == 'scoring')
         {
             $('#scoring-btn').addClass('lijax-preload');
@@ -294,7 +293,7 @@ function select2result_case_clients(data, option) {
     return $('<span></span>').text(clients.join('- ')).addClass('fs-12');
 }
 
-function scoringResult(response)
+function scoringResult(response, jqXHR)
 {
     var _self = this;
     if (response.data.score)
@@ -315,26 +314,23 @@ function scoringResult(response)
         }, 2000);
         return;
     }
-    var results = $('.profile-link').map(function () {
-        return $(this).attr('data-type');
-    });
-    for (var i = 0; i < results.length; i++) {
-        if (response.data.profiles['profile_' + results[i]] && $('.profile-link.profile-' + results[i]).attr('href') != response.data.profiles['profile_' + results[i]].url) {
-            $('.profile-link.profile-' + results[i]).attr('href', response.data.profiles['profile_' + results[i]].url).fadeIn('fast');
-        }
-    }
-
-    for (var i = 0; i < results.length; i++) {
-        if (!response.data.profiles['profile_'+results[i]])
+    for (var key in response.data.profiles) {
+        var profile = response.data.profiles[key];
+        var  element = $('.profile-link.profile-'+ key).eq(0);
+        if(!element.length)
         {
-            setTimeout(function () {
-                scoringResultAwaiting.call(_self, response);
-            }, 5000);
-            break;
+            $('<a href="' + profile.url + '" target="_blank" data-type="'+ key + '" class="dropdown-item fs-12 profile-link profile-' + key + '">'+  (key.replace('profile_', '')).replace(/_/gi, ' ').toUpperCase() +'</a>').appendTo('#profile-export-list');
+        }
+        else {
+            $('.profile-link.profile-'+ key).attr('href', profile.url);
         }
     }
-    if (i == results.length)
-    {
+    $('.profile-link').fadeIn('fast');
+    if(jqXHR.status != 200) {
+        setTimeout(function () {
+            scoringResultAwaiting.call(_self, response);
+        }, 5000);
+    } else {
         $('#profile-export i').fadeOut('fast', function () {
             $(this).addClass('d-none');
         });
@@ -353,8 +349,8 @@ function scoringResultAwaiting(response)
     $.ajax({
         context : this,
         url: '/dashboard/samples/' + response.data.id + '/scoring',
-        success : function(data){
-            scoringResult.call(this, data);
+        success : function(data, statusText, jqXHR){
+            scoringResult.call(this, data, jqXHR);
         }
     });
 }
