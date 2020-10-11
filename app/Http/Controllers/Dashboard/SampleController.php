@@ -73,7 +73,11 @@ class SampleController extends Controller
     }
 
     public function scoreResult(Request $request, $serial){
-        $scoring = $this->data->sample = scoreResult::result($serial);
-        return $scoring->response()->json();
+        $scoring = $this->data->scoring = scoreResult::result($serial);
+        if($request->has('html')) {
+            return $this->view($request, 'dashboard.samples.scales.' . substr($scoring->scale->id, 1));
+        } else {
+            return $scoring->response()->json();
+        }
     }
 }

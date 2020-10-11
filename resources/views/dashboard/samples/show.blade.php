@@ -69,11 +69,7 @@
             @endisset
         </div>
     </div>
-    @if (\View::exists('dashboard.samples.scales.' . substr($sample->scale->id, 1)))
-        <div class="card-body" id="scale-content-{{ substr($sample->scale->id, 1) }}">
-            @include('dashboard.samples.scales.' . substr($sample->scale->id, 1))
-        </div>
-    @endif
+    @includeIf('dashboard.samples.scales.' . substr($sample->scale->id, 1), ['scoring'=> (object) ['profiles' => $sample->profiles, 'score' => $sample->score, 'id' => $sample->id]])
 </div>
 <div class="card mb-3">
     <div class="card-header">

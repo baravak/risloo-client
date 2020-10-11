@@ -38,6 +38,7 @@ $('body').on('statio:dashboard:sessions:create', function () {
 $('body').on('statio:dashboard:samples:show', function(){
     $('#scoring-btn', this).on('statio:jsonResponse', function (event, response, jqXHR) {
         $('.profile-link').remove();
+        $('#scoring-extends').html('');
         if (response.is_ok)
         {
             $('#profile-export i').removeClass('d-none');
@@ -331,6 +332,18 @@ function scoringResult(response, jqXHR)
             scoringResultAwaiting.call(_self, response);
         }, 5000);
     } else {
+        if($('#scoring-extends').length)
+        {
+            new Statio({
+                type: 'render',
+                context: $('#scoring-extends').eq(0),
+                ajax: {
+                    cache: false,
+                    method: 'get'
+                },
+                url: '/dashboard/samples/' + response.data.id + '/scoring?html=1'
+            });
+        }
         $('#profile-export i').fadeOut('fast', function () {
             $(this).addClass('d-none');
         });
