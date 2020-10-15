@@ -98,13 +98,6 @@
             <span class="d-sm-inline">{{__('Samples')}}</span>
         </a>
     </li>
-    @if (auth()->user()->isAdmin())
-        <li class="nav-item">
-            <a class="nav-link text-truncate" href="{{route('dashboard.relationships.index')}}">
-                <span class="d-sm-inline">{{__('Relationships')}}</span>
-            </a>
-        </li>
-    @endif
     <li class="nav-item">
         <a class="nav-link text-truncate" href="{{route('dashboard.centers.index')}}">
             <span class="d-sm-inline">{{__('Therapy centers')}}</span>
