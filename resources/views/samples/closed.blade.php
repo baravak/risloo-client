@@ -12,8 +12,8 @@
         <div class="container mt-md-5">
             <div class="card test-card shadow-sm mb-3">
                 <div class="card-body">
-                    <div class="card-title">{{$sample->scale}} <sup><small>{{$sample->edition}}</small></sup></div>
-                    <div class="mb-5">
+                    <div class="card-title">{{$sample->scale->title}} <sup><small>{{$sample->edition}}</small></sup></div>
+                    <div class="mb-5 text-center">
                         این نمونه به اتمام رسیده است
                     </div>
                 </div>

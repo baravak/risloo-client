@@ -2,17 +2,17 @@
     <div class="card-title" >پایان نمونه‌گیری</div>
     <div id="close">
         <p>
-        اگر از اتمام تست مطمئن هستید و به تمامی گزینه‌ها پاسخ داده‌اید می‌توانید دکمه پایان را بزنید. بعد از زدن این دکمه، دیگر قادر به ویرایش تست نمی‌باشید
+        اگر از اتمام نمونه مطمئن هستید و به تمامی گزینه‌ها پاسخ داده‌اید می‌توانید دکمه اتمام نمونه را بزنید. بعد از زدن این دکمه، دیگر قادر به ویرایش نمونه نمی‌باشید
         </p>
         <div id="empty_list">
 
         </div>
         <div id="close-btn">
             <p>
-            اگر با خطا مواجه شدید، بر روی دریافت تست بزنید و فایل دریافتی را به روان‌شناس یا اپراتور مرکزمشاوره تحویل دهید
+            اگر با خطا مواجه شدید، بر روی دریافت نمونه بزنید و فایل دریافتی را به روان‌شناس یا اپراتور مرکزمشاوره تحویل دهید
             </p>
-            <a href="{!! urldecode(route('samples.close', substr($sample->id, 1)))!!}" data-method="PUT" data-lijax class="btn btn-primary">اتمام تست</a>
-            <a id="download-close" href="#" class="btn btn-secondary">دریافت فایل تست</a>
+            <a href="{!! urldecode(route('samples.close', substr($sample->id, 1)))!!}" data-method="PUT" data-lijax class="btn btn-primary">اتمام نمونه</a>
+            <a id="download-close" href="#" class="btn btn-secondary">دریافت فایل نمونه</a>
         </div>
     </div>
 </div>
