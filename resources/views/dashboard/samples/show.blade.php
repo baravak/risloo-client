@@ -5,7 +5,7 @@
     <div class="card-header">
         <h5 class="card-title">
             {{ $sample->scale->title }} <small> / {{$sample->client ? $sample->client->name: ''}}</small>
-            <a href="{!!urldecode(route('dashboard.samples.scoring', $sample->id))!!}" data-lijax-preload="scoring-preload" data-lijax-succsess="" id="scoring-btn" data-method="POST" class="badge badge-info fs-12 p-1 lijax {{$sample->status =='closed' || (auth()->isAdmin() && $sample->status == 'done') || $sample->score_last_version != $sample->score_current_version ? '' : 'd-none'}}">
+            <a href="{!!urldecode(route('dashboard.samples.scoring', $sample->id))!!}" data-lijax-preload="scoring-preload" data-lijax-succsess="" id="scoring-btn" data-method="POST" class="badge badge-info fs-12 p-1 lijax {{($sample->status =='closed' || (auth()->isAdmin() && $sample->status == 'done') || $sample->score_last_version != $sample->score_current_version ) && $sample->client ? '' : 'd-none'}}">
                 {{__("Scoring")}}
             </a>
             <span id="scoring-preload" class="badge badge-light fs-12 p-1 {{$sample->status == 'scoring' ? '' : 'd-none'}}">
