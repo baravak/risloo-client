@@ -7,9 +7,13 @@
                     @sortView($samples, 'scale')
                     @filterView($samples, 'scale')
                 </th>
-                <th>@sortView($samples, 'client')</th>
+                <th>
+                    @sortView($samples, 'client')
+                    {{-- @filterView($samples, 'client') --}}
+                </th>
                 <th>
                     @sortView($samples, 'room')
+                    @include('components._filter', ['model'=> $samples, 'key' => 'room', 'select_title'=> 'manager.name', 'select_template' => 'room'])
                 </th>
                 <th>
                     @sortView($samples, 'case')
