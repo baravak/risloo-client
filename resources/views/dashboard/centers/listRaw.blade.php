@@ -2,7 +2,7 @@
     <div class="card card-center mb-3 overflow-hidden">
         <div class="card-header d-flex align-items-center trianglify-pattern-{{$center->created_at->timestamp % 16}}">
             <div class="card-wall-media">
-                <a href="#" class="media media-light rounded-circle">
+                <a href="{{ $center->route('show') }}" class="media media-light rounded-circle">
                     <span>
                         @avatarOrName($center->detail)
                     </span>
