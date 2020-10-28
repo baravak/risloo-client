@@ -35,8 +35,12 @@
                         @endif
                     @endcan
                     @can('update', $center)
-                        <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.centers.edit', $center->id)}}"><i class="far fa-edit"></i></a>
-                        <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.center.users.index', $center->id)}}"><i class="far fa-users"></i></a>
+                        <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.centers.edit', $center->id)}}" title="{{ __('Edit') }}">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.center.users.index', $center->id)}}" title="{{ __('Users') }}">
+                            <i class="far fa-users"></i>
+                        </a>
                     @endcan
                 </div>
             </div>
