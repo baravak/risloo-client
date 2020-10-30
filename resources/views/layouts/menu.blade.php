@@ -81,10 +81,15 @@
         </div>
     </li>
     <li class="nav-item">
-            <a class="nav-link text-truncate" href="{{route('dashboard.sessions.index')}}">
-                <span class="d-sm-inline">{{__('Therapy sessions')}}</span>
-            </a>
-        </li>
+        <a class="nav-link text-truncate" href="{{route('dashboard.sessions.index')}}">
+            <span class="d-sm-inline">{{__('Therapy sessions')}}</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-truncate" href="{{route('dashboard.sessions.index')}}">
+            <span class="d-sm-inline">{{__('Reservation')}}</span>
+        </a>
+    </li>
 @endif
     @can('dashboard.assessments.viewAny')
         <li class="nav-item">

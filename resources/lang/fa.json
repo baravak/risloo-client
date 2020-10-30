@@ -126,5 +126,17 @@
     "Therapy sessions": "جلسات درمانی",
     "Queue" : "صف",
     "Create session" : "ساختن جلسه درمان",
-    "Create new session": "ساختن جلسه درمانی جدید"
+    "Create new session": "ساختن جلسه درمانی جدید",
+    "Sessions & reserves" : "جلسات و نوبت‌ها",
+    "Add session" : "افزودن جلسه",
+    "Dedicated reserve" : "رزرو اختصاصی",
+    "Session" : "جلسه",
+    ":time minute(s)" : ":time دقیقه",
+    ":time short_minute(s)" : ":timeد",
+    "client_awaiting" : "در انتظار تأیید مراجع",
+    "session_awaiting": "در انتظار تشکیل جلسه",
+     "in_session": "در جلسه",
+     "finished": "پایان یافته",
+     "canceled_by_client": "لغوشده توسط مراجع",
+     "canceled_by_center": "لغو شده توسط مرکز مشاوره"
 }

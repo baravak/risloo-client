@@ -1,27 +1,31 @@
-<tr data-xhr="room-list-{{$room->id}}">
-    <td>
-        @id($room)
+<tr data-xhr="session-list-{{$session->id}}">
+    <td class="align-middle">
+        @id($session)
     </td>
-    <td>
-        <a href="{{$room->manager->route('show')}}" class="text-decoration-none d-block pl-2">
-            @if ($room->type == 'clinic')
-                {{__('Personal clinic of :user', ['user' => $room->manager->name])}}
-            @else
-                {{__('Therapy room of :user', ['user' => $room->manager->name])}}
-            @endif
-        </a>
-        @if ($room->type != 'clinic')
-        <a href="{{$room->owner->route('show')}}" class="badge badge-light p-2">
-            @displayName($room->owner)
-        </a>
-        @endif
+    <td class="align-middle">
+        @room($session->case->room)
     </td>
-    <td>
-        @can('details', $room)
-            <a href="{{route('dashboard.room.users.index', $room->id)}}" class="text-primary text-decoration-none">
-                <i class="far fa-address-book"></i>
-                {{__('Members')}}
-            </a>
-        @endcan
+    <td class="align-middle">
+        @id($session->case)
+    </td>
+    <td class="align-middle">
+        @displayName($session->client)
+    </td>
+    <td class="align-middle">
+        <span class="d-block fs-12 font-weight-bold">
+            @time($session->started_at, 'y-n-j')
+        </span>
+        <small class="d-block">
+            @time($session->started_at, 'G:i')
+        </small>
+    </td>
+    <td class="align-middle">
+            @duration($session->duration, 'minute')
+    </td>
+    <td class="align-middle">
+        {{ __($session->status) }}
+    </td>
+    <td class="align-middle">
+        @editLink($session)
     </td>
 </tr>

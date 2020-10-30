@@ -1,5 +1,5 @@
 (function(){
-	function jresp(context, res, jqXHR, textStatus)
+	function jresp(context, res)
 	{
 		context.trigger('jresp', [res]);
 		if (res.message && !context.is('.d-notification'))
@@ -24,7 +24,7 @@
 						message = res.errors[err][0];
 					}
 				}
-				iziToast[res.is_ok ? (jqXHR.status == 201 ? 'success' : 'show') : 'error']({
+				iziToast[res.is_ok ? 'show' : 'error']({
 					message: message,
 					rtl: $('body').is('.rtl'),
 					closeOnClick : true,
@@ -354,7 +354,7 @@
 				response.data = jqXHR.responseJSON;
 				$(document).trigger('statio:global:jsonResponse', [options.context, jqXHR.responseJSON, jqXHR]);
 				options.context.trigger('statio:jsonResponse', [jqXHR.responseJSON, jqXHR]);
-				new JResp(options.context, response.data, jqXHR, textStatus);
+				new JResp(options.context, response.data);
 			}
 			else
 			{
@@ -1070,6 +1070,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 			{
 				var date = new persianDate(val * 1000);
 				$(this).val(date.format('YYYY/M/D H:m'));
+				$('#' + $(this).attr('data-picker-alt')).val(val);
 			}
 		});
 	});

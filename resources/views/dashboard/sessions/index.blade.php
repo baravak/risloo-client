@@ -6,7 +6,7 @@
             {{ __('Reservation') }}
         </div>
         <div class="card-body p-0">
-            {{-- @include($rooms->count() ? 'dashboard.rooms.list' : 'dashboard.emptyContent') --}}
+            @include($sessions->count() ? 'dashboard.sessions.list' : 'dashboard.emptyContent')
         </div>
     </div>
 @endsection

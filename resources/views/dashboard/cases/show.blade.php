@@ -82,24 +82,78 @@
     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
             <div class="card-header">
-                {{__('Clients')}}<sup>({{ $case->clients->count() }})
+                {{__('Clients')}}<sup>({{ $case->clients ? $case->clients->count() : 0 }})
                 <small>
                     <a href="{{route('dashboard.case.users.create', $case->id)}}" class="badge badge-primary p-1">{{__('Add client')}}</a>
                 </small>
             </div>
             <div class="card-body">
-                @foreach ($case->clients as $client)
-                    <div class="d-flex align-items-center bg-light p-2">
-                        <div class="px-3">
-                            <div class="fs-12 font-weight-bold">
-                                @displayName($client->user)
-                                <a href="{{route('dashboard.samples.create', ['case' => $case->id, 'client' => $client->id])}}#case" class="badge badge-primary p-1">{{__('Create sampel')}}</a>
+                @if ($case->clients)
+                    @foreach ($case->clients as $client)
+                        <div class="d-flex align-items-center bg-light p-2">
+                            <div class="px-3">
+                                <div class="fs-12 font-weight-bold">
+                                    @displayName($client->user)
+                                    <a href="{{route('dashboard.samples.create', ['case' => $case->id, 'client' => $client->id])}}#case" class="badge badge-primary p-1">{{__('Create sampel')}}</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <div class="card">
+            <div class="card-header">
+                {{__('Sessions & reserves')}}<sup>({{ $case->sessions ? $case->sessions->count() : 0 }})
+                <small>
+                    <a href="{{route('dashboard.sessions.create', ['case_id' => $case->id])}}" class="badge badge-primary p-1">{{__('Add session')}}</a>
+                </small>
+            </div>
+            <div class="card-body">
+                <table class="w-100 table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">شروع</th>
+                            <th class="text-center">مدت جلسه</th>
+                            <th class="">وضعیت</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if ($case->sessions)
+                            @foreach ($case->sessions as $session)
+                                <tr class="m-2">
+                                    <td class="direction-ltr text-left">
+                                        <span class="d-block fs-12 font-weight-bold">
+                                            @time($session->started_at, 'y-n-j')
+                                        </span>
+                                        <small class="d-block">
+                                            @time($session->started_at, 'G:i')
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <span class="d-inline-block">
+                                            @duration($session->duration, 'minute')
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {{ __($session->status) }}
+                                    </td>
+                                    <td>
+                                        @editLink($session)
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
 </div>
 @endsection

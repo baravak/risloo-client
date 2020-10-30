@@ -5,10 +5,8 @@ namespace App;
 class Session extends API
 {
     public $with = [
-        'owner' => User::class,
-        'manager' => User::class,
-        'creator' => User::class,
-        'center' => Relationship::class,
+        'client' => User::class,
+        'case' => TherapyCase::class,
     ];
     protected $casts = [
         'started_at' => 'datetime',

@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center fs-12">
-    <div class="ml-2">
+    <div class="ml-2 d-none d-md-inline-block">
         <a href="#" class="media media-light rounded-circle">
         <span>
             @avatarOrName($room->manager)
