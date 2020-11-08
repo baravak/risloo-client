@@ -45,11 +45,6 @@ class SessionController extends Controller
             for ($i = 7; $i <= 22; $i++) {
                 $this->data->table[] = $i;
             }
-            if ($sessions->count()) {
-                $table = new ReserveCalendar($sessions);
-                $this->data->hours = $table->hours;
-                $this->data->calendar = $table->calendar;
-            }
         }
     }
 
@@ -86,6 +81,11 @@ class SessionController extends Controller
     }
 
     public function update(Request $request, $session){
-        return Session::apiUpdate($session, $request->all())->response()->json();
+        $bind = [];
+        if($request->callback){
+            $bind['redirect'] = urldecode($request->callback);
+        }
+        return Session::apiUpdate($session, $request->all())->response()
+        ->json($bind);
     }
 }

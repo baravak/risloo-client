@@ -143,7 +143,7 @@
                                         {{ __($session->status) }}
                                     </td>
                                     <td>
-                                        @editLink($session)
+                                        @include('components._editLink', ['href' => route('dashboard.sessions.edit', ['session' => $session->id, 'callback' => route('dashboard.cases.show', $case->id)])])
                                     </td>
                                 </tr>
                             @endforeach
