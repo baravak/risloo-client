@@ -18,4 +18,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            {{$sessions->links()}}
+        </div>
+    </div>
 </div>
