@@ -14,6 +14,24 @@
             var sample_id = '{{substr($sample->id, 1)}}';
             var prerequisite = {!! $prerequisites !!};
             var items = {!! $items !!};
+            items.forEach(function(item, i){
+                if(item.type == 'image_url'){
+                   var img = new Image;
+                   img.onload = function(){
+                        items[i].image_url = this;
+                   };
+                   img.src = item.image_url + '.png';
+                }
+                if(item.answer.type == 'optional_images'){
+                    item.answer.optional_images.forEach(function(option, ia){
+                        var img = new Image;
+                        img.onload = function(){
+                            items[i].answer.optional_images[ia] = this;
+                        };
+                        img.src = option + '.png';
+                    });
+                }
+            });
         </script>
         @yield('scripts')
     </body>

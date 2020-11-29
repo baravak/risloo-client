@@ -59,9 +59,3 @@
         </div>
     @endisset
 @endsection
-
-@isset($table)
-    @section('other-content')
-    @include('dashboard.sessions.calendar')
-    @endsection
-@endisset

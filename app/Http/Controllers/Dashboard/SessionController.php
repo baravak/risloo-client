@@ -75,9 +75,10 @@ class SessionController extends Controller
         return $this->view($request, 'dashboard.sessions.calendar');
     }
 
-    public function show(Request $request, $relationship)
+    public function show(Request $request, Session $session)
     {
-        return Session::apiShow($relationship);
+        $this->data->session = $session;
+        return $this->view($request, 'dashboard.sessions.show');
     }
 
     public function update(Request $request, $session){

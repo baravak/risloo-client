@@ -148,17 +148,35 @@
     answerDesign.optional = function(item)
     {
         var itemElement = $('#item-section');
-        item.answer.options.forEach(function(option, i){
+        var type = item.answer.type;
+        type = type == 'optional' ? 'options' : type;
+        if(item.type == 'image_url'){
+            $('<div class="row"></div>').appendTo(itemElement);
+        }
+        item.answer[type].forEach(function(option, i){
             var id = i+1;
             var template = $('#template div.radio').eq(0).clone();
+            template.addClass(item.answer.tiles == 4 ? 'col-3' : 'col-4');
             $('input', template).val(id).attr('name', 'options').attr('id', id);
             if (item.user_answered == id){
                 $('input', template).attr('checked', 'checked');
             }
             $('label', template).attr('for', id);
             $('label span', template).attr('data-number', id);
-            $('label', template).append(option);
-            template.appendTo(itemElement);
+            if(item.answer.type == 'optional_images'){
+                var img;
+                if(typeof option == 'object'){
+                    img = $(option).addClass('w-75');
+                }
+                else{
+                    img = $('<img src="'+ option +'.png" class="w-75"/>');
+                }
+                $('label', template).append(img);
+                template.appendTo($('div.row', itemElement));
+            }else{
+                $('label', template).append(option);
+                template.appendTo(itemElement);
+            }
         });
         $('input', itemElement).on('click.answer', function(){
             if (blockEvents) {
@@ -171,8 +189,23 @@
         $('input', itemElement).on('clicked.answer', function(){
             $(this).trigger('click.answer');
         });
-        $('[data-panel=item] .card-title').html(item.text);
+        if(item.type == 'image_url'){
+            $('[data-panel=item] .card-title').html('');
+            var img;
+            if(typeof item.image_url == 'object'){
+                img = $(item.image_url).addClass('w-100');
+            }
+            else{
+                img = $('<img src="'+ item.image_url +'.png" class="w-100"/>');
+            }
+            var secI = $('<div class="w-50 m-auto"></div>');
+            img.appendTo(secI);
+            secI.appendTo($('[data-panel=item] .card-title'));
+        }else{
+            $('[data-panel=item] .card-title').html(item.text);
+        }
     }
+    answerDesign.optional_images = answerDesign.optional;
 
     function firstEmpty(){
         for (var i = 0; i < items.length; i++) {

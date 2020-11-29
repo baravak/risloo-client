@@ -138,5 +138,7 @@
      "in_session": "در جلسه",
      "finished": "پایان یافته",
      "canceled_by_client": "لغوشده توسط مراجع",
-     "canceled_by_center": "لغو شده توسط مرکز مشاوره"
+     "canceled_by_center": "لغو شده توسط مرکز مشاوره",
+     "Public key" : "کلید عمومی",
+     "Set public key" : "تنظیم کلید عمومی"
 }

@@ -558,7 +558,28 @@ function select2result_case_clients(data, option) {
     data.all.clients.forEach(function(client){
         clients.push(client.user.name || client.user.id);
     });
-    return $('<span></span>').text(clients.join('- ')).addClass('fs-12');
+    var list = $('<span></span>');
+    $('<div>'+ clients.join('- ') +'</div>').addClass('fs-12').appendTo(list);
+    $('<div></div>').text(data.id).addClass('fs-10').appendTo(list);
+    return list;
+}
+
+function select2result_sessions(data, option) {
+    if (!data.all && data.element) {
+        data.all = JSON.parse($(data.element).attr('data-json'));
+        $(data.element).attr('data-json', '');
+    }
+    if (!data.all) return data.text;
+    var list = $('<div></div>').addClass('row m-0 p-0');
+    var gDate = new Date(data.all.started_at);
+    var date = (new persianDate(gDate)).calendar();
+    var calendar = date.year + '/' + date.month + '/' + date.day;
+    var time = gDate.getHours();
+    time += ':' + gDate.getMinutes();
+    $('<div>'+ data.all.status +'</div>').addClass('col-4 fs-12').appendTo(list);
+    $('<div>'+ calendar +'</div>').addClass('col-3 fs-10').appendTo(list);
+    $('<div>'+ time +'</div>').addClass('col-3 fs-10').appendTo(list);
+    return list;
 }
 
 function scoringResult(response, jqXHR)

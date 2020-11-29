@@ -36,4 +36,12 @@ class UserController extends _UserController
         return parent::index($request);
     }
 
+    public function publicKey(Request $request, $user){
+        if(auth()->user()->public_key){
+            abort(403, 'public key has been saved');
+        }
+        $user = User::setPublicKey($user, $request->all());
+        $request->session()->put('User', $user->response()->toArray());
+        return $user->response()->json(['redirect' => route('dashboard.users.edit', $user->id).'#public-key']);
+    }
 }

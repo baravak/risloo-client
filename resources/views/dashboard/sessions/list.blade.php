@@ -4,7 +4,9 @@
             <tr>
                 <th>@sortView($sessions, 'id', '#')</th>
                 <th>{{__('Room')}}</th>
-                <th>{{__('Case')}}</th>
+                <th>
+                    {{__('Case')}}
+                </th>
                 <th>{{__('Client')}}</th>
                 <th>{{__('Start time')}}</th>
                 <th>{{__('Session duration')}}</th>

@@ -1,3 +1,4 @@
+{{ dd($session) }}
 @extends($layouts->dashboard)
 @section('content')
 <div class="row">

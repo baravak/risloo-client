@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::post('users/{user}/public-key', 'UserController@publicKey')->name('users.publicKey');
 
 Route::resource('samples', 'SampleController', ['except' => ['delete', 'edit']]);
 Route::resource('assessments', 'AssessmentController', ['except' => ['destroy', 'create', 'store', 'update', 'show']]);
@@ -38,3 +39,4 @@ Route::resource('sessions', 'SessionController');
 
 Route::resource('documents', 'DocumentController');
 
+Route::resource('sessions/{session}/report', 'SessionReportController', ['as' => 'sessions']);

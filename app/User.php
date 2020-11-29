@@ -41,4 +41,9 @@ class User extends _User
             return 0;
         }
     }
+    public static function setPublicKey($user, array $params)
+    {
+        $store = new static;
+        return $store->execute(sprintf("/users/%s/public-key", $user), $params, 'post');
+    }
 }
