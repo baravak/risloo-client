@@ -23,10 +23,10 @@
                    img.src = item.image_url + '.png';
                 }
                 if(item.answer.type == 'optional_images'){
-                    item.answer.optional_images.forEach(function(option, ia){
+                    item.answer.options.forEach(function(option, ia){
                         var img = new Image;
                         img.onload = function(){
-                            items[i].answer.optional_images[ia] = this;
+                            items[i].answer.options[ia] = this;
                         };
                         img.src = option + '.png';
                     });

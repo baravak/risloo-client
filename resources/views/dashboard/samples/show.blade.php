@@ -137,19 +137,7 @@
             @foreach ($sample->items as $item)
                 <div class="col-12 col-xl-6">
                     <div class="form-group form-group-m">
-                        <select type="text" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-item="{{$loop->index + 1}}" data-name="items[{{$loop->index}}][1]" data-merge='{"items[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="item-{{$loop->index}}" class="form-items form-control form-control-m font-weight-bold d-notification" placeholder="&nbsp;" disabled>
-                            <option></option>
-                            @foreach (isset($item->answer->options) ? $item->answer->options : $item->answer->optional_images as $option)
-                                <option {{isset($item->user_answered) && $item->user_answered == $loop->index +1 ? 'selected' : ''}} value="{{$loop->index + 1}}">
-                                    @isset($item->answer->options)
-                                        {{$loop->index + 1}}: {{$option}}
-                                    @else
-                                        {{$loop->index + 1}}
-                                    @endisset
-                                </option>
-                            @endforeach
-                        </select>
-                        <label for="item-{{$loop->index}}">{{$loop->index + 1}} - {{isset($item->text) ? $item->text : ''}}</label>
+                        @include('dashboard.samples.shows.'. $item->answer->type)
                     </div>
                 </div>
             @endforeach
