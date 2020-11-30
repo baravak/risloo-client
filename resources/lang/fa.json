@@ -140,5 +140,11 @@
      "canceled_by_client": "لغوشده توسط مراجع",
      "canceled_by_center": "لغو شده توسط مرکز مشاوره",
      "Public key" : "کلید عمومی",
-     "Set public key" : "تنظیم کلید عمومی"
+     "Set public key" : "تنظیم کلید عمومی",
+     "Encryption type" : "نوع رمزگذاری",
+     "Without encryption" : "بدون رمزگذاری",
+     "With my public-key" : "رمزگذاری توسط کلید عمومی من",
+     "Report" : "گزارش",
+     "Report text" : "متن گزارش",
+     "Create report" : "ثبت گزارش"
 }

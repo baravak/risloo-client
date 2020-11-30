@@ -145,7 +145,7 @@
                                     <td>
                                         @include('components._editLink', ['href' => route('dashboard.sessions.edit', ['session' => $session->id, 'callback' => route('dashboard.cases.show', $case->id)])])
                                         @if ($session->is_reported)
-                                            <a href="{{ route('dashboard.sessions.report.view', $session->id) }}" title="{{ __('See report') }}"><i class="fas fa-comment"></i></a>
+                                            <a href="{{ route('dashboard.sessions.show', $session->id) }}" title="{{ __('See report') }}"><i class="fas fa-comment"></i></a>
                                         @else
                                             <a href="{{ route('dashboard.sessions.report.create', $session->id) }}" title="{{ __('Submit report') }}"><i class="far fa-comment-edit fs-14"></i></a>
                                         @endif

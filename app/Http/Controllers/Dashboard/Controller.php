@@ -10,5 +10,6 @@ class Controller extends _Controller
     {
         parent::__construct($request);
         $this->data->layouts->asideMenue = 'layouts.menu';
+        $this->data->layouts->vendor->amcharts4 = false;
     }
 }

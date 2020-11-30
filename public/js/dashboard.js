@@ -265,7 +265,27 @@ score_chart['16PF-93'] = function(scores){
 
 }
 
-$('body').on('statio:dashboard:sessions:create', function () {
+$('body').on('statio:dashboard:sessions:report:create', function () {
+    $("#encryption_type", this).on('change', function(){
+        if($(this).val() != 'publicKey'){
+            $('#encrypt_alert').addClass('d-none');
+            $('button[type=submit]', $(this).parents('form')).removeAttr('disabled');
+            $("#report").removeAttr('readonly');
+            return;
+        };
+        $('button[type=submit]', $(this).parents('form')).attr('disabled', 'disabled');
+        $('#encrypt_alert').removeClass('d-none');
+    }).trigger('change');
+    $('#encrypt_alert button').on('click', function(){
+        if(!$("#report").val()) return true;
+        var report = $("#report").val();
+        $("#report").val(encryptPublicLong(report, auth_public_key));
+        $('button[type=submit]', $(this).parents('form')).removeAttr('disabled');
+        $("#encrypt_alert").addClass('d-none');
+        $("#report").attr('readonly', 'readonly');
+    });
+});
+    $('body').on('statio:dashboard:sessions:create', function () {
     // $('#myTab > li > a').on('hide.bs.tab', function (e) {
     //     $('.fai', this).removeClass('fa-dot-circle').addClass('fa-circle');
     //     if ($('#case').is('.active.show') && this == $('#reserve-tab')[0]) return;
@@ -482,8 +502,22 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     var selectedTab = location.hash;
     var tabNav = $('[data-toggle=tab][href$="' + selectedTab + '"]');
     tabNav.trigger('click');
-
+        $("[data-encType=publicKey]").each(function(){
+            if(localStorage.privateKey){
+                    var _self = this;
+                    asyncDecryptPrivateLong($(this)[$(this).is('input, textarea') ? 'val' : 'html'](), localStorage.privateKey).then(function(result){
+                        if($(_self).is('input, textarea')){
+                            $(_self).val(result);
+                        }else{
+                            $(_self).html(result.replace(/\n/gmi, '<br>'));
+                        }
+                    });
+            }
+        });
     base.each(function () {
+        $('#privateKey', base).on('change', function(){
+            localStorage.privateKey = $(this).val();
+        });
         $('[data-toggle=tab]', base).on('click', function () {
             var href = $(this).attr('href').match(/(\#.+)$/);
             if (href) {
