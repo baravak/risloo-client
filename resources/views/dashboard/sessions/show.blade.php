@@ -3,7 +3,7 @@
     <div class="col-lg-12">
         <div class="card mb-3">
             <div class="card-header">
-                جلسه درمانی
+                {{ __('Therapy session') }}
             </div>
             <div class="card-body">
                 <div class="row">

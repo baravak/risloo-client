@@ -26,7 +26,7 @@ class SessionController extends Controller
         $start = $current->subDays($current->getDayOfWeek());
         $end = $start->addDays(6)->addHours(23)->addMinutes(59)->addSeconds(59);
         $this->data->week = [$start, $end];
-        if($request->case || $request->room_id){
+        if($request->case || $request->room){
             if($request->case)
             {
                 $case = $this->data->case = $request->case ? TherapyCase::apiShow($request->case) : null;
@@ -34,7 +34,7 @@ class SessionController extends Controller
             }
             else
             {
-                $room = $this->data->room = $request->room_id ? Room::apiShow($request->room_id) : null;
+                $room = $this->data->room = $request->room ? Room::apiShow($request->room) : null;
             }
             $this->authorize('dashboard.sessions.create');
             if(!$room){

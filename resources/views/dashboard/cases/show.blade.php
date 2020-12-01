@@ -156,11 +156,6 @@
                                         @endif
                                     </td>
                                 </tr>
-                                @if ($case->manager->id == auth()->id())
-                                    <tr class="m-2">
-                                        <td colspan="5"></td>
-                                    </tr>
-                                @endif
                             @endforeach
                         @endif
                     </tbody>

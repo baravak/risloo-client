@@ -21,7 +21,7 @@
 @else
     <div class="form-group form-group-m">
         <input type="hidden" name="type" value="session">
-        <select class="select2-select form-control form-control-m" data-template="room" name="room_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{route('dashboard.rooms.index')}}" data-lijax='change' data-state='both' data-relation="case_id">
+        <select class="select2-select form-control form-control-m" data-template="room" name="room_id" data-name="room" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{route('dashboard.rooms.index', ['my_management'=> '1'])}}" data-lijax='change' data-state='both' data-relation="case_id">
             @isset ($room)
                 <option value="{{$room->id}}" data-json="{{$room}}">{{$room->manager->name}}</option>
             @endif
@@ -32,7 +32,7 @@
     @isset ($room)
         @if (!isset($session))
             <div class="form-group form-group-m">
-                <select class="select2-select form-control form-control-m has-clear" data-template="case_clients" name="case_id" data-title="manager.name manager.id" id="case_id" data-url="{{isset($room) ? route('dashboard.cases.index', ['room' => $room->id]) : ''}}" data-url-pattern="{{route('dashboard.cases.index', ['room' => '%%'])}}">
+                <select class="select2-select form-control form-control-m has-clear" data-template="case_clients" name="case_id" data-name="case" data-title="manager.name manager.id" id="case_id" data-url="{{isset($room) ? route('dashboard.cases.index', ['room' => $room->id]) : ''}}" data-url-pattern="{{route('dashboard.cases.index', ['room' => '%%'])}}">
                     @isset($case)
                         <option value="{{$case->id}}" data-json='{{$case}}' selected>{{$case->clients->pluck('user.name')->join('-')}}</option>
                     @endisset
