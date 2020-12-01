@@ -59,7 +59,6 @@
     @endif
 @endif
 
-@if ($_admin || auth()->isAdmin())
     <li class="nav-item">
         <a class="nav-link text-truncate direct" href="{{route('dashboard.home')}}#my-therapy-menu" data-toggle="collapse" data-target="#my-therapy-menu" aria-expanded="true">
             <span class="d-sm-inline">{{__('Therapy')}}</span>
@@ -77,20 +76,14 @@
                         <span class="d-sm-inline">{{__('Cases')}}</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-truncate" href="{{route('dashboard.sessions.index')}}">
+                        <span class="d-sm-inline">{{__('Therapy sessions')}}</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link text-truncate" href="{{route('dashboard.sessions.index')}}">
-            <span class="d-sm-inline">{{__('Therapy sessions')}}</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-truncate" href="{{route('dashboard.sessions.index')}}">
-            <span class="d-sm-inline">{{__('Reservation')}}</span>
-        </a>
-    </li>
-@endif
     @can('dashboard.assessments.viewAny')
         <li class="nav-item">
             <a class="nav-link text-truncate" href="{{route('dashboard.assessments.index')}}">

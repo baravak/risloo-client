@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Session;
-use App\ReserveCalendar;
 use App\Room;
 use App\TherapyCase;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use jDate;
 class SessionController extends Controller
 {
@@ -38,7 +36,10 @@ class SessionController extends Controller
             {
                 $room = $this->data->room = $request->room_id ? Room::apiShow($request->room_id) : null;
             }
-            Gate::authorize('dashboard.rooms.admin', [$room]);
+            $this->authorize('dashboard.sessions.create');
+            if(!$room){
+                $this->authorize('dashboard.rooms.admin', [$room]);
+            }
             $request->request->add(['mode' => 'week']);
             $sessions = $this->data->sessions = Session::apiIndex($request->all());
             $this->data->table = [];
@@ -50,7 +51,6 @@ class SessionController extends Controller
 
     public function create(Request $request)
     {
-        // dd($request->all());
         $this->data->global->title = __('Create new sessions');
         $this->viewMode($request);
         return $this->view($request, 'dashboard.sessions.create');
@@ -58,6 +58,7 @@ class SessionController extends Controller
 
     public function edit(Request $request, Session $session)
     {
+        $this->authorize('dashboard.sessions.update', [$session]);
         $this->data->session = $session;
         $this->data->case = $session->case;
         $this->data->room = $session->case->room;
@@ -66,13 +67,10 @@ class SessionController extends Controller
     }
     public function store(Request $request)
     {
-        Session::apiStore($request->room_id, $request->except('room_id'));
-        $request->request->add(['time' => $request->started_at]);
-        return $this->calendar($request);
-    }
-    public function calendar(Request $request){
-        $this->viewMode($request);
-        return $this->view($request, 'dashboard.sessions.calendar');
+        $session = Session::apiStore($request->room_id, $request->except('room_id'));
+        return $session->response()->json([
+            'redirect' => route('dashboard.sessions.edit', $session->id)
+        ]);
     }
 
     public function show(Request $request, Session $session)
@@ -82,6 +80,7 @@ class SessionController extends Controller
     }
 
     public function update(Request $request, $session){
+        $this->authorize('dashboard.sessions.update', [$session]);
         $bind = [];
         if($request->callback){
             $bind['redirect'] = urldecode($request->callback);

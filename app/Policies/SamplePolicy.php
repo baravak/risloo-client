@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\User;
 use App\Sample;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class SamplePolicy
 {
@@ -22,7 +23,8 @@ class SamplePolicy
 
     public function create(User $user)
     {
-        return true;
+        $currentCenter = $user->centers->whereIn('acceptation.position', ['operator', 'manager', 'psychologist'])->count();
+        return (Boolean) $currentCenter ?: $user->isAdmin();
     }
 
     public function management(User $user, Sample $sample){

@@ -22,6 +22,10 @@ class AuthServiceProvider extends ServiceProvider
         \App\Room::class => \App\Policies\RoomPolicy::class,
         \App\RoomUser::class => \App\Policies\RoomUserPolicy::class,
 
+        \App\TherapyCase::class => \App\Policies\CasePolicy::class,
+        \App\Session::class => \App\Policies\SessionPolicy::class,
+        \App\Sample::class => \App\Policies\SamplePolicy::class,
+
     ];
 
     /**
@@ -44,5 +48,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('dashboard.centers.acceptation', 'App\Policies\CenterPolicy@acceptation');
         Gate::resource('dashboard.center.users', 'App\Policies\CenterUserPolicy');
 
+        Gate::resource('dashboard.cases', 'App\Policies\CasePolicy');
+        Gate::resource('dashboard.sessions', 'App\Policies\SessionPolicy');
     }
 }

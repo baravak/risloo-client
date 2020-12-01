@@ -34,9 +34,11 @@
                                     {{$assessment->version}}
                                 </td>
                                 <td>
-                                    <a href="{{route('dashboard.samples.create', ['scale' => substr($assessment->id, 1)])}}" class="text-decoration-none">
-                                        <i class="fas fa-flask fs-14"></i> {{__('Create sample')}}
-                                    </a>
+                                    @can('dashboard.sessions.create')
+                                        <a href="{{route('dashboard.samples.create', ['scale' => substr($assessment->id, 1)])}}" class="text-decoration-none">
+                                            <i class="fas fa-flask fs-14"></i> {{__('Create sample')}}
+                                        </a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

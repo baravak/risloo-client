@@ -19,6 +19,7 @@ class SampleController extends Controller
 
     public function create(Request $request)
     {
+        $this->authorize('dashboard.samples.create');
         if(isset($request->scale))
         {
             $this->data->scale = Assessment::apiShow($request->scale);

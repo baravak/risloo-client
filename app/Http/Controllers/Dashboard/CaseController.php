@@ -15,10 +15,12 @@ class CaseController extends Controller
 
     public function create(Request $request)
     {
+        $this->authorize('dashboard.cases.create');
         return $this->view($request, 'dashboard.cases.create');
     }
     public function store(Request $request)
     {
+        $this->authorize('dashboard.cases.create', [$request->room_id]);
         $case = TherapyCase::apiStore($request->room_id, $request->except('room_id'));
         return $case->response()->json([
             'redirect' => route('dashboard.cases.show', $case->id)
@@ -27,8 +29,7 @@ class CaseController extends Controller
 
     public function show(Request $request, $case)
     {
-        $this->data->case = TherapyCase::apiShow($case, $request->merge(['usage' => 'case_dashboard'])->all());
+        $case = $this->data->case = TherapyCase::apiShow($case, $request->merge(['usage' => 'case_dashboard'])->all());
         return $this->view($request, 'dashboard.cases.show');
-
     }
 }

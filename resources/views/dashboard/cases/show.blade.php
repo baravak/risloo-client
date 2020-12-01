@@ -111,6 +111,9 @@
                 <small>
                     <a href="{{route('dashboard.sessions.create', ['case' => $case->id])}}" class="badge badge-primary p-1">{{__('Add session')}}</a>
                 </small>
+                <small>
+                    <a href="{{route('dashboard.sessions.create', ['case' => $case->id])}}" class="badge badge-secondary p-1">{{__('Reports')}}</a>
+                </small>
             </div>
             <div class="card-body">
                 <table class="w-100 table table-striped">
@@ -153,6 +156,11 @@
                                         @endif
                                     </td>
                                 </tr>
+                                @if ($case->manager->id == auth()->id())
+                                    <tr class="m-2">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                @endif
                             @endforeach
                         @endif
                     </tbody>
