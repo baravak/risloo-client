@@ -25,9 +25,9 @@ class CaseController extends Controller
         ]);
     }
 
-    public function show(Request $request, TherapyCase $case)
+    public function show(Request $request, $case)
     {
-        $this->data->case = $case;
+        $this->data->case = TherapyCase::apiShow($case, $request->all());
         return $this->view($request, 'dashboard.cases.show');
 
     }

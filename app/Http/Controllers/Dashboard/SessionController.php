@@ -28,10 +28,10 @@ class SessionController extends Controller
         $start = $current->subDays($current->getDayOfWeek());
         $end = $start->addDays(6)->addHours(23)->addMinutes(59)->addSeconds(59);
         $this->data->week = [$start, $end];
-        if($request->case_id || $request->room_id){
-            if($request->case_id)
+        if($request->case || $request->room_id){
+            if($request->case)
             {
-                $case = $this->data->case = $request->case_id ? TherapyCase::apiShow($request->case_id) : null;
+                $case = $this->data->case = $request->case ? TherapyCase::apiShow($request->case) : null;
                 $room = $this->data->room = $case->room;
             }
             else

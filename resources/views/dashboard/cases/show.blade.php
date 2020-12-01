@@ -109,13 +109,14 @@
             <div class="card-header">
                 {{__('Sessions & reserves')}}<sup>({{ $case->sessions ? $case->sessions->count() : 0 }})
                 <small>
-                    <a href="{{route('dashboard.sessions.create', ['case_id' => $case->id])}}" class="badge badge-primary p-1">{{__('Add session')}}</a>
+                    <a href="{{route('dashboard.sessions.create', ['case' => $case->id])}}" class="badge badge-primary p-1">{{__('Add session')}}</a>
                 </small>
             </div>
             <div class="card-body">
                 <table class="w-100 table table-striped">
                     <thead>
                         <tr>
+                            <th class="text-center">{{ __('#') }}</th>
                             <th class="text-center">شروع</th>
                             <th class="text-center">مدت جلسه</th>
                             <th class="">وضعیت</th>
@@ -126,6 +127,7 @@
                         @if ($case->sessions)
                             @foreach ($case->sessions as $session)
                                 <tr class="m-2">
+                                    <td>{{ $session->id }}</td>
                                     <td class="direction-ltr text-left">
                                         <span class="d-block fs-12 font-weight-bold">
                                             @time($session->started_at, 'y-n-j')
@@ -158,7 +160,57 @@
             </div>
         </div>
     </div>
-</div>
-<div>
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <div class="card">
+            <div class="card-header">
+                {{__('Samples')}}<sup>({{ $case->samples ? $case->samples->count() : 0 }})
+                <small>
+                    <a href="{{route('dashboard.samples.create', ['case' => $case->id])}}#case" class="badge badge-primary p-1">{{__('Create sampel')}}</a>
+                </small>
+            </div>
+            <div class="card-body">
+                <table class="w-100 table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">{{ __('Title') }}</th>
+                            <th class="text-center">{{ __('Status') }}</th>
+                            <th class="">{{ __('Session') }}</th>
+                            <th class="">{{ __('Client') }}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if ($case->samples)
+                            @foreach ($case->samples as $sample)
+                                <tr class="m-2">
+                                    <td>
+                                        <span class="d-block fs-12">
+                                            {{ $sample->title }}
+                                        </span>
+                                        <small class="d-block direction-ltr font-weight-bold">
+                                            {{ $sample->id }}
+                                        </small>
+                                    </td>
+                                    <td>
+                                        {{ __(ucfirst($sample->status)) }}
+                                    </td>
+                                    <td>
+                                        {{ $sample->session_id }}
+                                    </td>
+                                    <td>
+                                        {{ $sample->client->name }}
+                                    </td>
+                                    <td>
+                                        @include('components._showLink', ['href' => route('dashboard.samples.show', $sample->id)])
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

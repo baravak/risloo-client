@@ -11,6 +11,7 @@ class TherapyCase extends API
         'creator' => User::class,
         'clients' => RelationshipUser::class,
         'sessions' => TherapyCaseSession::class,
+        'samples' => Sample::class,
         'room' => Room::class
     ];
 
