@@ -25,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\TherapyCase::class => \App\Policies\CasePolicy::class,
         \App\Session::class => \App\Policies\SessionPolicy::class,
         \App\Sample::class => \App\Policies\SamplePolicy::class,
+        \App\Practice::class => \App\Policies\PracticePolicy::class,
 
     ];
 
@@ -50,5 +51,6 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::resource('dashboard.cases', 'App\Policies\CasePolicy');
         Gate::resource('dashboard.sessions', 'App\Policies\SessionPolicy');
+        Gate::resource('dashboard.sessions.practices', 'App\Policies\PracticePolicy');
     }
 }

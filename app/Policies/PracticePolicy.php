@@ -2,17 +2,15 @@
 
 namespace App\Policies;
 
-use App\Room;
 use App\User;
 use App\Session;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SessionPolicy
+class PracticePolicy
 {
     use HandlesAuthorization;
 
-    public function update(User $user, $session, $mode = null){
-        return true;
+    public function update(User $user, Session $session, $mode = null){
         if($mode == 'report'){
             if($session->case->room->manager->id != $user->id){
                 return false;
@@ -29,12 +27,15 @@ class SessionPolicy
         }
     }
 
-    public function create(User $user)
+    public function create(User $user, Session $session)
     {
         if($user->isAdmin()){
             return true;
         }
-        if($user->centers->whereIn('acceptation.position', ['operator', 'manager', 'psychologsit'])->count()){
+        if($session->case->room->manager->id = $user->id){
+            return true;
+        }
+        if($session->case->room->center->whereIn('acceptation.position', ['operator', 'manager', 'psychologsit'])->count()){
             return true;
         }
     }

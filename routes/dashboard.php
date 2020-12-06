@@ -40,3 +40,6 @@ Route::resource('sessions', 'SessionController');
 Route::resource('documents', 'DocumentController');
 
 Route::resource('sessions/{session}/report', 'SessionReportController', ['as' => 'sessions']);
+
+Route::resource('/sessions/{session}/practices', 'PracticeController', ['as' => 'sessions']);
+// Route::get('/sessions/{session}/practices/{practice}', 'PracticeController@createData')->name('sessions.practices.attachments.create');

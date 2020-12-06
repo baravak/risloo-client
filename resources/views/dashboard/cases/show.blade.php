@@ -154,6 +154,22 @@
                                         @else
                                             <a href="{{ route('dashboard.sessions.report.create', $session->id) }}" title="{{ __('Submit report') }}"><i class="far fa-comment-edit fs-14"></i></a>
                                         @endif
+                                        <div class="dropdown fs-12">
+                                            <button class="btn dropdown-toggle btn-sm p-0 fs-12" type="button" id="practice-{{ $session->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="far fa-chalkboard-teacher" title="{{ __('Practice') }}"></i>
+                                                {{ __('Practice') }}
+                                            </button>
+                                            <div class="dropdown-menu fs-12" aria-labelledby="practice-{{ $session->id }}">
+                                              <a class="dropdown-item" href="{{ route('dashboard.sessions.practices.create', ['session'=> $session->id, 'callback' => route('dashboard.cases.show', $case->id)]) }}">
+                                                <i class="far fa-file-plus"></i>
+                                                {{ __('Create practice') }}
+                                              </a>
+                                              <a class="dropdown-item" href="{{ route('dashboard.sessions.practices.index', ['session'=> $session->id]) }}">
+                                                <i class="far fa-file-plus"></i>
+                                                {{ __('Practices') }}
+                                            </a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
