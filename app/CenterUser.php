@@ -19,7 +19,7 @@ class CenterUser extends API
     {
         return $this->cache(sprintf($this->endpointPath.'/%s', $center, $user), $params, 'put');
     }
-    public function _childshow($center, $user)
+    public function _childshow($center, $user, array $params = [])
     {
         return $this->cache(sprintf($this->endpointPath . '/%s', $center, $user));
     }
