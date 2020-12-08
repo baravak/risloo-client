@@ -23,7 +23,8 @@ class SamplePolicy
 
     public function create(User $user)
     {
-        $currentCenter = $user->centers->whereIn('acceptation.position', ['operator', 'manager', 'psychologist'])->count();
+
+        $currentCenter = $user->centers->count() ? $user->centers->whereIn('acceptation.position', ['operator', 'manager', 'psychologist'])->count() : false;
         return (Boolean) $currentCenter ?: $user->isAdmin();
     }
 
