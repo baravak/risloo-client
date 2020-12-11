@@ -10,7 +10,7 @@
     </td>
     <td>
         @if ($practice->getRelationValue('attachments'))
-            <a href="{{$practice->attachments->get('original')->url}}" target="_blank">{{__('practice')}}</a>
+            <a href="{{$practice->attachments->get('original')->url}}" target="_blank">{{__('Practice')}}</a>
         @else
             {{__('No attachment')}}
         @endif
