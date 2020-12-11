@@ -42,4 +42,5 @@ Route::resource('documents', 'DocumentController');
 Route::resource('sessions/{session}/report', 'SessionReportController', ['as' => 'sessions']);
 
 Route::resource('/sessions/{session}/practices', 'PracticeController', ['as' => 'sessions']);
+Route::post('/sessions/{session}/practices/{practice}', 'PracticeController@storeHomework')->name('sessions.practices.homework.store');
 // Route::get('/sessions/{session}/practices/{practice}', 'PracticeController@createData')->name('sessions.practices.attachments.create');

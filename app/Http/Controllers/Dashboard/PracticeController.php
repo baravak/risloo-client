@@ -40,4 +40,9 @@ class PracticeController extends Controller
         $practice = $this->data->practice = Practice::apiShow($session, $practice, $request->all());
         return $this->view($request, 'dashboard.practices.show');
     }
+
+    public function storeHomework(Request $request, $session, $practice){
+        $practice = Practice::homeworkStore($session, $practice, $request->all());
+            return $this->view($request, 'dashboard.practices.listRaw', ['practice' => $practice]);
+    }
 }

@@ -7,6 +7,7 @@
                 <th>{{__('Content')}}</th>
                 <th>{{__('Attachment')}}</th>
                 <th>{{__('Notic')}}</th>
+                <th>{{__('Homework')}}</th>
                 <th></th>
             </tr>
         </thead>

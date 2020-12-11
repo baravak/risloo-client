@@ -9,6 +9,11 @@ class Practice extends API
     public $with = [
         'attachments' => File::class,
     ];
+        public static function homeworkStore($session, $practice, array $parameters = []){
+            $request = new static;
+            $endpointPath = sprintf ($request->endpointPath . '/%s/homework', $session, $practice);
+            return $request->execute($endpointPath, $parameters, 'POST');
+        }
     public function getSerialAttribute()
     {
         return [substr($this->id, 0, 1), substr($this->id, 1)];
