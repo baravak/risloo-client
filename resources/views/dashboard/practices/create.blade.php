@@ -6,7 +6,7 @@
 </div>
 
 <div class="form-group form-group-m">
-    <input type="text" class="form-control form-control-m" id="content" name="content" placeholder="&nbsp;" autocomplete="off" @formValue($practice->content)>
+    <textarea type="text" class="form-control form-control-m" id="content" name="content" placeholder="&nbsp;" autocomplete="off" @formValue($practice->content)></textarea>
     <label for="content">{{__('Content')}}</label>
 </div>
 
