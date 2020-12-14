@@ -250,7 +250,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     base.each(function () {
         $('#privateKey', base).on('change', function(){
             localStorage.privateKey = $(this).val();
-        });
+        }).val(localStorage.privateKey);
         $('[data-toggle=tab]', base).on('click', function () {
             var href = $(this).attr('href').match(/(\#.+)$/);
             if (href) {
