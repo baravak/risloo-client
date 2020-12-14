@@ -50,6 +50,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource('dashboard.center.users', 'App\Policies\CenterUserPolicy');
 
         Gate::resource('dashboard.cases', 'App\Policies\CasePolicy');
+        Gate::define('dashboard.cases.manager', 'App\Policies\CasePolicy@manager');
         Gate::resource('dashboard.sessions', 'App\Policies\SessionPolicy');
         Gate::resource('dashboard.sessions.practices', 'App\Policies\PracticePolicy');
     }

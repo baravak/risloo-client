@@ -83,9 +83,11 @@
         <div class="card">
             <div class="card-header">
                 {{__('Clients')}}<sup>({{ $case->clients ? $case->clients->count() : 0 }})
-                <small>
-                    <a href="{{route('dashboard.case.users.create', $case->id)}}" class="badge badge-primary p-1">{{__('Add client')}}</a>
-                </small>
+                    @can('dashboard.cases.manager', [$case])
+                        <small>
+                            <a href="{{route('dashboard.case.users.create', $case->id)}}" class="badge badge-primary p-1">{{__('Add client')}}</a>
+                        </small>
+                    @endcan
             </div>
             <div class="card-body">
                 @if ($case->clients)
@@ -94,7 +96,9 @@
                             <div class="px-3">
                                 <div class="fs-12 font-weight-bold">
                                     @displayName($client->user)
-                                    <a href="{{route('dashboard.samples.create', ['case' => $case->id, 'client' => $client->id])}}#case" class="badge badge-primary p-1">{{__('Create sampel')}}</a>
+                                    @can('dashboard.cases.manager', [$case])
+                                        <a href="{{route('dashboard.samples.create', ['case' => $case->id, 'client' => $client->id])}}#case" class="badge badge-primary p-1">{{__('Create sampel')}}</a>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -108,11 +112,13 @@
         <div class="card">
             <div class="card-header">
                 {{__('Sessions & reserves')}}<sup>({{ $case->sessions ? $case->sessions->count() : 0 }})
+                    @can('dashboard.cases.manager', [$case])
+                        <small>
+                            <a href="{{route('dashboard.sessions.create', ['case' => $case->id])}}" class="badge badge-primary p-1">{{__('Add session')}}</a>
+                        </small>
+                    @endcan
                 <small>
-                    <a href="{{route('dashboard.sessions.create', ['case' => $case->id])}}" class="badge badge-primary p-1">{{__('Add session')}}</a>
-                </small>
-                <small>
-                    <a href="{{route('dashboard.sessions.create', ['case' => $case->id])}}" class="badge badge-secondary p-1">{{__('Reports')}}</a>
+                    {{-- <a href="{{route('dashboard.sessions.create', ['case' => $case->id])}}" class="badge badge-secondary p-1">{{__('Reports')}}</a> --}}
                 </small>
             </div>
             <div class="card-body">
@@ -148,22 +154,28 @@
                                         {{ __($session->status) }}
                                     </td>
                                     <td>
-                                        @include('components._editLink', ['href' => route('dashboard.sessions.edit', ['session' => $session->id, 'callback' => route('dashboard.cases.show', $case->id)])])
-                                        @if ($session->is_reported)
-                                            <a href="{{ route('dashboard.sessions.show', $session->id) }}" title="{{ __('See report') }}"><i class="fas fa-comment"></i></a>
-                                        @else
-                                            <a href="{{ route('dashboard.sessions.report.create', $session->id) }}" title="{{ __('Submit report') }}"><i class="far fa-comment-edit fs-14"></i></a>
-                                        @endif
+                                        @can('dashboard.cases.manager', [$case])
+                                            @include('components._editLink', ['href' => route('dashboard.sessions.edit', ['session' => $session->id, 'callback' => route('dashboard.cases.show', $case->id)])])
+                                        @endcan
+                                        @can('dashboard.sessions.update', [$case , 'report'])
+                                            @if ($session->is_reported)
+                                                <a href="{{ route('dashboard.sessions.show', $session->id) }}" title="{{ __('See report') }}"><i class="fas fa-comment"></i></a>
+                                            @else
+                                                <a href="{{ route('dashboard.sessions.report.create', $session->id) }}" title="{{ __('Submit report') }}"><i class="far fa-comment-edit fs-14"></i></a>
+                                            @endif
+                                        @endcan
                                         <div class="dropdown fs-12">
                                             <button class="btn dropdown-toggle btn-sm p-0 fs-12" type="button" id="practice-{{ $session->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="far fa-chalkboard-teacher" title="{{ __('Practice') }}"></i>
                                                 {{ __('Practice') }}
                                             </button>
                                             <div class="dropdown-menu fs-12" aria-labelledby="practice-{{ $session->id }}">
-                                              <a class="dropdown-item" href="{{ route('dashboard.sessions.practices.create', ['session'=> $session->id, 'callback' => route('dashboard.cases.show', $case->id)]) }}">
-                                                <i class="far fa-file-plus"></i>
-                                                {{ __('Create practice') }}
-                                              </a>
+                                                @can('dashboard.cases.manager', [$case])
+                                                <a class="dropdown-item" href="{{ route('dashboard.sessions.practices.create', ['session'=> $session->id, 'callback' => route('dashboard.cases.show', $case->id)]) }}">
+                                                    <i class="far fa-file-plus"></i>
+                                                    {{ __('Create practice') }}
+                                                </a>
+                                              @endcan
                                               <a class="dropdown-item" href="{{ route('dashboard.sessions.practices.index', ['session'=> $session->id]) }}">
                                                 <i class="far fa-file-plus"></i>
                                                 {{ __('Practices') }}
@@ -184,9 +196,11 @@
         <div class="card">
             <div class="card-header">
                 {{__('Samples')}}<sup>({{ $case->samples ? $case->samples->count() : 0 }})
-                <small>
-                    <a href="{{route('dashboard.samples.create', ['case' => $case->id])}}#case" class="badge badge-primary p-1">{{__('Create sampel')}}</a>
-                </small>
+                    @can('dashboard.cases.manager', [$case])
+                    <small>
+                        <a href="{{route('dashboard.samples.create', ['case' => $case->id])}}#case" class="badge badge-primary p-1">{{__('Create sampel')}}</a>
+                    </small>
+                    @endcan
             </div>
             <div class="card-body">
                 <table class="w-100 table table-striped">
@@ -221,7 +235,9 @@
                                         {{ $sample->client->name }}
                                     </td>
                                     <td>
-                                        @include('components._showLink', ['href' => route('dashboard.samples.show', $sample->id)])
+                                        @can('dashboard.cases.manager', [$case])
+                                            @include('components._showLink', ['href' => route('dashboard.samples.show', $sample->id)])
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

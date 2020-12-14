@@ -38,6 +38,7 @@
             </div>
         </div>
     </div>
+    @can('dashboard.sessions.update', [$session , 'report'])
     <div class="col-lg-12">
         <div class="card mb-3">
             <div class="card-header">
@@ -48,4 +49,6 @@
             </div>
         </div>
     </div>
+    @endcan
+
 @endsection

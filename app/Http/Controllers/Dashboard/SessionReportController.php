@@ -13,7 +13,6 @@ class SessionReportController extends Controller
         return $this->view($request, 'dashboard.sessions.reports.create');
     }
     public function store(Request $request, $session){
-        $this->authorize('dashboard.sessions.update', [$session, 'report']);
         return Session::apiUpdate($session, $request->all())->response()->json();
     }
 }

@@ -19,4 +19,18 @@ class CasePolicy
             return true;
         }
     }
+
+    public function manager(User $user, TherapyCase $case){
+        if($user->isAdmin()){
+            return true;
+        }
+        if($case->room->manager->id == $user->id){
+            return true;
+        }
+        if(in_array($case->room->center->acceptation->position, ['operator', 'manager'])){
+            return true;
+        }
+
+        return false;
+    }
 }

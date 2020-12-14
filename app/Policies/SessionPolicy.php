@@ -12,11 +12,12 @@ class SessionPolicy
     use HandlesAuthorization;
 
     public function update(User $user, $session, $mode = null){
-        return true;
         if($mode == 'report'){
-            if($session->case->room->manager->id != $user->id){
-                return false;
+            $room = isset($session->case) ? $session->case->room : $session->room;
+            if($room->manager->id == $user->id){
+                return true;
             }
+            return false;
         }
         if($user->isAdmin()){
             return true;
