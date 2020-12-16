@@ -11,6 +11,10 @@ class Sample extends API
         'case' => TherapyCase::class,
         'profiles' => File::class
     ];
+
+    public $filterWith = [
+        'room' => Room::class
+    ];
     public static function postItems($serial, $items)
     {
         return (new static)->execute("%s/$serial/items", $items, 'POST');

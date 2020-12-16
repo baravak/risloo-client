@@ -20,4 +20,8 @@ class Room extends API
         $store = new static;
         return $store->execute(sprintf("centers/%s/rooms", $center ?: '-'), $params, 'post');
     }
+
+    public function getFilterValue(){
+        return $this->manager->name;
+    }
 }
