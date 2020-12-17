@@ -10,4 +10,9 @@
             @include($cases->count() ? 'dashboard.cases.list' : 'dashboard.emptyContent')
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            {{$cases->links()}}
+        </div>
+    </div>
 @endsection
