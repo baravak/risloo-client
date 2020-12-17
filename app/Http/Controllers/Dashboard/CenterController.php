@@ -36,7 +36,10 @@ class CenterController extends Controller
 
     public function store(Request $request){
         $this->authorize('dashboard.centers.create');
-        return Center::apiStore($request->all())->response()->json();
+        $center =  Center::apiStore($request->all());
+        return $center->response()->json([
+            'redirect' => route('dashboard.centers.show', $center->id)
+        ]);
     }
 
     public function edit(Request $request, $center)
