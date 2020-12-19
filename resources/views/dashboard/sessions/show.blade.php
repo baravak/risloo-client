@@ -34,6 +34,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-6">
+                        <div>
+                            <a href="{{ route('dashboard.sessions.practices.index', $session->id) }}">{{ __('Practices') }}</a>
+                        </div>
+                        <div>
+                            <a href="{{ route('dashboard.sessions.practices.create', $session->id) }}">{{ __('Create practice') }}</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
