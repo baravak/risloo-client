@@ -1,6 +1,10 @@
 <tr data-xhr="session-list-{{$session->id}}">
     <td class="align-middle">
-        @id($session)
+        @can('dashboard.cases.manager', [$session->case])
+            @id($session)
+        @else
+        {{ $session->id }}
+        @endcan
     </td>
     <td class="align-middle">
         @room($session->case->room)
@@ -26,6 +30,8 @@
         {{ __($session->status) }}
     </td>
     <td class="align-middle">
-        @editLink($session)
+        @can('dashboard.cases.manager', [$session->case])
+            @editLink($session)
+        @endcan
     </td>
 </tr>

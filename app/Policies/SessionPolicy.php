@@ -22,12 +22,15 @@ class SessionPolicy
         if($user->isAdmin()){
             return true;
         }
-        if($session->case->room->manager->id == $user->id){
-            return true;
+        if(isset($session->case)){
+            if($session->case->room->manager->id == $user->id){
+                return true;
+            }
+            if($user->centers->where('id', $session->case->room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+                return true;
+            }
         }
-        if($user->centers->where('id', $session->case->room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
-            return true;
-        }
+        return true;
     }
 
     public function create(User $user)

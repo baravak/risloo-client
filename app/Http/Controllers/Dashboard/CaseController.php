@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Room;
+use App\Session;
 use App\TherapyCase;
 use Illuminate\Http\Request;
 
@@ -33,5 +34,11 @@ class CaseController extends Controller
     {
         $case = $this->data->case = TherapyCase::apiShow($case, $request->merge(['usage' => 'case_dashboard'])->all());
         return $this->view($request, 'dashboard.cases.show');
+    }
+
+    public function sessionUpdate(Request $request, $case, $session){
+        $session = $this->data->session = Session::apiUpdate($session, $request->all());
+        $this->data->case = $session->case;
+        return $this->view($request, 'dashboard.cases.show.session-list');
     }
 }
