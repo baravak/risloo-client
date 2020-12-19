@@ -158,5 +158,7 @@
      "Create new document" : "ارسال مدارک و اسناد",
      "Create new center": "ساخت مرکز درمانی جدید",
      "Clinic type" : "نوع مرکز درمانی",
-     "Phone numbers" : "شماره تلفن(ها)"
+     "Phone numbers" : "شماره تلفن(ها)",
+     "Create new case" : "ساخت پرونده جدید",
+     "Create case" : "ساخت پروند"
 }

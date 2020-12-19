@@ -14,13 +14,6 @@
                         <a href="{{$room->route('show')}}" class="text-decoration-none text-dark">
                             @displayName($room->manager)
                         </a>
-                        @php
-                            $acceptation = auth()->user()->centers ? auth()->user()->centers->where('id', $room->center->id)->first() : false;
-                            if($acceptation)
-                            {
-                                $acceptation = $acceptation->acceptation;
-                            }
-                        @endphp
                         @can('viewAny', [\App\RoomUser::class, $room])
                             <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.room.users.index', $room->id)}}"><i class="far fa-users"></i></a>
                         @endcan
@@ -36,6 +29,12 @@
                             {{__('Personal_clinic')}}
                         @endif
                     </span>
+                </div>
+                <div>
+                    @can('viewAny', [\App\RoomUser::class, $room])
+                            <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.cases.index', ['room' => $room->id])}}">{{ __('Cases') }}</a>
+                            <a class="badge badge-secondary fs-10 p-1" href="{{route('dashboard.cases.create', ['room' => $room->id])}}">{{ __('Create new case') }}</a>
+                        @endcan
                 </div>
             </div>
         </div>

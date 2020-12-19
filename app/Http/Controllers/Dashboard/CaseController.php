@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Room;
 use App\TherapyCase;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class CaseController extends Controller
 
     public function create(Request $request)
     {
+        $this->data->room = $request->room ? Room::apiShow($request->room) : null;
         $this->authorize('dashboard.cases.create');
         return $this->view($request, 'dashboard.cases.create');
     }
