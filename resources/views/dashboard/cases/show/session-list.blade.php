@@ -1,5 +1,5 @@
 <tr class="m-2" data-xhr="session-{{ $session->id }}">
-    <td>{{ $session->id }}</td>
+    <td>@id($session)</td>
     <td class="direction-ltr text-left">
         <span class="d-block fs-12 font-weight-bold">
             @time($session->started_at, 'y-n-j')
