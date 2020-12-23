@@ -24,7 +24,6 @@ class CenterUserController extends Controller
     }
 
     public function store(Request $request, $center){
-        $this->authorize('dashboard.centers.create');
         $response = CenterUser::apiStore($center, $request->all());
         return $response->response()->json([
             'redirect' => route('auth.theory', [
