@@ -1,5 +1,7 @@
 @section('create-nav-link')
-    <a href="{{route("dashboard.rooms.create", ['center' => request()->center])}}" class="badge badge-success mx-2">{{__("Create new " . $module->singular)}}</a>
+    @can('create', App\Room::class)
+        <a href="{{route("dashboard.rooms.create", ['center' => request()->center])}}" class="badge badge-success mx-2">{{__("Create new " . $module->singular)}}</a>
+    @endcan
 @endsection
 
 @extends($layouts->dashboard)

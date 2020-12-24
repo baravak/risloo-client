@@ -101,12 +101,10 @@
             <span class="d-sm-inline">{{__('Therapy centers')}}</span>
         </a>
     </li>
-    @if (auth()->isAdmin())
     <li class="nav-item">
         <a class="nav-link text-truncate" href="{{route('dashboard.documents.index')}}">
             <span class="d-sm-inline">{{__('Documents')}}</span>
         </a>
     </li>
-    @endif
 @endsection
 @include('layouts.default-menu')

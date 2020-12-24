@@ -112,6 +112,7 @@
     "short_status": "وضع",
     "Time" : "زمان",
     "Chief complaint" : "شکایت اصلی",
+    "Problem" : "مسأله",
     "Select client" : "انتخاب مراجع",
     "Add client" : "افزودن مراجع",
     "Sample code" : "گذرواژه نمونه",
@@ -160,6 +161,6 @@
      "Clinic type" : "نوع مرکز درمانی",
      "Phone numbers" : "شماره تلفن(ها)",
      "Create new case" : "ساخت پرونده جدید",
-     "Create case" : "ساخت پروند",
+     "Create case" : "ساخت پرونده",
      "My personal clinic" : "کلینیک شخصی من"
 }

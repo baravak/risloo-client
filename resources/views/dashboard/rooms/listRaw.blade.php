@@ -14,7 +14,7 @@
                         <a href="{{$room->route('show')}}" class="text-decoration-none text-dark">
                             @displayName($room->manager)
                         </a>
-                        @can('viewAny', [\App\RoomUser::class, $room])
+                        @can('dashboard.rooms.admin', [$room])
                             <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.room.users.index', $room->id)}}"><i class="far fa-users"></i></a>
                         @endcan
                     </h6>
@@ -31,8 +31,8 @@
                     </span>
                 </div>
                 <div>
-                    @can('viewAny', [\App\RoomUser::class, $room])
-                            <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.cases.index', ['room' => $room->id])}}">{{ __('Cases') }}</a>
+                    @can('dashboard.rooms.admin', [$room])
+                            <a class="badge badge-secondary fs-10 p-1" href="{{route('dashboard.cases.index', ['room' => $room->id])}}">{{ __('Cases') }}</a>
                             <a class="badge badge-secondary fs-10 p-1" href="{{route('dashboard.cases.create', ['room' => $room->id])}}">{{ __('Create new case') }}</a>
                         @endcan
                 </div>

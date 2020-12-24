@@ -18,7 +18,7 @@ class RoomPolicy
         {
             return true;
         }
-        if(in_array($room->center->acception, ['manager', 'operator']))
+        if($room->center->acceptation && in_array($room->center->acceptation->position, ['manager', 'operator']))
         {
             return true;
         }
