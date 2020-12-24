@@ -85,7 +85,8 @@ class SampleFormController extends Controller
     {
         $close = Sample::close($serial);
         return $close->response()->json([
-            'redirect' => urldecode(route('samples.form', $serial)),
+            'redirect' => route('dashboard.samples.index'),
+            // 'redirect' => urldecode(route('samples.form', $serial)),
             'direct' => true
         ]);
     }
