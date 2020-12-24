@@ -19,4 +19,21 @@
         <label for="position">{{__('Position')}}</label>
     </div>
 @endif
+@if ($center->type == 'counseling_center')
+    <div class="form-group form-group-m">
+        <select class="select2-select form-control form-control-m" data-template="room" name="room_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{route('dashboard.rooms.index', ['center' => $center->id])}}" data-relation="client_id">
+            @isset($room)
+                <option value="{{ $room->id }}" data-json="{{ $room }}"></option>
+            @endisset
+        </select>
+        <label for="room_id">{{__('Room')}}</label>
+    </div>
+@endif
+<div class="richak richak-xs richak-secondary richak-checkbox">
+    <input type="checkbox" name="create_case" id="create_case" value="1">
+    <label for="create_case">
+        <span class="richak-icon"></span>
+        <span>ساخت پرونده برای این کاربر</span>
+    </label>
+</div>
 @endsection

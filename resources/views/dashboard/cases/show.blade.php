@@ -33,7 +33,7 @@
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3 profile-separator">
                         <div class="row">
                             <div class="col-12">
-                                <span class="fs-12">{{__('Chief complaint')}}: </span>
+                                <span class="fs-12">{{__('Problem')}}: </span>
                                 {{$case->detail->chief_complaint}}
                             </div>
                         </div>

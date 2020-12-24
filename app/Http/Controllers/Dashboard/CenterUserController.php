@@ -29,6 +29,7 @@ class CenterUserController extends Controller
             'redirect' => route('auth.theory', [
                 'key' => $response->response('key'),
                 'form' => $response->response('theory'),
+                'create_case' => $request->create_case ? 1 : 0,
                 'previousUrl' => route('dashboard.center.users.index', $center)
                 ]),
             'direct' => true
