@@ -38,7 +38,7 @@ class SessionPolicy
         if($user->isAdmin()){
             return true;
         }
-        if($user->centers->whereIn('acceptation.position', ['operator', 'manager', 'psychologsit'])->count()){
+        if($user->centers && $user->centers->whereIn('acceptation.position', ['operator', 'manager', 'psychologsit'])->count()){
             return true;
         }
     }

@@ -15,7 +15,8 @@ class CasePolicy
         if($user->isAdmin()){
             return true;
         }
-        if($user->centers->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+
+        if($user->centers && $user->centers->whereIn('acceptation.position', ['operator', 'manager'])->count()){
             return true;
         }
     }
@@ -27,7 +28,7 @@ class CasePolicy
         if($case->room->manager->id == $user->id){
             return true;
         }
-        if(in_array($case->room->center->acceptation->position, ['operator', 'manager'])){
+        if($case->room->center->acceptation && in_array($case->room->center->acceptation->position, ['operator', 'manager'])){
             return true;
         }
 
