@@ -34,4 +34,7 @@ class CasePolicy
 
         return false;
     }
+    public function isClient(User $user, TherapyCase $case){
+        return $case->clients->where('user.id', $user->id)->count() > 0;
+    }
 }

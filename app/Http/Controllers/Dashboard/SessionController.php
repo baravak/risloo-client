@@ -88,4 +88,9 @@ class SessionController extends Controller
         return Session::apiUpdate($session, $request->all())->response()
         ->json($bind);
     }
+
+    public function sessionUpdate(Request $request, $session){
+        $session = $this->data->session = Session::apiUpdate($session, $request->all());
+        return $this->view($request, 'dashboard.sessions.show-header');
+    }
 }

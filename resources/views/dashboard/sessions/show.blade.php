@@ -2,17 +2,7 @@
 @section('content')
     <div class="col-lg-12">
         <div class="card mb-3">
-            <div class="card-header">
-                {{ __('Therapy session') }}
-                @can('dashboard.cases.manager', [$session->case])
-                @else
-                @if ($session->status == 'client_awaiting')
-                    <a href="{{ route('dashboard.cases.sessions.sessionUpdate', [$session->case->id, $session->id]) }}" data-method="PUT" data-name="status" data-value="session_awaiting" class="badge badge-primary p-1 lijax">{{ __('Accept') }}</a>
-                @elseif($session->status == 'session_awaiting')
-                <a href="{{ route('dashboard.cases.sessions.sessionUpdate', [$session->case->id, $session->id]) }}" data-method="PUT" data-name="status" data-value="canceled_by_client" class="badge badge-primary p-1 lijax">{{ __('Cancel') }}</a>
-                @endif
-                @endcan
-            </div>
+            @include('dashboard.sessions.show-header')
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6 col-lg-6 col-xl-3 profile-separator">

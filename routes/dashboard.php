@@ -36,6 +36,7 @@ Route::put('samples/{sample}/open', 'SampleController@open')->middleware('auth')
 
 Route::get('sessions/calendar', 'SessionController@calendar')->name('sessions.calendar');
 Route::resource('sessions', 'SessionController');
+Route::put('sessions/{session}/status', 'SessionController@sessionUpdate')->name('sessions.sessionUpdate');
 
 Route::resource('documents', 'DocumentController');
 
