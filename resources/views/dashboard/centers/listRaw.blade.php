@@ -41,6 +41,9 @@
                         <a class="badge badge-info fs-10 p-1" href="{{route('dashboard.center.users.index', $center->id)}}" title="{{ __('Users') }}">
                             <i class="far fa-users"></i>
                         </a>
+                        <a class="badge badge-secondary fs-10 p-1" href="{{route('dashboard.center.users.create', $center->id)}}" title="{{ __('Join new user ') }}">
+                            {{ __('Join new user') }}
+                        </a>
                     @endcan
                 </div>
             </div>
