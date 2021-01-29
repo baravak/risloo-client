@@ -29,6 +29,12 @@
         <label for="room_id">{{__('Room')}}</label>
     </div>
 @endif
+<div class="form-group form-group-m">
+    <input type="text" class="form-control form-control-m" id="nickname" name="nickname" placeholder="&nbsp;" autocomplete="off">
+    <label for="nickname">
+        {{__('Nickname')}} <small>({{ __("This name only show in center") }})</small>
+    </label>
+</div>
 <div class="richak richak-xs richak-secondary richak-checkbox">
     <input type="checkbox" name="create_case" id="create_case" value="1">
     <label for="create_case">

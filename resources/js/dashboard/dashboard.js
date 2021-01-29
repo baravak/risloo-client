@@ -156,6 +156,19 @@ $('body').on('statio:dashboard:reserves:create', function () {
     });
 });
 
+$('body').on('statio:dashboard:center:users:create', function(){
+    $("#position").on('change', function(){
+        if($(this).val() == 'client'){
+            $("#nickname").parent().show();
+            $("#room_id").parent().show();
+            $("#create_case").parent().show();
+        }else{
+            $("#nickname").parent().hide();
+            $("#room_id").parent().hide();
+            $("#create_case").parent().hide();
+        }
+    }).trigger('change');
+});
 $('body').on('statio:dashboard:samples:create', function(){
     $('#room-tab').on('show.bs.tab', function () {
         $('input, select, checkbox, radio', '#room').each(function () {

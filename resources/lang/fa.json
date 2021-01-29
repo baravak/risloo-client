@@ -164,6 +164,9 @@
      "Create case" : "ساخت پرونده",
      "My personal clinic" : "کلینیک شخصی من",
      "Join new user" :  "ثبت‌نام کاربر",
+     "Confirm" : "تأیید عضویت کاربر",
      "Users of :center" : "پرسنل و مراجعین :center",
-     "through mobile or name" : "از طریق جستجوی موبایل یا نام"
+     "through mobile or name" : "از طریق جستجوی موبایل یا نام",
+     "Nickname" : "اسم مستعار",
+     "This name only show in center" : "این نام صرفاً برای مشخص کردن مراجع در این مرکز درمانی‌ست"
 }
