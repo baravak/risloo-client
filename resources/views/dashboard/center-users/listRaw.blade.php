@@ -3,14 +3,13 @@
         @id($user)
     </td>
     <td>
-        <a href="{{$user->user->route('show')}}">
             @displayName($user->user)
-        </a>
+    </td>
+    <td>
+        @mobile($user->user->mobile)
     </td>
     <td class="d-none d-md-table-cell">
-        <a href="{{$user->creator->route('show')}}">
             @displayName($user->creator)
-        </a>
     </td>
     <td>
         <div>

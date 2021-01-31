@@ -4,6 +4,7 @@
             <tr>
                 <th>@sortView($users, 'id', '#')</th>
                 <th>@sortView($users, 'user')</th>
+                <th>{{ __('Mobile') }}</th>
                 <th class="d-none d-md-table-cell">@sortView($users, 'creator')</th>
                 <th>
                     <span class="d-none d-md-inline">

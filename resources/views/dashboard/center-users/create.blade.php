@@ -32,7 +32,7 @@
 <div class="form-group form-group-m">
     <input type="text" class="form-control form-control-m" id="nickname" name="nickname" placeholder="&nbsp;" autocomplete="off">
     <label for="nickname">
-        {{__('Client name')}} <small>({{ __("This name only show in center") }})</small>
+        {{__('Client name')}} <small>({{ __("This name is only valid in your center") }})</small>
     </label>
 </div>
 <div class="richak richak-xs richak-secondary richak-checkbox">
