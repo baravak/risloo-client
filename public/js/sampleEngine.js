@@ -174,7 +174,7 @@
         item.answer.options.forEach(function(option, i){
             var id = i+1;
             var template = $('#template div.radio').eq(0).clone();
-            template.addClass(item.answer.tiles == 4 ? 'col-3' : 'col-4');
+            template.addClass(item.answer.tiles == 4 ? 'col-3' : (item.answer.type == "optional_images" ? 'col-4' : 'col-12'));
             $('input', template).val(id).attr('name', 'options').attr('id', id);
             if (item.user_answered == id){
                 $('input', template).attr('checked', 'checked');
