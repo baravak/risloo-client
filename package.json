@@ -8,14 +8,15 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-csso": "^4.0.1",
-    "gulp-minify": "^3.1.0",
-    "gulp-sass": "^4.0.2"
+    "autoprefixer": "^10.2.1",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.2",
+    "win-node-env": "^0.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch:css": "postcss ./src/css/**/*.css -o ./public/css/davat.css --watch",
+    "build:css": "postcss ./src/css/davat.css -o ./public/css/davat.css",
+    "production:css": "NODE_ENV=production postcss ./src/css/davat.css -o ./public/css/davat.css"
   },
   "repository": {
     "type": "git",
