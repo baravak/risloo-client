@@ -6,17 +6,19 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@tailwindcss/forms": "latest",
     "autoprefixer": "^10.2.1",
+    "cssnano": "^4.1.10",
     "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.0",
     "tailwindcss": "^2.0.2",
     "win-node-env": "^0.4.0"
   },
   "scripts": {
-    "watch:css": "postcss ./src/css/**/*.css -o ./public/css/davat.css --watch",
-    "build:css": "postcss ./src/css/davat.css -o ./public/css/davat.css",
-    "production:css": "NODE_ENV=production postcss ./src/css/davat.css -o ./public/css/davat.css"
+    "watch:css": "postcss ./resources/davat/css/**/*.css -o ./public/css/davat.css --watch",
+    "build:css": "postcss ./resources/davat/css/davat.css -o ./public/css/davat.css",
+    "production:css": "NODE_ENV=production postcss ./resources/davat/css/davat.css -o ./public/css/davat.css"
   },
   "repository": {
     "type": "git",

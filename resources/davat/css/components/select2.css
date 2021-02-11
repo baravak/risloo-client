@@ -1,0 +1,11 @@
+.select2-container {
+	width: 100%!important;
+}
+
+.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+	padding: 0 16px!important;
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow {
+	left: 12px!important;
+}
