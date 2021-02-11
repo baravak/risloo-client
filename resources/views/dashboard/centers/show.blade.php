@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="border border-gray-200 rounded-sm mb-4 overflow-hidden">
-        <div class="h-24 sm:h-44 bg-gradient-to-b from-gray-200 to-gray-50"></div>
-        <div class="relative p-3">
+        <div class="h-24 sm:h-44 bg-gradient-to-b from-gray-200 to-gray-50 border-b border-gray-200"></div>
+        <div class="relative p-4">
             @if (false)
                 <div class="absolute top-3 left-3 flex">
                     <button class="flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 rounded-full ml-2 text-sm leading-normal hover:bg-green-50 transition-all">
@@ -36,4 +36,6 @@
             @endisset
         </div>
     </div>
+
+    @include($rooms->count() ? 'dashboard.rooms.items' : 'dashboard.centers.emptyRoom')
 @endsection

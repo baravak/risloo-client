@@ -7,7 +7,7 @@ use App\CenterUser;
 use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
-
+use App\Room;
 class CenterController extends Controller
 {
     public function index(Request $request)
@@ -18,7 +18,8 @@ class CenterController extends Controller
 
     public function show(Request $request, $center)
     {
-        $center = $this->data->center = Center::apiShow($center);
+        $rooms = $this->data->rooms = Room::apiIndex($request->merge(['center' => $center])->all());
+        $center = $this->data->center = $rooms->getFilter('center');
         return $this->view($request, 'dashboard.centers.show');
     }
 
