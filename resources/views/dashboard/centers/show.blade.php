@@ -1,7 +1,7 @@
 @extends($layouts->dashboard)
 
 @section('content')
-    <div class="border border-gray-200 rounded-sm mb-4 overflow-hidden">
+    <div class="border border-gray-200 rounded-sm overflow-hidden">
         <div class="h-24 sm:h-44 bg-gradient-to-b from-gray-200 to-gray-50 border-b border-gray-200"></div>
         <div class="relative p-4">
             @if (false)
@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-3 relative">@avatarOrName($center->detail)</div>
+            <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($center->detail)</div>
 
             <h2 class="font-bold text-lg text-gray-900 cursor-default">@displayName($center->detail)</h2>
 
@@ -35,6 +35,13 @@
                 </div>
             @endisset
         </div>
+    </div>
+
+    <div class="mt-8">
+        <h3 class="flex items-center font-bold mb-4 text-gray-800 cursor-default">
+            <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
+            <span>{{ __('Rooms') }}</span>
+        </h3>
     </div>
 
     @include($rooms->count() ? 'dashboard.rooms.items' : 'dashboard.centers.emptyRoom')
