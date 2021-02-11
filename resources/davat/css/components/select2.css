@@ -1,5 +1,5 @@
 .select2-container {
-	width: 100%!important;
+	@apply w-full !important;
 }
 
 .select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
@@ -8,4 +8,48 @@
 
 .select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow {
 	left: 12px!important;
+}
+
+.select2-selection__arrow {
+	display: none!important;
+}
+
+.select2-selection__rendered::after {
+	content: "\f078";
+	font-family: "Font Awesome 5 Pro";
+	font-weight: 300;
+	font-size: 12px;
+	position: absolute;
+	left: 18px;
+	@apply text-gray-400;
+}
+
+.select2-container--open .select2-selection__rendered::after {
+	content: "\f077" !important;
+}
+
+.select2-selection--single, .select2-selection__rendered {
+	height: 40px!important;
+}
+
+.select2-selection__rendered {
+	display: flex !important;
+	align-items: center !important;
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear {
+	position: absolute;
+	left: 45px;
+	font-size: 20px;
+	top: 10px;
+	@apply text-gray-400;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+	@apply bg-blue-50;
+	@apply text-gray-700;
+}
+
+.select2-results__option {
+	@apply text-gray-700;
 }
