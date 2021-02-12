@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Center;
-use App\CenterUser;
-use App\User;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Room;
 class CenterController extends Controller
@@ -18,8 +15,8 @@ class CenterController extends Controller
 
     public function show(Request $request, $center)
     {
-        $rooms = $this->data->rooms = Room::apiIndex($request->merge(['center' => $center])->all());
-        $center = $this->data->center = $rooms->getFilter('center');
+        $rooms = $this->data->rooms = Room::apiCenterRooms($center, $request->all());
+        $center = $this->data->center = $rooms->parentModel;
         return $this->view($request, 'dashboard.centers.show');
     }
 
