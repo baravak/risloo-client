@@ -15,15 +15,13 @@
         </div>
     </div>
 
-    <div class="mt-8">
-        <h3 class="flex items-center font-bold mb-4 text-gray-800 cursor-default">
-            <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
-            <span>{{ __('Cases') }}</span>
-        </h3>
+    <div class="flex items-center mt-8 mb-4 cursor-default">
+        <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
+        <h3 class="font-bold text-gray-800">{{ __('Cases') }}</h3>
     </div>
-    
+
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-        <a href="#" class="border border-gray-200 rounded hover:bg-gray-50">
+        <a href="{{ route('dashboard.room.users.index', $room->id) }}" class="border border-gray-200 rounded hover:bg-gray-50">
             <div class="p-4">
                 <div class="flex items-center justify-between">
                     <div>
@@ -55,197 +53,10 @@
                         <span>۲۰ آذر ۱۳۹۹</span>
                     </div>
                     <div class="text-xs text-gray-500">
-                        <i class="fal fa-ballot-check ml-1"></i>
-                        <span>۵ آزمون</span>
-                    </div>
-            </div>
-        </a>
-        <a href="#" class="border border-gray-200 rounded hover:bg-gray-50">
-            <div class="p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <span class="text-green-600 text-xs ">در جریان</span>
-                    </div>
-                    <div class="dir-ltr text-left text-gray-500">
-                        <i class="fal fa-copy mr-1"></i>
-                        <span class="font-semibold text-sm">RS96666DT</span>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <div class="flex items-center">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مر</span>
-                        </div>
-                        <span class="text-xs text-gray-500">محمدحسین رضوانی</span>
-                    </div>
-                    <div class="flex items-center mt-1">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مم</span>
-                        </div>
-                        <span class="text-xs text-gray-500">منیره‌سادات مرتضوی</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-clock ml-1"></i>
-                        <span>۲۰ آذر ۱۳۹۹</span>
-                    </div>
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-ballot-check ml-1"></i>
-                        <span>۵ آزمون</span>
-                    </div>
-            </div>
-        </a>
-        <a href="#" class="border border-gray-200 rounded hover:bg-gray-50">
-            <div class="p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <span class="text-green-600 text-xs ">در جریان</span>
-                    </div>
-                    <div class="dir-ltr text-left text-gray-500">
-                        <i class="fal fa-copy mr-1"></i>
-                        <span class="font-semibold text-sm">RS96666DT</span>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <div class="flex items-center">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مر</span>
-                        </div>
-                        <span class="text-xs text-gray-500">محمدحسین رضوانی</span>
-                    </div>
-                    <div class="flex items-center mt-1">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مم</span>
-                        </div>
-                        <span class="text-xs text-gray-500">منیره‌سادات مرتضوی</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-clock ml-1"></i>
-                        <span>۲۰ آذر ۱۳۹۹</span>
-                    </div>
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-ballot-check ml-1"></i>
-                        <span>۵ آزمون</span>
-                    </div>
-            </div>
-        </a>
-        <a href="#" class="border border-gray-200 rounded hover:bg-gray-50">
-            <div class="p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <span class="text-green-600 text-xs ">در جریان</span>
-                    </div>
-                    <div class="dir-ltr text-left text-gray-500">
-                        <i class="fal fa-copy mr-1"></i>
-                        <span class="font-semibold text-sm">RS96666DT</span>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <div class="flex items-center">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مر</span>
-                        </div>
-                        <span class="text-xs text-gray-500">محمدحسین رضوانی</span>
-                    </div>
-                    <div class="flex items-center mt-1">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مم</span>
-                        </div>
-                        <span class="text-xs text-gray-500">منیره‌سادات مرتضوی</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-clock ml-1"></i>
-                        <span>۲۰ آذر ۱۳۹۹</span>
-                    </div>
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-ballot-check ml-1"></i>
-                        <span>۵ آزمون</span>
-                    </div>
-            </div>
-        </a>
-        <a href="#" class="border border-gray-200 rounded hover:bg-gray-50">
-            <div class="p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <span class="text-green-600 text-xs ">در جریان</span>
-                    </div>
-                    <div class="dir-ltr text-left text-gray-500">
-                        <i class="fal fa-copy mr-1"></i>
-                        <span class="font-semibold text-sm">RS96666DT</span>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <div class="flex items-center">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مر</span>
-                        </div>
-                        <span class="text-xs text-gray-500">محمدحسین رضوانی</span>
-                    </div>
-                    <div class="flex items-center mt-1">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مم</span>
-                        </div>
-                        <span class="text-xs text-gray-500">منیره‌سادات مرتضوی</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-clock ml-1"></i>
-                        <span>۲۰ آذر ۱۳۹۹</span>
-                    </div>
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-ballot-check ml-1"></i>
-                        <span>۵ آزمون</span>
-                    </div>
-            </div>
-        </a>
-        <a href="#" class="border border-gray-200 rounded hover:bg-gray-50">
-            <div class="p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <span class="text-green-600 text-xs ">در جریان</span>
-                    </div>
-                    <div class="dir-ltr text-left text-gray-500">
-                        <i class="fal fa-copy mr-1"></i>
-                        <span class="font-semibold text-sm">RS96666DT</span>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <div class="flex items-center">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مر</span>
-                        </div>
-                        <span class="text-xs text-gray-500">محمدحسین رضوانی</span>
-                    </div>
-                    <div class="flex items-center mt-1">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مم</span>
-                        </div>
-                        <span class="text-xs text-gray-500">منیره‌سادات مرتضوی</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-clock ml-1"></i>
-                        <span>۲۰ آذر ۱۳۹۹</span>
-                    </div>
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-ballot-check ml-1"></i>
-                        <span>۵ آزمون</span>
+                        <i class="fal fa-user-friends ml-1"></i>
+                        <span>۳ جلسه</span>
                     </div>
             </div>
         </a>
     </div>
 @endsection
-
-
