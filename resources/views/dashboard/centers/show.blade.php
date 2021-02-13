@@ -37,11 +37,9 @@
         </div>
     </div>
 
-    <div class="mt-8">
-        <h3 class="flex items-center font-bold mb-4 text-gray-800 cursor-default">
-            <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
-            <span>{{ __('Rooms') }}</span>
-        </h3>
+    <div class="flex items-center mt-8 mb-4 cursor-default">
+        <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
+        <h3 class="font-bold text-gray-800">{{ __('Rooms') }}</h3>
     </div>
 
     @include($rooms->count() ? 'dashboard.rooms.items' : 'dashboard.centers.emptyRoom')
