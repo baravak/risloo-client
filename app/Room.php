@@ -15,7 +15,7 @@ class Room extends API
         'center' => Center::class,
     ];
 
-    public $parent = Center::class;
+    public $parent;
 
     public static function apiStore($center, array $params)
     {
@@ -29,6 +29,7 @@ class Room extends API
 
     public function _centerRooms($id, array $params = [])
     {
+        $this->parent = Center::class;
         return $this->cache('centers/' . $id .'/rooms' , $params);
     }
 }
