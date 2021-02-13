@@ -20,4 +20,9 @@ class TherapyCase extends API
         $store = new static;
         return $store->execute(sprintf("rooms/%s/cases", $room ?: '-'), $params, 'post');
     }
+    public function _roomCases($id, array $params = [])
+    {
+        $this->parent = Room::class;
+        return $this->cache('rooms/' . $id .'/cases' , $params);
+    }
 }

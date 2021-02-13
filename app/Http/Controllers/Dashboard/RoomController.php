@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Center;
 use App\CenterUser;
 use App\Room;
+use App\TherapyCase;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -41,7 +42,8 @@ class RoomController extends Controller
 
     public function show(Request $request, $room)
     {
-        $this->data->room = Room::apiShow($room);
+        $cases = $this->data->cases = TherapyCase::apiRoomCases($room, $request->all());
+        $room = $this->data->room = $cases->parentModel;
         return $this->view($request, 'dashboard.rooms.show');
     }
 }
