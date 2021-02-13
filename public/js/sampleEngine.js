@@ -10,18 +10,25 @@
     // var trysts = [0, 1, 2, 3, 4, 5, 10, 15];
     var trysts = [0, 1, 2];
     var try_count = 0;
-    function save(item, id)
+    function save(item, id, level)
     {
         if (typeof (Storage) !== "undefined") {
             var data = [];
             if ((sData = localStorage.getItem(sample_id)))
             {
-                data = sData.split(',');
+                data = JSON.parse(sData);
             }
-            data[item] = id;
-            localStorage.setItem(sample_id, data.join(','));
+            if(level == undefined){
+                data[item] = id;
+            }else{
+                if(typeof data[item] != 'object'){
+                    data[item] = [];
+                }
+                data[item][level] = id;
+            }
+            localStorage.setItem(sample_id, JSON.stringify(data));
         }
-        sync_log.push([item, id]);
+        sync_log.push([item, id, level]);
         if(!sync){
             send();
         }
@@ -193,6 +200,17 @@
         });
         tbody.appendTo(table)
         table.appendTo(itemElement)
+        $('div.radio', itemElement).addClass('m-0');
+        $(':radio', itemElement).trigger('clicked.answer');
+        $(':radio', itemElement).on('click.answer', function(){
+            if (blockEvents) {
+                return true;
+            }
+            answerMultiSelect($(this).val(), $(this).attr('name').match(/\[(\d+)\]$/)[1]);
+        });
+        $('input', itemElement).on('clicked.answer', function(){
+            $(this).trigger('click.answer');
+        });
     };
 
     answerDesign.optional = function(item)
@@ -266,6 +284,13 @@
         setTimeout(next, 500);
     }
 
+    function answerMultiSelect(id, level){
+        id = parseInt(id);
+        items[current - 1].user_answered = [];
+        items[current - 1].user_answered[level] = id;
+        save(current, id, parseInt(level));
+    }
+
     $(document).on('keyup', function(e){
         if (blockEvents){
             return true;
@@ -283,7 +308,7 @@
         if (/^(Digit|Numpad)\d$/.test(e.code))
         {
             var id = e.code.replace(/Digit|Numpad/, '');
-            $('input[value=' + id + ']').trigger('clicked.answer');
+            $('input[value=' + id + ']:radio').trigger('clicked.answer');
         }
     });
 
@@ -340,12 +365,19 @@
         if (typeof (Storage) !== "undefined") {
             data = [];
             if ((sData = localStorage.getItem(sample_id))) {
-                data = sData.split(',');
+                data = JSON.parse(sData);
             }
             data.forEach(function(value, index){
+                console.log(value);
                 if (!items[index].user_answered && value){
                     items[index].user_answered = value;
-                    sync_log.push([index, value]);
+                    if(typeof value == 'object'){
+                        value.forEach(function(v, i){
+                            sync_log.push([index, v, i]);
+                        });
+                    }else{
+                        sync_log.push([index, value]);
+                    }
                 }
             });
             if (sync_log.length)
