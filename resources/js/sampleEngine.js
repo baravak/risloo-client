@@ -164,6 +164,36 @@
             img.appendTo(secI);
             secI.appendTo($('[data-panel=item] .card-title'));
     }
+    answerDesign.table_radio = function(item){
+        var itemElement = $('#item-section');
+        var table = $("<table class='table table-hover'></table>");
+        var heads = $('<tr class="p-2"></tr>').appendTo(table);
+        $('<th></th>').html('#').appendTo(heads);
+        item.answer.headers.forEach(function(header, i){
+            if((header.condition && conditext(header.condition, prerequisite, items)) || !header.condition){
+                title = aliastext(header.text, prerequisite, items);
+                $('<th class="p-2"></th>').html(title).appendTo(heads);
+            }
+        });
+        var tbody = $('<tbody></tbody>');
+        item.answer.rows.forEach(function(row, i){
+            var row_e = $('<tr ></tr>');
+            $('<td></td>').html(row).appendTo(row_e);
+            item.answer.headers.forEach(function(header, col_i){
+                var row_i = i + 1;
+                if((header.condition && conditext(header.condition, prerequisite, items)) || !header.condition){
+                    var template = $('#template div.radio').eq(0).clone();
+                    $('input', template).val(row_i).attr('name', 'options['+ col_i +']').attr('id', row_i + '_' + col_i);
+                    $('label', template).attr('for', row_i + '_' + col_i);
+                    $('label span', template).attr('data-number', row_i);
+                    $('<td></td>').html(template).appendTo(row_e);
+                }
+            });
+            row_e.appendTo(tbody);
+        });
+        tbody.appendTo(table)
+        table.appendTo(itemElement)
+    };
 
     answerDesign.optional = function(item)
     {
@@ -372,6 +402,29 @@ $('[data-panel=information] form').on('statio:done', function (event, res) {
 });
 
 $('[data-panel=information]').on('panel:hide', function(panel, current, items){
+    var data = {};
+    jQuery($('form', '[data-panel=information]')).serializeArray().map(function(item) {
+        if ( data[item.name] ) {
+            if ( typeof(data[item.name]) === "string" ) {
+                data[item.name] = [data[item.name]];
+            }
+            data[item.name].push(item.value);
+        } else {
+            data[item.name] = item.value;
+        }
+    });
+    var pre = [];
+    for(var d in data){
+        if(d == undefined) continue;
+        var index = d.match(/^prerequisites\[(\d)\]\[(\d)\]/);
+        if(!pre[index[1]]) pre[index[1]] = [];
+        pre[index[1]][index[2]] = data[d];
+    }
+    pre.forEach(function(value, key){
+        if(prerequisite[value[0] - 1]){
+            prerequisite[value[0] - 1].user_answered = value[1];
+        }
+    });
     if ($('form', this).attr('data-on-request') == 'true')
     {
         return;
@@ -379,3 +432,27 @@ $('[data-panel=information]').on('panel:hide', function(panel, current, items){
     $('form', this).attr('data-on-request', 'true');
     $('form', this).trigger('submit');
 });
+function aliastext(text, pre, items){
+    if(text == 'null'){
+        return null;
+    }
+    else if(text.substr(0, 15) == '#prerequisites.'){
+        var value;
+        for (var i = 0; i < pre.length; i++) {
+            if(pre[i].label == text.substr(15)){
+                return pre[i].user_answered ? pre[i].user_answered : null;
+            }
+        }
+        return text;
+    }
+    return text;
+}
+
+function conditext(condition, pre, items){
+    var segment = condition.split(/\s/, 3);
+    var field = aliastext(segment[0], pre, items);
+    var cond_side = aliastext(segment[2], pre, items);
+    switch(segment[1]){
+        case '<>' : return field != cond_side;
+    }
+}
