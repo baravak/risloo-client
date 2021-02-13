@@ -1,0 +1,38 @@
+/* Left */
+.placeholder-left::placeholder {
+    text-align: left;
+}
+
+.placeholder-left:-ms-input-placeholder {
+    text-align: left;
+}
+
+.placeholder-left::-ms-input-placeholder {
+    text-align: left;
+}
+
+/* Right */
+.placeholder-right::placeholder {
+    text-align: right;
+}
+
+.placeholder-right:-ms-input-placeholder {
+    text-align: right;
+}
+
+.placeholder-right::-ms-input-placeholder {
+    text-align: right;
+}
+
+/* Center */
+.placeholder-center::placeholder {
+    text-align: center;
+}
+
+.placeholder-center:-ms-input-placeholder {
+    text-align: center;
+}
+
+.placeholder-center::-ms-input-placeholder {
+    text-align: center;
+}

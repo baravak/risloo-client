@@ -6,6 +6,7 @@
 @import "base/base.css";
 
 @import "utilities/direction.css";
+@import "utilities/placeholder.css";
 
 @import "components/select2.css";
 
