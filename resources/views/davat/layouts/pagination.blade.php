@@ -2,9 +2,7 @@
     <nav class="flex justify-center items-center flex-wrap mt-8 text-sm font-medium">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
-            @if (false)
-                <span class="flex justify-center items-center flex-shrink-0 h-7 ml-2 text-gray-300 cursor-default">{{ __('Previous') }}</span>
-            @endif
+            <span class="flex justify-center items-center flex-shrink-0 h-7 ml-2 text-gray-300 cursor-not-allowed">{{ __('Previous') }}</span>
         @else
             <a href="{{ $paginator->previousPageUrl() }}" class="flex justify-center items-center flex-shrink-0 h-7 ml-2 text-gray-700">{{ __('Previous') }}</a>
         @endif
@@ -13,7 +11,7 @@
         @foreach ($elements as $element)
             {{-- "Three Dots" Separator --}}
             @if (is_string($element))
-                <span>{{ $element }}</span>
+                <span class="text-gray-700">{{ $element }}</span>
             @endif
 
             {{-- Array Of Links --}}
@@ -32,9 +30,7 @@
         @if ($paginator->hasMorePages())
             <a href="{{ $paginator->nextPageUrl() }}" class="flex justify-center items-center flex-shrink-0 h-7 text-gray-700">{{ __('Next') }}</a>
         @else
-            @if (false)
-                <span class="flex justify-center items-center flex-shrink-0 h-7 text-gray-300 cursor-default">{{ __('Next') }}</span>
-            @endif
+            <span class="flex justify-center items-center flex-shrink-0 h-7 text-gray-300 cursor-not-allowed">{{ __('Next') }}</span>
         @endif
     </nav>
 @endif
