@@ -13,9 +13,9 @@
         @endif
 
         <a href="{{ route('dashboard.users.me') }}" class="flex items-center border border-gray-300 rounded px-3 h-12 hover:bg-gray-50 transition" title="{{ __('Me') }}">
-            <div class="flex justify-center items-center w-8 h-8 rounded overflow-hidden ml-3 bg-blue-500 text-white text-xs">
+            <div class="flex justify-center items-center flex-shrink-0 w-8 h-8 rounded overflow-hidden ml-3 bg-blue-500 text-white border border-gray-200 text-xs">
                 {{-- <span>ا ج</span> --}}
-                <img src="{{ auth()->user()->avatar_url->url('small') }}" alt="" class="border border-gray-200 rounded object-center" width="32" height="32">
+                <img src="{{ auth()->user()->avatar_url->url('small') }}" alt="{{ auth()->user()->name }}" class="w-full h-full object-cover object-center">
             </div>
             <div class="flex justify-between items-center">
                 <div>
