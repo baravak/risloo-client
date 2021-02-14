@@ -6,7 +6,7 @@
     </div>
 
     <div class="p-4">
-        <div class="text-sm sm:text-base xs:text-start text-center text-gray-700 font-semibold">@displayName($center->detail)</div>
+        <div class="text-sm sm:text-base text-center text-gray-700 font-bold">@displayName($center->detail)</div>
 
         @if ($center->type == 'counseling_center')
             <div class="text-xs text-center text-gray-700 mt-2">{{ $center->manager->name }}</div>
