@@ -16,6 +16,7 @@
     "Reserved": "رزور شده",
     "Supervisor": "سوپروایزر",
     "Therapist": "درمانگر",
+    "Therapists": "درمانگران",
     "Under supervision": "تحت نظارت",
     "Attachment": "ضمیمه",
     "Assessments": "ارزیابی‌ها",
@@ -31,7 +32,7 @@
     "Client profile": "پروفایل مراجع",
     "Samples": "نمونه‌ها",
     "Create new sampel": "ساختن نمونه جدید",
-    "Create sampel": "ساختن نمونه",
+    "Create sampel": "افزودن نمونه",
     "Clinic": "کلینیک شخصی",
     "Relationships": "ارتباطات",
     "Position": "موقعیت",
@@ -138,6 +139,7 @@
     "session_awaiting": "در انتظار تشکیل جلسه",
     "in_session": "در جلسه",
     "finished": "پایان یافته",
+    "Finished": "پایان‌یافته",
     "canceled_by_client": "لغوشده توسط مراجع",
     "canceled_by_center": "لغو شده توسط مرکز مشاوره",
     "Public key": "کلید عمومی",
@@ -171,5 +173,8 @@
     "This name is only valid in your center": "این نام فقط در مرکز درمانی شما کاربرد دارد",
     "Search": "جست‌وجو",
     "Previous": "قبلی",
-    "Next": "بعدی"
+    "Next": "بعدی",
+    "Serial": "سریال",
+    "Status": "وضعیت",
+    "Done": "انجام‌شده"
 }
