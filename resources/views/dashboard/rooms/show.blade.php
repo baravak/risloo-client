@@ -1,7 +1,7 @@
 @extends($layouts->dashboard)
 
 @section('content')
-<div class="border border-gray-200 rounded-sm overflow-hidden">
+    <div class="border border-gray-200 rounded-sm overflow-hidden">
         <div class="h-20 sm:h-28 bg-gradient-to-b from-blue-100 to-blue-50 border-b border-gray-200"></div>
         <div class="relative p-4">
                 <div class="absolute top-3 left-3 flex">
@@ -21,42 +21,44 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-        <a href="{{ route('dashboard.room.users.index', $room->id) }}" class="border border-gray-200 rounded hover:bg-gray-50">
-            <div class="p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <span class="text-green-600 text-xs ">در جریان</span>
+        @foreach ($cases as $case)
+            <a href="#" class="border border-gray-200 rounded hover:bg-gray-50">
+                <div class="p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-green-600 text-xs">{{ $case->status }}</span>
+                        </div>
+                        <div class="dir-ltr text-left text-gray-500">
+                            <i class="fal fa-copy mr-1"></i>
+                            <span class="font-semibold text-sm">{{ $case->id }}</span>
+                        </div>
                     </div>
-                    <div class="dir-ltr text-left text-gray-500">
-                        <i class="fal fa-copy mr-1"></i>
-                        <span class="font-semibold text-sm">RS96666DT</span>
+                    <div class="mt-4">
+                        <div class="flex items-center">
+                            <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
+                                <span>مر</span>
+                            </div>
+                            <span class="text-xs text-gray-500">محمدحسین رضوانی</span>
+                        </div>
+                        <div class="flex items-center mt-1">
+                            <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
+                                <span>مم</span>
+                            </div>
+                            <span class="text-xs text-gray-500">منیره‌سادات مرتضوی</span>
+                        </div>
                     </div>
                 </div>
-                <div class="mt-4">
-                    <div class="flex items-center">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مر</span>
+                <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
+                        <div class="text-xs text-gray-500">
+                            <i class="fal fa-clock ml-1"></i>
+                            <span>۲۰ آذر ۱۳۹۹</span>
                         </div>
-                        <span class="text-xs text-gray-500">محمدحسین رضوانی</span>
-                    </div>
-                    <div class="flex items-center mt-1">
-                        <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                            <span>مم</span>
+                        <div class="text-xs text-gray-500">
+                            <i class="fal fa-user-friends ml-1"></i>
+                            <span>۳ جلسه</span>
                         </div>
-                        <span class="text-xs text-gray-500">منیره‌سادات مرتضوی</span>
-                    </div>
                 </div>
-            </div>
-            <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-clock ml-1"></i>
-                        <span>۲۰ آذر ۱۳۹۹</span>
-                    </div>
-                    <div class="text-xs text-gray-500">
-                        <i class="fal fa-user-friends ml-1"></i>
-                        <span>۳ جلسه</span>
-                    </div>
-            </div>
-        </a>
+            </a>
+        @endforeach
     </div>
 @endsection
