@@ -26,10 +26,6 @@ module.exports = {
         cyan: colors.cyan,
         blue: colors.lightBlue
       },
-
-      fontSize: {
-        'x' : '0.625rem',
-      },
     },
   },
   variants: {
