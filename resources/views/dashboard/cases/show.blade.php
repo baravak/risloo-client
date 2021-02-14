@@ -14,5 +14,4 @@
     @include('dashboard.cases.sessions')
 
     @include('dashboard.cases.samples')
-    
 @endsection
