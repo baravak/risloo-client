@@ -15,4 +15,5 @@
         </div>
         @include($assessments->count() ? 'dashboard.assessments.assessmentsList' : 'dashboard.assessments.emptyAssessments')
     </div>
+    {{$assessments->links()}}
 @endsection
