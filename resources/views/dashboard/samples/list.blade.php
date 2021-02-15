@@ -1,34 +1,69 @@
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@sortView($samples, 'id', __('Serial'))</th>
-                <th>
-                    @sortView($samples, 'scale')
-                    @filterView($samples, 'scale')
-                </th>
-                <th>
-                    @sortView($samples, 'client')
-                    {{-- @filterView($samples, 'client') --}}
-                </th>
-                <th>
-                    @sortView($samples, 'room')
-                    @include('components._filter', ['model'=> $samples, 'key' => 'room', 'select_title'=> 'manager.name', 'select_template' => 'room'])
-                </th>
-                <th>
-                    @sortView($samples, 'case')
-                </th>
-                <th>
-                    @sortView($samples, 'status')
-                    @filterView($samples, 'status')
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($samples as $sample)
-            @include('dashboard.samples.listRaw')
-            @endforeach
-        </tbody>
-    </table>
+<div class="overflow-x-auto">
+    <div class="align-middle inline-block min-w-full">
+        <div class="overflow-hidden border border-gray-200 rounded">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Scale') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Session') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Client') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Therapy room') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
+                        <th class="px-3 py-2" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    @foreach ($samples as $sample)        
+                        <tr  data-xhr="sample-list-{{ $sample->id }}">
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <div claas="flex items-center">
+                                    <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->id }}</span>
+                                </div>
+                            </td>
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <div claas="flex items-center">
+                                    <span class="block text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span>
+                                    {{-- <span class="block text-gray-400 font-light text-xs">ویرایش {{ $sample->edition }} - نسخه {{ $sample->version }}</span> --}}
+                                </div>
+                            </td>
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <div claas="flex items-center">
+                                    <a href="#" class="text-xs text-gray-700 hover:text-blue-500">.</a>
+                                </div>
+                            </td>
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <div claas="flex items-center">
+                                    <a href="#" class="text-xs text-gray-700 hover:text-blue-500">.</a>
+                                </div>
+                            </td>
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <div claas="flex items-center">
+                                    @if ($sample->client)
+                                    <a href="#" class="text-xs text-gray-700 hover:text-blue-500">@displayName($sample->client)</a>
+                                    @else
+                                    <a href="#" class="text-xs text-gray-700 hover:text-blue-500">{{ $sample->code }}</a>
+                                    @endif
+                                </div>
+                            </td>
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <div claas="flex items-center">
+                                    <a href="#" class="text-xs text-gray-700 hover:text-blue-500">{{ $sample->room->manager->name }}</a>
+                                </div>
+                            </td>
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <div claas="flex items-center">
+                                    <span class="text-xs text-gray-500 cursor-default">{{ __(ucfirst($sample->status)) }}</span>
+                                </div>
+                            </td>
+                            <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
+                                    <a href="#" alt="{{ __('View') }}"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

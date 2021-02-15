@@ -1,0 +1,34 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@sortView($samples, 'id', __('Serial'))</th>
+                <th>
+                    @sortView($samples, 'scale')
+                    @filterView($samples, 'scale')
+                </th>
+                <th>
+                    @sortView($samples, 'client')
+                    {{-- @filterView($samples, 'client') --}}
+                </th>
+                <th>
+                    @sortView($samples, 'room')
+                    @include('components._filter', ['model'=> $samples, 'key' => 'room', 'select_title'=> 'manager.name', 'select_template' => 'room'])
+                </th>
+                <th>
+                    @sortView($samples, 'case')
+                </th>
+                <th>
+                    @sortView($samples, 'status')
+                    @filterView($samples, 'status')
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($samples as $sample)
+            @include('dashboard.samples.listRaw')
+            @endforeach
+        </tbody>
+    </table>
+</div>
