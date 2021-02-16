@@ -18,7 +18,7 @@
             <span class="font-semibold text-sm">{{ $session->id }}</span>
         </div>
         <div>
-            <a href="#" class="flex items-center justify-center border border-gray-500 rounded-full text-xs text-gray-600 h-7 px-2 hover:bg-gray-50">{{ __('Edit session') }}</a>
+            <a href="{{$session->route('edit')}}" class="flex items-center justify-center border border-gray-500 rounded-full text-xs text-gray-600 h-7 px-2 hover:bg-gray-50">{{ __('Edit session') }}</a>
         </div>
     </div>
 </div>
