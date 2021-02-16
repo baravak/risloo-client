@@ -17,5 +17,5 @@
             </a>
         </div>
     </div>
-    {{-- @include($session->samples && $session->samples->count() ? 'dashboard.sessions.samplesList' : 'dashboard.sessions.emptySamples') --}}
+    @include($session->samples && $session->samples->count() ? 'dashboard.sessions.samplesList' : 'dashboard.sessions.emptySamples')
 </div>

@@ -104,3 +104,13 @@ Breadcrumbs::for('dashboard.sessions.create', function ($trail, $data) {
     $trail->parent('dashboard.sessions.index', $data);
     $trail->push(__('Create session'), route('dashboard.sessions.index'));
 });
+
+Breadcrumbs::for('dashboard.sessions.show', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+    $trail->push($data['session']->case->room->center->detail->title, $data['session']->case->room->center->route('show'));
+    $trail->push(__('Therapy room of :user', ['user' => $data['session']->case->room->manager->name]), $data['session']->case->room->route('show'));
+    $trail->push(__('Case :serial', ['serial' => $data['session']->case->id]), $data['session']->case->route('show'));
+    // dd($data['session']->case->room->center);
+    // $trail->parent('dashboard.sessions.index', $data);
+    $trail->push(__('Therapy session :serial', ['serial' => $data['session']->id]), $data['session']->route('show'));
+});

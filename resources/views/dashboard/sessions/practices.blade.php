@@ -17,5 +17,5 @@
             </a>
         </div>
     </div>
-    {{-- @include($session->practices && $session->practices->count() ? 'dashboard.sessions.practicesList' : 'dashboard.sessions.emptyPractices') --}}
+    @include($practices && $practices->count() ? 'dashboard.sessions.practicesList' : 'dashboard.sessions.emptyPractices')
 </div>
