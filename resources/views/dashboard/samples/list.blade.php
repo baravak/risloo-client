@@ -25,7 +25,7 @@
                             <td class="px-3 py-2 whitespace-nowrap">
                                 <div claas="flex items-center">
                                     <span class="block text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span>
-                                    {{-- <span class="block text-gray-400 font-light text-xs">ویرایش {{ $sample->edition }} - نسخه {{ $sample->version }}</span> --}}
+                                    <span class="block text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span>
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">
@@ -58,7 +58,7 @@
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-                                    <a href="#" alt="{{ __('View') }}"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+                                <x-link-show :link="$sample->route('show')"/>
                             </td>
                         </tr>
                     @endforeach

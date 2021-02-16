@@ -13,7 +13,7 @@
         <div class="flex items-center w-full mb-4">
             <input type="search" placeholder="{{ __('Search') }}" class="w-full px-3 h-7 rounded border border-gray-200 font-light text-sm placeholder-gray-300">
         </div>
-        @include($assessments->count() ? 'dashboard.assessments.assessmentsList' : 'dashboard.assessments.emptyAssessments')
+        @include($assessments && $assessments->count() ? 'dashboard.assessments.assessmentsList' : 'dashboard.assessments.emptyAssessments')
     </div>
     {{$assessments->links()}}
 @endsection

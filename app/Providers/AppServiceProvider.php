@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Pagination\Paginator;
+use App\View\Components\Link\Show;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('room', function ($room) {
             return "<?php echo \$__env->make('components._room', ['room' => $room])->render(); ?>";
         });
+        Blade::component('link-show', Show::class);
     }
 }

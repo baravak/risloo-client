@@ -12,6 +12,22 @@
                     </div>
                 </a>
             </li>
+            <li class="mb-1">
+                <a href="{{ route('dashboard.users.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                    <div class="flex items-center">
+                        <i class="fal fa-users ml-2"></i>
+                        <span class="font-light">{{ __('Users') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="mb-1">
+                <a href="{{ route('dashboard.assessments.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                    <div class="flex items-center">
+                        <i class="fal fa-balance-scale ml-2"></i>
+                        <span class="font-light">{{ __('Assessments') }}</span>
+                    </div>
+                </a>
+            </li>
 
             @isset($layouts->asideMenu)
                 @include($layouts->asideMenu)

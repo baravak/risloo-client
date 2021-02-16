@@ -23,7 +23,9 @@
     "Assessment": "ارزیابی",
     "Scale": "مقیاس",
     "Edition": "ویرایش",
+    "Edition :title" : "ویرایش :title",
     "Version": "نسخه",
+    "Version :ver" : "نسخه :ver",
     "Create sample": "ساختن نمونه",
     "Create new sample": "ساختن نمونه جدید",
     "Manager profile": "پروفایل مدیر",
@@ -177,5 +179,6 @@
     "Serial": "سریال",
     "Status": "وضعیت",
     "Done": "انجام‌شده",
-    "Edit session": "ویرایش جلسه"
+    "Edit session": "ویرایش جلسه",
+    "Users": "کاربران"
 }
