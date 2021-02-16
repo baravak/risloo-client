@@ -12,7 +12,7 @@
                 {{-- @avatarOrName($client) --}}
             </div>
             <div class="flex items-center">
-                <div class="font-medium text-sm text-gray-700">@displayName($client)</div>
+                <div class="font-medium text-sm text-gray-700">@displayName($client->user)</div>
             </div>
         </a>
         @endforeach

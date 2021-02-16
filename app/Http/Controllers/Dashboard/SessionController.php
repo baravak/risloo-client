@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Session;
 use App\Room;
 use App\TherapyCase;
+use App\Practice;
 use Illuminate\Http\Request;
 use jDate;
 class SessionController extends Controller
@@ -76,6 +77,7 @@ class SessionController extends Controller
     public function show(Request $request, Session $session)
     {
         $this->data->session = $session;
+        $this->data->practices = $practices = Practice::apiIndex($session->id);
         return $this->view($request, 'dashboard.sessions.show');
     }
 
