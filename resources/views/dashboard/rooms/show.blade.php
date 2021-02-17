@@ -34,18 +34,14 @@
                         </div>
                     </div>
                     <div class="mt-4">
+                        @foreach ($case->clients as $client)
                         <div class="flex items-center">
                             <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                                <span>مر</span>
+                                @avatarOrName($client->user)
                             </div>
-                            <span class="text-xs text-gray-500">محمدحسین رضوانی</span>
+                            <span class="text-xs text-gray-500">@displayName($client->user)</span>
                         </div>
-                        <div class="flex items-center mt-1">
-                            <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                                <span>مم</span>
-                            </div>
-                            <span class="text-xs text-gray-500">منیره‌سادات مرتضوی</span>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
