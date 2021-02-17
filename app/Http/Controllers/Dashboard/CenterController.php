@@ -10,7 +10,7 @@ class CenterController extends Controller
     public function index(Request $request)
     {
         $this->data->centers = Center::apiIndex($request->all());
-        return $this->view($request, $request->header('data-xhr-base') == 'center-items'? 'dashboard.centers.list' : 'dashboard.centers.index');
+        return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.centers.list' : 'dashboard.centers.index');
     }
 
     public function show(Request $request, $center)

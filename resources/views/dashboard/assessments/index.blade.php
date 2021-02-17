@@ -9,11 +9,10 @@
                 <span class="text-xs text-gray-600 font-light mr-2">({{ $assessments->total() }})</span>
             </h3>
         </div>
-        
+
         <div class="flex items-center w-full mb-4">
-            <input type="search" placeholder="{{ __('Search') }}" class="w-full px-3 h-7 rounded border border-gray-200 font-light text-sm placeholder-gray-300">
+            @include('layouts.quick_search')
         </div>
-        @include($assessments && $assessments->count() ? 'dashboard.assessments.assessmentsList' : 'dashboard.assessments.emptyAssessments')
+        @include('dashboard.assessments.list')
     </div>
-    {{$assessments->links()}}
 @endsection
