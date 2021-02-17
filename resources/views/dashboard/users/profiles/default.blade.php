@@ -14,8 +14,11 @@
                     </a>
                 </div>
             <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($user)</div>
+
             <h2 class="font-bold text-lg text-gray-900 cursor-default">{{ $user->name ?: __('Anonymouse') }}</h2>
-            <span class="block dir-ltr text-right text-sm text-gray-600 cursor-default">{{ $user->username }}</span>
+
+            <span class="block dir-ltr text-right text-sm text-gray-600 mt-1 cursor-default">{{ $user->username }}</span>
+
             <div class="flex flex-wrap items-center mt-2">
                 <div class="inline-flex items-center text-gray-500 mb-2 sm:mb-0 ml-6 cursor-default">
                     <i class="fal fa-graduation-cap mb-2 ml-2"></i>
