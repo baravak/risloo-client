@@ -13,6 +13,14 @@
                 </a>
             </li>
             <li class="mb-1">
+                <a href="{{ route('dashboard.centers.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                    <div class="flex items-center">
+                        <i class="fal fa-building ml-2"></i>
+                        <span class="font-light">{{ __('Therapy centers') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="mb-1">
                 <a href="{{ route('dashboard.users.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-users ml-2"></i>
@@ -25,6 +33,22 @@
                     <div class="flex items-center">
                         <i class="fal fa-balance-scale ml-2"></i>
                         <span class="font-light">{{ __('Assessments') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="mb-1">
+                <a href="{{ route('dashboard.samples.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                    <div class="flex items-center">
+                        <i class="fal fa-vial ml-2"></i>
+                        <span class="font-light">{{ __('Samples') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="mb-1">
+                <a href="{{ route('dashboard.documents.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                    <div class="flex items-center">
+                        <i class="fal fa-file-certificate ml-2"></i>
+                        <span class="font-light">{{ __('Documents') }}</span>
                     </div>
                 </a>
             </li>
