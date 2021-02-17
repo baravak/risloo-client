@@ -13,12 +13,17 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="{{ route('dashboard.centers.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                <a href="{{ route('dashboard.centers.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-white bg-blue-600 hover:bg-blue-700 transition">
                     <div class="flex items-center">
                         <i class="fal fa-building ml-2"></i>
                         <span class="font-light">{{ __('Therapy centers') }}</span>
                     </div>
                 </a>
+                <ul class="pr-8 mt-2">
+                    <li>
+                        <a href="#" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My therapy centers') }}</a>
+                    </li>
+                </ul>
             </li>
             <li class="mb-1">
                 <a href="{{ route('dashboard.users.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
