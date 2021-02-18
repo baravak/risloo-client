@@ -32,8 +32,10 @@ class UserController extends _UserController
         return $this->view($request, 'dashboard.users.profiles.centerAcceptation');
     }
 
-    public function index(Request $request){
-        return parent::index($request);
+    public function index(Request $request)
+    {
+        $this->data->users = User::apiIndex($request->all());
+        return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.users.list-xhr' : 'dashboard.users.index');
     }
 
     public function publicKey(Request $request, $user){
