@@ -17,7 +17,8 @@ class CenterController extends Controller
     {
         $rooms = $this->data->rooms = Room::apiCenterRooms($center, $request->all());
         $center = $this->data->center = $rooms->parentModel;
-        return $this->view($request, 'dashboard.centers.show');
+        $this->data->global->title = $center->detail->title;
+        return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.centers.rooms-xhr' : 'dashboard.centers.show');
     }
 
     public function request(Request $request, $center)

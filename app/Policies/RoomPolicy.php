@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Center;
 use App\CenterUser;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -25,35 +26,17 @@ class RoomPolicy
         return false;
     }
 
-    public function create(User $user, CenterUser $roomUser = null){
-        if($roomUser)
-        {
-            if(isset($roomUser->meta->room_id))
-            {
-                return false;
-            }
-            if(!in_array($roomUser->position, config('users.room_managers')))
-            {
-                return false;
-            }
-            if(!$roomUser->accepted_at || $roomUser->kicked_at)
-            {
-                return false;
-            }
-        }
-        if($user->isAdmin())
-        {
-            return true;
-        }
-        if(!$user->centers || !$user->centers->count())
-        {
-            return false;
-        }
-        $allows = false;
-        foreach ($user->centers as $key => $value) {
-            if($value->acceptation && $value->acceptation->position == 'manager')
-            {
+    public function create(User $user, Center $center, CenterUser $centerUser = null){
+        if($centerUser){
+
+        }else{
+            if($user->isAdmin()){
                 return true;
+            }
+            if($center->acceptation){
+                if($center->acceptation->accepted_at && !$center->acceptation->kicked_at && in_array($center->acceptation->position, config('users.room_managers'))){
+                    return true;
+                }
             }
         }
         return false;

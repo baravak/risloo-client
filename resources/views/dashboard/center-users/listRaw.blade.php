@@ -74,7 +74,7 @@
                         <i class="fal fa-minus-circle text-danger"></i> {{__('Kick')}}
                     </a>
                 @endif
-                @can('create', [\App\Room::class, $user])
+                @can('create', [\App\Room::class, $center, $user])
                     @isset($user->meta->room_id)
                         <a href="{{route('dashboard.rooms.show', ['room' => $user->meta->room_id])}}" class="dropdown-item fs-12">
                             <i class="fal fa-home-heart text-primary"></i> {{__('Therapy room of :user', ['user' => $user->user->name])}}
