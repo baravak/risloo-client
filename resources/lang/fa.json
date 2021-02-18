@@ -185,5 +185,6 @@
     "Done": "انجام‌شده",
     "Edit session": "ویرایش جلسه",
     "Login to this...": "ورود به کاربری",
-    ":count sessions" : ":count جلسه"
+    ":count sessions": ":count جلسه",
+    "Empty Assessments Error": "ارزیابی‌ای مطابق با جست‌وجو شما یافت نشد"
 }
