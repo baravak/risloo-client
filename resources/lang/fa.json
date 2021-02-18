@@ -183,5 +183,6 @@
     "Status": "وضعیت",
     "Done": "انجام‌شده",
     "Edit session": "ویرایش جلسه",
-    "Login to this...": "ورود به کاربری"
+    "Login to this...": "ورود به کاربری",
+    ":count sessions" : ":count جلسه"
 }

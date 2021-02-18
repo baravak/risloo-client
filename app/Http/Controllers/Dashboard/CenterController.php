@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Center;
+use App\CenterDashboard;
 use Illuminate\Http\Request;
-use App\Room;
 class CenterController extends Controller
 {
     public function index(Request $request)
@@ -15,7 +15,7 @@ class CenterController extends Controller
 
     public function show(Request $request, $center)
     {
-        $rooms = $this->data->rooms = Room::apiCenterRooms($center, $request->all());
+        $rooms = $this->data->rooms = CenterDashboard::apiDashboard($center, $request->all());
         $center = $this->data->center = $rooms->parentModel;
         $this->data->global->title = $center->detail->title;
         return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.centers.rooms-xhr' : 'dashboard.centers.show');

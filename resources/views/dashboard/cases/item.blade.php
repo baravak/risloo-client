@@ -23,11 +23,11 @@
     <div class="flex items-center justify-between bg-gray-50 border-t border-gray-200 mt-2 px-4 py-3">
             <div class="text-xs text-gray-500">
                 <i class="fal fa-clock ml-1"></i>
-                <span>۲۰ آذر ۱۳۹۹</span>
+                <span>@time($case->created_at, '%A %d %B %y')</span>
             </div>
             <div class="text-xs text-gray-500">
                 <i class="fal fa-user-friends ml-1"></i>
-                <span>۳ جلسه</span>
+                <span>{{ __(':count sessions', ['count' => $case->sessions_count]) }}</span>
             </div>
     </div>
 </a>
