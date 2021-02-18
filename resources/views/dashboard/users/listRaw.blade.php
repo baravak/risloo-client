@@ -11,12 +11,12 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <a href="#" class="block text-right dir-ltr text-xs text-gray-700 hover:text-blue-500">{{ $user->email }}</a>
+            <a href="mailto:{{ $user->email }}" class="block text-right dir-ltr text-xs text-gray-700 hover:text-blue-500" target="_blank">{{ $user->email }}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <a href="#" class="block text-right dir-ltr text-xs text-gray-700 hover:text-blue-500">{{ $user->mobile }}</a>
+            <a href="tel:+{{ $user->mobile }}" class="block text-right dir-ltr text-xs text-gray-700 hover:text-blue-500" target="_blank">{{ $user->mobile }}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -39,10 +39,10 @@
             <x-link-show :link="$user->route('show')"/>
         </div>
         <div class="inline-block mr-4">
-            <a href="#" alt="{{ __('Edition') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+            <a href="{{ $user->route('edit') }}" alt="{{ __('Edit') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
         </div>
         <div class="inline-block">
-            <a href="#" alt="{{ __('Login to this...') }}"><i class="fal fa-user-cog text-sm leading-relaxed text-blue-600 hover:text-blue-700"></i></a>
+            <a href="{{ route('auth.as', ['user' => $user->id]) }}"  data-lijax="click" data-method="POST" alt="{{ __('Login to this...') }}"><i class="fal fa-user-cog text-sm leading-relaxed text-blue-600 hover:text-blue-700"></i></a>
         </div>
     </td>
 </tr>
