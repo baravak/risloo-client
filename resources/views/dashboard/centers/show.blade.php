@@ -5,9 +5,11 @@
         <div class="h-24 sm:h-44 bg-gradient-to-b from-blue-100 to-white border-b border-gray-200"></div>
         <div class="relative p-4">
             <div class="absolute top-3 left-3 flex">
-                <a href="#" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition-all">
-                    <span class="font-medium">{{ __('Edit') }}</span>
-                </a>
+                @can('update', $center)
+                    <a href="{{ $center->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition-all">
+                        <span class="font-medium">{{ __('Edit') }}</span>
+                    </a>
+                @endcan
 
                 {{-- Acceptation request button --}}
                 {{-- <a href="#" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition-all mr-2">
@@ -46,11 +48,13 @@
 
     <div class="flex justify-between items-center flex-wrap mb-4">
         @include('layouts.quick_search')
-        <a href="{{ route('dashboard.rooms.create') }}" class="flex items-center justify-center flex-shrink-0 w-10 sm:w-auto h-10 sm:px-4 text-sm text-green-700 border border-green-700 rounded-full hover:bg-green-50 transition mr-4" title="{{ __('Create new room') }}">
-            <i class="fal fa-plus sm:ml-2"></i>
-            <span class="hidden sm:inline">{{ __('Create new room') }}</span>
-        </a>
+        @can('create', [App\Room::class, $center])
+            <a href="{{ route('dashboard.rooms.create') }}" class="flex items-center justify-center flex-shrink-0 w-10 sm:w-auto h-10 sm:px-4 text-sm text-green-700 border border-green-700 rounded-full hover:bg-green-50 transition mr-4" title="{{ __('Create new room') }}">
+                <i class="fal fa-plus sm:ml-2"></i>
+                <span class="hidden sm:inline">{{ __('Create new room') }}</span>
+            </a>
+        @endcan
     </div>
-    
-    @include($rooms->count() ? 'dashboard.rooms.items' : 'dashboard.emptyContent')
+
+    @include('dashboard.centers.rooms')
 @endsection
