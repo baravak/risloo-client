@@ -8,10 +8,10 @@
             </h3>
         </div>
         <div>
-            <button class="absolute top-0 left-0 flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 h-7 rounded-full text-xs leading-normal hover:bg-green-50 transition-all">
+            <a href="#" class="absolute top-0 left-0 flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 h-8 rounded-full text-xs leading-normal hover:bg-green-50 transition-all">
                 <i class="fal fa-plus ml-2"></i>
                 <span class="font-medium">{{ __('Add client') }}</span>
-            </button>
+            </a>
         </div>
     </div> 
     <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
