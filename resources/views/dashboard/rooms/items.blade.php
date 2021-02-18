@@ -3,3 +3,5 @@
         @include('dashboard.rooms.item')
     @endforeach
 </div>
+
+{{ $rooms->links() }}

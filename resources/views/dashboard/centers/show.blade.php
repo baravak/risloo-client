@@ -2,19 +2,18 @@
 
 @section('content')
     <div class="border border-gray-200 rounded-sm overflow-hidden">
-        <div class="h-24 sm:h-44 bg-gradient-to-b from-gray-200 to-gray-50 border-b border-gray-200"></div>
+        <div class="h-24 sm:h-44 bg-gradient-to-b from-blue-100 to-white border-b border-gray-200"></div>
         <div class="relative p-4">
-            @if (false)
-                <div class="absolute top-3 left-3 flex">
-                    <button class="flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 rounded-full ml-2 text-sm leading-normal hover:bg-green-50 transition-all">
-                        <i class="fal fa-plus ml-2"></i>
-                        <span class="font-medium">افزودن</span>
-                    </button>
-                    <button class="flex justify-center items-center flex-shrink-0 border border-gray-400 text-gray-500 w-9 h-9 rounded-full hover:bg-gray-50 transition-all">
-                        <i class="fal fa-ellipsis-v text-xl"></i>
-                    </button>
-                </div>
-            @endif
+            <div class="absolute top-3 left-3 flex">
+                <a href="#" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition-all">
+                    <span class="font-medium">{{ __('Edit') }}</span>
+                </a>
+
+                {{-- Acceptation request button --}}
+                {{-- <a href="#" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition-all mr-2">
+                    <span class="font-medium">{{ __('Acceptation request') }}</span>
+                </a> --}}
+            </div>
 
             <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($center->detail)</div>
 
@@ -37,10 +36,21 @@
         </div>
     </div>
 
-    <div class="flex items-center mt-8 mb-4 cursor-default">
-        <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
-        <h3 class="font-bold text-gray-800">{{ __('Rooms') }}</h3>
+    <div class="mb-4 mt-8">
+        <h3 class="flex items-center font-bold text-gray-700 cursor-default">
+            <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
+            <span>{{ __('Rooms') }}</span>
+            <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $rooms->total() }})</span>
+        </h3>
     </div>
 
-    @include($rooms->count() ? 'dashboard.rooms.items' : 'dashboard.centers.emptyRoom')
+    <div class="flex justify-between items-center flex-wrap mb-4">
+        @include('layouts.quick_search')
+        <a href="{{ route('dashboard.rooms.create') }}" class="flex items-center justify-center flex-shrink-0 w-10 sm:w-auto h-10 sm:px-4 text-sm text-green-700 border border-green-700 rounded-full hover:bg-green-50 transition" title="{{ __('Create new room') }}">
+            <i class="fal fa-plus sm:ml-2"></i>
+            <span class="hidden sm:inline">{{ __('Create new room') }}</span>
+        </a>
+    </div>
+    
+    @include($rooms->count() ? 'dashboard.rooms.items' : 'dashboard.emptyContent')
 @endsection
