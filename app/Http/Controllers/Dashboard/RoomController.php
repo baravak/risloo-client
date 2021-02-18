@@ -44,6 +44,7 @@ class RoomController extends Controller
     {
         $cases = $this->data->cases = TherapyCase::apiRoomCases($room, $request->all());
         $room = $this->data->room = $cases->parentModel;
+        $center = $this->data->center = $room->center;
         return $this->view($request, 'dashboard.rooms.show');
     }
 }

@@ -65,8 +65,7 @@ Breadcrumbs::for('dashboard.rooms.create', function ($trail, $data) {
 });
 
 Breadcrumbs::for('dashboard.rooms.show', function ($trail, $data) {
-    $trail->parent('dashboard.rooms.index', $data);
-    $trail->push(($data['room']->center ?: $data['room'])->detail->title, route('dashboard.centers.show', ($data['room']->center ?: $data['room'])->id));
+    $trail->parent('dashboard.centers.show', $data);
     $trail->push($data['room']->type == 'room' ? __('Therapy room of :user', ['user' => $data['room']->manager->name]) : __('Personal'), route('dashboard.rooms.show', $data['room']->id));
 });
 
