@@ -11,7 +11,7 @@ class AssessmentController extends Controller
     {
         $this->authorize('dashboard.assessments.viewAny');
         $this->data->assessments = Assessment::apiIndex($request->all());
-        return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.assessments.list' : 'dashboard.assessments.index');
+        return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.assessments.list-xhr' : 'dashboard.assessments.index');
     }
 
     public function show(Request $request, $term)
