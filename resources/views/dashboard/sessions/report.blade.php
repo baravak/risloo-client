@@ -13,7 +13,7 @@
         <div href="#" class="border border-gray-200 rounded p-4 hover:bg-gray-50 transition">
             <span class="block text-gray-600 text-sm">{{ $session->report }}</span>
             <div class="text-left mt-2">
-                <a href="#" class="inline-flex justify-center items-center text-xs text-gray-600 border border-gray-600 hover:bg-gray-50 rounded-full h-7 px-4">ویرایش جلسه</a>
+                <a href="#" class="inline-flex justify-center items-center text-xs text-gray-600 border border-gray-600 hover:bg-gray-50 rounded-full h-8 px-4">{{ __('Edit report') }}</a>
             </div>
         </div>
     </div>

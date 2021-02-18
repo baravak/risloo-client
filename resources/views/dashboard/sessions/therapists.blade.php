@@ -3,6 +3,7 @@
         <h3 class="flex items-center font-bold text-gray-700 cursor-default">
             <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
             <span>{{ __('Therapists') }}</span>
+            <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">(۱)</span>
         </h3>
     </div> 
     <div class="grid grid-cols-1 2xl:grid-cols-2 gap-2">
