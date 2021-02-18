@@ -1,6 +1,13 @@
-<a href="{{ $room->route('show') }}" class="flex items-center sm:block border border-gray-200 rounded p-4 sm:px-4 sm:py-10 hover:bg-gray-50 overflow-hidden transition">
-    <div class="flex justify-center items-center flex-shrink-0 w-20 h-20 ml-4 mb-0 sm:mb-4 sm:mx-auto bg-gray-300 text-gray-600 rounded-full border border-gray-200 overflow-hidden">
+<a href="{{ $room->route('show') }}" class="border border-gray-200 rounded hover:bg-gray-50 transition">
+    <div class="h-16 bg-gray-100 border-b border-gray-200"></div>
+
+    <div class="flex justify-center items-center flex-shrink-0 w-20 h-20 mx-auto -mt-10 bg-gray-300 text-gray-600 rounded-full border-4 border-white overflow-hidden">
         @avatarOrName($room->manager)
     </div>
-    <div class="text-sm sm:text-base xs:text-start sm:text-center text-gray-700 font-semibold">{{ $room->manager->name }}</div>
+
+    <div class="p-4">
+        <div class="text-sm sm:text-base text-center text-gray-700 font-medium">
+            {{ $room->manager->name }}
+        </div>
+    </div>
 </a>
