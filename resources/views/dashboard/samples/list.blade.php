@@ -6,8 +6,6 @@
                     <tr>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Scale') }}</th>
-                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
-                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Session') }}</th>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Client') }}</th>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Therapy room') }}</th>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
@@ -26,16 +24,6 @@
                                 <div claas="flex items-center">
                                     <span class="block text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span>
                                     <span class="block text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span>
-                                </div>
-                            </td>
-                            <td class="px-3 py-2 whitespace-nowrap">
-                                <div claas="flex items-center">
-                                    <a href="#" class="text-xs text-gray-700 hover:text-blue-500">.</a>
-                                </div>
-                            </td>
-                            <td class="px-3 py-2 whitespace-nowrap">
-                                <div claas="flex items-center">
-                                    <a href="#" class="text-xs text-gray-700 hover:text-blue-500">.</a>
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">
