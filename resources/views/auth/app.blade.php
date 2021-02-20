@@ -35,8 +35,14 @@
         </div>
 
         <div class="absolute bottom-0 w-full">
-            <img src="/images/graphics/main-linear.png" alt="{{ __('App Title') }}" class="hidden lg:block object-cover object-center w-full">
-            <img src="/images/graphics/main.png" alt="{{ __('App Title') }}" class="lg:hidden object-cover object-center w-full">
+            <img src="/images/graphics/001.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto 2xl:hidden">
+            <img src="/images/graphics/002.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
+            <img src="/images/graphics/003.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
+            <img src="/images/graphics/004.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
+            <img src="/images/graphics/005.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
+            <img src="/images/graphics/006.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
+            <img src="/images/graphics/007.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
+            <img src="/images/graphics/main-linear.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden 2xl:block">
         </div>
     </div>
 @endsection
