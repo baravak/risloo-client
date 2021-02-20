@@ -2,17 +2,18 @@
 @include('layouts.head')
 
 @section('main')
-    <div class="flex-1 flex justify-center items-center bg-gray-50">
-        <div class="border border-gray-200 p-8 rounded w-full mx-4 sm:w-96 sm:mx-auto bg-white">
-            <div class="mb-8">
-                <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="block mx-auto w-20 h-20 direct">
-                    @if (auth()->check() && auth()->user()->avatar_url->url('large'))
+    <div class="flex-1 flex justify-center items-center">
+        <div class="rounded w-full sm:w-80 mx-4 sm:mx-auto bg-white" style="margin-bottom: 10vw;">
+            <h1 class="text-center font-black text-xl text-brand mb-8">
+                <a href="/" class="direct">{{ __('App Title') }}</a>
+            </h1>
+            @if (auth()->check() && auth()->user()->avatar_url->url('large'))
+                <div class="mb-4">
+                    <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="block mx-auto w-20 h-20 direct">
                         <img src="{{auth()->user()->avatar_url->url('large')}}" alt="Avatar">
-                    @else
-                        <img src="/images/logo/logo.png" alt="{{ __('App Title') }}">
-                    @endif
-                </a>
-            </div>
+                    </a>
+                </div>
+            @endif
 
             <h1 class="text-lg text-center font-bold text-gray-900 mb-4 hidden">
                 <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}">
@@ -31,6 +32,11 @@
                 </form>
                 @yield('auth-nav')
             </div>
+        </div>
+
+        <div class="absolute bottom-0 w-full">
+            <img src="/images/graphics/main-linear.png" alt="{{ __('App Title') }}" class="hidden lg:block object-cover object-center w-full">
+            <img src="/images/graphics/main.png" alt="{{ __('App Title') }}" class="lg:hidden object-cover object-center w-full">
         </div>
     </div>
 @endsection
