@@ -9,8 +9,8 @@
             </h1>
             @if (auth()->check() && auth()->user()->avatar_url->url('large'))
                 <div class="mb-4">
-                    <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="block mx-auto w-20 h-20 direct">
-                        <img src="{{auth()->user()->avatar_url->url('large')}}" alt="Avatar">
+                    <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="block mx-auto w-20 h-20 rounded overflow-hidden border border-gray-200 direct">
+                        <img src="{{ auth()->user()->avatar_url->url('large') }}" alt="{{ auth()->user()->name ?: __('Anonymouse') }}" class="rounded">
                     </a>
                 </div>
             @endif
