@@ -4,7 +4,7 @@
             <h3 class="flex items-center font-bold text-gray-700 cursor-default">
                 <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
                 <span>{{ __('Samples') }}</span>
-                <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">(2)</span>
+                <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $case->samples ? $case->samples->count() : 0 }})</span>
             </h3>
         </div>
         @can('manager', $case)
