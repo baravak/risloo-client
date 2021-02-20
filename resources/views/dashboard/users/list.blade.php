@@ -8,7 +8,7 @@
                             <tr>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">
                                     {{ __('Serial') }}
-                                    <a href="#"><i class="fal fa-sort text-xs leading-relaxed text-gray-600 hover:text-blue-600 mr-1"></i></a>
+                                    {{-- <a href="#"><i class="fal fa-sort text-xs leading-relaxed text-gray-600 hover:text-blue-600 mr-1"></i></a> --}}
                                     {{-- sort up icon --}}
                                     {{-- <a href="#"><i class="fal fa-sort-up text-xs leading-relaxed text-gray-600 hover:text-blue-600 mr-1"></i></a> --}}
                                     {{-- sort down icon --}}
@@ -20,11 +20,11 @@
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Username') }}</th>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">
                                     {{ __('Type') }}
-                                    <a href="#"><i class="fal fa-filter text-xs leading-relaxed text-gray-600 hover:text-blue-600 mr-1"></i></a>
+                                    {{-- <a href="#"><i class="fal fa-filter text-xs leading-relaxed text-gray-600 hover:text-blue-600 mr-1"></i></a> --}}
                                 </th>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">
                                     {{ __('Status') }}
-                                    <a href="#"><i class="fal fa-filter text-xs leading-relaxed text-gray-600 hover:text-blue-600 mr-1"></i></a>
+                                    {{-- <a href="#"><i class="fal fa-filter text-xs leading-relaxed text-gray-600 hover:text-blue-600 mr-1"></i></a> --}}
                                 </th>
                                 <th class="px-3 py-2" scope="col"></th>
                             </tr>
