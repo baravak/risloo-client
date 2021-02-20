@@ -5,7 +5,7 @@
         </div>
     @endif
     <div class="mb-4">
-        <input type="text" class="w-full text-sm text-left dir-ltr placeholder-right border border-gray-200 rounded-sm" id="authorized_key" name="authorized_key" value="{{ app('request')->authorized_key }}" placeholder="{{ auth()->check() ? __('Entry Command') : __('Phone, Email or Username') }}">
+        <input type="text" class="w-full text-sm text-left dir-ltr placeholder-right border border-gray-200 rounded-sm focus:ring-1 focus:ring-brand" id="authorized_key" name="authorized_key" value="{{ app('request')->authorized_key }}" placeholder="{{ auth()->check() ? __('Entry Command') : __('Phone, Email or Username') }}">
     </div>
     <button class="w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mb-8">{{ auth()->check() ? __('Check') : __('Enter') }}</button>
 @endsection
