@@ -77,6 +77,9 @@ class SessionController extends Controller
     public function show(Request $request, Session $session)
     {
         $this->data->session = $session;
+        $case = $this->data->case = $session->case;
+        $room = $this->data->room = $case->room;
+        $center = $this->data->center = $room->center;
         $this->data->practices = $practices = Practice::apiIndex($session->id);
         return $this->view($request, 'dashboard.sessions.show');
     }

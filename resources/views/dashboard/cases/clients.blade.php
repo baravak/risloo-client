@@ -7,23 +7,25 @@
                 <span class="text-xs text-gray-600 font-light mr-2">(1)</span>
             </h3>
         </div>
-        <div>
-            <a href="#" class="absolute top-0 left-0 flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 h-8 rounded-full text-xs leading-normal hover:bg-green-50 transition-all">
-                <i class="fal fa-plus ml-2"></i>
-                <span class="font-medium">{{ __('Add client') }}</span>
-            </a>
-        </div>
-    </div> 
+        @can('manager', $case)
+            <div>
+                <a href="{{route('dashboard.case.users.create', $case->id)}}" class="absolute top-0 left-0 flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 h-8 rounded-full text-xs leading-normal hover:bg-green-50 transition-all">
+                    <i class="fal fa-plus ml-2"></i>
+                    <span class="font-medium">{{ __('Add client') }}</span>
+                </a>
+            </div>
+        @endcan
+    </div>
     <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
         @foreach ($case->clients as $client)
-            <a href="#" class="flex items-center border border-gray-200 rounded px-3 py-2 hover:bg-gray-50 transition">
+            <span class="flex items-center border border-gray-200 rounded px-3 py-2 hover:bg-gray-50 transition">
                 <div class="flex justify-center items-center flex-shrink-0 w-12 h-12 rounded-full overflow-hidden ml-2 bg-gray-200 text-gray-800 text-xs">
                     {{-- @avatarOrName($client) --}}
                 </div>
                 <div class="flex items-center">
-                    <div class="font-medium text-sm text-gray-700">@displayName($client)</div>
+                    <div class="font-medium text-sm text-gray-700">@displayName($client->user)</div>
                 </div>
-            </a>
+            </span>
         @endforeach
     </div>
 </div>

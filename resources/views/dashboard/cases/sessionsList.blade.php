@@ -12,7 +12,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach ($case->sessions as $session)          
+                    @foreach ($case->sessions as $session)
                         <tr>
                             <td class="px-3 py-2 whitespace-nowrap">
                                 <div claas="flex items-center">
@@ -38,12 +38,14 @@
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-                                <div class="inline-block mr-4">
-                                    <a href="#" alt="{{ __('View') }}"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
-                                </div>
-                                <div class="inline-block">
-                                    <a href="#" alt="{{ __('Edition') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
-                                </div>
+                                @can('manager', $case)
+                                    <div class="inline-block mr-4">
+                                        <a href="{{ $session->route('show') }}" alt="{{ __('View') }}"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+                                    </div>
+                                    <div class="inline-block">
+                                        <a href="{{ $session->route('edit') }}" alt="{{ __('Edition') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+                                    </div>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

@@ -39,6 +39,8 @@ class CaseController extends Controller
     public function show(Request $request, $case)
     {
         $case = $this->data->case = TherapyCase::apiShow($case, $request->merge(['usage' => 'case_dashboard'])->all());
+        $room = $this->data->room = $case->room;
+        $center = $this->data->center = $room->center;
         return $this->view($request, 'dashboard.cases.show');
     }
 
