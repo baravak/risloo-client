@@ -1,17 +1,17 @@
-<div>
-    <div class="mt-4">
-        <label for="case_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Case') }}</label>
-        <select data-template="case_clients" name="case_id" data-title="manager.name manager.id" id="case_id" data-url="{{ isset($case) ? route('dashboard.cases.index', ['room' => $case->room->id]) : '' }}" data-url-pattern="{{ route('dashboard.cases.index', ['room' => '%%']) }}" data-relation="session_id" class="select2-select">
+<div class="tab-pane fade show active pt-3" id="case" role="tabpanel" aria-labelledby="case-tab">
+    <div class="form-group form-group-m">
+        <select class="select2-select form-control form-control-m has-clear" data-template="case_clients" name="case_id" data-title="manager.name manager.id" id="case_id" data-url="{{isset($case) ? route('dashboard.cases.index', ['room' => $case->room->id]) : ''}}" data-url-pattern="{{route('dashboard.cases.index', ['room' => '%%'])}}" data-relation="session_id">
             @isset($case)
-            <option value="{{$case->id}}" data-json='{{$case}}' selected>{{$case->clients->pluck('user.name')->join('-')}}</option>
+                <option value="{{$case->id}}" data-json='{{$case}}' selected>{{$case->clients->pluck('user.name')->join('-')}}</option>
             @endisset
         </select>
+        <label for="case_id">{{__('Case')}}</label>
     </div>
-</div>
 
     <div class="form-group mb-0" id="client-list">
-        <div id="client-null-tamplate" class="{{ isset($case) ? 'hidden' : '' }}">
-            <label>{{__('Clients')}}</label>
+        <label>{{__('Clients')}}</label>
+        <div id="client-null-tamplate" class="{{isset($case) ? 'd-none' : ''}}">
+            ...
         </div>
         @isset($case)
             @foreach ($case->clients as $client)
