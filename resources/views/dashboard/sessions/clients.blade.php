@@ -5,9 +5,9 @@
             <span>{{ __('Clients') }}</span>
             <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">(۱)</span>
         </h3>
-    </div> 
+    </div>
     <div class="grid grid-cols-1 2xl:grid-cols-2 gap-2">
-        @foreach ($session->case->clients as $client)
+        @foreach ($case->clients as $client)
         <a href="#" class="flex items-center border border-gray-200 rounded px-3 py-2 hover:bg-gray-50 transition">
             <div class="flex justify-center items-center flex-shrink-0 w-12 h-12 rounded-full overflow-hidden ml-2 bg-gray-200 text-gray-800 text-xs">
                 {{-- @avatarOrName($client) --}}

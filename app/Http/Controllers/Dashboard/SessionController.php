@@ -6,6 +6,7 @@ use App\Session;
 use App\Room;
 use App\TherapyCase;
 use App\Practice;
+use App\SessionDashboard;
 use Illuminate\Http\Request;
 use jDate;
 class SessionController extends Controller
@@ -74,13 +75,14 @@ class SessionController extends Controller
         ]);
     }
 
-    public function show(Request $request, Session $session)
+    public function show(Request $request, $session)
     {
-        $this->data->session = $session;
-        $case = $this->data->case = $session->case;
+        $this->data->session = $session = SessionDashboard::apiDashboard($session);
+        $practices = $this->data->practices = $session->practices;
+        $samples = $this->data->samples = $session->samples;
+        $case = $this->data->case = $session->parentModel;
         $room = $this->data->room = $case->room;
         $center = $this->data->center = $room->center;
-        $this->data->practices = $practices = Practice::apiIndex($session->id);
         return $this->view($request, 'dashboard.sessions.show');
     }
 
