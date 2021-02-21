@@ -2,8 +2,8 @@
 @include('layouts.head')
 
 @section('main')
-    <div class="flex-1 flex justify-center items-center">
-        <div class="rounded w-full sm:w-80 mx-4 sm:mx-auto bg-white" style="margin-bottom: 10vw;">
+    <div class="flex-1 flex justify-center items-center bg-gray-50">
+        <div class="rounded w-full sm:w-80 mx-4 sm:mx-auto" style="margin-bottom: 10vw;">
             <h1 class="text-center font-black text-xl text-brand mb-8">
                 <a href="/" class="direct">{{ __('App Title') }}</a>
             </h1>
