@@ -9,7 +9,7 @@
         </div>
         @can('manager', $case)
             <div>
-                <a href="{{route('dashboard.case.users.create', $case->id)}}" class="absolute top-0 left-0 flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 h-8 rounded-full text-xs leading-normal hover:bg-green-50 transition-all">
+                <a href="{{route('dashboard.case.users.create', $case->id)}}" class="absolute -top-0 left-0 flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 h-9 rounded-full text-xs leading-normal hover:bg-green-50 transition-all">
                     <i class="fal fa-plus ml-2"></i>
                     <span class="font-medium">{{ __('Add client') }}</span>
                 </a>
