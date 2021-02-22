@@ -22,7 +22,10 @@ Route::resource('rooms', 'RoomController');
 Route::resource('rooms/{room}/users', 'RoomUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'room']);
 
 
-Route::resource('cases', 'CaseController');
+Route::resource('cases', 'CaseController', ['except' => 'create', 'store']);
+Route::get('rooms/{room}/cases/create', 'CaseController@create')->name('room.cases.create');
+Route::post('rooms/{room}/cases', 'CaseController@store')->name('room.cases.store');
+
 Route::resource('cases/{case}/users', 'CaseUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'case']);
 Route::put('cases/{case}/sessions/{session}', 'CaseController@sessionUpdate')->name('cases.sessions.sessionUpdate');
 Route::post('users/request', 'UserController@request')->name('users.request');

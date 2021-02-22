@@ -16,23 +16,24 @@ class CaseController extends Controller
         return $this->view($request, 'dashboard.cases.index');
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $room)
     {
         if($request->client){
-            $this->data->client = $client = RoomUser::apiShow($request->room, $request->client);
-            $this->data->room = $client->parentModel;
+            $this->data->client = $client = RoomUser::apiShow($room, $request->client);
+            $this->data->room = $room = $client->parentModel;
         }else{
-            $this->data->room = $request->room ? Room::apiShow($request->room) : null;
+            $this->data->room = $room = Room::apiShow($room);
         }
+        $this->data->center = $center = $room->center;
         $this->authorize('dashboard.cases.create');
         return $this->view($request, 'dashboard.cases.create');
     }
-    public function store(Request $request)
+    public function store(Request $request, $room)
     {
         $this->authorize('dashboard.cases.create');
-        $case = TherapyCase::apiStore($request->room_id, $request->except('room_id'));
+        $case = TherapyCase::apiStore($room, $request->all());
         return $case->response()->json([
-            'redirect' => route('dashboard.cases.show', $case->id)
+            'redirect' => $case->route('show')
         ]);
     }
 

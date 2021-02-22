@@ -116,3 +116,9 @@ Breadcrumbs::for('dashboard.sessions.show', function ($trail, $data) {
     $trail->push(__('Session'), null);
     $trail->push($data['session']->id, $data['session']->route('show'));
 });
+
+
+Breadcrumbs::for('dashboard.room.cases.create', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+    $trail->push(__("Create new case"), route('dashboard.room.cases.create', $data['room']->id));
+});

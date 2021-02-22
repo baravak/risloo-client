@@ -25,4 +25,16 @@ class TherapyCase extends API
         $this->parent = Room::class;
         return $this->cache('rooms/' . $id .'/cases' , $params);
     }
+
+    public function setRoutes($attr){
+        $room = $this->parentModel ?: $this->room;
+        $this->route = [
+            'index' => route('dashboard.rooms.show', $room->id),
+            'show' => route('dashboard.cases.show', $this->id),
+            // 'edit' => route('dashboard.cases.edit', $this->id),
+            // 'update' => route('dashboard.cases.update', $this->id),
+            'create' => route('dashboard.room.cases.create', $room->id),
+            'store' => route('dashboard.room.cases.store', $room->id)
+        ];
+    }
 }

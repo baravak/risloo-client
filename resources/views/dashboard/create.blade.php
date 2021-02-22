@@ -11,9 +11,9 @@
                     <button type="submit" class="inline-flex justify-center items-center min-w-min w-36 h-9 px-4 bg-brand text-white text-sm rounded-full hover:bg-blue-800 transition ml-4">
                         @yield('form-title', __(($module->action == 'create' ? "Create " : 'Edit ') . $module->singular))
                     </button>
-                    @if(request()->callback)
-                        <a href="{{request()->callback}}" class="text-gray-500 hover:text-gray-700 text-sm">{{ __('Cancel') }}</a>
-                        @elseif(Route::has($module->resource . '.index'))
+                    @if(request()->callback || isset($callbackCancel))
+                        <a href="{{request()->callback ?: $callbackCancel}}" class="text-gray-500 hover:text-gray-700 text-sm">{{ __('Cancel') }}</a>
+                    @elseif(Route::has($module->resource . '.index'))
                         <a href="{{ route($module->resource . '.index', $module->parent ? request()->route()->parameters[$module->parent] : null) }}" class="text-gray-500 hover:text-gray-700 text-sm">{{ __('Cancel') }}</a>
                     @endif
                 </div>

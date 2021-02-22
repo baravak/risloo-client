@@ -1,4 +1,4 @@
-@extends('dashboard.create')
+@extends('dashboard.create', ['callbackCancel' => $room->route('show')])
 @section('form_content')
     <div>
         <div class="mt-4">
