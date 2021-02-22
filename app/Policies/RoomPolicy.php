@@ -26,7 +26,11 @@ class RoomPolicy
         return false;
     }
 
-    public function create(User $user, Center $center, CenterUser $centerUser = null){
+    public function create(User $user, Center $center = null, CenterUser $centerUser = null){
+        if(!$center){
+            return true;
+            if($user->isAdmin()) return true;
+        }
         if($centerUser){
 
         }else{
