@@ -28,6 +28,12 @@ class TherapyCase extends API
 
     public function setRoutes($attr){
         $room = $this->parentModel ?: $this->room;
+        if(!$room){
+            $this->route = [
+                'show' => route('dashboard.cases.show', $this->id)
+            ];
+            return;
+        }
         $this->route = [
             'index' => route('dashboard.rooms.show', $room->id),
             'show' => route('dashboard.cases.show', $this->id),

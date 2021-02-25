@@ -6,32 +6,21 @@ use App\Center;
 use App\RelationshipUser;
 use App\Room;
 use App\User;
+use App\UserDashboard;
 use Illuminate\Http\Request;
 
 class UserController extends _UserController
 {
-    public function showPsychologist(Request $request, User $user)
+    public function me(Request $request)
     {
-
-        $this->data->rooms = Room::apiIndex($request->all());
+        return $this->show($request, auth()->id());
     }
-    public function showCounselingCenter(Request $request, User $user)
+    public function show(Request $request, $user)
     {
-        // $this->data->members = RelationshipUser::apiIndex($user->center->id);
+        $user = $this->data->user = UserDashboard::apiDashboard($user, $request->all());
+        $this->data->user = $user;
+        return $this->view($request, 'dashboard.users.show');
     }
-
-    public function request(Request $request)
-    {
-        $this->data->center = Center::request($request->center_id);
-        return $this->view($request, 'dashboard.users.profiles.centerAcceptation');
-    }
-
-    public function accept(Request $request)
-    {
-        $this->data->center = Center::accept($request->Ccenter_id);
-        return $this->view($request, 'dashboard.users.profiles.centerAcceptation');
-    }
-
     public function index(Request $request)
     {
         $this->data->users = User::apiIndex($request->all());
