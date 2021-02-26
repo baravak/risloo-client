@@ -1,3 +1,7 @@
+.select2-container--default .select2-selection--multiple {
+	@apply h-10;
+}
+
 .select2-container {
 	@apply cursor-default !important;
 }
@@ -41,6 +45,10 @@
 
 .select2-selection--single, .select2-selection__rendered {
 	@apply h-3 !important;
+}
+
+.select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-selection__rendered {
+	@apply h-10 !important;
 }
 
 .select2-selection__rendered {
