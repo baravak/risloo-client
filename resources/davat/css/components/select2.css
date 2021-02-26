@@ -1,5 +1,6 @@
 .select2-container--default .select2-selection--multiple {
-	@apply h-10;
+	@apply overflow-hidden;
+	min-height: 40px;
 }
 
 .select2-container {
@@ -19,6 +20,10 @@
 }
 
 .select2-selection__rendered::after {
+	@apply hidden;
+}
+
+/* .select2-selection__rendered::after {
 	content: "\f078";
 	font-family: "Font Awesome 5 Pro";
 	left: 18px;
@@ -29,14 +34,15 @@
 
 .select2-container--open .select2-selection__rendered::after {
 	content: "\f077" !important;
-}
+} */
 
 .select2-search--inline {
-	@apply relative -top-1.5;
+	@apply relative top-1.5;
 }
 
-.select2-container .select2-search--inline .select2-search__field {
-	margin-bottom: 5px;
+.select2-container .select2-search--inline .select2-search__field, .select2-selection__placeholder {
+	font-family: 'dana';
+	@apply mb-1 font-light text-xs;
 }
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
@@ -51,8 +57,8 @@
 	@apply h-10 !important;
 }
 
-.select2-selection__rendered {
-	@apply flex items-center !important;
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+	max-width: 95% !important;
 }
 
 .select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear {
