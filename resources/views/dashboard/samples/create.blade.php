@@ -3,7 +3,7 @@
     <div>
         <div class="mt-4">
             <label for="scale_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Scale') }}</label>
-            <select multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index') }}" class="select2-select">
+            <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index') }}">
                 @isset($scale)
                     <option value="{{$scale->id}}" data-json="{{$scale}}" selected>{{$scale->title}}</option>
                 @endisset
@@ -12,7 +12,7 @@
 
         <div class="mt-4">
             <label for="room_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Room') }}</label>
-            <select data-relation="case_id room_client_id" data-template="room" name="room_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{ route('dashboard.rooms.index' , ['my_management' => 1]) }}" class="select2-select">
+            <select class="select2-select" data-relation="case_id room_client_id" data-template="room" name="room_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{ route('dashboard.rooms.index' , ['my_management' => 1]) }}">
                 @isset($case)
                 <option value="{{$case->room->id}}" data-json="{{$case->room}}" selected>{{$case->room->manager->name}}</option>
                 @endisset
