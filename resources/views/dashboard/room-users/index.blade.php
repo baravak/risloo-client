@@ -7,12 +7,6 @@
         @filterBadge($users)
     </div>
     <div class="card-body p-0">
-        <div class="row">
-            @if ($room->center)
-                @include('dashboard.centers.listRaw', ['center' => $room->center])
-            @endif
-            @include('dashboard.rooms.listRaw')
-        </div>
         @include('dashboard.room-users.list')
     </div>
 </div>

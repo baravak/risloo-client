@@ -10,8 +10,9 @@ class RoomUserController extends Controller
 {
     public function index(Request $request, $room)
     {
-        $this->data->users = RoomUser::apiIndex($room, $request->all());
-        $this->data->room = new Room((array) $this->data->users->response('room'));
+        $users = $this->data->users = RoomUser::apiIndex($room, $request->all());
+        $room = $this->data->room = $users->parentModel;
+        $center = $this->data->center = $room->center;
         return $this->view($request, 'dashboard.room-users.index');
     }
     public function create(Request $request, Room $room)

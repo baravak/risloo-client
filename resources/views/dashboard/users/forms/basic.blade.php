@@ -24,7 +24,7 @@
 
 <div class="mt-4">
     <label for="password" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Password') }}</label>
-    <input type="password" name="password" id="password" autocomplete="new-password"class="border border-gray-500 h-10 rounded px-4 w-full text-left dir-ltr focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60" required>
+    <input type="password" name="password" id="password" autocomplete="new-password"class="border border-gray-500 h-10 rounded px-4 w-full text-left dir-ltr focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
     <div class="flex items-center text-xs text-gray-400 mt-2">
         <i class="fal fa-info-circle ml-1"></i> 
         <span>{{ __('Password help') }}</span>

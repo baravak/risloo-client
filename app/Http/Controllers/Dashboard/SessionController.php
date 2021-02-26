@@ -64,6 +64,7 @@ class SessionController extends Controller
         $this->data->session = $session;
         $this->data->case = $session->case;
         $this->data->room = $session->case->room;
+        $this->data->center = $this->data->room->center;
         $this->viewMode($request);
         return $this->view($request, 'dashboard.sessions.create');
     }
