@@ -19,11 +19,10 @@
     </div>
 
     @if (auth()->isAdmin() && (!isset($center) || (isset($center) && $center->type == 'counseling_center')))
-    <div class="mt-4">
+    <div class="form-group mt-4">
         <div>
             <label for="manager_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Manager') }}</label>
-            <select data-template="users" data-id="id" name="manager_id" data-title="name" data-avatar="avatar.small.url" id="manager_id" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}" class="focus:outline-none focus:ring-1 focus:ring-offset-1">
-                <option></option>
+            <select class="select2-select" data-template="users" data-id="id" name="manager_id" data-title="name" data-avatar="avatar.small.url" id="manager_id" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}">
                 @isset($center)
                     <option value="{{$center->manager->id}}" data-json="{{$center->manager}}" selected>{{$center->manager->name}}</option>
                 @endisset
@@ -33,11 +32,11 @@
     @endif
 
     @if (!isset($center) || (isset($center) && $center->type == 'counseling_center'))
-    <div class="mt-4">
+    <div class="form-group mt-4">
         <label for="title" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Title') }}</label>
         <input type="text" name="title" id="title" autocomplete="off" @formValue($center->detail->title) class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
     </div>
-    <div class="mt-4">
+    <div class="form-group mt-4">
         <label for="avatar" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Avatar') }}</label>
         <input type="file" name="avatar" id="avatar" placeholder="&nbsp;" autocomplete="off">
     </div>
@@ -51,7 +50,7 @@
     <div class="mt-4">
         <div>
             <label for="phone_numbers" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Phone numbers') }}</label>
-            <select placeholder="{{ __('Optional') }}" multiple name="phone_numbers[]" id="phone_numbers" class="placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-offset-1">
+            <select class="select2-select placeholder-gray-300" placeholder="{{ __('Optional') }}" multiple name="phone_numbers[]" id="phone_numbers">
                 @isset($center)
                 @foreach ($center->detail->phone_numbers ?: [] as $number)
                     <option value="{{$number}}" selected>{{$number}}</option>
