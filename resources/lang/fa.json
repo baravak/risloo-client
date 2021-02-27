@@ -150,6 +150,7 @@
     "canceled_by_client": "لغوشده توسط مراجع",
     "canceled_by_center": "لغو شده توسط مرکز مشاوره",
     "Public key": "کلید عمومی",
+    "Send public key": "ارسال کلید عمومی من",
     "Set public key": "تنظیم کلید عمومی",
     "Encryption type": "نوع رمزگذاری",
     "Without encryption": "بدون رمزگذاری",
