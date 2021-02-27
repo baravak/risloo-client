@@ -152,6 +152,7 @@
     "Public key": "کلید عمومی",
     "Send public key": "ارسال کلید عمومی من",
     "Set public key": "تنظیم کلید عمومی",
+    "Encryption": "رمزگذاری",
     "Encryption type": "نوع رمزگذاری",
     "Without encryption": "بدون رمزگذاری",
     "With my public-key": "رمزگذاری توسط کلید عمومی من",
