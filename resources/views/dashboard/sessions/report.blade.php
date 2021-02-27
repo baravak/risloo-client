@@ -21,7 +21,7 @@
     </div>
     @endif
     @else
-    <div class="flex items-center justify-between border border-gray-200 rounded p-4 transition">
+    <div class="flex items-center justify-between border border-gray-200 rounded p-4 transition h-16">
         <span class="text-gray-500 text-xs">تنها درمان‌گران این پرونده قادر به ثبت و مشاهده گزارش می‌باشند</span>
     </div>
     @endcan
