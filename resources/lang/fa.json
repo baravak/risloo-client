@@ -152,6 +152,8 @@
     "Public key": "کلید عمومی",
     "Send public key": "ارسال کلید عمومی من",
     "Set public key": "تنظیم کلید عمومی",
+    "Privet key": "کلید خصوصی",
+    "Set privet key": "تنظیم کلید خصوصی",
     "Encryption": "رمزگذاری",
     "Encryption type": "نوع رمزگذاری",
     "Without encryption": "بدون رمزگذاری",
