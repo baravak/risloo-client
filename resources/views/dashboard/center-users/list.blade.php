@@ -1,41 +1,32 @@
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@sortView($users, 'id', '#')</th>
-                <th>@sortView($users, 'user')</th>
-                <th>{{ __('Mobile') }}</th>
-                <th class="d-none d-md-table-cell">@sortView($users, 'creator')</th>
-                <th>
-                    <span class="d-none d-md-inline">
-                        @sortView($users, 'position') /
-                        @sortView($users, 'status')
-                    </span>
-                    <span class="d-md-none">
-                        @sortView($users, 'position', __('short_position')) /
-                        @sortView($users, 'status', __('short_status'))
-                    </span>
-                </th>
-                <th>
-                    <span class="d-none d-md-inline">
-                        @sortView($users, 'accepted_at')
-                    </span>
-                    <span class="d-md-none">
-                        @sortView($users, 'accepted_at', __('Time'))
-                    </span>
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
-            @include('dashboard.center-users.listRaw')
-            @endforeach
-        </tbody>
-    </table>
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center">
-            {{$users->links()}}
+<div>
+    @if ($users && $users->count())
+        <div class="overflow-x-auto">
+            <div class="align-middle inline-block min-w-full">
+                <div class="overflow-hidden border border-gray-200 rounded">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('User') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Mobile') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Creator') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Position') }} / {{ __('Status') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Accepted_at') }}</th>
+                                <th class="px-3 py-2" scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            @foreach ($users as $user)
+                                @include('dashboard.center-users.listRaw')
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
+        {{ $users->links() }}
+
+    @else
+        @include('dashboard.center-users.emptyList')
+    @endif
 </div>
