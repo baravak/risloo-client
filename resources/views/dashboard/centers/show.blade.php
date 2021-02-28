@@ -21,6 +21,8 @@
 
                 {{-- <span class="text-xs text-gray-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('You are is :position of this cenetr') }}</span> --}}
 
+                {{-- <span class="text-xs text-red-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('Kicked') }}</span> --}}
+
             </div>
 
             <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($center->detail)</div>
