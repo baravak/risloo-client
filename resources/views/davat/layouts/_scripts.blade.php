@@ -27,5 +27,6 @@
 
     <script src="@staticVersion('/js/app.js')"></script>
 
+    <script src="@staticVersion('/js/davat.dashboard.js')"></script>
     <script src="@staticVersion('/js/davat.js')"></script>
 @endsection

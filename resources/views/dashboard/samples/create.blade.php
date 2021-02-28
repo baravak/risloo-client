@@ -24,19 +24,19 @@
             <div class="mt-1">
                 <label class="inline-flex items-center group">
                     <input type="radio" name="create-sample" id="" value="" class="w-3.5 h-3.5 border border-gray-600 focus:ring-2 focus:ring-offset-2">
-                    <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Room') }}</span>  
+                    <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Room') }}</span>
                 </label>
             </div>
             <div class="mt-1">
                 <label class="inline-flex items-center group">
                     <input type="radio" name="create-sample" id="" value="" @radioChecked($center->type, 'counseling_center') {!!isset($center) ? 'disabled' : ''!!} class="w-3.5 h-3.5 border border-gray-600 focus:ring-2 focus:ring-offset-2">
-                    <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Case') }}</span>  
+                    <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Case') }}</span>
                 </label>
             </div>
         </div>
 
         @include('dashboard.samples.createRoom')
-        
+
         @include('dashboard.samples.createCase')
     </div>
 @endsection

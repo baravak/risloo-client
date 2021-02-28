@@ -32,8 +32,8 @@
                 </div>
                 <div>
                     @can('dashboard.rooms.admin', [$room])
-                            <a class="badge badge-secondary fs-10 p-1" href="{{route('dashboard.cases.index', ['room' => $room->id])}}">{{ __('Cases') }}</a>
-                            <a class="badge badge-secondary fs-10 p-1" href="{{route('dashboard.cases.create', ['room' => $room->id])}}">{{ __('Create new case') }}</a>
+                            <a class="badge badge-secondary fs-10 p-1" href="{{$room->route('show')}}">{{ __('Cases') }}</a>
+                            <a class="badge badge-secondary fs-10 p-1" href="{{route('dashboard.room.cases.create', ['room' => $room->id])}}">{{ __('Create new case') }}</a>
                         @endcan
                 </div>
             </div>

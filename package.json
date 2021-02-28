@@ -7,18 +7,24 @@
     "test": "tests"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.8",
     "@tailwindcss/forms": "^0.2.1",
     "autoprefixer": "^10.2.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-minify": "^0.5.1",
     "cssnano": "^4.1.10",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.0",
-    "tailwindcss": "^2.0.2",
-    "win-node-env": "^0.4.0"
+    "tailwindcss": "^2.0.2"
   },
   "scripts": {
     "watch:css": "postcss ./resources/davat/css/**/*.css -o ./public/css/davat.css --watch",
     "build:css": "postcss ./resources/davat/css/davat.css -o ./public/css/davat.css",
-    "production:css": "NODE_ENV=production postcss ./resources/davat/css/davat.css -o ./public/css/davat.css"
+    "production:css": "NODE_ENV=production postcss ./resources/davat/css/davat.css -o ./public/css/davat.css",
+    "build:js": "babel resources/davat/js/dashboard/**/*.js --out-file public/js/davat.dashboard.js --source-maps --presets minify",
+    "watch:js": "babel resources/davat/js/dashboard/**/*.js --out-file public/js/davat.dashboard.js --source-maps --presets minify --watch"
   },
   "repository": {
     "type": "git",

@@ -1014,22 +1014,22 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 				}
 			}
 		});
-		$(".select2-select", this).each(function () {
-			select2element.call(this);
-		});
-		$('.select2-select[data-relation]', this).on('select2:select', function (e) {
-			var relation_ids = $(this).attr('data-relation');
-			var f_id = $(this).val();
-			relation_ids.split(' ').forEach(function (relation_id){
-				var relation = $('#' + relation_id);
-				if (!relation.length) return;
-				var url = unescape(relation.attr('data-url-pattern')).replace('%%', f_id);
-				relation.attr('data-url', url);
-				relation.val(null).trigger("change");
-				relation.select2('destroy');
-				select2element.call(relation[0]);
-			});
-		});
+		// $(".select2-select", this).each(function () {
+		// 	select2element.call(this);
+		// });
+		// $('.select2-select[data-relation]', this).on('select2:select', function (e) {
+		// 	var relation_ids = $(this).attr('data-relation');
+		// 	var f_id = $(this).val();
+		// 	relation_ids.split(' ').forEach(function (relation_id){
+		// 		var relation = $('#' + relation_id);
+		// 		if (!relation.length) return;
+		// 		var url = unescape(relation.attr('data-url-pattern')).replace('%%', f_id);
+		// 		relation.attr('data-url', url);
+		// 		relation.val(null).trigger("change");
+		// 		relation.select2('destroy');
+		// 		select2element.call(relation[0]);
+		// 	});
+		// });
 		$('.date-picker', this).each(function(){
 			var val = $(this).val();
 			var _self = this;

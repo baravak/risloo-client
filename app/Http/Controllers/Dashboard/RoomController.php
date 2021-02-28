@@ -14,7 +14,16 @@ class RoomController extends Controller
     {
         $rooms = $this->data->rooms = Room::apiIndex($request->all());
         $this->data->center = $rooms->getFilter('center');
-        return $this->view($request, 'dashboard.rooms.index');
+        switch($request->header('data-xhr-base')){
+            case 'select2':
+                $view = 'dashboard.rooms.select2';
+                $this->data->global = $rooms->map(function($room){
+                    return ['id' => $room->id, 'title' => $room->manager->name];
+                });
+                break;
+            default : $view = 'dashboard.rooms.index';
+        }
+        return $this->view($request, $view);
     }
 
     public function create(Request $request)
