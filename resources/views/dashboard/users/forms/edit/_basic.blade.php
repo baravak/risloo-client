@@ -1,4 +1,4 @@
-<form class="w-full mt-6" action="{{route('dashboard.users.update', ['user' => $user->id])}}" method="POST">
+<form action="{{route('dashboard.users.update', ['user' => $user->id])}}" method="POST">
     @method('PUT')
     <div>
         @include('dashboard.users.forms.basic')

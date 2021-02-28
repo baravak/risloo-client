@@ -21,6 +21,8 @@
         <script src="/vendors/amcharts4/lang/en.js"></script>
     @endif
 
+    <script src="/vendors/tabby/js/tabby.js"></script>
+
     <script src="@staticVersion('/js/sarkoot.min.js')"></script>
 
     <script src="@staticVersion('/js/app.js')"></script>

@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="/vendors/persian-datepicker/css/persian-datepicker.min.css">
     @endif
 
+    <link rel="stylesheet" href="/vendors/tabby/css/tabby-ui.css">
+
     <link rel="stylesheet" href="@staticVersion('/css/davat.css')">
 
     <!-- Hotjar Tracking Code for risloo.ir -->
