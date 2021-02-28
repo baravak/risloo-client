@@ -50,7 +50,7 @@
                 <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
                 <h3 class="font-semibold text-gray-800">{{ __('Public key') }}</h3> 
             </div>           
-            @includeIf('dashboard.users.forms.edit._publicKey')
+            @include('dashboard.users.forms.edit._publicKey')
         </div>
     </div>
 @endsection
