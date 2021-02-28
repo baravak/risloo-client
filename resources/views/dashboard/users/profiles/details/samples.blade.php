@@ -45,7 +45,7 @@
                                         </div>
                                     </td>
                                     <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-                                        <a href="#" class="inline px-4 py-1 text-xs text-white  bg-brand hover:border-brand-600 hover:bg-brand-600 rounded-full transition">{{ __('Do sample') }}</a>
+                                        <a href="#" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
                                     </td>
                                 </tr>
                             {{-- @endforeach --}}

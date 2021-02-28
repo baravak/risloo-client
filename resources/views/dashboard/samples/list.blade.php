@@ -50,7 +50,7 @@
                                     <x-link-show :link="$sample->route('show')"/>
                                 </div>
                                 <div class="inline-block">
-                                    <a href="#" class="block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
+                                    <a href="#" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
                                 </div>
                             </td>
                         </tr>
