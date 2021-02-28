@@ -9,6 +9,4 @@ $(document).ready(function() {
             $('body').removeClass('aside-open');
         }
     });
-
-    var tabs = new Tabby('[data-tabs]');
 });

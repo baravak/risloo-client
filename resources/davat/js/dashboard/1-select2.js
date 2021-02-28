@@ -7,10 +7,23 @@
             minimumInputLength: 0,
             dir: "rtl",
             templateResult : function(data){
-                return $(data.html);
+                if(!data.html){
+                    var html = $('[data-id='+data.id+']', $('[data-for='+ $(data.element).parent().attr('id') +']'));
+                    data.html = html.clone();
+                }
+                return data.html ? $('[data-selection]', data.html) : data.text;
             },
             templateSelection : function(data){
-                return $(data.html);
+                if(!data.html){
+                    var html = $('[data-id='+data.id+']', $('[data-for='+ $(data.element).parent().attr('id') +']'));
+                    data.html = html.clone();
+                }
+                new Statio({
+                    type: 'render',
+                    fake: true,
+                    response : typeof(data.html) == 'string'? data.html : data.html[0].innerHTML
+                });
+                return data.html ? $('[data-selection]', data.html) : data.text;
             },
         };
         if ($(this).is('[data-url]')) {
@@ -44,7 +57,7 @@
             };
         }
         $(this).select2(options);
-        if($(this).has(['[data-relation]'])){
+        if($(this).is('[data-relation]')){
             $(this).on('select2:select', function (e) {
                 var relation_ids = $(this).attr('data-relation');
                 var f_id = $(this).val();

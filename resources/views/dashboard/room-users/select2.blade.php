@@ -1,5 +1,7 @@
 @foreach ($users as $user)
 <span data-id="{{ $user->id }}">
-    @displayName($user->user)
+    <span data-selection>
+        @displayName($user->user)
+    </span>
 </span>
 @endforeach

@@ -12,8 +12,17 @@ class CaseController extends Controller
 {
     public function index(Request $request)
     {
-        $this->data->cases = TherapyCase::apiIndex($request->all());
-        return $this->view($request, 'dashboard.cases.index');
+        $cases = $this->data->cases = TherapyCase::apiIndex($request->all());
+        switch($request->header('data-xhr-base')){
+            case 'select2':
+                $view = 'dashboard.cases.sampleSelect2';
+                $this->data->global = $cases->map(function($case){
+                    return ['id' => $case->id, 'title' => $case->id];
+                });
+                break;
+            default : $view = 'dashboard.cases.index';
+        }
+        return $this->view($request, $view);
     }
 
     public function create(Request $request, $room)
