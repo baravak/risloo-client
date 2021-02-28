@@ -11,12 +11,16 @@
                     </a>
                 @endcan
 
-                {{-- Acceptation request button --}}
                 @can('acceptation', $center)
                     <a href="{{route('dashboard.centers.request', $center->id)}}" data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition-all mr-2">
                         <span class="font-medium">{{ __('Acceptation request') }}</span>
                     </a>
                 @endcan
+
+                {{-- <span class="text-sm text-yellow-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('Awaiting for acceptation') }}</span> --}}
+
+                {{-- <span class="text-xs text-gray-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('You are is :position of this cenetr') }}</span> --}}
+
             </div>
 
             <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($center->detail)</div>
