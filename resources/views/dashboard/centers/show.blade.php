@@ -5,14 +5,19 @@
         <div class="h-24 sm:h-44 bg-gradient-to-b from-blue-100 to-white border-b border-gray-200"></div>
         <div class="relative p-4">
             <div class="absolute top-3 left-3 flex">
+
+                <a href="{{ route('dashboard.center.users.index', $center->id) }}" title="{{ __('Users') }}" class="flex justify-center items-center flex-shrink-0 text-brand border border-brand hover:bg-blue-50 w-9 h-9 rounded-full transition">
+                    <i class="fal fa-users"></i>
+                </a>
+
                 @can('update', $center)
-                    <a href="{{ $center->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition-all">
+                    <a href="{{ $center->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
                         <span class="font-medium">{{ __('Edit') }}</span>
                     </a>
                 @endcan
 
                 @can('acceptation', $center)
-                    <a href="{{route('dashboard.centers.request', $center->id)}}" data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition-all mr-2">
+                    <a href="{{route('dashboard.centers.request', $center->id)}}" data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
                         <span class="font-medium">{{ __('Acceptation request') }}</span>
                     </a>
                 @endcan
