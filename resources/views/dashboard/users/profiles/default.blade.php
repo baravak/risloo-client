@@ -11,9 +11,9 @@
                         </a>
                     @endcan
                     @can('admin', App\User::class)
-                        <a href="{{ route('auth.as', ['user' => $user->id]) }}"  data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-50 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition-all mr-2">
+                        <a href="{{ route('auth.as', ['user' => $user->id]) }}"  data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 border border-blue-600 text-blue-600 hover:bg-blue-50 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition-all mr-2">
                             <i class="fal fa-user-cog"></i>
-                            <span class="font-medium mr-2 hidden sm:inline">{{ __('Login to this...') }}</span>
+                            <span class="mr-2 hidden sm:inline">{{ __('Login to this...') }}</span>
                         </a>
                     @endcan
                 </div>
@@ -44,6 +44,6 @@
         </div>
     </div>
 
-    {{-- @include($documents->count() ? 'dashboard.users.profiles.documents' : '') --}}
+    @include('dashboard.users.profiles.detailsList')
 
 @endsection

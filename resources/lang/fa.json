@@ -60,6 +60,7 @@
     "Counseling center": "مرکز مشاوره",
     "My clinic": "کلینیک من",
     "Therapy rooms": "اتاق‌های درمان",
+    "My therapy rooms": "اتاق‌های درمانی من",
     "Therapy room": "اتاق درمان",
     "Awaiting for acceptation": "در انتظار برای پذیرش",
     "You are is :position of this cenetr": "شما :position این مرکز درمانی هستید",
@@ -75,6 +76,7 @@
     "Level": "سطح",
     "Cases": "پرونده‌ها",
     "Case": "پرونده",
+    "My cases": "پرونده‌های درمانی من",
     "Case of :users": "پرونده درمانی :users",
     "Case :serial": "پرونده درمانی :serial",
     "Therapy": "درمان",
@@ -128,8 +130,11 @@
     "Perform sample": "انجام نمونه",
     "Closed": "بسته",
     "Scored": "دارای نمره",
+    "Do sample": "انجام آزمون",
     "Close sample": "بستن آزمون",
     "Open sample": "بازکردن آزمون",
+    "My open samples": "آزمون‌های انجام نشده‌ی من",
+    "See all my samples": "مشاهده همه آزمون‌ها",
     "Therapy session": "جلسه درمانی",
     "Therapy sessions": "جلسات درمانی",
     "Therapy session :serial" : "جلسه درمانی :serial",
@@ -199,5 +204,6 @@
     "Basic info": "اطلاعات پایه",
     "Personal info": "اطلاعات شخصی",
     "Edit avatar help": "جهت انتخاب تصویر جدید، روی تصویر پروفایل کلیک کنید",
-    "Edit center": "ویرایش"
+    "Edit center": "ویرایش",
+    "See All": "مشاهده همه"
 }
