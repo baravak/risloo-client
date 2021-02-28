@@ -1,9 +1,12 @@
 @section('aside')
     <aside id="aside" class="bg-gray-50 border-l border-gray-200 overflow-y-auto">
-        <h1 class="text-2xl font-extrabold text-blue-500 py-6 px-3">
-            <a href="/" target="_blank">{{ __('App Title') }}</a>
-        </h1>
-        <ul class="px-3">
+        <div class="flex items-center h-20 px-2">
+            <h1 class="text-2xl font-black text-brand">
+                <a href="/" target="_blank" class="block">{{ __('App Title') }}</a>
+            </h1>
+        </div>
+
+        <ul class="px-2">
             <li class="mb-1">
                 <a href="{{ route('dashboard.home') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
