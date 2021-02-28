@@ -24,7 +24,7 @@
                 </a>
                 <ul class="pr-8 mt-2">
                     <li>
-                        <a href="#" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My therapy centers') }}</a>
+                        <a href="{{ route('dashboard.centers.index', ['my' => 'yes']) }}" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My therapy centers') }}</a>
                     </li>
                 </ul>
             </li>
