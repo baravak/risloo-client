@@ -45,8 +45,13 @@
                                     <span class="text-xs text-gray-500 cursor-default">{{ __(ucfirst($sample->status)) }}</span>
                                 </div>
                             </td>
-                            <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-                                <x-link-show :link="$sample->route('show')"/>
+                            <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
+                                <div class="inline-block mr-4">
+                                    <x-link-show :link="$sample->route('show')"/>
+                                </div>
+                                <div class="inline-block">
+                                    <a href="#" class="block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
