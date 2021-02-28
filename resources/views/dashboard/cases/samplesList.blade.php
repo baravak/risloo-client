@@ -43,10 +43,10 @@
                         </td>
                         <td class="p-3 whitespace-nowrap text-left dir-ltr">
                             <div class="inline-block mr-4">
-                                <a href="#"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+                                {{-- <x-link-show :link="$sample->route('show')"/> --}}
                             </div>
                             <div class="inline-block">
-                                <a href="#" class="block px-2 py-1 text-xs text-gray-700 hover:text-blue-600 border border-gray-400 hover:border-blue-600 hover:bg-blue-50 rounded-full">نمره‌دهی</a>
+                                <a href="#" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
                             </div>
                         </td>
                     </tr>
