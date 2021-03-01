@@ -51,6 +51,8 @@
         </div>
     </div>
 
+    {{-- @include('dashboard.centers.myRooms') --}}
+
     <div class="mb-4 mt-8">
         <h3 class="flex items-center font-bold text-gray-700 cursor-default">
             <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
