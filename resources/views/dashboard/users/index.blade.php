@@ -3,11 +3,7 @@
 @section('content')
     <div>
         <div class="mb-4 mt-8">
-            <h3 class="flex items-center font-bold text-gray-700 cursor-default">
-                <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
-                <span>{{ __('Users') }}</span>
-                <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $users->total() }})</span>
-            </h3>
+            <h3 class="heading" data-total="({{ $users->total() }})" data-xhr="total">{{ __('Users') }}</h3>
         </div>
 
         <div class="flex justify-between items-center flex-wrap mb-4">
