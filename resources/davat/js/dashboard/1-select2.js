@@ -66,21 +66,21 @@
             };
         }
         $(this).select2(options);
-        // if($(this).is('[data-relation]')){
-        //     $(this).on('select2:select', function (e) {
-        //         var relation_ids = $(this).attr('data-relation');
-        //         var f_id = $(this).val();
-        //         relation_ids.split(' ').forEach(function (relation_id){
-        //             var relation = $('#' + relation_id);
-        //             if (!relation.length) return;
-        //             var url = unescape(relation.attr('data-url-pattern')).replace('%%', f_id);
-        //             relation.attr('data-url', url);
-        //             relation.val(null).trigger("change");
-        //             relation.select2('destroy');
-        //             select2.call(relation[0]);
-        //         });
-        //     });
-        // }
+        if($(this).is('[data-relation]')){
+            $(this).on('select2:select', function (e) {
+                var relation_ids = $(this).attr('data-relation');
+                var f_id = $(this).val();
+                relation_ids.split(' ').forEach(function (relation_id){
+                    var relation = $('#' + relation_id);
+                    if (!relation.length) return;
+                    var url = unescape(relation.attr('data-url-pattern')).replace('%%', f_id);
+                    relation.attr('data-url', url);
+                    relation.val(null).trigger("change");
+                    relation.select2('destroy');
+                    select2.call(relation[0]);
+                });
+            });
+        }
     }
     davat.select2 = function(element){
         element.each(function(){
