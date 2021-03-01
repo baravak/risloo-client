@@ -39,7 +39,7 @@
                     @endforeach
                 </select>
             @else
-                {{ __(ucfirst($user->position)) }}
+                <span class="text-xs text-gray-700">{{ __(ucfirst($user->position)) }}</span>
             @endcan
         </div>
         <span class="text-gray-400 ">/</span>
