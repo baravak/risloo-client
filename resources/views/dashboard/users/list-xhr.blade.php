@@ -1,2 +1,2 @@
-<span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $users->total() }})</span>
+<h3 class="heading" data-total="({{ $users->total() }})" data-xhr="total">{{ __('Users') }}</h3>
 @include('dashboard.users.list')
