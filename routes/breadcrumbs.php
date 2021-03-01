@@ -90,7 +90,11 @@ Breadcrumbs::for('dashboard.reserves.create', function ($trail, $data) {
 
 
 Breadcrumbs::for('dashboard.sessions.index', function ($trail, $data) {
-    $trail->parent('dashboard.cases.show', $data);
+    if(isset($data['case'])){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        $trail->parent('dashboard.home', $data);
+    }
 
     $trail->push(__('Sessions'), null);
 });
