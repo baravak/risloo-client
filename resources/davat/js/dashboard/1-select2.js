@@ -8,24 +8,33 @@
             dir: "rtl",
             templateResult : function(data){
                 if(!data.html){
-                    var html = $('[data-id='+data.id+']', $('[data-for='+ $(data.element).parent().attr('id') +']'));
-                    data.html = html.clone();
+                    var html =  $(data.element).parent().data('default-value');
+                    data.html = $('[data-id='+data.id+']', $(html));
                 }
                 return data.html ? $('[data-selection]', data.html) : data.text;
             },
             templateSelection : function(data){
                 if(!data.html){
-                    var html = $('[data-id='+data.id+']', $('[data-for='+ $(data.element).parent().attr('id') +']'));
-                    data.html = html.clone();
+                    var html =  $(data.element).parent().data('default-value');
+                    html = $('[data-id='+data.id+']', $(html))[0].outerHTML;
                 }
-                new Statio({
-                    type: 'render',
-                    fake: true,
-                    response : typeof(data.html) == 'string'? data.html : data.html[0].innerHTML
+                html = html || data.html;
+                $('[data-xhr]', html).each(function(){
+                    var xhr = $(this).attr('data-xhr');
+                    new Statio({
+                        type: 'render',
+                        fake: true,
+                        response : $(html).html(),
+                        context: $('[data-xhr='+xhr+']').get(0)
+                    });
                 });
-                return data.html ? $('[data-selection]', data.html) : data.text;
+                return html ? $('[data-selection]', html) : data.text;
             },
         };
+        if($('[data-for='+$(this).attr('id')+']')[0]){
+            $(this).data('default-value', $('[data-for='+$(this).attr('id')+']')[0].outerHTML);
+        }
+        $('[data-for='+$(this).attr('id')+']').remove();
         if ($(this).is('[data-url]')) {
             var _self = this;
             options.ajax = {
@@ -57,21 +66,21 @@
             };
         }
         $(this).select2(options);
-        if($(this).is('[data-relation]')){
-            $(this).on('select2:select', function (e) {
-                var relation_ids = $(this).attr('data-relation');
-                var f_id = $(this).val();
-                relation_ids.split(' ').forEach(function (relation_id){
-                    var relation = $('#' + relation_id);
-                    if (!relation.length) return;
-                    var url = unescape(relation.attr('data-url-pattern')).replace('%%', f_id);
-                    relation.attr('data-url', url);
-                    relation.val(null).trigger("change");
-                    relation.select2('destroy');
-                    select2.call(relation[0]);
-                });
-            });
-        }
+        // if($(this).is('[data-relation]')){
+        //     $(this).on('select2:select', function (e) {
+        //         var relation_ids = $(this).attr('data-relation');
+        //         var f_id = $(this).val();
+        //         relation_ids.split(' ').forEach(function (relation_id){
+        //             var relation = $('#' + relation_id);
+        //             if (!relation.length) return;
+        //             var url = unescape(relation.attr('data-url-pattern')).replace('%%', f_id);
+        //             relation.attr('data-url', url);
+        //             relation.val(null).trigger("change");
+        //             relation.select2('destroy');
+        //             select2.call(relation[0]);
+        //         });
+        //     });
+        // }
     }
     davat.select2 = function(element){
         element.each(function(){

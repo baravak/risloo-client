@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/baravak/rislak/issues"
   },
-  "homepage": "https://github.com/baravak/rislak#readme"
+  "homepage": "https://github.com/baravak/rislak#readme",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
 }
