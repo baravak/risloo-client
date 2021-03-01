@@ -14,7 +14,7 @@
             @if((!Gate::has("$module->resource.create") || Gate::allows("$module->resource.create", $module->parent ? ${$module->parent} : null)) && Route::has("$module->resource.create") && \Route::getCurrentRoute()->getAction('as') != "$module->resource.create")
                 <a href="{{ route("$module->resource.create", $module->parent ? request()->route()->parameters[$module->parent] : null) }}" class="flex items-center justify-center flex-shrink-0 w-10 sm:w-auto h-9 sm:px-4 text-sm text-green-700 border border-green-700 rounded-full hover:bg-green-50 transition mr-4" title="{{ __('Join new user') }}">
                     <i class="fal fa-plus sm:ml-2"></i>
-                    <span class="hidden sm:inline">{{ __('Join new user') }}</span>
+                    <span class="hidden sm:inline">{{ __('Add user') }}</span>
                 </a>
             @endif
         </div>
