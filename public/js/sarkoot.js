@@ -1203,11 +1203,7 @@ function select2result_users(data, option)
 
 $(window).on('hashchange', function(){
 	var selectedTab = location.hash;
-	var tabNav = $('[data-toggle=tab][href$="' + selectedTab + '"]');
-	if (tabNav.length)
-	{
-		tabNav.trigger('click');
-	}
+	window.tabs.toggle(selectedTab);
 });
 function responsive_menu() {
     $('#menu').removeClass('d-none').addClass('d-flex');
