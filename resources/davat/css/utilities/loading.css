@@ -1,0 +1,22 @@
+.loading {
+    @apply relative opacity-80 cursor-wait;
+}
+
+.loading:hover {
+    @apply bg-brand;
+}
+
+.loading::before,
+.loading::after {
+    font-family: "Font Awesome 5 Duotone";
+    @apply absolute left-2 animate-spin font-black;
+}
+
+.loading::before {
+    content: "\f3f4";
+}
+
+.loading::after {
+    content: "\10f3f4";
+    @apply opacity-40;
+}

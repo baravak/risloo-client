@@ -8,7 +8,7 @@
             <input type="hidden" name="_method" value="{{$module->action == 'edit' ? 'PUT' : 'POST'}}">
                 @yield('form_content')
                 <div class="mt-6">
-                    <button type="submit" class="inline-flex justify-center items-center min-w-min w-36 h-9 px-4 bg-brand text-white text-sm rounded-full hover:bg-blue-800 transition ml-4">
+                    <button type="submit" class="inline-flex justify-center items-center h-9 px-8 bg-brand text-white text-sm rounded-full hover:bg-blue-800 transition ml-4">
                         @yield('form-title', __(($module->action == 'create' ? "Create " : 'Edit ') . $module->singular))
                     </button>
                     @if(request()->callback || isset($callbackCancel))
