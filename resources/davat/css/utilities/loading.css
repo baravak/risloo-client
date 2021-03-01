@@ -1,22 +1,22 @@
-.loading {
+.lijax-sending button {
     @apply relative opacity-80 cursor-wait;
 }
 
-.loading:hover {
+.lijax-sending button:hover {
     @apply bg-brand;
 }
 
-.loading::before,
-.loading::after {
+.lijax-sending button::before,
+.lijax-sending button::after {
     font-family: "Font Awesome 5 Duotone";
     @apply absolute left-2 animate-spin font-black;
 }
 
-.loading::before {
+.lijax-sending button::before {
     content: "\f3f4";
 }
 
-.loading::after {
+.lijax-sending button::after {
     content: "\10f3f4";
     @apply opacity-40;
 }
