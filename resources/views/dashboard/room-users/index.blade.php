@@ -1,12 +1,8 @@
 @extends($layouts->dashboard)
 @section('content')
     <div>
-        <div class="flex items-center mb-4 mt-8">
-            <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
-            <h3 class="flex items-center font-bold text-gray-700 cursor-default">
-                {{ __('Room of :center', ['center' => ($room->center ?: $room)->detail->title]) }}
-            </h3>
-            <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $users->total() }})</span>
+        <div class="mt-8 mb-4">
+            <h3 class="heading" data-total="({{ $users->total() }})" data-xhr="total">{{ __('Room of :center', ['center' => ($room->center ?: $room)->detail->title]) }}</h3>
         </div>
 
         <div class="flex justify-between items-center flex-wrap mb-4">

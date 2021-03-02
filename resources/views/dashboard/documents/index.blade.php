@@ -3,11 +3,7 @@
 @section('content')
     <div>
         <div class="mb-4 mt-8">
-            <h3 class="flex items-center font-bold text-gray-700 cursor-default">
-                <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
-                <span>{{ __('Documents') }}</span>
-                <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $documents->total() }})</span>
-            </h3>
+            <h3 class="heading" data-total="({{ $documents->total() }})" data-xhr="total">{{ __('Documents') }}</h3>
         </div>
 
         <div class="flex justify-between items-center flex-wrap mb-4">
@@ -17,7 +13,7 @@
                 <span class="hidden sm:inline">{{ __('Create new document') }}</span>
             </a>
         </div>
-        
+
         @include($documents->count() ? 'dashboard.documents.list' : 'dashboard.documents.emptyDocuments')
 
         {{$documents->links()}}
