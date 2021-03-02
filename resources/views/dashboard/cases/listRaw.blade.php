@@ -6,12 +6,12 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <a href="#" class="text-xs text-gray-700 hover:text-brand">نام اتاق درمان</a>
+            <a href="{{ $case->room->route('show') }}" class="text-xs text-gray-700 hover:text-brand">{{ $case->room->manager->name }}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <a href="#" class="text-xs text-gray-700 hover:text-brand">نام مرکز درمان</a>
+            <a href="{{ $case->room->center->route('show') }}" class="text-xs text-gray-700 hover:text-brand">{{ $case->room->center->detail->title}}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
