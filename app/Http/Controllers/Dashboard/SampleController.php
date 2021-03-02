@@ -2,8 +2,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Assessment;
-use App\Policies\SamplePolicy;
 use App\Sample;
+use App\SampleSummary;
 use App\scoreResult;
 use App\TherapyCase;
 use App\User;
@@ -13,7 +13,7 @@ class SampleController extends Controller
 {
     public function index(Request $request)
     {
-        $this->data->samples = Sample::apiIndex($request->all());
+        $this->data->samples = SampleSummary::apiIndex($request->all());
         return $this->view($request, 'dashboard.samples.index');
     }
 
