@@ -14,7 +14,7 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($case->samples as $samples)
-                    <tr>
+                    <tr class="sample-record" data-xhr="sample-{{ $samples->id }}" data-session="{{ $samples->session_id }}" data-client="{{ $samples->client ? $samples->client->id : null }}">
                         <td class="p-3 whitespace-nowrap">
                             <div claas="flex items-center">
                                 <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $samples->id }}</span>

@@ -5,8 +5,6 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         davat.select2($('.select2-select', base));
         if($(base).has('[data-tabs]').length){
             window.tabs = new Tabby((base.attr('data-xhr') ? '[data-xhr="' + base.attr('data-xhr') + '"] ' : '') + '[data-tabs]');
-
-
         }
         $('[data-tabs] a[role=tab]', base).on('click', function(){
             var href = $(this).attr('href').match(/(\#.+)$/);
@@ -110,6 +108,20 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         });
     }
 })(window.davat);
+
+$('body').on('statio:dashboard:cases:show', function () {
+    $('.sample-record').hover(function(){
+        $('[data-xhr="client-'+ $(this).attr('data-client') +'"], [data-xhr="session-'+ $(this).attr('data-session') +'"]').addClass('bg-gray-50');
+    }, function(){
+        $('[data-xhr="client-'+ $(this).attr('data-client') +'"], [data-xhr="session-'+ $(this).attr('data-session') +'"]').removeClass('bg-gray-50');
+    });
+
+    $('.client-record').hover(function(){
+        $('[data-client="'+ $(this).attr('data-id') +'"]').addClass('bg-gray-50');
+    }, function(){
+        $('[data-client="'+ $(this).attr('data-id') +'"]').removeClass('bg-gray-50');
+    });
+});
 
 /* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
  * @license MIT */
