@@ -13,7 +13,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach ($samples as $sample)        
+                    @foreach ($samples as $sample)
                         <tr  data-xhr="sample-list-{{ $sample->id }}">
                             <td class="px-3 py-2 whitespace-nowrap">
                                 <div claas="flex items-center">
@@ -37,7 +37,10 @@
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">
                                 <div claas="flex items-center">
-                                    <a href="#" class="text-xs text-gray-700 hover:text-blue-500">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+                                    <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-700 hover:text-blue-500">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+                                    @if ($sample->case)
+                                            <a class="block text-xs text-gray-500 hover:text-blue-500" href="{{ route('dashboard.cases.show', $sample->case) }}">@lang('Case') {{ $sample->case }}</a>
+                                    @endif
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">
