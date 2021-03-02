@@ -3,7 +3,7 @@
         <div class="flex items-center">
             <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
             <h3 class="font-bold text-gray-700 cursor-default">{{ __('My cases') }}</h3>
-            <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">(3)</span>    
+            <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">(3)</span>
         </div>
         <div>
             <a href="#" class="text-sm text-blue-700">{{ __('See All') }}</a>
@@ -46,7 +46,7 @@
                             <span>1 جلسه</span>
                         </div>
                 </div>
-            </a>            
+            </a>
         </div>
     </div>
 </div>

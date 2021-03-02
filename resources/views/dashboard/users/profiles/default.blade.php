@@ -43,7 +43,4 @@
             </div>
         </div>
     </div>
-
-    @include('dashboard.users.profiles.detailsList')
-
 @endsection
