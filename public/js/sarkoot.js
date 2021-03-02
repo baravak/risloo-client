@@ -319,6 +319,9 @@
 			var beforeSend = options.ajax.beforeSend;
 			options.ajax.beforeSend = function(jqXHR, settings)
 			{
+				if(options.type != 'render' || options.ajax.type != 'GET'){
+					NProgress.start();
+				}
 				ajax_data = this;
 				ajax_send_url = this.url;
 				var urlx = url.parse(ajax_send_url);
@@ -355,6 +358,7 @@
 
 		function ajx_complete(jqXHR, textStatus)
 		{
+			NProgress.done();
 			if(jqXHR.responseJSON)
 			{
 				response.data = jqXHR.responseJSON;
