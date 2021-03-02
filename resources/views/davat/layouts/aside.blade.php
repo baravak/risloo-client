@@ -29,6 +29,22 @@
                 </ul>
             </li>
             <li class="mb-1">
+                <a href="{{ route('dashboard.cases.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                    <div class="flex items-center">
+                        <i class="fal fa-folders ml-2"></i>
+                        <span class="font-light">{{ __('Cases') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="mb-1">
+                <a href="{{ route('dashboard.sessions.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                    <div class="flex items-center">
+                        <i class="fal fa-user-friends ml-2"></i>
+                        <span class="font-light">{{ __('Sessions') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="mb-1">
                 <a href="{{ route('dashboard.users.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-users ml-2"></i>
