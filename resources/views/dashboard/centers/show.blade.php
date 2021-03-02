@@ -10,6 +10,10 @@
                     <i class="fal fa-users"></i>
                 </a>
 
+                {{-- <a href="#" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition">
+                    <span class="font-medium">{{ __('My profile') }}</span>
+                </a> --}}
+
                 @can('update', $center)
                     <a href="{{ $center->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
                         <span class="font-medium">{{ __('Edit') }}</span>
