@@ -43,4 +43,9 @@ class TherapyCase extends API
             'store' => route('dashboard.room.cases.store', $room->id)
         ];
     }
+
+    public function _dashboard($id, array $params = [])
+    {
+        return $this->cache('cases/' . $id .'/dashboard' , $params);
+    }
 }

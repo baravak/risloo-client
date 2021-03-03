@@ -54,6 +54,9 @@ class SessionController extends Controller
     public function create(Request $request)
     {
         $this->data->global->title = __('Create new sessions');
+        $case = $this->data->case = TherapyCase::apiShow($request->case);
+        $room = $this->data->room = $case->room;
+        $center = $this->data->center = $room->center;
         $this->viewMode($request);
         return $this->view($request, 'dashboard.sessions.create');
     }
