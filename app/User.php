@@ -7,9 +7,9 @@ class User extends _User
 {
     public function __construct()
     {
-        $this->with['counseling_center'] = Relationship::class;
-        $this->with['centers'] = Relationship::class;
-        $this->with['center'] = Relationship::class;
+        $this->with['counseling_center'] = Center::class;
+        $this->with['centers'] = Center::class;
+        $this->with['center'] = Center::class;
         parent::__construct(...func_get_args());
     }
 

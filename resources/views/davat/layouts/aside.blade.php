@@ -23,9 +23,31 @@
                     </div>
                 </a>
                 <ul class="pr-8 mt-2">
+                    @if (auth()->myClinic())
                     <li>
-                        <a href="{{ route('dashboard.centers.index', ['my' => 'yes']) }}" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My therapy centers') }}</a>
+                        <a href="{{ route('dashboard.centers.show', auth()->myClinic()->id) }}" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My clinic') }}</a>
                     </li>
+                    @endif
+                    @php
+                        $_AsideCenter= auth()->centers(true);
+                    @endphp
+                    @if ($_AsideCenter->count() < 3)
+                        @foreach ($_AsideCenter as $_center)
+                        <li>
+                            <a href="{{ route('dashboard.centers.show', $_center->id) }}" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">
+                                @if ($_center->type == 'personal_clinic')
+                                    @lang('Personal clinic of :user', ['user' => $_center->manager->name])
+                                @else
+                                {{ $_center->detail->title }}
+                                @endif
+                            </a>
+                        </li>
+                        @endforeach
+                    @else
+                        <li>
+                            <a href="{{ route('dashboard.centers.index', ['my' => 'yes']) }}" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My therapy centers') }}</a>
+                        </li>
+                    @endif
                 </ul>
             </li>
             <li class="mb-1">
@@ -76,18 +98,9 @@
                     </div>
                 </a>
             </li>
-
             @isset($layouts->asideMenu)
                 @include($layouts->asideMenu)
             @endisset
         </ul>
     </aside>
-
-    @if (false)
-        @if (config('app.debug'))
-            <div class="absolute right-0 bottom-0 text-xs">
-                {{ Carbon\Carbon::createFromTimestamp(session()->get('User_cacheed_at'))->format('H:i:s') }}
-            </div>
-        @endif
-    @endif
 @endsection

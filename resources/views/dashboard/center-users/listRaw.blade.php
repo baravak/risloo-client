@@ -16,7 +16,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <span class="text-xs text-gray-700 cursor-default">{{ $user->creator->name }}</span>
+            <span class="text-xs text-gray-700 cursor-default">@displayName($user->creator)</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -63,11 +63,22 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
         <div class="inline-block mr-2">
-            <a href="#" class="inline-block px-3 py-1 text-xs text-white bg-green-600 hover:bg-green-700 rounded-full transition" title="{{ __('Accept') }}">{{ __('Accept') }}</a>
-            {{-- <a href="#" class="inline-block px-3 py-1 text-xs text-red-600 hover:text-white border border-red-600 hover:bg-red-600 rounded-full transition" title="{{ __('Kick') }}">{{ __('Kick') }}</a> --}}
+            @can('accept', [$user, $center])
+
+                <a href="{{route('dashboard.center.users.update', ['center' => $center->id, 'user'=> $user->id])}}" data-lijax="click" data-method="PUT" data-xhrBase='row' data-name="status" data-value="accept" class="inline-block px-3 py-1 text-xs text-white bg-green-600 hover:bg-green-700 rounded-full transition" title="{{ __('Accept') }}">{{ __('Accept') }}</a>
+            @endcan
+            @can('kick', [$user, $center])
+                <a href="{{route('dashboard.center.users.update', ['center' => $center->id, 'user'=> $user->id])}}" data-lijax="click" data-method="PUT" data-xhrBase='row' data-name="status" data-value="kick" class="inline-block px-3 py-1 text-xs text-red-600 hover:text-white border border-red-600 hover:bg-red-600 rounded-full transition" title="{{ __('Kick') }}">{{ __('Kick') }}</a>
+            @endcan
         </div>
+        @can('create', [\App\Room::class, $center, $user])
         <div class="inline-block">
-            <a href="#" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="{{ __('Create room') }}">{{ __('Create room') }}</a>
+            <a href="{{ route('dashboard.rooms.create', ['center' => $center->id]) }}" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="{{ __('Create room') }}">{{ __('Create room') }}</a>
         </div>
+        @elseif($user->meta && $user->meta->room_id)
+        <div class="inline-block">
+            <a href="{{ route('dashboard.rooms.show', $user->meta->room_id) }}" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="@lang('Therapy room')">@lang('Therapy room')</a>
+        </div>
+        @endcan
     </td>
 </tr>

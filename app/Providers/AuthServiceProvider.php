@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\RequestGuard;
+use Illuminate\Auth\SessionGuard;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -55,5 +57,19 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('dashboard.cases.manager', 'App\Policies\CasePolicy@manager');
         Gate::resource('dashboard.sessions', 'App\Policies\SessionPolicy');
         Gate::resource('dashboard.sessions.practices', 'App\Policies\PracticePolicy');
+
+        RequestGuard::macro('centers', function($withoutMyClinic = false){
+            if($withoutMyClinic){
+                $my = auth()->myClinic();
+                if($my){
+                    return auth()->user()->centers->where('id', '<>', auth()->myClinic()->id);
+                }
+            }
+            return auth()->user()->centers;
+        });
+
+        RequestGuard::macro('myClinic', function(){
+            return auth()->user()->centers->where('type', 'personal_clinic')->where('manager.id', auth()->id())->first();
+        });
     }
 }

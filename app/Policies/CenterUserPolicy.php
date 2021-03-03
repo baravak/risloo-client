@@ -68,4 +68,20 @@ class CenterUserPolicy
         }
         return false;
     }
+    public function accept(User $user, CenterUser $cUser, Center $center){
+        if($user->isAdmin() || $user->centers->whereIn('acceptation.position', ['operator', 'manager'])->where('id', $center->id)->count()){
+            if($cUser->kicked_at || !$cUser->accepted_at){
+                return true;
+            }
+        }
+        return false;
+    }
+    public function kick(User $user, CenterUser $cUser, Center $center){
+        if($user->isAdmin() || $user->centers->whereIn('acceptation.position', ['operator', 'manager'])->where('id', $center->id)->count()){
+            if(!$cUser->kicked_at){
+                return true;
+            }
+        }
+        return false;
+    }
 }

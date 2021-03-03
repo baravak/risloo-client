@@ -6,18 +6,33 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <a href="#" class="text-xs text-gray-700 block">نام اتاق درمان</a>
-            <a href="#" class="text-xs text-gray-500 block mt-1">نام مرکز درمانی</a>
+            <a href="{{ $session->case->room->route('show') }}" class="text-xs text-gray-700 block">
+                @lang('Therapy room of :user', ['user' => $session->case->room->manager->name])
+            </a>
+            <a href="{{ $session->case->room->center->route('show') }}" class="text-xs text-gray-500 block mt-1">
+                @if ($session->case->room->center->type == 'personal_clinic')
+                    @lang('Personal clinic')
+                @else
+                    {{ $session->case->room->center->detail->title }}
+                @endif
+            </a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <a href="#" class="text-xs text-gray-700 block">{{ $session->case->id }}</a>
+            <a href="{{ $session->case->route('show') }}" class="text-xs text-gray-700 block">{{ $session->case->id }}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <span class="text-xs text-gray-700 cursor-default">@displayName($session->client)</span>
+            <span class="text-xs text-gray-700 cursor-default">
+                @foreach ($session->case->clients as $client)
+                    @displayName($client->user)
+                    @if (!$loop->last)
+                        -
+                    @endif
+                @endforeach
+            </span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
