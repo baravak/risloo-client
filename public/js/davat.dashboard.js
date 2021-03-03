@@ -36,7 +36,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     }
     window.metarget = function(){
         removeTargets();
-        $('[data-metarget').each(function(){
+        $('[data-metarget]').each(function(){
             var tg = $(this).attr('data-metarget');
             if($(this).attr('data-metarget-pattern')){
                 target[tg] = new RegExp($(this).attr('data-metarget-pattern'));
@@ -52,10 +52,10 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         }
     }
     function initTarget(target){
-        target.addClass(['bg-brand', 'metarget']);
+        target.addClass(['active', 'metarget']);
     }
     function removeTargets(){
-        $('.metarget, [data-metarget]').removeClass(['bg-brand', 'metarget']);
+        $('.metarget, [data-metarget]').removeClass(['active', 'metarget']);
     }
 })();
 
