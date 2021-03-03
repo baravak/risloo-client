@@ -25,7 +25,7 @@
                 <ul class="pr-8 mt-2">
                     @if (auth()->myClinic())
                     <li>
-                        <a href="{{ route('dashboard.centers.show', auth()->myClinic()->id) }}" data-metarget="centers-myclinic" data-metarget-pattern="/dashboard/centers/{{ auth()->myClinic()->id }}.*" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My clinic') }}</a>
+                        <a href="{{ route('dashboard.centers.show', auth()->myClinic()->id) }}" data-metarget="centers-myclinic" data-metarget-pattern="/dashboard/centers/{{ auth()->myClinic()->id }}.*" class="flex items-center text-sm text-gray-600 transition h-12 pr-4 border-r border-gray-300">{{  __('My clinic') }}</a>
                     </li>
                     @endif
                     @php
@@ -34,7 +34,7 @@
                     @if ($_AsideCenter->count() < 3)
                         @foreach ($_AsideCenter as $_center)
                         <li>
-                            <a href="{{ route('dashboard.centers.show', $_center->id) }}"data-metarget="centers-myclinic-{{ $_center->id }}" data-metarget-pattern="/dashboard/centers/{{ $_center->id}}.*" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">
+                            <a href="{{ route('dashboard.centers.show', $_center->id) }}"data-metarget="centers-myclinic-{{ $_center->id }}" data-metarget-pattern="/dashboard/centers/{{ $_center->id}}.*" class="flex items-center text-sm text-gray-600 transition h-12 pr-4 border-r border-gray-300">
                                 @if ($_center->type == 'personal_clinic')
                                     @lang('Personal clinic of :user', ['user' => $_center->manager->name])
                                 @else
@@ -45,7 +45,7 @@
                         @endforeach
                     @else
                         <li>
-                            <a href="{{ route('dashboard.centers.index', ['my' => 'yes']) }}" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My therapy centers') }}</a>
+                            <a href="{{ route('dashboard.centers.index', ['my' => 'yes']) }}" class="flex items-center text-sm text-gray-600 transition h-12 pr-4 border-r border-gray-300">{{  __('My therapy centers') }}</a>
                         </li>
                     @endif
                 </ul>
