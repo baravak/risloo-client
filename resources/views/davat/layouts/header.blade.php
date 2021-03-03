@@ -21,12 +21,6 @@
                 <div>
                     <div class="font-medium text-xs text-gray-700">{{ auth()->user()->name ?: auth()->user()->id }}</div>
 
-                    @if (auth()->user()->response('current'))
-                        <div class="text-xs text-gray-400 mt-1">
-                            <span>{{ auth()->user()->response('current')->name ?: auth()->user()->response('current')->id }}</span>
-                        </div>
-                    @endif
-
                     @if (false)
                         <div class="text-xs text-green-500 mt-1 dir-ltr">
                             <span class="inline-block">تومان</span>
