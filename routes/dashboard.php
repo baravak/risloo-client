@@ -13,10 +13,11 @@ Route::resource('assessments', 'AssessmentController', ['except' => ['destroy', 
 Route::resource('centers', 'CenterController', ['except' => ['destroy']]);
 Route::post('centers/{center}/request', 'CenterController@request')->name('centers.request');
 
-Route::get('centers/{center}/users', 'CenterUserController@index')->name('center.users.index');
-Route::put('centers/{center}/users/{user}', 'CenterUserController@update')->name('center.users.update');
-Route::post('centers/{center}/users', 'CenterUserController@store')->name('center.users.store');
-Route::get('centers/{center}/users/create', 'CenterUserController@create')->name('center.users.create');
+Route::apiResource('centers/{center}/users', 'CenterUserController', ['as' => 'center']);
+// Route::get('centers/{center}/users', 'CenterUserController@index')->name('center.users.index');
+// Route::put('centers/{center}/users/{user}', 'CenterUserController@update')->name('center.users.update');
+// Route::post('centers/{center}/users', 'CenterUserController@store')->name('center.users.store');
+// Route::get('centers/{center}/users/create', 'CenterUserController@create')->name('center.users.create');
 
 Route::resource('rooms', 'RoomController');
 Route::resource('rooms/{room}/users', 'RoomUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'room']);
