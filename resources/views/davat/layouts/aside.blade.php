@@ -8,7 +8,7 @@
 
         <ul class="px-2">
             <li class="mb-1">
-                <a href="{{ route('dashboard.home') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                <a href="{{ route('dashboard.home') }}" data-metarget-default class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-tachometer-alt-fastest ml-2"></i>
                         <span class="font-light">{{ __('Dashboard') }}</span>
@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="{{ route('dashboard.centers.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-white bg-brand transition">
+                <a href="{{ route('dashboard.centers.index') }}" data-metarget="centers-index" class="flex justify-between items-center h-12 px-6 rounded text-white bg-brand transition">
                     <div class="flex items-center">
                         <i class="fal fa-building ml-2"></i>
                         <span class="font-light">{{ __('Therapy centers') }}</span>
@@ -25,7 +25,7 @@
                 <ul class="pr-8 mt-2">
                     @if (auth()->myClinic())
                     <li>
-                        <a href="{{ route('dashboard.centers.show', auth()->myClinic()->id) }}" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My clinic') }}</a>
+                        <a href="{{ route('dashboard.centers.show', auth()->myClinic()->id) }}" data-metarget="centers-myclinic" data-metarget-pattern="/dashboard/centers/{{ auth()->myClinic()->id }}.*" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">{{  __('My clinic') }}</a>
                     </li>
                     @endif
                     @php
@@ -34,7 +34,7 @@
                     @if ($_AsideCenter->count() < 3)
                         @foreach ($_AsideCenter as $_center)
                         <li>
-                            <a href="{{ route('dashboard.centers.show', $_center->id) }}" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">
+                            <a href="{{ route('dashboard.centers.show', $_center->id) }}"data-metarget="centers-myclinic-{{ $_center->id }}" data-metarget-pattern="/dashboard/centers/{{ $_center->id}}.*" class="flex items-center text-sm text-gray-600 font-semibold hover:text-gray-700 transition h-12 pr-4 border-r border-gray-300">
                                 @if ($_center->type == 'personal_clinic')
                                     @lang('Personal clinic of :user', ['user' => $_center->manager->name])
                                 @else
@@ -51,7 +51,7 @@
                 </ul>
             </li>
             <li class="mb-1">
-                <a href="{{ route('dashboard.cases.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                <a href="{{ route('dashboard.cases.index') }}" data-metarget="cases" data-metarget-pattern="^/dashboard/cases.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-folders ml-2"></i>
                         <span class="font-light">{{ __('Cases') }}</span>
@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="{{ route('dashboard.sessions.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                <a href="{{ route('dashboard.sessions.index') }}" data-metarget="session" data-metarget-pattern="^/dashboard/session.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-user-friends ml-2"></i>
                         <span class="font-light">{{ __('Sessions') }}</span>
@@ -68,7 +68,7 @@
             </li>
             @if (auth()->isAdmin())
             <li class="mb-1">
-                <a href="{{ route('dashboard.users.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                <a href="{{ route('dashboard.users.index') }}" data-metarget="users" data-metarget-pattern="^/dashboard/users.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-users ml-2"></i>
                         <span class="font-light">{{ __('Users') }}</span>
@@ -77,7 +77,7 @@
             </li>
             @endif
             <li class="mb-1">
-                <a href="{{ route('dashboard.assessments.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                <a href="{{ route('dashboard.assessments.index') }}" data-metarget="assessments" data-metarget-pattern="^/dashboard/assessments.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-balance-scale ml-2"></i>
                         <span class="font-light">{{ __('Assessments') }}</span>
@@ -85,7 +85,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="{{ route('dashboard.samples.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                <a href="{{ route('dashboard.samples.index') }}" data-metarget="samples" data-metarget-pattern="^/dashboard/samples.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-vial ml-2"></i>
                         <span class="font-light">{{ __('Samples') }}</span>
@@ -93,7 +93,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="{{ route('dashboard.documents.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                <a href="{{ route('dashboard.documents.index') }}" data-metarget="samples" data-metarget-pattern="^/dashboard/documents.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-file-certificate ml-2"></i>
                         <span class="font-light">{{ __('Documents') }}</span>
