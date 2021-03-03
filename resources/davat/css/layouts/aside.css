@@ -32,3 +32,11 @@
 		left: auto;
 	}
 }
+
+#aside .active {
+	@apply bg-brand text-white;
+}
+
+#aside .active:hover {
+	@apply bg-brand text-white;
+}
