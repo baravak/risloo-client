@@ -21,6 +21,12 @@
                 <div>
                     <div class="font-medium text-xs text-gray-700">{{ auth()->user()->name ?: auth()->user()->id }}</div>
 
+                    @if (auth()->user()->response('current'))
+                        <div class="text-xs text-gray-400 mt-1">
+                            <span>{{ auth()->user()->response('current')->name ?: auth()->user()->response('current')->id }}</span>
+                        </div>
+                    @endif
+
                     @if (false)
                         <div class="text-xs text-green-500 mt-1 dir-ltr">
                             <span class="inline-block">تومان</span>
@@ -30,6 +36,12 @@
                 </div>
             </div>
         </a>
+
+        @if (auth()->user()->response('current'))
+            <a href="{{ route('auth.back') }}" data-lijax='click' data-method='post' class="flex justify-center items-center w-12 h-12 border border-gray-300 text-gray-400 rounded hover:bg-gray-50 hover:text-brand mr-2 group direct" title="{{ __('Admin') }}">
+                <i class="fal fa-user-crown text-xl text-gray-500 group-hover:text-brand"></i>
+            </a>
+        @endif
 
         <a href="{{ route('logout') }}" data-lijax='click' data-method='post' class="flex justify-center items-center w-12 h-12 border border-gray-300 text-gray-400 rounded hover:bg-gray-50 hover:text-red-500 mr-2 group direct" title="{{ __('Logout') }}">
             <i class="fal fa-sign-out text-xl text-gray-500 group-hover:text-red-500 transform rotate-180"></i>
