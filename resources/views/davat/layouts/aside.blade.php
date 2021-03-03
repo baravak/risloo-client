@@ -66,6 +66,7 @@
                     </div>
                 </a>
             </li>
+            @if (auth()->isAdmin())
             <li class="mb-1">
                 <a href="{{ route('dashboard.users.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
@@ -74,6 +75,7 @@
                     </div>
                 </a>
             </li>
+            @endif
             <li class="mb-1">
                 <a href="{{ route('dashboard.assessments.index') }}" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
