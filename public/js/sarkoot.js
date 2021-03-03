@@ -320,6 +320,7 @@
 			options.ajax.beforeSend = function(jqXHR, settings)
 			{
 				if(options.type != 'render' || options.ajax.type != 'GET'){
+					NProgress.configure({ showSpinner: false });
 					NProgress.start();
 				}
 				ajax_data = this;
