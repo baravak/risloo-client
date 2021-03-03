@@ -11,6 +11,7 @@
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Creator') }}</th>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Position') }} / {{ __('Status') }}</th>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Accepted_at') }}</th>
+                                <th class="px-3 py-2" scope="col"></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
