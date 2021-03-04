@@ -62,9 +62,8 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-
         <div class="inline-block mr-2">
-            <x-link-show :link="$user->route('show')"/>
+            <x-link-show :link="route('dashboard.center.users.show', ['center' => $center->id, 'user'=> $user->user->id])"/>
         </div>
 
         <div class="inline-block mr-2">
