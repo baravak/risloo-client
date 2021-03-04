@@ -978,7 +978,7 @@ $(document).ready(function () {
 
 $(document).on('statio:global:renderResponse', function (event, base, context) {
 	base.each(function () {
-		$('.input-avatar', this).hajmad();
+		// $('.input-avatar', this).hajmad();
 		$('.dropdown-menu.keep-open', this).on('click', function (event) {
 			event.stopPropagation();
 		});

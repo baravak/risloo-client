@@ -3,9 +3,9 @@
         <div class="flex items-center">
             <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
             <h3 class="font-bold text-gray-700 cursor-default">{{ __('My therapy rooms') }}</h3>
-            <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $user->rooms->count() }})</span>
+            <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $user->rooms ? $user->rooms->count() : 0 }})</span>
         </div>
-        @if ($user->rooms->count() > 5)
+        @if ($user->rooms && $user->rooms->count() > 5)
         <div>
             <a href="{{ route('dashboard.rooms.index') }}" class="text-sm text-blue-700">{{ __('See All') }}</a>
         </div>
@@ -14,7 +14,7 @@
 
     <div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            @foreach ($user->rooms as $room)
+            @foreach ($user->rooms ?: [] as $room)
             <a href="{{ $room->route('show') }}" class="border border-gray-200 rounded hover:bg-gray-50 transition">
                 <div class="h-16 bg-gray-100 border-b border-gray-200"></div>
 

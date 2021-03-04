@@ -3,8 +3,10 @@
 @section('form-tag')
     <div class="mx-auto w-full sm:w-1/2">
         <ul data-tabs>
-            <li><a data-tabby-default href="#basic-tab" class="direct">{{ __('Basic info') }}</a></li>
-            <li><a href="#personal-tab" class="direct">{{ __('Personal info') }}</a></li>
+            @if (auth()->isAdmin())
+            <li><a href="#basic-tab" class="direct">{{ __('Basic info') }}</a></li>
+            @endif
+            <li><a data-tabby-default href="#personal-tab" class="direct">{{ __('Personal info') }}</a></li>
             <li><a href="#password-tab" class="direct">{{ __('Password') }}</a></li>
             <li><a href="#avatar-tab" class="direct">{{ __('Avatar') }}</a></li>
             <li><a href="#key-tab" class="direct">{{ __('Public key') }}</a></li>
