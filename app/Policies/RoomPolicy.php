@@ -32,7 +32,8 @@ class RoomPolicy
             if($user->isAdmin()) return true;
         }
         if($centerUser){
-            if(!$user->centers->whereIn('acceptation.position', ['manager'])->where('id', $center->id)->count() && !$user->isAdmin()){
+            if(!$user->isAdmin() && !$user->centers) return;
+            elseif(!$user->isAdmin() && !$user->centers->whereIn('acceptation.position', ['manager'])->where('id', $center->id)->count()){
                 return false;
             }
             if(!in_array($centerUser->position, ['manager', 'operator', 'psychologist'])){
