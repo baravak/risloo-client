@@ -173,4 +173,42 @@
         </div>
         {{-- <a href="#" class="flex justify-center items-center py-2 hover:bg-gray-50 transition text-xs text-gray-400 border border-gray-200 rounded mt-2">بیشتر...</a> --}}
     </div>
+
+    <div class="border border-gray-200 rounded p-4 mt-8">
+
+        <div>
+            <label for="position" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Position') }}</label>
+            <select name="position" id="position" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+                <option value="manager">{{ __('Manager') }}</option>
+                <option value="operator">{{ __('Operator') }}</option>
+                <option value="psychologist">{{ __('Psychologist') }}</option>
+                <option value="client">{{ __('Client') }}</option>
+            </select>
+        </div>
+
+        <div class="mt-4">
+            <label for="nickname" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Client name') }}</label>
+            <input type="text" name="nickname" id="nickname" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+            <div class="flex items-center text-xs text-gray-400 mt-2">
+                <i class="fal fa-info-circle ml-1"></i>
+                <span>{{ __('This name is only valid in your center') }}</span>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h3 class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Status') }}</h3>
+            <div class="mt-1">
+                <label class="inline-flex items-center group">
+                    <input type="radio" name="status" id="status-active" value="active" @radioChecked($user->status, 'active') class="w-3.5 h-3.5 border border-gray-600 focus:ring-2 focus:ring-offset-2">
+                    <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Active') }}</span>
+                </label>
+            </div>
+            <div class="mt-1">
+                <label class="inline-flex items-center group">
+                    <input type="radio" name="status" id="status-blocked" value="blocked" @radioChecked($user->status, 'blocked') class="w-3.5 h-3.5 border border-gray-600 focus:ring-2 focus:ring-offset-2">
+                    <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Deactive') }}</span>
+                </label>
+            </div>
+        </div>
+    </div>
 @endsection
