@@ -7,4 +7,6 @@
     @endif
 </div>
 
-@include('dashboard.samples.list', ['samples' => ($user->samples ?: [])])
+@if ($user->samples && $user->samples->count() > 0)
+    @include('dashboard.samples.list', ['samples' => ($user->samples ?: [])])
+@endif
