@@ -10,7 +10,7 @@
                     <i class="fal fa-users"></i>
                 </a>
 
-                {{-- <a href="#" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition">
+                {{-- <a href="#" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
                     <span class="font-medium">{{ __('My profile') }}</span>
                 </a> --}}
 
