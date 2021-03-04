@@ -72,6 +72,13 @@ class AuthServiceProvider extends ServiceProvider
             return auth()->user()->centers;
         });
 
+        RequestGuard::macro('center', function($center, $checkPosition = null){
+            if(!auth()->user()->centers){
+                return null;
+            }
+            return auth()->user()->centers->where('id', $center)->first();
+        });
+
         RequestGuard::macro('myClinic', function(){
             if(auth()->user()->centers){
                 return auth()->user()->centers->where('type', 'personal_clinic')->where('manager.id', auth()->id())->first();

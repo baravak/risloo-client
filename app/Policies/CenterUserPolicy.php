@@ -12,7 +12,7 @@ class CenterUserPolicy
     use HandlesAuthorization;
     public function viewAny(User $user, CenterUser $centerUser)
     {
-        return true;
+        return $user->isAdmin() || ($centerUser->acceptation && in_array($centerUser->acceptation, ['manager', 'operator']));
     }
     public function update(User $user, CenterUser $centerUser, $option = null){
         $center = $centerUser->parentModel;

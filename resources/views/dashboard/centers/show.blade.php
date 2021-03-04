@@ -5,14 +5,16 @@
         <div class="h-24 sm:h-44 bg-gradient-to-b from-blue-100 to-white border-b border-gray-200"></div>
         <div class="relative p-4">
             <div class="absolute top-3 left-3 flex">
-
-                <a href="{{ route('dashboard.center.users.index', $center->id) }}" title="{{ __('Users') }}" class="flex justify-center items-center flex-shrink-0 text-brand border border-brand hover:bg-blue-50 w-9 h-9 rounded-full transition">
-                    <i class="fal fa-users"></i>
-                </a>
-
-                {{-- <a href="#" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
-                    <span class="font-medium">{{ __('My profile') }}</span>
-                </a> --}}
+                @can('update', [$center])
+                    <a href="{{ route('dashboard.center.users.index', $center->id) }}" title="{{ __('Users') }}" class="flex justify-center items-center flex-shrink-0 text-brand border border-brand hover:bg-blue-50 w-9 h-9 rounded-full transition">
+                        <i class="fal fa-users"></i>
+                    </a>
+                @endcan
+                @if (auth()->center($center->id))
+                    <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $center->acceptation->user->id]) }}" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
+                        <span class="font-medium">{{ __('My profile') }}</span>
+                    </a>
+                @endif
 
                 @can('update', $center)
                     <a href="{{ $center->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
