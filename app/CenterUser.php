@@ -11,7 +11,7 @@ class CenterUser extends API
         'rooms' => Room::class,
         'cases' => TherapyCase::class,
         'samples' => SampleSummary::class,
-        'avatar' => avatar::class,
+        'avatar' => Avatar::class,
     ];
     protected $casts = [
         'kicked_at' => 'datetime',
