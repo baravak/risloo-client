@@ -26,9 +26,8 @@
             @includeFirst(['dashboard.users.forms.' . $user->type . '.password', 'dashboard.users.forms.edit.password', 'dashboard.users.forms.edit._password'], ['some' => 'data'])
         </div>
 
-        <div id="avatar-tab" class="p-4 border border-gray-200 rounded">
-            @includeFirst(['dashboard.users.forms.' . $user->type . '.avatar', 'dashboard.users.forms.edit.avatar', 'dashboard.users.forms.edit._avatar'], ['some' => 'data'])
-        </div>
+        @includeFirst(['dashboard.users.forms.' . $user->type . '.avatar', 'dashboard.users.forms.edit.avatar', 'dashboard.users.forms.edit._avatar'], ['some' => 'data'])
+
 
         <div id="key-tab" class="p-4 border border-gray-200 rounded">
             @include('dashboard.users.forms.edit._publicKey')

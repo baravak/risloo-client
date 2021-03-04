@@ -35,4 +35,14 @@ class UserController extends _UserController
         $request->session()->put('User', $user->response()->toArray());
         return $user->response()->json(['redirect' => route('dashboard.users.edit', $user->id).'#public-key']);
     }
+
+    public function avatarStore(Request $request, $user)
+    {
+        $avatar = new User;
+        $user = $this->data->user = $avatar->execute("%s/$user/avatar", $request->all('avatar'), 'POST');
+        return [
+            'redirect' => route('dashboard.users.me.edit') . '#avatar-tab',
+            'direct' => true
+        ];
+    }
 }

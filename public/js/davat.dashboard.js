@@ -22,6 +22,11 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     var avatar = function(){
         var _self = this;
         var id = $(this).attr('id');
+        var filed_text = $(_self).attr('data-afile-field');
+        var filed = $('#'+filed_text);
+        $(this).parents('form').on('lijax:data', function(e, data){
+            data.set(filed.attr('name'), filed.data('afile-value'));
+        });
         $('[data-afile-pannel="'+id+'"]').hide();
         $(this).on('change', function(){
             var reader = new FileReader();
@@ -37,6 +42,19 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                         height: 250,
                         type: 'circle',
                     },
+                    update : function(cropData){
+                        $('img.afile-img', pannel).croppie('result', {
+                            type : 'blob',
+                            circle : false
+                        }).then(function(blob){
+                            blob.arrayBuffer().then(function(result){
+                                var file = new File([result], $(_self)[0].files[0].name , {
+                                    type: $(_self)[0].files[0].type,
+                                  });
+                                  filed.data('afile-value', file);
+                            });
+                        });
+                    }
                 });
                 $('.afile-destroy', pannel).click(function(){
                     $(_self).val('');
@@ -44,6 +62,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                         $('.croppie-container', pannel).remove();
                         $('.afile-img', pannel).croppie('destroy');
                         $('[data-afile-default]').show();
+                        $('#'+$(_self).attr('data-afile-field')).val('');
                     })
                 });
             }

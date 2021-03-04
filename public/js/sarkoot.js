@@ -175,6 +175,7 @@
                 }
             });
             var uploadFile = $(context).is(':file') || ($(context).is('form') && ($(context).attr('enctype') == 'multipart/form-data' || $('input:file', context).length))  ? true : false;
+            $(context).trigger('lijax:data', [data]);
             new Statio({
                 type : state ? 'both' : 'render',
                 context: context,
