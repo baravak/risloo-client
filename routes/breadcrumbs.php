@@ -26,6 +26,10 @@ Breadcrumbs::for('dashboard.center.users.index', function ($trail, $data) {
     $trail->parent('dashboard.centers.show', $data);
     $trail->push(__('Users'), route('dashboard.center.users.index', $data['center']->id));
 });
+Breadcrumbs::for('dashboard.center.users.show', function ($trail, $data) {
+    $trail->parent('dashboard.center.users.index', $data);
+    $trail->push($data['user']->name ?: $data['user']->id, route('dashboard.center.users.show', ['center' => $data['center']->id, 'user' => $data['user']->id]));
+});
 
 Breadcrumbs::for('dashboard.center.users.create', function ($trail, $data) {
     $trail->parent('dashboard.center.users.index', $data);

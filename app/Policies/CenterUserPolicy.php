@@ -17,7 +17,8 @@ class CenterUserPolicy
     public function update(User $user, CenterUser $centerUser, $option = null){
         $center = $centerUser->parentModel;
         $acceptation = $center->acceptation;
-        if($user->id == $centerUser->user->id && !$user->isAdmin())
+        return true;
+        if($user->id == $centerUser->id && !$user->isAdmin())
         {
             return false;
         }

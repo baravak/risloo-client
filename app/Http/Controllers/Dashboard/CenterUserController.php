@@ -16,9 +16,9 @@ class CenterUserController extends Controller
         return $this->view($request, 'dashboard.center-users.index');
     }
 
-    public function create(Request $request, $center)
+    public function create(Request $request, Center $center)
     {
-        $center = $this->data->center = Center::apiShow($center);
+        $this->data->center = $center;
         $this->authorize('dashboard.center.users.create', [$center]);
         return $this->view( $request, 'dashboard.center-users.create');
     }
@@ -38,6 +38,7 @@ class CenterUserController extends Controller
 
     public function show(Request $request, $center, $user){
         $user = $this->data->user = CenterUser::apidashboard($center, $user, $request->all());
+        $center = $this->data->center = $user->parentModel;
         return $this->view( $request, 'dashboard.center-users.show');
     }
 
