@@ -10,19 +10,19 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class CenterUserPolicy
 {
     use HandlesAuthorization;
-    public function viewAny(User $user, CenterUser $centerUser)
+    public function viewAny(User $user, Center $center)
     {
-        return $user->isAdmin() || ($centerUser->acceptation && in_array($centerUser->acceptation, ['manager', 'operator']));
+        return $user->isAdmin() || ($center->acceptation && in_array($center->acceptation->position, ['manager', 'operator']));
     }
     public function update(User $user, CenterUser $centerUser, $option = null){
         $center = $centerUser->parentModel;
         $acceptation = $center->acceptation;
-        return true;
-        if($user->id == $centerUser->id && !$user->isAdmin())
-        {
-            return false;
+        if($center->acceptation && !$user->isAdmin()){
+            if($centerUser->id == $center->acceptation->id){
+                return false;
+            }
         }
-        if ($center->manager->id == $centerUser->user->id) {
+        if ($center->manager->id == $centerUser->id) {
             return false;
         }
 
@@ -35,7 +35,10 @@ class CenterUserPolicy
             return false;
         }
 
-        if ($center->manager->id == $user->id || $user->isAdmin()) {
+        if ($user->isAdmin()) {
+            return true;
+        }
+        if($center->acceptation && $center->manager->id == $center->acceptation->id){
             return true;
         }
 

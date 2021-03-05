@@ -44,10 +44,20 @@ class CenterUserController extends Controller
 
     public function update(Request $request, $center, $user)
     {
-        $response = CenterUser::apiUpdate($center, $user, $request->all());
+        $this->data->user = $user = CenterUser::apiUpdate($center, $user, $request->all());
+        $this->data->center = $center = $user->parentModel;
         if ($request->headers->get('data-xhr-base') == 'row') {
-            return $this->view($request, 'dashboard.center-users.listRaw', ['user' => $response, 'center' => $response->parentModel]);
+            return $this->view($request, 'dashboard.center-users.listRaw', ['user' => $user, 'center' => $user->parentModel]);
         }
-        return $response->response()->json();
+        return response()->json([
+            'redirect' => route('dashboard.center.users.edit', ['center' => $center->id, 'user' => $user->id])
+        ]);
+    }
+
+    public function edit(Request $request, $center, $user){
+        $this->data->user = $user = CenterUser::apiShow($center, $user);
+        $this->data->center = $center = $user->parentModel;
+        $this->authorize('update', $user);
+        return $this->view($request, 'dashboard.center-users.edit');
     }
 }

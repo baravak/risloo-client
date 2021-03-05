@@ -27,6 +27,9 @@ class RoomPolicy
     }
 
     public function create(User $user, Center $center = null, CenterUser $centerUser = null){
+        if($center && $center->type == 'personal_clinic'){
+            return false;
+        }
         if(!$center){
             return true;
             if($user->isAdmin()) return true;

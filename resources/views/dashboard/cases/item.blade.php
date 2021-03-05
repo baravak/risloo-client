@@ -12,10 +12,10 @@
         <div class="mt-4">
             @foreach ($case->clients as $client)
             <div class="flex items-center">
-                <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
-                    {{-- @avatarOrName($client->user) --}}
-                </div>
-                <span class="text-xs text-gray-500">@displayName($client->user)</span>
+                {{-- <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-300 text-xs text-gray-600 rounded-full border-2 border-white overflow-hidden ml-1">
+                    @avatarOrName($client->user)
+                </div> --}}
+                <span class="text-xs text-gray-500">@displayName($client)</span>
             </div>
             @endforeach
         </div>

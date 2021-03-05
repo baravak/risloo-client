@@ -6,12 +6,12 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <span class="text-xs text-gray-700 cursor-default">{{ $user->user->name }}</span>
+            <span class="text-xs text-gray-700 cursor-default">{{ $user->name }}</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <a href="tel:+{{ $user->user->mobile }}" class="block text-right dir-ltr text-xs text-gray-700 hover:text-blue-500 direct">+{{ $user->user->mobile }}</a>
+            <a href="tel:+{{ $user->mobile }}" class="block text-right dir-ltr text-xs text-gray-700 hover:text-blue-500 direct">+{{ $user->mobile }}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -63,7 +63,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
         <div class="inline-block mr-2">
-            <x-link-show :link="route('dashboard.center.users.show', ['center' => $center->id, 'user'=> $user->user->id])"/>
+            <x-link-show :link="route('dashboard.center.users.show', ['center' => $center->id, 'user'=> $user->id])"/>
         </div>
 
         <div class="inline-block mr-2">

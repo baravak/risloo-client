@@ -7,7 +7,7 @@
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
-                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('User') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Nickname') }}</th>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Mobile') }}</th>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Creator') }}</th>
                                 <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Position') }} / {{ __('Status') }}</th>

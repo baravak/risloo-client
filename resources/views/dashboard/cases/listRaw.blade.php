@@ -17,7 +17,7 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
             @foreach ($case->clients as $item)
-                <a href="{{ $item->user->route('show') }}" class="inline-block text-xs text-gray-700 hover:text-brand">{{ $item->user->name }}</a>
+                <a href="{{ route('dashboard.center.users.show', ['center' => $case->room->center->id, 'user' => $item->id]) }}" class="inline-block text-xs text-gray-700 hover:text-brand">{{ $item->name }}</a>
                 @if (!$loop->last)
                     -
                 @endif

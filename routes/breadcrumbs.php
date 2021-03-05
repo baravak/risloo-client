@@ -1,6 +1,7 @@
 <?php
 
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+use Illuminate\Support\Facades\Gate;
 
 Breadcrumbs::for('dashboard.centers.index', function ($trail, $data) {
     $trail->parent('dashboard.home', $data);
@@ -24,11 +25,16 @@ Breadcrumbs::for('dashboard.centers.edit', function ($trail, $data) {
 
 Breadcrumbs::for('dashboard.center.users.index', function ($trail, $data) {
     $trail->parent('dashboard.centers.show', $data);
-    $trail->push(__('Users'), route('dashboard.center.users.index', $data['center']->id));
+        $trail->push(
+            __('Users'),
+            Gate::allows('viewAny', [App\CenterUser::class, $data['center']]) ? route('dashboard.center.users.index', $data['center']->id) : null
+    );
 });
 Breadcrumbs::for('dashboard.center.users.show', function ($trail, $data) {
     $trail->parent('dashboard.center.users.index', $data);
-    $trail->push($data['user']->name ?: $data['user']->id, route('dashboard.center.users.show', ['center' => $data['center']->id, 'user' => $data['user']->id]));
+    $trail->push(
+        $data['center'] && $data['center']->acceptation && $data['center']->acceptation->id == $data['user']->id ? __('My profile') : ($data['user']->name ?: $data['user']->id),
+        route('dashboard.center.users.show', ['center' => $data['center']->id, 'user' => $data['user']->id]));
 });
 
 Breadcrumbs::for('dashboard.center.users.create', function ($trail, $data) {

@@ -25,14 +25,16 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <span class="text-xs text-gray-700 cursor-default">
                 @foreach ($session->case->clients as $client)
-                    @displayName($client->user)
+                    <a href="{{ route('dashboard.center.users.show', ['center' => $session->case->room->center->id, 'user' => $client->id]) }}" class="text-xs text-gray-700">
+                        @displayName($client)
+                    </a>
                     @if (!$loop->last)
+                        <span class="text-xs text-gray-500">
                         -
+                        </span>
                     @endif
                 @endforeach
-            </span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
