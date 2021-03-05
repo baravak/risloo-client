@@ -214,5 +214,9 @@
     "Welcome :*": "خوش آمدید",
     "Deactive": "غیرفعال",
     "Users" : "اعضاء",
-    "User" : "عضو"
+    "User" : "عضو",
+    "Fill in" : "پر کردن",
+    "Edit prev data" : "ویرایش داده‌های قبلی",
+    "Empty field" : "فیلد خالی",
+    "Validation" : "اعتبارسنجی"
 }
