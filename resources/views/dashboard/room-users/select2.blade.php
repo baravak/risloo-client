@@ -1,7 +1,7 @@
 @foreach ($users as $user)
-<span data-id="{{ $user->id }}">
-    <span data-selection>
-        @displayName($user->user)
-    </span>
-</span>
+<div data-id="{{ $user->id }}">
+    <div data-selection>
+        <div class="text-sm text-gray-700 font-medium">@displayName($user->user)</div>
+    </div>
+</div>
 @endforeach
