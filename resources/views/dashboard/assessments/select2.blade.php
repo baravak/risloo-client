@@ -1,7 +1,8 @@
 @foreach ($assessments as $assessment)
-<span data-id="{{ $assessment->id }}">
-<span data-selection>
-    {{ $assessment->title }}
-</span>
-</span>
+    <div data-id="{{ $assessment->id }}">
+        <div data-selection>
+            <div class="text-sm text-gray-700">{{ $assessment->title }}</div>
+            <div class="text-xs text-gray-400">{{ $assessment->edition ? __('Edition :title', ['title' => $assessment->edition]) . ' - ' : ''}} {{ __('Version :ver', ['ver' => $assessment->version]) }}</div>
+        </div>
+    </div>
 @endforeach
