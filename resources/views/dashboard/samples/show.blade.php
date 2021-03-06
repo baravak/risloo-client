@@ -26,13 +26,13 @@
                 @endif
 
                 @if (config('app.env') == 'local' && in_array($sample->status, ['seald', 'open']))
-                <div class="relative inline-flex dropdown">
+                <div class="relative inline-flex dropdown ml-1">
                     <button class="flex items-center px-4 h-8 text-xs text-brand hover:text-white hover:bg-brand border border-brand rounded-full transition" type="button" id="assessmentFill" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ __('Fill in') }}
                         <i class="fal fa-chevron-down mr-2"></i>
                     </button>
-                    <div class="hidden" aria-labelledby="assessmentFill">
-                        <form action="{{config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1)}}" class="absolute w-52 left-0 top-10 p-4 rounded bg-white border border-gray-200 shadow-lg">
+                    <div aria-labelledby="assessmentFill" class="absolute left-0 top-10 w-52 p-4 rounded bg-white border border-gray-200 shadow-lg">
+                        <form action="{{ config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1) }}">
                             <label class="flex items-center group">
                                 <input type="checkbox" name="replace" checked class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
                                 <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Edit prev data') }}</span>
@@ -58,7 +58,7 @@
                         {{ __('Exports') }}
                         <i class="fal fa-chevron-down mr-2"></i>
                     </button>
-                    <div aria-labelledby="profile-export" id="profile-export-list" class="hidden absolute w-28 py-2 left-0 top-10 rounded bg-white border border-gray-200 shadow-lg dropdown-menu">
+                    <div aria-labelledby="profile-export" id="profile-export-list" class="absolute left-0 top-10 rounded bg-white border border-gray-200 shadow-lg dropdown-menu">
                         @if ($sample->profiles)
                             @foreach ($sample->profiles->getAttributes() as $key => $item)
                                 <a href="{!!$item->url!!}" data-type="{{$key}}" class="dropdown-item direct profile-{{$key}} block w-full p-1 text-center rounded text-gray-600 hover:text-brand hover:bg-gray-100">
