@@ -13,6 +13,13 @@ class RoomController extends Controller
     public function index(Request $request)
     {
         $rooms = $this->data->rooms = Room::apiIndex($request->all());
+        if($request->instance && $request->header('data-xhr-base')){
+            $view = 'dashboard.rooms.select2';
+                $this->data->global = $rooms->map(function($room){
+                    return ['id' => $room->id, 'title' => $room->name];
+                });
+        return $this->view($request, $view);
+    }
         $this->data->center = $rooms->getFilter('center');
         switch($request->header('data-xhr-base')){
             case 'select2':
