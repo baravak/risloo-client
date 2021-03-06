@@ -73,6 +73,20 @@
         @includeIf('dashboard.samples.scales.' . substr($sample->scale->id, 1), ['scoring'=> (object) ['profiles' => $sample->profiles, 'score' => $sample->score, 'id' => $sample->id]])
     </div>
 
+    @if ($sample->status == 'scoring')
+        <i class="fas fa-cog fa-spin"></i>
+    @endif
+    @isset($sample->profiles->profile_svg)
+    <div class="mt-4">
+        <h3 class="heading">نیمرخ</h3>
+        <div class="mt-4" id="profile_svg">
+            <a href="{{ $sample->profiles->profile_svg->url }}" target="_blank" class="inline-block">
+                <img src="{{ $sample->profiles->profile_svg->url }}" class="w-32 h-32 object-cover border border-gray-200 p-1 rounded">
+            </a>
+        </div>
+    </div>
+    @endisset
+
     <div>
         <div class="flex items-center justify-between mt-8">
             <h3 class="heading">{{ __('Sample details') }}</h3>
