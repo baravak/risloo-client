@@ -133,6 +133,7 @@
     "Perform sample": "انجام نمونه",
     "Closed": "بسته",
     "Scored": "دارای نمره",
+    "Sample details": "مواد آزمون",
     "Do sample": "انجام آزمون",
     "Close sample": "بستن آزمون",
     "Open sample": "بازکردن آزمون",
@@ -218,5 +219,12 @@
     "Fill in" : "پر کردن",
     "Edit prev data" : "ویرایش داده‌های قبلی",
     "Empty field" : "فیلد خالی",
-    "Validation" : "اعتبارسنجی"
+    "Validation" : "اعتبارسنجی",
+    "Exports" : "خروجی‌ها",
+    "Editable" : "قابلیت ویرایش فرم",
+    "General" : "عمومی",
+    "Time to do" : "زمان انجام",
+    "Minutes": "دقیقه",
+    "Prerequisites": "پیش‌نیازها",
+    "Sample items": "گویه‌ها"
 }
