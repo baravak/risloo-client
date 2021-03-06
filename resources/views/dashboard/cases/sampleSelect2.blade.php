@@ -6,7 +6,10 @@
         </span>
         <div data-xhr="case-clients">
             @foreach ($case->clients as $client)
-                <div>{{ $client->user->name }}</div>
+                <div>
+                    <input type="radio" name="clients" value="{{ $client->id }}">
+                    {{ $client->name }}
+                </div>
             @endforeach
         </div>
     </span>
