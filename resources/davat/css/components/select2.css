@@ -77,3 +77,8 @@
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
 	@apply inline-flex;
 }
+
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
+	border-left: none;
+	height: 100%;
+}
