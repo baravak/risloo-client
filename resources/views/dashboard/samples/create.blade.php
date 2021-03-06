@@ -1,7 +1,7 @@
 @extends('dashboard.create')
 @section('form_content')
-    <div>
-        <div class="mt-4">
+    <div class="border border-gray-200 rounded p-4 mt-8">
+        <div>
             <label for="scale_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Scale') }}</label>
             <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index') }}">
                 @isset($scale)
@@ -25,23 +25,18 @@
         </div>
 
         <div class="mt-4">
-            <h3 class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Create sample for') }}</h3>
-            <div class="mt-1">
-                <label class="inline-flex items-center group">
-                    <input type="radio" name="create-sample" id="" value="" class="w-3.5 h-3.5 border border-gray-600 focus:ring-2 focus:ring-offset-2">
-                    <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Room') }}</span>
-                </label>
+            <ul data-tabs>
+                <li><a data-tabby-default href="#case-tab" class="direct" role="presentation">{{ __('Case') }}</a></li>
+                <li><a href="#room-tab" class="direct" role="presentation">{{ __('Therapy room') }}</a></li>
+            </ul>
+
+            <div id="case-tab">
+                @include('dashboard.samples.createCase')
             </div>
-            <div class="mt-1">
-                <label class="inline-flex items-center group">
-                    <input type="radio" name="create-sample" id="" value="" @radioChecked($center->type, 'counseling_center') {!!isset($center) ? 'disabled' : ''!!} class="w-3.5 h-3.5 border border-gray-600 focus:ring-2 focus:ring-offset-2">
-                    <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Case') }}</span>
-                </label>
+
+            <div id="room-tab">
+                @include('dashboard.samples.createRoom')
             </div>
         </div>
-
-        @include('dashboard.samples.createRoom')
-
-        @include('dashboard.samples.createCase')
     </div>
 @endsection
