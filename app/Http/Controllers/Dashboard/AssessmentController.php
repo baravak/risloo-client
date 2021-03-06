@@ -11,7 +11,13 @@ class AssessmentController extends Controller
     {
         $this->authorize('dashboard.assessments.viewAny');
         $assessments = $this->data->assessments = Assessment::apiIndex($request->all());
-
+        if($request->instance && $request->header('data-xhr-base')){
+                $view = 'dashboard.assessments.select2';
+                $this->data->global = $assessments->map(function($assessment){
+                    return ['id' => $assessment->id, 'title' => $assessment->title];
+                });
+            return $this->view($request, $view);
+        }
         switch($request->header('data-xhr-base')){
             case 'quick_search': $view = 'dashboard.assessments.list-xhr'; break;
             case 'select2':

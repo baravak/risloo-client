@@ -3,7 +3,7 @@
     <div class="border border-gray-200 rounded p-4 mt-8">
         <div>
             <label for="scale_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Scale') }}</label>
-            <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index') }}">
+            <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index', ['instance' => 1]) }}">
                 @isset($scale)
                     <option value="{{$scale->id}}" data-json="{{$scale}}" selected>{{$scale->title}}</option>
                 @endisset
