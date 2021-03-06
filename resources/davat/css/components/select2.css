@@ -73,3 +73,7 @@
 .select2-results__option {
 	@apply text-gray-700;
 }
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+	@apply inline-flex;
+}
