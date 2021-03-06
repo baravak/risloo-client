@@ -1,0 +1,30 @@
+.dropdown {
+    @apply relative inline-block;
+}
+
+.dropdown > button {
+    @apply bg-brand text-white h-9 px-8 text-sm leading-normal cursor-pointer rounded-full transition;
+    border: none;
+}
+
+.dropdown > button:hover,
+.dropdown > button:focus {
+    @apply bg-brand-600;
+}
+
+.dropdown > button + div {
+    @apply hidden absolute bg-gray-50 border border-gray-300 overflow-auto z-10;
+    min-width: 10rem;
+}
+
+.dropdown > button + div > a {
+    @apply text-gray-900 px-4 py-2 text-sm leading-normal block transition;
+}
+
+.dropdown > button + div > a:hover {
+    @apply bg-gray-200;
+}
+
+.dropdown > button + div.show {
+    @apply block;
+}

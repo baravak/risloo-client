@@ -9,4 +9,10 @@ $(document).ready(function() {
             $('body').removeClass('aside-open');
         }
     });
+
+    $('.dropdown').each(function(event) {
+        $(this).find('button').click(function(event) {
+            $(this).next().toggleClass('show')
+        });
+    });
 });
