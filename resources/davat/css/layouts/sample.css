@@ -1,0 +1,7 @@
+[data-page="samples-form"] [data-panel="description"] h2 {
+    @apply font-medium text-lg mb-4;
+}
+
+[data-page="samples-form"] [data-panel="description"] p {
+    @apply text-gray-700;
+}

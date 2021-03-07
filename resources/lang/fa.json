@@ -199,6 +199,8 @@
     "Next": "بعدی",
     "Serial": "سریال",
     "Status": "وضعیت",
+    "Save status": "وضعیت ذخیره‌سازی روی سرور",
+    "No change": "بدون تغییر",
     "Done": "انجام‌شده",
     "Edit session": "ویرایش جلسه",
     "Login to this...": "ورود به کاربری",
@@ -228,5 +230,6 @@
     "Create new practice" : "ساخت کاربرگ جدید",
     "Therapy case :serial" : "پرونده درمانی :serial",
     "Create new sample for :type :serial" : "ساخت نمونه برای :type :serial",
-    "Create new sample in scale :scale" : "ساخت نمونه در مقیاس :scale"
+    "Create new sample in scale :scale" : "ساخت نمونه در مقیاس :scale",
+    "jump to empty test" : "پرش روی تست‌های خالی"
 }
