@@ -33,10 +33,14 @@
 	}
 }
 
-#aside .active {
+#aside > ul > li > a.active {
 	@apply bg-brand text-white;
 }
 
-#aside .active:hover {
+#aside > ul > li > a.active:hover {
 	@apply bg-brand text-white;
+}
+
+#aside > ul > li ul a.active {
+	@apply font-bold;
 }
