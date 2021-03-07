@@ -206,6 +206,7 @@
     window.Lijax = lijax;
 })();
 (function(){
+	var requesting = false;
 	var historyBack = null;
 	var _globals = {
 		title : function (value){
@@ -335,7 +336,15 @@
 				ajax_send_url = urlx.url.replace(/\?([^#]*)(\#.*)?$/, get ? '?' + get + '$2' : '$2');
 				beforeSend ? beforeSend.call(this, jqXHR, settings) : null;
 			}
-			$.ajax(options.ajax);
+			if(options.fake == false && options.type != 'render'){
+				try{
+					requesting.abort();
+				}catch(e){}
+			}
+			var requestDo = $.ajax(options.ajax);
+			if(options.fake == false && options.type != 'render'){
+				requesting = requestDo;
+			}
 		}
 		else if(options.type != 'url' && response.body)
 		{
