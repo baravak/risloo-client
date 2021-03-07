@@ -10,6 +10,7 @@
             <div class="flex items-center text-sm text-gray-600 cursor-default">
                 <i class="fal fa-user mb-1 ml-2"></i>
                 <span>{{ $sample->client ? $sample->client->name: '' }}</span>
+                {{-- <span>این نمونه مراجع ندارد. ابتدا مراجع را انتخاب نمایید.</span> --}}
             </div>
             <div>
                 <a href="{!! urldecode(route('dashboard.samples.scoring', $sample->id)) !!}" class="inline-flex items-center px-4 h-8 text-xs text-white bg-brand hover:bg-brand-600 rounded-full transition ml-1 {{($sample->status =='closed' || (auth()->isAdmin() && $sample->status == 'done') || $sample->score_last_version != $sample->score_current_version ) && $sample->client ? '' : 'hidden'}}" data-lijax-preload="scoring-preload" data-lijax-succsess="" id="scoring-btn" data-method="POST">
@@ -72,6 +73,16 @@
         </div>
         @includeIf('dashboard.samples.scales.' . substr($sample->scale->id, 1), ['scoring'=> (object) ['profiles' => $sample->profiles, 'score' => $sample->score, 'id' => $sample->id]])
     </div>
+
+    {{-- <div class="border border-gray-200 rounded p-4 mt-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div>
+                <label for="client_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Select client') }}</label>
+                <select multiple data-template="users" id="room_client_id" name="client_id[]" id="client_id" data-url="{{ isset($room) ? route('dashboard.room.users.index', ['room' => $room->id, 'instance' => 1]) : '' }}" data-url-pattern="{{ route('dashboard.room.users.index', ['room' => '%%', 'status' => 'accepted', 'instance' => 1]) }}" data-placeholder="{{ __('Without specified client') }}" class="select2-select">
+                </select>
+            </div>
+        </div>
+    </div> --}}
 
     @if ($sample->status == 'scoring')
         <i class="fas fa-cog fa-spin"></i>
