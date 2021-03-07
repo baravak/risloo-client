@@ -64,6 +64,7 @@ class RoomController extends Controller
             return $request->ajax() ? ['redirect' => route('dashboard.centers.show', $room->id)] : redirect()->route('dashboard.centers.show', $room->id);
         }
         $center = $this->data->center = $room->center;
+        $this->data->global->title = __("Therapy room of :user in :center", ['user' => $room->manager->name, 'center' => $center->detail->title]);
         return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.rooms.caseItems-xhr' : 'dashboard.rooms.show');
     }
 }

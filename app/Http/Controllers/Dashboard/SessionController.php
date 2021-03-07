@@ -28,38 +28,9 @@ class SessionController extends Controller
         return $this->view($request, 'dashboard.sessions.index');
     }
 
-    public function viewMode($request){
-        $date = jdate();
-        $current = new jDate($date->getYear(), $date->getMonth(), $date->getDay());
-        $start = $current->subDays($current->getDayOfWeek());
-        $end = $start->addDays(6)->addHours(23)->addMinutes(59)->addSeconds(59);
-        $this->data->week = [$start, $end];
-        if($request->case || $request->room){
-            if($request->case)
-            {
-                $case = $this->data->case = $request->case ? TherapyCase::apiShow($request->case) : null;
-                $room = $this->data->room = $case->room;
-            }
-            else
-            {
-                $room = $this->data->room = $request->room ? Room::apiShow($request->room) : null;
-            }
-            $this->authorize('dashboard.sessions.create');
-            if(!$room){
-                $this->authorize('dashboard.rooms.admin', [$room]);
-            }
-            $request->request->add(['mode' => 'week']);
-            $sessions = $this->data->sessions = Session::apiIndex($request->all());
-            $this->data->table = [];
-            for ($i = 7; $i <= 22; $i++) {
-                $this->data->table[] = $i;
-            }
-        }
-    }
-
     public function create(Request $request)
     {
-        $this->data->global->title = __('Create new sessions');
+        $this->data->global->title = __('Create new session');
         $case = $this->data->case = TherapyCase::apiShow($request->case);
         $room = $this->data->room = $case->room;
         $center = $this->data->center = $room->center;
@@ -68,6 +39,7 @@ class SessionController extends Controller
 
     public function edit(Request $request, Session $session)
     {
+        $this->data->global->title = __('Edit session');
         $this->authorize('dashboard.sessions.update', [$session]);
         $this->data->session = $session;
         $this->data->case = $session->case;
@@ -92,6 +64,7 @@ class SessionController extends Controller
         $case = $this->data->case = $session->parentModel;
         $room = $this->data->room = $case->room;
         $center = $this->data->center = $room->center;
+        $this->data->global->title = __('Therapy session :serial', ['serial' => $session->id]) ;
         return $this->view($request, 'dashboard.sessions.show');
     }
 

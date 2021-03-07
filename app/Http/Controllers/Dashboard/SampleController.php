@@ -21,20 +21,25 @@ class SampleController extends Controller
 
     public function create(Request $request)
     {
+        $this->data->global->title = __('Create new sample') ;
         $this->authorize('dashboard.samples.create');
         if(isset($request->scale))
         {
-            $this->data->scale = Assessment::apiShow($request->scale);
-        }
+            $scale = $this->data->scale = Assessment::apiShow($request->scale);
+            $this->data->global->title = __('Create new sample in scale :scale' , ['scale' => $scale->title]) ;
+    }
         if ($request->session) {
             $session = $this->data->session = Session::apiShow($request->session);
             $case = $this->data->case = $session->case;
             $room = $this->data->room = $case->room;
+            $this->data->global->title = __('Create new sample for :type :serial', ['type' => __('Therapy session'), 'serial' => $session->id]) ;
         }elseif ($request->case) {
             $case = $this->data->case = TherapyCase::apiShow($request->case);
             $room = $this->data->room = $case->room;
+            $this->data->global->title = __('Create new sample for :type :serial', ['type' => __('Case'), 'serial' => $case->id]) ;
         }elseif($request->room){
             $room = $this->data->room = Room::apiShow($request->room);
+            $this->data->global->title = __('Create new sample for :type :serial', ['type' => __('Therapy room'), 'serial' => $room->id]) ;
         }
         return $this->view($request, 'dashboard.samples.create');
     }

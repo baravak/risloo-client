@@ -58,6 +58,7 @@ class CaseController extends Controller
         $case = $this->data->case = TherapyCase::apiDashboard($case);
         $room = $this->data->room = $case->room;
         $center = $this->data->center = $room->center;
+        $this->data->global->title = __('Therapy case :serial', ['serial' => $case->id]) ;
         return $this->view($request, 'dashboard.cases.show');
     }
 

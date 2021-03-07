@@ -5,9 +5,14 @@
             <label for="scale_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Scale') }}</label>
             <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index', ['instance' => 1]) }}">
                 @isset($scale)
-                    <option value="{{$scale->id}}" data-json="{{$scale}}" selected>{{$scale->title}}</option>
+                    <option value="{{$scale->id}}" selected>{{$scale->title}}</option>
                 @endisset
             </select>
+            @isset($scale)
+            <div data-for="scale_id" class="hidden">
+                @include('dashboard.assessments.select2', ['assessments' => [$scale]])
+            </div>
+            @endisset
         </div>
 
         <div class="mt-4">

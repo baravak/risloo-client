@@ -127,14 +127,14 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
             templateResult : function(data){
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');
-                    data.html = $('[data-id='+data.id+']', $(html));
+                    data.html = $('[data-id="'+data.id+'"]', $(html));
                 }
                 return data.html ? $('[data-selection]', data.html) : data.text;
             },
             templateSelection : function(data){
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');
-                    html = $('[data-id='+data.id+']', $(html))[0].outerHTML;
+                    html = $('[data-id="'+data.id+'"]', $(html))[0].outerHTML;
                 }
                 html = html || data.html;
                 $('[data-xhr]', html).each(function(){
@@ -143,16 +143,16 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                         type: 'render',
                         fake: true,
                         response : $(html).html(),
-                        context: $('[data-xhr='+xhr+']').get(0)
+                        context: $('[data-xhr="'+xhr+'"]').get(0)
                     });
                 });
                 return html ? $('[data-selection]', html) : data.text;
             },
         };
-        if($('[data-for='+$(this).attr('id')+']')[0]){
-            $(this).data('default-value', $('[data-for='+$(this).attr('id')+']')[0].outerHTML);
+        if($('[data-for="'+$(this).attr('id')+'"]')[0]){
+            $(this).data('default-value', $('[data-for="'+$(this).attr('id')+'"]')[0].outerHTML);
         }
-        $('[data-for='+$(this).attr('id')+']').remove();
+        $('[data-for="'+$(this).attr('id')+'"]').remove();
         if ($(this).is('[data-url]')) {
             var _self = this;
             options.ajax = {
