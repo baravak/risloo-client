@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Room;
 use App\User;
 use App\Sample;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -28,16 +29,17 @@ class SamplePolicy
         return (Boolean) $currentCenter ?: $user->isAdmin();
     }
 
-    public function management(User $user, Sample $sample){
+    public function management(User $user, Sample $sample, Room $room = null){
         if($user->isAdmin())
         {
             return true;
         }
-        if($sample->room->manager->id == $user->id)
+        $room = $sample->room ?: $room;
+        if($room->acceptation && $room->acceptation->id == $room->manager->id)
         {
             return true;
         }
-        $currentCenter = $user->centers->where('id', $sample->room->center->id)->whereIn('acceptation.position', ['operator', 'manager', 'psychologist'])->first();
+        $currentCenter = $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager', 'psychologist'])->first();
         if($currentCenter)
         {
             return true;

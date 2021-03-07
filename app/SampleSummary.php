@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class SampleSummary extends API
+class SampleSummary extends Sample
 {
     public $endpointPath = '$/samples';
     public $with = [

@@ -33,11 +33,6 @@
         </div>
     </td>
     <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
-        <div class="inline-block mr-4">
-            <x-link-show :link="urldecode(route('dashboard.samples.show', $sample->id)) "/>
-        </div>
-        <div class="inline-block">
-            <a href="#" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
-        </div>
+            @include('dashboard.samples.do')
     </td>
 </tr>

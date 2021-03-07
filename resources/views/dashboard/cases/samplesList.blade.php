@@ -13,41 +13,36 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach ($case->samples as $samples)
-                    <tr class="sample-record" data-xhr="sample-{{ $samples->id }}" data-session="{{ $samples->session_id }}" data-client="{{ $samples->client ? $samples->client->id : null }}">
+                    @foreach ($case->samples as $sample)
+                    <tr class="sample-record" data-xhr="sample-{{ $sample->id }}" data-session="{{ $sample->session_id }}" data-client="{{ $sample->client ? $sample->client->id : null }}">
                         <td class="p-3 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $samples->id }}</span>
+                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->id }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="block text-xs font-medium text-gray-700 cursor-default">{{ $samples->title }}</span>
+                                <span class="block text-xs font-medium text-gray-700 cursor-default">{{ $sample->title }}</span>
                                 {{-- <span class="block text-gray-400 font-light text-xs">ویرایش دکتر هخامنشیان - نسخه 1</span> --}}
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $samples->session_id }}</span>
+                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->session_id }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="text-xs text-gray-700 cursor-default">{{ $samples->client->name }}</span>
+                                <span class="text-xs text-gray-700 cursor-default">{{ $sample->client->name }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="text-xs text-gray-500 cursor-default">{{ __(ucfirst($samples->status)) }}</span>
+                                <span class="text-xs text-gray-500 cursor-default">{{ __(ucfirst($sample->status)) }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap text-left dir-ltr">
-                            <div class="inline-block mr-4">
-                                {{-- <x-link-show :link="$sample->route('show')"/> --}}
-                            </div>
-                            <div class="inline-block">
-                                <a href="#" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
-                            </div>
+                                @include('dashboard.samples.do')
                         </td>
                     </tr>
                     @endforeach
