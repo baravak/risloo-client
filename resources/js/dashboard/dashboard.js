@@ -196,7 +196,7 @@ $('body').on('statio:dashboard:samples:create', function(){
     $('#room-tab').trigger(($('#room-tab').is('.active') ? 'show' : 'hide') + '.bs.tab');
 
 
-    $('#room_client_id.sample-page').on('change', function () {
+    $('#room_client_id').on('change', function () {
         if (!$(this).val() || !$(this).val().length) {
             $('#count').removeAttr('disabled');
         }
@@ -204,42 +204,12 @@ $('body').on('statio:dashboard:samples:create', function(){
             $('#count').attr('disabled', 'disabled');
         }
     });
-    $('#count.sample-page').on('change', function () {
+    $('#count').on('change', function () {
         if (!$(this).val()) {
-            $('#room_client_id.sample-page').removeAttr('disabled');
+            $('#room_client_id').removeAttr('disabled');
         }
         else {
-            $('#room_client_id.sample-page').attr('disabled', 'disabled');
-        }
-    });
-
-    $('#case_id').on('select2:select', function(event){
-        $('#client-null-tamplate').hide();
-        event.params.data.all.clients.forEach(function(e, i){
-            var template = $('#client-template').clone();
-            template.removeClass('d-none');
-            template.removeAttr('id');
-            $('.data-name', template).text(e.user.name);
-            var avatar = e.user.avatar ? e.user.avatar.small : null;
-            if(avatar)
-            {
-                $('img', template).attr('src', e.user.avatar.small.url);
-            }
-            else
-            {
-                $('img', template).remove();
-                $('.media', template).append('<span>' + (e.user.name.substr(0, 1)) + '</span>');
-            }
-            $('input', template).attr('id', 'client-' + e.user.id).attr('name', 'client_id[]').attr('value', e.id);
-            $('label', template).attr('for', 'client-' + e.user.id);
-            template.appendTo('#client-list');
-        });
-    });
-    $('#case_id').on('change', function(){
-        $('#client-list .richak').remove();
-        if (!$(this).val())
-        {
-            $('#client-null-tamplate').show();
+            $('#room_client_id').attr('disabled', 'disabled');
         }
     });
 });

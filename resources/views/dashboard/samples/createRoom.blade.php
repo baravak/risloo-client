@@ -7,6 +7,6 @@
 
     <div class="mt-4">
         <label for="count" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Count') }}</label>
-        <input type="text" name="count" id="count" disabled autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+        <input type="text" name="count" id="count" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
     </div>
 </div>
