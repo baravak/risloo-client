@@ -1,13 +1,13 @@
-<div class="flex justify-between items-center mt-8 mb-4">
-    <h3 class="heading" data-total="({{ $user->rooms ? $user->rooms->count() : 0 }})" data-xhr="total">{{ __('My therapy rooms') }}</h3>
-    @if ($user->rooms && $user->rooms->count() > 5)
-        <div>
-            <a href="{{ route('dashboard.rooms.index') }}" class="text-sm text-blue-700">{{ __('See All') }}</a>
-        </div>
-    @endif
-</div>
-
 @if ($user->rooms && $user->rooms->count() > 0)
+    <div class="flex justify-between items-center mt-8 mb-4">
+        <h3 class="heading" data-total="({{ $user->rooms ? $user->rooms->count() : 0 }})" data-xhr="total">{{ __('My therapy rooms') }}</h3>
+        @if ($user->rooms && $user->rooms->count() > 5)
+            <div>
+                <a href="{{ route('dashboard.rooms.index') }}" class="text-sm text-blue-700">{{ __('See All') }}</a>
+            </div>
+        @endif
+    </div>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
         @foreach ($user->rooms ?: [] as $room)
             <a href="{{ $room->route('show') }}" class="border border-gray-200 rounded hover:bg-gray-50 transition">
