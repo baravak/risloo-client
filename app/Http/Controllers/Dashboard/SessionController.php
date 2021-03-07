@@ -50,7 +50,6 @@ class SessionController extends Controller
             }
             $request->request->add(['mode' => 'week']);
             $sessions = $this->data->sessions = Session::apiIndex($request->all());
-            dd(10);
             $this->data->table = [];
             for ($i = 7; $i <= 22; $i++) {
                 $this->data->table[] = $i;
@@ -74,7 +73,7 @@ class SessionController extends Controller
         $this->data->case = $session->case;
         $this->data->room = $session->case->room;
         $this->data->center = $this->data->room->center;
-        $this->viewMode($request);
+        $this->data->module->action = 'edit';
         return $this->view($request, 'dashboard.sessions.create');
     }
     public function store(Request $request, $case)
