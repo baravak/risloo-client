@@ -1,4 +1,4 @@
-<tr  data-xhr="sample-list-{{ $sample->id }}">
+<tr data-xhr="sample-list-{{ $sample->id }}" class="transition hover:bg-gray-50">
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
             <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->id }}</span>
@@ -13,9 +13,9 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
             @if ($sample->client)
-            <span href="#" class="text-xs text-gray-700 cursor-default">@displayName($sample->client)</span>
+                <span href="#" class="text-xs text-gray-700 cursor-default">@displayName($sample->client)</span>
             @else
-            <span href="#" class="text-xs text-gray-700 cursor-default">{{ $sample->code }}</span>
+                <span href="#" class="text-xs text-gray-700 cursor-default">{{ $sample->code }}</span>
             @endif
         </div>
     </td>
@@ -23,7 +23,7 @@
         <div claas="flex items-center">
             <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-700 hover:text-blue-500">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
             @if ($sample->case)
-                    <a class="block text-xs text-gray-500 hover:text-blue-500" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
+                <a class="block text-xs text-gray-500 hover:text-blue-500" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
             @endif
         </div>
     </td>
@@ -33,6 +33,6 @@
         </div>
     </td>
     <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
-            @include('dashboard.samples.do')
+        @include('dashboard.samples.do')
     </td>
 </tr>
