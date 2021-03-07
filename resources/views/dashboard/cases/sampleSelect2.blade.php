@@ -8,7 +8,7 @@
         <div data-xhr="case-clients">
             @foreach ($case->clients as $client)
                 <div>
-                    <input type="checkbox" name="clients" value="{{ $client->id }}">
+                    <input type="checkbox" name="client_id[]" value="{{ $client->id }}">
                     {{ $client->name }}
                 </div>
             @endforeach

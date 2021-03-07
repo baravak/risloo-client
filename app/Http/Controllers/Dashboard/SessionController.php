@@ -19,6 +19,12 @@ class SessionController extends Controller
     public function index(Request $request)
     {
         $this->data->sessions = $sessions = Session::apiIndex($request->all());
+        if($request->instance && $request->header('data-xhr-base')){
+                $this->data->global = $sessions->map(function($session){
+                    return ['id' => $session->id, 'title' => $session->id];
+                });
+            return $this->view($request, 'dashboard.sessions.select2');
+        }
         return $this->view($request, 'dashboard.sessions.index');
     }
 
@@ -44,6 +50,7 @@ class SessionController extends Controller
             }
             $request->request->add(['mode' => 'week']);
             $sessions = $this->data->sessions = Session::apiIndex($request->all());
+            dd(10);
             $this->data->table = [];
             for ($i = 7; $i <= 22; $i++) {
                 $this->data->table[] = $i;
@@ -57,7 +64,6 @@ class SessionController extends Controller
         $case = $this->data->case = TherapyCase::apiShow($request->case);
         $room = $this->data->room = $case->room;
         $center = $this->data->center = $room->center;
-        $this->viewMode($request);
         return $this->view($request, 'dashboard.sessions.create');
     }
 
@@ -71,9 +77,9 @@ class SessionController extends Controller
         $this->viewMode($request);
         return $this->view($request, 'dashboard.sessions.create');
     }
-    public function store(Request $request)
+    public function store(Request $request, $case)
     {
-        $session = Session::apiStore($request->room_id, $request->except('room_id'));
+        $session = Session::apiStore($case, $request->all());
         return $session->response()->json([
             'redirect' => route('dashboard.sessions.edit', $session->id)
         ]);

@@ -27,21 +27,23 @@ class TherapyCase extends API
     }
 
     public function setRoutes($attr){
-        $room = $this->parentModel ?: $this->room;
-        if(!$room){
+        try{
+            $room = $this->parentModel ?: $this->room;
+            if(!$room){
+                $this->route = [
+                    'show' => route('dashboard.cases.show', $this->id)
+                ];
+                return;
+            }
             $this->route = [
-                'show' => route('dashboard.cases.show', $this->id)
+                'index' => route('dashboard.rooms.show', $room->id),
+                'show' => route('dashboard.cases.show', $this->id),
+                // 'edit' => route('dashboard.cases.edit', $this->id),
+                // 'update' => route('dashboard.cases.update', $this->id),
+                'create' => route('dashboard.room.cases.create', $room->id),
+                'store' => route('dashboard.room.cases.store', $room->id)
             ];
-            return;
-        }
-        $this->route = [
-            'index' => route('dashboard.rooms.show', $room->id),
-            'show' => route('dashboard.cases.show', $this->id),
-            // 'edit' => route('dashboard.cases.edit', $this->id),
-            // 'update' => route('dashboard.cases.update', $this->id),
-            'create' => route('dashboard.room.cases.create', $room->id),
-            'store' => route('dashboard.room.cases.store', $room->id)
-        ];
+        }catch(\Exception $e){}
     }
 
     public function _dashboard($id, array $params = [])

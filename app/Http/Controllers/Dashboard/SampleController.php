@@ -2,9 +2,11 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Assessment;
+use App\Room;
 use App\Sample;
 use App\SampleSummary;
 use App\scoreResult;
+use App\Session;
 use App\TherapyCase;
 use App\User;
 use Illuminate\Http\Request;
@@ -13,7 +15,7 @@ class SampleController extends Controller
 {
     public function index(Request $request)
     {
-        $this->data->samples = SampleSummary::apiIndex($request->all());
+        $samples = $this->data->samples = SampleSummary::apiIndex($request->all());
         return $this->view($request, 'dashboard.samples.index');
     }
 
@@ -24,8 +26,15 @@ class SampleController extends Controller
         {
             $this->data->scale = Assessment::apiShow($request->scale);
         }
-        if (isset($request->case)) {
-            $this->data->case = TherapyCase::apiShow($request->case);
+        if ($request->session) {
+            $session = $this->data->session = Session::apiShow($request->session);
+            $case = $this->data->case = $session->case;
+            $room = $this->data->room = $case->room;
+        }elseif ($request->case) {
+            $case = $this->data->case = TherapyCase::apiShow($request->case);
+            $room = $this->data->room = $case->room;
+        }elseif($request->room){
+            $room = $this->data->room = Room::apiShow($request->room);
         }
         return $this->view($request, 'dashboard.samples.create');
     }
