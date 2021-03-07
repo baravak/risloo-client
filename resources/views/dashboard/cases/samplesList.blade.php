@@ -33,7 +33,9 @@
                         </td>
                         <td class="p-3 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="text-xs text-gray-700 cursor-default">{{ $sample->client->name }}</span>
+                                <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $sample->client->id]) }}" class="text-xs text-gray-700">
+                                    {{ $sample->client->name }}
+                                </a>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">

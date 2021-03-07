@@ -147,7 +147,7 @@
                                     <td class="px-3 py-2 whitespace-nowrap">
                                         @if ($sample->case)
                                             <div claas="flex items-center">
-                                                <a href="{{ route('dashboard.cases.show', $sample->case) }}" class="text-xs text-gray-700">{{ $sample->case }}</a>
+                                                <a href="{{ route('dashboard.cases.show', $sample->case->id) }}" class="text-xs text-gray-700">{{ $sample->case->id }}</a>
                                             </div>
                                         @endif
                                     </td>

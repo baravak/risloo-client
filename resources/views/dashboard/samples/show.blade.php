@@ -80,8 +80,8 @@
     <div class="mt-4">
         <h3 class="heading">نیمرخ</h3>
         <div class="mt-4" id="profile_svg">
-            <a href="{{ $sample->profiles->profile_svg->url }}" target="_blank" class="inline-block">
-                <img src="{{ $sample->profiles->profile_svg->url }}" class="w-32 h-32 object-cover border border-gray-200 p-1 rounded">
+            <a href="{{ $sample->profiles->profile_png->url }}" target="_blank" class="inline-block magnific-popup">
+                <img src="{{ $sample->profiles->profile_png->url }}" class="w-32 h-32 object-cover border border-gray-200 p-1 rounded">
             </a>
         </div>
     </div>

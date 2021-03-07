@@ -54,6 +54,9 @@ class SampleController extends Controller
 
     public function show(Request $request, $serial){
         $sample = $this->data->sample = Sample::apiShow($serial);
+        $room = $this->data->room = $sample->room;
+        $center = $this->data->center = $room->center;
+        $case = $this->data->case = $sample->case;
         $this->authorize('dashboard.samples.management', $sample);
         $this->data->global->title = $sample->scale->title . ' - ' . ($sample->client ? $sample->client->name : '');
         return $this->view($request, 'dashboard.samples.show');

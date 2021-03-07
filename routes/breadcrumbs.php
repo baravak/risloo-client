@@ -53,7 +53,20 @@ Breadcrumbs::for('dashboard.samples.index', function ($trail, $data) {
     $trail->push(__('Samples'), route('dashboard.samples.index'));
 });
 
-
+Breadcrumbs::for('dashboard.samples.show', function ($trail, $data) {
+    if($data['sample']->case){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        if($data['sample']->client){
+            $data['user'] = $data['sample']->client;
+            $trail->parent('dashboard.center.users.show', $data);
+        }else{
+            $trail->parent('dashboard.rooms.show', $data);
+        }
+    }
+    $trail->push(__('Samples'), null);
+    $trail->push($data['sample']->id, route('dashboard.samples.show', $data['sample']->id));
+});
 Breadcrumbs::for('dashboard.samples.create', function ($trail, $data) {
     $trail->parent('dashboard.samples.index', $data);
     $trail->push(__('Create new sampel'), route('dashboard.samples.index'));

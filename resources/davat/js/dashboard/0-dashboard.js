@@ -5,6 +5,12 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 
         davat.select2($('.select2-select', base));
         davat.avatar($('.input-avatar', base));
+        $('.magnific-popup', base).magnificPopup({
+            type:'image',
+            zoom: {
+                enabled: true
+            }
+        });
         if($(base).has('[data-tabs]').length){
             window.tabs = new Tabby((base.attr('data-xhr') ? '[data-xhr="' + base.attr('data-xhr') + '"] ' : '') + '[data-tabs]');
         }

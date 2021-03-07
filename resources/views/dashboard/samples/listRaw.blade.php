@@ -23,7 +23,7 @@
         <div claas="flex items-center">
             <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-700 hover:text-blue-500">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
             @if ($sample->case)
-                    <a class="block text-xs text-gray-500 hover:text-blue-500" href="{{ route('dashboard.cases.show', $sample->case) }}">@lang('Case') {{ $sample->case }}</a>
+                    <a class="block text-xs text-gray-500 hover:text-blue-500" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
             @endif
         </div>
     </td>
