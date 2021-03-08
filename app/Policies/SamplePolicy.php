@@ -46,4 +46,18 @@ class SamplePolicy
         }
         return false;
     }
+
+    public function scoring(User $user, Sample $sample){
+        if(!$sample->client) return false;
+        if(auth()->isAdmin()){
+            if(in_array($sample->status, ['closed', 'done'])){
+                return true;
+            }
+            return false;
+        }
+        if($sample->status == 'closed' || ($sample->score_current_version && $sample->score_last_version != $sample->score_current_version)){
+            return true;
+        }
+        return false;
+    }
 }

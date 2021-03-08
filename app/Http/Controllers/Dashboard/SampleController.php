@@ -53,7 +53,7 @@ class SampleController extends Controller
     }
 
     public function show(Request $request, $serial){
-        $sample = $this->data->sample = Sample::apiShow($serial);
+        $sample = $this->data->sample = is_string($serial) ? Sample::apiShow($serial) : $serial;
         $room = $this->data->room = $sample->room;
         $center = $this->data->center = $room->center;
         $case = $this->data->case = $sample->case;
@@ -64,8 +64,8 @@ class SampleController extends Controller
 
     public function scoring(Request $request, $serial)
     {
-        $scoring = $this->data->sample = Sample::scoring($serial);
-        return $scoring->response()->json();
+        $sample = $this->data->sample = Sample::scoring($serial);
+        return $this->show($request, $sample);
     }
     public function close(Request $request, $serial)
     {
