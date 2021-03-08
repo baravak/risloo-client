@@ -47,7 +47,17 @@
         </div>
     </div>
     @if (in_array($sample->status, ['scoring', 'creating_files']))
-    درحال نمره‌دهی و ساخت فایل‌ها
+
+        <div class="flex flex-col items-center justify-center border border-gray-200 rounded py-16 px-4 mt-4">
+            <i class="fal fa-spinner-third animate-spin text-gray-500 text-6xl"></i>
+            <span class="text-gray-500 mt-6">درحال نمره‌دهی و ساخت فایل‌ها</span>
+        </div>
+
+        {{-- <div class="flex flex-col items-center justify-center border border-gray-200 rounded py-16 px-4 mt-4">
+            <i class="fal fa-check-circle text-green-700 text-6xl"></i>
+            <span class="text-green-700 font-semibold mt-6">با موفقیت انجام شد</span>
+            <span class="text-sm text-gray-500 mt-2">در حال انتقال...</span>
+        </div> --}}
     @else
         @if ($sample->client)
             @include('dashboard.samples.show-detail')
