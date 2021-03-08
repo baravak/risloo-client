@@ -133,6 +133,7 @@
     "Closed": "بسته",
     "Scored": "دارای نمره",
     "Sample details": "مواد آزمون",
+    "Sample closed": "این نمونه بسته شده است.",
     "Do sample": "انجام آزمون",
     "Close sample": "بستن آزمون",
     "Open sample": "بازکردن آزمون",
@@ -231,5 +232,6 @@
     "Therapy case :serial" : "پرونده درمانی :serial",
     "Create new sample for :type :serial" : "ساخت نمونه برای :type :serial",
     "Create new sample in scale :scale" : "ساخت نمونه در مقیاس :scale",
-    "jump to empty test" : "پرش روی تست‌های خالی"
+    "jump to empty test" : "پرش روی تست‌های خالی",
+    "Return" : "بازگشت"
 }
