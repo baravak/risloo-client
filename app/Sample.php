@@ -1,6 +1,8 @@
 <?php
 namespace App;
 
+use GuzzleHttp\Psr7\Request;
+
 class Sample extends API
 {
     public $endpointPath = '$/samples';
@@ -38,5 +40,9 @@ class Sample extends API
     public function getSerialAttribute()
     {
         return [substr($this->id, 0, 1), substr($this->id, 1)];
+    }
+
+    public static function statusCheck(array $ids){
+        return (new static)->execute("/live/samples-status-check", ['samples' => $ids], 'GET');
     }
 }

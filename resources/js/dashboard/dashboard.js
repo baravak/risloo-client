@@ -100,18 +100,6 @@ $('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', fu
     });
     $('[name=type]').eq(0).trigger('change', [true]);
 });
-$('body').on('statio:dashboard:samples:show', function () {
-    $('#editable', this).on('change', function(){
-        if ($(this).is(':checked'))
-        {
-            $('.form-items').removeAttr('disabled');
-        }
-        else
-        {
-            $('.form-items').attr('disabled', 'disabled');
-        }
-    });
-});
 
 $('body').on('statio:dashboard:reserves:create', function () {
     $('#started_at').on('change', function(event, picker, unix){

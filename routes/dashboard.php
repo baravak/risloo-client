@@ -37,7 +37,7 @@ Route::post( 'samples/{sample}/scoring', 'SampleController@scoring')->middleware
 Route::get('samples/{sample}/scoring', 'SampleController@scoreResult')->middleware('auth')->name('samples.scoring.show');
 Route::put('samples/{sample}/close', 'SampleController@close')->middleware('auth')->name('samples.close');
 Route::put('samples/{sample}/open', 'SampleController@open')->middleware('auth')->name('samples.open');
-
+Route::get('live/samples-status-check', 'SampleController@statuCheck')->middleware('auth');
 
 Route::get('sessions/calendar', 'SessionController@calendar')->name('sessions.calendar');
 Route::resource('sessions', 'SessionController', ['except' => ['create']]);

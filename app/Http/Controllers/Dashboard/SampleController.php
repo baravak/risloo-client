@@ -65,7 +65,13 @@ class SampleController extends Controller
     public function scoring(Request $request, $serial)
     {
         $sample = $this->data->sample = Sample::scoring($serial);
-        return $this->show($request, $sample);
+        if($sample->status == 'done'){
+            return $this->show($request, $sample);
+        }
+        return response()->json([
+            'redirect' => urldecode(route('dashboard.samples.show', $serial)),
+            'lijax_type' => 'render'
+        ]);
     }
     public function close(Request $request, $serial)
     {
@@ -91,11 +97,20 @@ class SampleController extends Controller
     }
 
     public function scoreResult(Request $request, $serial){
-        $scoring = $this->data->scoring = scoreResult::result($serial);
-        if($request->has('html')) {
-            return $this->view($request, 'dashboard.samples.scales.' . substr($scoring->scale->id, 1));
-        } else {
-            return $scoring->response()->json();
+        $dones = $this->data->samples = Sample::statusCheck((array) $serial)->whereIn('status', ['done', 'closed']);
+        if(!$dones->count()){
+            return [];
         }
+        return [
+            'redirect' => urldecode(route('dashboard.samples.show', $dones->get(0)->id)),
+            'lijax_type' => 'render'
+        ];
+    }
+    public function statuCheck(Request $request){
+        $dones = $this->data->samples = Sample::statusCheck((array) $request->samples)->whereIn('status', ['done', 'closed']);
+        if(!$dones->count()){
+            return [];
+        }
+        return $this->view($request, 'dashboard.samples.tables.status-list');
     }
 }

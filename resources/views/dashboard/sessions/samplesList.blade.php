@@ -32,7 +32,7 @@
                         </td>
                         <td class="p-3 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="text-xs text-gray-500 cursor-default">{{ __(ucfirst($sample->status)) }}</span>
+                                @include('dashboard.samples.tables.status')
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap text-left dir-ltr">

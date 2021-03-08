@@ -16,7 +16,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div>
                 <label for="cornometer" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Time to do') }} ({{ __('Minutes') }})</label>
-                <input @formValue($sample->cornometer) disabled type="number" name="cornometer" id="cornometer" placeholder="&nbsp;" data-lijax="500" data-method="put" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+                <input @formValue($sample->cornometer) disabled type="number" name="cornometer" id="cornometer" placeholder="&nbsp;" data-lijax="500" data-method="put" class="form-items d-notification border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
             </div>
         </div>
     </div>
@@ -28,14 +28,14 @@
                 <div>
                     <label for="prerequisite-{{$loop->index}}" class="block mb-2 text-sm text-gray-700 font-medium">{{$loop->index + 1}} - {{$prerequisite->text}}</label>
                     @if (in_array($prerequisite->answer->type, ['options', 'select']))
-                    <select type="text" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-prerequisite="{{$loop->index + 1}}" data-name="prerequisites[{{$loop->index}}][1]" data-merge='{"prerequisites[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="prerequisite-{{$loop->index}}" placeholder="&nbsp;" disabled class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+                    <select type="text" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-prerequisite="{{$loop->index + 1}}" data-name="prerequisites[{{$loop->index}}][1]" data-merge='{"prerequisites[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="prerequisite-{{$loop->index}}" placeholder="&nbsp;" disabled class="form-items d-notification border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 form-items d-notification">
                         <option></option>
                         @foreach ($prerequisite->answer->options as $option)
                             <option {{isset($prerequisite->user_answered) && $prerequisite->user_answered == $loop->index +1 ? 'selected' : ''}} value="{{$loop->index + 1}}" @selectChecked($prerequisite->user_answered, $loop->index + 1)>{{$loop->index + 1}}: {{$option}}</option>
                         @endforeach
                     </select>
                     @elseif (in_array($prerequisite->answer->type, ['text', 'number']))
-                        <input @formValue($prerequisite->user_answered) disabled type="{{$prerequisite->answer->type}}" id="prerequisite-{{$loop->index}}" placeholder="&nbsp;" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+                        <input @formValue($prerequisite->user_answered) disabled type="{{$prerequisite->answer->type}}" data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-prerequisite="{{$loop->index + 1}}" data-name="prerequisites[{{$loop->index}}][1]" data-merge='{"prerequisites[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="prerequisite-{{$loop->index}}" placeholder="&nbsp;" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 form-items d-notification">
                     @endif
                 </div>
             @endforeach

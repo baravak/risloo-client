@@ -2,7 +2,6 @@ window.davat = {};
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     metarget();
     base.each(function () {
-
         davat.select2($('.select2-select', base));
         davat.avatar($('.input-avatar', base));
         $('.magnific-popup', base).magnificPopup({
@@ -11,6 +10,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                 enabled: true
             }
         });
+        davat.samplsta();
         if($(base).has('[data-tabs]').length){
             window.tabs = new Tabby((base.attr('data-xhr') ? '[data-xhr="' + base.attr('data-xhr') + '"] ' : '') + '[data-tabs]');
         }

@@ -41,7 +41,8 @@
 			{
 				new Statio({
 					url : res.redirect,
-					replace : res.replace
+					replace : res.replace,
+					type : ['render', 'url'].indexOf(res.lijax_type) >= 0 ? res.lijax_type : 'both'
 				});
 			}
 		}
@@ -208,6 +209,7 @@
     window.Lijax = lijax;
 })();
 (function(){
+	var bodyStatio = null;
 	var requesting = false;
 	var historyBack = null;
 	var _globals = {
@@ -319,8 +321,15 @@
 			if(!options.ajax.complete)
 			{
 				options.ajax.complete = ajx_complete;
+			}else{
+				var complete = options.ajax.complete;
+				options.ajax.complete = function(){
+					ajx_complete.call(this, ...arguments);
+					complete.call(this, ...arguments);
+				}
 			}
 			var beforeSend = options.ajax.beforeSend;
+
 			options.ajax.beforeSend = function(jqXHR, settings)
 			{
 				if(options.type != 'render' || options.ajax.type != 'GET'){
@@ -339,11 +348,11 @@
 				beforeSend ? beforeSend.call(this, jqXHR, settings) : null;
 			}
 			if(options.fake == false && options.type != 'render'){
-				try{
+			try{
 					requesting.abort();
 				}catch(e){}
 			}
-			var requestDo = $.ajax(options.ajax);
+			var requestDo = this.ajax = $.ajax(options.ajax);
 			if(options.fake == false && options.type != 'render'){
 				requesting = requestDo;
 			}
@@ -483,7 +492,11 @@
 				options.context.trigger('statio:renderResponse', [$(changed), response.data, response.body]);
 				if (response && response.data && response.data.page)
 				{
-					$('body').trigger('statio:' + response.data.page.replace(/[-]/g, ':'), [$(changed), response.data, response.body]);
+					if(bodyStatio){
+						$('body').trigger('statio:' + bodyStatio + ':onunload', [$(changed), response.data, response.body]);
+					}
+					bodyStatio = response.data.page.replace(/[-]/g, ':');
+					$('body').trigger('statio:' + bodyStatio, [$(changed), response.data, response.body]);
 				}
 			}
 		}

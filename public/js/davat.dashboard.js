@@ -2,7 +2,6 @@ window.davat = {};
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     metarget();
     base.each(function () {
-
         davat.select2($('.select2-select', base));
         davat.avatar($('.input-avatar', base));
         $('.magnific-popup', base).magnificPopup({
@@ -11,6 +10,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                 enabled: true
             }
         });
+        davat.samplsta();
         if($(base).has('[data-tabs]').length){
             window.tabs = new Tabby((base.attr('data-xhr') ? '[data-xhr="' + base.attr('data-xhr') + '"] ' : '') + '[data-tabs]');
         }
@@ -121,6 +121,43 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         $('.metarget, [data-metarget]').removeClass(['active', 'metarget']);
     }
 })();
+
+(function(davat){
+    var xhr = undefined;
+    var timeout = null;
+    var samplsta = function(){
+        if(xhr) return;
+        send();
+    }
+    var send = function(){
+        var samples = [];
+        $('[data-samplsta]').each(function(){
+            samples.push($(this).attr('data-samplsta'));
+        });
+        if(! samples.length){
+            xhr = undefined;
+            return;
+        }
+        xhr = true;
+        new Statio({
+            type : 'render',
+            url : '/dashboard/live/samples-status-check',
+            ajax : {
+                data : {samples : samples},
+                complete : function(){
+                    if(timeout) clearTimeout(timeout);
+                    timeout = setTimeout(send, 3000);
+                }
+            }
+        });
+    }
+    davat.samplsta = function(element){
+        samplsta.call();
+    }
+    davat.samplsta.profileShow = function(serial){
+
+    }
+})(window.davat);
 
 (function(davat){
     var select2 = function(){
@@ -236,6 +273,47 @@ $('body').on('statio:dashboard:center:users:edit', function () {
         }
     }).trigger('change');
 });
+
+(function(){
+    var timeout = undefined;
+    var xhr = undefined;
+    $('body').on('statio:dashboard:samples:show', function () {
+        var check = function(){
+            var _self = this;
+            if($('#' + $(this).attr('id')).length == 0) return;
+            var status = $(this).attr('data-status');
+            if(['scoring', 'creating_files'].indexOf(status)  == -1) return;
+            xhr = new Statio({
+                type : 'render',
+                url : '/dashboard/samples/'+ $(this).attr('data-sample') +'/scoring',
+                ajax : {
+                    complete : function(xhr){
+                        if(timeout) clearTimeout(timeout);
+                       if(xhr.responseJSON && !xhr.responseJSON.redirect){
+                           timeout = setTimeout(check.bind(_self), 3000);
+                       }
+                    }
+                }
+            });
+        }
+        $('#editable', this).on('change', function(){
+            if ($(this).is(':checked'))
+            {
+                $('.form-items').removeAttr('disabled');
+            }
+            else
+            {
+                $('.form-items').attr('disabled', 'disabled');
+            }
+        });
+        check.call($('#sample-show', this)[0])
+
+    }).on('statio:dashboard:samples:show:onunload', function () {
+        try{
+            xhr.ajax.abort();
+        }catch(e){}
+    });
+})();
 
 /*************************
  * Croppie
