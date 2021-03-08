@@ -9,10 +9,12 @@
             <div class="flex h-1 rounded-full overflow-hidden bg-gray-200 mb-2">
                 <div id="progress" class="bg-brand transition" role="progressbar" style="width: 10%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            @include('samples.panel.description')
-            @includeWhen($sample->prerequisites, 'samples.panel.information')
-            @include('samples.panel.items')
-            @include('samples.panel.close')
+            <div class="border border-gray-300 p-4 rounded">
+                @include('samples.panel.description')
+                @includeWhen($sample->prerequisites, 'samples.panel.information')
+                @include('samples.panel.items')
+                @include('samples.panel.close')
+            </div>
         </div>
 
         @include('samples.formAside')
