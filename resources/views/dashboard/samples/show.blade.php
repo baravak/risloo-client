@@ -11,7 +11,10 @@
                         <span>{{ $sample->client ? $sample->client->name: '' }}</span>
                     </a>
                 @else
-                    <span>این نمونه مراجع ندارد. ابتدا مراجع را انتخاب نمایید.</span>
+                    <div class="flex items-center">
+                        <i class="fal fa-user mb-1 ml-2"></i>
+                        <span>{{ __('No client and select client') }}</span>
+                    </div>
                 @endif
             </div>
             @if (!in_array($sample->status, ['scoring', 'creating_files']))
@@ -49,15 +52,21 @@
         @if ($sample->client)
             @include('dashboard.samples.show-detail')
         @else
-            <div class="border border-gray-200 rounded p-4 mt-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    <div>
-                        <label for="client_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Select client') }}</label>
-                        <select multiple data-template="users" id="room_client_id" name="client_id[]" id="client_id" data-url="{{ isset($room) ? route('dashboard.room.users.index', ['room' => $room->id, 'instance' => 1]) : '' }}" data-url-pattern="{{ route('dashboard.room.users.index', ['room' => '%%', 'status' => 'accepted', 'instance' => 1]) }}" data-placeholder="{{ __('Without specified client') }}" class="select2-select">
-                        </select>
+            <form method="POST">
+                <div class="border border-gray-200 rounded p-4 mt-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div>
+                            <label for="client_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Select client') }}</label>
+                            <select multiple data-template="users" id="room_client_id" name="client_id[]" id="client_id" data-url="{{ isset($room) ? route('dashboard.room.users.index', ['room' => $room->id, 'instance' => 1]) : '' }}" data-url-pattern="{{ route('dashboard.room.users.index', ['room' => '%%', 'status' => 'accepted', 'instance' => 1]) }}" data-placeholder="{{ __('Without specified client') }}" class="select2-select"></select>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="submit" class="inline-flex justify-center items-center h-9 px-8 bg-brand text-white text-sm rounded-full hover:bg-blue-800 transition ml-4">
+                            {{ __('Submit') }}
+                        </button>
                     </div>
                 </div>
-            </div>
+            </form>
         @endif
     @endif
 @endsection
