@@ -91,14 +91,71 @@
             }
         }
     });
+    $('input', '[data-type="item"]').on('change', function(){
+        var data = JSON.parse($(this).attr('data-merge'));
+        if($(this).is(':radio')){
+            data[1] = $(this).val();
+        }
+        queue(data);
+    });
     $('input', '[data-type="item"][data-autonext]').on('change', function(){
         if($(this).is(':radio')){
             $(this).next().css('opacity', '');
-            $('[name="'+ $(this).attr('name') + '"]').not('[value="' + $(this).val() + '"]').next().fadeTo('fast', .2, function(){
-                setTimeout(next, 300);
-            });
+            $('[name="'+ $(this).attr('name') + '"]').not('[value="' + $(this).val() + '"]').next().fadeTo('fast', .2);
+            var _self = this;
+            setTimeout(function(){
+                next();
+                $('[name="'+ $(_self).attr('name') + '"]').next().css('opacity', '');
+            }, 300);
         }
     });
+    var queues_list = [];
+    var requesting = false;
+    var tryTimes = [1, 3, 5, 10, 15];
+    var tryCount = 0;
+    function queue(data){
+        queues_list.push(data);
+        if(requesting) return false;
+        tryCount = -1;
+        $('#sync_status').html('درحال ذخیره‌کردن...');
+        send();
+    }
+
+    function send(){
+        requesting = true;
+        var data = queues_list.splice(0);
+        $.ajax({
+            dataType: "json",
+            url: '/$/'+sample_id+'/items',
+            method: 'post',
+            data: {items : data}
+        }).always(function (response, status){
+            if (status != 'success')
+            {
+                for (var i = 0; i < data.length; i++) {
+                    queues_list.push(data[i]);
+                }
+                $('#sync_status').html('در تلاش برای ذخیره‌کردن...');
+                trySend();
+            }
+            else
+            {
+                if (queues_list.length){
+                    tryCount = -1;
+                    send();
+                    $('#sync_status').html('درحال ذخیره‌کردن...');
+                } else{
+                    requesting = false;
+                    $('#sync_status').html('بدون تغییر');
+                }
+            }
+        });
+    }
+
+    function trySend(){
+        tryCount = Math.min(tryCount + 1, tryTimes.length - 1);
+        setTimeout(send, tryTimes[tryCount] * 1000);
+    }
 })();
 // (function(){
 //     var current = 0;
