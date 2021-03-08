@@ -21,3 +21,24 @@
 [data-page="samples-form"] [data-panel="description"] p {
     @apply text-gray-700 mt-2;
 }
+
+/* Sample Item */
+.sample-item-radio label {
+    @apply bg-gray-50 rounded border border-gray-100 p-2 flex items-center hover:border-brand transition;
+}
+
+.sample-item-radio .number {
+    @apply flex items-center justify-center flex-shrink-0 text-sm border border-gray-200 text-gray-700 w-7 h-7 pt-1 rounded-full;
+}
+
+.sample-item-radio .answer {
+    @apply text-gray-700 mr-2;
+}
+
+.sample-item-radio input:checked+label {
+    @apply border border-brand;
+}
+
+.sample-item-radio input:checked+label .number {
+    @apply bg-brand text-white border-brand;
+}
