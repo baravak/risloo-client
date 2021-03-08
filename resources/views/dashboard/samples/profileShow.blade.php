@@ -1,3 +1,5 @@
+@if ($sample->profiles)
+
 <div data-xhr="sample-profiles" id="sample-profile">
     @if($profile_png = $sample->profiles->where('mode', 'profile_png')->first())
     <div class="mt-4">
@@ -14,4 +16,5 @@
     @endif
 </div>
 @includeIf('dashboard.samples.scales.' . substr($sample->scale->id, 1), ['scoring'=> (object) ['profiles' => $sample->profiles, 'score' => $sample->score, 'id' => $sample->id]])
+@endif
 
