@@ -1,7 +1,23 @@
 [data-page="samples-form"] [data-panel="description"] h2 {
-    @apply font-medium text-lg mb-4;
+    @apply font-bold text-lg mb-4;
+}
+
+[data-page="samples-form"] [data-panel="description"] h3 {
+    @apply font-semibold text-lg my-4;
+}
+
+[data-page="samples-form"] [data-panel="description"] ol {
+    @apply block list-decimal pr-8 mb-8;
+}
+
+[data-page="samples-form"] [data-panel="description"] ol li {
+    @apply mt-4;
+}
+
+[data-page="samples-form"] [data-panel="description"] ol ul li {
+    @apply mt-2;
 }
 
 [data-page="samples-form"] [data-panel="description"] p {
-    @apply text-gray-700;
+    @apply text-gray-700 mt-2;
 }
