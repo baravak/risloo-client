@@ -7,7 +7,7 @@
     <div id="content" class="flex">
         <div class="flex-1 pl-4">
             <div class="flex h-1 rounded-full overflow-hidden bg-gray-200 mb-2">
-                <div id="progress" class="bg-brand transition" role="progressbar" style="width: 10%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div id="progress" class="bg-brand transition" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="border border-gray-300 p-4 rounded">
                 @include('samples.panel.description')

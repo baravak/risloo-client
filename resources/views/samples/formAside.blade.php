@@ -1,26 +1,20 @@
 <div class="flex-shrink-0 w-56">
     <div class="flex">
-        <a href="" id="nav-prev" class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm disabled direct">
+        <a id="nav-prev" class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm disabled direct">
             <i class="fal fa-chevron-right"></i>
         </a>
 
         <select id="nav-count" class="flex-1 text-sm mx-2 h-9 border border-gray-200 rounded-sm">
-            <option value="">توضیحات</option>
-            <option value="">مقدمه</option>
-            <option value="">۱</option>
-            <option value="">۲</option>
-            <option value="">۳</option>
-            <option value="">۴</option>
         </select>
 
-        <a href="" id="nav-next" class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm direct">
+        <a id="nav-next" class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm direct">
             <i class="fal fa-chevron-left"></i>
         </a>
     </div>
 
     <div class="flex items-center justify-between text-xs mt-2 mb-4">
         <span class="text-gray-500" id="sync_status" title="{{ __('Save status') }}">{{ __('No change') }}</span>
-        <span class="text-gray-500">0/72</span>
+        <span class="text-gray-500" id="nav-text">0/0</span>
     </div>
 
     <div class="mb-4">

@@ -10,7 +10,7 @@
 @section('body')
     <body class="flex flex-col" data-page="{{isset($global->page) ? $global->page : ''}}">
         @include('samples.formBody')
-        <script>
+        {{-- <script>
             var sample_id = '{{substr($sample->id, 1)}}';
             var prerequisite = {!! $prerequisites !!};
             var items = {!! $items !!};
@@ -32,7 +32,7 @@
                     });
                 }
             });
-        </script>
+        </script> --}}
         @yield('scripts')
     </body>
 @endsection

@@ -146,7 +146,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                 data : {samples : samples},
                 complete : function(){
                     if(timeout) clearTimeout(timeout);
-                    timeout = setTimeout(send, 3000);
+                    timeout = setTimeout(send, 5000);
                 }
             }
         });
