@@ -30,9 +30,11 @@
 
     function display(pointer){
         pannel.addClass('hidden').css('display', 'none');
+        pannel.eq(current).trigger('pannel:hide');
         pannel.eq(pointer).css('display', 'none').removeClass('hidden').fadeIn('slow', function(){
             $('#nav-count').removeAttr('disabled');
             blockEvents = false;
+            pannel.eq(pointer).trigger('pannel:show');
         });
         current = pointer;
         if(pannel.eq(pointer).attr('data-type') == 'item'){
@@ -156,6 +158,10 @@
         tryCount = Math.min(tryCount + 1, tryTimes.length - 1);
         setTimeout(send, tryTimes[tryCount] * 1000);
     }
+
+    $('[data-nav="information"]').on('pannel:hide', function(){
+        $('form', this).trigger('submit');
+    });
 })();
 // (function(){
 //     var current = 0;

@@ -10,6 +10,9 @@ class SampleFormController extends Controller
     public function form(Request $request, $serial)
     {
         $sample = $this->data->sample = Sample::apiShow($serial);
+        if(!$sample->client){
+            return abort(403, 'Sample has not client');
+        }
         $this->data->global->title = $sample->scale->title . '-' . $sample->edition;
         $js = '[';
         foreach ($this->data->sample->items as $key => $value) {
