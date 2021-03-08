@@ -6,6 +6,6 @@ body {
 	min-height: 100%;
 }
 
-[dir="rtl"] {
+[dir="rtl"], kbd {
     font-family: dana!important;
 }
