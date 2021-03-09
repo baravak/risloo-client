@@ -2,17 +2,14 @@
     var pannel = $('[data-nav]');
     var current = 0;
     var indexs = [];
-    var count_items = 0;
     var blockEvents = false;
+    var items = $('[data-nav][data-type="item"]');
     pannel.each(function(){
         var slug = $(this).attr('data-nav');
         var title = $(this).attr('data-title');
         indexs.push(slug);
         var nav = $('<option></option>').attr('value', slug).html(title);
         $('#nav-count').append(nav);
-        if($(this).attr('data-type') == 'item'){
-            ++count_items;
-        }
     });
     function find(slug){
         return indexs.indexOf(slug);
@@ -38,9 +35,9 @@
         });
         current = pointer;
         if(pannel.eq(pointer).attr('data-type') == 'item'){
-            $('#nav-text').html(pannel.eq(pointer).attr('data-nav') + '/' + count_items);
+            $('#nav-text').html(pannel.eq(pointer).attr('data-nav') + '/' + items.length);
         }else{
-            $('#nav-text').html('0/' + count_items);
+            $('#nav-text').html('0/' + items.length);
         }
         var progress = (current / (pannel.length - 1)) * 100;
         $('#progress').css('width', progress + '%');
@@ -97,8 +94,10 @@
         var data = JSON.parse($(this).attr('data-merge'));
         if($(this).is(':radio')){
             data[1] = $(this).val();
+            $(this).parents('[data-type="item"]').attr('data-answer', $(this).val());
         }
         queue(data);
+        findEmpty();
     });
     $('input', '[data-type="item"][data-autonext]').on('change', function(){
         if($(this).is(':radio')){
@@ -162,6 +161,42 @@
     $('[data-nav="information"]').on('pannel:hide', function(){
         $('form', this).trigger('submit');
     });
+
+    function findEmpty(){
+        var empty = [];
+        var last = null;
+        items.each(function(i){
+            if($(this).attr('data-answer-type') == 'optional'){
+                if(!$(this).attr('data-answer')){
+                    if(last === null){
+                        last = i + 1;
+                    }
+                }else{
+                    if(last !== null){
+                        empty.push([last, i]);
+                    }
+                    last = null;
+                }
+            }
+        });
+        if(last !== null){
+            empty.push([last, items.length]);
+        }
+        empty.forEach(function(e, i){
+            if(e[0] == e[1]){
+                empty[i] = e[0];
+            }else if(e[1] - e[0] == 1){
+                empty[i] = e[0] + ' و ' + e[1];
+            }else{
+                empty[i] = e[0] + ' تا ' + e[1];
+            }
+            empty[i] = $('<a href="#'+e[0]+'" class="m-1 p-1 dir-rtl text-left inline-block border:gray border border-gray-300"></a>').text(empty[i]);
+        });
+        $('#nav-empty-answers').html('');
+        $('#nav-empty-answers').append(empty);
+    }
+    findEmpty();
+
 })();
 // (function(){
 //     var current = 0;

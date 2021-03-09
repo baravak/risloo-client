@@ -10,8 +10,8 @@
                 <div id="progress" class="bg-brand transition" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="border border-gray-300 p-4 rounded">
-                @include('samples.panel.description')
                 @includeWhen($sample->prerequisites, 'samples.panel.information')
+                @include('samples.panel.description')
                 @include('samples.panel.items')
                 @include('samples.panel.close')
             </div>

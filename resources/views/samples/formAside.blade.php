@@ -23,6 +23,8 @@
             <span class="text-sm text-gray-500 mr-2 group-hover:text-blue-600">{{ __('jump to empty test') }}</span>
         </label>
     </div>
+    <div class="mb-4 text-xs text-gray-500 mr-2 group-hover:text-blue-600" id="nav-empty-answers">
+    </div>
 
     <div class="hidden text-xs bg-yellow-50 border border-yellow-200 rounded p-4" role="alert" id="sync_alert">
         <p class="text-gray-700 font-semibold mb-2">ارتباط شما با سرور قطع شده است!</p>
