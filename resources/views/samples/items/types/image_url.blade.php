@@ -1,3 +1,3 @@
-<div class="w-full sm:w-1/2 mx-auto mb-8">
-    <img src="{{ $item->image_url }}.svg" alt="" class="w-full">
+<div class="w-2/3 sm:w-2/5 mx-auto mb-4">
+    <img src="{{ $item->image_url }}.png" alt="" class="w-full">
 </div>

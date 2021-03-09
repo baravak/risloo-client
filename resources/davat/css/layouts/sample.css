@@ -45,15 +45,15 @@
 
 /* Sample Item Radio Image */
 .sample-item-image label {
-    @apply flex flex-col border border-gray-200 rounded p-4;
+    @apply flex flex-col border border-gray-200 rounded p-1;
 }
 
 .sample-item-image .number {
-    @apply flex items-center justify-center w-7 h-7 border border-gray-200 rounded-full pt-1 mb-2;
+    @apply flex items-center justify-center w-5 md:w-7 h-5 md:h-7 border border-gray-200 rounded-full pt-1 mb-1 text-sm md:text-base;
 }
 
 .sample-item-image img {
-    @apply w-4/5 mx-auto;
+    @apply mx-auto;
 }
 
 .sample-item-image input:checked+label {
