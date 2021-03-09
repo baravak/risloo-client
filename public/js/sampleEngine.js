@@ -99,7 +99,8 @@
         queue(data);
         findEmpty();
     });
-    $('input', '[data-type="item"][data-autonext]').on('change', function(){
+    $('input', '[data-type="item"]').on('change', function(){
+        if(['optional', 'optional_images'].indexOf($(this).parents('[data-nav]').attr('data-answer-type')) == -1) return true;
         if($(this).is(':radio')){
             $(this).next().css('opacity', '');
             $('[name="'+ $(this).attr('name') + '"]').not('[value="' + $(this).val() + '"]').next().fadeTo('fast', .2);
