@@ -238,5 +238,7 @@
     "Create new sample for :type :serial" : "ساخت نمونه برای :type :serial",
     "Create new sample in scale :scale" : "ساخت نمونه در مقیاس :scale",
     "jump to empty test" : "پرش روی تست‌های خالی",
-    "Return" : "بازگشت"
+    "Return" : "بازگشت",
+    "Group link" : "لینک گروهی",
+    "Count of users" : "تعداد اعضاء"
 }

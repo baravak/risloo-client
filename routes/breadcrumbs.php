@@ -144,6 +144,10 @@ Breadcrumbs::for('dashboard.sessions.show', function ($trail, $data) {
     $trail->push(__('Session'), null);
     $trail->push($data['session']->id, $data['session']->route('show'));
 });
+Breadcrumbs::for('dashboard.sessions.report.create', function ($trail, $data) {
+    $trail->parent('dashboard.sessions.show', $data);
+    $trail->push(__('Report'), route('dashboard.sessions.report.create', $data['session']->id));
+});
 Breadcrumbs::for('dashboard.sessions.practices.create', function ($trail, $data) {
     $trail->parent('dashboard.sessions.show', $data);
     $trail->push(__('Create new practice'), route('dashboard.sessions.practices.create', $data['session']->id));
@@ -152,4 +156,11 @@ Breadcrumbs::for('dashboard.sessions.practices.create', function ($trail, $data)
 Breadcrumbs::for('dashboard.room.cases.create', function ($trail, $data) {
     $trail->parent('dashboard.rooms.show', $data);
     $trail->push(__("Create new case"), route('dashboard.room.cases.create', $data['room']->id));
+});
+
+
+Breadcrumbs::for('dashboard.cases.index', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+
+    $trail->push(__('Cases'), route('dashboard.cases.index'));
 });
