@@ -49,7 +49,7 @@
 }
 
 .sample-item-image .number {
-    @apply flex items-center justify-center w-5 md:w-7 h-5 md:h-7 border border-gray-200 rounded-full pt-1 mb-1 text-sm md:text-base;
+    @apply flex items-center justify-center w-4 md:w-7 h-4 md:h-7 border border-gray-200 rounded-full pt-1 mb-1 text-xs md:text-base;
 }
 
 .sample-item-image img {
