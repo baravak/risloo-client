@@ -1,4 +1,4 @@
-<div class="mb-4 text-xs text-gray-500 mr-2 group-hover:text-blue-600" id="nav-empty-answers"></div>
+<div class="text-xs text-gray-500 group-hover:text-blue-600" id="nav-empty-answers"></div>
 
 <div class="mb-4">
     <label class="flex items-center group">
