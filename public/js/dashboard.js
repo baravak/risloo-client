@@ -408,50 +408,6 @@ $('body').on('statio:dashboard:center:users:create', function(){
         }
     }).trigger('change');
 });
-$('body').on('statio:dashboard:samples:create', function(){
-    $('#room-tab').on('show.bs.tab', function () {
-        $('input, select, checkbox, radio', '#room').each(function () {
-            if ($(this).is('.disabled:disabled')) {
-                $(this).removeAttr('disabled').removeClass('disabled');
-            }
-        });
-        $('input, select, checkbox, radio', '#case').each(function () {
-            if (!$(this).is(':disabled')) {
-                $(this).attr('disabled', 'disabled').addClass('disabled');
-            }
-        });
-    }).on('hide.bs.tab', function () {
-        $('input, select, checkbox, radio', '#room').each(function () {
-            if (!$(this).is(':disabled')) {
-                $(this).attr('disabled', 'disabled').addClass('disabled');
-            }
-        });
-        $('input, select, checkbox, radio', '#case').each(function () {
-            if ($(this).is('.disabled:disabled')) {
-                $(this).removeAttr('disabled').removeClass('disabled');
-            }
-        });
-    });
-    $('#room-tab').trigger(($('#room-tab').is('.active') ? 'show' : 'hide') + '.bs.tab');
-
-
-    $('#room_client_id').on('change', function () {
-        if (!$(this).val() || !$(this).val().length) {
-            $('#count').removeAttr('disabled');
-        }
-        else {
-            $('#count').attr('disabled', 'disabled');
-        }
-    });
-    $('#count').on('change', function () {
-        if (!$(this).val()) {
-            $('#room_client_id').removeAttr('disabled');
-        }
-        else {
-            $('#room_client_id').attr('disabled', 'disabled');
-        }
-    });
-});
 
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     var selectedTab = location.hash;
