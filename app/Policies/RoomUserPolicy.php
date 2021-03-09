@@ -20,17 +20,12 @@ class RoomUserPolicy
         {
             return false;
         }
-        if($room->manager->id == $user->id)
+        if($room->acceptation && $room->acceptation->position == 'manager')
         {
             return true;
         }
-        $acceptation = auth()->user()->centers->where('id', $room->center->id)->first();
-        if ($acceptation) {
-            $acceptation = $acceptation->acceptation;
-            if(!in_array($acceptation->position, config('users.room_managers')))
-            {
-                return false;
-            }
+        if ($room->center->acceptation && in_array($room->center->acceptation->position, ['manager', 'operator'])) {
+            return true;
         }
         return false;
     }
