@@ -63,3 +63,7 @@
 .sample-item-image input:checked+label .number {
     @apply bg-brand text-white border-brand;
 }
+
+.aside-box-shadow {
+    box-shadow: 0 0px 10px rgb(0 0 0 / 20%);
+}
