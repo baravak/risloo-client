@@ -1,19 +1,19 @@
 <div class="flex">
-    <a id="nav-prev" class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm disabled direct">
+    <a id="nav-prev" data-nav-prev class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm disabled direct">
         <i class="fal fa-chevron-right"></i>
     </a>
 
-    <select id="nav-count" class="flex-1 text-sm mx-2 h-9 border border-gray-200 rounded-sm">
+    <select id="nav-count" data-nav-count class="flex-1 text-sm mx-2 h-9 border border-gray-200 rounded-sm">
     </select>
 
-    <a id="nav-next" class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm direct">
+    <a id="nav-next" data-nav-next class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm direct">
         <i class="fal fa-chevron-left"></i>
     </a>
 </div>
 
 <div class="flex items-center justify-between text-xs mt-2 mb-4 cursor-default">
-    <span class="text-gray-500" id="sync_status" title="{{ __('Save status') }}">{{ __('No change') }}</span>
-    <span class="text-gray-500" id="nav-text">0/0</span>
+    <span class="text-gray-500" id="sync_status" data-sync-status title="{{ __('Save status') }}">{{ __('No change') }}</span>
+    <span class="text-gray-500" id="nav-text" data-nav-text>0/0</span>
 </div>
 
 <div class="mb-4">
