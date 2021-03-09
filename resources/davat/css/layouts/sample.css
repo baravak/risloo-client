@@ -22,7 +22,7 @@
     @apply text-gray-700 mt-2;
 }
 
-/* Sample Item */
+/* Sample Item Radio Text */
 .sample-item-radio label {
     @apply bg-gray-50 rounded border border-gray-100 p-2 flex items-center hover:border-brand transition;
 }
@@ -40,5 +40,26 @@
 }
 
 .sample-item-radio input:checked+label .number {
+    @apply bg-brand text-white border-brand;
+}
+
+/* Sample Item Radio Image */
+.sample-item-image label {
+    @apply flex flex-col border border-gray-200 rounded p-4;
+}
+
+.sample-item-image .number {
+    @apply flex items-center justify-center w-7 h-7 border border-gray-200 rounded-full pt-1 mb-2;
+}
+
+.sample-item-image img {
+    @apply w-4/5 mx-auto;
+}
+
+.sample-item-image input:checked+label {
+    @apply border border-brand;
+}
+
+.sample-item-image input:checked+label .number {
     @apply bg-brand text-white border-brand;
 }
