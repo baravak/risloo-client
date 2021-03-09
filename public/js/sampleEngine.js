@@ -4,11 +4,12 @@
     var indexs = [];
     var blockEvents = false;
     var items = $('[data-nav][data-type="item"]');
-    pannel.each(function(){
+    pannel.each(function(i){
         var slug = $(this).attr('data-nav');
         var title = $(this).attr('data-title');
         indexs.push(slug);
         var nav = $('<option></option>').attr('value', slug).html(title);
+        if(i == 0) nav.attr('selected', 'selected');
         $('[data-nav-count]').append(nav);
     });
     function find(slug){
@@ -68,7 +69,7 @@
         location.hash = '#' + $(this).val();
     });
     $(window).on('hashchange', function(){
-        var slug = location.hash.replace(/^#/, '');
+        var slug = location.hash.replace(/^#/, '') || indexs[0];
         var index = find(slug);
         $('[data-nav-count]').val(slug);
         display(index > -1 ? index : 0);

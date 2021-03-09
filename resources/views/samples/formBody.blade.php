@@ -14,7 +14,6 @@
                 @include('samples.panel.description')
                 @include('samples.panel.items')
                 @include('samples.panel.close')
-                {{-- @include('samples.items.imageItem') --}}
             </div>
         </div>
         <div class="lg:flex-shrink-0 lg:w-56 hidden lg:block">

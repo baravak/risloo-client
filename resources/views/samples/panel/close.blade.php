@@ -1,4 +1,4 @@
-<div data-panel="close" class="hidden">
+<div data-nav="close" data-title="@lang('Close')" class="hidden">
     <div id="close">
         <div>
             <h2 class="font-medium text-lg mb-2">{{ __('End sample') }}</h2>
