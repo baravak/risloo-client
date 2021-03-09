@@ -13,15 +13,15 @@
 </div>
 
 <div class="flex">
-    <a id="nav-prev" class="flex justify-center items-center w-12 h-12 border border-gray-200 rounded-sm disabled direct">
+    <a id="nav-prev" class="flex justify-center items-center w-12 h-12 border border-gray-300 rounded-sm disabled direct">
         <i class="fal fa-chevron-right"></i>
     </a>
 
-    <a id="nav-next" class="flex justify-center items-center w-12 h-12 border border-gray-200 rounded-sm mr-2 direct">
+    <a id="nav-next" class="flex justify-center items-center w-12 h-12 border border-gray-300 rounded-sm mr-2 direct">
         <i class="fal fa-chevron-left"></i>
     </a>
 
-    <select id="nav-count" class="flex-1 text-sm mr-4 h-12 border border-gray-200 rounded-sm">
+    <select id="nav-count" class="flex-1 text-sm mr-4 h-12 border border-gray-300 rounded-sm">
     </select>
 </div>
 
