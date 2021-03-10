@@ -67,3 +67,11 @@
 .aside-box-shadow {
     box-shadow: 0 0px 10px rgb(0 0 0 / 20%);
 }
+
+.nav-empty-answers {
+    @apply text-xs text-gray-500;
+}
+
+.nav-empty-answers a {
+    @apply ml-1 mb-1 p-1 dir-rtl text-left inline-block border border-gray-300 rounded hover:bg-gray-50 hover:text-brand;
+}

@@ -16,13 +16,15 @@
     <span class="text-gray-500" id="nav-text" data-nav-text>0/0</span>
 </div>
 
-<div class="mb-4">
-    <label class="flex items-center group">
-        <input id="skip" type="checkbox" class="w-3.5 h-3.5 border border-gray-500 hover:border-brand rounded-sm focus:ring-1 focus:ring-offset-1">
-        <span class="text-sm text-gray-500 mr-2 group-hover:text-blue-600">{{ __('jump to empty test') }}</span>
-    </label>
-</div>
-<div class="mb-4 text-xs text-gray-500 mr-2 group-hover:text-blue-600" id="nav-empty-answers">
-</div>
+@if (false)
+    <div class="mb-4">
+        <label class="flex items-center group">
+            <input id="skip" type="checkbox" class="w-3.5 h-3.5 border border-gray-500 hover:border-brand rounded-sm focus:ring-1 focus:ring-offset-1">
+            <span class="text-sm text-gray-500 mr-2 group-hover:text-blue-600">{{ __('jump to empty test') }}</span>
+        </label>
+    </div>
+@endif
+
+<div class="nav-empty-answers" id="nav-empty-answers"></div>
 
 @include('samples.disconnected')
