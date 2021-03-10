@@ -7,7 +7,7 @@
     <div id="content" class="flex flex-col lg:flex-row">
         <div class="lg:flex-1 lg:pl-4 mb-4 lg:mb-0">
             <div class="flex h-1 rounded-full overflow-hidden bg-gray-200 mb-2">
-                <div id="progress" class="bg-brand transition" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div id="progress" class="bg-brand transition-all duration-300 ease-linear" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="border border-gray-300 p-4 mb-40 lg:mb-0 rounded">
                 @includeWhen($sample->prerequisites, 'samples.panel.information')

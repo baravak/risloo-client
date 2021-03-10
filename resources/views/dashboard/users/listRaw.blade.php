@@ -41,8 +41,10 @@
         <div class="inline-block mr-4">
             <a href="{{ $user->route('edit') }}" title="{{ __('Edit') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
         </div>
-        <div class="inline-block">
-            <a href="{{ route('auth.as', ['user' => $user->id]) }}"  data-lijax="click" data-method="POST" title="{{ __('Login to this...') }}"><i class="fal fa-user-cog text-sm leading-relaxed text-blue-600 hover:text-blue-700"></i></a>
-        </div>
+        @if ($user->type != 'admin')
+            <div class="inline-block">
+                <a href="{{ route('auth.as', ['user' => $user->id]) }}"  data-lijax="click" data-method="POST" title="{{ __('Login to this...') }}"><i class="fal fa-user-cog text-sm leading-relaxed text-blue-600 hover:text-blue-700"></i></a>
+            </div>
+        @endif
     </td>
 </tr>
