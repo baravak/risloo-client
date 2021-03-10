@@ -22,6 +22,7 @@
     @endif
 
     <script src="/vendors/tabby/js/tabby.js"></script>
+    <script src="/vendors/micromodal.min.js"></script>
 
     <script src="@staticVersion('/js/sarkoot.min.js')"></script>
 
