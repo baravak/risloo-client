@@ -13,8 +13,15 @@ class CaseController extends Controller
     public function index(Request $request)
     {
         $cases = $this->data->cases = TherapyCase::apiIndex($request->all());
-        if($request->instance && $request->header('data-xhr-base')){
+        if($request->instance && $request->header('data-xhr-base') == 'with-client-checkbox'){
             $view = 'dashboard.cases.sampleSelect2';
+                $this->data->global = $cases->map(function($case){
+                    return ['id' => $case->id, 'title' => $case->id];
+                });
+            return $this->view($request, $view);
+        }
+        if($request->instance && $request->header('data-xhr-base')){
+            $view = 'dashboard.cases.select2';
                 $this->data->global = $cases->map(function($case){
                     return ['id' => $case->id, 'title' => $case->id];
                 });

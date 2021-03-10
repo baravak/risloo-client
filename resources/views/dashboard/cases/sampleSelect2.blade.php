@@ -2,7 +2,7 @@
     <div data-id="{{ $case->id }}">
         <div data-selection>
             <div class="text-sm">{{ $case->id }}</div>
-            <div class="text-xs">{{ $case->clients->pluck('user.name')->join(', ') }}</div>
+            <div class="text-xs">{{ $case->clients->pluck('name')->join(', ') }}</div>
         </div>
 
         <div data-xhr="case-clients">

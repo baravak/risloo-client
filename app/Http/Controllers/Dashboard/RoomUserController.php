@@ -17,7 +17,7 @@ class RoomUserController extends Controller
             case 'select2':
                 $view = 'dashboard.room-users.select2';
                 $this->data->global = $users->map(function($user){
-                    return ['id' => $user->id, 'title' => $user->user->name ?: $user->id];
+                    return ['id' => $user->id, 'title' => $user->name ?: $user->id];
                 });
                 break;
             default : $view = 'dashboard.room-users.index';

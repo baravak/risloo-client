@@ -7,6 +7,7 @@
             minimumInputLength: 0,
             dir: "rtl",
             templateResult : function(data){
+                if(!data.id) return data.text;
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');
                     data.html = $('[data-id="'+data.id+'"]', $(html));
@@ -14,6 +15,7 @@
                 return data.html ? $('[data-selection]', data.html) : data.text;
             },
             templateSelection : function(data){
+                if(!data.id) return data.text;
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');
                     html = $('[data-id="'+data.id+'"]', $(html))[0].outerHTML;

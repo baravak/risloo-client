@@ -17,7 +17,7 @@
 
         <div class="mt-4">
             <label for="room_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Room') }}</label>
-            <select class="select2-select" data-relation="case_id room_client_id" data-template="room" name="room_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{ route('dashboard.rooms.index' , ['my_management' => 1, 'instance' => 1]) }}">
+            <select class="select2-select" data-relation="case_id room_client_id bulk_case_id" name="room_id"  id="room_id" data-url="{{ route('dashboard.rooms.index' , ['my_management' => 1, 'instance' => 1]) }}">
             @isset($room)
                 <option value="{{$room->id}}" selected>{{ $room->manager->name  }}</option>
             @endisset
@@ -33,6 +33,7 @@
             <ul data-tabs>
                 <li><a data-tabby-default href="#case-tab" class="direct" role="presentation">{{ __('Case') }}</a></li>
                 <li><a href="#room-tab" class="direct" role="presentation">{{ __('Therapy room') }}</a></li>
+                <li><a href="#bulk-tab" class="direct" role="presentation">{{ __('Bulk sample') }}</a></li>
             </ul>
 
             <div id="case-tab">
@@ -41,6 +42,10 @@
 
             <div id="room-tab">
                 @include('dashboard.samples.createRoom')
+            </div>
+
+            <div id="bulk-tab">
+                @include('dashboard.samples.createBulk')
             </div>
         </div>
     </div>

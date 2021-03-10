@@ -168,6 +168,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
             minimumInputLength: 0,
             dir: "rtl",
             templateResult : function(data){
+                if(!data.id) return data.text;
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');
                     data.html = $('[data-id="'+data.id+'"]', $(html));
@@ -175,6 +176,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                 return data.html ? $('[data-selection]', data.html) : data.text;
             },
             templateSelection : function(data){
+                if(!data.id) return data.text;
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');
                     html = $('[data-id="'+data.id+'"]', $(html))[0].outerHTML;
@@ -280,33 +282,23 @@ $('body').on('statio:dashboard:center:users:edit', function () {
 });
 
 $('body').on('statio:dashboard:samples:create', function(){
-
-    $('#room-tab').on('tabby.show', function (e, event) {
+    $('[role=tabpanel]').on('tabby.show', function (e, event) {
         $('.disabled:disabled', this).removeAttr('disabled').removeClass('disabled');
-        $('input, select, checkbox, radio', '#case-tab').not(':disabled').attr('disabled', 'disabled').addClass('disabled');
-        $('#count').trigger('change');
-        $('#room_client_id').trigger('change');
-    }).on('tabby.hide', function (e, event) {
-        $('input, select, checkbox, radio', this).not(':disabled').attr('disabled', 'disabled').addClass('disabled');
-        $('.disabled:disabled', '#case-tab').removeAttr('disabled').removeClass('disabled');
-    }).trigger($('#room-tab').is('[hidden=hidden]') ? 'tabby.hide' : 'tabby.show');
+        $('input, select, checkbox, radio', '[role=tabpanel][hidden]').not(':disabled').attr('disabled', 'disabled').addClass('disabled');
+    });
 
-    $('#room_client_id').not(':disabled').on('change', function () {
-        if (!$(this).val() || !$(this).val().length) {
-            $('#count').removeAttr('disabled');
-        }
-        else {
-            $('#count').attr('disabled', 'disabled');
+    $('#bulk-tab').on('tabby.show', function(){
+        $('#case_status').trigger('change');
+    });
+
+    $('#case_status').on('change', function(){
+        if($(this).val() == 'exist'){
+            $('#bulk_case_id').removeAttr('disabled');
+        }else{
+            $('#bulk_case_id').attr('disabled', 'disabled');
         }
     });
-    $('#count').not(':disabled').on('change', function () {
-        if (!$(this).val()) {
-            $('#room_client_id').removeAttr('disabled');
-        }
-        else {
-            $('#room_client_id').attr('disabled', 'disabled');
-        }
-    });
+    $('[role=tabpanel]:not([hidden])').trigger('tabby.show');
 });
 
 (function(){
