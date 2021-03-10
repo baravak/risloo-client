@@ -9,5 +9,12 @@
         <div class="text-sm sm:text-base text-center text-gray-700 font-medium">
             {{ $room->manager->name }}
         </div>
+        <div class="text-xs text-center text-gray-700 mt-2">
+            @if ($room->center->type == 'personal_clinic')
+                @lang('Personal clinic')
+            @else
+                {{ $room->center->detail->title }}
+            @endif
+        </div>
     </div>
 </a>
