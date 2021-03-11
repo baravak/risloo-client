@@ -11,7 +11,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <a href="tel:+{{ $user->mobile }}" class="block text-right dir-ltr text-xs text-gray-700 hover:text-blue-500 direct">+{{ $user->mobile }}</a>
+            <a href="tel:+{{ $user->mobile }}" class="inline-block text-right dir-ltr text-xs text-gray-700 hover:text-blue-500 direct">+{{ $user->mobile }}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -66,28 +66,27 @@
             <x-link-show :link="route('dashboard.center.users.show', ['center' => $center->id, 'user'=> $user->id])"/>
         </div>
         @can('update', $user)
-        <div class="inline-block">
-            <a href="{{ route('dashboard.center.users.edit', ['center' => $center->id, 'user' => $user->id]) }}" alt="ویرایش"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
-        </div>
+            <div class="inline-block mr-2">
+                <a href="{{ route('dashboard.center.users.edit', ['center' => $center->id, 'user' => $user->id]) }}" alt="ویرایش"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+            </div>
         @endcan
 
-        <div class="inline-block mr-2">
+        <div class="inline-block mr-1">
             @can('accept', [$user, $center])
-
                 <a href="{{route('dashboard.center.users.update', ['center' => $center->id, 'user'=> $user->id])}}" data-lijax="click" data-method="PUT" data-xhrBase='row' data-name="status" data-value="accept" class="inline-block px-3 py-1 text-xs text-white bg-green-600 hover:bg-green-700 rounded-full transition" title="{{ __('Accept') }}">{{ __('Accept') }}</a>
             @endcan
             @can('kick', [$user, $center])
-                <a href="{{route('dashboard.center.users.update', ['center' => $center->id, 'user'=> $user->id])}}" data-lijax="click" data-method="PUT" data-xhrBase='row' data-name="status" data-value="kick" class="inline-block px-3 py-1 text-xs text-red-600 hover:text-white border border-red-600 hover:bg-red-600 rounded-full transition" title="{{ __('Kick') }}">{{ __('Kick') }}</a>
+                <a href="{{route('dashboard.center.users.update', ['center' => $center->id, 'user'=> $user->id])}}" data-lijax="click" data-method="PUT" data-xhrBase='row' data-name="status" data-value="kick" class="inline-block px-3 py-1 text-xs text-gray-400 hover:text-red-600 border border-gray-400 hover:border-red-600 rounded-full transition" title="{{ __('Kick') }}">{{ __('Kick') }}</a>
             @endcan
         </div>
         @can('create', [\App\Room::class, $center, $user])
-        <div class="inline-block">
-            <a href="{{ route('dashboard.center.rooms.create', ['center' => $center->id, 'user' => $user->id]) }}" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="{{ __('Create room') }}">{{ __('Create room') }}</a>
-        </div>
+            <div class="inline-block">
+                <a href="{{ route('dashboard.center.rooms.create', ['center' => $center->id, 'user' => $user->id]) }}" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="{{ __('Create room') }}">{{ __('Create room') }}</a>
+            </div>
         @elseif($user->meta && $user->meta->room_id)
-        <div class="inline-block">
-            <a href="{{ route('dashboard.rooms.show', $user->meta->room_id) }}" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="@lang('Therapy room')">@lang('Therapy room')</a>
-        </div>
+            <div class="inline-block">
+                <a href="{{ route('dashboard.rooms.show', $user->meta->room_id) }}" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="@lang('Therapy room')">@lang('Therapy room')</a>
+            </div>
         @endcan
     </td>
 </tr>
