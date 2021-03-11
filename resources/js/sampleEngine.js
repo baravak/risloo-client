@@ -202,7 +202,7 @@
             }else{
                 empty[i] = e[0] + ' تا ' + e[1];
             }
-            empty[i] = $('<a href="#'+e[0]+'" class="m-1 p-1 dir-rtl text-left inline-block border:gray border border-gray-300"></a>').text(empty[i]);
+            empty[i] = $('<a href="#'+e[0]+'"></a>').text(empty[i]);
         });
         $('#nav-empty-answers').html('');
         $('#nav-empty-answers').append(empty);
