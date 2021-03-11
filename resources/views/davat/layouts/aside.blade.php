@@ -50,22 +50,24 @@
                     @endif
                 </ul>
             </li>
-            <li class="mb-1">
-                <a href="{{ route('dashboard.rooms.index') }}" data-metarget="rooms" data-metarget-pattern="^/dashboard/rooms.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
-                    <div class="flex items-center">
-                        <i class="fal fa-door-open ml-2"></i>
-                        <span class="font-light">{{ __('Rooms') }}</span>
-                    </div>
-                </a>
-            </li>
-            <li class="mb-1">
-                <a href="{{ route('dashboard.cases.index') }}" data-metarget="cases" data-metarget-pattern="^/dashboard/cases.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
-                    <div class="flex items-center">
-                        <i class="fal fa-folders ml-2"></i>
-                        <span class="font-light">{{ __('Cases') }}</span>
-                    </div>
-                </a>
-            </li>
+            @if (false)
+                <li class="mb-1">
+                    <a href="{{ route('dashboard.rooms.index') }}" data-metarget="rooms" data-metarget-pattern="^/dashboard/rooms.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                        <div class="flex items-center">
+                            <i class="fal fa-door-open ml-2"></i>
+                            <span class="font-light">{{ __('Rooms') }}</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="{{ route('dashboard.cases.index') }}" data-metarget="cases" data-metarget-pattern="^/dashboard/cases.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                        <div class="flex items-center">
+                            <i class="fal fa-folders ml-2"></i>
+                            <span class="font-light">{{ __('Cases') }}</span>
+                        </div>
+                    </a>
+                </li>
+            @endif
             <li class="mb-1">
                 <a href="{{ route('dashboard.sessions.index') }}" data-metarget="session" data-metarget-pattern="^/dashboard/session.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
@@ -105,14 +107,16 @@
                     </li>
                 </ul>
             </li>
-            {{-- <li class="mb-1">
-                <a href="{{ route('dashboard.documents.index') }}" data-metarget="samples" data-metarget-pattern="^/dashboard/documents.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
-                    <div class="flex items-center">
-                        <i class="fal fa-file-certificate ml-2"></i>
-                        <span class="font-light">{{ __('Documents') }}</span>
-                    </div>
-                </a>
-            </li> --}}
+            @if (false)
+                <li class="mb-1">
+                    <a href="{{ route('dashboard.documents.index') }}" data-metarget="samples" data-metarget-pattern="^/dashboard/documents.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                        <div class="flex items-center">
+                            <i class="fal fa-file-certificate ml-2"></i>
+                            <span class="font-light">{{ __('Documents') }}</span>
+                        </div>
+                    </a>
+                </li>
+            @endif
             @isset($layouts->asideMenu)
                 @include($layouts->asideMenu)
             @endisset
