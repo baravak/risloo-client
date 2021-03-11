@@ -10,12 +10,14 @@
                             <span class="font-medium">{{ __('Edit') }}</span>
                         </a>
                     @endcan
-                    @can('admin', App\User::class)
-                        <a href="{{ route('auth.as', ['user' => $user->id]) }}"  data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 border border-blue-600 text-blue-600 hover:bg-blue-50 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition-all mr-2">
-                            <i class="fal fa-user-cog"></i>
-                            <span class="mr-2 hidden sm:inline">{{ __('Login to this...') }}</span>
-                        </a>
-                    @endcan
+                    @if ($user->type != 'admin')
+                        @can('admin', App\User::class)
+                            <a href="{{ route('auth.as', ['user' => $user->id]) }}"  data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 border border-blue-600 text-blue-600 hover:bg-blue-50 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition-all mr-2">
+                                <i class="fal fa-user-cog"></i>
+                                <span class="mr-2 hidden sm:inline">{{ __('Login to this...') }}</span>
+                            </a>
+                        @endcan
+                    @endif
                 </div>
             <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($user)</div>
 
