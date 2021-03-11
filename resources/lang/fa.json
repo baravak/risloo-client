@@ -100,7 +100,6 @@
     "Create a case before doing the sample": "ساختن پرونده قبل از انجام نمونه",
     "Without create case": "بدون ساختن پرونده جدید",
     "Create individual case": "ساختن پرونده درمانی به ازای هر نمونه",
-    "Create group case": "ساختن یک پرونده گروهی برای همه نمونه‌ها",
     "Open": "باز",
     "Seald": "بازنشده",
     "Scoring": "نمرده‌دهی",
@@ -243,5 +242,11 @@
     "Count of users" : "تعداد اعضاء",
     "information" : "اطلاعات",
     "Bulk samples" : "نمونه‌های گروهی",
-    "Create new user": "ایجاد عضو جدید"
+    "Create new user": "ایجاد عضو جدید",
+    "Bulk sample" : "گروهی",
+    "Case status" : "وضعیت پرونده",
+    "Without case" : "بدون پرونده",
+    "Create personal case" : "ساخت پرونده مجزا برای هر فرد",
+    "Create group case" : "ساخت یک پرونده گروهی برای همه افراد",
+    "Exists case" : "افزودن در پرونده انتخابی"
 }
