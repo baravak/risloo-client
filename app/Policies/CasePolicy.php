@@ -10,6 +10,18 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class CasePolicy
 {
     use HandlesAuthorization;
+    public function viewAny(User $user, Room $room){
+        if($user->isAdmin()){
+            return true;
+        }
+        if($room->acceptation && $room->acceptation->position == 'manager'){
+            return true;
+        }
+        if($room->center->acceptation && in_array($room->center->acceptation->position, ['operator', 'manager'])){
+            return true;
+        }
+        return false;
+    }
 
     public function create(User $user, Room $room = null)
     {
