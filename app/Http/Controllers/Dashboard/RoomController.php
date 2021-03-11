@@ -33,26 +33,26 @@ class RoomController extends Controller
         return $this->view($request, $view);
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $center)
     {
         $this->authorize('create', Room::class);
         if($request->user && $request->center)
         {
-            $user = $this->data->user = CenterUser::apiShow($request->center, $request->user);
+            $user = $this->data->user = CenterUser::apiShow($center, $request->user);
             $this->data->center = $user->parentModel;
         }
-        elseif($request->center)
+        else
         {
-            $this->data->center = Center::apiShow($request->center);
+            $this->data->center = Center::apiShow($center);
         }
         return $this->view($request, 'dashboard.rooms.create');
     }
-    public function store(Request $request)
+    public function store(Request $request, $center)
     {
         $this->authorize('create', Room::class);
-        $response = Room::apiStore($request->counseling_center_id, $request->all(['psychologist_id']));
+        $response = Room::apiStore($center, $request->all(['psychologist_id']));
         return $response->response()->json([
-            'redirect' => route('dashboard.rooms.index', ['center' => $response->center->id])
+            'redirect' => route('dashboard.centers.show', ['center' => $response->center->id])
             ]);
     }
 
