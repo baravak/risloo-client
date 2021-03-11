@@ -82,7 +82,7 @@
         </div>
         @can('create', [\App\Room::class, $center, $user])
         <div class="inline-block">
-            <a href="{{ route('dashboard.rooms.create', ['center' => $center->id]) }}" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="{{ __('Create room') }}">{{ __('Create room') }}</a>
+            <a href="{{ route('dashboard.center.rooms.create', ['center' => $center->id]) }}" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition" title="{{ __('Create room') }}">{{ __('Create room') }}</a>
         </div>
         @elseif($user->meta && $user->meta->room_id)
         <div class="inline-block">

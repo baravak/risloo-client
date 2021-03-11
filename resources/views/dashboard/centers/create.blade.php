@@ -7,13 +7,13 @@
         <div class="mt-1">
             <label class="inline-flex items-center group">
                 <input type="radio" name="type" id="type-personal_clinic" value="personal_clinic" checked @radioChecked($user->gender, 'male') @radioChecked($center->type, 'personal_clinic') {!!isset($center) ? 'disabled' : ''!!} class="w-3.5 h-3.5 border border-gray-600 focus:ring-2 focus:ring-offset-2">
-                <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Personal') }}</span>  
+                <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Personal') }}</span>
             </label>
         </div>
         <div class="mt-1">
             <label class="inline-flex items-center group">
                 <input type="radio" name="type" id="type-counseling_center" value="counseling_center" @radioChecked($center->type, 'counseling_center') {!!isset($center) ? 'disabled' : ''!!} class="w-3.5 h-3.5 border border-gray-600 focus:ring-2 focus:ring-offset-2">
-                <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Counseling center') }}</span>  
+                <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Counseling center') }}</span>
             </label>
         </div>
     </div>
