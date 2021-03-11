@@ -8,7 +8,7 @@
         @endif
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
         @foreach ($user->rooms ?: [] as $room)
             <a href="{{ $room->route('show') }}" class="border border-gray-200 rounded hover:bg-gray-50 transition">
                 <div class="h-16 bg-gray-100 border-b border-gray-200"></div>
