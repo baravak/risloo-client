@@ -1,8 +1,8 @@
-<input type="hidden" name="type" value="case_client">
+<input type="hidden" name="type" value="case_user">
 <div>
     <div class="mt-4">
         <label for="case_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Case') }}</label>
-        <select class="select2-select"  id="case_id" data-url="{{ isset($room) ? route('dashboard.cases.index', ['room' => $room->id, 'instance' => 1]) : '' }}" data-url-pattern="{{ route('dashboard.cases.index', ['room' => '%%', 'instance' => 1]) }}" data-relation="session_id" data-xhr-base="with-client-checkbox">
+        <select class="select2-select"  id="case_id" name="case_id" data-url="{{ isset($room) ? route('dashboard.cases.index', ['room' => $room->id, 'instance' => 1]) : '' }}" data-url-pattern="{{ route('dashboard.cases.index', ['room' => '%%', 'instance' => 1]) }}" data-relation="session_id" data-xhr-base="with-client-checkbox">
             @isset($case)
             <option value="{{$case->id}}" selected>{{$case->clients->pluck('user.name')->join('-')}}</option>
             @endisset

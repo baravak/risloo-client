@@ -1,4 +1,4 @@
-<input type="hidden" name="type" value="room_client">
+<input type="hidden" name="type" value="room_user">
 <div>
     <div class="mt-4">
         <label for="client_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Client') }}</label>
