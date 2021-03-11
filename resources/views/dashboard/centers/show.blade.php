@@ -4,37 +4,7 @@
     <div class="border border-gray-200 rounded-sm overflow-hidden">
         <div class="h-24 sm:h-44 bg-gradient-to-b from-blue-100 to-white border-b border-gray-200"></div>
         <div class="relative p-4">
-            <div class="absolute top-3 left-3 flex">
-                @can('viewAny', [App\CenterUser::class, $center])
-                    <a href="{{ route('dashboard.center.users.index', $center->id) }}" title="{{ __('Users') }}" class="flex justify-center items-center flex-shrink-0 text-brand border border-brand hover:bg-blue-50 w-9 h-9 rounded-full transition">
-                        <i class="fal fa-users"></i>
-                    </a>
-                @endcan
-                @if (auth()->center($center->id))
-                    <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $center->acceptation->id]) }}" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
-                        <span class="font-medium">{{ __('My profile') }}</span>
-                    </a>
-                @endif
-
-                @can('update', $center)
-                    <a href="{{ $center->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
-                        <span class="font-medium">{{ __('Edit') }}</span>
-                    </a>
-                @endcan
-
-                @can('acceptation', $center)
-                    <a href="{{route('dashboard.centers.request', $center->id)}}" data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-9 sm:w-auto px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
-                        <span class="font-medium">{{ __('Acceptation request') }}</span>
-                    </a>
-                @endcan
-
-                {{-- <span class="text-sm text-yellow-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('Awaiting for acceptation') }}</span> --}}
-
-                {{-- <span class="text-xs text-gray-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('You are is :position of this cenetr') }}</span> --}}
-
-                {{-- <span class="text-xs text-red-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('Kicked') }}</span> --}}
-
-            </div>
+            @include('dashboard.centers.showButtons')
 
             <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($center->detail)</div>
 
