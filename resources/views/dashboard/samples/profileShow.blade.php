@@ -8,9 +8,6 @@
             <a href="{{ $profile_png->url }}" target="_blank" class="inline-block magnific-popup">
                 <img src="{{ $profile_png->url }}" class="w-32 h-32 object-cover border border-gray-200 p-1 rounded">
             </a>
-            <a href="{{ $profile_png->url }}" target="_blank" class="inline-block magnific-popup">
-                <img src="{{ $profile_png->url }}" class="w-32 h-32 object-cover border border-gray-200 p-1 rounded">
-            </a>
         </div>
     </div>
     @endif
