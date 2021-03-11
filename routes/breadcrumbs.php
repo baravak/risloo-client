@@ -82,9 +82,9 @@ Breadcrumbs::for('dashboard.rooms.index', function ($trail, $data) {
     $trail->push(__('Therapy rooms'), route('dashboard.rooms.index'));
 });
 
-Breadcrumbs::for('dashboard.rooms.create', function ($trail, $data) {
-    $trail->parent('dashboard.rooms.index', $data);
-    $trail->push(__('Create new room'), route('dashboard.rooms.create'));
+Breadcrumbs::for('dashboard.center.rooms.create', function ($trail, $data) {
+    $trail->parent('dashboard.centers.show', $data);
+    $trail->push(__('Create new room'), route('dashboard.center.rooms.create', ['center' => $data['center']]));
 });
 
 Breadcrumbs::for('dashboard.rooms.show', function ($trail, $data) {
