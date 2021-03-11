@@ -76,7 +76,7 @@
                 <a href="{{route('dashboard.center.users.update', ['center' => $center->id, 'user'=> $user->id])}}" data-lijax="click" data-method="PUT" data-xhrBase='row' data-name="status" data-value="accept" class="inline-block px-3 py-1 text-xs text-white bg-green-600 hover:bg-green-700 rounded-full transition" title="{{ __('Accept') }}">{{ __('Accept') }}</a>
             @endcan
             @can('kick', [$user, $center])
-                <a href="{{route('dashboard.center.users.update', ['center' => $center->id, 'user'=> $user->id])}}" data-lijax="click" data-method="PUT" data-xhrBase='row' data-name="status" data-value="kick" class="inline-block px-3 py-1 text-xs text-gray-400 hover:text-red-600 border border-gray-400 hover:border-red-600 rounded-full transition" title="{{ __('Kick') }}">{{ __('Kick') }}</a>
+                <a href="{{route('dashboard.center.users.update', ['center' => $center->id, 'user'=> $user->id])}}" data-lijax="click" data-method="PUT" data-xhrBase='row' data-name="status" data-value="kick" class="inline-block px-3 py-1 text-xs text-gray-500 hover:text-red-600 border border-gray-500 hover:border-red-600 rounded-full transition" title="{{ __('Kick') }}">{{ __('Kick') }}</a>
             @endcan
         </div>
         @can('create', [\App\Room::class, $center, $user])
