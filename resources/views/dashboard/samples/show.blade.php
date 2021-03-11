@@ -26,7 +26,7 @@
                     @if ($sample->client)
                         @include('dashboard.samples.tools')
                     @endif
-                    <div class="relative inline-flex dropdown {{in_array($sample->status, ['seald', 'open', 'closed', 'scoring']) ? 'hidden' : ''}}" id="profile-export-menu">
+                    <div class="relative {{$sample->status != 'done' ? 'hidden' : 'dropdown'}}" id="profile-export-menu">
                         <button class="flex items-center px-4 h-8 text-xs text-brand hover:text-white hover:bg-brand border border-brand rounded-full transition dropdown-toggle" type="button" id="profile-export" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ __('Exports') }}
                             <i class="fal fa-chevron-down mr-2"></i>
