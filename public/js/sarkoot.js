@@ -1010,7 +1010,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 		$('[data-Lijax], .lijax', this).each(function () {
 			new Lijax(this);
 		});
-		$("a", this).not('.direct, [data-direct], [target=_blank], .lijax, [data-lijax]').on('click', function () {
+		$("a", this).not('.direct, [data-direct], [target=_blank], .lijax, [data-lijax]').on('click', function (e) {
 			if (/^\#(.*)$/.test($(this).attr('href'))){
 				return true;
 			}
@@ -1019,7 +1019,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 				type: $(this).is('.action') ? 'render' : 'both',
 				context: $(this),
 			});
-			return false;
+			e.preventDefault();
 		});
 
 		$('form[action]', this).not('.direct, [data-direct], [target=_blank], .lijax').each(function () {
