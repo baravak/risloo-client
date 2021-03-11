@@ -17,6 +17,9 @@ class CenterController extends Controller
     {
         $rooms = $this->data->rooms = CenterDashboard::apiDashboard($center, $request->all());
         $center = $this->data->center = $rooms->parentModel;
+        if($center->type == 'personal_clinic'){
+                return $request->ajax() ? ['redirect' => route('dashboard.rooms.show', $center->id)] : redirect()->route('dashboard.rooms.show', $center->id);
+            }
         $this->data->global->title = $center->detail->title;
         return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.centers.rooms-xhr' : 'dashboard.centers.show');
     }

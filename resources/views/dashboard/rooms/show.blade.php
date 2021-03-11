@@ -6,7 +6,7 @@
         <div class="relative p-4">
                 <div class="absolute top-3 left-3 flex">
                     @can('viewAny', [App\RoomUser::class, $room])
-                        <a href="{{ route('dashboard.room.users.index', $room->id) }}" title="{{ __('Users') }}" class="flex justify-center items-center flex-shrink-0 text-brand border border-brand hover:bg-blue-50 w-9 h-9 rounded-full transition">
+                        <a href="{{ route($room->type == 'personal_clinic' ? 'dashboard.center.users.index' : 'dashboard.room.users.index', $room->id) }}" title="{{ __('Users') }}" class="flex justify-center items-center flex-shrink-0 text-brand border border-brand hover:bg-blue-50 w-9 h-9 rounded-full transition">
                             <i class="fal fa-users"></i>
                         </a>
                     @endcan

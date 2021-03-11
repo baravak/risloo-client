@@ -99,6 +99,11 @@
                         <span class="font-light">{{ __('Samples') }}</span>
                     </div>
                 </a>
+                <ul class="pr-8 mt-2">
+                    <li>
+                        <a href="" data-metarget="centers-myclinic" data-metarget-pattern="" class="flex items-center text-sm text-gray-600 transition h-12 pr-4 border-r border-gray-300">@lang('Bulk samples')</a>
+                    </li>
+                </ul>
             </li>
             {{-- <li class="mb-1">
                 <a href="{{ route('dashboard.documents.index') }}" data-metarget="samples" data-metarget-pattern="^/dashboard/documents.*" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
