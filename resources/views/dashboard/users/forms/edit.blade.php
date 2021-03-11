@@ -1,5 +1,7 @@
+@if (request()->ajax())
+@include('davat.layouts.headerUser')
+@endif
 @extends('dashboard.create')
-
 @section('form-tag')
     <div class="mx-auto w-full sm:w-1/2">
         <ul data-tabs>
