@@ -15,7 +15,7 @@
 
     <div class="mt-4">
         <label for="status" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Status') }}</label>
-        <select id="status" name="status">
+        <select id="status" name="status" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
             @foreach (['client_awaiting', 'session_awaiting', 'in_session', 'finished', 'canceled_by_client', 'canceled_by_center'] as $item)
                 <option value="{{ $item }}" {!! isset($session->status) && $session->status == $item ? 'selected' : '' !!}>{{ __($item) }}</option>
             @endforeach
