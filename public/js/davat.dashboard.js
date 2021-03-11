@@ -1,4 +1,4 @@
-$(document).ready(function() {
+;$(document).ready(function() {
     $('body', document).on('click' ,function(e){
         if(!$(e.target).parents('#aside-open, #aside').length && !$(e.target).is('#aside-open, #aside') && $('body').hasClass('aside-open')){
             $('body').removeClass('aside-open');
@@ -15,6 +15,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     base.each(function () {
         davat.select2($('.select2-select', base));
         davat.avatar($('.input-avatar', base));
+        davat.dropdown($('.dropdown', base));
         $('.magnific-popup', base).magnificPopup({
             type:'image',
             zoom: {
@@ -34,6 +35,29 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         })
     });
 });
+
+;(function(davat){
+    function dropdown(){
+        var _self = this;
+        $(document).on('click', function(e){
+            if(e.target != $('.dropdown-toggle', this)[0] && $(e.target).parents('.dropdown-toggle')[0] != $('.dropdown-toggle', this)[0]){
+                $('button + div.dropdown-open', _self).fadeOut('fast').removeClass('dropdown-open');
+            }
+        });
+        $('.dropdown-toggle', this).on('click', function(){
+            if(!$('button + div', _self).is('.dropdown-open')){
+                $('button + div', _self).fadeIn('fast').addClass('dropdown-open');
+            }else{
+                $('button + div.dropdown-open', _self).fadeOut('fast').removeClass('dropdown-open');
+            }
+        });
+    }
+    davat.dropdown = function(e){
+        e.each(function(){
+            dropdown.call(this);
+        });
+    }
+})(davat);
 
 (function(davat){
     var avatar = function(){
