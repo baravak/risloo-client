@@ -20,10 +20,10 @@ class RoomUserController extends Controller
                     return ['id' => $user->id, 'title' => $user->name ?: $user->id];
                 });
                 break;
+            case 'quick_search' : $view = 'dashboard.room-users.quick_search'; break;
             default : $view = 'dashboard.room-users.index';
         }
         return $this->view($request, $view);
-        return $this->view($request, 'dashboard.room-users.index');
     }
     public function create(Request $request, Room $room)
     {

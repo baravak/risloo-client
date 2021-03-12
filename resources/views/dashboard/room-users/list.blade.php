@@ -1,4 +1,4 @@
-<div>
+<div data-xhr="room-items">
     @if ($users && $users->count())
         <div class="overflow-x-auto">
             <div class="align-middle inline-block min-w-full">
