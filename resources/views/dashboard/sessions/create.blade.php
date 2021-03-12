@@ -2,6 +2,12 @@
 @extends('dashboard.create')
 @section('form_content')
     <div class="mt-4">
+        <label for="start-picker" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Start date') }}</label>
+        <input type="text" id="start-picker" data-picker-minDate="{{time()}}" data-picker-maxDate="{{time() + (365 * 24 * 60 * 60)}}" data-picker-alt="started_at" value="{{ isset($session->started_at) ? $session->started_at->timestamp : '' }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
+        <input type="hidden" name="started_at" id="started_at">
+    </div>
+
+    <div class="mt-4">
         <label for="start-picker" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Start time') }}</label>
         <input type="text" id="start-picker" data-picker-minDate="{{time()}}" data-picker-maxDate="{{time() + (365 * 24 * 60 * 60)}}" data-picker-alt="started_at" value="{{ isset($session->started_at) ? $session->started_at->timestamp : '' }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
         <input type="hidden" name="started_at" id="started_at">
