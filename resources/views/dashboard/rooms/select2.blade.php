@@ -1,8 +1,8 @@
 @foreach ($rooms as $room)
     <div data-id="{{ $room->id }}">
-        <div data-selection>
-            <div class="text-sm text-gray-700 font-medium">@displayName($room->manager)</div>
-            <div class="text-xs text-gray-400">
+        <div data-selection class="text-xs pt-1">
+            <div class="text-gray-700 font-semibold">@displayName($room->manager)</div>
+            <div class="text-gray-500">
                 @if ($room->type == 'room')
                     {{ $room->center->detail->title }}
                 @else
