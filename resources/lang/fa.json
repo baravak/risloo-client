@@ -203,7 +203,7 @@
     "Join new user": "ثبت‌نام عضو جدید",
     "Add user": "ثبت‌نام عضو جدید",
     "Confirm": "تأیید عضویت",
-    "Users of :center": "پرسنل و مراجعین :center",
+    "Users of :center": "اعضاء :center",
     "through mobile or name": "از طریق جستجوی موبایل یا نام",
     "Client name": "نام مراجع",
     "This name is only valid in your center": "این نام فقط در مرکز درمانی شما کاربرد دارد",
@@ -258,5 +258,5 @@
     "Create group case" : "ساخت یک پرونده گروهی برای همه افراد",
     "Exists case" : "افزودن در پرونده انتخابی",
     "Close" : "پایان",
-    "Members of :room" : "اعضای اتاق درمان :room"
+    "Members of :room" : "اعضاء اتاق درمان :room"
 }
