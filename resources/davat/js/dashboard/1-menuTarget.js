@@ -10,7 +10,17 @@
                     }
                 }
             }
+            if(target['centers-myclinics']()){
+                return false;
+            }
             return /\/dashboard\/centers.*/.test(location.pathname);
+        },
+        'centers-myclinics' : function(){
+            var loc = url.parse(location.href);
+            if(loc.get && loc.get.my == 'yes' && loc.path == "/dashboard/centers"){
+                return true;
+            }
+            return false;
         }
     }
     window.metarget = function(){
