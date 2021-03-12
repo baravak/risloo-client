@@ -234,6 +234,9 @@ function sampleChain(el){
                 if(!data.id) return data.text;
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');
+                    if(!$('[data-id="'+data.id+'"]', $(html)).length){
+                        return data.text;
+                    }
                     html = $('[data-id="'+data.id+'"]', $(html))[0].outerHTML;
                 }
                 html = html || data.html;

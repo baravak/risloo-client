@@ -23,7 +23,13 @@ class UserController extends _UserController
     }
     public function index(Request $request)
     {
-        $this->data->users = User::apiIndex($request->all());
+        $users = $this->data->users = User::apiIndex($request->all());
+        if($request->header('data-xhr-base') == 'select2'){
+            $this->data->global = $users->map(function($user){
+                return ['id' => $user->id, 'title' => $user->name ?: $user->id];
+            });
+            return $this->view($request, 'dashboard.users.select2');
+        }
         return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.users.list-xhr' : 'dashboard.users.index');
     }
 

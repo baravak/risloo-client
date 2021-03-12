@@ -362,7 +362,7 @@ $('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', fu
             manage_field.attr('data-url', url.build(endpoint));
             $('*', manage_field).remove();
             manage_field.select2('destroy');
-            select2element.call(manage_field[0]);
+            davat.select2(manage_field);
         }
     });
     $('[name=type]').eq(0).trigger('change', [true]);

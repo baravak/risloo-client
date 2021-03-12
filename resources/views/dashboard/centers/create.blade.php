@@ -20,14 +20,17 @@
 
     @if (auth()->isAdmin() && (!isset($center) || (isset($center) && $center->type == 'counseling_center')))
     <div class="form-group mt-4">
-        <div>
             <label for="manager_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Manager') }}</label>
-            <select class="select2-select" data-template="users" data-id="id" name="manager_id" data-title="name" data-avatar="avatar.small.url" id="manager_id" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}">
+            <select class="select2-select" name="manager_id"  id="manager_id" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}">
                 @isset($center)
-                    <option value="{{$center->manager->id}}" data-json="{{$center->manager}}" selected>{{$center->manager->name}}</option>
+                    <option value="{{$center->manager->id}}" selected>{{$center->manager->name}}</option>
                 @endisset
             </select>
-        </div>
+            @isset($center)
+                <div data-for="manager_id">
+                        @include('dashboard.users.select2', ['users' => [App\User::apishow($center->manager->user_id)]])
+                </div>
+            @endisset
     </div>
     @endif
 
