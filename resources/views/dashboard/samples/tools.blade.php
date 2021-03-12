@@ -8,7 +8,7 @@
 @if (in_array($sample->status, ['seald', 'open']))
     <form action="{!! urldecode(route('dashboard.samples.close', $sample->id)) !!}" method="POST" class="inline-flex">
         @method('PUT')
-    <button type="submit" class="inline-flex items-center px-6 h-8 text-xs text-red-600 hover:text-white hover:bg-red-600 border border-red-600 rounded-full transition status-action ml-1">
+    <button type="submit" class="inline-flex items-center px-6 h-8 text-xs text-gray-500 hover:text-red-600 hover:border-red-600 border border-gray-500 rounded-full transition status-action ml-1">
         {{ __("Close sample") }}
     </button>
     </form>
@@ -22,7 +22,7 @@
 @endif
 
 @if (config('app.env') == 'local' && in_array($sample->status, ['seald', 'open']))
-<a href="{{ config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1)  . '?replace=on' }}" class="inline-flex items-center px-4 h-8 text-xs text-yellow-500 hover:text-white hover:bg-yellow-500 border border-yellow-500 rounded-full transition lijax status-action ml-1">
+<a href="{{ config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1)  . '?replace=on' }}" class="inline-flex items-center px-4 h-8 text-xs text-gray-500 hover:text-brand hover:border-brand border border-gray-500 rounded-full transition lijax status-action ml-1">
         {{ __('Fill in') }}
 </a>
 {{-- <div class="relative inline-flex dropdown ml-1">

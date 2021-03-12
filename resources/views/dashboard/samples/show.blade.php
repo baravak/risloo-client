@@ -34,7 +34,7 @@
                         <div aria-labelledby="profile-export" id="profile-export-list" class="absolute left-0 top-10 rounded bg-white border border-gray-200 shadow-lg dropdown-menu">
                             @if ($sample->profiles)
                                 @foreach ($sample->profiles as $key => $item)
-                                    <a href="{!!$item->url!!}" data-type="{{$item->mode}}" class="dropdown-item direct profile-{{$item->mode}} block w-full p-1 text-center rounded text-gray-600 hover:text-brand hover:bg-gray-100">
+                                    <a href="{!!$item->url!!}" data-type="{{$item->mode}}" target="_blank" class="dropdown-item profile-{{$item->mode}} block w-full p-1 text-center rounded text-gray-600 hover:text-brand hover:bg-gray-100">
                                         {{ strtoupper(str_replace('_', ' ', str_replace('profile_', '', $item->mode))) }}
                                     </a>
                                 @endforeach
