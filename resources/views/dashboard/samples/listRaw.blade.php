@@ -8,6 +8,11 @@
         <div claas="flex items-center">
             <div class="flex"><span class="text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span></div>
             <div class="flex mt-1"><span class="text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span></div>
+            @if ($sample->chain)
+                <div class="flex mt-1" data-chain="{{ $sample->chain }}">
+                    <a class="direct text-gray-400 font-light text-xs"><i class="fas fa-link"></i>{{ substr($sample->chain, 0, 6) }}...{{ substr($sample->chain, strlen($sample->chain) -6 , 6) }}</a>
+                </div>
+            @endif
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">

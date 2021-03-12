@@ -16,6 +16,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         davat.select2($('.select2-select', base));
         davat.avatar($('.input-avatar', base));
         davat.dropdown($('.dropdown', base));
+        sampleChain($('[data-chain]', base));
         $('.magnific-popup', base).magnificPopup({
             type:'image',
             zoom: {
@@ -156,6 +157,15 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         $('.metarget, [data-metarget]').removeClass(['active', 'metarget']);
     }
 })();
+
+function sampleChain(el){
+    console.log(el);
+    el.hover(function(){
+        var chain = $(this).attr('data-chain')
+    }, function(){
+
+    });
+}
 
 (function(davat){
     var xhr = undefined;
