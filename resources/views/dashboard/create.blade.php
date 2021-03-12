@@ -3,9 +3,9 @@
     @yield('before_content')
     @section('form-tag')
     @hasSection ('form_action')
-        <form class="m-auto w-full sm:w-1/2" action="@yield('form_action')" method="POST">
+        <form class="m-auto w-full md:w-1/2" action="@yield('form_action')" method="POST">
     @else
-    <form class="m-auto w-full sm:w-1/2" action="@yield('form_action', request()->create(isset(${$module->result}) ? ${$module->result}->route('update') : route("$module->resource.store", ($module->parent ? request()->route()->parameters[$module->parent] : null)), 'GET', request()->all())->getUri())" method="POST">
+    <form class="m-auto w-full md:w-1/2" action="@yield('form_action', request()->create(isset(${$module->result}) ? ${$module->result}->route('update') : route("$module->resource.store", ($module->parent ? request()->route()->parameters[$module->parent] : null)), 'GET', request()->all())->getUri())" method="POST">
     @endif
         @csrf
         <input type="hidden" name="_method" value="{{$module->action == 'edit' ? 'PUT' : 'POST'}}">
