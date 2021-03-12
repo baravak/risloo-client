@@ -257,5 +257,6 @@
     "Create personal case" : "ساخت پرونده مجزا برای هر فرد",
     "Create group case" : "ساخت یک پرونده گروهی برای همه افراد",
     "Exists case" : "افزودن در پرونده انتخابی",
-    "Close" : "پایان"
+    "Close" : "پایان",
+    "Members of :room" : "اعضای اتاق درمان :room"
 }

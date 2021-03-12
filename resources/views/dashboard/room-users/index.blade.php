@@ -2,7 +2,7 @@
 @section('content')
     <div>
         <div class="mt-8 mb-4">
-            <h3 class="heading" data-total="({{ $users->total() }})" data-xhr="total">{{ __('Room of :center', ['center' => ($room->center ?: $room)->detail->title]) }}</h3>
+            <h3 class="heading" data-total="({{ $users->total() }})" data-xhr="total">{{ __('Members of :room', ['room'=> $room ,'room' => $room->manager->name]) }}</h3>
         </div>
 
         <div class="flex justify-between items-center flex-wrap mb-4">
