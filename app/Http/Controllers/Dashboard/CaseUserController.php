@@ -24,7 +24,9 @@ class CaseUserController extends Controller
 
     public function create(Request $request, $TherapyCase)
     {
-        $this->data->case = TherapyCase::apiShow($TherapyCase);
+        $case = $this->data->case = TherapyCase::apiShow($TherapyCase);
+        $room = $this->data->room = $case->room;
+        $center = $this->data->center = $room->center;
         return $this->view($request, 'dashboard.case-users.create');
     }
 }

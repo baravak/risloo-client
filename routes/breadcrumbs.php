@@ -145,6 +145,10 @@ Breadcrumbs::for('dashboard.cases.show', function ($trail, $data) {
     $trail->push($data['case']->id, $data['case']->route('show'));
 });
 
+Breadcrumbs::for('dashboard.case.users.create', function ($trail, $data) {
+    $trail->parent('dashboard.cases.show', $data);
+    $trail->push(__('Join new user'), route('dashboard.case.users.create', $data['case']->id));
+});
 
 Breadcrumbs::for('dashboard.sessions.show', function ($trail, $data) {
     $trail->parent('dashboard.cases.show', $data);
