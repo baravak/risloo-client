@@ -27,16 +27,17 @@ class PracticePolicy
         }
     }
 
-    public function create(User $user, Session $session)
+    public function create(User $user, Session $session, $case = null)
     {
         if($user->isAdmin()){
             return true;
         }
-        if($session->case->room->manager->id = $user->id){
+        $case = $case ?: $session->case ?: $session->parentModel;
+        if($case->room->acceptation && $case->room->acceptation->position == 'manager'){
             return true;
         }
-        if($session->case->room->center->whereIn('acceptation.position', ['operator', 'manager', 'psychologsit'])->count()){
-            return true;
-        }
+        // if($case->room->center->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+        //     return true;
+        // }
     }
 }

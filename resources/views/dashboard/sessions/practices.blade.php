@@ -8,13 +8,13 @@
             </h3>
         </div>
         <div>
-            @can('dashboard.cases.manager', $case)
+            @can('create', [App\Practice::class, $session, $case])
             <a href="{{ route('dashboard.sessions.practices.create', $session->id) }}" class="flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 w-9 sm:w-auto h-9 rounded-full text-xs leading-normal hover:bg-green-50 transition-all">
                 <i class="fal fa-plus sm:ml-2"></i>
                 <span class="hidden sm:inline">{{ __('Create practice') }}</span>
             </a>
+            @endcan
         </div>
-        @endcan
     </div>
     @include($practices && $practices->count() ? 'dashboard.sessions.practicesList' : 'dashboard.sessions.emptyPractices')
 </div>

@@ -135,8 +135,8 @@ Breadcrumbs::for('dashboard.sessions.create', function ($trail, $data) {
 });
 
 Breadcrumbs::for('dashboard.sessions.edit', function ($trail, $data) {
-    $trail->parent('dashboard.sessions.index', $data);
-    $trail->push($data['session']->id, route('dashboard.sessions.edit', $data['session']->route('edit')));
+    $trail->parent('dashboard.sessions.show', $data);
+    $trail->push(__('Edit'), route('dashboard.sessions.edit', $data['session']->route('edit')));
 });
 
 Breadcrumbs::for('dashboard.cases.show', function ($trail, $data) {
