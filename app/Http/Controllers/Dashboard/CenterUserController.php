@@ -11,15 +11,18 @@ class CenterUserController extends Controller
     public function index(Request $request, $center)
     {
         $users = $this->data->users = CenterUser::apiIndex($center, $request->all());
-        if($request->header('data-xhr-base')){
-            $this->data->global = $users->map(function($user){
-                return ['id' => $user->id, 'title' => $user->name ?: $user->id];
-            });
-            return $this->view($request, 'dashboard.center-users.select2');
+        switch($request->header('data-xhr-base')){
+            case 'select2' :
+                $this->data->global = $users->map(function($user){
+                    return ['id' => $user->id, 'title' => $user->name ?: $user->id];
+                });
+                return $this->view($request, 'dashboard.center-users.select2');
+            case 'quick_search' : $view = 'dashboard.center-users.quick_search'; break;
+            default : $view = 'dashboard.center-users.index';
         }
         $this->data->module->result = 'users';
         $center = $this->data->center = $users->parentModel;
-        return $this->view($request, 'dashboard.center-users.index');
+        return $this->view($request, $view);
     }
 
     public function create(Request $request, Center $center)

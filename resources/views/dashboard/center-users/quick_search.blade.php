@@ -1,3 +1,4 @@
+<span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $users->total() }})</span>
 <div data-xhr="users-items">
     @if ($users && $users->count())
         <div class="overflow-x-auto">
