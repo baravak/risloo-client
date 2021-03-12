@@ -11,7 +11,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <span class="text-xs text-gray-600 cursor-default">{{ $practice->description }}</span>
+            <span class="text-xs text-gray-600 cursor-default">{{ $practice->content }}</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
