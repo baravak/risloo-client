@@ -38,11 +38,28 @@ class SamplePolicy
         {
             return true;
         }
-        $currentCenter = $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager', 'psychologist'])->first();
+
+        $currentCenter = $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->first();
         if($currentCenter)
         {
             return true;
         }
+        return false;
+    }
+    public function fill(User $user, Sample $sample, Room $room = null){
+        if(!in_array($sample->status, ['seald', 'open'])){
+            return false;
+        }
+        if($this->management($user, $sample, $room)){
+            return true;
+        }
+        $room = $sample->room ?: $room;
+        if(!$sample->client) return false;
+        $center = $user->centers->where('id', $room->center->id)->first();
+        if(!$center) return false;
+        $acceptation = $center->acceptation;
+        if(!$acceptation) return false;
+        if($acceptation->id == $sample->client->id) return true;
         return false;
     }
 
