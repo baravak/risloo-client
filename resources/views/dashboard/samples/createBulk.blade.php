@@ -6,7 +6,7 @@
 
     <div class="mt-4">
         <label for="title" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Title')</label>
-        <input type="text" name="title" id="title" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60" placeholder="مثال: گروه‌درمانی دکتر جان‌بزرگی - CBT - درمان وسواس">
+        <input type="text" name="title" id="title" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 placeholder-gray-400 placehol" placeholder="مثال: گروه‌درمانی دکتر جان‌بزرگی - CBT - درمان وسواس">
         <div class="flex items-center text-xs text-gray-400 mt-2">
             <i class="fal fa-info-circle ml-1"></i>
             <span>کمک می‌کند تا نمونه‌های شما یک نام مشترک داشته باشند و راحت‌تر آن‌ها را پیدا کنید.</span>
