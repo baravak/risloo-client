@@ -23,7 +23,7 @@
             <label for="manager_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Manager') }}</label>
             <select class="select2-select" name="manager_id"  id="manager_id" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}">
                 @isset($center)
-                    <option value="{{$center->manager->id}}" selected>{{$center->manager->name}}</option>
+                    <option value="{{$center->manager->user_id}}" selected>{{$center->manager->name}}</option>
                 @endisset
             </select>
             @isset($center)
