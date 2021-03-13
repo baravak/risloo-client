@@ -1,7 +1,6 @@
 @extends($layouts->dashboard)
 
 @section('content')
-
     <div>
         <div class="mt-8 mb-4">
             <h3 class="heading" data-total="({{ $samples->total() }})" data-xhr="total">{{ __('Samples') }}</h3>
