@@ -1,22 +1,28 @@
-.lijax-sending button {
+.lijax-sending button,
+button.lijax-sending {
     @apply relative opacity-80 cursor-wait;
 }
 
-.lijax-sending button:hover {
+.lijax-sending button:hover,
+button.lijax-sending:hover {
     @apply bg-brand;
 }
 
 .lijax-sending button::before,
-.lijax-sending button::after {
+.lijax-sending button::after,
+button.lijax-sending::before,
+button.lijax-sending::after {
     font-family: "Font Awesome 5 Duotone";
     @apply absolute left-2 animate-spin font-black;
 }
 
-.lijax-sending button::before {
+.lijax-sending button::before,
+button.lijax-sending::before {
     content: "";
 }
 
-.lijax-sending button::after {
+.lijax-sending button::after,
+button.lijax-sending::after {
     content: "􏏴";
     @apply opacity-40;
 }
