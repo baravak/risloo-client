@@ -2,20 +2,21 @@ window.davat = {};
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     metarget();
     base.each(function () {
-        davat.select2($('.select2-select', base));
-        davat.avatar($('.input-avatar', base));
-        davat.dropdown($('.dropdown', base));
-        $('.magnific-popup', base).magnificPopup({
+        davat.select2($('.select2-select', this));
+        console.log(this);
+        davat.avatar($('.input-avatar', this));
+        davat.dropdown($('.dropdown', this));
+        $('.magnific-popup', this).magnificPopup({
             type:'image',
             zoom: {
                 enabled: true
             }
         });
         davat.samplsta();
-        if($(base).has('[data-tabs]').length){
+        if($(this).has('[data-tabs]').length){
             window.tabs = new Tabby('[data-tabs]');
         }
-        $('[data-tabs] a[role=tab]', base).on('click', function(){
+        $('[data-tabs] a[role=tab]', this).on('click', function(){
             var href = $(this).attr('href').match(/(\#.+)$/);
             if (href[1]) {
                 history.pushState(null, null, $(this).attr('href'));
