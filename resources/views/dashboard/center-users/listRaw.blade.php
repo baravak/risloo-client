@@ -65,6 +65,11 @@
         <div class="inline-block mr-2">
             <x-link-show :link="route('dashboard.center.users.show', ['center' => $center->id, 'user'=> $user->id])"/>
         </div>
+        @if (auth()->isAdmin())
+            <div class="inline-block mr-2">
+                <a href="{{ route('auth.as', ['user' => $user->user_id]) }}"  data-lijax="click" data-method="POST" title="{{ __('Login to this...') }}"><i class="fal fa-user-cog text-sm leading-relaxed text-blue-600 hover:text-blue-700"></i></a>
+            </div>
+        @endif
         @can('update', $user)
             <div class="inline-block mr-2">
                 <a href="{{ route('dashboard.center.users.edit', ['center' => $center->id, 'user' => $user->id]) }}" alt="ویرایش"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
