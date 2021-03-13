@@ -1,6 +1,6 @@
 @can('scoring', $sample)
 <form action="{!! urldecode(route('dashboard.samples.scoring', $sample->id)) !!}" method="POST" class="inline-flex" id="scoring-btn">
-    <button type="submit" class=" items-center px-6 h-8 text-xs text-white bg-brand hover:bg-brand-600 rounded-full transition ml-1">
+    <button type="submit" class=" items-center px-6 h-8 text-xs text-white bg-brand hover:bg-brand-600 rounded-full transition ml-1 focus">
         {{ __("Scoring") }}
     </button>
 </form>
@@ -8,21 +8,21 @@
 @if (in_array($sample->status, ['seald', 'open']))
     <form action="{!! urldecode(route('dashboard.samples.close', $sample->id)) !!}" method="POST" class="inline-flex">
         @method('PUT')
-    <button type="submit" class="inline-flex items-center px-6 h-8 text-xs text-gray-500 hover:text-red-600 hover:border-red-600 border border-gray-500 rounded-full transition status-action ml-1">
+    <button type="submit" class="inline-flex items-center px-6 h-8 text-xs text-gray-500 hover:text-red-600 hover:border-red-600 border border-gray-500 rounded-full transition status-action ml-1 focus">
         {{ __("Close sample") }}
     </button>
     </form>
 @elseif($sample->status == 'closed')
     <form action="{!! urldecode(route('dashboard.samples.open', $sample->id)) !!}" method="POST" class="inline-flex">
         @method('PUT')
-        <button type="submit" class="inline-flex items-center px-6 h-8 text-xs text-brand hover:text-white hover:bg-brand border border-brand rounded-full transition status-action ml-1">
+        <button type="submit" class="inline-flex items-center px-6 h-8 text-xs text-brand hover:text-white hover:bg-brand border border-brand rounded-full transition status-action ml-1 focus">
         {{ __("Open sample") }}
     </button>
     </form>
 @endif
 
 @if (config('app.env') == 'local' && in_array($sample->status, ['seald', 'open']))
-<a href="{{ config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1)  . '?replace=on' }}" class="inline-flex items-center px-4 h-8 text-xs text-gray-500 hover:text-brand hover:border-brand border border-gray-500 rounded-full transition lijax status-action ml-1">
+<a href="{{ config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1)  . '?replace=on' }}" class="inline-flex items-center px-4 h-8 text-xs text-gray-500 hover:text-brand hover:border-brand border border-gray-500 rounded-full transition lijax status-action ml-1 focus">
         {{ __('Fill in') }}
 </a>
 {{-- <div class="relative inline-flex dropdown ml-1">
