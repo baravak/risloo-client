@@ -8,6 +8,11 @@
 @import "utilities/direction.css";
 @import "utilities/placeholder.css";
 @import "utilities/loading.css";
+@import "utilities/tabby-ui.css";
+@import "utilities/select2.css";
+@import "utilities/iziToast.css";
+@import "utilities/fontawesome-all.css";
+@import "utilities/persian-datepicker.css";
 
 @import "components/select2.css";
 @import "components/tabby.css";

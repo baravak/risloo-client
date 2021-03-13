@@ -30,8 +30,8 @@
         </div>
 
         <div class="mt-4">
-            <label for="chief_complaint" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Problem') }}</label>
-            <textarea id="chief_complaint" name="chief_complaint" autocomplete="off" @formValue($case->chief_complaint) class="resize-none border border-gray-500 h-24 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
+            <label for="problem" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Problem') }}</label>
+            <textarea id="problem" name="problem" autocomplete="off" @formValue($case->problem) class="resize-none border border-gray-500 h-24 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
         </div>
     </div>
 @endsection

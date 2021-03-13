@@ -10,7 +10,7 @@
             <span class="font-semibold">{{ __('Problem') }}</span>
         </div>
         <div class="text-sm text-gray-600 mt-1">
-            <p>{{$case->detail->chief_complaint}}</p>
+            <p>{{$case->detail->problem}}</p>
         </div>
     </div>
     <div class="flex items-center text-xs text-gray-500 mt-4">

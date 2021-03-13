@@ -3,31 +3,8 @@
     @if ($layouts->vendor->popper)
         <script src="/vendors/popper.min.js"></script>
     @endif
-    @if ($layouts->vendor->select2)
-        <script src="/vendors/select2-4.1.0-rc.0/dist/js/select2.min.js"></script>
-    @endif
-    @if ($layouts->vendor->iziToast)
-        <script src="/vendors/iziToast/dist/js/iziToast.min.js"></script>
-    @endif
-    @if ($layouts->vendor->persian_datepicker)
-        <script src="/vendors/persian-date/persian-date.min.js"></script>
-        <script src="/vendors/persian-datepicker/js/persian-datepicker.min.js"></script>
-    @endif
-
-    @if ($layouts->vendor->amcharts4)
-        <script src="/vendors/amcharts4/core.js"></script>
-        <script src="/vendors/amcharts4/charts.js"></script>
-        <script src="/vendors/amcharts4/themes/amcharts.js"></script>
-        <script src="/vendors/amcharts4/lang/en.js"></script>
-    @endif
-
-    <script src="/vendors/tabby/js/tabby.js"></script>
-    <script src="/vendors/micromodal.min.js"></script>
 
     <script src="@staticVersion('/js/sarkoot.min.js')"></script>
 
-    <script src="@staticVersion('/js/app.js')"></script>
-
     <script src="@staticVersion('/js/davat.dashboard.js')"></script>
-    <script src="@staticVersion('/js/davat.js')"></script>
 @endsection
