@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="{{ route('dashboard.centers.index') }}" data-metarget="centers-index" class="flex justify-between items-center h-12 px-6 rounded transition">
+                <a href="{{ route('dashboard.centers.index') }}" data-metarget="centers-index" class="flex justify-between items-center h-12 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-building ml-2"></i>
                         <span class="font-light">{{ __('Therapy centers') }}</span>
