@@ -14,7 +14,6 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     metarget();
     base.each(function () {
         davat.select2($('.select2-select', this));
-        console.log(this);
         davat.avatar($('.input-avatar', this));
         davat.dropdown($('.dropdown', this));
         $('.magnific-popup', this).magnificPopup({
