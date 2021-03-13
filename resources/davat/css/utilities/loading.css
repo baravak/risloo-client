@@ -13,10 +13,10 @@
 }
 
 .lijax-sending button::before {
-    content: "\f3f4";
+    content: "";
 }
 
 .lijax-sending button::after {
-    content: "\10f3f4";
+    content: "􏏴";
     @apply opacity-40;
 }
