@@ -3,7 +3,7 @@
 @section('content')
     <div>
         <div class="mt-8 mb-4">
-            <h3 class="heading" data-total="({{ $samples->total() }})" data-xhr="total">{{ __('Samples') }}</h3>
+            <h3 class="heading" data-total="({{$samples ? $samples->total() : 0 }})" data-xhr="total">{{ __('Samples') }}</h3>
         </div>
 
         <div class="flex justify-between items-center flex-wrap mb-4">
@@ -15,9 +15,6 @@
                 </a>
             @endcan
         </div>
-
-        @include($samples->count() ? 'dashboard.samples.list' : 'dashboard.samples.emptyList')
-
-        {{$samples->links()}}
+        @include('dashboard.samples.list')
     </div>
 @endsection

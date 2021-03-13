@@ -1,3 +1,5 @@
+<div data-xhr="sample-items">
+@if ($samples->count())
 <div class="overflow-x-auto">
     <div class="align-middle inline-block min-w-full">
         <div class="overflow-hidden border border-gray-200 rounded">
@@ -14,10 +16,15 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($samples as $sample)
-                        @include('dashboard.samples.listRaw')
+                    @include('dashboard.samples.listRaw')
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+{{$samples->links()}}
+@else
+@include('dashboard.samples.emptyList')
+@endif
 </div>

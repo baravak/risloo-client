@@ -16,7 +16,7 @@ class SampleController extends Controller
     public function index(Request $request)
     {
         $samples = $this->data->samples = SampleSummary::apiIndex($request->all());
-        return $this->view($request, 'dashboard.samples.index');
+        return $this->view($request, $request->header('data-xhr-base') == 'quick_search' ? 'dashboard.samples.list-xhr' : 'dashboard.samples.index');
     }
 
     public function create(Request $request)
