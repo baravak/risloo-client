@@ -10,8 +10,15 @@
 
             <h2 class="font-bold text-lg text-gray-900 cursor-default">@displayName($center->detail)</h2>
 
+            @if ($center->type == 'counseling_center')
+                <div class="text-sm text-gray-700 mt-1 cursor-default">
+                    <i class="fal fa-user-crown"></i>
+                    <span class="mr-1">{{ $center->manager->name }}</span>
+                </div>
+            @endif
+
             @isset ($center->detail->description)
-                <div class="text-sm text-gray-700 mt-1 cursor-default">{{ $center->detail->description }}</div>
+                <div class="text-sm font-light text-gray-500 mt-1 cursor-default">{{ $center->detail->description }}</div>
             @endisset
 
             @isset ($center->detail->phone_numbers)
