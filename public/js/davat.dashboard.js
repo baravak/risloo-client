@@ -345,6 +345,11 @@ $('body').on('statio:dashboard:samples:create', function(){
         }else{
             $('#bulk_case_id').attr('disabled', 'disabled');
         }
+        if(['personal', 'group'].indexOf($(this).val() ) >= 0){
+            $('#problem_input').show();
+        }else{
+            $('#problem_input').hide();
+        }
     });
     $('[role=tabpanel]:not([hidden])').trigger('tabby.show');
 });

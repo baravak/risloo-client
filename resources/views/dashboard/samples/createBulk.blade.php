@@ -15,7 +15,7 @@
 
     <div class="mt-4">
         <label for="group_count" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Count of users') }}</label>
-        <input type="number" name="count" id="group_count" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+        <input type="number" name="members" id="group_count" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
         <div class="flex items-center text-xs text-gray-400 mt-2">
             <i class="fal fa-info-circle ml-1"></i>
             <span>تعداد اعضاءی که قصد دارند نمونه(ها) را انجام دهند</span>
@@ -25,11 +25,15 @@
     <div class="mt-4">
         <label for="case_status" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Case status') }}</label>
         <select  id="case_status" name="case_status" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
-            <option value="">@lang('Without case')</option>
+            <option value="without_case">@lang('Without case')</option>
             <option value="personal">@lang('Create personal case')</option>
             <option value="group">@lang('Create group case')</option>
             <option value="exist">@lang('Exists case')</option>
         </select>
+    </div>
+    <div class="mt-4" id="problem_input">
+        <label for="problem" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Problem') }}</label>
+        <textarea id="problem" name="problem" autocomplete="off" @formValue($case->problem) class="resize-none border border-gray-500 h-24 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
     </div>
 
     <div class="mt-4">
@@ -46,10 +50,10 @@
         @endisset
     </div>
 
-    <div class="mt-4">
+    {{-- <div class="mt-4">
         <label class="inline-flex items-center group">
             <input type="checkbox"name="integrated" value="1" checked class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
             <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">@lang('Integrated serial & pin')</span>
         </label>
-    </div>
+    </div> --}}
 </div>

@@ -2,7 +2,7 @@
 @section('form_content')
     <div>
         <label for="scale_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Scale') }}</label>
-        <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index', ['instance' => 1]) }}">
+        <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index', ['instance' => 1]) }}" data-placeholder="برای یافتن آزمون‌های بیشتر جستجو کنید...">
             @isset($scale)
                 <option value="{{$scale->id}}" selected>{{$scale->title}}</option>
             @endisset

@@ -47,6 +47,11 @@ class SampleController extends Controller
     public function store(Request $request)
     {
         $sample = Sample::apiStore($request->all());
+        if($sample instanceof Sample && substr($sample->id, 0, 2) == 'BS'){
+            return response()->json([
+                'redirect' => route('dashboard.samples.index')
+            ]);
+        }
         return $sample->response()->json([
             'redirect' => urldecode(route('dashboard.samples.index', ['ids' => $sample->pluck('id')->toArray()]))
         ]);

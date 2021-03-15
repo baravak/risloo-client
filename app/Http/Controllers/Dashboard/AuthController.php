@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\BulkSample;
+use Illuminate\Http\Request;
+
 class AuthController extends _AuthController
 {
     public function authTheorySample($request, $auth, $response)
@@ -13,6 +16,11 @@ class AuthController extends _AuthController
     public function authTheoryJoinUser($request, $auth, $response)
     {
         return $this->authTheory($request, $auth->response('key'));
+    }
+
+    public function authTheoryResultSampleLogin(Request $request, $auth){
+        $bulk = new BulkSample((array) $auth->response('bulk_sample'));
+        $this->data->bulk = $bulk;
     }
 
     public function authTheoryRoom($request, $auth, $response){
