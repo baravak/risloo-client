@@ -4,10 +4,10 @@
     </div>
 
     <div class="mb-4">
-        <input type="password" class="w-full text-sm text-left dir-ltr placeholder-right border border-gray-200 rounded-sm" id="code" name="code" placeholder="{{ __('Sample code') }}">
+        <input type="text" class="w-full text-sm text-left dir-ltr placeholder-right border border-gray-200 rounded-sm" id="nickname" name="nickname" placeholder="{{ __('Nickname') }}">
     </div>
 
-    <button class="w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mb-8 focus">{{ __('Enter the sample') }}</button>
+    <button class="w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mb-8 focus">{{ __('Enter') }}</button>
 @endsection
 
 @extends('auth.theory')
