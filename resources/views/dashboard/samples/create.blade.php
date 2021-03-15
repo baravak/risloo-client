@@ -10,7 +10,7 @@
         <div class="flex text-xs text-gray-400 mt-2">
             <i class="fal fa-info-circle ml-1"></i>
             <span>در این قسمت لیست آزمون‌های پُر کاربرد را مشاهده می‌کنید. جهت انتخاب آزمونی که در این لیست وجود ندارد، عنوان آزمون مد نظر را جست‌وجو کرده و آن را انتخاب نمایید. شما می‌توانید لیست تمام آزمون‌های موجود در سامانه را نیز در
-                <a href="" class="text-blue-600 hover:text-blue-800">این صفحه</a>
+                <a href="{{ route('dashboard.assessments.index') }}" data-metarget="assessments" data-metarget-pattern="^/dashboard/assessments.*" target="_blank" class="text-blue-600 hover:text-blue-800">این صفحه</a>
             مشاهده نمایید.
             </span>
         </div>
