@@ -23,7 +23,7 @@
         </div>
     </div>
 </div>
-{{$samples->links()}}
+{{method_exists($samples, 'links') ? $samples->links() : null}}
 @else
 @include('dashboard.samples.emptyList')
 @endif
