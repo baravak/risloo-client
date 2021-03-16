@@ -19,7 +19,7 @@
             <label for="client_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Client') }}</label>
             <select  name="client_id[]" id="client_id" @if($room) data-url="{{route('dashboard.room.users.index', ['room' => $room->id, 'usage' => 'create_case'])}}" @endisset data-url-pattern="{{route('dashboard.room.users.index', ['room' => '%%', 'not_in_case' => (isset($case) ? $case->id : null), 'usage' => 'create_case'])}}" data-placeholder="{{__('Select client') . ' ' . __('through mobile or name')}}" multiple class="select2-select">
                 @isset($client)
-                    <option value="{{ $client->id }}"selected>@displayName($client->user)</option>
+                    <option value="{{ $client->id }}"selected>@displayName($client)</option>
                 @endisset
             </select>
             @isset($client)

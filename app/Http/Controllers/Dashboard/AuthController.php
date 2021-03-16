@@ -28,7 +28,7 @@ class AuthController extends _AuthController
         $response = [];
         $response['direct'] = true;
         if($query['create_case'] == 1){
-            $response['redirect'] = route('dashboard.cases.create',['room' => $auth->response('key'), 'client' => $auth->response('data')->id]);
+            $response['redirect'] = route('dashboard.room.cases.create',['room' => $auth->response('key'), 'client' => $auth->response('data')->id]);
         }else{
             $response['redirect'] = route('dashboard.room.users.index',$auth->response('key'));
         }
