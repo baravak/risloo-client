@@ -32,7 +32,6 @@ class RoomPolicy
         }
         if(!$center){
             return true;
-            if($user->isAdmin()) return true;
         }
         if($centerUser){
             if(!$user->isAdmin() && !$user->centers) return;
@@ -51,7 +50,7 @@ class RoomPolicy
                 return true;
             }
             if($center->acceptation){
-                if($center->acceptation->accepted_at && !$center->acceptation->kicked_at && in_array($center->acceptation->position, config('users.room_managers'))){
+                if($center->acceptation->accepted_at && !$center->acceptation->kicked_at && in_array($center->acceptation->position, ['operator', 'manager'])){
                     return true;
                 }
             }

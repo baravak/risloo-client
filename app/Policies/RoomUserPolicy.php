@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-
+use App\Room;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -28,5 +28,14 @@ class RoomUserPolicy
             return true;
         }
         return false;
+    }
+
+    public function create(User $user, Room $room){
+        if($user->isAdmin()){
+            return true;
+        }
+        if($room->center->acceptation && in_array($room->center->acceptation->position, ['manager', 'operator'])){
+            return true;
+        }
     }
 }
