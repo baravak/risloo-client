@@ -25,5 +25,12 @@
         @endif
     </div>
 @endsection
-
+@section('scripts')
+@parent
+@error('authorized_key')
+<script>
+    iziToast.error({message: '{{ $message }}'});
+</script>
+@enderror
+@endsection
 @extends($ajax ? 'auth.xhr' : 'auth.app')
