@@ -34,14 +34,19 @@
                     <i class="fal fa-calendar-alt mb-2 ml-2"></i>
                     <span class="text-sm">۲۰ آذر ۱۳۶۰</span>
                 </div> --}}
-                <div class="inline-flex items-center text-gray-500 mb-2 sm:mb-0 ml-6">
-                    <i class="fal fa-envelope mb-2 ml-2"></i>
-                    <a href="mailto:{{ $user->email }}" class="block dir-ltr text-right text-sm hover:text-blue-500 direct">{{ $user->email }}</a>
-                </div>
-                <div class="inline-flex items-center text-gray-500 mb-2 sm:mb-0 ml-6">
-                    <i class="fal fa-phone mb-2 ml-2"></i>
-                    <a href="tel:+{{ $user->mobile }}" class="block dir-ltr text-right text-sm hover:text-blue-500 direct">+{{ $user->mobile }}</a>
-                </div>
+                @if ($user->email)
+                    <div class="inline-flex items-center text-gray-500 mb-2 sm:mb-0 ml-6">
+                        <i class="fal fa-envelope mb-2 ml-2"></i>
+                        <a href="mailto:{{ $user->email }}" class="block dir-ltr text-right text-sm hover:text-blue-500 direct">{{ $user->email }}</a>
+                    </div>
+                @endif
+
+                @if ($user->mobile)
+                    <div class="inline-flex items-center text-gray-500 mb-2 sm:mb-0 ml-6">
+                        <i class="fal fa-phone mb-2 ml-2"></i>
+                        <a href="tel:+{{ $user->mobile }}" class="block dir-ltr text-right text-sm hover:text-blue-500 direct">+{{ $user->mobile }}</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
