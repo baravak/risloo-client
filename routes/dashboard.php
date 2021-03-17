@@ -56,3 +56,7 @@ Route::resource('sessions/{session}/report', 'SessionReportController', ['as' =>
 Route::resource('/sessions/{session}/practices', 'PracticeController', ['as' => 'sessions']);
 Route::post('/sessions/{session}/practices/{practice}', 'PracticeController@storeHomework')->name('sessions.practices.homework.store');
 // Route::get('/sessions/{session}/practices/{practice}', 'PracticeController@createData')->name('sessions.practices.attachments.create');
+
+if(config('app.env') == 'local'){
+Route::get('/sample-bulks', 'LocalController@index');
+}
