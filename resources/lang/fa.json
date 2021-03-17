@@ -249,6 +249,7 @@
     "Count of users" : "تعداد اعضاء",
     "information" : "اطلاعات",
     "Bulk samples" : "نمونه‌های گروهی",
+    "Create bulk sample" : "ساخت نمونه گروهی",
     "Create new user": "ایجاد عضو جدید",
     "Bulk sample" : "گروهی",
     "Case status" : "وضعیت پرونده",
@@ -260,5 +261,7 @@
     "Members of :room" : "اعضاء اتاق درمان :room",
     "Sample profile" : "نیم‌رخ",
     "Nickname" : "نام مستعار",
-    "Anonymouse" : "بدون نام"
+    "Anonymouse" : "بدون نام",
+    "Number of authorized users" : "تعداد کاربران مجاز",
+    "Number of registrations" : "تعداد ثبت‌نام‌ها"
 }
