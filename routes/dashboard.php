@@ -58,5 +58,5 @@ Route::post('/sessions/{session}/practices/{practice}', 'PracticeController@stor
 // Route::get('/sessions/{session}/practices/{practice}', 'PracticeController@createData')->name('sessions.practices.attachments.create');
 
 if(config('app.env') == 'local'){
-Route::get('/sample-bulks', 'LocalController@index');
+Route::get('/bulk-samples', 'LocalController@index');
 }
