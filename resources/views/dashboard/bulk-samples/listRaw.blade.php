@@ -33,11 +33,8 @@
         <div class="inline-block mr-4">
             <a href="#"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
         </div>
-        <div class="inline-block mr-4">
-            <a href="#"><i class="fal fa-link text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
-        </div>
         <div class="inline-block">
-            <a href="#" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
+            <a href="#" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Registration link') }}</a>
         </div>
     </td>
 </tr>

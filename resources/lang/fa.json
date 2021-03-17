@@ -263,5 +263,6 @@
     "Nickname" : "نام مستعار",
     "Anonymouse" : "بدون نام",
     "Number of authorized users" : "تعداد کاربران مجاز",
-    "Number of registrations" : "تعداد ثبت‌نام‌ها"
+    "Number of registrations" : "تعداد ثبت‌نام‌ها",
+    "Registration link" : "لینک ثبت‌نام"
 }
