@@ -9,8 +9,8 @@
                 <img src="https://bapi.risloo.ir/storage/public/Files_1000/P96666DR_small.png" class="w-full h-full object-cover object-center">
             </a>
             <div class="text-center px-2">
-                <a href="#" class="inline-block font-semibold text-gray-800 hover:text-brand">مرکز مشاوره ریسلوی ما</a>
-                <a href="#" class="inline-block text-sm text-gray-600 hover:text-brand">اتاق درمان محمدعلی نخلی</a href="#">
+                <a href="#" class="block font-semibold text-gray-800 hover:text-brand">مرکز مشاوره ریسلوی ما</a>
+                <a href="#" class="block text-sm text-gray-600 hover:text-brand">اتاق درمان محمدعلی نخلی</a href="#">
             </div>
             <a href="#" class="flex justify-center items-center flex-shrink-0 w-12 h-12 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden relative">
                 <img src="https://bapi.risloo.ir/storage/public/Files_1000/P96666D7_small.png" class="w-full h-full object-cover object-center">
