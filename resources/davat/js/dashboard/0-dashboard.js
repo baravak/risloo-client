@@ -1,6 +1,7 @@
 window.davat = {};
 $(document).on('statio:global:renderResponse', function (event, base, context) {
     metarget();
+    davat.clipboard();
     base.each(function () {
         davat.select2($('.select2-select', this));
         davat.avatar($('.input-avatar', this));

@@ -1,5 +1,5 @@
 <div data-xhr="sample-items">
-    {{-- @if ($bulkSamples->count()) --}}
+    @if ($bulkSamples->count())
     <div class="overflow-x-auto">
         <div class="align-middle inline-block min-w-full">
             <div class="overflow-hidden border border-gray-200 rounded">
@@ -16,16 +16,16 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {{-- @foreach ($bulkSamples as $bulkSample) --}}
+                        @foreach ($bulkSamples as $bulkSample)
                             @include('dashboard.bulk-samples.listRaw')
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    {{-- {{method_exists($bulkSamples, 'links') ? $bulkSamples->links() : null}}
+    {{method_exists($bulkSamples, 'links') ? $bulkSamples->links() : null}}
     @else
     @include('dashboard.bulk-samples.emptyList')
-    @endif --}}
+    @endif
 </div>

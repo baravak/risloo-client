@@ -5,7 +5,7 @@ use GuzzleHttp\Psr7\Request;
 
 class BulkSample extends API
 {
-    public $endpointPath = '$/samples';
+    public $endpointPath = 'bulk-samples';
     public $with = [
         'room' => Room::class,
         'case' => TherapyCase::class,

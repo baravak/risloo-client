@@ -2,7 +2,7 @@
 @section('content')
     <div>
         <div class="mt-8 mb-4">
-            <h3 class="heading" data-total="(2)" data-xhr="total">{{ __('Bulk samples') }}</h3>
+            <h3 class="heading" data-total="({{ $bulkSamples ? $bulkSamples->count() : 0  }})" data-xhr="total">{{ __('Bulk samples') }}</h3>
         </div>
 
         <div class="flex justify-between items-center flex-wrap mb-4">
