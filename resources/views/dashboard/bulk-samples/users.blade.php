@@ -1,5 +1,5 @@
 <div class="mb-4 mt-8">
-    <h3 class="heading" data-total="(15)" data-xhr="total">{{ __('Users') }}</h3>
+    <h3 class="heading" data-total="( 16 / 12 )" data-xhr="total">{{ __('Users') }}</h3>
 </div>
 
 <div class="border border-gray-300 rounded p-4">
