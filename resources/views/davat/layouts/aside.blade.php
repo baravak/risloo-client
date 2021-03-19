@@ -101,11 +101,13 @@
                         <span class="font-light">{{ __('Samples') }}</span>
                     </div>
                 </a>
-                <ul class="pr-8 mt-2">
-                    <li>
-                        <a href="{{ route('dashboard.bulk-samples.index') }}" data-metarget="bulk-samples" data-metarget-pattern="" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">@lang('Bulk samples')</a>
-                    </li>
-                </ul>
+                @if (auth()->isAdmin() || (auth()->centers() && auth()->centers()->whereIn('acceptation.position', ['manager', 'operator', 'psychologist'])->first()))
+                    <ul class="pr-8 mt-2">
+                        <li>
+                            <a href="{{ route('dashboard.bulk-samples.index') }}" data-metarget="bulk-samples" data-metarget-pattern="" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">@lang('Bulk samples')</a>
+                        </li>
+                    </ul>
+                @endif
             </li>
             @if (false)
                 <li class="mb-1">
