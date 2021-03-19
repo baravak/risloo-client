@@ -103,7 +103,7 @@
                 </a>
                 <ul class="pr-8 mt-2">
                     <li>
-                        <a href="" data-metarget="samples-my" data-metarget-pattern="" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">@lang('Bulk samples')</a>
+                        <a href="{{ route('dashboard.bulk-samples.index') }}" data-metarget="bulk-samples" data-metarget-pattern="" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">@lang('Bulk samples')</a>
                     </li>
                 </ul>
             </li>
