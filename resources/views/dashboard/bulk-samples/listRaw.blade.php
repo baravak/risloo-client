@@ -6,6 +6,11 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
+            <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default">{{ $bulkSample->title }}</span>
+        </div>
+    </td>
+    <td class="px-3 py-2 whitespace-nowrap">
+        <div claas="flex items-center">
             <div class="flex"><a href="{{ route('dashboard.centers.show', $bulkSample->room->center->id) }}" class="text-xs text-gray-600 hover:text-blue-500">
                 @if ($bulkSample->room->center->type == 'personal_clinic')
                     @lang('Personal clinic of :user', ['user' => $bulkSample->room->manager->name])

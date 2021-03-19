@@ -7,6 +7,7 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
+                            <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Title') }}</th>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Therapy center') }}</th>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Therapy room') }}</th>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Case') }}</th>

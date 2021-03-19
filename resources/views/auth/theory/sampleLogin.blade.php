@@ -1,5 +1,4 @@
 @section('auth-form')
-
 <div class="flex-1 flex justify-center items-center bg-gray-50">
     <div class="w-full sm:w-96 mx-4 sm:mx-auto">
         <div class="flex justify-between items-center border border-gray-300 rounded p-4 mb-2">
@@ -24,21 +23,24 @@
                 </ul>
             </div>
 
-            <span class="text-sm text-gray-600 mt-8">
-                با اتمام این مرحله شما عضو مرکز درمانی و اتاق درمان بالا خواهید شد و مدیران قادر به دیدن شماره تماس شما می‌باشند؛ همچنین شما می‌توانید در قسمت پایین نام مستعاری برای خود در این مرکز تعریف کنید.
-            </span>
-
-            <span class="text-xs text-gray-600 mt-1">
+            <span class="text-xs text-gray-600 mt-8">
                 در این فرایند پرسش‌نامه‌های بالا برای شما فعال شده و شما می‌توانید آن‌ها را تکمیل کنید.
             </span>
+            @if (!$bulk->room->center->acceptation)
+                <span class="text-sm text-gray-600 mt-1">
+                    با اتمام این مرحله شما عضو مرکز درمانی و اتاق درمان بالا خواهید شد و مدیران قادر به دیدن شماره تماس شما می‌باشند؛ همچنین شما می‌توانید در قسمت پایین نام مستعاری برای خود در این مرکز تعریف کنید.
+                </span>
+            @endif
 
+            @if (!$bulk->room->center->acceptation)
             <div class="mt-4">
-                <form action="">
                     <label for="nickname">{{ __('Nickname') }}</label>
                     <input type="text" class="w-full text-sm border border-gray-200 rounded-sm" id="nickname" name="nickname" value="{{ auth()->user()->name }}" placeholder="{{ __('Nickname') }}">
-                    <button type="submit" class="w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mt-4 focus">تأیید و ادامه</button>
-                </form>
             </div>
+            @endif
+            <div class="mt-4">
+                <button type="submit" class="w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mt-4 focus">تأیید و ادامه</button>
+        </div>
         </div>
     </div>
 </div>
