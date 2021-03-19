@@ -11,7 +11,9 @@
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Scale') }}</th>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Client') }}</th>
-                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
+                        @if ($bulkSample->case_status == 'personal')
+                            <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
+                        @endif
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
                         <th class="px-3 py-2" scope="col"></th>
                     </tr>
@@ -37,15 +39,17 @@
                                 </a>
                             </div>
                         </td>
-                        <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
-                                <div class="flex">
-                                    @if ($sample->case)
-                                    <a href="{{ route('dashboard.cases.show', $sample->case->id) }}" class="text-xs text-gray-700 hover:text-blue-500">{{ $sample->case->id }}</a>
-                                    @endif
+                        @if ($bulkSample->case_status == 'personal')
+                            <td class="px-3 py-2 whitespace-nowrap">
+                                <div claas="flex items-center">
+                                    <div class="flex">
+                                        @if ($sample->case)
+                                        <a href="{{ route('dashboard.cases.show', $sample->case->id) }}" class="text-xs text-gray-700 hover:text-blue-500">{{ $sample->case->id }}</a>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
+                            </td>
+                        @endif
                         <td class="px-3 py-2 whitespace-nowrap">
                             <div claas="flex items-center">
                                 <span class="text-xs text-gray-500 cursor-default">@lang(ucfirst($sample->status))</span>
