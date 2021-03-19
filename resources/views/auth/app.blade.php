@@ -4,15 +4,16 @@
 @section('main')
     <div class="flex-1 flex justify-center items-center bg-gray-50">
         <div class="rounded w-full sm:w-80 mx-4 sm:mx-auto" style="margin-bottom: 20vw;">
-            <h1 class="text-center font-black text-xl text-brand mb-8">
-                <a href="/" class="direct">{{ __('App Title') }}</a>
-            </h1>
             @if (auth()->check() && auth()->user()->avatar_url->url('large'))
                 <div class="mb-4">
                     <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="block mx-auto w-20 h-20 rounded overflow-hidden border border-gray-200 direct">
                         <img src="{{ auth()->user()->avatar_url->url('large') }}" alt="{{ auth()->user()->name ?: __('Anonymouse') }}" title="{{ auth()->user()->name ?: __('Anonymouse') }}" class="rounded">
                     </a>
                 </div>
+            @else
+                <h1 class="text-center font-black text-xl text-brand mb-8">
+                    <a href="/" class="direct">{{ __('App Title') }}</a>
+                </h1>
             @endif
 
             <h1 class="text-lg text-center font-bold text-gray-900 mb-4 hidden">

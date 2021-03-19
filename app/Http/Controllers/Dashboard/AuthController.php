@@ -18,10 +18,10 @@ class AuthController extends _AuthController
         return $this->authTheory($request, $auth->response('key'));
     }
 
-    // public function authTheoryResultSampleLogin(Request $request, $auth){
-    //     $bulk = new BulkSample((array) $auth->response('bulk_sample'));
-    //     $this->data->bulk = $bulk;
-    // }
+    public function authTheoryResultSampleLogin(Request $request, $auth){
+        $bulk = new BulkSample((array) $auth->response('bulk_sample'));
+        $this->data->bulk = $bulk;
+    }
 
     public function authTheoryRoom($request, $auth, $response){
         parse_str(parse_url(request()->headers->get('referer'), PHP_URL_QUERY), $query);

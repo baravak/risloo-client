@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('room', function ($room) {
             return "<?php echo \$__env->make('components._room', ['room' => $room])->render(); ?>";
         });
+        Blade::directive('center', function ($center) {
+            return "<?php echo {$center}->type == 'personal_clinic' ? __('Personal clinic') : {$center}->detail->title; ?>";
+        });
         Blade::component('link-show', Show::class);
     }
 }
