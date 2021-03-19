@@ -59,4 +59,5 @@ Route::post('/sessions/{session}/practices/{practice}', 'PracticeController@stor
 
 if(config('app.env') == 'local'){
 Route::get('/bulk-samples', 'LocalController@index');
+Route::get('/bulk-samples/show', 'LocalController@index2');
 }
