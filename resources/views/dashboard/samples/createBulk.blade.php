@@ -15,7 +15,7 @@
 
     <div class="mt-4">
         <label for="group_count" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Count of users') }}</label>
-        <input type="number" name="members" id="group_count" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+        <input type="number" name="members_count" id="group_count" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
         <div class="flex items-center text-xs text-gray-400 mt-2">
             <i class="fal fa-info-circle ml-1"></i>
             <span>تعداد اعضاءی که قصد دارند نمونه(ها) را انجام دهند</span>

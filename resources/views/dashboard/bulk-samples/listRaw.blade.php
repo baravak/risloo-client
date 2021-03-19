@@ -36,7 +36,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div claas="flex items-center">
-            <div class="flex"><span class="text-xs text-gray-600 cursor-default">{{ $bulkSample->members }} / {{ $bulkSample->joined }}</span></div>
+            <div class="flex"><span class="text-xs text-gray-600 cursor-default">{{ $bulkSample->members_count }} / {{ $bulkSample->joined }}</span></div>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">

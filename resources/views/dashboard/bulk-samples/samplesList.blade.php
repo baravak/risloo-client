@@ -1,5 +1,5 @@
 <div class="mb-4 mt-8">
-    <h3 class="heading" data-total="(140)" data-xhr="total">{{ __('Samples') }}</h3>
+    <h3 class="heading" data-total="({{ $bulkSample->samples && $bulkSample->samples->count() ? $bulkSample->samples->count() : 0 }})" data-xhr="total">{{ __('Samples') }}</h3>
 </div>
 
 <div class="overflow-x-auto">
@@ -17,48 +17,45 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
+                    @foreach ($bulkSample->samples ?: [] as $sample)
                     <tr data-xhr="sample-list-id" class="transition hover:bg-gray-50">
                         <td class="px-3 py-2 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">$X1HQUH2PY</span>
+                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->id }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <div class="flex"><span class="text-xs font-medium text-gray-700 cursor-default">آزمون تیپ‌نمای مایرز-بریگز</span></div>
-                                {{-- <div class="flex mt-1"><span class="text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span></div> --}}
-                                <div class="flex mt-1"><span class="text-gray-400 font-light text-xs">ویرایش فرم ۸۷سؤالی - نسخه 2</span></div>
+                                <div class="flex"><span class="text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span></div>
+                                <div class="flex mt-1"><span class="text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span></div>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
                             <div claas="flex items-center">
-                                {{-- @if ($sample->client)
-                                    <span href="#" class="text-xs text-gray-700 cursor-default">@displayName($sample->client)</span>
-                                    @else
-                                    <span href="#" class="text-xs text-gray-700 cursor-default">{{ $sample->code }}</span>
-                                    @endif --}}
-                                <a href="#" class="text-xs text-gray-700 hover:text-brand">سید صادق موسوی</a>
+                                <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $sample->client->id]) }}" class="text-xs text-gray-700">
+                                    @displayName($sample->client)
+                                </a>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <div class="flex"><a href="#" class="text-xs text-gray-700 hover:text-blue-500">RS96666DF</a></div>
+                                <div class="flex">
+                                    @if ($sample->case)
+                                    <a href="{{ route('dashboard.cases.show', $sample->case->id) }}" class="text-xs text-gray-700 hover:text-blue-500">{{ $sample->case->id }}</a>
+                                    @endif
+                                </div>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
                             <div claas="flex items-center">
-                                <span class="text-xs text-gray-500 cursor-default">بازنشده</span>
+                                <span class="text-xs text-gray-500 cursor-default">@lang(ucfirst($sample->status))</span>
                             </div>
                         </td>
                         <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
-                            <div class="inline-block mr-4">
-                                <a href="#"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
-                            </div>
-                            <div class="inline-block">
-                                <a href="#" target="_blank" class="inline-block px-3 py-1 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">انجام آزمون</a>
-                            </div>
+                            @include('dashboard.samples.do')
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

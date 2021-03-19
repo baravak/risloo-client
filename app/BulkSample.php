@@ -9,5 +9,8 @@ class BulkSample extends API
     public $with = [
         'room' => Room::class,
         'case' => TherapyCase::class,
+        'casess' => TherapyCase::class,
+        'scales' => Assessment::class,
+        'samples' => Sample::class
     ];
 }
