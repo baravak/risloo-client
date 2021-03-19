@@ -75,3 +75,14 @@
 .nav-empty-answers a {
     @apply ml-1 mb-1 p-1 text-left inline-block border border-gray-300 rounded hover:bg-gray-50 hover:text-brand;
 }
+
+.bulk-sampleStatus i:not(:last-child)::after {
+    @apply bg-gray-300;
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 18px;
+    top: 23px;
+    right: 8px;
+    z-index: -1;
+}

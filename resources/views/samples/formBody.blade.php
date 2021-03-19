@@ -10,6 +10,7 @@
                 <div id="progress" class="bg-brand transition-all duration-300 ease-linear" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="border border-gray-300 p-4 mb-40 lg:mb-0 rounded">
+                @include('samples.panel.bulk-sampleStatus')
                 @includeWhen($sample->prerequisites, 'samples.panel.information')
                 @include('samples.panel.description')
                 @include('samples.panel.items')
