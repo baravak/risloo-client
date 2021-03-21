@@ -49,7 +49,7 @@ class SampleController extends Controller
         $sample = Sample::apiStore($request->all());
         if($sample instanceof Sample && substr($sample->id, 0, 2) == 'BS'){
             return response()->json([
-                'redirect' => route('dashboard.samples.index')
+                'redirect' => route('dashboard.bulk-samples.show', $sample->id)
             ]);
         }
         return $sample->response()->json([

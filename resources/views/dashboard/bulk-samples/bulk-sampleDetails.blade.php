@@ -17,10 +17,11 @@
                 <i class="fal fa-clipboard text-sm eading-normal ml-2"></i>
                 <span class="text-xs">@lang('Case :serial', ['serial' => $bulkSample->case->id])</span>
             </a>
-            {{-- <span class="flex items-center text-gray-600 cursor-default">
+        @else
+            <span class="flex items-center text-gray-600 cursor-default">
                 <i class="fal fa-clipboard text-sm eading-normal ml-2"></i>
                 <span class="text-xs">{{ __('Without case') }}</span>
-            </span> --}}
+            </span>
         @endif
         <div class="flex items-center text-sm text-gray-700 mt-2">
             <span class="text-sm text-gray-400">@lang(ucfirst($bulkSample->status))</span>
