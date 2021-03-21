@@ -175,3 +175,14 @@ Breadcrumbs::for('dashboard.cases.index', function ($trail, $data) {
 
     $trail->push(__('Cases'), route('dashboard.cases.index'));
 });
+
+Breadcrumbs::for('dashboard.bulk-samples.index', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+
+    $trail->push(__('Bulk samples'), route('dashboard.bulk-samples.index'));
+});
+Breadcrumbs::for('dashboard.bulk-samples.show', function ($trail, $data) {
+    $trail->parent('dashboard.bulk-samples.index', $data);
+
+    $trail->push($data['bulkSample']->title ?: $data['bulkSample']->id, route('dashboard.bulk-samples.show', $data['bulkSample']->id));
+});
