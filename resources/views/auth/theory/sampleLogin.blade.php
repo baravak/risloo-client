@@ -32,7 +32,7 @@
 
         @if (!$bulk->room->center->acceptation)
         <div class="mt-4">
-            <label for="nickname" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Nickname') }}</label>
+            <label for="nickname" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('My nickname') }}</label>
             <input type="text" class="w-full text-sm border border-gray-200 rounded-sm" id="nickname" name="nickname" value="{{ auth()->user()->name }}" placeholder="{{ __('Nickname') }}">
         </div>
         @endif
