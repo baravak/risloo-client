@@ -49,11 +49,10 @@
             <a href="{{ route('dashboard.bulk-samples.show', $bulkSample->id) }}"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
         </div>
         <div class="inline-flex border border-brand rounded-full text-xs text-brand">
-            <div data-clipboard-text="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" class="pl-3 pr-2 py-1 cursor-pointer border-r border-brand border-opacity-20 hover:bg-brand hover:text-white transition rounded-l-full">
-                {{-- <span>{{ __('Copy') }}</span> --}}
+            <a href="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" target="_blank" class="pl-3 pr-2 py-1 hover:bg-brand hover:text-white transition rounded-l-full">{{ __('Registration link') }}</a>
+            <div data-clipboard-text="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" class="pr-3 pl-2 py-1 cursor-pointer border-l border-brand border-opacity-30 hover:bg-brand hover:text-white transition rounded-r-full">
                 <i class="fal fa-copy relative top-0.5"></i>
             </div>
-            <a href="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" target="_blank" class="pr-3 pl-2 py-1 hover:bg-brand hover:text-white transition rounded-r-full">{{ __('Registration link') }}</a>
         </div>
     </td>
 </tr>
