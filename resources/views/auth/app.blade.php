@@ -3,11 +3,11 @@
 
 @section('main')
     <div class="flex-1 flex justify-center items-center bg-gray-50">
-        <div class="rounded w-full sm:w-80 mx-4 sm:mx-auto" style="margin-bottom: 20vw;">
+        <div class="auth-box z-10">
             @if (auth()->check() && auth()->user()->avatar_url->url('large'))
                 <div class="mb-4">
-                    <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="block mx-auto w-20 h-20 rounded overflow-hidden border border-gray-200 direct">
-                        <img src="{{ auth()->user()->avatar_url->url('large') }}" alt="{{ auth()->user()->name ?: __('Anonymouse') }}" title="{{ auth()->user()->name ?: __('Anonymouse') }}" class="rounded">
+                    <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="flex justify-center items-center mx-auto w-16 h-16 rounded overflow-hidden border border-gray-200 direct flex-shrink-0 bg-gray-300 text-gray-600 text-sm">
+                        <img src="{{ auth()->user()->avatar_url->url('large') }}" alt="{{ auth()->user()->name ?: __('Anonymouse') }}" title="{{ auth()->user()->name ?: __('Anonymouse') }}" class="w-full h-full ">
                     </a>
                 </div>
             @else
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="absolute bottom-0 w-full">
+        <div class="fixed bottom-0 w-full">
             <img src="/images/graphics/1.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto md:hidden">
             <img src="/images/graphics/2.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
             <img src="/images/graphics/3.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">

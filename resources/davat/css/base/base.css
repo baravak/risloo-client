@@ -22,9 +22,3 @@ kbd {
 .focus {
     @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 ring-brand;
 }
-
-@media (max-height: 568px) {
-    [data-page="auth"] img {
-        @apply hidden;
-    }
-}

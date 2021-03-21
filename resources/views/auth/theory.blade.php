@@ -1,5 +1,5 @@
 @section('auth-nav')
-    <div class="flex justify-center">
+    <div class="flex justify-center mt-4">
         @if (!auth()->check())
             <a href="{{ route('auth') }}" class="text-sm">{{ __('Login') }}</a>
             @if (config('auth.registration', true))
