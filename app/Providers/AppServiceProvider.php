@@ -36,6 +36,30 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('center', function ($center) {
             return "<?php echo {$center}->type == 'personal_clinic' ? __('Personal clinic') : {$center}->detail->title; ?>";
         });
+
+        Blade::directive('tdRoomDetail', function ($args = null) {
+            if($args){
+                $var = explode(',', $args);
+                $args = [];
+                if(isset($var[0])){
+                    $args['room'] = $var[0];
+                }
+                if(isset($var[1])){
+                    $args['center'] = $var[1];
+                }
+                $args = '[' . implode(', ', array_map(function ($v, $k) {
+                    return "'$k'=> $v";
+                },$args , array_keys($args)
+                )) . ']';
+            }else{
+                $args = '[]';
+            }
+            return "<?php
+            \$vars = array_merge(get_defined_vars(), $args);
+            if(!isset(\$vars['center']) && isset(\$vars['room'])) \$vars['center'] = \$vars['room']->center;
+            echo \$__env->make('components._tdRoomDetail', \$vars)->render();
+            ?>";
+        });
         Blade::component('link-show', Show::class);
     }
 }
