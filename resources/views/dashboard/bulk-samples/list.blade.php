@@ -5,7 +5,7 @@
             <div class="overflow-hidden border border-gray-200 rounded">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
-                        <tr>
+                        <tr class="cursor-default">
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Title') }}</th>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Therapy center') }}</th>
