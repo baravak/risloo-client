@@ -35,7 +35,6 @@
                     @yield('auth-nav')
                 </div>
             </div>
-            @if ($global->page == 'auth')
             <div class="fixed bottom-0 w-full">
                 <img src="/images/graphics/1.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto md:hidden">
                 <img src="/images/graphics/2.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
@@ -48,7 +47,6 @@
                 <img src="/images/graphics/linear-3.png" alt="{{ __('App Title') }}" class="w-full mx-auto hidden xl:block 2xl:hidden">
                 <img src="/images/graphics/linear-5.png" alt="{{ __('App Title') }}" class="w-full hidden 2xl:block">
             </div>
-            @endif
         </div>
     </div>
 @endsection
