@@ -6,21 +6,8 @@
     @apply mb-0 pb-0 border-none;
 }
 
-.auth-box {
-    @apply rounded w-full sm:w-80 mx-4 sm:mx-auto;
-    margin-bottom: 20vw;
-}
-
-[data-page="auth-theory"] .auth-box {
-    margin-bottom: 0 !important;
-}
-
 @media (max-height: 568px) {
-    [data-page="auth"] img {
+    [data-page="auth"] img, [data-page="register"] img {
         @apply hidden;
-    }
-
-    .auth-box {
-        margin-bottom: 0;
     }
 }

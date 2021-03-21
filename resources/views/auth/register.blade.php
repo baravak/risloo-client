@@ -7,7 +7,7 @@
         <input type="text" class="w-full text-sm border border-gray-200 rounded-sm" id="name" name="name" placeholder="{{ __('DisplayName') }}">
     </div>
 
-    <div class="mb-2">
+    <div class="mb-4">
         <input type="text" class="w-full text-sm text-left dir-ltr placeholder-right border border-gray-200 rounded-sm" id="mobile" name="mobile" placeholder="{{ __('Mobile') }}">
     </div>
 

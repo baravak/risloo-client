@@ -16,15 +16,15 @@
 @section('auth-nav')
     <div class="flex justify-center">
         @if (auth()->check())
-            <a href="{{ route('dashboard.home') }}" class="font-bold direct">{{ __('Dashboard') }}</a>
-            <span class="px-4 text-gray-500">|</span>
-            <a href="{{ route('logout') }}" data-lijax="click" data-method="POST">{{__('Logout')}}</a>
+            <a href="{{ route('dashboard.home') }}" class="font-bold direct hover:text-brand">{{ __('Dashboard') }}</a>
+            <span class="px-4 text-gray-500 cursor-default">|</span>
+            <a href="{{ route('logout') }}" data-lijax="click" data-method="POST" class="hover:text-red-600 transition">{{__('Logout')}}</a>
         @else
             @if (config('auth.registration', true))
-                <a href="{{ route('register', ['callback' => request()->callback]) }}" class="text-sm font-bold text-gray-700 hover:text-gray-900 transition">{{ __('Register') }}</a>
+                <a href="{{ route('register', ['callback' => request()->callback]) }}" class="text-sm font-bold text-gray-700 hover:text-brand transition">{{ __('Register') }}</a>
             @endif
             <span class="px-4 text-gray-500">|</span>
-            <a href="{{ route('auth.recovery') }}" class="text-sm text-gray-700 hover:text-gray-900 transition">{{ __('Forgot Password') }}</a>
+            <a href="{{ route('auth.recovery') }}" class="text-sm text-gray-700 hover:text-brand transition">{{ __('Forgot Password') }}</a>
         @endif
     </div>
 @endsection

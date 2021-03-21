@@ -1,17 +1,17 @@
 @section('auth-nav')
     <div class="flex justify-center mt-4">
         @if (!auth()->check())
-            <a href="{{ route('auth') }}" class="text-sm">{{ __('Login') }}</a>
+            <a href="{{ route('auth') }}" class="text-sm hover:text-brand transition">{{ __('Login') }}</a>
             @if (config('auth.registration', true))
-                <span class="px-4 text-gray-500">|</span>
-                <a href="{{ route('register') }}" class="text-sm">{{ __('Register') }}</a>
+                <span class="px-4 text-gray-500 cursor-default">|</span>
+                <a href="{{ route('register') }}" class="text-sm hover:text-brand transition">{{ __('Register') }}</a>
             @endif
             <span class="px-4 text-gray-500">|</span>
-            <a href="{{ route('auth.recovery') }}" class="text-sm">{{ __('Forgot Password') }}</a>
+            <a href="{{ route('auth.recovery') }}" class="text-sm hover:text-brand transition">{{ __('Forgot Password') }}</a>
         @else
-            <a href="{{ route('dashboard.home') }}" class="text-sm font-bold direct">{{ __('Dashboard') }}</a>
+            <a href="{{ route('dashboard.home') }}" class="text-sm font-bold direct hover:text-brand transition">{{ __('Dashboard') }}</a>
             <span class="px-4 text-gray-500">|</span>
-            <a href="{{ route('logout') }}" data-lijax="click" data-method="POST" class="text-sm">{{ __('Logout') }}</a>
+            <a href="{{ route('logout') }}" data-lijax="click" data-method="POST" class="text-sm hover:text-red-600 transition">{{ __('Logout') }}</a>
         @endif
     </div>
 @endsection

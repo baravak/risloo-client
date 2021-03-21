@@ -7,9 +7,9 @@
 
 @section('auth-nav')
     <div class="flex justify-center">
-        <a href="{{ route('auth') }}" class="text-sm text-gray-700 hover:text-gray-900 transition">{{ __('Login') }}</a>
-        <span class="px-4 text-gray-500">|</span>
-        <a href="{{ route('register') }}" class="text-sm text-gray-700 hover:text-gray-900 transition">{{ __('Register') }}</a>
+        <a href="{{ route('auth') }}" class="text-sm text-gray-700 hover:text-brand transition">{{ __('Login') }}</a>
+        <span class="px-4 text-gray-500 cursor-default">|</span>
+        <a href="{{ route('register') }}" class="text-sm text-gray-700 hover:text-brand transition">{{ __('Register') }}</a>
     </div>
 @endsection
 
