@@ -88,7 +88,7 @@
                                         </td>
                                         <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
                                             <div class="inline-block mr-4">
-                                                <a href="{{ $case->route('show') }}"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+                                                <a href="{{ $case->route('show') }}"><i class="fal fa-eye text-sm text-gray-600 hover:text-blue-600 relative top-0.5"></i></a>
                                             </div>
                                         </td>
                                     </tr>

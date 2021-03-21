@@ -46,7 +46,7 @@
     </td>
     <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
         <div class="inline-block mr-4">
-            <a href="{{ route('dashboard.bulk-samples.show', $bulkSample->id) }}"><i class="fal fa-eye text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+            <a href="{{ route('dashboard.bulk-samples.show', $bulkSample->id) }}"><i class="fal fa-eye text-sm text-gray-600 hover:text-blue-600 relative top-1"></i></a>
         </div>
         <div class="inline-flex border border-brand rounded-full text-xs text-brand">
             <a href="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" target="_blank" class="pl-3 pr-2 py-1 hover:bg-brand hover:text-white transition rounded-l-full">{{ __('Registration link') }}</a>
