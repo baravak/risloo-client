@@ -11,7 +11,8 @@ class Sample extends API
         'client' => User::class,
         'room' => Room::class,
         'case' => TherapyCase::class,
-        'profiles' => File::class
+        'profiles' => File::class,
+        'chain' => SampleChain::class
     ];
 
     public $filterWith = [

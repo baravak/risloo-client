@@ -5,8 +5,8 @@
 
     <div class="cursor-default bulk-sampleStatus">
         @foreach ($sample->chain->list as $chain)
-            <div class="flex items-center {{ $chain->id == $sample->id ? 'text-brand font-semibold' : 'text-gray-500' }} {{ !$loop->first ? 'mt-6' : '' }}">
-                <i class="{{ $chain->id == $sample->id ? 'fas fa-chevron-circle-left' : 'fal fa-circle' }} ml-4 relative"></i>
+            <div class="flex items-center {{ $chain->id == $sample->id ? 'text-brand font-semibold' : 'text-gray-500' }} {{ !$loop->first ? 'mt-6' : '' }} {{ !in_array($chain->status, ['seald', 'open']) ? 'opacity-50' : '' }}">
+                <i class="{{ $chain->id == $sample->id ? 'fas fa-chevron-circle-left' : (in_array($chain->status, ['seald', 'open'])  ? 'fal fa-circle' : 'fal fa-check-circle') }} ml-4 relative"></i>
                 <span>{{ $chain->title }}</span>
             </div>
         @endforeach
