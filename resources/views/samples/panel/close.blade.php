@@ -8,7 +8,7 @@
             {{-- <p class="text-gray-700 mt-2">اگر با خطا مواجه شدید، بر روی دریافت نمونه بزنید و فایل دریافتی را به روان‌شناس یا اپراتور مرکزمشاوره تحویل دهید</p> --}}
             <div class="mt-4">
                 <a class="inline-flex justify-center items-center h-9 px-6 bg-brand text-white text-sm rounded-full hover:bg-brand-600 transition" href="{!! urldecode(route('samples.close', substr($sample->id, 1))) !!}" data-method="PUT" data-lijax>
-                    @if ($sample->chain && $sample->chain->list->whereIn('status', ['open', 'seald'])->first())
+                    @if ($sample->chain && $sample->chain->list->whereIn('status', ['open', 'seald'])->count() > 1)
                         {{ __('Check out sample and go to next sample') }}
                     @else
                         {{ __('Check out sample') }}
