@@ -37,9 +37,9 @@
 
     <div class="mt-4">
         <ul data-tabs>
-            <li><a data-tabby-default href="#case-tab" class="direct" role="presentation">{{ __('Case') }}</a></li>
-            <li><a href="#room-tab" class="direct" role="presentation">{{ __('Therapy room') }}</a></li>
-            <li><a href="#bulk-tab" class="direct" role="presentation">{{ __('Bulk sample') }}</a></li>
+            <li><a data-tabby-default href="#case-tab" class="focus direct" role="presentation">{{ __('Case') }}</a></li>
+            <li><a href="#room-tab" class="focus direct" role="presentation">{{ __('Therapy room') }}</a></li>
+            <li><a href="#bulk-tab" class="focus direct" role="presentation">{{ __('Bulk sample') }}</a></li>
         </ul>
 
         <div id="case-tab">
