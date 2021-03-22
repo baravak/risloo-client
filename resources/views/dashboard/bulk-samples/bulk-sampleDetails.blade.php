@@ -32,11 +32,16 @@
             <i class="fal fa-copy mr-2 text-xl"></i>
             <span class="font-semibold text-sm">{{ $bulkSample->id }}</span>
         </div>
-        <div class="inline-flex items-center border border-gray-600 rounded-full text-xs text-gray-600">
-            <div data-clipboard-text="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" class="pr-3 pl-2 py-2 cursor-pointer border-l border-gray-300 hover:bg-gray-100 transition rounded-r-full">
-                <i class="fal fa-copy relative top-0.5"></i>
+        <div class="inline-flex dir-ltr text-left">
+            <div class="inline-flex items-center border border-gray-600 rounded-full text-xs text-gray-600">
+                <a href="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" target="_blank" class="pl-3 pr-2 py-2 hover:bg-gray-100 transition rounded-l-full">{{ __('Registration link') }}</a>
+                <div data-clipboard-text="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" class="pr-3 pl-2 py-2 cursor-pointer border-l border-gray-300 hover:bg-gray-100 transition rounded-r-full">
+                    <i class="fal fa-copy relative top-0.5"></i>
+                </div>
             </div>
-            <a href="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" target="_blank" class="pl-3 pr-2 py-2 hover:bg-gray-100 transition rounded-l-full">{{ __('Registration link') }}</a>
+            <a href="{{ $bulkSample->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 py-1 rounded-full text-sm leading-normal transition ml-2">
+                <span class="text-xs">{{ __('Edit') }}</span>
+            </a>
         </div>
     </div>
 </div>
