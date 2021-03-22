@@ -1,8 +1,4 @@
 @section('auth-form')
-    @if (request()->callback)
-        <div class="mb-4">{{ __("To continue the process you need to login or register") }}</div>
-    @endif
-
     <div class="mb-2">
         <input type="text" class="w-full text-sm border border-gray-200 rounded-sm" id="name" name="name" placeholder="{{ __('DisplayName') }}">
     </div>
@@ -26,6 +22,12 @@
             <a href="{{ route('auth.recovery') }}" class="text-sm text-gray-700 hover:text-gray-900 transition">{{ __('Forgot Password') }}</a>
         @endif
     </div>
+
+    @if (request()->callback)
+        <div class="border-r-2 border-yellow-400 bg-yellow-100 text-gray-800 py-3 px-2 mt-4 text-xs cursor-default">
+            <span>{{ __("To continue the process you need to login or register") }}</span>
+        </div>
+    @endif
 @endsection
 
 @extends('auth.theory')
