@@ -35,7 +35,7 @@
                     @yield('auth-nav')
                 </div>
             </div>
-            <div class="fixed bottom-0 w-full">
+            <div class="auth-images fixed bottom-0 w-full hidden">
                 <img src="/images/graphics/1.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto md:hidden">
                 <img src="/images/graphics/2.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">
                 <img src="/images/graphics/3.png" alt="{{ __('App Title') }}" class="w-auto max-h-60 mx-auto hidden">

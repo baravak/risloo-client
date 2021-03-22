@@ -18,11 +18,11 @@
     <div class="flex justify-center">
         @if (auth()->check())
             <a href="{{ route('dashboard.home') }}" class="text-sm text-gray-700 hover:text-gray-900 transition direct">{{ __('Dashboard') }}</a>
-            <span class="px-4 text-gray-500">|</span>
+            <span class="px-4 text-gray-500 cursor-default">|</span>
             <a href="{{ route('logout') }}" data-lijax="click" data-method="POST" class="text-sm text-gray-700 hover:text-gray-900 transition">{{ __('Logout') }}</a>
         @else
             <a href="{{ route('auth', ['callback' => request()->callback]) }}" class="text-sm text-gray-700 hover:text-gray-900 transition">{{ __('Login') }}</a>
-            <span class="px-4 text-gray-500">|</span>
+            <span class="px-4 text-gray-500 cursor-default">|</span>
             <a href="{{ route('auth.recovery') }}" class="text-sm text-gray-700 hover:text-gray-900 transition">{{ __('Forgot Password') }}</a>
         @endif
     </div>

@@ -11,7 +11,7 @@
             <img src="@attachmentLink($bulk->room->manager->avatar, 'small')" class="w-full h-full object-cover object-center">
         </a>
     </div>
-    <div class="flex flex-col border border-gray-300 rounded p-4 bg-gray-50">
+    <div class="flex flex-col border border-gray-300 rounded p-4 bg-gray-50 mb-4">
         <h3 class="text-sm font-semibold text-gray-700 mb-2">لیست آزمون‌ها</h3>
         <div class="w-full max-h-14 overflow-y-auto bg-gray-100 rounded p-3">
             <ul class="samplesLogin-list">
