@@ -6,5 +6,5 @@
 
     <script src="@staticVersion('/js/sarkoot.min.js')"></script>
 
-    <script src="@staticVersion('/js/davat.dashboard.js')"></script>
+    <script src="@staticVersion('/js/davat.dashboard.min.js')"></script>
 @endsection
