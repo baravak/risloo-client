@@ -41,12 +41,15 @@
     </td>
 
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="text-xs text-gray-600">
+        <div class="text-xs text-gray-600 cursor-default">
             @responsiveTime($user->accepted_at)
         </div>
-        <div class="text-xs text-red-600 mt-1">
+
+        @isset($user->kicked_at)
+        <div class="text-xs text-red-600 cursor-default mt-1">
             @responsiveTime($user->kicked_at)
         </div>
+        @endisset
     </td>
 
     <td class="px-3 py-2 whitespace-nowrap">
