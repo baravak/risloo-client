@@ -15,23 +15,23 @@
                     @foreach ($samples ?: [] as $sample)
                     <tr>
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->id }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="block text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span>
                                 <span class="block text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 cursor-default">@displayName($sample->client)</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 @include('dashboard.samples.tables.status')
                             </div>
                         </td>

@@ -1,11 +1,11 @@
 <tr>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default">{{ $session->id }}</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <div class="flex">
                 <a href="{{ $session->case->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 transition">
                 @lang('Therapy room of :user', ['user' => $session->case->room->manager->name])
@@ -23,12 +23,12 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <a href="{{ $session->case->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 transition">{{ $session->case->id }}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
                 @foreach ($session->case->clients as $client)
                     <div class="flex">
                         <a href="{{ route('dashboard.center.users.show', ['center' => $session->case->room->center->id, 'user' => $client->id]) }}" class="text-xs text-gray-600 hover:text-blue-500 transition">
@@ -39,18 +39,18 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <div class="flex"><span class="text-xs text-gray-600 cursor-default">@time($session->started_at, '%A %d %B %y')</span></div>
             <div class="flex"><span class="text-xs text-gray-600 cursor-default">@time($session->started_at, 'ساعت H:i')</span></div>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <span class="text-xs text-gray-600 cursor-default">{{ __(':time minute(s)', ['time' => $session->duration]) }}</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <span class="text-xs text-gray-500 cursor-default">{{ __(ucfirst($session->status)) }}</span>
             {{-- <span class="text-xs text-red-500 cursor-default">لغو شده توسط مراجع</span>
             <span class="text-xs text-green-500 cursor-default">در جلسه</span>

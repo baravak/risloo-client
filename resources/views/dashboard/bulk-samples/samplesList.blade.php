@@ -22,18 +22,18 @@
                     @foreach ($bulkSample->samples ?: [] as $sample)
                     <tr data-xhr="sample-list-id" class="transition hover:bg-gray-50">
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->id }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <div class="flex"><span class="text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span></div>
                                 <div class="flex mt-1"><span class="text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span></div>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $sample->client->id]) }}" class="text-xs text-gray-700">
                                     @displayName($sample->client)
                                 </a>
@@ -41,7 +41,7 @@
                         </td>
                         @if ($bulkSample->case_status == 'personal')
                             <td class="px-3 py-2 whitespace-nowrap">
-                                <div claas="flex items-center">
+                                <div class="flex items-center">
                                     <div class="flex">
                                         @if ($sample->case)
                                         <a href="{{ route('dashboard.cases.show', $sample->case->id) }}" class="text-xs text-gray-700 hover:text-blue-500">{{ $sample->case->id }}</a>
@@ -51,7 +51,7 @@
                             </td>
                         @endif
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-500 cursor-default">@lang(ucfirst($sample->status))</span>
                             </div>
                         </td>

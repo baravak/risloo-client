@@ -18,22 +18,22 @@
                     @foreach ($bulkSample->scales as $scale)
                     <tr>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $scale->id }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 cursor-default">{{ $scale->title }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 cursor-default">{{ $scale->edition }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-500 cursor-default">{{ $scale->version }}</span>
                             </div>
                         </td>

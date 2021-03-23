@@ -16,30 +16,30 @@
                     @foreach ($case->samples as $sample)
                     <tr class="sample-record" data-xhr="sample-{{ $sample->id }}" data-session="{{ $sample->session_id }}" data-client="{{ $sample->client ? $sample->client->id : null }}">
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->id }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="block text-xs font-medium text-gray-700 cursor-default">{{ $sample->title }}</span>
                                 {{-- <span class="block text-gray-400 font-light text-xs">ویرایش دکتر هخامنشیان - نسخه 1</span> --}}
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->session_id }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $sample->client->id]) }}" class="text-xs text-gray-700">
                                     {{ $sample->client->name }}
                                 </a>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 @include('dashboard.samples.tables.status')
                             </div>
                         </td>

@@ -5,12 +5,12 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default">Treasurie Serial</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <span class="text-xs text-gray-600 block cursor-default">کیف پول پیش‌فرض</span>
         </div>
     </td>
@@ -29,7 +29,7 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div claas="flex items-center">
+        <div class="flex items-center">
             <span class="text-xs text-green-600 block cursor-default">23,000 تومان</span>
             {{-- <span class="text-xs text-gray-600 block cursor-default">0</span> --}}
             {{-- <span class="text-xs text-red-600 block cursor-default">(23,000) تومان</span> --}}

@@ -15,22 +15,22 @@
                     @foreach ($assessments as $assessment)
                     <tr>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $assessment->id }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 cursor-default">{{ $assessment->title }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 cursor-default">{{ $assessment->edition }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-500 cursor-default">{{ $assessment->version }}</span>
                             </div>
                         </td>

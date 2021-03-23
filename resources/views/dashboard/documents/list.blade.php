@@ -17,17 +17,17 @@
                     @foreach ($documents as $document)
                     <tr>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $document->id }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-700 cursor-default">{{ $document->title }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 @if ($document->getRelationValue('attachments'))
                                 <a href="{{ $document->attachments->get('original')->url }}"><i class="fal fa-download text-smleading-relaxed text-gray-600 hover:text-blue-600"></i></a>
                                 @else
@@ -36,17 +36,17 @@
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-500 cursor-default">{{ __(ucfirst($document->status)) }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-500 cursor-default">{{ $document->description }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div claas="flex items-center">
+                            <div class="flex items-center">
                                 <span class="text-xs text-gray-500 cursor-default">{{ $document->notic }}</span>
                             </div>
                         </td>

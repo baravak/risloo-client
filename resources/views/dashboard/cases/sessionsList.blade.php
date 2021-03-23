@@ -15,22 +15,22 @@
                     @foreach ($case->sessions as $session)
                         <tr>
                             <td class="px-3 py-2 whitespace-nowrap">
-                                <div claas="flex items-center">
+                                <div class="flex items-center">
                                     <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $session->id }}</span>
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">
-                                <div claas="flex items-center">
+                                <div class="flex items-center">
                                     <span class="text-xs text-gray-700 cursor-default">@time($session->started_at, '%A %d %B %y ساعت H:i')</span>
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">
-                                <div claas="flex items-center">
+                                <div class="flex items-center">
                                     <span class="text-xs text-gray-700 cursor-default">{{ __(':time minute(s)', ['time' => $session->duration]) }}</span>
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap">
-                                <div claas="flex items-center">
+                                <div class="flex items-center">
                                     <span class="text-xs text-gray-500 cursor-default">{{ __(ucfirst($session->status)) }}</span>
                                     {{-- <span class="text-xs text-red-500 cursor-default">لغو شده توسط مراجع</span>
                                     <span class="text-xs text-green-500 cursor-default">در جلسه</span>
