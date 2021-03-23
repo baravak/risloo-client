@@ -26,3 +26,16 @@ button.lijax-sending::after {
     content: "􏏴";
     @apply opacity-40;
 }
+
+@keyframes statio-fold {
+    from {
+        opacity: 0;
+      }
+    to {
+        opacity: 1;
+      }
+  }
+  .statio-fold
+  {
+      animation: 150ms statio-fold forwards;
+  }
