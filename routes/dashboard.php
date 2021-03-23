@@ -11,6 +11,7 @@ Route::resource('assessments', 'AssessmentController', ['except' => ['destroy', 
 // Route::put('relationship-users/{relationshipUser}', 'RelationshipUserController@update')->name('relationship.users.update');
 
 Route::resource('centers', 'CenterController', ['except' => ['destroy']]);
+Route::post('centers/{center}/avatar', 'CenterController@avatarStore')->name('centers.avatar.store');
 Route::post('centers/{center}/request', 'CenterController@request')->name('centers.request');
 
 Route::get('centers/{center}/users', 'CenterUserController@index')->name('center.users.index');

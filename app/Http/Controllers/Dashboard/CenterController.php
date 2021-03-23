@@ -48,11 +48,16 @@ class CenterController extends Controller
     {
         $center = $this->data->center = Center::apiShow($center, array_merge($request->all(), ['summary' => '']));
         $this->authorize('dashboard.centers.update', [$center, $center]);
-        return $this->view($request, 'dashboard.centers.create');
+        return $this->view($request, 'dashboard.centers.' . ($center->type == 'personal_clinic' ? 'create' : 'edit'));
     }
 
     public function update(Request $request, $center)
     {
         return Center::apiUpdate($center, $request->all())->response()->json();
+    }
+    public function avatarStore(Request $request, $center)
+    {
+        $avatar = new Center;
+        return $avatar->execute("%s/$center/avatar", $request->all('avatar'), 'POST')->response()->json();
     }
 }

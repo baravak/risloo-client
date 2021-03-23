@@ -8,7 +8,7 @@
     <div class="relative dropdown">
         <button type="button" class="flex items-center border border-gray-300 rounded px-3 h-12 hover:bg-gray-50 transition dropdown-toggle focus">
             <div class="flex justify-center items-center flex-shrink-0 w-8 h-8 rounded overflow-hidden ml-3 bg-blue-500 text-white border border-gray-200 text-xs" data-xhr="short-avatar">
-                <img src="{{ auth()->user()->avatar_url->url('small') }}" alt="{{ auth()->user()->name }}" class="w-full h-full object-cover object-center">
+                @avatarOrName(auth()->user())
             </div>
             <div class="flex justify-between items-center">
                 <div>

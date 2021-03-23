@@ -337,6 +337,7 @@ $('body').on('statio:dashboard:samples:show', function(){
 $('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', function(){
     $('[name=type]', this).on('change', function(event, start){
         var manage_field = $('#manager_id');
+        if(!manage_field.length) return;
         var endpoint = manage_field.attr('data-url');
         var data_url = endpoint;
         endpoint = url.parse(endpoint);

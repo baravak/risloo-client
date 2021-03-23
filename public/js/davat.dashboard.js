@@ -207,6 +207,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 
 (function(davat){
     var select2 = function(){
+        var _self = this;
         var options = {
             width: '100%',
             amdLanguageBase: 'dist/vendors/select2-4.0.13/dist/js/i18n',
@@ -214,6 +215,9 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
             minimumInputLength: 0,
             dir: "rtl",
             templateResult : function(data){
+                if(!$(_self).is('[data-url], [data-url-pattern]')){
+                    return data.text;
+                }
                 if(!data.id) return data.text;
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');

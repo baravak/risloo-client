@@ -52,8 +52,8 @@
 
     <div class="mt-4">
         <div>
-            <label for="phone_numbers" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Phone numbers') }}</label>
-            <select class="select2-select placeholder-gray-300" placeholder="{{ __('Optional') }}" multiple name="phone_numbers[]" id="phone_numbers">
+            <label for="phone_numbers"  data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Phone numbers') }}</label>
+            <select class="select2-select placeholder-gray-300" data-tags="true" placeholder="{{ __('Optional') }}" multiple name="phone_numbers[]" id="phone_numbers">
                 @isset($center)
                 @foreach ($center->detail->phone_numbers ?: [] as $number)
                     <option value="{{$number}}" selected>{{$number}}</option>

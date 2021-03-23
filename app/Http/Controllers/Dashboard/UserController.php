@@ -46,9 +46,16 @@ class UserController extends _UserController
     {
         $avatar = new User;
         $user = $this->data->user = $avatar->execute("%s/$user/avatar", $request->all('avatar'), 'POST');
-        return [
-            'redirect' => route('dashboard.users.me.edit') . '#avatar-tab',
-            'direct' => true
-        ];
+        if($user->id == auth()->id()){
+            $request->session()->put('User', $user->response()->toArray());
+            return [
+                'redirect' => route('dashboard.users.me.edit') . '#avatar-tab',
+            ];
+        }
+        else{
+            return [
+                'redirect' => route('dashboard.users.edit', $user->id) . '#avatar-tab',
+            ];
+        }
     }
 }
