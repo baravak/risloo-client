@@ -12,6 +12,6 @@
     }
 }
 
-[data-page="auth"] .auth-images {
+[data-page="auth"] .auth-images, [data-page="auth-recovery"] .auth-images, [data-page="register"] .auth-images {
     @apply block;
 }
