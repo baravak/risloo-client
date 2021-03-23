@@ -5,7 +5,7 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
+        <div class="flex flex-col">
             <div class="flex">
                 <a href="{{ $session->case->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 transition">
                 @lang('Therapy room of :user', ['user' => $session->case->room->manager->name])
@@ -39,7 +39,7 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
+        <div class="flex flex-col">
             <div class="flex"><span class="text-xs text-gray-600 cursor-default">@time($session->started_at, '%A %d %B %y')</span></div>
             <div class="flex"><span class="text-xs text-gray-600 cursor-default">@time($session->started_at, 'ساعت H:i')</span></div>
         </div>
