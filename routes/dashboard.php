@@ -58,6 +58,7 @@ Route::post('/sessions/{session}/practices/{practice}', 'PracticeController@stor
 // Route::get('/sessions/{session}/practices/{practice}', 'PracticeController@createData')->name('sessions.practices.attachments.create');
 Route::get('/bulk-samples', 'BulkSampleController@index')->name('bulk-samples.index');
 Route::get('/bulk-samples/{bulkSample}', 'BulkSampleController@show')->name('bulk-samples.show');
+Route::get('/treasuries', 'LocalController@index')->name('treasuries.index');
 
 if(config('app.env') == 'local'){
     Route::get('/treasuries', 'LocalController@index');
