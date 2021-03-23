@@ -5,6 +5,7 @@
         <div class="h-20 sm:h-28 bg-gradient-to-b from-blue-100 to-blue-50 border-b border-gray-200"></div>
         <div class="relative p-4">
                 <div class="absolute top-3 left-3 flex">
+
                     @can('update', [$user])
                         <a href="{{ $user->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-50 px-4 h-9 rounded-full text-sm leading-normal transition-all">
                             <span class="font-medium">{{ __('Edit') }}</span>
@@ -18,6 +19,10 @@
                             </a>
                         @endcan
                     @endif
+
+                    <a href="{{ route('logout') }}" data-lijax='click' data-method='post' title="{{ __('Logout') }}" class="flex justify-center items-center flex-shrink-0 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
+                        <span class="font-medium">{{ __('Logout') }}</span>
+                    </a>
                 </div>
             <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($user)</div>
 
@@ -47,6 +52,15 @@
                         <a href="tel:+{{ $user->mobile }}" class="block dir-ltr text-right text-sm hover:text-blue-500 direct">+{{ $user->mobile }}</a>
                     </div>
                 @endif
+            </div>
+
+            <div class="flex items-center mt-2">
+                <i class="fal fa-wallet mb-2 ml-2 text-gray-600 mt-1"></i>
+                <span class="text-sm text-green-600 cursor-default">23,000 تومان</span>
+                {{-- <span class="text-sm text-gray-600 cursor-default">0</span> --}}
+                {{-- <span class="text-sm text-red-600 cursor-default">(23,000) تومان</span> --}}
+
+                <a href="#" class="text-xs text-gray-500 border border-gray-500 rounded-full mr-2 py-1 px-2 hover:bg-brand hover:text-white hover:border-brand transition">@lang('Financial treasuries')</a>
             </div>
         </div>
     </div>
