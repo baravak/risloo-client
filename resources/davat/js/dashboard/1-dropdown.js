@@ -2,7 +2,7 @@
     function dropdown(){
         var _self = this;
         $(document).on('click', function(e){
-            if(e.target != $('.dropdown-toggle', this)[0] && $(e.target).parents('.dropdown-toggle')[0] != $('.dropdown-toggle', this)[0]){
+            if(e.target != $('.dropdown-toggle', _self)[0] && $(e.target).parents('.dropdown-toggle')[0] != $('.dropdown-toggle', _self)[0]){
                 $('button + div.dropdown-open', _self).fadeOut('fast').removeClass('dropdown-open');
             }
         });
