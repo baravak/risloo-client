@@ -10,7 +10,11 @@
             <div class="flex mt-1"><span class="text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span></div>
             @if ($sample->chain)
                 <div class="flex mt-1">
-                    <a href="{{ route('dashboard.samples.index', ['chain' => $sample->chain]) }}" class="direct text-gray-400 font-light text-xs"><i class="fas fa-link"></i>{{ substr($sample->chain, 0, 6) }}...{{ substr($sample->chain, strlen($sample->chain) -6 , 6) }}</a>
+                    <a href="{{ route('dashboard.samples.index', ['chain' => $sample->chain]) }}" class="direct text-gray-400 hover:text-brand font-light text-xs transition">
+                        <i class="fal fa-link"></i>
+                        {{-- <span>{{ substr($sample->chain, 0, 6) }}...{{ substr($sample->chain, strlen($sample->chain) -6 , 6) }}</span> --}}
+                        <span>نمو‌نه‌های زنجیره‌ای این نمونه</span>
+                    </a>
                 </div>
             @endif
         </div>
