@@ -10,13 +10,18 @@ body {
     font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
 }
 
-html[lang="fa"],
-.fa {
-    font-family: dana;
+html[lang="fa"], .fa {
+    font-family: 'dana VF', dana, tahoma;
+}
+
+@supports (font-variation-settings: normal) {
+    html[lang="fa"], .fa {
+        font-family: 'dana VF', tahoma;
+    }
 }
 
 kbd {
-    font-family: dana!important;
+    font-family: 'dana VF', dana!important;
 }
 
 .focus {
