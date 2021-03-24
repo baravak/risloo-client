@@ -1,4 +1,5 @@
-@include('layouts.public-head-styles')
+
+@include('layouts._head-styles')
 @include('layouts.head')
 
 @section('scripts')
