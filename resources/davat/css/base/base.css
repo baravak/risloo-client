@@ -12,11 +12,13 @@ body {
 
 html[lang="fa"], .fa {
     font-family: 'dana VF', dana, tahoma;
+    font-variation-settings: "FANU" 1;
 }
 
 @supports (font-variation-settings: normal) {
     html[lang="fa"], .fa {
         font-family: 'dana VF', tahoma;
+        font-variation-settings: "FANU" 1;
     }
 }
 
