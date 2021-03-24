@@ -1,5 +1,3 @@
-<div class="nav-empty-answers" id="nav-empty-answers"></div>
-
 @if (false)
     <div class="mb-4">
         <label class="flex items-center group">
@@ -9,7 +7,7 @@
     </div>
 @endif
 
-<div class="flex items-center justify-between text-xs mb-2 mt-4 cursor-default">
+<div class="flex items-center justify-between text-xs mb-2 cursor-default">
     <span class="text-gray-500" data-sync-status title="{{ __('Save status') }}">{{ __('No change') }}</span>
     <span class="text-gray-500" data-nav-text>0/0</span>
 </div>
