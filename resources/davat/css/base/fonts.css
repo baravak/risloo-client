@@ -8,10 +8,12 @@
 @font-face {
 	font-family: dana;
 	src: url('../fonts/Dana/dana-regular.woff') format('woff');
+	font-display: fallback;
 }
 
 @font-face {
 	font-family: dana;
 	src: url('../fonts/Dana/dana-bold.woff') format('woff');
-	font-weight: 700;
+	font-weight: bold;
+	font-display: fallback;
 }
