@@ -7,11 +7,11 @@
 }
 
 @media (max-height: 568px) {
-    [data-page="auth"] .auth-images, [data-page="register"] .auth-images {
+    .auth-images {
         @apply hidden !important;
     }
 }
 
-[data-page="auth"] .auth-images, [data-page="auth-recovery"] .auth-images, [data-page="register"] .auth-images {
+[data-page="auth"] .auth-images, [data-page="auth-recovery"] .auth-images, [data-page="register"] .auth-images, [data-page="auth-theory-mobileCode"] .auth-images, [data-page="auth-theory-password"] .auth-images {
     @apply block;
 }
