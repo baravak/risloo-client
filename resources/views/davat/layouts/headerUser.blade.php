@@ -21,9 +21,9 @@
             </div>
         </button>
         <div class="rounded bg-white border border-gray-200 mt-1 shadow-md dropdown-menu">
-            <a href="{{ route('dashboard.users.me') }}" class="block text-sm text-gray-700 text-center p-2 hover:bg-gray-100 transition">مشاهده پروفایل</a>
-            <a href="#" class="block text-sm text-gray-700 text-center p-2 hover:bg-gray-100 transition">@lang('Financial treasuries')</a>
-            <a href="{{ route('logout') }}" data-lijax='click' data-method='post' title="{{ __('Logout') }}" class="block text-sm text-red-600 text-center p-2 hover:bg-gray-100 transition">@lang('Logout')</a>
+            <a href="{{ route('dashboard.users.me') }}" class="block text-sm text-gray-700 text-center py-3 hover:bg-gray-100 border-b border-gray-100 transition">مشاهده پروفایل</a>
+            <a href="#" class="block text-sm text-gray-700 text-center py-3 hover:bg-gray-100 border-b border-gray-100 transition">@lang('Financial treasuries')</a>
+            <a href="{{ route('logout') }}" data-lijax='click' data-method='post' title="{{ __('Logout') }}" class="block text-sm text-red-600 text-center py-3 hover:bg-gray-100 transition">@lang('Logout')</a>
         </div>
     </div>
 
