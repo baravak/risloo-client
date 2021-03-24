@@ -14,7 +14,8 @@
     "gulp-minify": "^3.1.0",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.0",
-    "tailwindcss": "^2.0.2"
+    "tailwindcss": "^2.0.2",
+    "win-node-env": "^0.4.0"
   },
   "scripts": {
     "watch:css": "postcss ./resources/davat/css/**/*.css -o ./public/css/davat.css --watch",
