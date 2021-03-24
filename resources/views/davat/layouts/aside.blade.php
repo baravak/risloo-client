@@ -22,16 +22,20 @@
                         <span class="font-light">{{ __('Therapy centers') }}</span>
                     </div>
                 </a>
-                <ul class="pr-8 mt-2">
-                    @if (auth()->myClinic())
-                    <li>
-                        <a href="{{ route('dashboard.centers.show', auth()->myClinic()->id) }}" data-metarget="centers-myclinic" data-metarget-pattern="/dashboard/centers/{{ auth()->myClinic()->id }}.*" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">{{  __('My clinic') }}</a>
-                    </li>
-                    @endif
-                    @php
-                        $_AsideCenter= auth()->centers(true);
-                    @endphp
+
+                @if (auth()->myClinic())
+                    <ul class="pr-8 mt-2">
+                        <li>
+                            <a href="{{ route('dashboard.centers.show', auth()->myClinic()->id) }}" data-metarget="centers-myclinic" data-metarget-pattern="/dashboard/centers/{{ auth()->myClinic()->id }}.*" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">{{  __('My clinic') }}</a>
+                        </li>
+                    </ul>
+                @endif
+                @php
+                    $_AsideCenter= auth()->centers(true);
+                @endphp
+                @if ($_AsideCenter->count())
                     @if ($_AsideCenter->count() < 3)
+                    <ul class="pr-8 mt-2">
                         @foreach ($_AsideCenter as $_center)
                         <li>
                             <a href="{{ route('dashboard.centers.show', $_center->id) }}"data-metarget="centers-myclinic-{{ $_center->id }}" data-metarget-pattern="/dashboard/centers/{{ $_center->id}}.*" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">
@@ -43,12 +47,15 @@
                             </a>
                         </li>
                         @endforeach
+                    </ul>
                     @else
+                    <ul class="pr-8 mt-2">
                         <li>
                             <a href="{{ route('dashboard.centers.index', ['my' => 'yes']) }}" data-metarget="centers-myclinics" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">{{  __('My therapy centers') }}</a>
                         </li>
+                    </ul>
                     @endif
-                </ul>
+                @endif
             </li>
             @if (false)
                 <li class="mb-1">
