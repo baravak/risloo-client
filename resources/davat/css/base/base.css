@@ -17,7 +17,7 @@ html[lang="fa"], .fa {
 @supports (font-variation-settings: normal) {
     html[lang="fa"], .fa {
         font-family: 'dana VF';
-        font-variation-settings: "FANU" 0;
+        font-variation-settings: "FANU" 1;
     }
 }
 

@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'dana VF';
-	src: url('../fonts/Dana/danawebGX.woff') format('woff-variations'),
-		 url('../fonts/Dana/danawebGX.woff') format('woff');
+	src: url('../fonts/Dana/dana2webGX.woff') format('woff-variations'),
+		 url('../fonts/Dana/dana2webGX.woff') format('woff');
 	font-display: fallback;
 }
 
