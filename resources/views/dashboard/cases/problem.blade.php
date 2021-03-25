@@ -1,12 +1,12 @@
 <div class="border border-gray-200 rounded p-4 cursor-default">
-    <div class="flex items-center dir-ltr text-left text-brand">
-        <i class="fal fa-copy mr-2 text-xl"></i>
-        <span class="font-semibold text-sm">{{$case->id}}</span>
+    <div class="flex flex-row-reverse items-center text-brand">
+        <i class="fal fa-copy mr-2"></i>
+        <span class="font-medium text-sm en">{{ $case->id }}</span>
     </div>
 
     <div class="mt-2">
-        <div class="flex items-center text-gray-700">
-            <i class="fal fa-file-alt text-lg ml-2"></i>
+        <div class="text-gray-700">
+            <i class="fal fa-file-alt text-lg ml-1 align-middle"></i>
             <span class="font-semibold">{{ __('Problem') }}</span>
         </div>
         <div class="text-sm text-gray-600 mt-1">
