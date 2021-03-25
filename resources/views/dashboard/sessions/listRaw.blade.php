@@ -1,18 +1,18 @@
 <tr>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default">{{ $session->id }}</span>
+            <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default en">{{ $session->id }}</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col">
             <div class="flex">
-                <a href="{{ $session->case->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 transition">
-                @lang('Therapy room of :user', ['user' => $session->case->room->manager->name])
+                <a href="{{ $session->case->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline transition">
+                    @lang('Therapy room of :user', ['user' => $session->case->room->manager->name])
                 </a>
             </div>
             <div class="flex mt-1">
-                <a href="{{ $session->case->room->center->route('show') }}" class="text-xs text-gray-500 hover:text-blue-500 transition">
+                <a href="{{ $session->case->room->center->route('show') }}" class="text-xs text-gray-500 hover:text-blue-500 underline transition">
                     @if ($session->case->room->center->type == 'personal_clinic')
                         @lang('Personal clinic')
                     @else
@@ -24,14 +24,14 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <a href="{{ $session->case->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 transition">{{ $session->case->id }}</a>
+            <a href="{{ $session->case->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 en underline transition">{{ $session->case->id }}</a>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
                 @foreach ($session->case->clients as $client)
                     <div class="flex">
-                        <a href="{{ route('dashboard.center.users.show', ['center' => $session->case->room->center->id, 'user' => $client->id]) }}" class="text-xs text-gray-600 hover:text-blue-500 transition">
+                        <a href="{{ route('dashboard.center.users.show', ['center' => $session->case->room->center->id, 'user' => $client->id]) }}" class="text-xs text-gray-600 hover:text-blue-500 underline transition">
                             @displayName($client)
                         </a>
                     </div>
@@ -62,7 +62,9 @@
             <x-link-show :link="$session->route('show')"/>
         </div>
         <div class="inline-block">
-            <a href="{{ $session->route('edit') }}" alt="{{ __('Edition') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+            <a href="{{ $session->route('edit') }}" title="{{ __('Edition') }}">
+                <i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i>
+            </a>
         </div>
     </td>
 </tr>
