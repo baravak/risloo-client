@@ -36,12 +36,8 @@
 
     {{-- @include('dashboard.centers.myRooms') --}}
 
-    <div class="mb-4 mt-8">
-        <h3 class="flex items-center font-bold text-gray-700 cursor-default">
-            <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
-            <span>{{ __('Rooms') }}</span>
-            <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $rooms->total() }})</span>
-        </h3>
+    <div class="flex justify-between items-center mt-8 mb-4">
+        <h2 class="heading" data-total="({{ $rooms->total() }})" data-xhr="total">{{ __('Rooms') }}</h2>
     </div>
 
     <div class="flex justify-between items-center flex-wrap mb-4">
