@@ -1,7 +1,7 @@
 <tr data-xhr="sample-list-{{ $sample->id }}" class="transition hover:bg-gray-50">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $sample->id }}</span>
+            <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default en">{{ $sample->id }}</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -30,9 +30,13 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col">
-            <div class="flex"><a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-700 hover:text-blue-500">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a></div>
+            <div class="flex">
+                <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-700 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+            </div>
             @if ($sample->case)
-                <div class="flex mt-1"><a class="text-xs text-gray-500 hover:text-blue-500" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a></div>
+                <div class="flex mt-1">
+                    <a class="text-xs text-gray-500 hover:text-blue-500 underline" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
+                </div>
             @endif
         </div>
     </td>
