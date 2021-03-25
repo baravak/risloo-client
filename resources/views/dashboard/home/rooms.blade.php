@@ -1,6 +1,6 @@
 @if ($user->rooms && $user->rooms->count() > 0)
     <div class="flex justify-between items-center mt-8 mb-4">
-        <h3 class="heading" data-total="({{ $user->rooms ? $user->rooms->count() : 0 }})" data-xhr="total">{{ __('My therapy rooms') }}</h3>
+        <h2 class="heading" data-total="({{ $user->rooms ? $user->rooms->count() : 0 }})" data-xhr="total">{{ __('My therapy rooms') }}</h2>
         @if ($user->rooms && $user->rooms->count() > 5)
             <div>
                 <a href="{{ route('dashboard.rooms.index') }}" class="text-sm text-blue-700">{{ __('See All') }}</a>
@@ -18,9 +18,8 @@
                 </div>
 
                 <div class="p-4">
-                    <div class="text-sm sm:text-base text-center text-gray-700 font-medium">
-                        {{ $room->manager->name }}
-                    </div>
+                    <div class="text-sm sm:text-base text-center text-gray-700 font-medium">{{ $room->manager->name }}</div>
+
                     <div class="text-xs text-center text-gray-700 mt-2">
                         @if ($room->center->type == 'personal_clinic')
                             @lang('Personal clinic')
