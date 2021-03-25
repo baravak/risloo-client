@@ -33,19 +33,23 @@
         <div class="flex items-center">
             <div class="flex">
                 <span class="text-xs text-gray-600">
-                    @lang($bulkSample->case_status)
+                    @lang(ucfirst($bulkSample->case_status))
                 </span>
             </div>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <div class="flex"><span class="text-xs text-gray-600 cursor-default">{{ $bulkSample->members_count }} / {{ $bulkSample->joined }}</span></div>
+            <div class="flex">
+                <span class="text-xs text-gray-600 cursor-default">
+                    {{ $bulkSample->members_count }} / {{ $bulkSample->joined }}
+                </span>
+            </div>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-500 cursor-default">@lang($bulkSample->status)</span>
+            <span class="text-xs text-gray-500 cursor-default">@lang(ucfirst($bulkSample->status))</span>
         </div>
     </td>
     <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
