@@ -24,7 +24,7 @@
 
             <h2 class="font-bold text-lg text-gray-900 cursor-default">{{ $user->name ?: __('Anonymouse') }}</h2>
 
-            <span class="block dir-ltr text-right text-sm text-gray-600 mt-1 cursor-default">{{ $user->username }}</span>
+            <div class="text-sm text-gray-600 mt-1 cursor-default en">{{ $user->username }}</div>
 
             <div class="flex flex-wrap items-center mt-2">
                 {{-- <div class="inline-flex items-center text-gray-500 mb-2 sm:mb-0 ml-6 cursor-default">
