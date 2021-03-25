@@ -55,6 +55,16 @@
     </div>
 @endsection
 
+@section('scripts')
+    @parent
+    @if (request()->authorized_key)
+        <script>
+            $('body').ready( function(){
+                $('[data-form-page]').trigger('submit');
+            });
+        </script>
+    @endif
+@endsection
 @include('layouts.scripts')
 @include('layouts.body')
 @extends('layouts.app')
