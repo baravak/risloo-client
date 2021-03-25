@@ -28,10 +28,14 @@
                 </h1>
 
                 <div data-xhr="form">
-                    <form action="{{ route(Route::currentRouteName(), $theoryRouteParms) }}" method="POST" data-form-page="auth" class="active">
-                        @csrf
-                        @yield('auth-form')
-                    </form>
+                    @hasSection ('form')
+                        @yield('form')
+                    @else
+                        <form action="{{ route(Route::currentRouteName(), $theoryRouteParms) }}" method="POST" data-form-page="auth" class="active">
+                            @csrf
+                            @yield('auth-form')
+                        </form>
+                    @endif
                     @yield('auth-nav')
                 </div>
             </div>

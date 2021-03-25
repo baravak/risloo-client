@@ -7,6 +7,19 @@ use Illuminate\Http\Request;
 
 class AuthController extends _AuthController
 {
+
+    public function authTheoryPayment($request, $auth, $response){
+        if($auth->response('status') == 'fail'){
+            return $this->view($request, 'auth.theory.paymentFail');
+        }
+        if($auth->response('status') == 'success'){
+            return $this->view($request, 'auth.theory.payment');
+            return $response;
+        }
+        $response['direct'] = true;
+        $response['redirect'] = $auth->response('redirect');
+        return $response;
+    }
     public function authTheorySample($request, $auth, $response)
     {
         $response['direct'] = true;
