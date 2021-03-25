@@ -1,0 +1,19 @@
+@font-face {
+	font-family: 'dana VF';
+	src: url('../fonts/Dana/dana2webGX.woff') format('woff-variations'),
+		 url('../fonts/Dana/dana2webGX.woff') format('woff');
+	font-display: fallback;
+}
+
+@font-face {
+	font-family: dana;
+	src: url('../fonts/Dana/dana-regular.woff') format('woff');
+	font-display: fallback;
+}
+
+@font-face {
+	font-family: dana;
+	src: url('../fonts/Dana/dana-bold.woff') format('woff');
+	font-weight: bold;
+	font-display: fallback;
+}

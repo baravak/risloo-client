@@ -1,0 +1,30 @@
+@import "vendors/croppie.css";
+@import "vendors/fontawesome-all.css";
+@import "vendors/iziToast.css";
+@import "vendors/magnific-popup.css";
+@import "vendors/nprogress.css";
+@import "vendors/persian-datepicker.css";
+@import "vendors/select2.css";
+@import "vendors/tabby-ui.css";
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "base/fonts.css";
+@import "base/base.css";
+
+@import "utilities/direction.css";
+@import "utilities/placeholder.css";
+@import "utilities/loading.css";
+@import "utilities/form.css";
+
+@import "components/select2.css";
+@import "components/tabby.css";
+@import "components/heading.css";
+@import "components/dropdown.css";
+
+@import "layouts/aside.css";
+@import "layouts/main.css";
+@import "layouts/sample.css";
+@import "layouts/auth.css";

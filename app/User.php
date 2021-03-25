@@ -7,9 +7,12 @@ class User extends _User
 {
     public function __construct()
     {
-        $this->with['counseling_center'] = Relationship::class;
-        $this->with['centers'] = Relationship::class;
-        $this->with['center'] = Relationship::class;
+        $this->with['counseling_center'] = Center::class;
+        $this->with['centers'] = Center::class;
+        $this->with['center'] = Center::class;
+        $this->with['rooms'] = Room::class;
+        $this->with['cases'] = TherapyCase::class;
+        $this->with['samples'] = SampleSummary::class;
         parent::__construct(...func_get_args());
     }
 
@@ -45,5 +48,9 @@ class User extends _User
     {
         $store = new static;
         return $store->execute(sprintf("/users/%s/public-key", $user), $params, 'post');
+    }
+    public function _dashboard($id, array $params = [])
+    {
+        return $this->cache('users/' . $id .'/profile' , $params);
     }
 }

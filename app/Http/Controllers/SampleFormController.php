@@ -10,6 +10,9 @@ class SampleFormController extends Controller
     public function form(Request $request, $serial)
     {
         $sample = $this->data->sample = Sample::apiShow($serial);
+        if(!$sample->client){
+            return abort(403, 'Sample has not client');
+        }
         $this->data->global->title = $sample->scale->title . '-' . $sample->edition;
         $js = '[';
         foreach ($this->data->sample->items as $key => $value) {
@@ -85,8 +88,7 @@ class SampleFormController extends Controller
     {
         $close = Sample::close($serial);
         return $close->response()->json([
-            'redirect' => route('dashboard.samples.index'),
-            // 'redirect' => urldecode(route('samples.form', $serial)),
+            'redirect' => $close->response('next') ? urldecode(route('samples.form', $close->response('next'))) : route('dashboard.samples.index'),
             'direct' => true
         ]);
     }

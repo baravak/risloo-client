@@ -15,6 +15,8 @@ class Room extends API
         'center' => Center::class,
     ];
 
+    public $parent;
+
     public static function apiStore($center, array $params)
     {
         $store = new static;
@@ -23,5 +25,11 @@ class Room extends API
 
     public function getFilterValue(){
         return $this->manager->name;
+    }
+
+    public function _centerRooms($id, array $params = [])
+    {
+        $this->parent = Center::class;
+        return $this->cache('centers/' . $id .'/rooms' , $params);
     }
 }

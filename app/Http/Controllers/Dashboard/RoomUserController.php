@@ -10,9 +10,20 @@ class RoomUserController extends Controller
 {
     public function index(Request $request, $room)
     {
-        $this->data->users = RoomUser::apiIndex($room, $request->all());
-        $this->data->room = new Room((array) $this->data->users->response('room'));
-        return $this->view($request, 'dashboard.room-users.index');
+        $users = $this->data->users = RoomUser::apiIndex($room, $request->all());
+        $room = $this->data->room = $users->parentModel;
+        $center = $this->data->center = $room->center;
+        switch($request->header('data-xhr-base')){
+            case 'select2':
+                $view = 'dashboard.room-users.select2';
+                $this->data->global = $users->map(function($user){
+                    return ['id' => $user->id, 'title' => $user->name ?: $user->id];
+                });
+                break;
+            case 'quick_search' : $view = 'dashboard.room-users.quick_search'; break;
+            default : $view = 'dashboard.room-users.index';
+        }
+        return $this->view($request, $view);
     }
     public function create(Request $request, Room $room)
     {

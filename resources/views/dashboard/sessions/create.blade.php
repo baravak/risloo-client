@@ -1,61 +1,24 @@
+@section('form_action'){{ isset($session) ? route('dashboard.sessions.update', $session->id) :route('dashboard.sessions.create', $case->id) }}@endsection
 @extends('dashboard.create')
 @section('form_content')
-@isset($session)
-<div class="form-group form-group-m">
-    <input type="hidden" name="type" value="session">
-    <select disabled class="select2-select form-control form-control-m" data-template="room" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id">
-        @isset ($room)
-            <option value="{{$room->id}}" data-json="{{$room}}">{{$room->manager->name}}</option>
-        @endif
-    </select>
-    <label for="room_id">{{__('Room')}}</label>
-</div>
-<div class="form-group form-group-m">
-    <select class="select2-select form-control form-control-m has-clear" data-template="case_clients"data-title="manager.name manager.id" id="case_id" disabled>
-        @isset($case)
-            <option value="{{$case->id}}" data-json='{{$case}}' selected>{{$case->clients->pluck('user.name')->join('-')}}</option>
-        @endisset
-    </select>
-    <label for="case_id">{{__('Case')}}</label>
-</div>
-@else
-    <div class="form-group form-group-m">
-        <input type="hidden" name="type" value="session">
-        <select class="select2-select form-control form-control-m" data-template="room" name="room_id" data-name="room" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{route('dashboard.rooms.index', ['my_management'=> '1'])}}" data-lijax='change' data-state='both' data-relation="case_id">
-            @isset ($room)
-                <option value="{{$room->id}}" data-json="{{$room}}">{{$room->manager->name}}</option>
-            @endif
-        </select>
-        <label for="room_id">{{__('Room')}}</label>
+    <div class="mt-4">
+        <label for="start-picker" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Start time') }}</label>
+        <input type="text" id="start-picker" data-picker-minDate="{{time()}}" data-picker-maxDate="{{time() + (365 * 24 * 60 * 60)}}" data-picker-alt="started_at" value="{{ isset($session->started_at) ? $session->started_at->timestamp : '' }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
+        <input type="hidden" name="started_at" id="started_at">
     </div>
-@endisset
-    @isset ($room)
-        @if (!isset($session))
-            <div class="form-group form-group-m">
-                <select class="select2-select form-control form-control-m has-clear" data-template="case_clients" name="case_id" data-name="case" data-title="manager.name manager.id" id="case_id" data-url="{{isset($room) ? route('dashboard.cases.index', ['room' => $room->id]) : ''}}" data-url-pattern="{{route('dashboard.cases.index', ['room' => '%%'])}}">
-                    @isset($case)
-                        <option value="{{$case->id}}" data-json='{{$case}}' selected>{{$case->clients->pluck('user.name')->join('-')}}</option>
-                    @endisset
-                </select>
-                <label for="case_id">{{__('Case')}}</label>
-            </div>
-        @endif
-        <div class="form-group form-group-m">
-            <input type="text" class="form-control form-control-m direction-ltr date-picker" id="start-picker" placeholder="&nbsp;" autocomplete="off" data-picker-minDate="{{time()}}" data-picker-maxDate="{{time() + (365 * 24 * 60 * 60)}}" data-picker-alt="started_at" value="{{ isset($session->started_at) ? $session->started_at->timestamp : '' }}">
-            <label for="start-picker">{{__('Start time')}}</label>
-            <input type="hidden" name="started_at" id="started_at">
-        </div>
-        <div class="form-group form-group-m">
-            <input type="text" class="form-control form-control-m direction-ltr" placeholder="60" name="duration" @formValue($session->duration)>
-            <label for="finish-picker">{{__('Session duration')}} <small>(دقیقه)</small></label>
-        </div>
-        <div class="form-group form-group-m">
-            <select class="form-control form-control-m" id="status" name="status">
-                @foreach (['client_awaiting', 'session_awaiting', 'in_session', 'finished', 'canceled_by_client', 'canceled_by_center'] as $item)
-                        <option value="{{ $item }}" {!! isset($session->status) && $session->status == $item ? 'selected' : '' !!}>{{ __($item) }}</option>
-                    @endforeach
-            </select>
-            <label for="status">{{__('Status')}}</label>
-        </div>
-    @endisset
+
+    <div class="mt-4">
+        <label for="duration" class="inline-block mb-2 text-sm text-gray-700 font-medium">{{ __('Session duration') }}</label>
+        <span class="text-xs text-gray-600 font-light mr-1">(دقیقه)</span>
+        <input type="text" placeholder="60" id="duration" name="duration" @formValue( $session->duration ) class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
+    </div>
+
+    <div class="mt-4">
+        <label for="status" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Status') }}</label>
+        <select id="status" name="status" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+            @foreach (['client_awaiting', 'session_awaiting', 'in_session', 'finished', 'canceled_by_client', 'canceled_by_center'] as $item)
+                <option value="{{ $item }}" {!! isset($session->status) && $session->status == $item ? 'selected' : '' !!}>{{ __($item) }}</option>
+            @endforeach
+        </select>
+    </div>
 @endsection

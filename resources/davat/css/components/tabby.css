@@ -1,0 +1,33 @@
+[role="tablist"] {
+    @apply flex border-none mb-4;
+}
+
+[role="tablist"] li {
+    @apply flex-1 flex-shrink-0;
+}
+
+[role="tab"] {
+    @apply flex items-center justify-center border-none rounded-none text-center text-gray-600 h-16;
+    border-bottom: 4px solid;
+    @apply border-gray-200;
+}
+
+[role="tab"]:hover:not([aria-selected="true"]) {
+    @apply bg-transparent border-none;
+}
+
+@media (min-width: 30em) {
+    [role="tab"][aria-selected="true"] {
+        border: none;
+        border-bottom: 4px solid;
+        @apply border-brand font-bold text-gray-900;
+    }
+}
+
+@media (min-width: 30em) {
+    [role="tab"]:hover:not([aria-selected="true"]) {
+        border: none;
+        border-bottom: 4px solid;
+        @apply border-gray-300 text-gray-900;
+    }
+}

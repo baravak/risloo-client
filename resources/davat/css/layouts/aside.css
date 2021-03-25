@@ -1,0 +1,46 @@
+#aside {
+    position: fixed;
+    top: 0;
+    left: -256px;
+    width: 256px;
+    height: 100%;
+    z-index: 99;
+    transition: 0.2s;
+}
+
+[dir="rtl"] #aside {
+    right: -256px;
+    left: auto;
+}
+
+.aside-open #aside {
+	left: 0;
+}
+
+[dir="rtl"] .aside-open #aside {
+	right: 0;
+	left: auto;
+}
+
+@media (min-width: 1024px) {
+	#aside {
+		left: 0;
+	}
+
+	[dir="rtl"] #aside {
+		right: 0;
+		left: auto;
+	}
+}
+
+#aside > ul > li > a.active {
+	@apply bg-brand text-white;
+}
+
+#aside > ul > li > a.active:hover {
+	@apply bg-brand text-white;
+}
+
+#aside > ul > li ul a.active {
+	@apply font-bold;
+}

@@ -1,60 +1,29 @@
-<div class="container mt-md-5">
-    <div class="card test-card shadow-sm mb-3">
-        <div class="card-body">
-            @include('samples.panel.description')
-            @includeWhen($sample->prerequisites, 'samples.panel.information')
-            @include('samples.panel.items')
-            @include('samples.panel.close')
-
-            <div class="progress test-progress mb-3">
-                <div id="progress" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="container mx-auto pt-8 px-4">
+    <div class="flex flex-col md:flex-row items-right md:items-center mb-3 cursor-default">
+        <span class="w-8 border-t border-gray-200 hidden md:inline-block ml-3"></span>
+        <h1 class="font-bold text-2xl text-gray-800">{{$sample->scale->title}}</h1>
+        <span class="text-sm text-gray-500 md:mr-2 mt-2 md:mt-0">{{ $sample->edition }}</span>
+    </div>
+    <div id="content" class="flex flex-col lg:flex-row">
+        <div class="lg:flex-1 lg:pl-4 mb-4 lg:mb-0">
+            <div class="flex h-1 rounded-full overflow-hidden bg-gray-200 mb-2">
+                <div id="progress" class="bg-brand transition-all duration-300 ease-linear" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
+            <div class="border border-gray-300 p-4 mb-40 lg:mb-0 rounded">
 
-            <div class="d-flex justify-content-between align-items-baseline">
-                <div class="d-flex align-items-center">
-                    <span class="font-weight-bold" id="nav-count"></span>
-                    <span class="px-1">از</span>
-                    <span class="font-weight-bold">{{count($sample->items)}}</span>
-                </div>
-
-                <div>
-                    <span class="text-color-2 ml-2 fs-10" id="sync_status" title="وضعیت ذخیره‌سازی روی سرور">بدون تغییر</span>
-                    <a class="btn btn-sm btn-light disabled direct" style="min-width: 50px;" id="nav-prev">
-                        <i class="far fa-chevron-right align-middle"></i>
-                    </a>
-                    <a href="#1" class="btn btn-sm btn-light direct" style="min-width: 50px;" id="nav-next">
-                        <i class="far fa-chevron-left align-middle"></i>
-                    </a>
-                    <div class="custom-control custom-checkbox mt-3">
-                        <input type="checkbox" class="custom-control-input" id="skip">
-                        <label class="custom-control-label fs-10 align-middle" for="skip">
-                            <span style="display: inline-block; margin-top: 5px;">پرش روی تست‌های خالی</span>
-                        </label>
-                    </div>
-                </div>
+                @includeWhen($sample->chain, 'samples.panel.bulk-sampleStatus')
+                @includeWhen($sample->prerequisites, 'samples.panel.information')
+                @include('samples.panel.description')
+                @include('samples.panel.items')
+                @include('samples.panel.close')
             </div>
         </div>
-    </div>
-    <div class="alert alert-info d-none" role="alert" id="sync_alert">
-        ارتباط شما با سرور قطع شده است!
-        <ul>
-            <li>شما می‌توانید بدون مشکل به کار خود ادامه دهید</li>
-            <li>سیستم به صورت خودکار این ارتباط را چک می‌کند و در صورت اتصال گزینه‌های پاسخ‌داده شده را ذخیره می‌کند</li>
-            <li>
-                اگر تا انتهای نمونه‌گیری ارتباط شما برقرار نشد طبق مراحل زیر عمل کنید
-                <ol>
-                    <li>
-                        بر روی <a href="#" class="btn btn-sm btn-info fs-10 direct" id="download">دریافت فایل تست</a> کلیک کنید
-                    </li>
-                    <li>
-                        فایل دانلودی را پیش خود نگه‌داری کنید
-                    </li>
-                    <li>
-                        فایل را به صورت دستی به روان‌شناس یا اپراتور مرکز مشاوره تحویل داده یا مستقما در پنل کاربری خود بارگزاری کنید
-                    </li>
-                </ol>
-            </li>
-        </ul>
+        <div class="lg:flex-shrink-0 lg:w-56 hidden lg:block">
+            @include('samples.formAside')
+        </div>
+        <div class="lg:hidden fixed bottom-0 right-0 w-full p-4 bg-white aside-box-shadow">
+            @include('samples.formAside-mobile')
+        </div>
     </div>
 </div>
 

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\RequestGuard;
+use Illuminate\Auth\SessionGuard;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -18,6 +21,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\CenterUser::class => \App\Policies\CenterUserPolicy::class,
         \App\RelationshipUser::class => \App\Policies\RelationshipUserPolicy::class,
         \App\Assessment::class => \App\Policies\AssessmentPolicy::class,
+        \App\User::class => \App\Policies\UserPolicy::class,
 
         \App\Room::class => \App\Policies\RoomPolicy::class,
         \App\RoomUser::class => \App\Policies\RoomUserPolicy::class,
@@ -54,5 +58,32 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('dashboard.cases.manager', 'App\Policies\CasePolicy@manager');
         Gate::resource('dashboard.sessions', 'App\Policies\SessionPolicy');
         Gate::resource('dashboard.sessions.practices', 'App\Policies\PracticePolicy');
+
+        RequestGuard::macro('centers', function($withoutMyClinic = false){
+            if(!auth()->user()->centers){
+                return new Collection([]);
+            }
+            if($withoutMyClinic){
+                $my = auth()->myClinic();
+                if($my){
+                    return auth()->user()->centers->where('id', '<>', auth()->myClinic()->id);
+                }
+            }
+            return auth()->user()->centers;
+        });
+
+        RequestGuard::macro('center', function($center, $checkPosition = null){
+            if(!auth()->user()->centers){
+                return null;
+            }
+            return auth()->user()->centers->where('id', $center)->first();
+        });
+
+        RequestGuard::macro('myClinic', function(){
+            if(auth()->user()->centers){
+                return auth()->user()->centers->where('type', 'personal_clinic')->where('manager.id', auth()->id())->first();
+            }
+            return null;
+        });
     }
 }

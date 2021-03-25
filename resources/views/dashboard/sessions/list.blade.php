@@ -1,28 +1,25 @@
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@sortView($sessions, 'id', '#')</th>
-                <th>{{__('Room')}}</th>
-                <th>
-                    {{__('Case')}}
-                </th>
-                <th>{{__('Client')}}</th>
-                <th>{{__('Start time')}}</th>
-                <th>{{__('Session duration')}}</th>
-                <th>{{__('Status')}}</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($sessions as $session)
-            @include('dashboard.sessions.listRaw')
-            @endforeach
-        </tbody>
-    </table>
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center">
-            {{$sessions->links()}}
+<div class="overflow-x-auto">
+    <div class="align-middle inline-block min-w-full">
+        <div class="overflow-hidden border border-gray-200 rounded">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Room') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Client') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Start time') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Session duration') }}</th>
+                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
+                        <th class="px-3 py-2" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    @foreach ($sessions as $session)
+                        @include('dashboard.sessions.listRaw')
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

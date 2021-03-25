@@ -6,34 +6,31 @@ use App\Center;
 use App\RelationshipUser;
 use App\Room;
 use App\User;
+use App\UserDashboard;
 use Illuminate\Http\Request;
 
 class UserController extends _UserController
 {
-    public function showPsychologist(Request $request, User $user)
+    public function me(Request $request)
     {
-
-        $this->data->rooms = Room::apiIndex($request->all());
+        return $this->show($request, auth()->id());
     }
-    public function showCounselingCenter(Request $request, User $user)
+    public function show(Request $request, $user)
     {
-        // $this->data->members = RelationshipUser::apiIndex($user->center->id);
+        $user = $this->data->user = UserDashboard::apiDashboard($user, $request->all());
+        $this->data->user = $user;
+        return $this->view($request, 'dashboard.users.show');
     }
-
-    public function request(Request $request)
+    public function index(Request $request)
     {
-        $this->data->center = Center::request($request->center_id);
-        return $this->view($request, 'dashboard.users.profiles.centerAcceptation');
-    }
-
-    public function accept(Request $request)
-    {
-        $this->data->center = Center::accept($request->Ccenter_id);
-        return $this->view($request, 'dashboard.users.profiles.centerAcceptation');
-    }
-
-    public function index(Request $request){
-        return parent::index($request);
+        $users = $this->data->users = User::apiIndex($request->all());
+        if($request->header('data-xhr-base') == 'select2'){
+            $this->data->global = $users->map(function($user){
+                return ['id' => $user->id, 'title' => $user->name ?: $user->id];
+            });
+            return $this->view($request, 'dashboard.users.select2');
+        }
+        return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.users.list-xhr' : 'dashboard.users.index');
     }
 
     public function publicKey(Request $request, $user){
@@ -43,5 +40,22 @@ class UserController extends _UserController
         $user = User::setPublicKey($user, $request->all());
         $request->session()->put('User', $user->response()->toArray());
         return $user->response()->json(['redirect' => route('dashboard.users.edit', $user->id).'#public-key']);
+    }
+
+    public function avatarStore(Request $request, $user)
+    {
+        $avatar = new User;
+        $user = $this->data->user = $avatar->execute("%s/$user/avatar", $request->all('avatar'), 'POST');
+        if($user->id == auth()->id()){
+            $request->session()->put('User', $user->response()->toArray());
+            return [
+                'redirect' => route('dashboard.users.me.edit') . '#avatar-tab',
+            ];
+        }
+        else{
+            return [
+                'redirect' => route('dashboard.users.edit', $user->id) . '#avatar-tab',
+            ];
+        }
     }
 }

@@ -59,33 +59,18 @@ $('body').on('statio:dashboard:samples:show', function(){
     $('#scoring-btn', this).on('statio:jsonResponse', function (event, response, jqXHR) {
         $('.profile-link').remove();
         $('#scoring-extends').html('');
-        if (response.is_ok)
-        {
-            $('#profile-export i').removeClass('d-none');
-            $('#profile_svg *').remove();
-            $('#profile_svg').append($('<i class="fas fa-cog fa-spin"></i>'));
-            scoringResult.call(this, response, jqXHR);
-        }
-        else
+        if (!response.is_ok)
         {
             $('.status-action').show();
         }
     }).on('statio:init', function(){
-        $('.status-action').hide();
-        $('#profile-export-menu').addClass('d-none');
+        $('.status-action').hide('fast');
     });
-    if (['scoring', 'craeting_files'].indexOf($("#sample-show").attr('data-status')) >= 0)
-    {
-        if ($("#sample-show").attr('data-status') == 'scoring')
-        {
-            $('#scoring-btn').addClass('lijax-preload');
-        }
-        scoringResultAwaiting.call($('#scoring-btn')[0], { data: { id: $("#sample-show").attr('data-sample')}});
-    }
 });
 $('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', function(){
     $('[name=type]', this).on('change', function(event, start){
         var manage_field = $('#manager_id');
+        if(!manage_field.length) return;
         var endpoint = manage_field.attr('data-url');
         var data_url = endpoint;
         endpoint = url.parse(endpoint);
@@ -111,22 +96,10 @@ $('body').on('statio:dashboard:centers:create statio:dashboard:centers:edit', fu
             manage_field.attr('data-url', url.build(endpoint));
             $('*', manage_field).remove();
             manage_field.select2('destroy');
-            select2element.call(manage_field[0]);
+            davat.select2(manage_field);
         }
     });
     $('[name=type]').eq(0).trigger('change', [true]);
-});
-$('body').on('statio:dashboard:samples:show', function () {
-    $('#editable', this).on('change', function(){
-        if ($(this).is(':checked'))
-        {
-            $('.form-items').removeAttr('disabled');
-        }
-        else
-        {
-            $('.form-items').attr('disabled', 'disabled');
-        }
-    });
 });
 
 $('body').on('statio:dashboard:reserves:create', function () {
@@ -168,80 +141,6 @@ $('body').on('statio:dashboard:center:users:create', function(){
             $("#create_case").parent().hide();
         }
     }).trigger('change');
-});
-$('body').on('statio:dashboard:samples:create', function(){
-    $('#room-tab').on('show.bs.tab', function () {
-        $('input, select, checkbox, radio', '#room').each(function () {
-            if ($(this).is('.disabled:disabled')) {
-                $(this).removeAttr('disabled').removeClass('disabled');
-            }
-        });
-        $('input, select, checkbox, radio', '#case').each(function () {
-            if (!$(this).is(':disabled')) {
-                $(this).attr('disabled', 'disabled').addClass('disabled');
-            }
-        });
-    }).on('hide.bs.tab', function () {
-        $('input, select, checkbox, radio', '#room').each(function () {
-            if (!$(this).is(':disabled')) {
-                $(this).attr('disabled', 'disabled').addClass('disabled');
-            }
-        });
-        $('input, select, checkbox, radio', '#case').each(function () {
-            if ($(this).is('.disabled:disabled')) {
-                $(this).removeAttr('disabled').removeClass('disabled');
-            }
-        });
-    });
-    $('#room-tab').trigger(($('#room-tab').is('.active') ? 'show' : 'hide') + '.bs.tab');
-
-
-    $('#room_client_id.sample-page').on('change', function () {
-        if (!$(this).val() || !$(this).val().length) {
-            $('#count').removeAttr('disabled');
-        }
-        else {
-            $('#count').attr('disabled', 'disabled');
-        }
-    });
-    $('#count.sample-page').on('change', function () {
-        if (!$(this).val()) {
-            $('#room_client_id.sample-page').removeAttr('disabled');
-        }
-        else {
-            $('#room_client_id.sample-page').attr('disabled', 'disabled');
-        }
-    });
-
-    $('#case_id').on('select2:select', function(event){
-        $('#client-null-tamplate').hide();
-        event.params.data.all.clients.forEach(function(e, i){
-            var template = $('#client-template').clone();
-            template.removeClass('d-none');
-            template.removeAttr('id');
-            $('.data-name', template).text(e.user.name);
-            var avatar = e.user.avatar ? e.user.avatar.small : null;
-            if(avatar)
-            {
-                $('img', template).attr('src', e.user.avatar.small.url);
-            }
-            else
-            {
-                $('img', template).remove();
-                $('.media', template).append('<span>' + (e.user.name.substr(0, 1)) + '</span>');
-            }
-            $('input', template).attr('id', 'client-' + e.user.id).attr('name', 'client_id[]').attr('value', e.id);
-            $('label', template).attr('for', 'client-' + e.user.id);
-            template.appendTo('#client-list');
-        });
-    });
-    $('#case_id').on('change', function(){
-        $('#client-list .richak').remove();
-        if (!$(this).val())
-        {
-            $('#client-null-tamplate').show();
-        }
-    });
 });
 
 $(document).on('statio:global:renderResponse', function (event, base, context) {
@@ -360,78 +259,4 @@ function select2result_sessions(data, option) {
     $('<div>'+ calendar +'</div>').addClass('col-3 fs-10').appendTo(list);
     $('<div>'+ time +'</div>').addClass('col-3 fs-10').appendTo(list);
     return list;
-}
-
-function scoringResult(response, jqXHR)
-{
-    var _self = this;
-    if (response.data.score)
-    {
-        if($(this).is('.lijax-preload'))
-        {
-            var preload = $('#' + $(this).attr('data-lijax-preload')).eq(0);
-            preload.fadeOut('fast', function(){
-                $('#profile-export-menu').hide().removeClass('d-none').fadeIn('fast');
-            });
-            $(this).removeClass('lijax-preload');
-        }
-    }
-    if (!response.data.score || !response.data.profiles)
-    {
-        setTimeout(function(){
-            scoringResultAwaiting.call(_self, response);
-        }, 2000);
-        return;
-    }
-    for (var key in response.data.profiles) {
-        var profile = response.data.profiles[key];
-        var  element = $('.profile-link.profile-'+ key).eq(0);
-        if(!element.length)
-        {
-            $('<a href="' + profile.url + '" target="_blank" data-type="'+ key + '" class="dropdown-item fs-12 profile-link profile-' + key + '">'+  (key.replace('profile_', '')).replace(/_/gi, ' ').toUpperCase() +'</a>').appendTo('#profile-export-list');
-        }
-        else {
-            $('.profile-link.profile-'+ key).attr('href', profile.url);
-        }
-    }
-    $('.profile-link').fadeIn('fast');
-    if(jqXHR.status != 200) {
-        setTimeout(function () {
-            scoringResultAwaiting.call(_self, response);
-        }, 5000);
-    } else {
-        if($('#scoring-extends').length)
-        {
-            new Statio({
-                type: 'render',
-                context: $('#scoring-extends').eq(0),
-                ajax: {
-                    cache: false,
-                    method: 'get'
-                },
-                url: '/dashboard/samples/' + response.data.id + '/scoring?html=1'
-            });
-        }
-        $('#profile-export i').fadeOut('fast', function () {
-            $(this).addClass('d-none');
-        });
-    }
-    if (response.data.profiles.profile_svg && !$('#profile_svg img').length)
-    {
-        $('#profile_svg *').remove();
-        $('#profile_svg').append($('<img src="' + response.data.profiles.profile_svg.url + '" class="d-none">'));
-        $('#profile_svg img').hide().removeClass('d-none').fadeIn('slow').addClass('d-block');
-    }
-
-}
-
-function scoringResultAwaiting(response)
-{
-    $.ajax({
-        context : this,
-        url: '/dashboard/samples/' + response.data.id + '/scoring',
-        success : function(data, statusText, jqXHR){
-            scoringResult.call(this, data, jqXHR);
-        }
-    });
 }

@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Center;
 use App\CenterUser;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -25,35 +26,33 @@ class RoomPolicy
         return false;
     }
 
-    public function create(User $user, CenterUser $roomUser = null){
-        if($roomUser)
-        {
-            if(isset($roomUser->meta->room_id))
-            {
-                return false;
-            }
-            if(!in_array($roomUser->position, config('users.room_managers')))
-            {
-                return false;
-            }
-            if(!$roomUser->accepted_at || $roomUser->kicked_at)
-            {
-                return false;
-            }
-        }
-        if($user->isAdmin())
-        {
-            return true;
-        }
-        if(!$user->centers || !$user->centers->count())
-        {
+    public function create(User $user, Center $center = null, CenterUser $centerUser = null){
+        if($center && $center->type == 'personal_clinic'){
             return false;
         }
-        $allows = false;
-        foreach ($user->centers as $key => $value) {
-            if($value->acceptation && $value->acceptation->position == 'manager')
-            {
+        if(!$center){
+            return true;
+        }
+        if($centerUser){
+            if(!$user->isAdmin() && !$user->centers) return;
+            elseif(!$user->isAdmin() && !$user->centers->whereIn('acceptation.position', ['manager'])->where('id', $center->id)->count()){
+                return false;
+            }
+            if(!in_array($centerUser->position, ['manager', 'operator', 'psychologist'])){
+                return false;
+            }
+                if(!$centerUser->meta || !$centerUser->meta->room_id){
+                    return true;
+                }
+                return false;
+        }else{
+            if($user->isAdmin()){
                 return true;
+            }
+            if($center->acceptation){
+                if($center->acceptation->accepted_at && !$center->acceptation->kicked_at && in_array($center->acceptation->position, ['operator', 'manager'])){
+                    return true;
+                }
             }
         }
         return false;

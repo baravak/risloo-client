@@ -1,0 +1,12 @@
+.dropdown {
+    @apply relative inline-block;
+}
+
+.dropdown > button + div {
+    @apply hidden absolute bg-gray-50 border border-gray-300 overflow-auto z-10;
+    min-width: 10rem;
+}
+
+.dropdown > button + div.show {
+    @apply block;
+}

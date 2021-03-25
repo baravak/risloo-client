@@ -1,53 +1,25 @@
-<div class="card-body" id="scoring-extends" data-xhr="scoring-extends">
-    <div class="row">
-        <div class="col-12 mb-2">
-            <h5>مقیاس‌های افزوده شده آزمون</h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="row">
-                <div class="col-4">
-                    @isset($scoring->profiles->profile_nv_svg)
-                        <h6>مقیاس‌های روایی جدید</h6>
-                        <img src="{{$scoring->profiles->profile_nv_svg->url}}" class="d-block profile-nv-svg">
-                    @endisset
-                </div>
-                <div class="col-8">
-                    @isset($scoring->profiles->profile_critical_svg)
-                        <h6>مقیاس‌های بحرانی</h6>
-                        <img src="{{$scoring->profiles->profile_critical_svg->url}}" class="d-block profile-critical-svg">
-                    @endisset
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            @isset($scoring->profiles->profile_sup_svg)
-                <h6>مقیاس‌های تکمیلی</h6>
-                <img src="{{$scoring->profiles->profile_sup_svg->url}}" class="d-block profile-sup-svg">
-            @endisset
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            @isset($scoring->profiles->profile_hl_svg)
-                <h6>مقیاس‌های هریس‌لینگوز</h6>
-                <img src="{{$scoring->profiles->profile_hl_svg->url}}" class="d-block profile-hl-svg">
-            @endisset
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-5">
-            @isset($scoring->profiles->profile_si_svg)
-                <h6>مقیاس‌های Si</h6>
-                <img src="{{$scoring->profiles->profile_si_svg->url}}" class="d-block profile-si-svg">
-            @endisset
-        </div>
-        <div class="col-7">
-            @isset($scoring->profiles->profile_content_svg)
-                <h6>مقیاس‌های محتوایی</h6>
-                <img src="{{$scoring->profiles->profile_content_svg->url}}" class="d-block profile-content-svg">
-            @endisset
+@php
+    $_aProfiles = [
+        ['مقیاس‌های روایی جدید', 'profile_nv_png'],
+        ['مقیاس‌های بحرانی', 'profile_critical_png'],
+        ['مقیاس‌های تکمیلی', 'profile_sup_png'],
+        ['مقیاس‌های هریس‌لینگوز', 'profile_hl_png'],
+        ['مقیاس‌های Si', 'profile_si_png'],
+        ['مقیاس‌های محتوایی', 'profile_content_png'],
+];
+@endphp
+<div data-xhr="sample-profiles" id="sample-profile">
+    <div class="mt-4">
+        <h3 class="heading">مقیاس‌های افزوده شده آزمون</h3>
+        <div class="mt-4">
+            @foreach ($_aProfiles as $item)
+                @if ($scoring->profiles && $scoring->profiles->where('mode', $item[1])->first())
+                    <a href="{{ $scoring->profiles->where('mode', $item[1])->first()->url }}" target="_blank" class="inline-block magnific-popup mr-4">
+                         {{ $item[0] }}
+                        <img src="{{ $scoring->profiles->where('mode', $item[1])->first()->url }}" class="w-32 h-32 object-cover border border-gray-200 p-1 rounded">
+                    </a>
+                @endif
+            @endforeach
         </div>
     </div>
 </div>

@@ -1,0 +1,30 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+.en {
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+}
+
+html[lang="fa"], .fa {
+    font-family: dana;
+}
+
+@supports (font-variation-settings: normal) {
+    html[lang="fa"], .fa {
+        font-family: 'dana VF';
+        font-variation-settings: "FANU" 1;
+    }
+}
+
+kbd {
+    font-family: 'dana VF', dana!important;
+}
+
+.focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 ring-brand;
+}

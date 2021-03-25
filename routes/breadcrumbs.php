@@ -1,6 +1,7 @@
 <?php
 
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+use Illuminate\Support\Facades\Gate;
 
 Breadcrumbs::for('dashboard.centers.index', function ($trail, $data) {
     $trail->parent('dashboard.home', $data);
@@ -24,7 +25,23 @@ Breadcrumbs::for('dashboard.centers.edit', function ($trail, $data) {
 
 Breadcrumbs::for('dashboard.center.users.index', function ($trail, $data) {
     $trail->parent('dashboard.centers.show', $data);
-    $trail->push(__('Users'), route('dashboard.center.users.index', $data['center']->id));
+        $trail->push(
+            __('Users'),
+            Gate::allows('viewAny', [App\CenterUser::class, $data['center']]) ? route('dashboard.center.users.index', $data['center']->id) : null
+    );
+});
+Breadcrumbs::for('dashboard.center.users.show', function ($trail, $data) {
+    $trail->parent('dashboard.center.users.index', $data);
+    $trail->push(
+        $data['center'] && $data['center']->acceptation && $data['center']->acceptation->id == $data['user']->id ? __('My profile') : ($data['user']->name ?: $data['user']->id),
+        route('dashboard.center.users.show', ['center' => $data['center']->id, 'user' => $data['user']->id]));
+});
+
+Breadcrumbs::for('dashboard.center.users.edit', function ($trail, $data) {
+    $trail->parent('dashboard.center.users.show', $data);
+    $trail->push(
+        __('Edit'),
+        route('dashboard.center.users.edit', ['center' => $data['center']->id, 'user' => $data['user']->id]));
 });
 
 Breadcrumbs::for('dashboard.center.users.create', function ($trail, $data) {
@@ -43,7 +60,20 @@ Breadcrumbs::for('dashboard.samples.index', function ($trail, $data) {
     $trail->push(__('Samples'), route('dashboard.samples.index'));
 });
 
-
+Breadcrumbs::for('dashboard.samples.show', function ($trail, $data) {
+    if($data['sample']->case){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        if($data['sample']->client){
+            $data['user'] = $data['sample']->client;
+            $trail->parent('dashboard.center.users.show', $data);
+        }else{
+            $trail->parent('dashboard.rooms.show', $data);
+        }
+    }
+    $trail->push(__('Samples'), null);
+    $trail->push($data['sample']->id, route('dashboard.samples.show', $data['sample']->id));
+});
 Breadcrumbs::for('dashboard.samples.create', function ($trail, $data) {
     $trail->parent('dashboard.samples.index', $data);
     $trail->push(__('Create new sampel'), route('dashboard.samples.index'));
@@ -59,14 +89,13 @@ Breadcrumbs::for('dashboard.rooms.index', function ($trail, $data) {
     $trail->push(__('Therapy rooms'), route('dashboard.rooms.index'));
 });
 
-Breadcrumbs::for('dashboard.rooms.create', function ($trail, $data) {
-    $trail->parent('dashboard.rooms.index', $data);
-    $trail->push(__('Create new room'), route('dashboard.rooms.create'));
+Breadcrumbs::for('dashboard.center.rooms.create', function ($trail, $data) {
+    $trail->parent('dashboard.centers.show', $data);
+    $trail->push(__('Create new room'), route('dashboard.center.rooms.create', ['center' => $data['center']]));
 });
 
 Breadcrumbs::for('dashboard.rooms.show', function ($trail, $data) {
-    $trail->parent('dashboard.rooms.index', $data);
-    $trail->push(($data['room']->center ?: $data['room'])->detail->title, route('dashboard.centers.show', ($data['room']->center ?: $data['room'])->id));
+    $trail->parent('dashboard.centers.show', $data);
     $trail->push($data['room']->type == 'room' ? __('Therapy room of :user', ['user' => $data['room']->manager->name]) : __('Personal'), route('dashboard.rooms.show', $data['room']->id));
 });
 
@@ -91,16 +120,69 @@ Breadcrumbs::for('dashboard.reserves.create', function ($trail, $data) {
 
 
 Breadcrumbs::for('dashboard.sessions.index', function ($trail, $data) {
-    $trail->parent('dashboard.home', $data);
-    if(isset($data['room']))
-    {
-        $trail->push(($data['room']->center ?: $data['room'])->detail->title, route('dashboard.centers.show', ($data['room']->center ?: $data['room'])->id));
-        $trail->push($data['room']->type == 'room' ? __('Therapy room of :user', ['user' => $data['room']->manager->name]) : __('Personal'), route('dashboard.rooms.show', $data['room']->id));
+    if(isset($data['case'])){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        $trail->parent('dashboard.home', $data);
     }
-    $trail->push(__('Therapy sessions'), route('dashboard.sessions.index'));
+
+    $trail->push(__('Sessions'), null);
 });
 
 Breadcrumbs::for('dashboard.sessions.create', function ($trail, $data) {
     $trail->parent('dashboard.sessions.index', $data);
     $trail->push(__('Create session'), route('dashboard.sessions.index'));
+});
+
+Breadcrumbs::for('dashboard.sessions.edit', function ($trail, $data) {
+    $trail->parent('dashboard.sessions.show', $data);
+    $trail->push(__('Edit'), route('dashboard.sessions.edit', $data['session']->route('edit')));
+});
+
+Breadcrumbs::for('dashboard.cases.show', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+    $trail->push(__('Case'), null);
+    $trail->push($data['case']->id, $data['case']->route('show'));
+});
+
+Breadcrumbs::for('dashboard.case.users.create', function ($trail, $data) {
+    $trail->parent('dashboard.cases.show', $data);
+    $trail->push(__('Join new user'), route('dashboard.case.users.create', $data['case']->id));
+});
+
+Breadcrumbs::for('dashboard.sessions.show', function ($trail, $data) {
+    $trail->parent('dashboard.cases.show', $data);
+    $trail->push(__('Session'), null);
+    $trail->push($data['session']->id, $data['session']->route('show'));
+});
+Breadcrumbs::for('dashboard.sessions.report.create', function ($trail, $data) {
+    $trail->parent('dashboard.sessions.show', $data);
+    $trail->push(__('Report'), route('dashboard.sessions.report.create', $data['session']->id));
+});
+Breadcrumbs::for('dashboard.sessions.practices.create', function ($trail, $data) {
+    $trail->parent('dashboard.sessions.show', $data);
+    $trail->push(__('Create new practice'), route('dashboard.sessions.practices.create', $data['session']->id));
+});
+
+Breadcrumbs::for('dashboard.room.cases.create', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+    $trail->push(__("Create new case"), route('dashboard.room.cases.create', $data['room']->id));
+});
+
+
+Breadcrumbs::for('dashboard.cases.index', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+
+    $trail->push(__('Cases'), route('dashboard.cases.index'));
+});
+
+Breadcrumbs::for('dashboard.bulk-samples.index', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+
+    $trail->push(__('Bulk samples'), route('dashboard.bulk-samples.index'));
+});
+Breadcrumbs::for('dashboard.bulk-samples.show', function ($trail, $data) {
+    $trail->parent('dashboard.bulk-samples.index', $data);
+
+    $trail->push($data['bulkSample']->title ?: $data['bulkSample']->id, route('dashboard.bulk-samples.show', $data['bulkSample']->id));
 });

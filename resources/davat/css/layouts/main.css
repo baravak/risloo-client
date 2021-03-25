@@ -1,0 +1,18 @@
+#main {
+    margin-left: 0;
+}
+
+[dir="rtl"] #main {
+    margin-right: 0;
+    margin-left: unset;
+}
+
+@media (min-width: 1024px) {
+    #main {
+        margin-left: 256px;
+    }
+
+    [dir="rtl"] #main {
+        margin-right: 256px;
+    }
+}

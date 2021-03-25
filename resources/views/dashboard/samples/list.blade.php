@@ -1,34 +1,30 @@
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@sortView($samples, 'id', __('Serial'))</th>
-                <th>
-                    @sortView($samples, 'scale')
-                    @filterView($samples, 'scale')
-                </th>
-                <th>
-                    @sortView($samples, 'client')
-                    {{-- @filterView($samples, 'client') --}}
-                </th>
-                <th>
-                    @sortView($samples, 'room')
-                    @include('components._filter', ['model'=> $samples, 'key' => 'room', 'select_title'=> 'manager.name', 'select_template' => 'room'])
-                </th>
-                <th>
-                    @sortView($samples, 'case')
-                </th>
-                <th>
-                    @sortView($samples, 'status')
-                    @filterView($samples, 'status')
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($samples as $sample)
-            @include('dashboard.samples.listRaw')
-            @endforeach
-        </tbody>
-    </table>
+<div data-xhr="sample-items">
+    @if ($samples->count())
+        <div class="overflow-x-auto">
+            <div class="align-middle inline-block min-w-full">
+                <div class="overflow-hidden border border-gray-200 rounded">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Scale') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Client') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Therapy room') }}</th>
+                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
+                                <th class="px-3 py-2" scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            @foreach ($samples as $sample)
+                                @include('dashboard.samples.listRaw')
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {{ method_exists($samples, 'links') ? $samples->links() : null }}
+    @else
+        @include('dashboard.samples.emptyList')
+    @endif
 </div>

@@ -1,9 +1,7 @@
-<div data-panel="information" style="display: none" class="mb-5">
-    <div class="card-title" >اطلاعات جمعیت‌شناختی و عمومی</div>
-    <div>
-        <h4>
-            بعد از تکمیل اطلاعات زیر به صفحه بعد رفته و پاسخ‌دهی را شروع کنید
-        </h4>
-        @include('samples.prerequisite')
+<div  data-nav="information" data-title="@lang('information')" class="hidden">
+    <div class="mb-8">
+        <h2 class="font-medium text-lg mb-2">اطلاعات جمعیت‌شناختی و عمومی</h2>
+        <p class="text-gray-700">بعد از تکمیل اطلاعات زیر به صفحه بعد رفته و پاسخ‌دهی را شروع کنید</p>
     </div>
+    @include('samples.prerequisite')
 </div>

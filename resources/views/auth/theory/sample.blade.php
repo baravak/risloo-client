@@ -1,8 +1,9 @@
 @section('auth-form')
-<div class="form-group">
-    <input type="password" class="form-control" id="password" name="password" placeholder="{{__('Passowrd')}}">
-</div>
+    <div class="mb-4">
+        <input type="password" class="w-full text-sm text-left dir-ltr placeholder-right border border-gray-200 rounded-sm" id="password" name="password" placeholder="{{ __('Passowrd') }}">
+    </div>
 
-<button class="btn btn-dark btn-block btn-login mb-3">{{__('Check')}}</button>
+    <button class="w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mb-8 focus">{{ __('Check') }}</button>
 @endsection
+
 @extends('auth.theory')

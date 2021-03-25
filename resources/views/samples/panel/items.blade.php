@@ -1,12 +1,8 @@
-<div data-panel="item" style="display: none" class="mb-5">
-    <div class="card-title" >...</div>
-    <div id="item-section"></div>
-    <div id="template" style="display: none">
-        <div class="radio">
-            <input type="radio">
-            <label>
-                <span></span>
-            </label>
+@foreach ($sample->items as $key => $item)
+    <div  data-nav="{{ $key+1 }}" data-title="{{ $key+1 }}" class="hidden" data-type="item" data-answer-type="{{ $item->answer->type }}" data-answer="{{ isset($item->user_answered) ? $item->user_answered : null }}">
+        @include('samples.items.types.' . $item->type)
+        <div id="item-section">
+            @include('samples.items.answers.' . $item->answer->type)
         </div>
     </div>
-</div>
+@endforeach

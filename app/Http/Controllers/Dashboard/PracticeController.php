@@ -17,13 +17,20 @@ class PracticeController extends Controller
 
     public function create(Request $request, Session $session)
     {
+        $this->data->global->title = __('Create new practice');
         $this->data->session = $session;
+        $case = $this->data->case = $session->case;
+        $room = $this->data->room = $case->room;
+        $center = $this->data->center = $room->center;
         $this->authorize('dashboard.sessions.practices.create', $session);
         return $this->view($request, 'dashboard.practices.create');
     }
     public function store(Request $request, $session)
     {
-        return Practice::apiStore($session, $request->all(), 'POST')->response()->json();
+        Practice::apiStore($session, $request->all(), 'POST');
+        return [
+            'redirect' => route('dashboard.sessions.show', $session)
+        ];
     }
 
     public function update(Request $request, $practice)
@@ -43,6 +50,6 @@ class PracticeController extends Controller
 
     public function storeHomework(Request $request, $session, $practice){
         $practice = Practice::homeworkStore($session, $practice, $request->all());
-            return $this->view($request, 'dashboard.practices.listRaw', ['practice' => $practice]);
+            return $this->view($request, 'dashboard.sessions.practiceRaw', ['practice' => $practice, 'session' => $practice->parentModel]);
     }
 }

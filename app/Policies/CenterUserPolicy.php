@@ -10,18 +10,19 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class CenterUserPolicy
 {
     use HandlesAuthorization;
-    public function viewAny(User $user, CenterUser $centerUser)
+    public function viewAny(User $user, Center $center)
     {
-        return true;
+        return $user->isAdmin() || ($center->acceptation && in_array($center->acceptation->position, ['manager', 'operator']));
     }
     public function update(User $user, CenterUser $centerUser, $option = null){
         $center = $centerUser->parentModel;
         $acceptation = $center->acceptation;
-        if($user->id == $centerUser->user->id && !$user->isAdmin())
-        {
-            return false;
+        if($center->acceptation && !$user->isAdmin()){
+            if($centerUser->id == $center->acceptation->id){
+                return false;
+            }
         }
-        if ($center->manager->id == $centerUser->user->id) {
+        if ($center->manager->id == $centerUser->id) {
             return false;
         }
 
@@ -34,7 +35,10 @@ class CenterUserPolicy
             return false;
         }
 
-        if ($center->manager->id == $user->id || $user->isAdmin()) {
+        if ($user->isAdmin()) {
+            return true;
+        }
+        if($center->acceptation && $center->manager->id == $center->acceptation->id){
             return true;
         }
 
@@ -65,6 +69,22 @@ class CenterUserPolicy
         if(in_array($center->acceptation->position, ['manager', 'operator']))
         {
             return true;
+        }
+        return false;
+    }
+    public function accept(User $user, CenterUser $cUser, Center $center){
+        if($user->isAdmin() || $user->centers->whereIn('acceptation.position', ['operator', 'manager'])->where('id', $center->id)->count()){
+            if($cUser->kicked_at || !$cUser->accepted_at){
+                return true;
+            }
+        }
+        return false;
+    }
+    public function kick(User $user, CenterUser $cUser, Center $center){
+        if($user->isAdmin() || $user->centers->whereIn('acceptation.position', ['operator', 'manager'])->where('id', $center->id)->count()){
+            if(!$cUser->kicked_at){
+                return true;
+            }
         }
         return false;
     }

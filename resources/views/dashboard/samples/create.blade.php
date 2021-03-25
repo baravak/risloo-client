@@ -1,33 +1,57 @@
 @extends('dashboard.create')
 @section('form_content')
-<div class="form-group form-group-m">
-    <select class="select2-select form-control form-control-m" multiple name="scale_id[]" id="scale_id" data-url="{{route('dashboard.assessments.index')}}">
+    <div>
+        <label for="scale_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Scale') }}</label>
+        <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index', ['instance' => 1]) }}" data-placeholder="جست‌و‌جو">
+            @isset($scale)
+                <option value="{{$scale->id}}" selected>{{$scale->title}}</option>
+            @endisset
+        </select>
+        <div class="flex text-xs text-gray-400 mt-2">
+            <i class="fal fa-info-circle ml-1"></i>
+            <span>در این قسمت لیست آزمون‌های پُر کاربرد را مشاهده می‌کنید. جهت انتخاب آزمونی که در این لیست وجود ندارد، عنوان آزمون مد نظر را جست‌وجو کرده و آن را انتخاب نمایید. شما می‌توانید لیست تمام آزمون‌های موجود در سامانه را نیز در
+                <a href="{{ route('dashboard.assessments.index') }}" data-metarget="assessments" data-metarget-pattern="^/dashboard/assessments.*" target="_blank" class="text-blue-600 hover:text-blue-800">این صفحه</a>
+            مشاهده نمایید.
+            </span>
+        </div>
         @isset($scale)
-            <option value="{{$scale->id}}" data-json="{{$scale}}" selected>{{$scale->title}}</option>
+        <div data-for="scale_id" class="hidden">
+            @include('dashboard.assessments.select2', ['assessments' => [$scale]])
+        </div>
         @endisset
-    </select>
-    <label for="scale_id">{{__('Scale')}}</label>
-</div>
+    </div>
 
-<div class="form-group form-group-m">
-    <select class="select2-select form-control form-control-m sample-create" data-relation="case_id room_client_id" data-template="room" name="room_id" data-title="manager.name manager.id" data-avatar="manager.avatar.tiny.url manager.avatar.small.url" id="room_id" data-url="{{route('dashboard.rooms.index' , ['my_management' => 1])}}">
-        @isset($case)
-            <option value="{{$case->room->id}}" data-json="{{$case->room}}" selected>{{$case->room->manager->name}}</option>
+    <div class="mt-4">
+        <label for="room_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Room') }}</label>
+        <select class="select2-select" data-relation="case_id room_client_id bulk_case_id" name="room_id"  id="room_id" data-url="{{ route('dashboard.rooms.index' , ['my_management' => 1, 'instance' => 1]) }}">
+        @isset($room)
+            <option value="{{$room->id}}" selected>{{ $room->manager->name  }}</option>
         @endisset
-    </select>
-    <label for="room_id">{{__('Room')}}</label>
-</div>
+        </select>
+        @isset($room)
+        <div data-for="room_id" class="hidden">
+            @include('dashboard.rooms.select2', ['rooms' => [$room]])
+        </div>
+        @endisset
+    </div>
 
-<ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link direct fs-14" id="room-tab" data-toggle="tab" href="#room" role="tab" aria-controls="room" aria-selected="true">{{__('Room')}}</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link direct fs-14 active" id="case-tab" data-toggle="tab" href="#case" role="tab" aria-controls="case" aria-selected="false">{{__('Case')}}</a>
-    </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-    @include('dashboard.samples.createRoom')
-    @include('dashboard.samples.createCase')
-</div>
+    <div class="mt-4">
+        <ul data-tabs>
+            <li><a data-tabby-default href="#case-tab" class="focus direct" role="presentation">{{ __('Case') }}</a></li>
+            <li><a href="#room-tab" class="focus direct" role="presentation">{{ __('Therapy room') }}</a></li>
+            <li><a href="#bulk-tab" class="focus direct" role="presentation">{{ __('Bulk sample') }}</a></li>
+        </ul>
+
+        <div id="case-tab">
+            @include('dashboard.samples.createCase')
+        </div>
+
+        <div id="room-tab">
+            @include('dashboard.samples.createRoom')
+        </div>
+
+        <div id="bulk-tab">
+            @include('dashboard.samples.createBulk')
+        </div>
+    </div>
 @endsection
