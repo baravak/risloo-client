@@ -16,7 +16,7 @@
                     <tr>
                         <td class="px-3 py-2 whitespace-nowrap">
                             <div class="flex items-center">
-                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $assessment->id }}</span>
+                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default en">{{ $assessment->id }}</span>
                             </div>
                         </td>
                         <td class="px-3 py-2 whitespace-nowrap">
