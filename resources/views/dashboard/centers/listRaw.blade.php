@@ -3,10 +3,10 @@
 
     <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 mx-auto -mt-12 bg-gray-300 text-gray-600 rounded-full border-4 border-white overflow-hidden">
         @if ($center->type == 'personal_clinic')
-                @avatarOrName($center->manager)
-            @else
-                @avatarOrName($center->detail)
-            @endif
+            @avatarOrName($center->manager)
+        @else
+            @avatarOrName($center->detail)
+        @endif
     </div>
 
     <div class="p-4">
