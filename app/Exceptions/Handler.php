@@ -51,7 +51,14 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if(method_exists($exception, 'redirectTo')){
-            return $exception->redirectTo();
+            if($request->expectsJson()){
+                return [
+                    'redirect' => $exception->redirectTo(),
+                    'direct' => true
+                ];
+            }else{
+                return redirect($exception->redirectTo());
+            }
         }
         return parent::render($request, $exception);
     }
