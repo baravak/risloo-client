@@ -26,6 +26,10 @@ class AuthController extends _AuthController
         $response['redirect'] = urldecode(route('samples.form', substr($auth->response('key'), 1)));
         return $response;
     }
+    public function authTheoryResultSample($request, $auth)
+    {
+        return redirect(urldecode(route('samples.form', substr($auth->response('key'), 1))));
+    }
     public function authTheoryJoinUser($request, $auth, $response)
     {
         return $this->authTheory($request, $auth->response('key'));
