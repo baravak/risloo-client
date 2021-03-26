@@ -37,3 +37,9 @@
     <label for="description" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Description') }}</label>
     <textarea id="description" name="description" placeholder="{{ __('Optional') }}" autocomplete="off" @formValue($center->detail->description) class="resize-none border border-gray-500 h-20 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
 </div>
+
+<div class="flex justify-end">
+    <button type="submit" class="items-center min-w-min w-36 h-9 px-4 bg-brand text-white text-sm rounded-full hover:bg-blue-800 transition mt-6">
+        {{ __('Edition') }}
+    </button>
+</div>
