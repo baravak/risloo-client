@@ -52,10 +52,10 @@ class Handler extends ExceptionHandler
     {
         if(method_exists($exception, 'redirectTo')){
             if($request->expectsJson()){
-                return [
+                return response()->json([
                     'redirect' => $exception->redirectTo(),
                     'direct' => true
-                ];
+                ]);
             }else{
                 return redirect($exception->redirectTo());
             }
