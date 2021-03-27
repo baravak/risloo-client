@@ -1,4 +1,6 @@
-@if (auth()->isAdmin() && $center->type == 'counseling_center')
+<form class="w-full mt-6" action="{{route('dashboard.centers.update', ['center' => $center->id])}}" method="POST">
+@method('PUT')
+@if (auth()->isAdmin())
 <div class="form-group mt-4">
         <label for="manager_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Manager') }}</label>
         <select class="select2-select" name="manager_id"  id="manager_id" data-url="{{route('dashboard.users.index', ['personal_clinic' => 'yes'])}}">
@@ -10,12 +12,10 @@
 </div>
 @endif
 
-@if ($center->type == 'counseling_center')
 <div class="form-group mt-4">
     <label for="title" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Title') }}</label>
     <input type="text" name="title" id="title" autocomplete="off" @formValue($center->detail->title) class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
 </div>
-@endif
 
 <div class="mt-4">
     <label for="address" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Address') }}</label>
@@ -35,7 +35,7 @@
 
 <div class="mt-4">
     <label for="description" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Description') }}</label>
-    <textarea id="description" name="description" placeholder="{{ __('Optional') }}" autocomplete="off" @formValue($center->detail->description) class="resize-none border border-gray-500 h-20 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
+    <textarea id="description" name="description" placeholder="{{ __('Optional') }}" autocomplete="off" class="resize-none border border-gray-500 h-20 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">@isset($center->detail->description){{ $center->detail->description }}@endisset</textarea>
 </div>
 
 <div class="flex justify-end">
@@ -43,3 +43,4 @@
         {{ __('Edition') }}
     </button>
 </div>
+</form>
