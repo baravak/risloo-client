@@ -17,7 +17,7 @@
 @endcan
 
 @can('acceptation', $center)
-<a href="{{route('dashboard.centers.request', $center->id)}}" data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-auto px-8 h-9 rounded-full text-sm leading-normal transition mr-2">
+<a href="{{route('dashboard.centers.request', $center->id)}}" data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-auto px-8 h-9 rounded-full text-sm leading-normal transition mr-2 spinner">
     <span class="font-medium">{{ __('Acceptation request') }}</span>
 </a>
 @elseif ($center->acceptation)
