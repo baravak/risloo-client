@@ -2,7 +2,7 @@
     <div class="mb-4">
         <input type="text" class="w-full text-sm text-left dir-ltr placeholder-right border border-gray-200 rounded-sm" id="username" name="username" placeholder="{{ __('Mobile') }}">
     </div>
-    <button class="text-sm w-full rounded-full h-10 bg-brand text-white hover:bg-brand-700 transition mb-8 focus">{{ __('Receive code') }}</button>
+    <button class="flex items-center justify-center text-sm w-full rounded-full h-10 bg-brand text-white hover:bg-brand-700 transition mb-8 focus">{{ __('Receive code') }}</button>
 @endsection
 
 @section('auth-nav')

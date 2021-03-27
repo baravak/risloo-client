@@ -5,7 +5,7 @@
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
-    <button class="w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mb-8 focus">{{ auth()->check() ? __('Check') : __('Check and continue') }}</button>
+    <button class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mb-8 focus">{{ auth()->check() ? __('Check') : __('Check and continue') }}</button>
 @endsection
 
 @section('auth-nav')
