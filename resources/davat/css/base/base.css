@@ -4,6 +4,7 @@ html {
 
 body {
     min-height: 100%;
+    font-variation-settings: "wght" 400;
 }
 
 .en {

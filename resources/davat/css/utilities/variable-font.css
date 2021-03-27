@@ -1,0 +1,11 @@
+@layer utilities {
+  @variants responsive {
+    .variable-font-light {
+      font-variation-settings: "wght" 300;
+    }
+
+    .variable-font-medium {
+      font-variation-settings: "wght" 500;
+    }
+  }
+}
