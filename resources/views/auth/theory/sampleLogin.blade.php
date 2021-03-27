@@ -1,14 +1,18 @@
+@php
+    $bulk = $theory->response('bulk_sample');
+    $bulk = (new  App\BulkSample((array) $bulk));
+@endphp
 @section('auth-form')
     <div class="flex justify-between items-center border border-gray-300 rounded p-2 mb-2 bg-gray-50">
         <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="flex justify-center items-center flex-shrink-0 w-14 h-14 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden">
-            <img src="@attachmentLink($bulk->room->center->detail->avatar, 'small')" class="w-full h-full object-cover object-center">
+            @avatarOrName($bulk->room->center->detail)
         </a>
         <div class="text-center px-1">
             <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="block text-sm font-semibold text-gray-800 hover:text-brand transition">@center($bulk->room->center)</a>
             <a href="{{ route('dashboard.rooms.show', $bulk->room->id) }}" class="block text-xs text-gray-600 hover:text-brand transition mt-1">@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])</a href="#">
         </div>
         <a href="{{ route('dashboard.rooms.show', $bulk->room->id) }}" class="flex justify-center items-center flex-shrink-0 w-14 h-14 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden">
-            <img src="@attachmentLink($bulk->room->manager->avatar, 'small')" class="w-full h-full object-cover object-center">
+            @avatarOrName($bulk->room->manager)
         </a>
     </div>
     <div class="flex flex-col border border-gray-300 rounded p-4 bg-gray-50 mb-4">
