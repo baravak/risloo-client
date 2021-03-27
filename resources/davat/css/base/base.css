@@ -4,7 +4,6 @@ html {
 
 body {
     min-height: 100%;
-    font-variation-settings: "wght" 400;
 }
 
 .en {
@@ -18,7 +17,7 @@ html[lang="fa"], .fa {
 @supports (font-variation-settings: normal) {
     html[lang="fa"], .fa {
         font-family: 'dana VF';
-        font-variation-settings: "FANU" 1;
+        font-variation-settings: "wght" 400, "FANU" 1;
     }
 }
 
