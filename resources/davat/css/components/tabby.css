@@ -7,7 +7,7 @@
 }
 
 [role="tab"] {
-    @apply flex items-center justify-center border-none rounded-none text-center text-gray-600 h-16;
+    @apply items-center justify-center border-none rounded-none text-center text-gray-600 h-16;
     border-bottom: 4px solid;
     @apply border-gray-200;
 }

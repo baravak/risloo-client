@@ -6,12 +6,37 @@
     <div class="mx-auto w-full sm:w-1/2">
         <ul data-tabs>
             @if (auth()->isAdmin())
-            <li><a href="#basic-tab" class="direct">{{ __('Basic info') }}</a></li>
+            <li>
+                <a href="#basic-tab" class="direct hidden md:flex" title="{{ __('Basic info') }}">{{ __('Basic info') }}</a>
+                <a href="#basic-tab" class="direct flex md:hidden" title="{{ __('Basic info') }}">
+                    <i class="fal fa-info text-2xl"></i>
+                </a>
+            </li>
             @endif
-            <li><a data-tabby-default href="#personal-tab" class="direct">{{ __('Personal info') }}</a></li>
-            <li><a href="#password-tab" class="direct">{{ __('Password') }}</a></li>
-            <li><a href="#avatar-tab" class="direct">{{ __('Avatar') }}</a></li>
-            <li><a href="#key-tab" class="direct">{{ __('Public key') }}</a></li>
+            <li>
+                <a data-tabby-default href="#personal-tab" class="direct hidden md:flex" title="{{ __('Personal info') }}">{{ __('Personal info') }}</a>
+                <a href="#personal-tab" class="direct flex md:hidden" title="{{ __('Personal info') }}">
+                    <i class="fal fa-address-card text-2xl"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#password-tab" class="direct hidden md:flex" title="{{ __('Password') }}">{{ __('Password') }}</a>
+                <a href="#password-tab" class="direct flex md:hidden" title="{{ __('Password') }}">
+                    <i class="fal fa-unlock-alt text-2xl"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#avatar-tab" class="direct hidden md:flex" title="{{ __('Avatar') }}">{{ __('Avatar') }}</a>
+                <a href="#avatar-tab" class="direct flex md:hidden" title="{{ __('Avatar') }}">
+                    <i class="fal fa-user-circle text-2xl"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#key-tab" class="direct hidden md:flex" title="{{ __('Public key') }}">{{ __('Public key') }}</a>
+                <a href="#key-tab" class="direct flex md:hidden" title="{{ __('Public key') }}">
+                    <i class="fal fa-key text-2xl"></i>
+                </a>
+            </li>
         </ul>
 
         @if (auth()->isAdmin())
