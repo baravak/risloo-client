@@ -36,7 +36,7 @@
             <input type="text" class="w-full text-sm border border-gray-200 rounded-sm" id="nickname" name="nickname" value="{{ auth()->user()->name }}" placeholder="{{ __('Nickname') }}">
         </div>
         @endif
-        <button type="submit" class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mt-4 focus">تأیید و ادامه</button>
+        <button type="submit" class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mt-4 focus">تأیید و ادامه</button>
     </div>
 @endsection
 
