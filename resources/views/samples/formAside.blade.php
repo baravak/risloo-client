@@ -16,6 +16,8 @@
     <span class="text-gray-500" id="nav-text" data-nav-text>0/0</span>
 </div>
 
+<hr class="border-gray-100">
+
 @if (false)
     <div class="mb-4">
         <label class="flex items-center group">
@@ -25,6 +27,7 @@
     </div>
 @endif
 
+<p class="text-xs font-light text-gray-500 mb-2 mt-4 cursor-default">{{ __('jump to empty test') }}:</p>
 <div class="nav-empty-answers" id="nav-empty-answers"></div>
 
 @include('samples.disconnected')
