@@ -7,33 +7,33 @@
         <ul data-tabs>
             @if (auth()->isAdmin())
             <li>
-                <a href="#basic-tab" class="direct hidden md:flex" title="{{ __('Basic info') }}">{{ __('Basic info') }}</a>
-                <a href="#basic-tab" class="direct flex md:hidden" title="{{ __('Basic info') }}">
+                <a href="#basic-tab" class="direct focus hidden md:flex" title="{{ __('Basic info') }}">{{ __('Basic info') }}</a>
+                <a href="#basic-tab" class="direct focus flex md:hidden" title="{{ __('Basic info') }}">
                     <i class="fal fa-info text-2xl"></i>
                 </a>
             </li>
             @endif
             <li>
-                <a data-tabby-default href="#personal-tab" class="direct hidden md:flex" title="{{ __('Personal info') }}">{{ __('Personal info') }}</a>
-                <a href="#personal-tab" class="direct flex md:hidden" title="{{ __('Personal info') }}">
+                <a data-tabby-default href="#personal-tab" class="direct focus hidden md:flex" title="{{ __('Personal info') }}">{{ __('Personal info') }}</a>
+                <a href="#personal-tab" class="direct focus flex md:hidden" title="{{ __('Personal info') }}">
                     <i class="fal fa-address-card text-2xl"></i>
                 </a>
             </li>
             <li>
-                <a href="#password-tab" class="direct hidden md:flex" title="{{ __('Password') }}">{{ __('Password') }}</a>
-                <a href="#password-tab" class="direct flex md:hidden" title="{{ __('Password') }}">
+                <a href="#password-tab" class="direct focus hidden md:flex" title="{{ __('Password') }}">{{ __('Password') }}</a>
+                <a href="#password-tab" class="direct focus flex md:hidden" title="{{ __('Password') }}">
                     <i class="fal fa-unlock-alt text-2xl"></i>
                 </a>
             </li>
             <li>
-                <a href="#avatar-tab" class="direct hidden md:flex" title="{{ __('Avatar') }}">{{ __('Avatar') }}</a>
-                <a href="#avatar-tab" class="direct flex md:hidden" title="{{ __('Avatar') }}">
+                <a href="#avatar-tab" class="direct focus hidden md:flex" title="{{ __('Avatar') }}">{{ __('Avatar') }}</a>
+                <a href="#avatar-tab" class="direct focus flex md:hidden" title="{{ __('Avatar') }}">
                     <i class="fal fa-user-circle text-2xl"></i>
                 </a>
             </li>
             <li>
-                <a href="#key-tab" class="direct hidden md:flex" title="{{ __('Public key') }}">{{ __('Public key') }}</a>
-                <a href="#key-tab" class="direct flex md:hidden" title="{{ __('Public key') }}">
+                <a href="#key-tab" class="direct focus hidden md:flex" title="{{ __('Public key') }}">{{ __('Public key') }}</a>
+                <a href="#key-tab" class="direct focus flex md:hidden" title="{{ __('Public key') }}">
                     <i class="fal fa-key text-2xl"></i>
                 </a>
             </li>
