@@ -14,15 +14,17 @@
             </div>
         </label>
         <div data-afile-pannel="avatar-file" class="w-96 h-96 mb-20 content-center mx-auto">
-            <button type="button" class="block  mx-auto mb-2 afile-destroy items-center min-w-min w-36 h-9 px-4 bg-gray-100 text-gray-900 text-sm rounded-full hover:bg-gray-300 transition mt-6">
-                {{ __('Cancel') }}
-            </button>
+
         </div>
     </div>
 
     <div class="flex justify-end">
+
         <button type="submit" class="items-center min-w-min w-36 h-9 px-4 bg-brand text-white text-sm rounded-full hover:bg-blue-800 transition mt-6">
             {{ __('Edition') }}
+        </button>
+        <button type="button" data-for="avatar-file" class="afile-destroy text-gray-500 hover:text-gray-700 text-sm px-4 mr-2 h-8 focus rounded-full items-center min-w-min w-36 h-9 px-4 text-sm rounded-full transition mt-6">
+            {{ __('Cancel') }}
         </button>
     </div>
 </form>

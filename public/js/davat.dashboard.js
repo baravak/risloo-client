@@ -69,12 +69,14 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         $(this).parents('form').on('lijax:data', function(e, data){
             data.set(filed.attr('name'), filed.data('afile-value'));
         });
-        $('[data-afile-pannel="'+id+'"]').hide();
+        var pannel = $('[data-afile-pannel="'+id+'"]');
+        pannel.hide();
+        $('[data-for="'+id+'"].afile-destroy').hide();
         $(this).on('change', function(){
+        $('[data-for="'+id+'"].afile-destroy').show();
             var reader = new FileReader();
             reader.onload = function(e){
                 $('[data-afile-default="'+id+'"]').hide();
-                var pannel = $('[data-afile-pannel="'+id+'"]');
                 $('<img class="afile-img" />').appendTo(pannel);
                 $('.afile-img', pannel).attr('src', e.target.result);
                 pannel.fadeIn('fast');
@@ -98,17 +100,19 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                         });
                     }
                 });
-                $('.afile-destroy', pannel).click(function(){
-                    $(_self).val('');
-                    pannel.fadeOut('fast', function(){
-                        $('.croppie-container', pannel).remove();
-                        $('.afile-img', pannel).croppie('destroy');
-                        $('[data-afile-default]').show();
-                        $('#'+$(_self).attr('data-afile-field')).val('');
-                    })
-                });
             }
             reader.readAsDataURL(this.files[0]);
+        });
+        $('[data-for="'+id+'"].afile-destroy').click(function(){
+            $(_self).val('');
+            console.log(this);
+            pannel.fadeOut('fast', function(){
+                $('.croppie-container', pannel).remove();
+                $('.afile-img', pannel).croppie('destroy');
+                $('[data-afile-default]').show();
+                $('#'+$(_self).attr('data-afile-field')).val('');
+            });
+            $(this).hide();
         });
     }
     davat.avatar = function(element){
