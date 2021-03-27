@@ -26,7 +26,7 @@
                 @if (auth()->myClinic())
                     <ul class="pr-8 mt-2">
                         <li>
-                            <a href="{{ route('dashboard.centers.show', auth()->myClinic()->id) }}" data-metarget="centers-myclinic" data-metarget-pattern="/dashboard/centers/{{ auth()->myClinic()->id }}.*" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">{{  __('My clinic') }}</a>
+                            <a href="{{ route('dashboard.rooms.show', auth()->myClinic()->id) }}" data-metarget="centers-myclinic" data-metarget-pattern="/dashboard/rooms/{{ auth()->myClinic()->id }}.*" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">{{  __('My clinic') }}</a>
                         </li>
                     </ul>
                 @endif
@@ -38,7 +38,7 @@
                     <ul class="pr-8 mt-2">
                         @foreach ($_AsideCenter as $_center)
                         <li>
-                            <a href="{{ route('dashboard.centers.show', $_center->id) }}"data-metarget="centers-myclinic-{{ $_center->id }}" data-metarget-pattern="/dashboard/centers/{{ $_center->id}}.*" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">
+                            <a href="{{ route('dashboard.' . ($_center->type =='personal_clinic' ? 'rooms' : 'centers') . '.show', $_center->id) }}"data-metarget="centers-myclinic-{{ $_center->id }}" data-metarget-pattern="/dashboard/{{ $_center->type =='personal_clinic' ? 'rooms' : 'centers' }}/{{ $_center->id}}.*" class="flex items-center text-sm text-gray-600 h-12 pr-4 border-r border-gray-300 hover:text-gray-800 transition">
                                 @if ($_center->type == 'personal_clinic')
                                     @lang('Personal clinic of :user', ['user' => $_center->manager->name])
                                 @else
