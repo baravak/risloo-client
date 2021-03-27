@@ -1,8 +1,8 @@
 <form class="w-full mt-6" action="{{route('dashboard.users.update', ['user' => $user->id])}}" method="POST">
     @csrf
     <input type="hidden" name="_method" value="PUT">
-    <div>
-        <div class="mt-4">
+    <div class="p-4 border border-gray-200 rounded">
+        <div>
             <label for="p-name" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Display name') }}</label>
             <input type="text" name="name" id="p-name" autocomplete="off" @formValue($user->name) class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
         </div>
@@ -37,10 +37,8 @@
             </div>
         </div>
         @yield('custom-personal')
-        <div class="flex justify-end">
-            <button type="submit" class="items-center min-w-min w-36 h-9 px-4 bg-brand text-white text-sm rounded-full hover:bg-blue-800 transition mt-6">
-                {{ __('Edition') }}
-            </button>
-        </div>
     </div>
+    <button type="submit" class="inline-flex items-center justify-center h-9 mt-4 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 focus transition">
+        {{ __('Edition') }}
+    </button>
 </form>

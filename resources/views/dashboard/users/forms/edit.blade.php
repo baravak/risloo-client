@@ -40,23 +40,22 @@
         </ul>
 
         @if (auth()->isAdmin())
-            <div id="basic-tab" class="p-4 border border-gray-200 rounded">
+            <div id="basic-tab">
                 @includeFirst(['dashboard.users.forms.' . $user->type . '.basic', 'dashboard.users.forms.edit.basic', 'dashboard.users.forms.edit._basic'], ['some' => 'data'])
             </div>
         @endif
 
-        <div id="personal-tab" class="p-4 border border-gray-200 rounded">
+        <div id="personal-tab">
             @includeFirst(['dashboard.users.forms.' . $user->type . '.personal', 'dashboard.users.forms.edit.personal', 'dashboard.users.forms.edit._personal'], ['some' => 'data'])
         </div>
 
-        <div id="password-tab" class="p-4 border border-gray-200 rounded">
+        <div id="password-tab">
             @includeFirst(['dashboard.users.forms.' . $user->type . '.password', 'dashboard.users.forms.edit.password', 'dashboard.users.forms.edit._password'], ['some' => 'data'])
         </div>
 
         @includeFirst(['dashboard.users.forms.' . $user->type . '.avatar', 'dashboard.users.forms.edit.avatar', 'dashboard.users.forms.edit._avatar'], ['some' => 'data'])
 
-
-        <div id="key-tab" class="p-4 border border-gray-200 rounded">
+        <div id="key-tab">
             @include('dashboard.users.forms.edit._publicKey')
         </div>
     </div>
