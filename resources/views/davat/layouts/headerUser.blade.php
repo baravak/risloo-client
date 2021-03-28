@@ -5,7 +5,7 @@
             @avatarOrName(auth()->user())
         </div>
         <div class="flex justify-between items-center">
-            <div class="font-medium text-xs text-gray-700">{{ auth()->user()->name ?: auth()->user()->id }}</div>
+            <div class="font-medium text-xs text-gray-700 variable-font-medium">{{ auth()->user()->name ?: auth()->user()->id }}</div>
         </div>
     </a>
 
