@@ -436,8 +436,8 @@
                     <div class="d-flex flex-column flex-sm-row align-items-center mb-5">
                         <div class="bg-white shadow rounded mb-3 mb-sm-0 who-square"></div>
                         <div class="pr-0 pr-lg-3">
-                            <h3 class="fs-16 font-weight-bolder text-center text-lg-right text-center text-lg-right">مراجعین مراکز درمانی</h3>
-                            <p class="fs-14 mb-0 text-center text-lg-right text-center text-lg-right">تسهیل رزرو و ارتباط مراجع با درمانگر و مرکز درمانی</p>
+                            <h3 class="fs-16 font-weight-bolder text-center text-lg-right">مراجعین مراکز درمانی</h3>
+                            <p class="fs-14 mb-0 text-center text-lg-right">تسهیل رزرو و ارتباط مراجع با درمانگر و مرکز درمانی</p>
                         </div>
                     </div>
                 </div>
