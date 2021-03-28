@@ -1,11 +1,35 @@
 @layer utilities {
   @variants responsive {
+    .variable-font-thin {
+      font-variation-settings: "wght" 100;
+    }
+
+    .variable-font-extralight {
+      font-variation-settings: "wght" 200;
+    }
+
     .variable-font-light {
       font-variation-settings: "wght" 300;
     }
 
     .variable-font-medium {
       font-variation-settings: "wght" 500;
+    }
+
+    .variable-font-semibold {
+      font-variation-settings: "wght" 600;
+    }
+
+    .variable-font-bold {
+      font-variation-settings: "wght" 700;
+    }
+
+    .variable-font-extrabold {
+      font-variation-settings: "wght" 800;
+    }
+
+    .variable-font-black {
+      font-variation-settings: "wght" 900;
     }
   }
 }
