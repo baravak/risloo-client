@@ -12,20 +12,13 @@
                         </a>
                     </div>
                 @else
-                    <h1 class="text-center font-black text-xl text-brand mb-8">
-                        <a href="/" class="direct" title="{{ __('App Title') }}">{{ __('App Title') }}</a>
+                    <h1 class="text-center variable-font-black text-xl text-brand mb-8">
+                        <a href="/" class="direct" title="{{ __('App Title') }}" aria-label="{{ __('App Title') }}">{{ __('App Title') }}</a>
                     </h1>
                 @endif
 
-                <h1 class="text-lg text-center font-bold text-gray-900 mb-4 hidden">
-                    <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}"
-                        title=
-                        "@if (auth()->check())
-                        {{ auth()->user()->name ?: __('Anonymouse') }}
-                        @else
-                        {{__('App Title')}}
-                        @endif"
-                        >
+                <h1 class="text-lg text-center variable-font-bold text-gray-900 mb-4 hidden">
+                    <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" title="@if (auth()->check()){{ auth()->user()->name ?: __('Anonymouse') }}@else{{__('App Title')}}@endif" aria-label="@if (auth()->check()){{ auth()->user()->name ?: __('Anonymouse') }}@else{{__('App Title')}}@endif">
                         @if (auth()->check())
                             {{ auth()->user()->name ?: __('Anonymouse') }}
                         @else

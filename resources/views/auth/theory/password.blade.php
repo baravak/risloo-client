@@ -6,7 +6,7 @@
         <input type="password" class="w-full h-10 text-sm text-left dir-ltr placeholder-right border border-gray-200 rounded" id="password" name="password" placeholder="{{__('Password')}}">
     </div>
 
-    <button class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mb-8 focus" title="{{ __('Check password') }}">{{ __('Check password') }}</button>
+    <button class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mb-8 focus" title="{{ __('Check password') }}" aria-label="{{ __('Check password') }}" role="button">{{ __('Check password') }}</button>
 @endsection
 
 @extends('auth.theory')

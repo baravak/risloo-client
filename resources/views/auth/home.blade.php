@@ -8,21 +8,21 @@
         </div>
         @enderror
     </div>
-    <button title="{{ auth()->check() ? __('Check') : __('Check and continue') }}" class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mb-8 focus">{{ auth()->check() ? __('Check') : __('Check and continue') }}</button>
+    <button title="{{ auth()->check() ? __('Check') : __('Check and continue') }}" aria-label="{{ auth()->check() ? __('Check') : __('Check and continue') }}" role="button" class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mb-8 focus">{{ auth()->check() ? __('Check') : __('Check and continue') }}</button>
 @endsection
 
 @section('auth-nav')
     <div class="flex justify-center">
         @if (auth()->check())
-            <a href="{{ route('dashboard.home') }}" class="font-bold text-sm direct hover:text-brand" title="{{ __('Dashboard') }}">{{ __('Dashboard') }}</a>
+            <a href="{{ route('dashboard.home') }}" class="variable-font-bold text-sm direct hover:text-blue-600" title="{{ __('Dashboard') }}" aria-label="{{ __('Dashboard') }}">{{ __('Dashboard') }}</a>
             <span class="px-4 text-gray-500 cursor-default">|</span>
-            <a href="{{ route('logout') }}" data-lijax="click" data-method="POST" class="text-sm hover:text-red-600 transition" title="{{__('Logout')}}">{{__('Logout')}}</a>
+            <a href="{{ route('logout') }}" data-lijax="click" data-method="POST" class="text-sm hover:text-red-600 transition" title="{{__('Logout')}}" aria-label="{{ __('Logout') }}">{{__('Logout')}}</a>
         @else
             @if (config('auth.registration', true))
-                <a href="{{ route('register', ['callback' => request()->callback]) }}" class="text-sm font-bold text-gray-700 hover:text-brand transition" title="{{ __('Register') }}">{{ __('Register') }}</a>
+                <a href="{{ route('register', ['callback' => request()->callback]) }}" class="text-sm variable-font-bold text-gray-700 hover:text-blue-600 transition" title="{{ __('Register') }}" aria-label="{{ __('Register') }}">{{ __('Register') }}</a>
             @endif
             <span class="px-4 text-gray-500 cursor-default">|</span>
-            <a href="{{ route('auth.recovery') }}" class="text-sm text-gray-700 hover:text-brand transition" title="{{ __('Forgot Password') }}">{{ __('Forgot Password') }}</a>
+            <a href="{{ route('auth.recovery') }}" class="text-sm text-gray-700 hover:text-blue-600 transition" title="{{ __('Forgot Password') }}" aria-label="{{ __('Forgot Password') }}">{{ __('Forgot Password') }}</a>
         @endif
     </div>
 
