@@ -5,7 +5,7 @@
                 <input type="file" class="hidden input-avatar" data-afile-field="filed-avatar" id="avatar-file" accept="image/png, image/jpeg, image/jpg, image/gif">
                 <input type="file" class="hidden" name="avatar" id="filed-avatar">
                 <div data-afile-default="avatar-file" class="flex flex-col items-center">
-                    <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">
+                    <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative cursor-pointer">
                         @avatarOrName($user)
                     </div>
                     <div class="flex items-center text-xs text-gray-400 mt-2">

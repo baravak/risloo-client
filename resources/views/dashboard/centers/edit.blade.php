@@ -6,10 +6,10 @@
             <li><a href="#avatar-tab" class="direct focus flex" title="{{ __('Avatar') }}">{{ __('Avatar') }}</a></li>
         </ul>
 
-            <div id="information-tab" class="p-4 border border-gray-200 rounded">
+            <div id="information-tab">
                 @include('dashboard.centers.editInformation')
             </div>
-            <div id="avatar-tab" class="p-4 border border-gray-200 rounded">
+            <div id="avatar-tab">
                 @include('dashboard.centers.editAvatar')
             </div>
     </div>
