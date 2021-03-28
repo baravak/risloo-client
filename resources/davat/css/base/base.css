@@ -14,6 +14,10 @@ html[lang="fa"], .fa {
     font-family: dana;
 }
 
+.fa-static {
+    font-family: dana!important;
+}
+
 @supports (font-variation-settings: normal) {
     html[lang="fa"], .fa {
         font-family: 'dana VF';
