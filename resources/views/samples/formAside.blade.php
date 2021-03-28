@@ -4,7 +4,7 @@
             <i class="fal fa-chevron-right"></i>
         </a>
 
-        <select id="nav-count" data-nav-count class="flex-1 text-sm mx-2 h-9 border border-gray-200 rounded-sm">
+        <select id="nav-count" data-nav-count class="flex-1 text-sm mx-2 h-9 border border-gray-200 rounded-sm fa-static">
         </select>
 
         <a id="nav-next" data-nav-next class="flex justify-center items-center w-9 h-9 border border-gray-200 rounded-sm direct">
