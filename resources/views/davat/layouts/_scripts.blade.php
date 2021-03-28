@@ -10,9 +10,9 @@
     <script>
         window.addEventListener('load', function(){
             $('<style>body::before{animation:bodyLoading 500ms normal forwards;}</style>').appendTo('body');
-           setTimeout(function(){
-            $('.bodyLoading').remove();
-           }, 1000);
+            setTimeout(function() {
+                $('.bodyLoading').remove();
+            }, 1000);
         }, false);
     </script>
 @endsection
