@@ -32,8 +32,8 @@
             position: absolute;
             width: 2rem;
             height: 2rem;
-            top: calc(50vh - 1rem);
-            right: calc(50vw - 1rem);
+            top: calc(50% - 1rem);
+            right: calc(50% - 1rem);
             z-index: 9999;
             animation: spin 1s linear infinite;
         }
