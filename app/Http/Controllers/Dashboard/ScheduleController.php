@@ -9,6 +9,7 @@ class ScheduleController extends Controller
 {
     public function create(Request $request,Room $room){
         $this->data->room = $room;
+        $this->data->center = $room->center;
         return $this->view($request, 'dashboard.schedules.create');
     }
 }

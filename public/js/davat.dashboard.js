@@ -436,15 +436,46 @@ $('body').on('statio:dashboard:room:schedules:create', function () {
     });
     $('[name=repeat_status]').on('change', function(){
         if($('#repeat-status-weeks').is(':checked')){
-            $('#started_at,#ended_at, #start-picker, #end-picker').attr('disabled', 'disabled');
+            $('input', '#repeat-range').attr('disabled', 'disabled');
             $('#repeat-range').fadeTo('fast', .3);
             $('#repeat').fadeTo('fast', 1).removeAttr('disabled');
         }else{
-            $('#started_at,#ended_at, #start-picker, #end-picker').removeAttr('disabled');
+            $('input', '#repeat-range').removeAttr('disabled');
             $('#repeat-range').fadeTo('fast', 1);
             $('#repeat').fadeTo('fast', .3).attr('disabled', 'disabled');
         }
     }).eq(0).trigger('change');
+
+    $('#clients_type').on('change', function(){
+        $('#client_selection_input')[$(this).val() == 'client' ? 'show' : 'hide']();
+
+        $('#case_selection_input')[$(this).val() == 'case' ? 'show' : 'hide']();
+    }).trigger('change');
+
+    $('#group_session').on('change', function(){
+        $('#clients-number-input')[$(this).is(':checked') ? 'show' : 'hide']();
+    }).trigger('change');
+
+    $('#ch-closed-at').on('change', function(){
+        if($(this).is(':checked') ){
+            $('#closed-at, #closed-at-picker').removeAttr('disabled');
+            $('#closed-at-picker').fadeTo('fast', 1);
+        }else{
+            $('#closed-at, #closed-at-picker').attr('disabled', 'disabled');
+            $('#closed-at-picker').fadeTo('fast', .3);
+        }
+    });
+
+    $('#ch-opens-at').on('change', function(){
+        if($(this).is(':checked') ){
+            $('#opens-at, #opens-at-picker, #closed-at-input input').removeAttr('disabled');
+            $('#opens-at-picker, #closed-at-input').fadeTo('fast', 1);
+        }else{
+            $('#opens-at, #opens-at-picker, #closed-at-input input').attr('disabled', 'disabled');
+            $('#opens-at-picker,#closed-at-input').fadeTo('fast', .3);
+        }
+        $('#ch-closed-at').trigger('change');
+    }).trigger('change');
 });
 
 ;(function(davat){

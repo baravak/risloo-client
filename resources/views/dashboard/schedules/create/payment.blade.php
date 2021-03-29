@@ -1,6 +1,6 @@
 <div class="mt-4">
-    <label for="status" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع دریافت')</label>
-    <select id="status" name="status" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <label for="payment_status" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع دریافت')</label>
+    <select id="payment_status" name="payment_status" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
         <option value="online">@lang('آنلاین')</option>
         <option value="cache">@lang('نقدی')</option>
     </select>

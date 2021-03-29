@@ -290,10 +290,10 @@
     "Thursday": "پنج‌شنبه",
     "Friday": "جمعه",
     "Repeat": "تکرار",
-    "Risloo users": "اعضاء عضو ریسلو",
-    "Center users": "اعضاء عضو مرکز درمانی",
-    "Room usres": "اعضاء عضو اتاق درمان",
-    "Case users": "اعضاء عضو پرونده درمان",
+    "Risloo users": "اعضاء ریسلو",
+    "Center users": "اعضاء مرکز درمانی",
+    "Room usres": "اعضاء اتاق درمان",
+    "Case users ...": "اعضاء پرونده درمانی...",
     "Selected client": "مراجع انتخابی",
     "Type of clients": "نوع مراجعین درخواست دهنده",
     "Clients & Session": "مراجعین و جلسه",
@@ -301,5 +301,8 @@
     "Payment": "پرداخت",
     "Verify and continue": "تأیید و ادامه",
     "Samples list": "لیست آزمون‌ها",
-    "Define new schedule" : "تعریف برنامه آموزشی"
+    "Define new schedule" : "تعریف برنامه آموزشی",
+    "Users of :region" : "اعضاء :region",
+    "Opens at" : "باز شود در تاریخ...",
+    "Closed at" : "بسته شود در تاریخ..."
 }

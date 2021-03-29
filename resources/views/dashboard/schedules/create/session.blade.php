@@ -1,9 +1,19 @@
 <div class="mt-4">
-    <label for="status" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Status')</label>
-    <select id="status" name="status" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
-        <option value="draft">@lang('Draft')</option>
-        <option value="open">@lang('Open')</option>
-    </select>
+    <label class="inline-flex items-center group">
+        <input type="checkbox" id="ch-opens-at" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
+        <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">@lang('Opens at')</span>
+    </label>
+    <input type="text" readonly id="opens-at-picker" dpicker-time="true" data-picker-alt="opens-at" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
+    <input type="hidden" name="opens-at" id="opens-at">
+</div>
+
+<div class="mt-4" id="closed-at-input">
+    <label class="inline-flex items-center group">
+        <input type="checkbox" id="ch-closed-at" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
+        <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">@lang('Closed at')</span>
+    </label>
+    <input type="text" readonly id="closed-at-picker" dpicker-time="true" data-picker-alt="closed-at" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
+    <input type="hidden" name="closed-at" id="closed-at">
 </div>
 
 <div class="mt-4">
