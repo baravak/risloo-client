@@ -51,22 +51,66 @@ $('body').on('statio:dashboard:room:schedules:create', function () {
     }).trigger('change');
 
     $('#ch-closed-at').on('change', function(){
-        if($(this).is(':checked') ){
-            $('#closed-at, #closed-at-picker').removeAttr('disabled');
-            $('#closed-at-picker').fadeTo('fast', 1);
+        var elements = $('[data-for=closed-at]');
+        $('[data-for=closed-at] [name=closed_at_type]:checked').trigger('change');
+        if($(this).is(':checked') && !$(this).is(':disabled')){
+            $('input', elements).removeAttr('disabled');
+            $(elements).fadeTo('fast', 1);
         }else{
-            $('#closed-at, #closed-at-picker').attr('disabled', 'disabled');
-            $('#closed-at-picker').fadeTo('fast', .3);
+            $('input', elements).attr('disabled', 'disabled');
+            $(elements).fadeTo('fast', .3);
         }
     });
 
-    $('#ch-opens-at').on('change', function(){
-        if($(this).is(':checked') ){
-            $('#opens-at, #opens-at-picker, #closed-at-input input').removeAttr('disabled');
-            $('#opens-at-picker, #closed-at-input').fadeTo('fast', 1);
+    $('[name=closed_at_type]').on('change', function(){
+        var type = $(this).val();
+        var select, unselect;
+        if(type == 'relative'){
+            select = $('[data-for=closed-at] [data-for=relative]');
+            unselect = $('[data-for=closed-at] [data-for=absolute]');
         }else{
-            $('#opens-at, #opens-at-picker, #closed-at-input input').attr('disabled', 'disabled');
-            $('#opens-at-picker,#closed-at-input').fadeTo('fast', .3);
+            unselect = $('[data-for=closed-at] [data-for=relative]');
+            select = $('[data-for=closed-at] [data-for=absolute]');
+        }
+        $('input', select).removeAttr('disabled');
+        select.show();
+
+        $('input', unselect).attr('disabled', 'disabled');
+        unselect.hide();
+    });
+
+    $('[name=opens_at_type]').on('change', function(){
+        var type = $(this).val();
+        var select, unselect;
+        if(type == 'relative'){
+            select = $('[data-for=opens-at] [data-for=relative]');
+            unselect = $('[data-for=opens-at] [data-for=absolute]');
+        }else{
+            unselect = $('[data-for=opens-at] [data-for=relative]');
+            select = $('[data-for=opens-at] [data-for=absolute]');
+        }
+        $('input', select).removeAttr('disabled');
+        select.show();
+
+        $('input', unselect).attr('disabled', 'disabled');
+        unselect.hide();
+    });
+
+    $('#ch-opens-at').on('change', function(){
+        var elements = $('[data-for=opens-at]');
+        $('[data-for=opens-at] [name=opens_at_type]:checked').trigger('change');
+        if($(this).is(':checked') ){
+            $('input', elements).removeAttr('disabled');
+            $(elements).fadeTo('fast', 1);
+
+            $('#ch-closed-at').removeAttr('disabled');
+            $('#ch-closed-at').parent().fadeTo('fast', 1);
+        }else{
+            $('input', elements).attr('disabled', 'disabled');
+            $(elements).fadeTo('fast', .3);
+
+            $('#ch-closed-at').attr('disabled', 'disabled');
+            $('#ch-closed-at').parent().fadeTo('fast', .3);
         }
         $('#ch-closed-at').trigger('change');
     }).trigger('change');
