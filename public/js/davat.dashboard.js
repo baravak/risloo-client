@@ -404,7 +404,7 @@ $('body').on('statio:dashboard:samples:create', function(){
     });
 })();
 
-$('body').on('statio:dashboard:schedules:create', function () {
+$('body').on('statio:dashboard:room:schedules:create', function () {
     $('#field').on('select2:select select2:unselect', function(e){
         var values = $(this).val();
         if(values.length > 0){
@@ -437,12 +437,14 @@ $('body').on('statio:dashboard:schedules:create', function () {
     $('[name=repeat_status]').on('change', function(){
         if($('#repeat-status-weeks').is(':checked')){
             $('#started_at,#ended_at, #start-picker, #end-picker').attr('disabled', 'disabled');
-            $('#repeat').removeAttr('disabled');
+            $('#repeat-range').fadeTo('fast', .3);
+            $('#repeat').fadeTo('fast', 1).removeAttr('disabled');
         }else{
             $('#started_at,#ended_at, #start-picker, #end-picker').removeAttr('disabled');
-            $('#repeat').attr('disabled', 'disabled');
+            $('#repeat-range').fadeTo('fast', 1);
+            $('#repeat').fadeTo('fast', .3).attr('disabled', 'disabled');
         }
-    });
+    }).eq(0).trigger('change');
 });
 
 ;(function(davat){

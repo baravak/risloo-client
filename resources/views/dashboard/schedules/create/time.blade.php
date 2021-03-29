@@ -29,18 +29,20 @@
     <span class="text-xs text-gray-600 font-light mr-1">(هفته)</span>
     <input type="number" placeholder="1" min="1" max="10" step="1" value="1" id="repeat" name="repeat" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
 </div>
-<div class="mt-6">
+<div class="mt-4">
     <input type="radio" id="repeat-status-range" name="repeat_status" value="range">
     <label for="repeat-status-range" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('بازه زمانی')</label>
 </div>
-<div class="mt-1">
-    <label for="start-picker" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Start time')</label>
-    <input type="text" readonly id="start-picker" data-picker-alt="started_at" dpicker-format="YYYY/MM/DD" value="{{ time() - (60 * 60 * 24) }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
-    <input type="hidden" name="started_at" id="started_at">
-</div>
+<div id="repeat-range">
+    <div class="mt-1">
+        <label for="start-picker" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Start time')</label>
+        <input type="text" readonly id="start-picker" data-picker-alt="started_at" dpicker-format="YYYY/MM/DD" value="{{ time() - (60 * 60 * 24) }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
+        <input type="hidden" name="started_at" id="started_at">
+    </div>
 
-<div class="mt-4">
-    <label for="end-picker" class="block mb-2 text-sm text-gray-700 font-medium">@lang('End time')</label>
-    <input type="text" readonly id="end-picker" data-picker-alt="ended_at" dpicker-format="YYYY/MM/DD" value="{{ time() - (60 * 60 * 24) }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
-    <input type="hidden" name="ended_at" id="ended_at">
+    <div class="mt-4">
+        <label for="end-picker" class="block mb-2 text-sm text-gray-700 font-medium">@lang('End time')</label>
+        <input type="text" readonly id="end-picker" data-picker-alt="ended_at" dpicker-format="YYYY/MM/DD" value="{{ time() - (60 * 60 * 24) }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
+        <input type="hidden" name="ended_at" id="ended_at">
+    </div>
 </div>
