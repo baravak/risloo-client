@@ -12,7 +12,19 @@
         <option value="client">@lang('Selected client')</option>
     </select>
 </div>
-
+<div class="mt-4">
+    <label for="case_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Case') }}</label>
+    <select class="select2-select"  id="case_id" name="case_id" data-url="{{ route('dashboard.cases.index', ['room' => $room->id, 'instance' => 1]) }}" >
+        @isset($case)
+        <option value="{{$case->id}}" selected>{{$case->clients->pluck('user.name')->join('-')}}</option>
+        @endisset
+    </select>
+    @isset($case)
+    <div data-for="case_id" class="hidden">
+        @include('dashboard.cases.select2', ['cases' => [$case]])
+    </div>
+    @endisset
+</div>
 <div class="form-group mt-4">
     <label for="region_id" data-alias="region_id" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Client')</label>
     <select class="select2-select" name="region_id"  id="region_id" data-url="{{route('dashboard.users.index')}}">

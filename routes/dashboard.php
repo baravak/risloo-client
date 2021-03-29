@@ -61,7 +61,7 @@ Route::get('/bulk-samples', 'BulkSampleController@index')->name('bulk-samples.in
 Route::get('/bulk-samples/{bulkSample}', 'BulkSampleController@show')->name('bulk-samples.show');
 Route::get('/treasuries', 'LocalController@index')->name('treasuries.index');
 
-Route::resource('schedules', 'ScheduleController');
+Route::resource('rooms/{room}/schedules', 'ScheduleController', ['as' => 'room']);
 
 
 if(config('app.env') == 'local'){
