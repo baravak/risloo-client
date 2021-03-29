@@ -3,9 +3,9 @@
 <div class="mt-4">
     <ul data-tabs>
         <li><a data-tabby-default href="#time-tab" class="focus direct" role="presentation">@lang('Time') </a></li>
-        <li><a href="#clients-tab" class="focus direct" role="presentation">{{ __('Clients') }}</a></li>
-        <li><a href="#session-tab" class="focus direct" role="presentation">{{ __('Session') }}</a></li>
-        <li><a href="#payment-tab" class="focus direct" role="presentation">{{ __('Payment') }}</a></li>
+        <li><a href="#clients-tab" class="focus direct" role="presentation">@lang('Clients')</a></li>
+        <li><a href="#session-tab" class="focus direct" role="presentation">@lang('Session')</a></li>
+        <li><a href="#payment-tab" class="focus direct" role="presentation">@lang('Payment')</a></li>
     </ul>
 </div>
 <div id="time-tab">

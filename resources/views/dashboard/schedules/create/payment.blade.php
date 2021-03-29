@@ -5,9 +5,11 @@
         <option value="cache">@lang('نقدی')</option>
     </select>
 </div>
+<div id="payment_fields">
 
-<div class="mt-4">
-    <label for="amount" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('مبلغ جلسه')</label>
+</div>
+<div class="mt-4 hidden amount_fields" id="payment_fields_pattern">
+    <label class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('مبلغ جلسه') <span class="field_title"></span></label>
     <span class="text-xs text-gray-600 font-light mr-1">(تومان)</span>
-    <input type="number" id="amount" name="amount" step="100" min="1000"  class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
+    <input type="number" name="amount[]" step="100" min="1000"  class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
 </div>
