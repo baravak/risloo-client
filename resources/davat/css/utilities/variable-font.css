@@ -12,6 +12,10 @@
       font-variation-settings: "wght" 300;
     }
 
+    .variable-font-base {
+      font-variation-settings: "wght" 400;
+    }
+
     .variable-font-medium {
       font-variation-settings: "wght" 500;
     }
