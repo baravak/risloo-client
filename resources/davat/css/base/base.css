@@ -33,10 +33,14 @@ th {
     @apply font-medium;
 }
 
-.focus {
-    @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 ring-brand;
-}
+@layer utilities {
+    @variants responsive {
+        .focus {
+            @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 ring-brand;
+        }
 
-.underline {
-    text-underline-offset: 0.25rem;
+        .underline {
+            text-underline-offset: 0.25rem;
+        }
+    }
 }
