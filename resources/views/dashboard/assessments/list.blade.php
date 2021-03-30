@@ -14,7 +14,7 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         @foreach ($assessments as $assessment)
-                            @include($assessments && $assessments->count() ? 'dashboard.assessments.assessmentsList' : 'dashboard.assessments.emptyAssessments')
+                            @include($assessments && $assessments->count() ? 'dashboard.assessments.listRaw' : 'dashboard.assessments.emptyAssessments')
                         @endforeach
                     </tbody>
                 </table>
