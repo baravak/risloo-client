@@ -15,6 +15,12 @@ select.lijax-sending + .spinner::before {
     @apply absolute animate-spin h-4 w-4 left-2 -top-2;
 }
 
+input[type="search"].lijax-sending + .spinner::before {
+    content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMDA3YmE0IiBkPSJNNDYwLjExNSAzNzMuODQ2bC02Ljk0MS00LjAwOGMtNS41NDYtMy4yMDItNy41NjQtMTAuMTc3LTQuNjYxLTE1Ljg4NiAzMi45NzEtNjQuODM4IDMxLjE2Ny0xNDIuNzMxLTUuNDE1LTIwNS45NTQtMzYuNTA0LTYzLjM1Ni0xMDMuMTE4LTEwMy44NzYtMTc1LjgtMTA3LjcwMUMyNjAuOTUyIDM5Ljk2MyAyNTYgMzQuNjc2IDI1NiAyOC4zMjF2LTguMDEyYzAtNi45MDQgNS44MDgtMTIuMzM3IDEyLjcwMy0xMS45ODIgODMuNTUyIDQuMzA2IDE2MC4xNTcgNTAuODYxIDIwMi4xMDYgMTIzLjY3IDQyLjA2OSA3Mi43MDMgNDQuMDgzIDE2Mi4zMjIgNi4wMzQgMjM2LjgzOC0zLjE0IDYuMTQ5LTEwLjc1IDguNDYyLTE2LjcyOCA1LjAxMXoiLz48L3N2Zz4=");
+    @apply absolute animate-spin h-4 w-4 left-2;
+    top: 0.65rem;
+}
+
 @keyframes statio-fold {
     from {
         opacity: 0;
