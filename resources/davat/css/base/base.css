@@ -12,7 +12,6 @@ body {
 
 html[lang="fa"], .fa {
     font-family: dana;
-    
 }
 
 .fa-static {
@@ -28,6 +27,10 @@ html[lang="fa"], .fa {
 
 kbd {
     font-family: 'dana VF', dana!important;
+}
+
+th {
+    @apply font-medium;
 }
 
 .focus {
