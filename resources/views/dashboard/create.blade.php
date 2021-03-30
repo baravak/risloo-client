@@ -17,9 +17,9 @@
                     @yield('form-title', __(($module->action == 'create' ? "Create " : 'Edit ') . $module->singular))
                 </button>
                 @if(request()->callback || isset($callbackCancel))
-                    <a href="{{request()->callback ?: $callbackCancel}}" class="text-sm text-gray-500 hover:text-gray-700 transition">{{ __('Cancel') }}</a>
+                    <a href="{{request()->callback ?: $callbackCancel}}" class="text-sm text-gray-500 hover:text-gray-700 transition" title="{{ __('Cancel') }}" aria-label="{{ __('Cancel') }}">{{ __('Cancel') }}</a>
                 @elseif(Route::has($module->resource . '.index'))
-                    <a href="{{ route($module->resource . '.index', $module->parent ? request()->route()->parameters[$module->parent] : null) }}" class="text-sm text-gray-500 hover:text-gray-700 transition">{{ __('Cancel') }}</a>
+                    <a href="{{ route($module->resource . '.index', $module->parent ? request()->route()->parameters[$module->parent] : null) }}" class="text-sm text-gray-500 hover:text-gray-700 transition" title="{{ __('Cancel') }}" aria-label="{{ __('Cancel') }}">{{ __('Cancel') }}</a>
                 @endif
             </div>
     </form>
