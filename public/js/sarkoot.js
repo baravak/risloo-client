@@ -1053,7 +1053,12 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 			$('.invalid-feedback', this).remove();
 			if (d.errors) {
 				for (var id in d.errors) {
-					var elementBase = $('#' + id + ':not(.hide-input), [data-alias~=' + id + '], [name=' + id +']:not(.hide-input)', this);
+					if(id.split('.').length > 1){
+						var sub_id = id.split('.');
+						var elementBase = $('#' + sub_id[0] +'_'+ sub_id[1] + ':not(.hide-input), [data-alias~="' + sub_id[0] + '[]"], [name="' + sub_id[0] +'[]"]:not(.hide-input)', this).eq(sub_id[1]);
+					}else{
+						var elementBase = $('#' + id + ':not(.hide-input), [data-alias~="' + id + '"], [name="' + id +'"]:not(.hide-input)', this);
+					}
 					elementBase.addClass('is-invalid');
 					elementBase.each(function(){
 						if ($(this).is('.form-control-m'))

@@ -428,6 +428,7 @@ $('body').on('statio:dashboard:room:schedules:create', function () {
             $('label', input).attr('for', id);
             $('label .field_title', input).html(value.text);
             $('input', input).attr('id', id);
+            $('input', input).attr('name', 'amount[]');
             input.removeClass('hidden');
             input.appendTo('#payment_fields');
         });
