@@ -20,7 +20,8 @@
   "scripts": {
     "watch:css": "postcss ./resources/davat/css/**/*.css -o ./public/css/davat.css --watch",
     "build:css": "postcss ./resources/davat/css/davat.css -o ./public/css/davat.css",
-    "production:css": "NODE_ENV=production postcss ./resources/davat/css/davat.css -o ./public/css/davat.css"
+    "production:css": "NODE_ENV=production postcss ./resources/davat/css/davat.css -o ./public/css/davat.css",
+    "public:css": "NODE_ENV=production BASE_NAME=public  postcss ./resources/davat/css/public.css -o ./public/css/public.css"
   },
   "repository": {
     "type": "git",
