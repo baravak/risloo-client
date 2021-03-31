@@ -424,6 +424,7 @@ $('body').on('statio:dashboard:room:schedules:create', function () {
             var input = $('#payment_fields_pattern').clone();
             ids.push(id);
             input.removeAttr('id');
+            input.attr('data-for', id);
             $('label', input).attr('for', id);
             $('label .field_title', input).html(value.text);
             $('input', input).attr('id', id);
@@ -431,7 +432,7 @@ $('body').on('statio:dashboard:room:schedules:create', function () {
             input.appendTo('#payment_fields');
         });
         removes.filter(Boolean).forEach(function(id, key){
-            $('#' + id).parents('.amount_fields').remove();
+            $('[data-for="'+id+'"]').remove();
         });
     });
     $('[name=repeat_status]').on('change', function(){
@@ -519,6 +520,22 @@ $('body').on('statio:dashboard:room:schedules:create', function () {
             $('#ch-closed-at').parent().fadeTo('fast', .3);
         }
         $('#ch-closed-at').trigger('change');
+    }).trigger('change');
+
+    $('[data-for=opens-at] [data-for=relative] input').on('change', function(){
+        var days = $('#relative-opens-days').val() || 0;
+        var hours = $('#relative-opens-hours').val() || 0;
+        var minutes = $('#relative-opens-minutes').val() || 0;
+        var time = (minutes * 60) + (hours * 60 * 60) + (days * 24 * 60 * 60);
+        $('#relative-opens-at').val(time);
+    }).trigger('change');
+
+    $('[data-for=closed-at] [data-for=relative] input').on('change', function(){
+        var days = $('#relative-closed-days').val() || 0;
+        var hours = $('#relative-closed-hours').val() || 0;
+        var minutes = $('#relative-closed-minutes').val() || 0;
+        var time = (minutes * 60) + (hours * 60 * 60) + (days * 24 * 60 * 60);
+        $('#relative-closed-at').val(time);
     }).trigger('change');
 });
 
