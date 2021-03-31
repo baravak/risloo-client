@@ -1,16 +1,16 @@
 <div>
     <label for="name" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Display name') }}</label>
-    <input type="text" name="name" id="name" autocomplete="off" @formValue($user->name) class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <input type="text" name="name" id="name" autocomplete="off" @formValue($user->name) class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus">
 </div>
 
 <div class="mt-4">
     <label for="mobile" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Mobile') }}</label>
-    <input type="text" name="mobile" id="mobile" autocomplete="off" @formValue($user->mobile) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <input type="text" name="mobile" id="mobile" autocomplete="off" @formValue($user->mobile) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
 </div>
 
 <div class="mt-4">
     <label for="username" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Username') }}</label>
-    <input type="text" name="username" id="username" autocomplete="off" @formValue($user->username) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <input type="text" name="username" id="username" autocomplete="off" @formValue($user->username) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
     <div class="flex items-center text-xs text-gray-400 mt-2 cursor-default">
         <i class="fal fa-info-circle ml-1"></i>
         <span>{{ __('Username help') }}</span>
@@ -19,12 +19,12 @@
 
 <div class="mt-4">
     <label for="email" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Email') }}</label>
-    <input type="text" name="email" id="email" autocomplete="off" @formValue($user->email) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <input type="text" name="email" id="email" autocomplete="off" @formValue($user->email) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
 </div>
 
 <div class="mt-4">
     <label for="password" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Password') }}</label>
-    <input type="password" name="password" id="password" autocomplete="new-password"class="border border-gray-500 h-10 rounded px-4 w-full text-left dir-ltr focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <input type="password" name="password" id="password" autocomplete="new-password"class="border border-gray-500 h-10 rounded px-4 w-full text-left dir-ltr focus:border-brand focus">
     <div class="flex items-center text-xs text-gray-400 mt-2 cursor-default">
         <i class="fal fa-info-circle ml-1"></i>
         <span>{{ __('Password help') }}</span>

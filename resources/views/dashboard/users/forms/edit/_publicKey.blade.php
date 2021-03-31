@@ -2,7 +2,7 @@
     <p class="text-gray-600">در این قسمت شما می‌توانید با استفاده از دراختیار قراردادن کلید عمومی رمزگذاری نامتقارن خود، داده‌های خود را در ریسلو کدگذاری کنید و تنها خودتان به آن‌ها دسترسی خواهید داشت.</p>
 
     <div class="mt-4">
-        <h3 class="font-semibold text-gray-800">فایده این کار چیست؟</h3>
+        <h3 class="variable-font-semibold text-gray-800">فایده این کار چیست؟</h3>
         <ul class="mt-4 pr-6 text-gray-600">
             <li class="mt-2">
                 - کلید عمومی: این کلید در اختیار ما قرار می‌گیرد و با این کلید تنها می‌توان داده‌های ارسالی شما را رمزگذاری کرد
@@ -22,14 +22,14 @@
     </div>
 
     <div class="mt-4">
-        <h3 class="font-semibold text-gray-800">چه چیزهایی رمزگذاری می‌شوند؟</h3>
+        <h3 class="variable-font-semibold text-gray-800">چه چیزهایی رمزگذاری می‌شوند؟</h3>
         <ul class="mt-4 pr-6 text-gray-600">
             <li>گزارش جلسات درمانی</li>
         </ul>
     </div>
 
     <div class="mt-4">
-        <h3 class="font-semibold text-gray-800">آیا می‌توانم کلید عمومی خودم را ویرایش کنم؟</h3>
+        <h3 class="variable-font-semibold text-gray-800">آیا می‌توانم کلید عمومی خودم را ویرایش کنم؟</h3>
         <ul class="mt-4 pr-6 text-gray-600">
             <li>درحال حاضر این امکان برای شما مهیا نیست.</li>
         </ul>
@@ -38,19 +38,19 @@
     @if (auth()->user() && auth()->user()->public_key)
 
     <div class="mt-8 w-full">
-        <label for="publicKey" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Public key') }}</label>
-        <textarea disabled id="publicKey" name="publicKey" cols="30" rows="10" class="resize-none text-left dir-ltr border border-gray-500 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">{{ auth()->user()->public_key }}</textarea>
+        <label for="publicKey" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('Public key') }}</label>
+        <textarea disabled id="publicKey" name="publicKey" cols="30" rows="10" class="resize-none text-left dir-ltr border border-gray-500 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus">{{ auth()->user()->public_key }}</textarea>
     </div>
 
     @else
 
         <form class="mt-8 w-full" action="{{route('dashboard.users.publicKey', ['user' => $user->id])}}" method="POST">
             <div>
-                <label for="publicKey">{{__('Public key')}}</label>
-                <textarea class="resize-none text-left dir-ltr border border-gray-500 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 mt-2" name="publicKey" id="publicKey" cols="30" rows="10"></textarea>
+                <label for="publicKey" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{__('Public key')}}</label>
+                <textarea class="resize-none text-left dir-ltr border border-gray-500 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus en" name="publicKey" id="publicKey" cols="30" rows="10"></textarea>
             </div>
 
-            <button type="submit" class="inline-flex items-center justify-center h-9 mt-4 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 focus transition">
+            <button type="submit" class="inline-flex items-center justify-center h-9 mt-4 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 focus transition" title="{{ __('Set public key') }}" aria-label="{{ __('Set public key') }}" role="button">
                 {{ __('Set public key') }}
             </button>
         </form>
@@ -70,11 +70,11 @@
 
     <form class="mt-8 w-full" action="{{route('dashboard.users.publicKey', ['user' => $user->id])}}" method="POST">
         <div>
-            <label for="privateKey">{{__('Privet key')}}</label>
-            <textarea class="resize-none text-left dir-ltr border border-gray-500 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 mt-2" name="privateKey" id="privateKey" cols="30" rows="10"></textarea>
+            <label for="privateKey" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{__('Privet key')}}</label>
+            <textarea class="resize-none text-left dir-ltr border border-gray-500 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus en" name="privateKey" id="privateKey" cols="30" rows="10"></textarea>
         </div>
 
-        <button type="submit" class="inline-flex items-center justify-center h-9 mt-4 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 focus transition">
+        <button type="submit" class="inline-flex items-center justify-center h-9 mt-4 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 focus transition" title="{{ __('Set privet key') }}" aria-label="{{ __('Set privet key') }}" role="button">
             {{ __('Set privet key') }}
         </button>
     </form>

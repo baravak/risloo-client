@@ -16,10 +16,10 @@
             </label>
             <div data-afile-pannel="avatar-file" class="w-64 h-64 mb-8 mx-auto"></div>
         </div>
-        <button type="submit" class="inline-flex items-center justify-center h-9 mt-4 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 focus transition">
+        <button type="submit" class="inline-flex items-center justify-center h-9 mt-4 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 transition focus" title="{{ __('Edition') }}" aria-label="{{ __('Edition') }}" role="button">
             {{ __('Edition') }}
         </button>
-        <button type="button" data-for="avatar-file" class="afile-destroy text-gray-500 hover:text-gray-700 text-sm px-4 mr-2 h-8 focus rounded-full">
+        <button type="button" data-for="avatar-file" class="afile-destroy text-gray-500 hover:text-gray-700 text-sm px-4 mr-2 h-8 rounded-full transition focus" title="{{ __('Cancel') }}" aria-label="{{ __('Cancel') }}" role="button">
             {{ __('Cancel') }}
         </button>
     </form>
