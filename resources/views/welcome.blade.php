@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Risloo | ریسلو">
 
-    <link rel="stylesheet" href="@staticVersion('/css/davat.css')" media="print" onload="this.media='all'; this.onload = null">
+    <link rel="stylesheet" href="@staticVersion('/css/public.css')">
 
     <title>Risloo | ریسلو</title>
 </head>

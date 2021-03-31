@@ -1,3 +1,26 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@import "base/fonts.css";
+
+@import "utilities/variable-font.css";
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+html[lang="fa"] {
+    font-family: dana;
+}
+
+@supports (font-variation-settings: normal) {
+    html[lang="fa"], .fa {
+        font-family: 'dana VF';
+        font-variation-settings: "wght" 400, "FANU" 1;
+    }
+}
