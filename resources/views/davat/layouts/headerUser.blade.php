@@ -10,7 +10,7 @@
     </a>
 
     @if (auth()->user()->response('current'))
-        <a href="{{ route('auth.back') }}" data-lijax='click' data-method='post' class="flex justify-center items-center w-12 h-12 border border-gray-300 text-gray-400 rounded hover:bg-gray-50 hover:text-brand mr-2 group direct" title="{{ __('Admin') }}">
+        <a href="{{ route('auth.back') }}" data-lijax='click' data-method='post' class="flex justify-center items-center flex-shrink-0 w-12 h-12 border border-gray-300 text-gray-400 rounded hover:bg-gray-50 hover:text-brand mr-2 group direct" title="{{ __('Admin') }}">
             <i class="fal fa-user-crown text-xl text-gray-500 group-hover:text-brand"></i>
         </a>
     @endif
