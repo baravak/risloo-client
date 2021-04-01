@@ -83,8 +83,8 @@
 </div>
 
 <div class="mt-4">
-    <label for="field" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('محور جلسه') <span class="text-xs text-gray-600 font-light mr-1" id="field_count"></span></label>
-    <select class="select2-select placeholder-gray-300" data-tags="true" data-placeholder="@lang('فیلد را تایپ کنید و روی نوشته کلیک کنید یا دکمه تب را بزنید')" multiple name="field[]" id="field">
+    <label for="fields" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('محور جلسه') <span class="text-xs text-gray-600 font-light mr-1" id="field_count"></span></label>
+    <select class="select2-select placeholder-gray-300" data-tags="true" data-placeholder="@lang('فیلد را تایپ کنید و روی نوشته کلیک کنید یا دکمه تب را بزنید')" multiple name="fields[]" id="fields">
     </select>
     <div class="flex items-center text-xs text-gray-400 mt-1">
         <i class="fal fa-info-circle ml-1"></i>

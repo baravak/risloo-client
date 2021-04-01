@@ -1,5 +1,5 @@
 $('body').on('statio:dashboard:room:schedules:create', function () {
-    $('#field').on('select2:select select2:unselect', function(e){
+    $('#fields').on('select2:select select2:unselect', function(e){
         var values = $(this).val();
         if(values.length > 0){
             $('#field_count').text('('+values.length+')');
@@ -22,7 +22,7 @@ $('body').on('statio:dashboard:room:schedules:create', function () {
             $('label', input).attr('for', id);
             $('label .field_title', input).html(value.text);
             $('input', input).attr('id', id);
-            $('input', input).attr('name', 'amount[]');
+            $('input', input).attr('name', 'amounts[]');
             input.removeClass('hidden');
             input.appendTo('#payment_fields');
         });

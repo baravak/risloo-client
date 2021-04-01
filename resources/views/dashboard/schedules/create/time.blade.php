@@ -1,6 +1,6 @@
 <div class="mt-4">
-    <label for="week_day" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Week days')</label>
-    <select id="week_day" name="week_day[]" multiple class="border border-gray-500 h-44 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <label for="week_days" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Week days')</label>
+    <select id="week_days" name="week_days[]" multiple class="border border-gray-500 h-44 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
         <option value="sat">@lang('Saturday')</option>
         <option value="sun">@lang('Sunday')</option>
         <option value="mon">@lang('Monday')</option>
@@ -36,13 +36,13 @@
 <div id="repeat-range">
     <div class="mt-1">
         <label for="repeat-from-picker" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Start time')</label>
-        <input type="text" readonly id="repeat-from-picker" data-picker-alt="repeat-from" dpicker-format="YYYY/MM/DD" value="{{ time() - (60 * 60 * 24) }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
+        <input type="text" readonly id="repeat-from-picker" data-picker-alt="repeat-from" dpicker-format="YYYY/MM/DD" value="{{ time() }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
         <input type="hidden" name="repeat_from" id="repeat-from">
     </div>
 
     <div class="mt-4">
         <label for="repeat-to-picker" class="block mb-2 text-sm text-gray-700 font-medium">@lang('End time')</label>
-        <input type="text" readonly id="repeat-to-picker" data-picker-alt="repeat-to" dpicker-format="YYYY/MM/DD" value="{{ time() - (60 * 60 * 24) }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
+        <input type="text" readonly id="repeat-to-picker" data-picker-alt="repeat-to" dpicker-format="YYYY/MM/DD" value="{{ time() }}" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
         <input type="hidden" name="repeat_to" id="repeat-to">
     </div>
 </div>
