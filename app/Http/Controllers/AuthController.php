@@ -7,11 +7,28 @@ use Illuminate\Http\Request;
 
 class AuthController extends _AuthController
 {
+
+    public function authTheoryPayment($request, $auth, $response){
+        if($auth->response('status') == 'fail'){
+            return $this->view($request, 'auth.theory.paymentFail');
+        }
+        if($auth->response('status') == 'success'){
+            return $this->view($request, 'auth.theory.payment');
+            return $response;
+        }
+        $response['direct'] = true;
+        $response['redirect'] = $auth->response('redirect');
+        return $response;
+    }
     public function authTheorySample($request, $auth, $response)
     {
         $response['direct'] = true;
         $response['redirect'] = urldecode(route('samples.form', substr($auth->response('key'), 1)));
         return $response;
+    }
+    public function authTheoryResultSample($request, $auth)
+    {
+        return redirect(urldecode(route('samples.form', substr($auth->response('key'), 1))));
     }
     public function authTheoryJoinUser($request, $auth, $response)
     {

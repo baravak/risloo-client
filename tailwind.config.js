@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: {
-    content: ['./resources/views/**/*.blade.php']
+    content: process.env.BASE_NAME == 'public' ? ['./resources/views/welcome.blade.php'] : ['./resources/views/**/*.blade.php']
   },
   darkMode: false, // or 'media' or 'class'
   theme: {

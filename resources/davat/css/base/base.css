@@ -14,10 +14,14 @@ html[lang="fa"], .fa {
     font-family: dana;
 }
 
+.fa-static {
+    font-family: dana!important;
+}
+
 @supports (font-variation-settings: normal) {
     html[lang="fa"], .fa {
         font-family: 'dana VF';
-        font-variation-settings: "FANU" 1;
+        font-variation-settings: "wght" 400, "FANU" 1;
     }
 }
 
@@ -25,6 +29,22 @@ kbd {
     font-family: 'dana VF', dana!important;
 }
 
-.focus {
-    @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 ring-brand;
+th {
+    @apply font-medium;
+}
+
+@layer utilities {
+    @variants responsive {
+        .focus {
+            @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 ring-brand;
+        }
+
+        .focus-current {
+            @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60;
+        }
+
+        .underline {
+            text-underline-offset: 0.25rem;
+        }
+    }
 }

@@ -46,7 +46,7 @@ class CenterController extends Controller
 
     public function edit(Request $request, $center)
     {
-        $center = $this->data->center = Center::apiShow($center, array_merge($request->all(), ['summary' => '']));
+        $center = is_string($center) ?  $this->data->center = Center::apiShow($center, array_merge($request->all(), ['summary' => ''])) : $center;
         $this->authorize('dashboard.centers.update', [$center, $center]);
         return $this->view($request, 'dashboard.centers.' . ($center->type == 'personal_clinic' ? 'create' : 'edit'));
     }
@@ -57,7 +57,7 @@ class CenterController extends Controller
     }
     public function avatarStore(Request $request, $center)
     {
-        $avatar = new Center;
-        return $avatar->execute("%s/$center/avatar", $request->all('avatar'), 'POST')->response()->json();
+        $this->data->center = $center = (new Center)->execute("%s/$center/avatar", $request->all('avatar'), 'POST');
+        return $this->edit($request, $center);
     }
 }

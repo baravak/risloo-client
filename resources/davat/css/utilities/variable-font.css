@@ -1,0 +1,39 @@
+@layer utilities {
+  @variants responsive {
+    .variable-font-thin {
+      font-variation-settings: "wght" 100, "FANU" 1;
+    }
+
+    .variable-font-extralight {
+      font-variation-settings: "wght" 200, "FANU" 1;
+    }
+
+    .variable-font-light {
+      font-variation-settings: "wght" 300, "FANU" 1;
+    }
+
+    .variable-font-normal {
+      font-variation-settings: "wght" 400, "FANU" 1;
+    }
+
+    .variable-font-medium {
+      font-variation-settings: "wght" 500, "FANU" 1;
+    }
+
+    .variable-font-semibold {
+      font-variation-settings: "wght" 600, "FANU" 1;
+    }
+
+    .variable-font-bold {
+      font-variation-settings: "wght" 700, "FANU" 1;
+    }
+
+    .variable-font-extrabold {
+      font-variation-settings: "wght" 800, "FANU" 1;
+    }
+
+    .variable-font-black {
+      font-variation-settings: "wght" 900, "FANU" 1;
+    }
+  }
+}

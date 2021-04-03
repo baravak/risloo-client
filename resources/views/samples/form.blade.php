@@ -5,6 +5,11 @@
 @section('scripts')
     @parent
     <script src="@staticVersion('/js/sampleEngine.min.js')"></script>
+    <style>
+       .table-hover tbody tr:hover {
+            background: rgba(138,138,138,.05) !important;
+        }
+    </style>
 @endsection
 
 @include('layouts.public-scripts')

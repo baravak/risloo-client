@@ -18,6 +18,7 @@
 @import "utilities/placeholder.css";
 @import "utilities/loading.css";
 @import "utilities/form.css";
+@import "utilities/variable-font.css";
 
 @import "components/select2.css";
 @import "components/tabby.css";

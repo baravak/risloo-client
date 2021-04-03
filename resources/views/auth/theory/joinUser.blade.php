@@ -1,5 +1,5 @@
 @section('auth-form')
-    <button class="w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-700 transition mb-8 focus">{{ __('Join user') }}</button>
+    <button class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mb-8 focus" title="{{ __('Join user') }}" aria-label="{{ __('Join user') }}" role="button">{{ __('Join user') }}</button>
 @endsection
 
 @extends('auth.theory')

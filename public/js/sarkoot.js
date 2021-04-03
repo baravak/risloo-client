@@ -234,6 +234,12 @@
 		title : function (value){
 			$('title').html(value);
 		},
+		state : function (value){
+			new Statio({
+				fake : true,
+				url : value
+			});
+		},
 		page : function(value){
 			$('body').attr('data-page', value);
 		},
@@ -1047,7 +1053,12 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 			$('.invalid-feedback', this).remove();
 			if (d.errors) {
 				for (var id in d.errors) {
-					var elementBase = $('#' + id + ':not(.hide-input), [data-alias~=' + id + '], [name=' + id +']:not(.hide-input)', this);
+					if(id.split('.').length > 1){
+						var sub_id = id.split('.');
+						var elementBase = $('#' + sub_id[0] +'_'+ sub_id[1] + ':not(.hide-input), [data-alias~="' + sub_id[0] + '[]"], [name="' + sub_id[0] +'[]"]:not(.hide-input)', this).eq(sub_id[1]);
+					}else{
+						var elementBase = $('#' + id + ':not(.hide-input), [data-alias~="' + id + '"], [name="' + id +'"]:not(.hide-input)', this);
+					}
 					elementBase.addClass('is-invalid');
 					elementBase.each(function(){
 						if ($(this).is('.form-control-m'))
@@ -1081,10 +1092,11 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 		$('.date-picker', this).each(function(){
 			var val = $(this).val();
 			var _self = this;
+			var format = $(this).attr('dpicker-format') || "YYYY/M/D H:m";
 			$(this).persianDatepicker({
-				format: $(this).attr('data-picker-format') || "YYYY/M/D H:m",
-				minDate: $(this).attr('data-picker-minDate') * 1000,
-				maxDate: $(this).attr('data-picker-maxDate') * 1000,
+				format: format,
+				minDate: $(this).attr('data-picker-minDate') ? $(this).attr('data-picker-minDate') * 1000 : undefined,
+				maxDate: $(this).attr('data-picker-maxDate') ? $(this).attr('data-picker-maxDate') * 1000 : undefined,
 				altFieldFormatter : function (unix) {
 					$('#' + $(_self).attr('data-picker-alt')).trigger('change', [_self, unix]);
 					return unix / 1000;
@@ -1113,7 +1125,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 					}
 				},
 				timePicker: {
-					enabled: true,
+					enabled: $(this).is('[dpicker-time]'),
 					second: {
 						enabled: false
 					}
@@ -1123,7 +1135,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 			if (val)
 			{
 				var date = new persianDate(val * 1000);
-				$(this).val(date.format('YYYY/M/D H:m'));
+				$(this).val(date.format(format));
 				$('#' + $(this).attr('data-picker-alt')).val(val);
 			}
 		});

@@ -2,10 +2,10 @@
     <div>
         <div class="flex items-center relative mb-4">
             <a href="{{ route('dashboard.centers.show', $bulkSample->room->center->id) }}" class="flex justify-center items-center flex-shrink-0 w-12 h-12 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden">
-                <img src="@attachmentLink($bulkSample->room->center->detail->avatar, 'samll')" class="w-full h-full object-cover object-center">
+                @avatarOrName($bulkSample->room->center->detail)
             </a>
             <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="flex justify-center items-center flex-shrink-0 w-8 h-8 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden absolute top-6 right-6">
-                <img src="@attachmentLink($bulkSample->room->manager->avatar, 'samll')" class="w-full h-full object-cover object-center">
+                @avatarOrName($bulkSample->room->manager)
             </a>
             <div class="flex flex-col mr-4">
                 <a href="{{ route('dashboard.centers.show', $bulkSample->room->center->id) }}" class="text-sm font-semibold text-gray-700 hover:text-brand transition">@center($bulkSample->room->center)</a>
