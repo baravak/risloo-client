@@ -3,9 +3,7 @@
         <div class="flex justify-center items-center flex-shrink-0 w-8 h-8 rounded overflow-hidden ml-2 text-white border border-gray-200 text-xs {{ !auth()->user()->avatar ? 'bg-blue-500' : '' }}" data-xhr="short-avatar">
             @avatarOrName(auth()->user())
         </div>
-        <div class="flex justify-between items-center">
-            <div class="font-medium text-xs text-gray-700 variable-font-medium truncate" style="max-width: 6rem;">{{ auth()->user()->name ?: auth()->user()->id }}</div>
-        </div>
+        <div class="font-medium text-xs text-gray-700 variable-font-medium truncate" style="max-width: 6rem;">{{ auth()->user()->name ?: auth()->user()->id }}</div>
     </a>
 
     @if (auth()->user()->response('current'))
