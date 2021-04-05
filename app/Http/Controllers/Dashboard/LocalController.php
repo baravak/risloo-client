@@ -9,6 +9,6 @@ class LocalController extends _HomeController
 {
     public function index(Request $request)
     {
-        return $this->view($request, 'dashboard.treasuries.index');
+        return $this->view($request, 'dashboard.schedules.index');
     }
 }

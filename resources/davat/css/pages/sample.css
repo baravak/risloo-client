@@ -1,0 +1,88 @@
+[data-page="samples-form"] [data-panel="description"] h2 {
+    @apply font-bold text-lg mb-4;
+}
+
+[data-page="samples-form"] [data-panel="description"] h3 {
+    @apply font-semibold text-lg my-4;
+}
+
+[data-page="samples-form"] [data-panel="description"] ol {
+    @apply block list-decimal pr-8 mb-8;
+}
+
+[data-page="samples-form"] [data-panel="description"] ol li {
+    @apply mt-4;
+}
+
+[data-page="samples-form"] [data-panel="description"] ol ul li {
+    @apply mt-2;
+}
+
+[data-page="samples-form"] [data-panel="description"] p {
+    @apply text-gray-700 mt-2;
+}
+
+/* Sample Item Radio Text */
+.sample-item-radio label {
+    @apply bg-gray-50 rounded border border-gray-100 p-2 flex items-center hover:border-brand transition;
+}
+
+.sample-item-radio .number {
+    @apply flex items-center justify-center flex-shrink-0 text-sm border border-gray-200 text-gray-700 w-7 h-7 pt-1 rounded-full;
+}
+
+.sample-item-radio .answer {
+    @apply text-gray-700 mr-2;
+}
+
+.sample-item-radio input:checked+label {
+    @apply border border-brand;
+}
+
+.sample-item-radio input:checked+label .number {
+    @apply bg-brand text-white border-brand;
+}
+
+/* Sample Item Radio Image */
+.sample-item-image label {
+    @apply flex flex-col border border-gray-200 rounded p-1;
+}
+
+.sample-item-image .number {
+    @apply flex items-center justify-center w-4 h-4 border border-gray-200 rounded-full pt-1 mb-1 text-xs;
+}
+
+.sample-item-image img {
+    @apply mx-auto;
+}
+
+.sample-item-image input:checked+label {
+    @apply border border-brand;
+}
+
+.sample-item-image input:checked+label .number {
+    @apply bg-brand text-white border-brand;
+}
+
+.aside-box-shadow {
+    box-shadow: 0 0px 10px rgb(0 0 0 / 20%);
+}
+
+.nav-empty-answers {
+    @apply text-xs text-gray-500;
+}
+
+.nav-empty-answers a {
+    @apply ml-1 mb-1 p-1 text-left inline-block border border-gray-300 rounded hover:bg-gray-50 hover:text-brand;
+}
+
+.bulk-sampleStatus div:not(:last-child) i::after {
+    @apply bg-gray-300;
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 18px;
+    top: 23px;
+    right: 8px;
+    z-index: -1;
+}
