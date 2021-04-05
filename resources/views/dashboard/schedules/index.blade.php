@@ -178,7 +178,7 @@
                             <span>در انتظار تشکیل جلسه</span>
                         </div>
                     </a>
-                    <a href="#" class=" flex flex-col justify-between border border-gray-300 rounded focus opacity-50 bg-gray-50 cursor-not-allowed">
+                    <a href="#" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus opacity-60 bg-gray-50">
                         <div>
                             <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت 12:30</span></div>
                             <div class="p-3">
