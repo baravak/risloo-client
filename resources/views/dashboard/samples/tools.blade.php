@@ -22,7 +22,7 @@
 @endif
 
 @if (config('app.env') == 'local' && in_array($sample->status, ['seald', 'open']))
-<a href="{{ config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1)  . '?replace=on' }}" class="inline-flex items-center px-4 h-8 text-xs text-gray-500 hover:text-brand hover:border-brand border border-gray-500 rounded-full transition lijax status-action ml-1 focus">
+<a href="{{ config('app.publi_server')}}/command/assessment/fill/{{substr($sample->id, 1)  . '?replace=on' }}" class="inline-flex items-center px-4 h-8 text-xs text-gray-500 hover:text-brand hover:border-brand border border-gray-500 rounded-full transition lijax status-action ml-1 focus">
         {{ __('Fill in') }}
 </a>
 {{-- <div class="relative inline-flex dropdown ml-1">
