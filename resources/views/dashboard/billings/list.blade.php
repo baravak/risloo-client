@@ -1,5 +1,5 @@
 <div data-xhr="billings-items">
-    {{-- @if ($samples->count()) --}}
+    {{-- @if ($billings->count()) --}}
     <div class="overflow-x-auto">
         <div class="align-middle inline-block min-w-full">
             <div class="overflow-hidden border border-gray-200 rounded">
