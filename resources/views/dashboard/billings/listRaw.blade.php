@@ -1,4 +1,4 @@
-<tr data-xhr="sample-list-id" class="transition hover:bg-gray-50">
+<tr data-xhr="billing-list-id" class="transition hover:bg-gray-50">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default en">$TRE123456</span>
