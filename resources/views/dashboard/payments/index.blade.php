@@ -19,7 +19,7 @@
                 </div>
                 <div class="mt-4">
                     <button type="submit" class="inline-flex justify-center items-center h-9 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 transition ml-4 focus" role="button">
-                        {{ __('Payment') }}
+                        {{ __('Transfer to payment gateway') }}
                     </button>
                 </div>
             </form>

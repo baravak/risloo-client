@@ -11,6 +11,8 @@
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Treasurie') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Date') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Payment status') }}</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Description') }}</th>
+                            <th class="px-3 py-2" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
