@@ -66,4 +66,9 @@ Route::resource('rooms/{room}/schedules', 'ScheduleController', ['as' => 'room']
 
 if(config('app.env') == 'local'){
     Route::get('/payments', 'LocalController@index');
+    Route::get('/billings', 'LocalController@billings');
+    Route::get('/billings/items', 'LocalController@billingItems');
+    Route::get('/transactions', 'LocalController@transactions');
+    Route::get('/treasuries', 'LocalController@treasuries');
+    Route::get('/schedules', 'LocalController@schedules');
 }
