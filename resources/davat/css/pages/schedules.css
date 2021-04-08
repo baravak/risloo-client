@@ -1,0 +1,43 @@
+[data-page="dashboard-schedules"] [role="tablist"] {
+    @apply border-b border-gray-300 mb-0 !important;
+    border-bottom-style: solid !important;
+}
+
+[data-page="dashboard-schedules"] [role="tab"] {
+    @apply rounded text-gray-600 h-auto flex-1 flex-col transition p-2 !important;
+    border: 1px solid !important;
+    @apply border-gray-300 !important;
+}
+
+[data-page="dashboard-schedules"] [role="tab"][aria-selected="true"] {
+    border: 1px solid !important;
+    @apply border-transparent bg-brand font-normal text-white !important;
+}
+
+[data-page="dashboard-schedules"] [role="tab"]:hover:not([aria-selected="true"]) {
+    @apply bg-brand border-transparent text-white !important;
+}
+
+[data-page="dashboard-schedules"] [role="tab"].disable {
+    @apply opacity-50 bg-gray-100 text-gray-600 cursor-not-allowed !important;
+}
+
+[data-page="dashboard-schedules"] [role="tab"].disable:hover {
+    @apply bg-gray-100 text-gray-600 !important;
+}
+
+@media (min-width: 30em) {
+    [data-page="dashboard-schedules"] [role="tab"][aria-selected="true"] {
+        border: 1px solid !important;
+        @apply border-transparent bg-brand font-normal text-white !important;
+    }
+
+    [data-page="dashboard-schedules"] [role="tab"]:hover:not([aria-selected="true"]) {
+        border: 1px solid !important;
+        @apply border-gray-300 text-white !important;
+    }
+
+    [data-page="dashboard-schedules"] [role="tab"].disable:hover {
+        @apply bg-gray-100 text-gray-600 !important;
+    }
+}

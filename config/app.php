@@ -54,6 +54,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
     'server' => rtrim(env('SERVER_URL', 'http://localhost'), '/'),
+    'publi_server' => rtrim(env('PUBLIC_SERVER_URL', rtrim(env('SERVER_URL', 'http://localhost'), '/')), '/'),
 
     'asset_url' => env('ASSET_URL', null),
 

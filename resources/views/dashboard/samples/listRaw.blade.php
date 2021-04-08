@@ -7,10 +7,10 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col">
             <div class="flex"><span class="text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span></div>
-            <div class="flex mt-1"><span class="text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span></div>
+            <div class="flex mt-1"><span class="text-gray-400 font-light text-xs cursor-default">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span></div>
             @if ($sample->chain)
                 <div class="flex mt-1">
-                    <a href="{{ route('dashboard.samples.index', ['chain' => $sample->chain]) }}" class="text-gray-400 hover:text-brand font-light text-xs transition">
+                    <a href="{{ route('dashboard.samples.index', ['chain' => $sample->chain]) }}" class="text-gray-400 hover:text-brand font-light text-xs transition underline">
                         <i class="fal fa-link"></i>
                         {{-- <span>{{ substr($sample->chain, 0, 6) }}...{{ substr($sample->chain, strlen($sample->chain) -6 , 6) }}</span> --}}
                         <span>نمو‌نه‌های زنجیره‌ای این نمونه</span>
