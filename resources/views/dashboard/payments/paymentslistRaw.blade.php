@@ -1,7 +1,7 @@
 <tr data-xhr="transaction-list-id" class="transition hover:bg-gray-50">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition text-right dir-ltr en">#24423a6dsg</a>
+            <span class="text-xs text-gray-600 text-right dir-ltr cursor-default en">#24423a6dsg</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -11,8 +11,12 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col justify-center">
-            <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition underline">کیف پول پیش‌فرض</a>
-            <a href="#" class="text-xs text-gray-500 hover:text-blue-600 transition underline mt-1 variable-font-light">محمدعلی نخلی</a>
+            <div class="flex">
+                <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition underline">کیف پول پیش‌فرض</a>
+            </div>
+            <div class="flex">
+                <a href="#" class="text-xs text-gray-500 hover:text-blue-600 transition underline mt-1 variable-font-light">محمدعلی نخلی</a>
+            </div>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -44,7 +48,7 @@
 <tr data-xhr="transaction-list-id" class="transition hover:bg-gray-50">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition text-right dir-ltr en">#234acj456d7</a>
+            <span class="text-xs text-gray-600 text-right dir-ltr cursor-default en">#234acj456d7</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -54,8 +58,12 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col justify-center">
-            <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition underline">کیف خزانه ملی ریسلو</a>
-            <a href="#" class="text-xs text-gray-500 hover:text-blue-600 transition underline mt-1 variable-font-light">محمدحسن صالحی</a>
+            <div class="flex">
+                <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition underline">کیف خزانه ملی ریسلو</a>
+            </div>
+            <div class="flex">
+                <a href="#" class="text-xs text-gray-500 hover:text-blue-600 transition underline mt-1 variable-font-light">محمدحسن صالحی</a>
+            </div>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
