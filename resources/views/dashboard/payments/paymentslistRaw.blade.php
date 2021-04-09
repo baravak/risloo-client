@@ -21,8 +21,8 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col justify-center relative top-0.5">
-            <span class="text-xs text-gray-600 block cursor-default">۱۴ فروردین ۱۴۰۰ - ساعت 14:30</span>
-            <span class="text-xs text-gray-400 block cursor-default variable-font-light">منقضی می‌شود در ۱۴ فروردین ۱۴۰۰ - ساعت 14:45</span>
+            <span class="text-xs text-gray-600 block cursor-default">1400,02,05 - ساعت 14:30</span>
+            <span class="text-xs text-gray-400 block cursor-default variable-font-light">منقضی می‌شود در 1400,02,05 - ساعت 14:45</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -68,8 +68,8 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col justify-center relative top-0.5">
-            <span class="text-xs text-gray-600 block cursor-default">۱۴ فروردین ۱۴۰۰ - ساعت 14:30</span>
-            <span class="text-xs text-gray-400 block cursor-default variable-font-light">منقضی شده در ۱۴ فروردین ۱۴۰۰ - ساعت 14:45</span>
+            <span class="text-xs text-gray-600 block cursor-default">1400,02,05 - ساعت 14:30</span>
+            <span class="text-xs text-gray-400 block cursor-default variable-font-light">منقضی شده در 1400,02,05 - ساعت 14:45</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
