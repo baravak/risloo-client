@@ -43,7 +43,7 @@ class SessionController extends Controller
         $this->authorize('dashboard.sessions.update', [$session]);
         $this->data->session = $session;
         $this->data->case = $session->case;
-        $this->data->room = $session->case->room;
+        $this->data->room = $session->room;
         $this->data->center = $this->data->room->center;
         $this->data->module->action = 'edit';
         return $this->view($request, 'dashboard.sessions.create');

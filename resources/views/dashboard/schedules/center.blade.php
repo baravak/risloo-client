@@ -23,109 +23,72 @@
     </div>
     <div data-page="dashboard-schedules" class="border border-gray-300 rounded mt-4">
         <ul data-tabs class="space-x-4 space-x-reverse p-4 overflow-x-auto">
-            <li>
-                <a href="#a" class="direct focus disable">
-                    <span class="text-sm variable-font-medium">شنبه</span>
-                    <span class="text-xs">۱۴۰۰/۰۱/۱۵</span>
-                </a>
-            </li>
-            <li>
-                <a href="#s" class="direct focus disable">
-                    <span class="text-sm variable-font-medium">یک‌شنبه</span>
-                    <span class="text-xs">۱۴۰۰/۰۱/۱۶</span>
-                </a>
-            </li>
-            <li>
-                <a href="#d" data-tabby-default class="direct focus">
-                    <span class="text-sm variable-font-medium">دوشنبه</span>
-                    <span class="text-xs">۱۴۰۰/۰۱/۱۷</span>
-                </a>
-            </li>
-            <li>
-                <a href="#f" class="direct focus">
-                    <span class="text-sm variable-font-medium">سه‌شنبه</span>
-                    <span class="text-xs">۱۴۰۰/۰۱/۱۸</span>
-                </a>
-            </li>
-            <li>
-                <a href="#g" class="direct focus">
-                    <span class="text-sm variable-font-medium">‌چهارشنبه</span>
-                    <span class="text-xs">۱۴۰۰/۰۱/۱۹</span>
-                </a>
-            </li>
-            <li>
-                <a href="#h" class="direct focus">
-                    <span class="text-sm variable-font-medium">پنج‌شنبه</span>
-                    <span class="text-xs">۱۴۰۰/۰۱/۲۰</span>
-                </a>
-            </li>
-            <li>
-                <a href="#j" class="direct focus">
-                    <span class="text-sm variable-font-medium">جمعه</span>
-                    <span class="text-xs">۱۴۰۰/۰۱/۲۱</span>
-                </a>
-            </li>
+            @foreach ($weeks as $key => $day)
+                <li>
+                    <a href="#{{ $key }}" {{ $day->format('d') == date('d') ? 'data-tabby-default': ''}} class="direct focus {{ $day->format('d') < date('d') ? 'disable' : '' }}">
+                        <span class="text-sm variable-font-medium">@time($day, '%A')</span>
+                        <span class="text-xs">@time($day, 'Y/m/d')</span>
+                    </a>
+                </li>
+            @endforeach
         </ul>
 
         <div>
-            <div id="a">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">1</div>
-            </div>
-            <div id="s">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">2</div>
-            </div>
-            <div id="d">
+            @foreach ($weeks as $key => $day)
+            <div id="{{ $key }}">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">
-                    <a href="#" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
+                    @foreach ($schedules->where('started_at', '>=', $day)->where('started_at', '<=', (clone $day)->endOfDay()) as $schedule)
+                    <a href="#{{ $schedule->id }}" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
                         <div>
-                            <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت 12:30</span></div>
+                            <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت {{ $schedule->started_at->format('H:i') }}</span></div>
                             <div class="p-3">
                                 <div class="flex items-center mb-4">
                                     <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
-                                        <span>ف‌م</span>
+                                        @avatarOrName($schedule->room->manager)
                                     </div>
                                     <div class="text-xs variable-font-medium text-gray-600 mr-2">
-                                        <span>فاطمه مدنی</span>
+                                        <span>@displayName($schedule->room->manager)</span>
                                     </div>
                                 </div>
-
-                                <div class="flex items-center text-xs text-gray-500">
-                                    <i class="fal fa-folder ml-2"></i>
-                                    <span>پرونده RS966669Y</span>
-                                </div>
+                                @if ($schedule->case)
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <i class="fal fa-folder ml-2"></i>
+                                        <span>@lang('Therapy case :serial', ['serial' => $schedule->case->id])</span>
+                                    </div>
+                                @endif
                                 <div class="flex items-center text-xs text-gray-500 mt-2">
                                     <i class="fal fa-clock ml-2"></i>
-                                    <span>40 دقیقه</span>
+                                    <span>@lang(':time minute(s)', ['time' => $schedule->duration])</span>
                                 </div>
-                                <div class="flex items-center text-xs text-gray-500 mt-2">
-                                    <i class="fal fa-user-friends ml-2"></i>
-                                    <span>7</span>
-                                </div>
+                                @if ($schedule->clients_number > 1)
+                                    <div class="flex items-center text-xs text-gray-500 mt-2">
+                                        <i class="fal fa-user-friends ml-2"></i>
+                                        <span>{{ $schedule->clients_number }}</span>
+                                    </div>
+                                @endif
 
                                 <div class="mt-4">
                                     <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
                                     <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
                                         <div class="inline text-xs text-gray-500">
-                                            <span>درمان وسواس</span>
-                                            <span class="mx-1">|</span>
-                                            <span>زوج درمانی</span>
-                                            <span class="mx-1">|</span>
-                                            <span>مشاوره پیش از ازدواج</span>
-                                            <span class="mx-1">|</span>
-                                            <span>خانواده درمانی</span>
-                                            <span class="mx-1">|</span>
-                                            <span>افسردگی مزمن</span>
+                                            @foreach ($schedule->fields as $field)
+                                                <span title="@lang('amount :amount Toman', ['amount' => $field->amount])">{{ $field->title }}</span>
+                                                @if (!$loop->last)
+                                                    <span class="mx-1">|</span>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-between items-center text-xs text-gray-500 px-3 pt-1 pb-3">
-                            <span>گروهی</span>
-                            <span>بسته شده</span>
+                            <span>@lang($schedule->group_session ? 'Group session' : '')</span>
+                            <span>@lang(ucfirst($schedule->status))</span>
                         </div>
                     </a>
-                    <a href="#" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
+                    @endforeach
+                    {{-- <a href="#" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
                         <div>
                             <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت 12:30</span></div>
                             <div class="p-3">
@@ -226,64 +189,10 @@
                             <span>گروهی</span>
                             <span>بسته شده</span>
                         </div>
-                    </a>
-                    <a href="#" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
-                        <div>
-                            <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت 12:30</span></div>
-                            <div class="p-3">
-                                <div class="flex items-center mb-4">
-                                    <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
-                                        <span>ف‌م</span>
-                                    </div>
-                                    <div class="text-xs variable-font-medium text-gray-600 mr-2">
-                                        <span>فاطمه مدنی</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center text-xs text-gray-500">
-                                    <i class="fal fa-folder ml-2"></i>
-                                    <span>پرونده RS966669Y</span>
-                                </div>
-                                <div class="flex items-center text-xs text-gray-500 mt-2">
-                                    <i class="fal fa-clock ml-2"></i>
-                                    <span>40 دقیقه</span>
-                                </div>
-                                {{-- <div class="flex items-center text-xs text-gray-500 mt-2">
-                                    <i class="fal fa-user-friends ml-2"></i>
-                                    <span>7</span>
-                                </div> --}}
-
-                                <div class="mt-4">
-                                    <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
-                                    <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
-                                        <div class="inline text-xs text-gray-500">
-                                            <span>درمان وسواس</span>
-                                            <span class="mx-0.5">|</span>
-                                            <span>زوج درمانی</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center text-xs text-gray-500 px-3 pt-1 pb-3">
-                            <span>گروهی</span>
-                            <span></span>
-                        </div>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
-            <div id="f">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">4</div>
-            </div>
-            <div id="g">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">5</div>
-            </div>
-            <div id="h">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">6</div>
-            </div>
-            <div id="j">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">7</div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

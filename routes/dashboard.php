@@ -20,6 +20,7 @@ Route::post('centers/{center}/users', 'CenterUserController@store')->name('cente
 Route::get('centers/{center}/users/create', 'CenterUserController@create')->name('center.users.create');
 Route::get('centers/{center}/users/{user}', 'CenterUserController@show')->name('center.users.show');
 Route::get('centers/{center}/users/{user}/edit', 'CenterUserController@edit')->name('center.users.edit');
+Route::get('centers/{center}/schedules', 'ScheduleController@center')->name('center.schedules.index');
 
 Route::resource('rooms', 'RoomController', ['except' => ['store', 'create']]);
 Route::get('centers/{center}/rooms/create', 'RoomController@create')->name('center.rooms.create');
