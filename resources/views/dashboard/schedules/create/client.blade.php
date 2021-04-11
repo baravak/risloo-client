@@ -40,8 +40,8 @@
 </div>
 
 <div class="mt-4">
-    <label for="seletion_type" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع انتخاب مراجع(ین)')</label>
-    <select id="seletion_type" name="seletion_type" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <label for="selection_type" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع انتخاب مراجع(ین)')</label>
+    <select id="selection_type" name="selection_type" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
         <option value="first">@lang('اولین نفر(هایی) که درخواست داد(دند)')</option>
         <option value="selective">@lang('انتخاب به عهده مرکز')</option>
     </select>

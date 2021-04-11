@@ -64,13 +64,13 @@
 
 <div data-for="closed-at">
     <div class="mt-4" data-for="relative">
-        <input type="text" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
+        <input type="text" id="relative-closed-days" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
         <span>روز</span>
         <span>و</span>
-        <input type="text" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
+        <input type="text" id="relative-closed-hours" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
         <span>ساعت</span>
         <span>و</span>
-        <input type="text" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
+        <input type="text" id="relative-closed-minutes" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
         <span>دقیقه</span>
         <span>قبل از زمان تشکیل جلسه</span>
         <input type="hidden" name="closed_at" id="relative-closed-at">
