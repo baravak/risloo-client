@@ -36,4 +36,9 @@ class LocalController extends _HomeController
     {
         return $this->view($request, 'dashboard.schedules.center-schedules');
     }
+
+    public function schedulesShow(Request $request)
+    {
+        return $this->view($request, 'dashboard.schedules.show');
+    }
 }
