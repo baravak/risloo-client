@@ -1,3 +1,13 @@
+
+<div class="form-group mt-4">
+    <input type="checkbox" id="group_session" name="group_session">
+    <label for="group_session" data-alias="group_session" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('جلسه گروهی')</label>
+</div>
+{{--
+<div class="mt-4" id="clients-number-input">
+    <label for="clients_number" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('تعداد حداکثر مراجعین')</label>
+    <input type="number" id="clients_number" name="clients_number" step="1" min="1" max="50" value="1" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
+</div> --}}
 <div class="mt-4">
     <label for="session_type" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع جلسه')</label>
     <select id="session_type" name="session_type" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
@@ -8,7 +18,7 @@
     </select>
 </div>
 
-<div class="mt-4">
+{{-- <div class="mt-4">
     <label class="inline-flex items-center group">
         <input type="checkbox" id="ch-opens-at" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
         <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">@lang('زمان شروع نوبت‌گیری')</span>
@@ -80,7 +90,7 @@
         <input type="text" readonly id="closed-at-picker" dpicker-time="true" data-picker-alt="closed-at" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
         <input type="hidden" name="closed_at" id="closed-at">
     </div>
-</div>
+</div> --}}
 
 <div class="mt-4">
     <label for="fields" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('محور جلسه') <span class="text-xs text-gray-600 font-light mr-1" id="field_count"></span></label>

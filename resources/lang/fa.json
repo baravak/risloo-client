@@ -326,5 +326,7 @@
     "Define new schedule" : "تعریف برنامه آموزشی",
     "Users of :region" : "اعضاء :region",
     "Opens at" : "باز شود در تاریخ...",
-    "Closed at" : "بسته شود در تاریخ..."
+    "Closed at" : "بسته شود در تاریخ...",
+    "Specific date" : "تاریخ مشخص",
+    "Pattern" : "الگو"
 }

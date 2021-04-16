@@ -151,7 +151,11 @@ Breadcrumbs::for('dashboard.case.users.create', function ($trail, $data) {
 });
 
 Breadcrumbs::for('dashboard.sessions.show', function ($trail, $data) {
-    $trail->parent('dashboard.cases.show', $data);
+    if(isset($data['case'])){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        $trail->parent('dashboard.rooms.show', $data);
+    }
     $trail->push(__('Session'), null);
     $trail->push($data['session']->id, $data['session']->route('show'));
 });
@@ -186,3 +190,16 @@ Breadcrumbs::for('dashboard.bulk-samples.show', function ($trail, $data) {
 
     $trail->push($data['bulkSample']->title ?: $data['bulkSample']->id, route('dashboard.bulk-samples.show', $data['bulkSample']->id));
 });
+
+Breadcrumbs::for('dashboard.center.schedules.index', function ($trail, $data) {
+    $trail->parent('dashboard.centers.show', $data);
+
+    $trail->push(__('Therapy Schedules'), route('dashboard.center.schedules.index', $data['center']->id));
+});
+
+Breadcrumbs::for('dashboard.room.schedules.create', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+
+    $trail->push(__('Create therapy schedules'), route('dashboard.room.schedules.create', $data['room']->id));
+});
+

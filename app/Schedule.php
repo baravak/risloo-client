@@ -6,6 +6,7 @@ use App\Models\ApiPaginator;
 
 class Schedule extends API
 {
+    public $parent = Center::class;
     protected $casts = [
         'started_at' => 'datetime',
         'finished_at' => 'datetime',

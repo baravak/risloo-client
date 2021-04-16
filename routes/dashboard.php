@@ -46,8 +46,6 @@ Route::get('live/samples-status-check', 'SampleController@statuCheck')->middlewa
 
 Route::get('sessions/calendar', 'SessionController@calendar')->name('sessions.calendar');
 Route::resource('sessions', 'SessionController', ['except' => ['create']]);
-Route::get('cases/{case}/sessions/create', 'SessionController@create')->name('sessions.create');
-Route::post('cases/{case}/sessions/create', 'SessionController@store')->name('sessions.store');
 
 Route::put('sessions/{session}/status', 'SessionController@sessionUpdate')->name('sessions.sessionUpdate');
 
@@ -62,8 +60,10 @@ Route::get('/bulk-samples', 'BulkSampleController@index')->name('bulk-samples.in
 Route::get('/bulk-samples/{bulkSample}', 'BulkSampleController@show')->name('bulk-samples.show');
 Route::get('/treasuries', 'LocalController@index')->name('treasuries.index');
 
-Route::resource('rooms/{room}/schedules', 'ScheduleController', ['as' => 'room']);
+Route::get('rooms/{room}/schedules', 'ScheduleController@create')->name('room.schedules.create');
+Route::post('rooms/{room}/schedules', 'ScheduleController@store')->name('room.schedules.store');
 
+Route::get('cases/{case}/schedules', 'ScheduleController@caseCreate')->name('case.schedules.create');
 
 if(config('app.env') == 'local'){
     Route::get('/payments', 'LocalController@index');

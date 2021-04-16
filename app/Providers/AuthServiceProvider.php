@@ -31,6 +31,8 @@ class AuthServiceProvider extends ServiceProvider
         \App\Sample::class => \App\Policies\SamplePolicy::class,
         \App\Practice::class => \App\Policies\PracticePolicy::class,
 
+        \App\Schedule::class => \App\Policies\SchedulePolicy::class,
+
     ];
 
     /**

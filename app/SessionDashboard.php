@@ -10,6 +10,9 @@ class SessionDashboard extends Session
         'practices' => Practice::class,
         'samples' => Sample::class
     ];
+    public function parentClass($parent){
+        return $parent == 'room' ? Room::class : $this->parent;
+    }
     public $table = 'sessions';
     public function _dashboard($id, array $params = [])
     {

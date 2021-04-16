@@ -1,4 +1,4 @@
-$('body').on('statio:dashboard:room:schedules:create', function () {
+$('body').on('statio:dashboard:room:schedules:create statio:dashboard:case:schedules:create', function () {
     $('#fields').on('select2:select select2:unselect', function(e){
         var values = $(this).val();
         if(values.length > 0){
@@ -132,4 +132,19 @@ $('body').on('statio:dashboard:room:schedules:create', function () {
         var time = (minutes * 60) + (hours * 60 * 60) + (days * 24 * 60 * 60);
         $('#relative-closed-at').val(time);
     }).trigger('change');
+
+    $('[name=date_type]').on('change', function(){
+        if($('#date-type-pattern').is(':checked')){
+            $('#specific-date, #date').attr('disabled', 'disabled');
+            $('#specific-date').fadeTo('fast', .3);
+            $('input, select', '#pattern-elements').removeAttr('disabled');
+            $('#pattern-elements').fadeTo('fast', 1);
+            $('#repeat-status-weeks').trigger('change');
+        }else{
+            $('input, select', '#pattern-elements').attr('disabled', 'disabled');
+            $('#pattern-elements').fadeTo('fast', .3);
+            $('#specific-date, #date').removeAttr('disabled');
+            $('#specific-date').fadeTo('fast', 1);
+        }
+    }).eq(0).trigger('change');
 });

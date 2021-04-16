@@ -4,20 +4,32 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Room;
 use App\Schedule;
+use App\TherapyCase;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
     public function create(Request $request,Room $room){
+        $this->authorize('create', [Schedule::class, $room]);
         $this->data->room = $room;
         $this->data->center = $room->center;
         return $this->view($request, 'dashboard.schedules.create');
     }
+
+    public function caseCreate(Request $request,TherapyCase $case){
+        $this->data->case = $case;
+        $room = $this->data->room = $case->room;
+        $this->data->center = $room->center;
+        $this->authorize('create', [Schedule::class, $room]);
+        return $this->view($request, 'dashboard.schedules.create');
+    }
+
     public function store(Request $request, $room){
-        return Schedule::apiStore($room, $request->all());
+        return Schedule::apiStore($room, $request->all())->response()->json();
     }
     public function center(Request $request, $center){
+        $this->authorize('center', Schedule::class);
         $this->data->weeks = $weeks= (object) [
             'sat' => Carbon::now()->startOfWeek(),
             'sun' => Carbon::now()->startOfWeek()->addDays(1),
@@ -27,7 +39,8 @@ class ScheduleController extends Controller
             'thu' => Carbon::now()->startOfWeek()->addDays(5),
             'fri' => Carbon::now()->startOfWeek()->addDays(6),
         ];
-        $this->data->schedules =  Schedule::center($center);
+        $schedules = $this->data->schedules =  Schedule::center($center);
+        $this->data->center = $schedules->parentModel;
         return $this->view($request, 'dashboard.schedules.center');
     }
 }

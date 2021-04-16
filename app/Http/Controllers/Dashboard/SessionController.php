@@ -61,8 +61,12 @@ class SessionController extends Controller
         $this->data->session = $session = SessionDashboard::apiDashboard($session);
         $practices = $this->data->practices = $session->practices;
         $samples = $this->data->samples = $session->samples;
-        $case = $this->data->case = $session->parentModel;
-        $room = $this->data->room = $case->room;
+        if($session->parentModel instanceof Room){
+            $room = $this->data->room = $session->parentModel;
+        }else{
+            $case = $this->data->case = $session->parentModel;
+            $room = $this->data->room = $case->room;
+        }
         $center = $this->data->center = $room->center;
         $this->data->global->title = __('Therapy session :serial', ['serial' => $session->id]) ;
         return $this->view($request, 'dashboard.sessions.show');
