@@ -34,7 +34,6 @@ Route::get('rooms/{room}/cases/create', 'CaseController@create')->name('room.cas
 Route::post('rooms/{room}/cases', 'CaseController@store')->name('room.cases.store');
 
 Route::resource('cases/{case}/users', 'CaseUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'case']);
-Route::put('cases/{case}/sessions/{session}', 'CaseController@sessionUpdate')->name('cases.sessions.sessionUpdate');
 Route::post('users/request', 'UserController@request')->name('users.request');
 Route::post('users/accept', 'UserController@accept')->name('users.accept');
 
@@ -44,10 +43,8 @@ Route::put('samples/{sample}/close', 'SampleController@close')->middleware('auth
 Route::put('samples/{sample}/open', 'SampleController@open')->middleware('auth')->name('samples.open');
 Route::get('live/samples-status-check', 'SampleController@statuCheck')->middleware('auth');
 
-Route::get('sessions/calendar', 'SessionController@calendar')->name('sessions.calendar');
 Route::resource('sessions', 'SessionController', ['except' => ['create']]);
 
-Route::put('sessions/{session}/status', 'SessionController@sessionUpdate')->name('sessions.sessionUpdate');
 
 Route::resource('documents', 'DocumentController');
 

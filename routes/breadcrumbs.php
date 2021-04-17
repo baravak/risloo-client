@@ -128,17 +128,10 @@ Breadcrumbs::for('dashboard.sessions.index', function ($trail, $data) {
 
     $trail->push(__('Sessions'), null);
 });
-
-Breadcrumbs::for('dashboard.sessions.create', function ($trail, $data) {
-    $trail->parent('dashboard.sessions.index', $data);
-    $trail->push(__('Create session'), route('dashboard.sessions.index'));
-});
-
 Breadcrumbs::for('dashboard.sessions.edit', function ($trail, $data) {
     $trail->parent('dashboard.sessions.show', $data);
     $trail->push(__('Edit'), route('dashboard.sessions.edit', $data['session']->route('edit')));
 });
-
 Breadcrumbs::for('dashboard.cases.show', function ($trail, $data) {
     $trail->parent('dashboard.rooms.show', $data);
     $trail->push(__('Case'), null);
@@ -201,5 +194,11 @@ Breadcrumbs::for('dashboard.room.schedules.create', function ($trail, $data) {
     $trail->parent('dashboard.rooms.show', $data);
 
     $trail->push(__('Create therapy schedules'), route('dashboard.room.schedules.create', $data['room']->id));
+});
+
+Breadcrumbs::for('dashboard.case.schedules.create', function ($trail, $data) {
+    $trail->parent('dashboard.cases.show', $data);
+
+    $trail->push(__('Create new session'), route('dashboard.case.schedules.create', $data['case']->id));
 });
 

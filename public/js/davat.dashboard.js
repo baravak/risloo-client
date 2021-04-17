@@ -404,7 +404,7 @@ $('body').on('statio:dashboard:samples:create', function(){
     });
 })();
 
-$('body').on('statio:dashboard:room:schedules:create statio:dashboard:case:schedules:create', function () {
+$('body').on('statio:dashboard:room:schedules:create statio:dashboard:case:schedules:create statio:dashboard:sessions:edit', function () {
     $('#fields').on('select2:select select2:unselect', function(e){
         var values = $(this).val();
         if(values.length > 0){
@@ -429,13 +429,14 @@ $('body').on('statio:dashboard:room:schedules:create statio:dashboard:case:sched
             $('label .field_title', input).html(value.text);
             $('input', input).attr('id', id);
             $('input', input).attr('name', 'amounts[]');
+            $('input', input).val($(value.element).attr('data-amount'));
             input.removeClass('hidden');
             input.appendTo('#payment_fields');
         });
         removes.filter(Boolean).forEach(function(id, key){
             $('[data-for="'+id+'"]').remove();
         });
-    });
+    }).trigger('select2:select');
     $('[name=repeat_status]').on('change', function(){
         if($('#repeat-status-weeks').is(':checked')){
             $('input', '#repeat-range').attr('disabled', 'disabled');

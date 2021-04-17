@@ -1,24 +1,14 @@
-
-<div class="form-group mt-4">
-    <input type="checkbox" id="group_session" name="group_session">
-    <label for="group_session" data-alias="group_session" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('جلسه گروهی')</label>
-</div>
-{{--
-<div class="mt-4" id="clients-number-input">
-    <label for="clients_number" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('تعداد حداکثر مراجعین')</label>
-    <input type="number" id="clients_number" name="clients_number" step="1" min="1" max="50" value="1" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
-</div> --}}
 <div class="mt-4">
     <label for="session_type" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع جلسه')</label>
     <select id="session_type" name="session_type" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
-        <option value="face_to_face">@lang('جلسه حضوری')</option>
-        <option value="phone_call">@lang('تماس تلفنی')</option>
-        <option value="voice_call">@lang('تماس صوتی آنلاین')</option>
-        <option value="video_conference">@lang('ویدئو کنفرانس')</option>
+        <option value="face_to_face" @selectChecked($session->session_type, 'face_to_face')>@lang('جلسه حضوری')</option>
+        <option value="phone_call" @selectChecked($session->session_type, 'phone_call')>@lang('تماس تلفنی')</option>
+        <option value="voice_call" @selectChecked($session->session_type, 'voice_call')>@lang('تماس صوتی آنلاین')</option>
+        <option value="video_conference" @selectChecked($session->session_type, 'video_conference')>@lang('ویدئو کنفرانس')</option>
     </select>
 </div>
 
-{{-- <div class="mt-4">
+<div class="mt-4">
     <label class="inline-flex items-center group">
         <input type="checkbox" id="ch-opens-at" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
         <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">@lang('زمان شروع نوبت‌گیری')</span>
@@ -90,11 +80,16 @@
         <input type="text" readonly id="closed-at-picker" dpicker-time="true" data-picker-alt="closed-at" class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 date-picker dir-ltr text-left">
         <input type="hidden" name="closed_at" id="closed-at">
     </div>
-</div> --}}
+</div>
 
 <div class="mt-4">
     <label for="fields" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('محور جلسه') <span class="text-xs text-gray-600 font-light mr-1" id="field_count"></span></label>
     <select class="select2-select placeholder-gray-300" data-tags="true" data-placeholder="@lang('فیلد را تایپ کنید و روی نوشته کلیک کنید یا دکمه تب را بزنید')" multiple name="fields[]" id="fields">
+    @isset($session)
+        @foreach ($session->fields as $field)
+            <option value="{{ $field->title }}" selected data-amount="{{ $field->amount }}">{{ $field->title }}</option>
+        @endforeach
+    @endisset
     </select>
     <div class="flex items-center text-xs text-gray-400 mt-1">
         <i class="fal fa-info-circle ml-1"></i>
@@ -104,5 +99,5 @@
 
 <div class="mt-4">
     <label for="description" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('توضیحات')</label>
-    <textarea type="text" id="description" name="description" class="border border-gray-500 placeholder-gray-300 h-20 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left"></textarea>
+    <textarea type="text" id="description" name="description" class="border border-gray-500 placeholder-gray-300 h-20 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">@isset($session){{ $session->description }}@endisset</textarea>
 </div>

@@ -8,6 +8,7 @@ class Session extends API
         'client' => User::class,
         'case' => TherapyCase::class,
         'room' => Room::class,
+        'fields' => Field::class
     ];
     protected $casts = [
         'started_at' => 'datetime',
