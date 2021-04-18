@@ -55,10 +55,10 @@ $('body').on('statio:dashboard:room:schedules:create statio:dashboard:case:sched
 
     $('#ch-closed-at').on('change', function(){
         var elements = $('[data-for=closed-at]');
-        $('[data-for=closed-at] [name=closed_at_type]:checked').trigger('change');
         if($(this).is(':checked') && !$(this).is(':disabled')){
             $('input', elements).removeAttr('disabled');
             $(elements).fadeTo('fast', 1);
+            $('[data-for=closed-at] [name=closed_at_type]:checked').eq(0).trigger('change');
         }else{
             $('input', elements).attr('disabled', 'disabled');
             $(elements).fadeTo('fast', .3);
@@ -101,13 +101,13 @@ $('body').on('statio:dashboard:room:schedules:create statio:dashboard:case:sched
 
     $('#ch-opens-at').on('change', function(){
         var elements = $('[data-for=opens-at]');
-        $('[data-for=opens-at] [name=opens_at_type]:checked').trigger('change');
         if($(this).is(':checked') ){
             $('input', elements).removeAttr('disabled');
             $(elements).fadeTo('fast', 1);
 
             $('#ch-closed-at').removeAttr('disabled');
             $('#ch-closed-at').parent().fadeTo('fast', 1);
+            $('[data-for=opens-at] [name=opens_at_type]:checked').eq(0).trigger('change');
         }else{
             $('input', elements).attr('disabled', 'disabled');
             $(elements).fadeTo('fast', .3);
@@ -148,4 +148,14 @@ $('body').on('statio:dashboard:room:schedules:create statio:dashboard:case:sched
             $('#specific-date').fadeTo('fast', 1);
         }
     }).eq(0).trigger('change');
+
+    $('#session_status').on('change', function(){
+        if($(this).val() == 'registration_awaiting'){
+            $('#ch-opens-at').attr('checked', 'checked').trigger('change').attr('data-enabled', 'enabled');
+            $('#open-awaiting-elements').fadeIn('fast');
+        }else{
+            $('#ch-opens-at').removeAttr('checked').removeAttr('data-enabled').trigger('change');
+            $('#open-awaiting-elements').fadeOut('fast');
+        }
+    }).trigger('change');
 });
