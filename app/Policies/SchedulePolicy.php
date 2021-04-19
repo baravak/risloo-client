@@ -20,7 +20,7 @@ class SchedulePolicy
         //
     }
     public function center(User $user){
-        return $user->isAdmin() || $user->centers->whereIn('acceptation.position', ['manager', 'operator'])->count();
+        return true;
     }
     public function create(User $user, Room $room){
         if($user->isAdmin()){

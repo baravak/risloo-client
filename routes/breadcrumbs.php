@@ -202,3 +202,13 @@ Breadcrumbs::for('dashboard.case.schedules.create', function ($trail, $data) {
     $trail->push(__('Create new session'), route('dashboard.case.schedules.create', $data['case']->id));
 });
 
+Breadcrumbs::for('dashboard.schedules.show', function ($trail, $data) {
+    if(isset($data['case'])){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        $trail->parent('dashboard.rooms.show', $data);
+    }
+
+    $trail->push(__('Reserve'), route('dashboard.schedules.show', $data['session']->id));
+});
+

@@ -13,7 +13,7 @@ class SessionPolicy
 
     public function update(User $user, $session, $mode = null){
         if($mode == 'report'){
-            if(isset($session->case)){
+            if(isset($session->case->room)){
                 $room = $session->case->room;
             }elseif($session->parentModel instanceof Room){
                 $room = $session->parentModel;

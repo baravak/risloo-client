@@ -62,6 +62,9 @@ Route::post('rooms/{room}/schedules', 'ScheduleController@store')->name('room.sc
 
 Route::get('cases/{case}/schedules', 'ScheduleController@caseCreate')->name('case.schedules.create');
 
+Route::get('schedules/{schedule}', 'ScheduleController@show')->name('schedules.show');
+Route::post('schedules/{schedule}/booking', 'ScheduleController@booking')->name('schedules.booking');
+
 if(config('app.env') == 'local'){
     Route::get('/payments', 'LocalController@index');
     Route::get('/billings', 'LocalController@billings');

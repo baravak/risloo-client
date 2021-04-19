@@ -4,7 +4,7 @@
             <h3 class="flex items-center font-bold text-gray-700 cursor-default">
                 <span class="w-8 border-t border-gray-200 inline-block ml-3"></span>
                 <span>{{ __('Users') }}</span>
-                <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">(12)</span>
+                <span class="text-xs text-gray-600 font-light mr-2" data-xhr="total">({{ $session->clients ? $session->clients->count() : 0 }})</span>
             </h3>
         </div>
         {{-- @can('dashboard.cases.manager', $case) --}}
@@ -16,6 +16,5 @@
             </div>
         {{-- @endcan --}}
     </div>
-    @include('dashboard.sessions.usersList')
-    {{-- @include($samples && $samples->count() ? 'dashboard.sessions.usersList' : 'dashboard.sessions.emptyUsers') --}}
+    @include($session->clients && $session->clients->count() ? 'dashboard.sessions.usersList' : 'dashboard.sessions.emptyUsers')
 </div>

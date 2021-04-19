@@ -13,42 +13,40 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        <tr class="transition hover:bg-gray-50">
-                            <td class="px-3 py-2 whitespace-nowrap">
-                                <div class="flex items-center cursor-default">
-                                    <span class="text-xs text-gray-600">1</span>
-                                </div>
-                            </td>
-                            <td class="px-3 py-2 whitespace-nowrap">
-                                <div class="flex items-center cursor-default">
-                                    <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition">محمدعلی نخلی</a>
-                                </div>
-                            </td>
-                            <td class="px-3 py-2 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    {{-- @isset($user->mobile)
-                                        <a href="tel:+{{ $user->mobile }}" class="block text-right dir-ltr text-xs text-gray-600 hover:text-blue-600" target="_blank" title="{{ $user->mobile }}" aria-label="{{ $user->mobile }}">
-                                            <span class="hidden md:block">+{{ $user->mobile }}</span>
-                                            <i class="block md:hidden fal fa-phone text-base"></i>
-                                        </a>
-                                    @endisset --}}
-                                    <a href="tel:+989198765432" class="block text-right dir-ltr text-xs text-gray-600 hover:text-blue-600" target="_blank" title="+989198765432" aria-label="+989198765432">
-                                        <span class="hidden md:block">+989198765432</span>
-                                        <i class="block md:hidden fal fa-phone text-base"></i>
-                                    </a>
-                                </div>
-                            </td>
-                            <td class="px-3 py-2 whitespace-nowrap">
-                                <div class="flex items-center cursor-default">
-                                    <span class="block text-right dir-ltr text-xs text-gray-600">ثبت شده</span>
-                                </div>
-                            </td>
-                            <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-                                <div class="inline-block mr-4">
-                                    <a href="#" title="{{ __('Edit') }}" aria-label="{{ __('Edit') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($session->clients ?: [] as $user)
+                            <tr class="transition hover:bg-gray-50">
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center cursor-default">
+                                        <span class="text-xs text-gray-600">{{ $loop->index + 1 }}</span>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center cursor-default">
+                                        <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition">{{ $user->name }}</a>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        @isset($user->mobile)
+                                            <a href="tel:+{{ $user->mobile }}" class="block text-right dir-ltr text-xs text-gray-600 hover:text-blue-600" target="_blank" title="{{ $user->mobile }}" aria-label="{{ $user->mobile }}">
+                                                <span class="hidden md:block">+{{ $user->mobile }}</span>
+                                                <i class="block md:hidden fal fa-phone text-base"></i>
+                                            </a>
+                                        @endisset
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center cursor-default">
+                                        <span class="block text-right dir-ltr text-xs text-gray-600">@lang($user->position)</span>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
+                                    <div class="inline-block mr-4">
+                                        <a href="#" title="{{ __('Edit') }}" aria-label="{{ __('Edit') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -11,7 +11,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             @include('dashboard.sessions.therapists')
-            {{-- @include('dashboard.sessions.clients') --}}
+            @include('dashboard.sessions.clients')
 
         </div>
     </div>

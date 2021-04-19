@@ -8,7 +8,11 @@ class SessionDashboard extends Session
         'client' => User::class,
         'case' => TherapyCase::class,
         'practices' => Practice::class,
-        'samples' => Sample::class
+        'samples' => Sample::class,
+        'room' => Room::class,
+        'fields' => Field::class,
+        'clients' => User::class,
+
     ];
     public function parentClass($parent){
         return $parent == 'room' ? Room::class : $this->parent;

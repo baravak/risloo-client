@@ -328,5 +328,6 @@
     "Opens at" : "باز شود در تاریخ...",
     "Closed at" : "بسته شود در تاریخ...",
     "Specific date" : "تاریخ مشخص",
-    "Pattern" : "الگو"
+    "Pattern" : "الگو",
+    ":amount T" : ":amount تومان"
 }

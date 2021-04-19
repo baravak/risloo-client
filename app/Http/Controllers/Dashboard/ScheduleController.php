@@ -17,6 +17,22 @@ class ScheduleController extends Controller
         return $this->view($request, 'dashboard.schedules.create');
     }
 
+    public function show(Request $request, Schedule $schedule){
+        $this->data->session = $schedule;
+        if($schedule->parentModel instanceof Room){
+            $room = $this->data->room = $schedule->parentModel;
+        }else{
+            $case = $this->data->case = $schedule->parentModel;
+            $room = $this->data->room = $case->room;
+        }
+        $center = $this->data->center = $room->center;
+        return $this->view($request, 'dashboard.schedules.show');
+    }
+
+    public function booking(Request $request, $session){
+        return Schedule::booking($session, $request->all());
+    }
+
     public function caseCreate(Request $request,TherapyCase $case){
         $this->data->case = $case;
         $room = $this->data->room = $case->room;

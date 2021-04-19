@@ -9,11 +9,13 @@
             <span>{{ __(':time minute(s)', ['time' => $session->duration]) }}</span>
         </div>
         <div class="flex items-center text-sm text-gray-500 mt-2">
-            <span class="text-xs bg-gray-100 px-2 py-1 rounded ml-2">جلسه گروهی</span>
+            @if ($session->group_session)
+                <span class="text-xs bg-gray-100 px-2 py-1 rounded ml-2">جلسه گروهی</span>
+            @endif
             <span>{{ __(ucfirst($session->status)) }}</span>
         </div>
         <div class="flex items-center text-sm variable-font-light text-gray-400 mt-2 mb-10 sm:mb-0 w-full sm:w-11/12">
-            <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،</span>
+            <span>{{ $session->description }}</span>
         </div>
     </div>
     <div class="flex flex-col order-first sm:order-none justify-between mb-4 sm:mb-0">
@@ -25,37 +27,35 @@
     </div>
     <a href="{{$session->route('edit')}}" class="absolute left-4 bottom-4 flex items-center justify-center border border-gray-500 rounded-full text-xs text-gray-600 h-8 px-4 hover:bg-gray-50">{{ __('Edit session') }}</a>
 </div>
-
 <div class="grid grdi-cols-1 sm:grid-cols-3 gap-4 mt-2 border border-gray-300 rounded p-4">
     <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 sm:border-l border-gray-200">
         <div class="text-xs text-gray-400">نوع جلسه</div>
-        <div class="text-sm text-gray-600 variable-font-medium mt-2">تماس تلفنی</div>
+        <div class="text-sm text-gray-600 variable-font-medium mt-2">@lang($session->type)</div>
     </div>
     <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 sm:border-l border-gray-200">
         <div class="text-xs text-gray-400">تعداد حداکثر مراجعین</div>
-        <div class="text-sm text-gray-600 variable-font-medium mt-2">12</div>
+        <div class="text-sm text-gray-600 variable-font-medium mt-2">{{ $session->clients_number ?: '1' }}</div>
     </div>
     <div class="cursor-default text-center">
         <div class="text-xs text-gray-400">نوع پرداخت</div>
-        <div class="text-sm text-gray-600 variable-font-medium mt-2">آنلاین</div>
+        <div class="text-sm text-gray-600 variable-font-medium mt-2">@lang($session->payment_status)</div>
     </div>
 </div>
-
 <div class="grid grdi-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-2 border border-gray-300 rounded p-4">
     <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 sm:border-l border-gray-200">
         <div class="text-xs text-gray-400">نوع انتخاب مراجع</div>
-        <div class="text-sm text-gray-600 variable-font-medium mt-2">انتخاب به عهده مرکز</div>
+        <div class="text-sm text-gray-600 variable-font-medium mt-2">@lang($session->selection_type)</div>
     </div>
     <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 xl:border-l border-gray-200">
         <div class="text-xs text-gray-400">نوع مراجعین درخواست دهنده</div>
-        <div class="text-sm text-gray-600 variable-font-medium mt-2">اعضاء مرکز مشاوره طلیعه سلامت</div>
+        <div class="text-sm text-gray-600 variable-font-medium mt-2">@lang(ucfirst($session->clients_type))</div>
     </div>
     <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 sm:border-l border-gray-200">
         <div class="text-xs text-gray-400">زمان شروع نوبت‌گیری</div>
-        <div class="text-sm text-gray-600 variable-font-medium mt-2">شنبه 1400,02,05  ساعت 20:45</div>
+        <div class="text-sm text-gray-600 variable-font-medium mt-2">@time($session->opens_at, '%A %d %B %y ساعت H:i')</div>
     </div>
     <div class="cursor-default text-center">
         <div class="text-xs text-gray-400">زمان بستن نوبت‌گیری</div>
-        <div class="text-sm text-gray-600 variable-font-medium mt-2">دوشنبه 1400,02,08  ساعت 14:20</div>
+        <div class="text-sm text-gray-600 variable-font-medium mt-2">@time($session->closed_at, '%A %d %B %y ساعت H:i')</div>
     </div>
 </div>

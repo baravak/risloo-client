@@ -41,13 +41,13 @@
 
     <div data-for="opens-at">
         <div class="mt-4" data-for="relative">
-            <input type="text" id="relative-opens-days" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ $session->opens_relative_days }}">
+            <input type="text" id="relative-opens-days" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ isset($session) ? $session->opens_relative_days : null }}">
             <span>روز</span>
             <span>و</span>
-            <input type="text" id="relative-opens-hours" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ $session->opens_relative_hours }}">
+            <input type="text" id="relative-opens-hours" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ isset($session) ? $session->opens_relative_hours : null }}">
             <span>ساعت</span>
             <span>و</span>
-            <input type="text" id="relative-opens-minutes" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ $session->opens_relative_minutes }}">
+            <input type="text" id="relative-opens-minutes" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ isset($session) ? $session->opens_relative_minutes : null }}">
             <span>دقیقه</span>
             <span>قبل از زمان تشکیل جلسه</span>
             <input type="hidden" name="opens_at" id="relative-opens-at">
@@ -78,13 +78,13 @@
 
     <div data-for="closed-at">
         <div class="mt-4" data-for="relative">
-            <input type="text" id="relative-closed-days" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ $session->closed_relative_days }}">
+            <input type="text" id="relative-closed-days" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ isset($session) ? $session->closed_relative_days : null }}">
             <span>روز</span>
             <span>و</span>
-            <input type="text" id="relative-closed-hours" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ $session->closed_relative_hours }}">
+            <input type="text" id="relative-closed-hours" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ isset($session) ? $session->closed_relative_hours : null }}">
             <span>ساعت</span>
             <span>و</span>
-            <input type="text" id="relative-closed-minutes" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ $session->closed_relative_minutes }}">
+            <input type="text" id="relative-closed-minutes" class="border border-gray-500 h-10 rounded px-4 w-14 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left" value="{{ isset($session) ? $session->closed_relative_minutes : null }}">
             <span>دقیقه</span>
             <span>قبل از زمان تشکیل جلسه</span>
             <input type="hidden" name="closed_at" id="relative-closed-at">
