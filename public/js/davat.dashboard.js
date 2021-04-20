@@ -450,9 +450,20 @@ $('body').on('statio:dashboard:room:schedules:create statio:dashboard:case:sched
     }).eq(0).trigger('change');
 
     $('#clients_type').on('change', function(){
-        $('#client_selection_input')[$(this).val() == 'client' ? 'show' : 'hide']();
 
+        if($(this).val() == 'case'){
+            $('select', '#case_selection_input').removeAttr('disabled');
+        }else{
+            $('select', '#case_selection_input').attr('disabled', 'disabled');
+        }
         $('#case_selection_input')[$(this).val() == 'case' ? 'show' : 'hide']();
+
+        $('#new_case_selection_input')[$(this).val() == 'new_case' ? 'show' : 'hide']();
+        if($(this).val() == 'new_case'){
+            $('textarea', '#new_case_selection_input').removeAttr('disabled');
+        }else{
+            $('textarea', '#new_case_selection_input').attr('disabled', 'disabled');
+        }
     }).trigger('change');
 
     $('#group_session').on('change', function(){

@@ -44,6 +44,7 @@ Route::put('samples/{sample}/open', 'SampleController@open')->middleware('auth')
 Route::get('live/samples-status-check', 'SampleController@statuCheck')->middleware('auth');
 
 Route::resource('sessions', 'SessionController', ['except' => ['create']]);
+Route::get('sessions/{session}/users/create', 'SessionController@createUser')->name('session.users.create');
 
 
 Route::resource('documents', 'DocumentController');

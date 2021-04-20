@@ -8,6 +8,10 @@
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Row') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Client') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Mobile') }}</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Problem') }}</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Description') }}</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Field') }}</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">وضعیت ثبت‌نام جلسه</th>
                             <th class="px-3 py-2" scope="col"></th>
                         </tr>
@@ -33,6 +37,26 @@
                                                 <i class="block md:hidden fal fa-phone text-base"></i>
                                             </a>
                                         @endisset
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center cursor-default">
+                                        <span class="block text-right dir-ltr text-xs text-gray-600">@lang($user->problem)</span>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center cursor-default">
+                                        <span class="block text-right dir-ltr text-xs text-gray-600">@lang($user->description)</span>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center cursor-default">
+                                        <span class="block text-right dir-ltr text-xs text-gray-600">{{ $user->case ? $user->case->id : null}}</span>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center cursor-default">
+                                        <span class="block text-right dir-ltr text-xs text-gray-600">{{ $user->field ? $user->field->title : null }}</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">

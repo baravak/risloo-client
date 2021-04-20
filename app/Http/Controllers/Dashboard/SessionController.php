@@ -41,6 +41,7 @@ class SessionController extends Controller
     {
         $this->data->global->title = __('Edit session');
         $this->authorize('dashboard.sessions.update', [$session]);
+
         $this->data->session = $session;
         $this->data->case = $session->case;
         $this->data->room = $session->room;
@@ -73,7 +74,6 @@ class SessionController extends Controller
     }
 
     public function update(Request $request, $session){
-        $this->authorize('dashboard.sessions.update', [$session]);
         $bind = [];
         if($request->callback){
             $bind['redirect'] = urldecode($request->callback);
@@ -85,5 +85,12 @@ class SessionController extends Controller
     public function sessionUpdate(Request $request, $session){
         $session = $this->data->session = Session::apiUpdate($session, $request->all());
         return $this->view($request, 'dashboard.sessions.show-header');
+    }
+    public function createUser(Request $request, Session $session){
+        $this->data->session = $session;
+        $room = $this->data->room = $session->room;
+        $case = $this->data->case = $session->case;
+        $center = $this->data->center = $room->center;
+        return $this->view($request, 'dashboard.sessions.createUser');
     }
 }

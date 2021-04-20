@@ -12,14 +12,14 @@ class SessionPolicy
     use HandlesAuthorization;
 
     public function update(User $user, $session, $mode = null){
+        if(isset($session->case->room)){
+            $room = $session->case->room;
+        }elseif(isset($session->parentModel) && $session->parentModel instanceof Room){
+            $room = $session->parentModel;
+        }else{
+            $room = isset($session->parentModel) ? $session->parentModel->room : $session->room;
+        }
         if($mode == 'report'){
-            if(isset($session->case->room)){
-                $room = $session->case->room;
-            }elseif($session->parentModel instanceof Room){
-                $room = $session->parentModel;
-            }else{
-                $room = $session->parentModel ? $session->parentModel->room : $session->room;
-            }
             if($room->acceptation && $room->acceptation->position == 'manager'){
                 return true;
             }
@@ -29,10 +29,10 @@ class SessionPolicy
             return true;
         }
         if(isset($session->case)){
-            if($session->case->room->manager->id == $user->id){
+            if($room->manager->id == $user->id){
                 return true;
             }
-            if($user->centers->where('id', $session->case->room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+            if($user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
                 return true;
             }
         }

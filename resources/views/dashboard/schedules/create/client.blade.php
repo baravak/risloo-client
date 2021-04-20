@@ -7,6 +7,9 @@
             <option value="room">@lang('Users of :region', ['region' => __('Therapy room of :user', ['user' => $room->manager->name])])</option>
         @endif
         <option value="case">@lang('Case users ...')</option>
+        @if (isset($session) && !isset($case))
+            <option value="new_case">@lang('Create new case')</option>
+        @endif
         {{-- <option value="client">@lang('Selected client')</option> --}}
     </select>
 </div>
@@ -24,6 +27,12 @@
     </div>
     @endisset
 </div>
+@if (isset($session) && !isset($case))
+    <div class="mt-4" id="new_case_selection_input">
+        <label for="problem" class="block mb-2 text-sm text-gray-700 variable-font-medium">مسئله</label>
+        <textarea id="problem" name="problem" autocomplete="off" class="resize-none border border-gray-500 h-24 md:h-16 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
+    </div>
+@endif
 
 <div class="form-group mt-4">
     <input type="checkbox" id="group_session" name="group_session">

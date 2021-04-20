@@ -15,7 +15,7 @@ class RoomPolicy
         {
             return true;
         }
-        if($room->manager->id == $user->id)
+        if($room->manager->user_id == $user->id)
         {
             return true;
         }
