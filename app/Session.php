@@ -6,6 +6,7 @@ class Session extends API
 {
     public $with = [
         'client' => User::class,
+        'clients' => User::class,
         'case' => TherapyCase::class,
         'room' => Room::class,
         'fields' => Field::class,
@@ -23,6 +24,12 @@ class Session extends API
     {
         $store = new static;
         return $store->execute(sprintf("cases/%s/sessions", $case ?: '-'), $params, 'post');
+    }
+
+    public static function addUser($session, array $params)
+    {
+        $store = new static;
+        return $store->execute(sprintf("sessions/%s/users", $session ?: '-'), $params, 'post');
     }
     public function setRoutes($attr){
         $this->route = [

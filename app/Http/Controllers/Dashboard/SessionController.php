@@ -93,4 +93,8 @@ class SessionController extends Controller
         $center = $this->data->center = $room->center;
         return $this->view($request, 'dashboard.sessions.createUser');
     }
+
+    public function storeUser(Request $request, $session){
+        Session::addUser($session, $request->all());
+    }
 }

@@ -45,6 +45,7 @@ Route::get('live/samples-status-check', 'SampleController@statuCheck')->middlewa
 
 Route::resource('sessions', 'SessionController', ['except' => ['create']]);
 Route::get('sessions/{session}/users/create', 'SessionController@createUser')->name('session.users.create');
+Route::post('sessions/{session}/users', 'SessionController@storeUser')->name('session.users.store');
 
 
 Route::resource('documents', 'DocumentController');
