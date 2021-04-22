@@ -12,7 +12,7 @@
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Description') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Field') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
-                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">وضعیت ثبت‌نام جلسه</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">وضعیت</th>
                             <th class="px-3 py-2" scope="col"></th>
                         </tr>
                     </thead>

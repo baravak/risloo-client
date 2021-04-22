@@ -16,6 +16,7 @@ $('body').on('statio:dashboard:schedules:show statio:dashboard:session:users:cre
             $('#case_id,  [data-xhr="case-clients"] input').attr('disabled', 'disabled');
             $('#center_users').removeAttr('disabled');
             $('#center_users + .select2').fadeTo('fast', 1);
+            $('#case_id').val(null).trigger('change');
         }else{
             $('#case_id + .select2, [data-xhr="case-clients"]').fadeTo('fast', 1);
             $('#case_id,  [data-xhr="case-clients"] input').removeAttr('disabled');

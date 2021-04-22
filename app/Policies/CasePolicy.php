@@ -43,7 +43,7 @@ class CasePolicy
         if($user->isAdmin()){
             return true;
         }
-        if($case->room->manager->id == $user->id){
+        if($case->room->manager->user_id == $user->id){
             return true;
         }
         if($case->room->center->acceptation && in_array($case->room->center->acceptation->position, ['operator', 'manager'])){

@@ -30,7 +30,9 @@ class ScheduleController extends Controller
     }
 
     public function booking(Request $request, $session){
-        return Schedule::booking($session, $request->all());
+        return Schedule::booking($session, $request->all())->response()->json([
+            'redirect' => route('dashboard.sessions.show', $session)
+        ]);
     }
 
     public function caseCreate(Request $request,TherapyCase $case){
@@ -45,17 +47,19 @@ class ScheduleController extends Controller
         return Schedule::apiStore($room, $request->all())->response()->json();
     }
     public function center(Request $request, $center){
+        $time = (int) $request->time;
+        $time = Carbon::createFromTimestamp($request->time ?: time())->timestamp;
         $this->authorize('center', Schedule::class);
         $this->data->weeks = $weeks= (object) [
-            'sat' => Carbon::now()->startOfWeek(),
-            'sun' => Carbon::now()->startOfWeek()->addDays(1),
-            'mon' => Carbon::now()->startOfWeek()->addDays(2),
-            'tue' => Carbon::now()->startOfWeek()->addDays(3),
-            'wed' => Carbon::now()->startOfWeek()->addDays(4),
-            'thu' => Carbon::now()->startOfWeek()->addDays(5),
-            'fri' => Carbon::now()->startOfWeek()->addDays(6),
+            'sat' => Carbon::createFromTimestamp($time)->startOfWeek(),
+            'sun' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(1),
+            'mon' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(2),
+            'tue' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(3),
+            'wed' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(4),
+            'thu' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(5),
+            'fri' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(6),
         ];
-        $schedules = $this->data->schedules =  Schedule::center($center);
+        $schedules = $this->data->schedules =  Schedule::center($center, $time);
         $this->data->center = $schedules->parentModel;
         return $this->view($request, 'dashboard.schedules.center');
     }

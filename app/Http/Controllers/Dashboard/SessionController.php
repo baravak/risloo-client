@@ -91,6 +91,7 @@ class SessionController extends Controller
         $room = $this->data->room = $session->room;
         $case = $this->data->case = $session->case;
         $center = $this->data->center = $room->center;
+        $this->authorize('addUser', $session);
         return $this->view($request, 'dashboard.sessions.createUser');
     }
 
