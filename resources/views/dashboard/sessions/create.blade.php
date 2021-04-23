@@ -1,4 +1,4 @@
-@section('form_action'){{ isset($session) ? route('dashboard.sessions.update', $session->id) :route('dashboard.sessions.create', $case->id) }}@endsection
+@section('form_action'){{ isset($session) ? route('dashboard.sessions.update', $session->id) :route('dashboard.case.schedules.store', $case->id) }}@endsection
 @extends('dashboard.create')
 @section('form_content')
     <div class="mt-4">

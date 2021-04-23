@@ -7,35 +7,40 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col">
             <div class="flex">
-                <a href="{{ $session->case->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline transition">
-                    @lang('Therapy room of :user', ['user' => $session->case->room->manager->name])
+                <a href="{{ $session->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline transition">
+                    @lang('Therapy room of :user', ['user' => $session->room->manager->name])
                 </a>
             </div>
             <div class="flex mt-1">
-                <a href="{{ $session->case->room->center->route('show') }}" class="text-xs text-gray-500 hover:text-blue-500 underline transition">
-                    @if ($session->case->room->center->type == 'personal_clinic')
+                <a href="{{ $session->room->center->route('show') }}" class="text-xs text-gray-500 hover:text-blue-500 underline transition">
+                    @if ($session->room->center->type == 'personal_clinic')
                         @lang('Personal clinic')
                     @else
-                        {{ $session->case->room->center->detail->title }}
+                        {{ $session->room->center->detail->title }}
                     @endif
                 </a>
             </div>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
-            <a href="{{ $session->case->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 en underline transition">{{ $session->case->id }}</a>
-        </div>
+        @if ($session->case)
+            <div class="flex items-center">
+                <a href="{{ $session->case->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 en underline transition">{{ $session->case->id }}</a>
+            </div>
+        @endif
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
+            @isset ($session->case->clients)
                 @foreach ($session->case->clients as $client)
                     <div class="flex">
-                        <a href="{{ route('dashboard.center.users.show', ['center' => $session->case->room->center->id, 'user' => $client->id]) }}" class="text-xs text-gray-600 hover:text-blue-500 underline transition">
+                        <a href="{{ route('dashboard.center.users.show', ['center' => $session->room->center->id, 'user' => $client->id]) }}" class="text-xs text-gray-600 hover:text-blue-500 underline transition">
                             @displayName($client)
                         </a>
                     </div>
+                    @if (!$loop->last) <span class="mx-1 text-gray-300"></span> @endif
                 @endforeach
+            @endisset
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">

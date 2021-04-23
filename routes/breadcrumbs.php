@@ -128,17 +128,10 @@ Breadcrumbs::for('dashboard.sessions.index', function ($trail, $data) {
 
     $trail->push(__('Sessions'), null);
 });
-
-Breadcrumbs::for('dashboard.sessions.create', function ($trail, $data) {
-    $trail->parent('dashboard.sessions.index', $data);
-    $trail->push(__('Create session'), route('dashboard.sessions.index'));
-});
-
 Breadcrumbs::for('dashboard.sessions.edit', function ($trail, $data) {
     $trail->parent('dashboard.sessions.show', $data);
     $trail->push(__('Edit'), route('dashboard.sessions.edit', $data['session']->route('edit')));
 });
-
 Breadcrumbs::for('dashboard.cases.show', function ($trail, $data) {
     $trail->parent('dashboard.rooms.show', $data);
     $trail->push(__('Case'), null);
@@ -151,7 +144,11 @@ Breadcrumbs::for('dashboard.case.users.create', function ($trail, $data) {
 });
 
 Breadcrumbs::for('dashboard.sessions.show', function ($trail, $data) {
-    $trail->parent('dashboard.cases.show', $data);
+    if(isset($data['case'])){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        $trail->parent('dashboard.rooms.show', $data);
+    }
     $trail->push(__('Session'), null);
     $trail->push($data['session']->id, $data['session']->route('show'));
 });
@@ -186,3 +183,32 @@ Breadcrumbs::for('dashboard.bulk-samples.show', function ($trail, $data) {
 
     $trail->push($data['bulkSample']->title ?: $data['bulkSample']->id, route('dashboard.bulk-samples.show', $data['bulkSample']->id));
 });
+
+Breadcrumbs::for('dashboard.center.schedules.index', function ($trail, $data) {
+    $trail->parent('dashboard.centers.show', $data);
+
+    $trail->push(__('Therapy Schedules'), route('dashboard.center.schedules.index', $data['center']->id));
+});
+
+Breadcrumbs::for('dashboard.room.schedules.create', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+
+    $trail->push(__('Create therapy schedules'), route('dashboard.room.schedules.create', $data['room']->id));
+});
+
+Breadcrumbs::for('dashboard.case.schedules.create', function ($trail, $data) {
+    $trail->parent('dashboard.cases.show', $data);
+
+    $trail->push(__('Create new session'), route('dashboard.case.schedules.create', $data['case']->id));
+});
+
+Breadcrumbs::for('dashboard.schedules.show', function ($trail, $data) {
+    if(isset($data['case'])){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        $trail->parent('dashboard.rooms.show', $data);
+    }
+
+    $trail->push(__('Reserve'), route('dashboard.schedules.show', $data['session']->id));
+});
+

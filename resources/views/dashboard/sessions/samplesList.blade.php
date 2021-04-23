@@ -20,9 +20,9 @@
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <span class="block text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span>
-                                <span class="block text-gray-400 font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span>
+                            <div class="flex flex-col justify-center cursor-default">
+                                <span class="text-xs variable-font-medium text-gray-700">{{ $sample->scale->title }}</span>
+                                <span class="text-gray-400 variable-font-light text-xs">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">

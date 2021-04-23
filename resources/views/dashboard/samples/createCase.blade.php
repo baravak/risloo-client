@@ -13,9 +13,7 @@
         </div>
         @endisset
     </div>
-    <div data-xhr="case-clients">
-
-    </div>
+    <div data-xhr="case-clients"></div>
 
     <div class="mt-4">
         <label for="session_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Session') }}</label>

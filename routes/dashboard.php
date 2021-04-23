@@ -20,6 +20,7 @@ Route::post('centers/{center}/users', 'CenterUserController@store')->name('cente
 Route::get('centers/{center}/users/create', 'CenterUserController@create')->name('center.users.create');
 Route::get('centers/{center}/users/{user}', 'CenterUserController@show')->name('center.users.show');
 Route::get('centers/{center}/users/{user}/edit', 'CenterUserController@edit')->name('center.users.edit');
+Route::get('centers/{center}/schedules', 'ScheduleController@center')->name('center.schedules.index');
 
 Route::resource('rooms', 'RoomController', ['except' => ['store', 'create']]);
 Route::get('centers/{center}/rooms/create', 'RoomController@create')->name('center.rooms.create');
@@ -33,7 +34,6 @@ Route::get('rooms/{room}/cases/create', 'CaseController@create')->name('room.cas
 Route::post('rooms/{room}/cases', 'CaseController@store')->name('room.cases.store');
 
 Route::resource('cases/{case}/users', 'CaseUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'case']);
-Route::put('cases/{case}/sessions/{session}', 'CaseController@sessionUpdate')->name('cases.sessions.sessionUpdate');
 Route::post('users/request', 'UserController@request')->name('users.request');
 Route::post('users/accept', 'UserController@accept')->name('users.accept');
 
@@ -43,12 +43,11 @@ Route::put('samples/{sample}/close', 'SampleController@close')->middleware('auth
 Route::put('samples/{sample}/open', 'SampleController@open')->middleware('auth')->name('samples.open');
 Route::get('live/samples-status-check', 'SampleController@statuCheck')->middleware('auth');
 
-Route::get('sessions/calendar', 'SessionController@calendar')->name('sessions.calendar');
 Route::resource('sessions', 'SessionController', ['except' => ['create']]);
-Route::get('cases/{case}/sessions/create', 'SessionController@create')->name('sessions.create');
-Route::post('cases/{case}/sessions/create', 'SessionController@store')->name('sessions.store');
+Route::get('sessions/{session}/users/create', 'SessionController@createUser')->name('session.users.create');
+Route::post('sessions/{session}/users', 'SessionController@storeUser')->name('session.users.store');
+Route::put('sessions/{session}/users/{user}', 'SessionController@updateUser')->name('session.users.update');
 
-Route::put('sessions/{session}/status', 'SessionController@sessionUpdate')->name('sessions.sessionUpdate');
 
 Route::resource('documents', 'DocumentController');
 
@@ -59,11 +58,26 @@ Route::post('/sessions/{session}/practices/{practice}', 'PracticeController@stor
 // Route::get('/sessions/{session}/practices/{practice}', 'PracticeController@createData')->name('sessions.practices.attachments.create');
 Route::get('/bulk-samples', 'BulkSampleController@index')->name('bulk-samples.index');
 Route::get('/bulk-samples/{bulkSample}', 'BulkSampleController@show')->name('bulk-samples.show');
-Route::get('/treasuries', 'LocalController@index')->name('treasuries.index');
+Route::resource('/treasuries', 'TreasuryController');
 
-Route::resource('rooms/{room}/schedules', 'ScheduleController', ['as' => 'room']);
+Route::get('rooms/{room}/schedules', 'ScheduleController@create')->name('room.schedules.create');
+Route::post('rooms/{room}/schedules', 'ScheduleController@store')->name('room.schedules.store');
 
+Route::get('cases/{case}/schedules', 'ScheduleController@caseCreate')->name('case.schedules.create');
+
+Route::get('schedules/{schedule}', 'ScheduleController@show')->name('schedules.show');
+Route::post('schedules/{schedule}/booking', 'ScheduleController@booking')->name('schedules.booking');
+
+Route::get('/payments', 'PaymentController@index')->name('payments.index');
+Route::post('/payments', 'PaymentController@store')->name('payments.sotre');
+
+Route::post('/billings/{billing}/final', 'BillingController@doFinal')->name('billings.final');
 
 if(config('app.env') == 'local'){
-    Route::get('/billings/items/', 'LocalController@index');
+    Route::get('/billings', 'LocalController@billings');
+    Route::get('/billings/items', 'LocalController@billingItems');
+    Route::get('/transactions', 'LocalController@transactions');
+    // Route::get('/treasuries', 'LocalController@treasuries');
+    Route::get('/schedules', 'LocalController@schedules');
+    Route::get('/schedules/show', 'LocalController@schedulesShow');
 }

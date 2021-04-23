@@ -16,7 +16,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600 block cursor-default relative top-0.5">۱۴۰۰/۰۲/۰۲</span>
+            <span class="text-xs text-gray-600 block cursor-default relative top-0.5">1400,02,05 - ساعت 14:30</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">

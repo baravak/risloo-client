@@ -18,7 +18,7 @@
             <div class="container mx-auto px-4">
                 <div class="flex justify-between items-center">
                     <h1 class="text-2xl text-brand variable-font-black">
-                        <a href="#">ریسلو</a>
+                        <a href="/">ریسلو</a>
                     </h1>
 
                     <div class="flex items-center">
