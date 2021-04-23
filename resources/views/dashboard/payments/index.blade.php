@@ -28,7 +28,7 @@
 
         <div>
             <div class="mt-8 mb-4">
-                <h2 class="heading" data-total="(8)" data-xhr="total">{{ __('Payments log') }}</h2>
+                <h2 class="heading" data-total="({{ $payments && $payments->count() ? $payments->count() : 0 }})" data-xhr="total">{{ __('Payments log') }}</h2>
             </div>
             @include('dashboard.payments.paymentsList')
         </div>
