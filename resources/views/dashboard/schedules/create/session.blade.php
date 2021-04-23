@@ -1,10 +1,10 @@
 <div class="mt-4">
     <label for="session_type" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع جلسه')</label>
     <select id="session_type" name="session_type" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
-        <option value="face_to_face" @selectChecked($session->session_type, 'face_to_face')>@lang('جلسه حضوری')</option>
-        <option value="phone_call" @selectChecked($session->session_type, 'phone_call')>@lang('تماس تلفنی')</option>
-        <option value="voice_call" @selectChecked($session->session_type, 'voice_call')>@lang('تماس صوتی آنلاین')</option>
-        <option value="video_conference" @selectChecked($session->session_type, 'video_conference')>@lang('ویدئو کنفرانس')</option>
+        <option value="face_to_face" @selectChecked($session->type, 'face_to_face')>@lang('جلسه حضوری')</option>
+        <option value="phone_call" @selectChecked($session->type, 'phone_call')>@lang('تماس تلفنی')</option>
+        <option value="voice_call" @selectChecked($session->type, 'voice_call')>@lang('تماس صوتی آنلاین')</option>
+        <option value="video_conference" @selectChecked($session->type, 'video_conference')>@lang('ویدئو کنفرانس')</option>
     </select>
 </div>
 
@@ -12,7 +12,7 @@
     <label for="status" class="block mb-2 text-sm text-gray-700 font-medium">@lang('وضعیت جلسه')</label>
     <select id="session_status" name="status" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
         <option value="draft" @selectChecked($session->status, 'draft')>@lang('Draft')</option>
-        <option value="registration_awaiting" @selectChecked($session->status, 'registration_awaiting')>@lang('زمان‌بندی شده')</option>
+        <option value="registration_awaiting" @selectChecked($session->status, 'registration_awaiting')  @selectChecked($session->status, 'awaiting')>@lang('زمان‌بندی شده')</option>
         <option value="client_awaiting" @selectChecked($session->status, 'client_awaiting')>@lang('client_awaiting')</option>
         <option value="session_awaiting" @selectChecked($session->status, 'session_awaiting')>@lang('session_awaiting')</option>
         <option value="in_session" @selectChecked($session->status, 'in_session')>@lang('in_session')</option>

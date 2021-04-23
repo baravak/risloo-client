@@ -51,7 +51,7 @@ class SessionPolicy
 
     public function addUser(User $user, Session $session){
         if($session->case){
-            if($session->case->clients->count() && (!$session->clients || $session->clients->where('position', 'client')->count() != $session->case->clients->count())){
+            if($session->case->clients && $session->case->clients->count() && (!$session->clients || $session->clients->where('position', 'client')->count() != $session->case->clients->count())){
             }else{
                 return false;
             }
@@ -59,13 +59,14 @@ class SessionPolicy
         if($user->isAdmin()){
             return true;
         }
+
         if(isset($session->case)){
-            if($session->room->manager->id == $user->id){
+            if($session->room->manager->user_id == $user->id){
                 return true;
             }
-            if($user->centers->where('id', $session->room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
-                return true;
-            }
+        }
+        if($user->centers->where('id', $session->room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+            return true;
         }
     }
 }

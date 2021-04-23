@@ -2,14 +2,15 @@
 @section('content')
     <div>
         <div class="m-auto w-full md:w-1/2">
-            <form method="POST">
+            <form method="POST" action="{{ route('dashboard.payments.sotre') }}">
                 <div class="border border-gray-300 rounded p-4">
                     <h2 class="text-center variable-font-bold text-green-700 mb-4 cursor-default">{{ __('Increase credit') }}</h2>
                     <div>
-                        <label for="treasurie" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('Select treasurie') }}</label>
-                        <select class="select2-select" id="treasurie">
-                                <option>کیف پول پیش فرض</option>
-                                <option>خزانه ملی ریسلو</option>
+                        <label for="treasury_id" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('Select treasury') }}</label>
+                        <select id="treasury_id" name="treasury_id">
+                            @foreach (auth()->user()->treasuries->where('symbol', '<>', 'gift')->where('creditable', true) as $treasury)
+                                <option value="{{ $treasury->id }}">{{ $treasury->title }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-4">

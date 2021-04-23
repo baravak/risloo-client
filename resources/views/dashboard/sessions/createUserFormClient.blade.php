@@ -5,7 +5,7 @@
         <option></option>
         @endif
             @foreach ($session->fields as $field)
-                <option value="{{ $field->id }}">{{ $field->title }} | @lang(':amount T', ['amount' => $field->amount])</option>
+                <option value="{{ $field->id }}" @formValue($callbackPayment->field)>{{ $field->title }} | @lang(':amount T', ['amount' => $field->amount])</option>
             @endforeach
     </select>
 </div>
@@ -33,10 +33,10 @@
 @endif
     <div class="mt-4" id="problem-element">
         <label for="problem" class="block mb-2 text-sm text-gray-700 variable-font-medium">مسئله</label>
-        <textarea id="problem" name="problem" autocomplete="off" class="resize-none border border-gray-500 h-24 md:h-16 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
+        <textarea id="problem" name="problem" autocomplete="off" class="resize-none border border-gray-500 h-24 md:h-16 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">{{ isset($callbackPayment->problem) ? $callbackPayment->problem : '' }}</textarea>
     </div>
 @endisset
 <div class="mt-4">
     <label for="description" class="block mb-2 text-sm text-gray-700 variable-font-medium">توضیحات</label>
-    <textarea id="description" name="description" autocomplete="off" class="resize-none border border-gray-500 h-24 md:h-16 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
+    <textarea id="description" name="description" autocomplete="off" class="resize-none border border-gray-500 h-24 md:h-16 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">{{ isset($callbackPayment->description) ? $callbackPayment->description : '' }}</textarea>
 </div>

@@ -12,6 +12,7 @@ class SessionDashboard extends Session
         'room' => Room::class,
         'fields' => Field::class,
         'clients' => User::class,
+        'transactions' => PublicTransaction::class,
 
     ];
     public function parentClass($parent){

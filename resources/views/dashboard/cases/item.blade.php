@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="mt-4">
-            @foreach ($case->clients as $client)
+            @foreach ($case->clients ?: [] as $client)
                 <div class="text-xs">
                     <i class="fal fa-user align-middle text-gray-700 ml-2"></i>
                     <span class="text-gray-500">@displayName($client)</span>

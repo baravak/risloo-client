@@ -7,7 +7,8 @@ class Center extends Relationship
         'manager' => User::class,
         'creator' => User::class,
         'acceptation' => RoomUser::class,
-        'detail' => CenterDetail::class
+        'detail' => CenterDetail::class,
+        'treasuries' => 	Treasury::class
     ];
     public static function request($center)
     {

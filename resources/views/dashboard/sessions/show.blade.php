@@ -21,4 +21,5 @@
         @include('dashboard.sessions.practices')
         @include('dashboard.sessions.samples')
     @endisset
+    @include('dashboard.sessions.transactions')
 @endsection

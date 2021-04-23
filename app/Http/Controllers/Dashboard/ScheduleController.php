@@ -7,6 +7,8 @@ use App\Schedule;
 use App\TherapyCase;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\URL;
 
 class ScheduleController extends Controller
 {
@@ -18,6 +20,9 @@ class ScheduleController extends Controller
     }
 
     public function show(Request $request, Schedule $schedule){
+        if(Cache::get($request->payment)){
+            $this->data->callbackPayment = (object) Cache::get($request->payment)['request'];
+        }
         $this->data->session = $schedule;
         if($schedule->parentModel instanceof Room){
             $room = $this->data->room = $schedule->parentModel;
@@ -30,9 +35,27 @@ class ScheduleController extends Controller
     }
 
     public function booking(Request $request, $session){
-        return Schedule::booking($session, $request->all())->response()->json([
-            'redirect' => route('dashboard.sessions.show', $session)
-        ]);
+        try {
+            return Schedule::booking($session, $request->all())->response()->json([
+                'redirect' => route('dashboard.sessions.show', $session)
+            ]);
+        } catch (\App\Exceptions\APIException $th) {
+            if($th->response()->message == 'POVERTY'){
+                Cache::put($th->response()->payment->authorized_key, [
+                    'request' => $request->all(),
+                    'url'=> route('dashboard.schedules.show', $session)
+                ], 60 * 60 * 20);
+                return response()->json([
+                    'is_ok' => true,
+                    'message' => $th->response()->message,
+                    'message_text' => $th->response()->message_text,
+                    'redirect' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key]),
+                    'direct' => true
+                ]);
+            }else{
+                throw $th;
+            }
+        }
     }
 
     public function caseCreate(Request $request,TherapyCase $case){
@@ -44,7 +67,9 @@ class ScheduleController extends Controller
     }
 
     public function store(Request $request, $room){
-        return Schedule::apiStore($room, $request->all())->response()->json();
+        return Schedule::apiStore($room, $request->all())->response()->json([
+            'redirect' => route('dashboard.room.schedules.create', $room)
+        ]);
     }
     public function center(Request $request, $center){
         $time = (int) $request->time;

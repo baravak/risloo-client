@@ -31,6 +31,12 @@ class Session extends API
         $store = new static;
         return $store->execute(sprintf("sessions/%s/users", $session ?: '-'), $params, 'post');
     }
+
+    public static function updateUser($session, $user, array $params)
+    {
+        $store = new static;
+        return $store->execute(sprintf("sessions/%s/users/%s", $session ?: '-', $user ?: '-'), $params, 'put');
+    }
     public function setRoutes($attr){
         $this->route = [
             'show' => route('dashboard.sessions.show', $attr['id']),

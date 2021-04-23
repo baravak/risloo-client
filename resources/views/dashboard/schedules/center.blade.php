@@ -25,7 +25,7 @@
         <ul data-tabs class="space-x-4 space-x-reverse p-4 overflow-x-auto">
             @foreach ($weeks as $key => $day)
                 <li>
-                    <a href="#{{ $key }}" {{ $day->format('d') == date('d') ? 'data-tabby-default': ''}} class="direct focus {{ $day->format('d') < date('d') ? 'disable' : '' }}">
+                    <a href="#{{ $key }}" {{ $day->format('Ymd') == date('Ymd') || ($weeks->sat->timestamp > time() && $key == 'sat') ? 'data-tabby-default': ''}} class="direct focus {{ $day->format('Ymd') < date('Ymd') ? 'disable' : '' }}">
                         <span class="text-sm variable-font-medium">@time($day, '%A')</span>
                         <span class="text-xs">@time($day, 'Y/m/d')</span>
                     </a>

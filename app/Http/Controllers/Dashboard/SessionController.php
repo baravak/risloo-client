@@ -62,6 +62,7 @@ class SessionController extends Controller
         $this->data->session = $session = SessionDashboard::apiDashboard($session);
         $practices = $this->data->practices = $session->practices;
         $samples = $this->data->samples = $session->samples;
+        $transactions = $this->data->transactions = $session->transactions;
         if($session->parentModel instanceof Room){
             $room = $this->data->room = $session->parentModel;
         }else{
@@ -79,7 +80,9 @@ class SessionController extends Controller
             $bind['redirect'] = urldecode($request->callback);
         }
         return Session::apiUpdate($session, $request->all())->response()
-        ->json($bind);
+        ->json([
+            'redirect' => route('dashboard.sessions.show', $session)
+        ]);
     }
 
     public function sessionUpdate(Request $request, $session){
@@ -96,6 +99,12 @@ class SessionController extends Controller
     }
 
     public function storeUser(Request $request, $session){
-        Session::addUser($session, $request->all());
+        return Session::addUser($session, $request->all())->response()->json([
+            'redirect'=> route('dashboard.sessions.show', $session)
+        ]);
+    }
+
+    public function updateUser(Request $request, $session, $user){
+        Session::updateUser($session, $user, $request->all());
     }
 }

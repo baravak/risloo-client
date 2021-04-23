@@ -1,5 +1,5 @@
 <div data-xhr="payments-items">
-    {{-- @if ($payments->count()) --}}
+    @if ($payments->count())
     <div class="overflow-x-auto">
         <div class="align-middle inline-block min-w-full">
             <div class="overflow-hidden border border-gray-200 rounded">
@@ -16,14 +16,14 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {{-- @foreach ($payments as $payment) --}}
+                        @foreach ($payments as $payment)
                         @include('dashboard.payments.paymentslistRaw')
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    {{-- {{method_exists($payments, 'links') ? $payments->links() : null}} --}}
-    {{-- @endif --}}
+    {{method_exists($payments, 'links') ? $payments->links() : null}}
+    @endif
 </div>

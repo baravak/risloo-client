@@ -46,6 +46,7 @@ Route::get('live/samples-status-check', 'SampleController@statuCheck')->middlewa
 Route::resource('sessions', 'SessionController', ['except' => ['create']]);
 Route::get('sessions/{session}/users/create', 'SessionController@createUser')->name('session.users.create');
 Route::post('sessions/{session}/users', 'SessionController@storeUser')->name('session.users.store');
+Route::put('sessions/{session}/users/{user}', 'SessionController@updateUser')->name('session.users.update');
 
 
 Route::resource('documents', 'DocumentController');
@@ -57,7 +58,7 @@ Route::post('/sessions/{session}/practices/{practice}', 'PracticeController@stor
 // Route::get('/sessions/{session}/practices/{practice}', 'PracticeController@createData')->name('sessions.practices.attachments.create');
 Route::get('/bulk-samples', 'BulkSampleController@index')->name('bulk-samples.index');
 Route::get('/bulk-samples/{bulkSample}', 'BulkSampleController@show')->name('bulk-samples.show');
-Route::get('/treasuries', 'LocalController@index')->name('treasuries.index');
+Route::resource('/treasuries', 'TreasuryController');
 
 Route::get('rooms/{room}/schedules', 'ScheduleController@create')->name('room.schedules.create');
 Route::post('rooms/{room}/schedules', 'ScheduleController@store')->name('room.schedules.store');
@@ -67,12 +68,16 @@ Route::get('cases/{case}/schedules', 'ScheduleController@caseCreate')->name('cas
 Route::get('schedules/{schedule}', 'ScheduleController@show')->name('schedules.show');
 Route::post('schedules/{schedule}/booking', 'ScheduleController@booking')->name('schedules.booking');
 
+Route::get('/payments', 'PaymentController@index')->name('payments.index');
+Route::post('/payments', 'PaymentController@store')->name('payments.sotre');
+
+Route::post('/billings/{billing}/final', 'BillingController@doFinal')->name('billings.final');
+
 if(config('app.env') == 'local'){
-    Route::get('/payments', 'LocalController@index');
     Route::get('/billings', 'LocalController@billings');
     Route::get('/billings/items', 'LocalController@billingItems');
     Route::get('/transactions', 'LocalController@transactions');
-    Route::get('/treasuries', 'LocalController@treasuries');
+    // Route::get('/treasuries', 'LocalController@treasuries');
     Route::get('/schedules', 'LocalController@schedules');
     Route::get('/schedules/show', 'LocalController@schedulesShow');
 }

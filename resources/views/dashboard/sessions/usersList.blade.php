@@ -60,14 +60,22 @@
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
-                                    <div class="flex items-center cursor-default">
-                                        <span class="block text-right dir-ltr text-xs text-gray-600">@lang($user->position)</span>
+                                    <div class="flex items-center cursor-default ">
+                                        @can('addUser', $session)
+                                            <select name="position" data-lijax="change" data-action="{{ route('dashboard.session.users.update', ['session' => $session->id, 'user'=> $user->id]) }}" data-method="PUT">
+                                                @foreach (['client', 'apply', 'remove'] as $item)
+                                                    <option value="{{ $item }}" @selectChecked($user->position, $item)>@lang($item)</option>
+                                                @endforeach
+                                            </select>
+                                        @else
+                                        @lang($user->position)
+                                        @endcan
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-                                    <div class="inline-block mr-4">
+                                    {{-- <div class="inline-block mr-4">
                                         <a href="#" title="{{ __('Edit') }}" aria-label="{{ __('Edit') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
-                                    </div>
+                                    </div> --}}
                                 </td>
                             </tr>
                         @endforeach
