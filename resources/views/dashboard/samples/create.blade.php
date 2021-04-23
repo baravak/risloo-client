@@ -54,4 +54,14 @@
             @include('dashboard.samples.createBulk')
         </div>
     </div>
+    <div class="mt-4">
+        <label for="psychologist_description" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Psychologist description') }}</label>
+        <textarea id="psychologist_description" name="psychologist_description"  rows="5" class="resize-none border border-gray-500 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
+        <div class="flex text-xs text-gray-400 mt-2">
+            <i class="fal fa-info-circle ml-1"></i>
+            <span>
+                در این قسمت شما می‌توانید توضیحاتی را اضافه بر توضیحات یک نمونه وارد کنید تا مراجع قبل از انجام نمونه(ها) این توضیحات را مشاهده کند
+            </span>
+        </div>
+    </div>
 @endsection

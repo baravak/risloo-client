@@ -76,4 +76,13 @@ class SamplePolicy
         }
         return false;
     }
+
+    public function psychologistDescription(User $user, Sample $sample){
+        if(!$sample->psychologist_description) return false;
+        if(!$sample->chain){
+            return true;
+        }
+        if($sample->chain->list->where('status', 'closed')->count()) return false;
+        return true;
+    }
 }

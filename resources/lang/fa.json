@@ -323,7 +323,7 @@
     "Payment status": "وضعیت پرداخت",
     "Verify and continue": "تأیید و ادامه",
     "Samples list": "لیست آزمون‌ها",
-    "Define new schedule" : "تعریف برنامه آموزشی",
+    "Define new schedule" : "تعریف برنامه درمانی",
     "Users of :region" : "اعضاء :region",
     "Opens at" : "باز شود در تاریخ...",
     "Closed at" : "بسته شود در تاریخ...",
@@ -338,5 +338,7 @@
     "online" : "آنلاین",
     "Amount" : "مبلغ",
     "final" : "نهایی",
-    "creditor" : "بستانکار"
+    "creditor" : "بستانکار",
+    "Psychologist description" : "توضیحات روان‌شناس",
+    "Therapy Schedules" : "برنامه درمانی"
 }
