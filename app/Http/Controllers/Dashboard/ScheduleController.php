@@ -49,7 +49,8 @@ class ScheduleController extends Controller
                     'is_ok' => true,
                     'message' => $th->response()->message,
                     'message_text' => $th->response()->message_text,
-                    'open_window' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key])
+                    'redirect' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key]),
+                    'direct' => true
                 ]);
             }else{
                 throw $th;
