@@ -16,16 +16,15 @@
     </td> --}}
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600 block cursor-default relative top-0.5">@time($transaction->created_at,'%A %d %B %y ساعت H:i')</span>
+            <span class="text-xs text-gray-600 block cursor-default relative top-0.5">@time($transaction->created_at,'%A %d %B %y ، ساعت H:i')</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         @isset($transaction->billing)
             <div class="flex items-center">
-                <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition text-right dir-ltr en underline">
-                    <div>{{ $transaction->billing->id  }}</div>
-                    <div>{{ $transaction->billing->title  }}</div>
-                </a>
+                <span class="text-xs text-gray-600 cursor-default relative top-0.5">
+                    {{ $transaction->billing->id }} {{ $transaction->billing->title }}
+                </span>
             </div>
         @endisset
     </td>
