@@ -7,14 +7,14 @@
                     <h2 class="text-center variable-font-bold text-green-700 mb-4 cursor-default">{{ __('Increase credit') }}</h2>
                     <div>
                         <label for="treasury_id" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('Select treasury') }}</label>
-                        <select id="treasury_id" name="treasury_id">
+                        <select class="border border-gray-500 h-10 rounded w-full text-sm focus" id="treasury_id" name="treasury_id">
                             @foreach (auth()->user()->treasuries->where('symbol', '<>', 'gift')->where('creditable', true) as $treasury)
                                 <option value="{{ $treasury->id }}">{{ $treasury->title }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mt-4">
-                        <label for="amount" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Balance') }} <span class="text-xs text-gray-500 variable-font-normal">({{ __('Toman') }})</span></label>
+                        <label for="amount" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Amount') }} <span class="text-xs text-gray-500 variable-font-normal">({{ __('Toman') }})</span></label>
                         <input type="number" name="amount" id="amount" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
                     </div>
                 </div>

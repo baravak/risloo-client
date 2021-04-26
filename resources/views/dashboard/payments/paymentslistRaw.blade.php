@@ -6,7 +6,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600 block cursor-default relative top-0.5 font-black">@lang(':amount T', ['amount' => number_format($payment->amount)])</span>
+            <span class="text-xs text-gray-600 block cursor-default relative top-0.5 variable-font-semibold">@lang(':amount T', ['amount' => number_format($payment->amount)])</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -23,10 +23,10 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col justify-center relative top-0.5">
-            <span class="text-xs text-gray-600 block cursor-default">@time($payment->created_at, '%A %d %B %y ساعت H:i')</span>
+            <span class="text-xs text-gray-600 block cursor-default">@time($payment->created_at, '%A %d %B %y ، ساعت H:i')</span>
             @if ($payment->status == 'awaiting')
                 <span class="text-xs text-gray-400 block cursor-default variable-font-light">
-                    منقضی می‌شود در @time($payment->expires_at,'%A %d %B %y ساعت H:i')
+                    منقضی می‌شود در @time($payment->expires_at,'%A %d %B %y ، ساعت H:i')
                 </span>
             @endif
         </div>
