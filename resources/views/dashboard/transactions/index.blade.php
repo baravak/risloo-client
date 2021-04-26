@@ -6,7 +6,7 @@
                 <div class="flex items-center text-gray-700">
                     <i class="fal fa-wallet text-xl ml-2"></i>
                     <h2 class="text-lg variable-font-semibold">کیف پول نقدی</h2>
-                    <i class="fas fa-badge-check text-sm text-brand mr-1 pb-4" title="معتبر"></i>
+                    <i class="fas fa-badge-check text-sm text-brand mr-1 relative -top-2" title="معتبر"></i>
                 </div>
                 <div class="text-sm text-gray-500 mt-1">بستر مرکز مشاوره طلیعه سلامت</div>
             </div>
