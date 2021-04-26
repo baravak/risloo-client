@@ -2,7 +2,7 @@
     <div>
         <div class="flex items-center text-sm text-gray-700">
             <i class="fal fa-calendar-alt ml-2 pb-1"></i>
-            <span class="variable-font-medium">@time($session->started_at, '%A %d %B %y ساعت H:i')</span>
+            <span class="variable-font-medium">@time($session->started_at, '%A %d %B %y ، ساعت H:i')</span>
         </div>
         <div class="flex items-center text-sm text-gray-700 mt-2">
             <i class="fal fa-clock ml-2 pb-1"></i>
@@ -25,7 +25,10 @@
         </div>
         <div></div>
     </div>
-    <a href="{{$session->route('edit')}}" class="absolute left-4 bottom-4 flex items-center justify-center border border-gray-500 rounded-full text-xs text-gray-600 h-8 px-4 hover:bg-gray-50">{{ __('Edit session') }}</a>
+    <div class="absolute left-4 bottom-4 flex items-center h-9 border border-gray-400 rounded-full text-xs text-gray-600">
+        <a href="#" class="inline-block py-1 pr-4 pl-3 hover:text-brand transition" title="@lang('View')"><i class="fal fa-eye text-sm"></i></a>
+        <a href="{{$session->route('edit')}}" class="inline-block py-1 pr-3 pl-4 border-r border-gray-300 hover:text-brand transition" title="@lang('Edit')"><i class="fal fa-edit text-sm"></i></a>
+    </div>
 </div>
 <div class="grid grdi-cols-1 sm:grid-cols-3 gap-4 mt-2 border border-gray-300 rounded p-4">
     <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 sm:border-l border-gray-200">
