@@ -1,16 +1,13 @@
 @section('form')
     <div class="mb-4">
+        <input type="hidden" id="payment-status" value="{{ $theory->response('status') }}">
         @if ($theory->response('status') == 'success')
-            تراکنش با موفقیت انجام شد؛ به صورت خودکار به مرحله بعد منتقل خواهید شد
+            تراکنش با موفقیت انجام شد؛
         @else
             مشکلی در روند تراکنش به وجود آمده‌است!
         @endif
     </div>
-    @if (Cache::get(last(request()->segments())))
-        <meta http-equiv = "refresh" content = "3; url = {{ request()->create(Cache::get(last(request()->segments()))['url'], 'GET', ['payment' => last(request()->segments())])->getUri() }}" />
-    @else
-        <meta http-equiv = "refresh" content = "3; url = {{ route('dashboard.home') }}" />
-    @endif
+    <meta http-equiv = "refresh" content = "3; url = {{ route('dashboard.payments.index') }}" />
 @endsection
 @section('auth-nav')
 @endsection

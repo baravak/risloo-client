@@ -8,7 +8,6 @@ use App\TherapyCase;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\URL;
 
 class ScheduleController extends Controller
 {
@@ -41,16 +40,11 @@ class ScheduleController extends Controller
             ]);
         } catch (\App\Exceptions\APIException $th) {
             if($th->response()->message == 'POVERTY'){
-                Cache::put($th->response()->payment->authorized_key, [
-                    'request' => $request->all(),
-                    'url'=> route('dashboard.schedules.show', $session)
-                ], 60 * 60 * 20);
                 return response()->json([
                     'is_ok' => true,
                     'message' => $th->response()->message,
                     'message_text' => $th->response()->message_text,
-                    'redirect' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key]),
-                    'direct' => true
+                    'window_open' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key])
                 ]);
             }else{
                 throw $th;
