@@ -24,11 +24,11 @@
         @if ($treasury->creditable)
             <div class="flex items-center text-xs text-gray-600 cursor-default">
                 <i class="fal fa-badge-check ml-1"></i>
-                <span>معتبر است</span>
+                <span>معتبر</span>
             </div>
         @else
             <div class="flex items-center text-xs text-gray-600 cursor-default">
-                <span>نامعتبر است</span>
+                <span>نامعتبر</span>
             </div>
         @endif
     </td>
@@ -48,9 +48,15 @@
             @endif
         </div>
     </td>
-    <td>
-        <a href="{{ route('dashboard.treasuries.edit',$treasury->id) }}">ویرایش</a>
-        |
-        <a href="{{ route('dashboard.treasuries.show',$treasury->id) }}">نمایش ترانکنش‌ها</a>
+    <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
+        <div class="inline-block mr-2">
+            <a href="{{ route('dashboard.treasuries.edit',$treasury->id) }}" aria-label="{{ __('Edit') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600 relative top-0.5"></i></a>
+        </div>
+        <div class="inline-block mr-1">
+            <a href="#" class="inline-block px-3 py-1 text-xs text-gray-500 hover:text-green-600 border border-gray-500 hover:border-green-600 rounded-full transition">{{ __('Increase credit') }}</a>
+        </div>
+        <div class="inline-block">
+            <a href="{{ route('dashboard.treasuries.show',$treasury->id) }}" class="inline-block px-3 py-1 text-xs text-gray-500 hover:text-brand border border-gray-500 hover:border-brand rounded-full transition">{{ __('Transactions') }}</a>
+        </div>
     </td>
 </tr>
