@@ -10,15 +10,10 @@
         </div>
     </td> --}}
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
-            <span class="text-xs text-gray-600 block cursor-default">
-                {{ $treasury->title }}
-                @if ($treasury->user)
-                <br>
-                    {{ $treasury->user->name }}
-                @endif
-            </span>
-        </div>
+        <div class="text-xs text-gray-600 variable-font-medium cursor-default">{{ $treasury->title }}</div>
+        @if ($treasury->user)
+            <div class="text-xs text-gray-500 cursor-default">{{ $treasury->user->name }}</div>
+        @endif
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         @if ($treasury->creditable)
