@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Treasury extends API
 {
     public $with = [
-        'user' => User::class
+        'user' => User::class,
+        'center' => Center::class
     ];
 }

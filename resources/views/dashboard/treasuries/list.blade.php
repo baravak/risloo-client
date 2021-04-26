@@ -9,7 +9,7 @@
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Title') }}</th>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Credit') }}</th>
-                            <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Financial balance') }}</th>
+                            <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Balance') }} <small>(تومان)</small></th>
                             <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col"></th>
                         </tr>
                     </thead>

@@ -30,6 +30,7 @@ class TreasuryController extends Controller
 
     public function show(Request $request, $treasury){
         $this->data->transactions = $transactions = TreasuryDashboard::apiDashboard($treasury, $request->all());
+        $this->data->treasury  = $treasury= $transactions->parentModel;
         return $this->view($request, 'dashboard.transactions.index');
     }
 

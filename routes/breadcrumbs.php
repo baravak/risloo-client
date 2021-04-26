@@ -212,3 +212,16 @@ Breadcrumbs::for('dashboard.schedules.show', function ($trail, $data) {
     $trail->push(__('Reserve'), route('dashboard.schedules.show', $data['session']->id));
 });
 
+Breadcrumbs::for('dashboard.treasuries.index', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+    $trail->push(__('Treasuries'), route('dashboard.treasuries.index'));
+});
+
+Breadcrumbs::for('dashboard.treasuries.show', function ($trail, $data) {
+    $trail->parent('dashboard.treasuries.index', $data);
+    $trail->push($data['treasury']->title, route('dashboard.treasuries.show', $data['treasury']->id));
+});
+Breadcrumbs::for('dashboard.treasuries.edit', function ($trail, $data) {
+    $trail->parent('dashboard.treasuries.show', $data);
+    $trail->push(__('Edit'), route('dashboard.treasuries.edit', $data['treasury']->id));
+});

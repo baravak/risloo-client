@@ -30,20 +30,20 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600 block cursor-default relative top-0.5">{{ number_format($transaction->credit) }}</span>
+            <span class="text-xs text-gray-600 block cursor-default relative top-0.5">@amount($transaction->credit)</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600 block cursor-default relative top-0.5">{{ number_format($transaction->debt) }}</span>
+            <span class="text-xs text-gray-600 block cursor-default relative top-0.5">@amount($transaction->debt)</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             @if ($transaction->balance < 0)
-                <span class="text-xs text-red-600 block cursor-default relative top-0.5">@lang(':amount T', ['amount' => '('.number_format($transaction->balance).')'])</span>
+                <span class="text-xs text-red-600 block cursor-default relative top-0.5">@amount($transaction->balance)</span>
             @elseif($transaction->balance > 0)
-                <span class="text-xs text-green-600 block cursor-default relative top-0.5">@lang(':amount T', ['amount' => number_format($transaction->balance)])</span>
+                <span class="text-xs text-green-600 block cursor-default relative top-0.5">@amount($transaction->balance)</span>
             @else
             <span class="text-xs text-gray-600 block cursor-default relative top-0.5">0</span>
             @endif

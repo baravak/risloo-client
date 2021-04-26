@@ -30,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
 
         \Carbon\Carbon::setWeekEndsAt(\Carbon\Carbon::FRIDAY);
         \Carbon\Carbon::setWeekStartsAt(\Carbon\Carbon::SATURDAY);
+
+        Blade::directive('amount', function ($amount) {
+            return "<?php echo $amount >= 0 ? number_format($amount) : '(' . number_format(str_replace('-', '', $amount)) . ')' ?>";
+        });
+
         Blade::directive('room', function ($room) {
             return "<?php echo \$__env->make('components._room', ['room' => $room])->render(); ?>";
         });

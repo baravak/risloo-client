@@ -37,9 +37,9 @@
             @if ($treasury->balance == 0)
                 <span class="text-xs text-gray-600 block cursor-default">0</span>
             @elseif($treasury->balance >= 0)
-                <span class="text-xs text-green-600 block cursor-default">@lang(':amount T', ['amount'=> number_format($treasury->balance)])</span>
+                <span class="text-xs text-green-600 block cursor-default">@amount($treasury->balance)</span>
             @else
-                <span class="text-xs text-red-600 block cursor-default">@lang(':amount T', ['amount'=> '('.number_format($treasury->balance).')'])</span>
+                <span class="text-xs text-red-600 block cursor-default">@amount($treasury->balance)</span>
             @endif
         </div>
     </td>
