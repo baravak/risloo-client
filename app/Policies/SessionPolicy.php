@@ -36,7 +36,7 @@ class SessionPolicy
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     public function create(User $user)
@@ -69,4 +69,27 @@ class SessionPolicy
             return true;
         }
     }
+
+    public function manager(User $user, $session, $mode = null){
+        if(isset($session->case->room)){
+            $room = $session->case->room;
+        }elseif(isset($session->parentModel) && $session->parentModel instanceof Room){
+            $room = $session->parentModel;
+        }else{
+            $room = isset($session->parentModel) ? $session->parentModel->room : $session->room;
+        }
+        if($user->isAdmin()){
+            return true;
+        }
+        if(isset($session->case)){
+            if($room->manager->id == $user->id){
+                return true;
+            }
+            if($user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
