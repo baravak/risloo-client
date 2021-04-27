@@ -80,4 +80,5 @@ if(config('app.env') == 'local'){
     // Route::get('/treasuries', 'LocalController@treasuries');
     Route::get('/schedules', 'LocalController@schedules');
     Route::get('/schedules/show', 'LocalController@schedulesShow');
+    Route::get('/transactions/create', 'LocalController@create');
 }

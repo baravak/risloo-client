@@ -41,4 +41,9 @@ class LocalController extends _HomeController
     {
         return $this->view($request, 'dashboard.schedules.show');
     }
+
+    public function create(Request $request)
+    {
+        return $this->view($request, 'dashboard.transactions.create');
+    }
 }
