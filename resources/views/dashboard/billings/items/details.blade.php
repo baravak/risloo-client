@@ -6,11 +6,11 @@
     <span class="block text-brand variable-font-medium mt-2">235,000 تومان</span>
     <div class="flex flex-col sm:flex-row text-sm mt-2">
         <div>
-            <span class="text-gray-400 cursor-default ml-1">از</span>
+            <span class="text-xs text-gray-400 cursor-default ml-1">بدهکار</span>
             <a href="#" class="text-gray-600 hover:text-blue-600 transition underline">محمدعلی نخلی</a>
         </div>
         <div class="sm:mr-4 mt-1 sm:mt-0">
-            <span class="text-gray-400 cursor-default ml-1">به</span>
+            <span class="text-xs text-gray-400 cursor-default ml-1">بستانکار</span>
             <a href="#" class="text-gray-600 hover:text-blue-600 transition underline">مرکز درمانی خانواده سلامت</a>
         </div>
     </div>
