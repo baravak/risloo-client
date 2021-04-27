@@ -62,8 +62,8 @@
                                     <div class="flex items-center">
                                         @can('addUser', $session)
                                             <select class="text-xs text-gray-700 border border-gray-400 rounded-full py-1 px-8" name="position" data-lijax="change" data-action="{{ route('dashboard.session.users.update', ['session' => $session->id, 'user'=> $user->id]) }}" data-method="PUT">
-                                                @foreach (['Client', 'Apply', 'Remove'] as $item)
-                                                    <option value="{{ $item }}" @selectChecked($user->position, $item)>@lang($item)</option>
+                                                @foreach (['client', 'apply', 'remove'] as $item)
+                                                    <option value="{{ $item }}" @selectChecked($user->position, $item)>@lang(ucfirst($item))</option>
                                                 @endforeach
                                             </select>
                                             <span class="spinner relative"></span>

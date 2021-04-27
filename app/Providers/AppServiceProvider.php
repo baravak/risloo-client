@@ -31,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
         \Carbon\Carbon::setWeekEndsAt(\Carbon\Carbon::FRIDAY);
         \Carbon\Carbon::setWeekStartsAt(\Carbon\Carbon::SATURDAY);
 
+        Blade::directive('billingItemAction', function ($billingItemAction) {
+            return "<?php echo $billingItemAction->actionRoute ?>";
+        });
+
         Blade::directive('amount', function ($amount) {
             return "<?php echo $amount >= 0 ? number_format($amount) : '(' . number_format(str_replace('-', '', $amount)) . ')' ?>";
         });

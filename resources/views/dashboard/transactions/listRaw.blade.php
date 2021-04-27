@@ -22,9 +22,9 @@
     <td class="px-3 py-2 whitespace-nowrap">
         @isset($transaction->billing)
             <div class="flex items-center">
-                <span class="text-xs text-gray-600 cursor-default relative top-0.5">
-                    {{ $transaction->billing->id }} {{ $transaction->billing->title }}
-                </span>
+                <a href="{{ route('dashboard.billings.show', $transaction->billing->id) }}" class="text-xs text-gray-600 hover:text-blue-600 transition underline relative top-0.5">
+                    {{ $transaction->billing->title }}
+                </a>
             </div>
         @endisset
     </td>

@@ -225,3 +225,12 @@ Breadcrumbs::for('dashboard.treasuries.edit', function ($trail, $data) {
     $trail->parent('dashboard.treasuries.show', $data);
     $trail->push(__('Edit'), route('dashboard.treasuries.edit', $data['treasury']->id));
 });
+
+Breadcrumbs::for('dashboard.billings.index', function ($trail, $data) {
+    $trail->parent('dashboard.home', $data);
+    $trail->push(__('Billings'), route('dashboard.billings.index'));
+});
+Breadcrumbs::for('dashboard.billings.show', function ($trail, $data) {
+    $trail->parent('dashboard.billings.index', $data);
+    $trail->push($data['billing']->id .' - '.$data['billing']->title, route('dashboard.billings.show', $data['billing']));
+});

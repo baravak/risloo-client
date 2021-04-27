@@ -72,9 +72,10 @@ Route::get('/payments', 'PaymentController@index')->name('payments.index');
 Route::post('/payments', 'PaymentController@store')->name('payments.sotre');
 
 Route::post('/billings/{billing}/final', 'BillingController@doFinal')->name('billings.final');
+Route::resource('/billings', 'BillingController');
 
 if(config('app.env') == 'local'){
-    Route::get('/billings', 'LocalController@billings');
+    // Route::get('/billings', 'LocalController@billings');
     Route::get('/billings/items', 'LocalController@billingItems');
     Route::get('/transactions', 'LocalController@transactions');
     // Route::get('/treasuries', 'LocalController@treasuries');

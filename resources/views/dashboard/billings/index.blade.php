@@ -3,7 +3,7 @@
     <div>
         <div class="flex justify-between items-center mt-8 mb-4">
             <div>
-                <h2 class="heading" data-total="(2)" data-xhr="total">{{ __('Billings') }}</h2>
+                <h2 class="heading" data-total="({{ $billings && $billings->total() ? $billings->total() : 0 }})" data-xhr="total">{{ __('Billings') }}</h2>
             </div>
             {{-- <div>
                 <a href="#" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand px-4 w-9 sm:w-auto h-9 rounded-full text-xs hover:bg-brand hover:text-white transition">
