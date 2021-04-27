@@ -22,10 +22,10 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col justify-center text-xs">
             <div class="flex">
-                <a href="#" class="text-red-600 hover:text-blue-600 underline">محمدعلی نخلی</a>
+                <a href="#" class="text-red-600 hover:text-red-800 underline">محمدعلی نخلی</a>
             </div>
             <div class="flex mt-1">
-                <a href="#" class="text-green-600 hover:text-blue-600 underline">مرکز مشاوره طلیعه سلامت</a>
+                <a href="#" class="text-green-600 hover:text-green-800 underline">مرکز مشاوره طلیعه سلامت</a>
             </div>
         </div>
     </td>

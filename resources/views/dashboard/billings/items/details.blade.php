@@ -16,7 +16,7 @@
     </div>
 </div>
 <div class="flex flex-col text-right sm:text-left mt-4 sm:mt-0 cursor-default">
-    <span class="text-sm text-gray-500 font-medium dir-ltr en">$TRE123456</span>
-    <span class="text-xs text-gray-500 cursor-default mt-2">20 فروردین 1400</span>
-    <span class="text-xs text-gray-500 cursor-default mt-1">ساعت 18:42</span>
+    <span class="text-sm text-gray-600 font-semibold dir-ltr en">$TRE123456</span>
+    <span class="text-xs text-gray-500 variable-font-medium mt-2">20 فروردین 1400 ، ساعت 18:42</span>
+    <span class="text-xs text-gray-400 mt-2">در انتظار پرداخت</span>
 </div>
