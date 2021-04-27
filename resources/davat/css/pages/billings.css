@@ -1,0 +1,3 @@
+.billings .active {
+    @apply bg-brand text-white;
+}
