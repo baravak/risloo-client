@@ -11,7 +11,6 @@
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Debtor') }}</th>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Amount') }}</th>
                         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Type') }}</th>
-                        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col"></th>
                         <th class="px-3 py-2" scope="col"></th>
                     </tr>
                 </thead>
@@ -53,17 +52,25 @@
                                 <span class="text-xs text-gray-700 block text-right dir-rtl cursor-default">@lang($transaction->type)</span>
                             </div>
                         </td>
-                        <td class="p-3 whitespace-nowrap">
-                            <div class="flex items-center">
-                                @can('creditor', [$transaction, $center])
-                                    <select name="id" data-lijax="change" data-action="{{ route('dashboard.billings.final', $transaction->id) }}" data-method="POST">
+
+                        <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
+                            <div class="inline-block mr-2">
+                                <a href="#" title="{{ __('Edition') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+                            </div>
+                            <div class="inline-block">
+                                <a href="#" class="inline-block px-3 py-1 text-xs text-brand hover:text-white border border-brand hover:bg-brand rounded-full transition">{{ __('Payment') }}</a>
+                            </div>
+                            @can('creditor', [$transaction, $center])
+                                <div class="inline-flex items-center text-right dir-rtl">
+                                    <select class="text-xs text-gray-700 border border-gray-400 rounded-full py-1 px-8" name="id" data-lijax="change" data-action="{{ route('dashboard.billings.final', $transaction->id) }}" data-method="POST">
                                         <option>@lang('پرداخت شده به کیف پول ...')</option>
                                         @foreach (auth()->user()->centers->where('id', $center->id)->first()->treasuries->where('creditable', 0) as $item)
                                             <option value="{{ $item->id }}">{{ $item->title }}</option>
                                         @endforeach
                                     </select>
-                                @endcan
-                            </div>
+                                    <span class="spinner relative"></span>
+                                </div>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach

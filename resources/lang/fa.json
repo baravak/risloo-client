@@ -278,6 +278,7 @@
     "Select treasury": "انتخاب کیف پول",
     "English name": "نام انگلیسی",
     "Latest transaction": "آخرین تراکنش",
+    "Add transaction": "افزودن تراکنش",
     "Credit": "اعتبار",
     "Balance": "باقی‌مانده",
     "Toman": "تومان",
@@ -341,5 +342,8 @@
     "creditor" : "بستانکار",
     "Psychologist description" : "توضیحات روان‌شناس",
     "Therapy Schedules" : "برنامه درمانی",
-    "Treasuries" : "کیف پول‌ها"
+    "Treasuries" : "کیف پول‌ها",
+    "Field" : "فیلد",
+    "Apply" : "پذیرش",
+    "Remove" : "حذف"
 }

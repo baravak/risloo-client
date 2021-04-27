@@ -12,8 +12,7 @@
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Description') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Field') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
-                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">وضعیت</th>
-                            <th class="px-3 py-2" scope="col"></th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
@@ -41,41 +40,37 @@
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
-                                        <span class="block text-right dir-ltr text-xs text-gray-600">@lang($user->problem)</span>
+                                        <span class="text-xs text-gray-600">@lang($user->problem)</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
-                                        <span class="block text-right dir-ltr text-xs text-gray-600">@lang($user->description)</span>
+                                        <span class="text-xs text-gray-600">@lang($user->description)</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
-                                        <span class="block text-right dir-ltr text-xs text-gray-600">{{ $user->field ? $user->field->title : null}}</span>
+                                        <span class="text-xs text-gray-600">{{ $user->field ? $user->field->title : '-' }}</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
-                                        <span class="block text-right dir-ltr text-xs text-gray-600">{{ $user->case ? $user->case->id : null }}</span>
+                                        <span class="text-xs text-gray-600">{{ $user->case ? $user->case->id : '-' }}</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
-                                    <div class="flex items-center cursor-default ">
+                                    <div class="flex items-center">
                                         @can('addUser', $session)
-                                            <select name="position" data-lijax="change" data-action="{{ route('dashboard.session.users.update', ['session' => $session->id, 'user'=> $user->id]) }}" data-method="PUT">
-                                                @foreach (['client', 'apply', 'remove'] as $item)
+                                            <select class="text-xs text-gray-700 border border-gray-400 rounded-full py-1 px-8" name="position" data-lijax="change" data-action="{{ route('dashboard.session.users.update', ['session' => $session->id, 'user'=> $user->id]) }}" data-method="PUT">
+                                                @foreach (['Client', 'Apply', 'Remove'] as $item)
                                                     <option value="{{ $item }}" @selectChecked($user->position, $item)>@lang($item)</option>
                                                 @endforeach
                                             </select>
+                                            <span class="spinner relative"></span>
                                         @else
                                         @lang($user->position)
                                         @endcan
                                     </div>
-                                </td>
-                                <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-                                    {{-- <div class="inline-block mr-4">
-                                        <a href="#" title="{{ __('Edit') }}" aria-label="{{ __('Edit') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
-                                    </div> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -84,5 +79,4 @@
             </div>
         </div>
     </div>
-    {{-- {{$users->links()}} --}}
 </div>
