@@ -43,4 +43,9 @@
             <span class="text-xs text-gray-600 block cursor-default relative top-0.5">@amount($item->amount) تومان</span>
         </div>
     </td>
+    <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
+        <div class="inline-block">
+            <a href="#" title="{{ __('Edit') }}" aria-label="{{ __('Edit') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
+        </div>
+    </td>
 </tr>

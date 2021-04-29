@@ -12,6 +12,7 @@
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Debtor') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Creditor') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Amount') }} <small>تومان</small></th>
+                            <th class="px-3 py-2" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
