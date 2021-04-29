@@ -23,6 +23,9 @@ class SchedulePolicy
     public function center(User $user){
         return true;
     }
+    public function room(User $user){
+        return true;
+    }
     public function create(User $user, Room $room){
         if($user->isAdmin()){
             return true;

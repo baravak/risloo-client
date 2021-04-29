@@ -60,7 +60,8 @@ Route::get('/bulk-samples', 'BulkSampleController@index')->name('bulk-samples.in
 Route::get('/bulk-samples/{bulkSample}', 'BulkSampleController@show')->name('bulk-samples.show');
 Route::resource('/treasuries', 'TreasuryController');
 
-Route::get('rooms/{room}/schedules', 'ScheduleController@create')->name('room.schedules.create');
+Route::get('rooms/{room}/schedules', 'ScheduleController@room')->name('room.schedules.index');
+Route::get('rooms/{room}/schedules/create', 'ScheduleController@create')->name('room.schedules.create');
 Route::post('rooms/{room}/schedules', 'ScheduleController@store')->name('room.schedules.store');
 
 Route::get('cases/{case}/schedules', 'ScheduleController@caseCreate')->name('case.schedules.create');

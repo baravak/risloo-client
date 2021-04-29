@@ -31,7 +31,17 @@ class Schedule extends API
     {
         return (new static)->execute("centers/$center/schedules", ['time' => $timestamp], 'GET');
     }
+    public static function room(String $room, int $timestamp = null) : ApiCollection
+    {
+        return (new static)->execute("rooms/$room/schedules", ['time' => $timestamp], 'GET');
+    }
+
     public function parentClass($parent){
+        switch($parent){
+            case 'center' : return Center::class;
+            case 'room' : return Room::class;
+            default: return TherapyCase::class;
+        }
         return $parent == 'room' ? Room::class : TherapyCase::class;
     }
 

@@ -82,4 +82,23 @@ class ScheduleController extends Controller
         $this->data->center = $schedules->parentModel;
         return $this->view($request, 'dashboard.schedules.center');
     }
+
+    public function room(Request $request, $room){
+        $time = (int) $request->time;
+        $time = Carbon::createFromTimestamp($request->time ?: time())->timestamp;
+        $this->authorize('room', Schedule::class);
+        $this->data->weeks = $weeks= (object) [
+            'sat' => Carbon::createFromTimestamp($time)->startOfWeek(),
+            'sun' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(1),
+            'mon' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(2),
+            'tue' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(3),
+            'wed' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(4),
+            'thu' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(5),
+            'fri' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(6),
+        ];
+        $schedules = $this->data->schedules =  Schedule::room($room, $time);
+        $this->data->room = $room = $schedules->parentModel;
+        $this->data->center = $room->center;
+        return $this->view($request, 'dashboard.schedules.room');
+    }
 }

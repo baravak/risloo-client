@@ -196,6 +196,12 @@ Breadcrumbs::for('dashboard.room.schedules.create', function ($trail, $data) {
     $trail->push(__('Create therapy schedules'), route('dashboard.room.schedules.create', $data['room']->id));
 });
 
+Breadcrumbs::for('dashboard.room.schedules.index', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+
+    $trail->push(__('Therapy Schedules'), route('dashboard.room.schedules.index', $data['room']->id));
+});
+
 Breadcrumbs::for('dashboard.case.schedules.create', function ($trail, $data) {
     $trail->parent('dashboard.cases.show', $data);
 
