@@ -23,6 +23,9 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mt-4">
+        <a href="{{ route('dashboard.room.schedules.create', $room->id) }}" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
+            @lang('Define new schedule')
+        </a>
         @foreach ($schedules as $schedule)
         <a href="{{ $schedule->status == 'registration_awaiting' ? route('dashboard.schedules.show', $schedule->id) : route('dashboard.sessions.show', $schedule->id) }}" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
             <div>

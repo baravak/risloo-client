@@ -191,14 +191,19 @@ Breadcrumbs::for('dashboard.center.schedules.index', function ($trail, $data) {
 });
 
 Breadcrumbs::for('dashboard.room.schedules.create', function ($trail, $data) {
-    $trail->parent('dashboard.rooms.show', $data);
+    $trail->parent('dashboard.room.schedules.index', $data);
 
-    $trail->push(__('Create therapy schedules'), route('dashboard.room.schedules.create', $data['room']->id));
+    $trail->push(__('Define new schedule'), route('dashboard.room.schedules.create', $data['room']->id));
 });
 
 Breadcrumbs::for('dashboard.room.schedules.index', function ($trail, $data) {
-    $trail->parent('dashboard.rooms.show', $data);
+    if(isset($data['case'])){
+        $trail->parent('dashboard.cases.show', $data);
+    }else{
+        $trail->parent('dashboard.rooms.show', $data);
+    }
 
+    $trail->push(__('Center Therapy Schedules'), route('dashboard.center.schedules.index', $data['center']->id));
     $trail->push(__('Therapy Schedules'), route('dashboard.room.schedules.index', $data['room']->id));
 });
 
@@ -209,11 +214,7 @@ Breadcrumbs::for('dashboard.case.schedules.create', function ($trail, $data) {
 });
 
 Breadcrumbs::for('dashboard.schedules.show', function ($trail, $data) {
-    if(isset($data['case'])){
-        $trail->parent('dashboard.cases.show', $data);
-    }else{
-        $trail->parent('dashboard.rooms.show', $data);
-    }
+    $trail->parent('dashboard.room.schedules.index', $data);
 
     $trail->push(__('Reserve'), route('dashboard.schedules.show', $data['session']->id));
 });
