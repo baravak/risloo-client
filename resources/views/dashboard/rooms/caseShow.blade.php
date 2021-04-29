@@ -7,12 +7,10 @@
                     <i class="fal fa-plus sm:ml-2"></i>
                     <span class="hidden sm:inline">{{ __('Create new case') }}</span>
                 </a>
-                @if (config('app.env') == 'local')
-                    <a href="{{ route('dashboard.room.schedules.create', $room->id) }}" class="flex items-center justify-center flex-shrink-0 w-9 sm:w-auto h-9 sm:px-4 text-sm text-green-700 border border-green-700 rounded-full hover:bg-green-50 transition mr-4" title="{{ __('Define new schedule') }}">
-                        <i class="fal fa-plus sm:ml-2"></i>
-                        <span class="hidden sm:inline">{{ __('Define new schedule') }}</span>
-                    </a>
-                @endif
+                <a href="{{ route('dashboard.room.schedules.create', $room->id) }}" class="flex items-center justify-center flex-shrink-0 w-9 sm:w-auto h-9 sm:px-4 text-sm text-green-700 border border-green-700 rounded-full hover:bg-green-50 transition mr-4" title="{{ __('Define new schedule') }}">
+                    <i class="fal fa-plus sm:ml-2"></i>
+                    <span class="hidden sm:inline">{{ __('Define new schedule') }}</span>
+                </a>
             </div>
             @endcan
         </div>

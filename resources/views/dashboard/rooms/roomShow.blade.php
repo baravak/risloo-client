@@ -16,6 +16,9 @@
                             <i class="fal fa-users"></i>
                         </a>
                     @endcan
+                    <a href="{{ route('dashboard.room.schedules.index', $room->id) }}" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
+                        <span class="font-medium">{{ __('Therapy Schedules') }}</span>
+                    </a>
                 </div>
             @endif
             <div class="flex justify-center items-center flex-shrink-0 w-24 h-24 md:w-32 md:h-32 -mt-16 md:-mt-20 bg-gray-300 text-gray-600 text-2xl rounded-full border-4 border-white overflow-hidden mb-4 relative">@avatarOrName($room->manager)</div>
