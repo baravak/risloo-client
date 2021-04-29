@@ -11,7 +11,7 @@ class SessionReportController extends Controller
         $this->authorize('dashboard.sessions.update', [$session, 'report']);
         $this->data->session = $session;
         $case = $this->data->case = $session->case;
-        $room = $this->data->room = $case->room;
+        $room = $this->data->room = $session->room;
         $center = $this->data->center = $room->center;
         return $this->view($request, 'dashboard.sessions.reports.create');
     }
