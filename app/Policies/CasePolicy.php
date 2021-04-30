@@ -23,7 +23,7 @@ class CasePolicy
         return false;
     }
 
-    public function create(User $user, Room $room = null)
+    public function create(User $user, $room = null)
     {
         if($user->isAdmin()){
             return true;

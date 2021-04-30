@@ -80,7 +80,10 @@ class ScheduleController extends Controller
         ];
         $schedules = $this->data->schedules =  Schedule::center($center, $time);
         $this->data->center = $schedules->parentModel;
-        return $this->view($request, 'dashboard.schedules.center');
+        if($this->data->center->type == 'personal_clinic'){
+            $this->data->room = $this->data->center;
+        }
+        return $this->view($request, 'dashboard.schedules.index');
     }
 
     public function room(Request $request, $room){
@@ -99,6 +102,6 @@ class ScheduleController extends Controller
         $schedules = $this->data->schedules =  Schedule::room($room, $time);
         $this->data->room = $room = $schedules->parentModel;
         $this->data->center = $room->center;
-        return $this->view($request, 'dashboard.schedules.room');
+        return $this->view($request, 'dashboard.schedules.index');
     }
 }

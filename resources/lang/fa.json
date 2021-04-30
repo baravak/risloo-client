@@ -85,7 +85,7 @@
     "Case :serial": "پرونده درمانی :serial",
     "Therapy": "درمان",
     "Sessions": "جلسات",
-    "Personal clinic of :user": "کلینیک شخصی :user",
+    "Personal clinic of :user": ":user",
     "Therapy room of :user": "اتاق درمان :user",
     "Therapy room of :user in :center": "اتاق درمان :user در :center",
     "Create new room-user": "ثبت‌نام عضو جدید",
