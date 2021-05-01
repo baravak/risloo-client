@@ -217,6 +217,8 @@
     "Done": "انجام‌شده",
     "Edit session": "ویرایش جلسه",
     "Login to this...": "ورود به کاربری",
+    "Login": "ورود",
+    "Login help": "برای ورود به ریسلو شماره موبایل خود را در فیلد بالا وارد کرده و روی دکمه ادامه کلیک کنید",
     ":count sessions": ":count جلسه",
     "Empty Assessments Error": "ارزیابی‌ای مطابق با جست‌وجوی شما یافت نشد.",
     "Empty User Error": "کاربری مطابق با جست‌وجوی شما یافت نشد.",
@@ -285,7 +287,7 @@
     "Toman": "تومان",
     "Financial balance": "مبلغ باقی‌مانده",
     "Increase credit": "افزایش اعتبار",
-    "Check and continue": "بررسی و ادامه",
+    "Continue": "ادامه",
     "Check password": "بررسی کلمه عبور",
     "Check out sample and go to next sample": "اتمام و انتقال به نمونه بعدی",
     "Without_case": "بدون پرونده",
@@ -352,5 +354,7 @@
     "Items" : "موارد",
     "Center Therapy Schedules" : "برنامه درمانی مرکز",
     "Save changes" : "ذخیره تغییرات",
-    "Cancel" : "انصراف"
+    "Cancel" : "انصراف",
+    "Phone" : "موبایل",
+    "Phone placeholder" : "مثلا 09120001111"
 }

@@ -12,7 +12,7 @@
                         </a>
                     </div>
                 @else
-                    <h1 class="text-center variable-font-black text-xl text-brand mb-8">
+                    <h1 class="text-center variable-font-black text-xl text-brand mb-4">
                         <a href="/" class="direct" title="{{ __('App Title') }}" aria-label="{{ __('App Title') }}">{{ __('App Title') }}</a>
                     </h1>
                 @endif
