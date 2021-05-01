@@ -3,7 +3,7 @@
 }
 
 .dropdown > button + div {
-    @apply hidden absolute bg-gray-50 border border-gray-300 overflow-auto z-10;
+    @apply hidden absolute bg-gray-50 border border-gray-300 overflow-auto z-10 w-full;
 }
 
 .dropdown > button + div.show {
