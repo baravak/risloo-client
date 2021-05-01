@@ -1,5 +1,5 @@
 @section('auth-form')
-    <h2 class="text-center variable-font-bold text-gray-800 mb-4 cursor-default">تأیید شماره موبایل</h2>
+    <h2 class="text-center variable-font-bold text-gray-800 mb-4 cursor-default">@lang('Verify Mobile')</h2>
     <div class="mb-2">
         <input type="authorized_key"  disabled value="{{ $theory->response('authorized_key') }}" class="w-full text-sm text-left dir-ltr text-gray-400 border border-gray-300 rounded h-10 px-3" id="authorized_key" name="authorized_key">
     </div>
