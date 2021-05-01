@@ -44,13 +44,13 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
-        <div class="inline-block">
+        {{-- <div class="inline-block">
             <button class="w-6 h-w-6 rounded-full focus" title="{{ __('Edit') }}" aria-label="{{ __('Edit') }}"><i class="relative top-0.5 fal fa-edit text-sm text-gray-600 hover:text-blue-600"></i></button>
-        </div>
+        </div> --}}
     </td>
 </tr>
 
-<tr data-xhr="transaction-list-id" class="transition hover:bg-gray-50">
+{{-- <tr data-xhr="transaction-list-id" class="transition hover:bg-gray-50">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             <span class="text-xs text-gray-600 block cursor-default">{{ $loop->index + 1 }}</span>
@@ -94,4 +94,4 @@
             <button type="submit" class="w-6 h-w-6 rounded-full focus-current ring-green-600" title="{{ __('Save changes') }}" aria-label="{{ __('Save changes') }}"><i class="relative top-1 fal fa-check text-gray-600 hover:text-green-600"></i></button>
         </div>
     </td>
-</tr>
+</tr> --}}
