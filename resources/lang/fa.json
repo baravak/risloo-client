@@ -350,5 +350,7 @@
     "Apply" : "درخواست",
     "Remove" : "حذف",
     "Items" : "موارد",
-    "Center Therapy Schedules" : "برنامه درمانی مرکز"
+    "Center Therapy Schedules" : "برنامه درمانی مرکز",
+    "Save changes" : "ذخیره تغییرات",
+    "Cancel" : "انصراف"
 }
