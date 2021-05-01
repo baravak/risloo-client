@@ -15,7 +15,7 @@ Breadcrumbs::for('dashboard.centers.create', function ($trail, $data) {
 
 Breadcrumbs::for('dashboard.centers.show', function ($trail, $data) {
     $trail->parent('dashboard.centers.index', $data);
-    $trail->push($data['center']->type == 'counseling_center' ? $data['center']->detail->title : $data['center']->manager->name, route('dashboard.centers.show', $data['center']->id));
+    $trail->push($data['center']->detail->title, route('dashboard.centers.show', $data['center']->id));
 });
 
 Breadcrumbs::for('dashboard.centers.edit', function ($trail, $data) {

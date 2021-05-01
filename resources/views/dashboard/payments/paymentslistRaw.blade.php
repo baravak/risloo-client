@@ -14,11 +14,12 @@
             <div class="flex">
                 <a href="{{ route('dashboard.treasuries.show', $payment->treasury->id) }}" class="text-xs text-gray-600 hover:text-blue-600 transition underline">{{ $payment->treasury->title }}</a>
             </div>
+            {{-- {{ dd($payment->treasury) }}
             @if (auth()->isAdmin())
                 <div class="flex">
                     <a href="{{ route('dashboard.users.show', $payment->treasury->user->id) }}" class="text-xs text-gray-500 hover:text-blue-600 transition underline mt-1 variable-font-light">{{ $payment->treasury->user->name }}</a>
                 </div>
-            @endif
+            @endif --}}
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
