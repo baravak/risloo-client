@@ -112,7 +112,7 @@
                 <a href="{{ route('dashboard.users.index') }}" data-metarget="users" data-metarget-pattern="^/dashboard/users.*" class="flex justify-between items-center py-2 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex items-center">
                         <i class="fal fa-users ml-3"></i>
-                        <span class="variable-font-light pt-1">{{ __('Users') }}</span>
+                        <span class="variable-font-medium pt-1">{{ __('Users') }}</span>
                     </div>
                 </a>
             </li>
