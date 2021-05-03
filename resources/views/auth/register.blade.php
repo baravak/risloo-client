@@ -9,7 +9,7 @@
     </div>
     <button class="flex items-center justify-center text-sm w-full rounded-full h-10 bg-brand text-white hover:bg-brand-600 transition mb-4 focus" title="{{__('Continue')}}" aria-label="{{__('Continue')}}" role="button">{{__('Continue')}}</button>
     <div class="text-xs text-gray-400 cursor-default leading-relaxed mt-4">
-        <div>اگر عضو ریسلو هستید، روی گزینه <a href="{{ route('auth') }}" class="variable-font-semibold text-gray-500 hover:text-blue-600 transition">ورود</a> کلیک کنید.</div>
+        <div>اگر عضو ریسلو هستید و کلمه عبور خود را به‌یاد دارید روی گزینه <a href="{{ route('auth') }}" class="variable-font-semibold text-gray-500 hover:text-blue-600 transition">ورود</a> کلیک کنید.</div>
         <div>اگر عضو ریسلو هستید و کلمه عبور خود را فراموش کرده‌اید روی گزینه <a href="{{ route('auth.recovery') }}" class="variable-font-semibold text-gray-500 hover:text-blue-600 transition">فراموشی کلمه عبور</a> کلیک کنید.</div>
     </div>
 @endsection

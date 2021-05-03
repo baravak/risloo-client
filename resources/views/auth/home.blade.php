@@ -15,7 +15,7 @@
     </div>
     <button title="{{ auth()->check() ? __('Check') : __('Continue') }}" aria-label="{{ auth()->check() ? __('Check') : __('Continue') }}" role="button" class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition focus">{{ auth()->check() ? __('Check') : __('Continue') }}</button>
     <div class="text-xs text-gray-400 cursor-default leading-relaxed mt-4">
-        <div>اگر هنوز عضو ریسلو نیستید، روی گزینه <a href="{{ route('register') }}" class="variable-font-semibold text-gray-500 hover:text-blue-600 transition">عضویت</a> کلیک کنید.</div>
+        <div>اگر عضو ریسلو نیستید، روی گزینه <a href="{{ route('register') }}" class="variable-font-semibold text-gray-500 hover:text-blue-600 transition">عضویت</a> کلیک کنید.</div>
         <div>اگر عضو ریسلو هستید و کلمه عبور خود را فراموش کرده‌اید روی گزینه <a href="{{ route('auth.recovery') }}" class="variable-font-semibold text-gray-500 hover:text-blue-600 transition">فراموشی کلمه عبور</a> کلیک کنید.</div>
     </div>
 
