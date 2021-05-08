@@ -9,6 +9,17 @@
             @endforeach
     </select>
 </div>
+@if ($session->type == 'selective')
+    <div class="mt-4">
+        <label for="session_type" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع جلسه')</label>
+        <select id="session_type" name="session_type" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+            <option value="face_to_face" @selectChecked($session->type, 'face_to_face')>@lang('جلسه حضوری')</option>
+            <option value="phone_call" @selectChecked($session->type, 'phone_call')>@lang('تماس تلفنی')</option>
+            <option value="voice_call" @selectChecked($session->type, 'voice_call')>@lang('تماس صوتی آنلاین')</option>
+            <option value="video_conference" @selectChecked($session->type, 'video_conference')>@lang('ویدئو کنفرانس')</option>
+        </select>
+    </div>
+@endif
 @isset($case)
 @else
 @if (auth()->user()->centers && auth()->user()->centers->where('id', $center->id)->first())

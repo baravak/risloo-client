@@ -11,6 +11,7 @@
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Problem') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Description') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Field') }}</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Type') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
                         </tr>
@@ -51,6 +52,11 @@
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
                                         <span class="text-xs text-gray-600">{{ $user->field ? $user->field->title : '-' }}</span>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 whitespace-nowrap">
+                                    <div class="flex items-center cursor-default">
+                                        <span class="text-xs text-gray-600">@lang($user->session_type ?: '-')</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">

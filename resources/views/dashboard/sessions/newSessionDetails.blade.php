@@ -30,7 +30,7 @@
             @if (request()->route()->getAction('as') != 'dashboard.sessions.show')
                 <a href="{{ route('dashboard.sessions.show', $session->id)}}" class="inline-block py-1 pr-4 pl-3 hover:text-brand transition border-l" title="@lang('View')"><i class="fal fa-eye text-sm"></i></a>
             @endif
-            <a href="{{$session->route('edit')}}" class="inline-block py-1 pr-3 pl-4 border-gray-300 hover:text-brand transition" title="@lang('Edit')"><i class="fal fa-edit text-sm"></i></a>
+            <a href="{{ route('dashboard.sessions.edit', $session->id)}}" class="inline-block py-1 pr-3 pl-4 border-gray-300 hover:text-brand transition" title="@lang('Edit')"><i class="fal fa-edit text-sm"></i></a>
         </div>
         @endcan
 </div>

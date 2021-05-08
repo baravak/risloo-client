@@ -5,6 +5,7 @@
         <option value="phone_call" @selectChecked($session->type, 'phone_call')>@lang('تماس تلفنی')</option>
         <option value="voice_call" @selectChecked($session->type, 'voice_call')>@lang('تماس صوتی آنلاین')</option>
         <option value="video_conference" @selectChecked($session->type, 'video_conference')>@lang('ویدئو کنفرانس')</option>
+        <option value="selective" @selectChecked($session->type, 'selective')>@lang('انتخاب به عهده مراجع')</option>
     </select>
 </div>
 
@@ -117,5 +118,14 @@
 
 <div class="mt-4">
     <label for="description" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('توضیحات')</label>
-    <textarea type="text" id="description" name="description" class="border border-gray-500 placeholder-gray-300 h-20 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">@isset($session){{ $session->description }}@endisset</textarea>
+    <textarea type="text" id="description" name="description" class="border border-gray-500 placeholder-gray-300 h-20 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">@isset($session){{ $session->description }}@endisset</textarea>
+</div>
+
+<div class="mt-4">
+    <label for="client_reminder" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('پیغام یادآوری و هماهنگی مراجع')</label>
+    <textarea type="text" id="client_reminder" name="client_reminder" class="border border-gray-500 placeholder-gray-300 h-20 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">@isset($session){{ $session->client_reminder }}@endisset</textarea>
+    <div class="flex text-xs text-gray-400 mt-2">
+        <i class="fal fa-info-circle ml-1"></i>
+        <span>شما می‌توانید در این قسمت توضیحاتی را وارد کنید که قصد دارید همراه با پیغام یادآوری مراجع برای او ارسال شود؛ مثلا لینک جلسه آنلاین، شماره تلفن جلسه تلفنی و ...</span>
+    </div>
 </div>
