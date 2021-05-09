@@ -1,5 +1,14 @@
 @extends($layouts->dashboard)
 @section('content')
+    {{-- <div class="flex items-center justify-between border border-gray-300 rounded py-6 px-4">
+        <div class="text-gray-500 cursor-default">هیچ برنامه درمانی‌ای تعریف نشده است.</div>
+        <div>
+            <a href="#" target="_blank" class="px-4 py-2 text-sm text-green-600 hover:text-white border border-green-600 hover:bg-green-600 rounded-full transition">تعریف برنامه درمانی</a>
+        </div>
+    </div> --}}
+    {{-- <div class="flex items-center justify-center border border-gray-300 rounded py-6 px-4">
+        <div class="text-gray-500 cursor-default">هیچ برنامه درمانی‌ای تعریف نشده است.</div>
+    </div> --}}
     @include('dashboard.schedules.navigation')
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mt-4">
         @can('create', [App\TherapyCase::class, $room])
