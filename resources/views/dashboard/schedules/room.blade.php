@@ -3,8 +3,9 @@
     @include('dashboard.schedules.navigation')
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mt-4">
         @can('create', [App\TherapyCase::class, $room])
-            <a href="{{ route('dashboard.room.schedules.create', $room->id) }}" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
-                @lang('Define new schedule')
+            <a href="{{ route('dashboard.room.schedules.create', $room->id) }}" class="flex flex-col items-center justify-center text-gray-400 hover:text-green-600 border border-gray-300 hover:border-green-600 transition rounded py-8 focus-current ring-green-600">
+                <i class="fal fa-plus text-xl mb-4"></i>
+                <span>@lang('Define new schedule')</span>
             </a>
         @endcan
         @foreach ($schedules as $schedule)
