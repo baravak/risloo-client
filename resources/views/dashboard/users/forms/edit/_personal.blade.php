@@ -7,19 +7,21 @@
             <input type="text" name="name" id="p-name" autocomplete="off" @formValue($user->name) class="border border-gray-500 h-10 rounded px-4 w-full text-sm focus:border-brand focus">
         </div>
 
-        <div class="mt-4">
-            <label for="p-username" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('Username') }}</label>
-            <input type="text" name="username" id="p-username" autocomplete="off" @formValue($user->username) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
-            <div class="flex items-center text-xs text-gray-400 mt-2 cursor-default">
-                <i class="fal fa-info-circle ml-1"></i>
-                <span>{{ __('Username help') }}</span>
+        @if (false)
+            <div class="mt-4">
+                <label for="p-username" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('Username') }}</label>
+                <input type="text" name="username" id="p-username" autocomplete="off" @formValue($user->username) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
+                <div class="flex items-center text-xs text-gray-400 mt-2 cursor-default">
+                    <i class="fal fa-info-circle ml-1"></i>
+                    <span>{{ __('Username help') }}</span>
+                </div>
             </div>
-        </div>
 
-        <div class="mt-4">
-            <label for="p-email" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('Email') }}</label>
-            <input type="text" name="email" id="p-email" autocomplete="off" @formValue($user->email) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
-        </div>
+            <div class="mt-4">
+                <label for="p-email" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('Email') }}</label>
+                <input type="text" name="email" id="p-email" autocomplete="off" @formValue($user->email) class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
+            </div>
+        @endif
 
         <div class="mt-4">
             <h3 class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Gender') }}</h3>
