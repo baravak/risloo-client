@@ -25,7 +25,7 @@
         </div>
         <div></div>
     </div>
-        @can ('manager', [\App\Session::class, $session])
+        @can ('update', [\App\Session::class, $session])
         <div class="absolute left-4 bottom-4 flex items-center h-9 border border-gray-400 rounded-full text-xs text-gray-600">
             @if (request()->route()->getAction('as') != 'dashboard.sessions.show')
                 <a href="{{ route('dashboard.sessions.show', $session->id)}}" class="inline-block py-1 pr-4 pl-3 hover:text-brand transition border-l" title="@lang('View')"><i class="fal fa-eye text-sm"></i></a>
