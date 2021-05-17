@@ -19,9 +19,7 @@
         </div>
         @isset($case)
             @can('manager', $case)
-            <div class="flex items-center text-xs text-gray-500 mt-4">
-                <a href="{{ route('dashboard.client-reports.index', $session->id) }}">@lang('Reports of session')</a>
-            </div>
+                <a href="{{ route('dashboard.client-reports.index', $session->id) }}" class="inline-flex items-center justify-center text-xs text-brand mt-4 border border-brand hover:bg-brand hover:text-white transition rounded-full px-4 h-8">@lang('Reports of session')</a>
             @endif
         @endisset
     </div>
