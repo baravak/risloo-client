@@ -27,6 +27,9 @@
             </select>
         </div>
         <div class="mt-4">
+            @isset($case->clients)
+                <h3 class="block mb-3 text-sm text-gray-700 font-medium">{{ __('Clients') }}</h3>
+            @endisset
             @foreach ($case->clients as $client)
             <label class="inline-flex items-center group">
                 <input type="checkbox" name="clients_id[]" id="clients_id" checked value="{{ $client->id }}" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
