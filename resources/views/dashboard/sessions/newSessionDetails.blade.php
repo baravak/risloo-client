@@ -17,11 +17,13 @@
         <div class="flex items-center text-sm variable-font-light text-gray-400 mt-2 mb-10 sm:mb-0 w-full sm:w-11/12">
             <span>{{ $session->description }}</span>
         </div>
-        @can('manager', $case)
+        @isset($case)
+            @can('manager', $case)
             <div class="flex items-center text-xs text-gray-500 mt-4">
                 <a href="{{ route('dashboard.client-reports.index', $session->id) }}">@lang('Reports of session')</a>
             </div>
-        @endif
+            @endif
+        @endisset
     </div>
     <div class="flex flex-col order-first sm:order-none justify-between mb-4 sm:mb-0">
         <div class="flex items-center dir-ltr text-left text-brand">
