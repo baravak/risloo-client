@@ -75,6 +75,11 @@ Route::post('/payments', 'PaymentController@store')->name('payments.sotre');
 Route::post('/billings/{billing}/final', 'BillingController@doFinal')->name('billings.final');
 Route::resource('/billings', 'BillingController');
 
+Route::get('client-reports/all/{serial}', 'ClientReportController@index')->name('client-reports.index');
+Route::post('client-reports/{serial}', 'ClientReportController@store')->name('client-reports.store');
+Route::get('client-report/{report}', 'ClientReportController@show')->name('client-reports.show');
+
+
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
     Route::get('/billings/items', 'LocalController@billingItems');

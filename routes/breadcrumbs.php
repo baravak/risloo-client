@@ -241,3 +241,13 @@ Breadcrumbs::for('dashboard.billings.show', function ($trail, $data) {
     $trail->parent('dashboard.billings.index', $data);
     $trail->push($data['billing']->id .' - '.$data['billing']->title, route('dashboard.billings.show', $data['billing']));
 });
+
+Breadcrumbs::for('dashboard.client-reports.index', function ($trail, $data) {
+    if(isset($data['session'])){
+        $trail->parent('dashboard.sessions.show', $data);
+        $trail->push(__('Reports'), route('dashboard.client-reports.index', $data['session']->id));
+    }elseif(isset($data['case'])){
+        $trail->parent('dashboard.cases.show', $data);
+        $trail->push(__('Reports'), route('dashboard.client-reports.index', $data['case']->id));
+    }
+});

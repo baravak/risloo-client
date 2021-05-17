@@ -3,7 +3,6 @@
         <div class="mt-8 mb-4">
             <h2 class="heading" data-total="({{ $case->clients ? $case->clients->count() : 0 }})">{{ __('Clients') }}</h2>
         </div>
-
         @can('manager', $case)
             <div>
                 <a href="{{route('dashboard.case.users.create', $case->id)}}" class="absolute -top-0 left-0 flex justify-center items-center flex-shrink-0 border border-green-700 text-green-700 px-4 h-9 rounded-full text-xs leading-normal hover:bg-green-50 transition-all">

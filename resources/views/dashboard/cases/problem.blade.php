@@ -17,4 +17,9 @@
             <i class="fal fa-clock ml-1"></i>
             <span>@time($case->created_at, '%A %d %B %y ساعت H:i')</span>
     </div>
+    @can('manager', $case)
+        <div class="flex items-center text-xs text-gray-500 mt-4">
+            <a href="{{ route('dashboard.client-reports.index', $case->id) }}">@lang('Reports of case')</a>
+        </div>
+    @endif
 </div>
