@@ -1,6 +1,6 @@
 <div>
     <div class="relative mb-4">
-        <div class="mt-8 mb-4">
+        <div class="mb-4">
             <h2 class="heading" data-total="({{ $case->clients ? $case->clients->count() : 0 }})">{{ __('Clients') }}</h2>
         </div>
         @can('manager', $case)
