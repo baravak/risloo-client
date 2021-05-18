@@ -251,3 +251,11 @@ Breadcrumbs::for('dashboard.client-reports.index', function ($trail, $data) {
         $trail->push(__('Reports'), route('dashboard.client-reports.index', $data['case']->id));
     }
 });
+Breadcrumbs::for('dashboard.client-reports.show', function ($trail, $data) {
+    $trail->parent('dashboard.client-reports.index', $data);
+    $trail->push($data['report']->title, route('dashboard.client-reports.show', $data['report']->id));
+});
+Breadcrumbs::for('dashboard.client-reports.create', function ($trail, $data) {
+    $trail->parent('dashboard.client-reports.index', $data);
+    $trail->push(__('Create client report'), null);
+});

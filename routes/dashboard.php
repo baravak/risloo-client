@@ -77,7 +77,10 @@ Route::resource('/billings', 'BillingController');
 
 Route::get('client-reports/all/{serial}', 'ClientReportController@index')->name('client-reports.index');
 Route::post('client-reports/{serial}', 'ClientReportController@store')->name('client-reports.store');
+Route::get('client-reports/create/{serial}', 'ClientReportController@create')->name('client-reports.create');
 Route::get('client-report/{report}', 'ClientReportController@show')->name('client-reports.show');
+Route::get('client-report/{report}/edit', 'ClientReportController@edit')->name('client-reports.edit');
+Route::match(['put', 'patch'],'client-report/{report}', 'ClientReportController@update')->name('client-reports.update');
 
 
 if(config('app.env') == 'local'){

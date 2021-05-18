@@ -2,7 +2,7 @@
 @section('content')
 <div class="border border-gray-300 rounded mx-auto p-4 mt-8 w-full md:w-1/2 relative">
     @if (isset($room) && $room->manager->user_id == auth()->id())
-        <a href="#" class="flex items-center justify-center text-xs text-gray-500 border border-gray-200 rounded-full absolute top-4 left-4 w-8 h-8 hover:bg-gray-50 transition" title="{{ __('Edit') }}" aria-label="{{ __('Edit') }}">
+        <a href="{{ route('dashboard.client-reports.edit', $report->id) }}" class="flex items-center justify-center text-xs text-gray-500 border border-gray-200 rounded-full absolute top-4 left-4 w-8 h-8 hover:bg-gray-50 transition" title="{{ __('Edit') }}" aria-label="{{ __('Edit') }}">
             <i class="fal fa-edit"></i>
         </a>
     @endif
