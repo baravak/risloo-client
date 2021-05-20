@@ -33,7 +33,7 @@ class SessionPolicy
                 return true;
             }
         }
-        if($user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+        if($user->centers && $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
             return true;
         }
         return false;
@@ -65,7 +65,7 @@ class SessionPolicy
                 return true;
             }
         }
-        if($user->centers->where('id', $session->room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+        if($user->centers && $user->centers->where('id', $session->room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
             return true;
         }
     }
@@ -85,7 +85,7 @@ class SessionPolicy
             if($room->manager->id == $user->id){
                 return true;
             }
-            if($user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+            if($user->centers && $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
                 return true;
             }
         }
