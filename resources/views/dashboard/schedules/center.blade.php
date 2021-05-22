@@ -22,14 +22,16 @@
                         <div>
                             <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت {{ $schedule->started_at->format('H:i') }}</span></div>
                             <div class="p-3">
-                                <div class="flex items-center mb-4">
-                                    <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
-                                        @avatarOrName($schedule->room->manager)
+                                @if (!isset($RoomMode))
+                                    <div class="flex items-center mb-4">
+                                        <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
+                                            @avatarOrName($schedule->room->manager)
+                                        </div>
+                                        <div class="text-xs variable-font-medium text-gray-600 mr-2">
+                                            <span>@displayName($schedule->room->manager)</span>
+                                        </div>
                                     </div>
-                                    <div class="text-xs variable-font-medium text-gray-600 mr-2">
-                                        <span>@displayName($schedule->room->manager)</span>
-                                    </div>
-                                </div>
+                                @endif
                                 @if ($schedule->case)
                                     <div class="flex items-center text-xs text-gray-500">
                                         <i class="fal fa-folder ml-2"></i>

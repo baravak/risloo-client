@@ -17,6 +17,9 @@
         <div class="flex items-center text-sm variable-font-light text-gray-400 mt-2 mb-10 sm:mb-0 w-full sm:w-11/12">
             <span>{{ $session->description }}</span>
         </div>
+        <div class="flex items-center text-sm variable-font-light text-gray-400 mt-2 mb-10 sm:mb-0 w-full sm:w-11/12">
+            <span>@lang('Clients'): {{ $session->clients->pluck('name')->join(' - ') }}</span>
+        </div>
         @isset($case)
             @can('manager', $case)
                 <a href="{{ route('dashboard.client-reports.index', $session->id) }}" class="inline-flex items-center justify-center text-xs text-brand mt-4 border border-brand hover:bg-brand hover:text-white transition rounded-full px-4 h-8">@lang('Reports of session')</a>
