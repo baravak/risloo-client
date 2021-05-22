@@ -20,7 +20,7 @@
         @foreach ($schedules as $schedule)
         <a href="{{ $schedule->status == 'registration_awaiting' ? route('dashboard.schedules.show', $schedule->id) : route('dashboard.sessions.show', $schedule->id) }}" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
             <div>
-                <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>@time($schedule->started_at, 'Y-m-d - ساعت H:i')</span></div>
+                <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>@time($schedule->started_at, '%A')</span><span class="inline-block">@time($schedule->started_at, 'Y-m-d - ساعت H:i')</span></div>
                 <div class="p-3">
                     <div class="flex items-center mb-4">
                         <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
@@ -44,6 +44,20 @@
                         <div class="flex items-center text-xs text-gray-500 mt-2">
                             <i class="fal fa-user-friends ml-2"></i>
                             <span>{{ $schedule->clients_number }}</span>
+                        </div>
+                    @endif
+
+                    @if ($schedule->clients)
+                        <div class="mt-4">
+                            <span class="inline text-xs variable-font-medium text-gray-600 mb-2">مراجعین:</span>
+                                <div class="inline text-xs text-gray-500">
+                                    @foreach ($schedule->clients as $client)
+                                        <span>{{ $client->name }}</span>
+                                        @if (!$loop->last)
+                                            <span class="mx-1">|</span>
+                                        @endif
+                                    @endforeach
+                            </div>
                         </div>
                     @endif
 

@@ -47,6 +47,20 @@
                                     </div>
                                 @endif
 
+                                @if ($schedule->clients)
+                                    <div class="mt-4">
+                                        <span class="inline text-xs variable-font-medium text-gray-600 mb-2">مراجعین:</span>
+                                            <div class="inline text-xs text-gray-500">
+                                                @foreach ($schedule->clients as $client)
+                                                    <span>{{ $client->name }}</span>
+                                                    @if (!$loop->last)
+                                                        <span class="mx-1">|</span>
+                                                    @endif
+                                                @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+
                                 <div class="mt-4">
                                     <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
                                     <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
