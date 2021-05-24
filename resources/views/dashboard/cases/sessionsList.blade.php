@@ -38,10 +38,10 @@
                                 </div>
                             </td>
                             <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
+                                <div class="inline-block mr-4">
+                                    <a href="{{ $session->status == 'registration_awaiting' ? route('dashboard.schedules.show', $session->id) : $session->route('show') }}" alt="{{ __('View') }}"><i class="fal fa-eye text-sm text-gray-600 hover:text-blue-600 relative top-0.5"></i></a>
+                                </div>
                                 @can('manager', $case)
-                                    <div class="inline-block mr-4">
-                                        <a href="{{ $session->route('show') }}" alt="{{ __('View') }}"><i class="fal fa-eye text-sm text-gray-600 hover:text-blue-600 relative top-0.5"></i></a>
-                                    </div>
                                     <div class="inline-block">
                                         <a href="{{ $session->route('edit') }}" alt="{{ __('Edition') }}"><i class="fal fa-edit text-sm text-gray-600 hover:text-blue-600 relative top-0.5"></i></a>
                                     </div>
