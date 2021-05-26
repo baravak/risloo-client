@@ -7,4 +7,7 @@
     $('#aside-open').click(function(event) {
         $('body').toggleClass('aside-open');
     });
+    $('#aside a').on('click', function(){
+        $('body', document).trigger('click');
+    });
 });
