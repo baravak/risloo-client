@@ -32,6 +32,7 @@ class CenterController extends Controller
 
     public function create(Request $request)
     {
+        $this->data->global->title = __('Create new center');
         $this->authorize('dashboard.centers.create');
         return $this->view( $request, 'dashboard.centers.create');
     }
@@ -47,6 +48,7 @@ class CenterController extends Controller
     public function edit(Request $request, $center)
     {
         $center = is_string($center) ?  $this->data->center = Center::apiShow($center, array_merge($request->all(), ['summary' => ''])) : $center;
+        $this->data->global->title = __('Edit center');
         $this->authorize('dashboard.centers.update', [$center, $center]);
         return $this->view($request, 'dashboard.centers.' . ($center->type == 'personal_clinic' ? 'create' : 'edit'));
     }

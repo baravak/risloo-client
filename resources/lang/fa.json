@@ -371,5 +371,6 @@
     "Section" : "بخش",
     "selective" : "قابل انتخاب",
     "Reports of case" : "گزارشات پرونده",
-    "Reports of session" : "گزارشات جلسه"
+    "Reports of session" : "گزارشات جلسه",
+    "Auth theory sampleLogin" : "ورود به آزمون"
 }

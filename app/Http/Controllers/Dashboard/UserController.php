@@ -18,7 +18,8 @@ class UserController extends _UserController
     public function show(Request $request, $user)
     {
         $user = $this->data->user = UserDashboard::apiDashboard($user, $request->all());
-        $this->data->user = $user;
+        $this->data->global->title = $user->name ?: $user->id;
+
         return $this->view($request, 'dashboard.users.show');
     }
     public function index(Request $request)
@@ -57,5 +58,10 @@ class UserController extends _UserController
                 'redirect' => route('dashboard.users.edit', $user->id) . '#avatar-tab',
             ];
         }
+    }
+    public function edit(Request $request, User $user)
+    {
+        $this->data->global->title = __('Edit user');
+        return parent::edit($request, $user);
     }
 }
