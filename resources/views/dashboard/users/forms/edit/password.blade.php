@@ -7,7 +7,7 @@
                 <input type="password" id="cp-password" name="password" autocomplete="password" class="border border-gray-500 h-10 rounded px-4 w-full text-left dir-ltr focus:border-brand focus">
             </div>
         @endif
-        <div>
+        <div class="mt-4">
             <label for="cp-new-password" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('New password') }}</label>
             <input type="password" id="cp-new-password" name="new_password" autocomplete="password" class="border border-gray-500 h-10 rounded px-4 w-full text-left dir-ltr focus:border-brand focus">
             <div class="flex items-center text-xs text-gray-400 mt-2 cursor-default">
