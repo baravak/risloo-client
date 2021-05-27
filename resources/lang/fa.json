@@ -39,7 +39,7 @@
     "Samples": "نمونه‌ها",
     "Create new sampel": "ساختن نمونه جدید",
     "Create sampel": "افزودن نمونه",
-    "Clinic": "اتاق درمان شخصی",
+    "Clinic": "کلینیک شخصی",
     "Relationships": "ارتباطات",
     "Position": "موقعیت",
     "Relationship users": "زیرارتباط کاربران",
@@ -49,8 +49,8 @@
     "Create new relationship": "ساختن ارتباط جدید",
     "Therapy centers": "مراکز درمانی",
     "Clinic name": "نام کلینیک",
-    "Personal_clinic": "اتاق درمان شخصی",
-    "Personal clinic": "اتاق درمان شخصی",
+    "Personal_clinic": "کلینیک شخصی",
+    "Personal clinic": "کلینیک شخصی",
     "Acceptation request": "درخواست پذیرش",
     "Accepted": "پذیرش شده",
     "Counseling_center": "مرکز مشاوره",
@@ -205,7 +205,7 @@
     "Create new case": "ساخت پرونده جدید",
     "Create case": "ساخت پرونده",
     "Create case for this client": "ساخت پرونده برای این عضو",
-    "My personal clinic": "اتاق درمان شخصی من",
+    "My personal clinic": "کلینیک شخصی من",
     "Join new user": "ثبت‌نام عضو جدید",
     "Add user": "ثبت عضو جدید",
     "Confirm": "تأیید عضویت",
@@ -374,3 +374,4 @@
     "Reports of session" : "گزارشات جلسه",
     "Auth theory sampleLogin" : "ورود به آزمون"
 }
+
