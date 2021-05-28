@@ -17,15 +17,15 @@
                     </div>
                 @endif
             </div>
-            @if (!in_array($sample->status, ['scoring', 'creating_files']))
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mt-2 sm:mt-0">
                 <div>
                     <span class="text-xs text-gray-400 cursor-default">{{ __(ucfirst($sample->status)) }}</span>
                 </div>
                 <div class="mt-2 sm:mt-0">
-                    @if ($sample->client)
+                    @if (!in_array($sample->status, ['scoring', 'creating_files']) && $sample->client)
                         @include('dashboard.samples.tools')
                     @endif
+                    @if ($sample->profiles)
                     <div class="relative {{$sample->status != 'done' ? 'hidden' : 'dropdown'}}" id="profile-export-menu">
                         <button class="flex items-center px-4 h-8 text-xs text-brand hover:text-white hover:bg-brand border border-brand rounded-full transition dropdown-toggle focus" type="button" id="profile-export" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ __('Exports') }}
@@ -41,9 +41,9 @@
                             @endif
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
-            @endif
         </div>
     </div>
     @if (in_array($sample->status, ['scoring', 'creating_files']))
