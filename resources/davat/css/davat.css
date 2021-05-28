@@ -20,6 +20,7 @@
 @import "utilities/form.css";
 @import "utilities/variable-font.css";
 
+@import "components/select.css";
 @import "components/select2.css";
 @import "components/tabby.css";
 @import "components/heading.css";

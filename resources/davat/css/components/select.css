@@ -1,0 +1,4 @@
+select {
+    @apply pl-8 pr-2 !important;
+    background-position: left 0.5rem center !important;
+}
