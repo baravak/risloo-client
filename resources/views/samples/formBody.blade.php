@@ -20,7 +20,7 @@
                 @include('samples.panel.close')
             </div>
         </div>
-        <div class="lg:flex-shrink-0 lg:w-56 hidden lg:block">
+        <div class="lg:flex-shrink-0 lg:w-56 hidden lg:block mt-4">
             @include('samples.formAside')
         </div>
         <div class="lg:hidden fixed bottom-0 right-0 w-full p-4 bg-white aside-box-shadow">
