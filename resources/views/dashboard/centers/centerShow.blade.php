@@ -22,7 +22,7 @@
             @endisset
 
             @isset ($center->detail->phone_numbers)
-                <div class="flex flex-wrap text-gray-700 text-xs mt-2">
+                <div class="flex flex-wrap text-gray-700 text-xs mt-1">
                     @foreach ($center->detail->phone_numbers ?: [] as $number)
                         <a href="tel:{{ $number }}" class="font-medium ml-3 direct">
                             <i class="fal fa-phone-alt text-sm leading-normal ml-1"></i>
@@ -31,6 +31,12 @@
                     @endforeach
                 </div>
             @endisset
+
+            {{-- <div class="flex items-center text-xs mt-2">
+                <span class="text-yellow-500">{{ __('Awaiting for acceptation') }}</span>
+                <span class="text-red-500">{{ __('Kicked') }}</span>
+                <span class="text-gray-500">{{ __('You are is :position of this cenetr', ['position' => __(ucfirst($center->acceptation->position))]) }}</span>
+            </div> --}}
         </div>
     </div>
     @yield('relationship-detail')
