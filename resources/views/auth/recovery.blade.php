@@ -1,7 +1,7 @@
 @section('auth-form')
     <h2 class="text-center variable-font-bold text-gray-800 mb-4 cursor-default">@lang('Recovery')</h2>
     <div class="mb-4">
-        <input type="text" class="w-full text-sm text-left dir-ltr placeholder-right placeholder-gray-400 border border-gray-300 rounded" id="username" name="username" placeholder="{{ __('Mobile') }}">
+        <input autofocus type="text" class="w-full text-sm text-left dir-ltr placeholder-right placeholder-gray-400 border border-gray-300 rounded" id="username" name="username" placeholder="{{ __('Mobile') }}">
         <div class="flex text-xs text-gray-400 mt-2 cursor-default leading-relaxed">
             <i class="fal fa-info-circle ml-1 mt-0.5"></i>
             <span>@lang('Recovery help')</span>
