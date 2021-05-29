@@ -20,6 +20,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         davat.select2($('.select2-select', this));
         davat.avatar($('.input-avatar', this));
         davat.dropdown($('.dropdown', this));
+        davat.numberFormat($('[data-numberformat]', this));
         $('[data-paymental]', this).on('jresp', JResp.opener)
         $('.magnific-popup', this).magnificPopup({
             type:'image',
@@ -175,6 +176,17 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         $('.metarget, [data-metarget]').removeClass(['active', 'metarget']);
     }
 })();
+
+;(function(){
+    davat.numberFormat = function(elemetns){
+        $(elemetns).each(function(){
+            $(this).on('change keyup', function(){
+                $('#' + $(this).attr('data-numberformat')).text($(this).val() ? $(this).val().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '0');
+            });
+        });
+        elemetns.trigger('change');
+    }
+})(davat);
 
 (function(davat){
     var xhr = undefined;

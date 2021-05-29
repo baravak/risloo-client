@@ -27,7 +27,7 @@ class CenterController extends Controller
     public function request(Request $request, $center)
     {
         $this->data->center = Center::request($center);
-        return $this->view($request, 'dashboard.centers.showButtons');
+        return $this->view($request, 'dashboard.centers.acceptationCallback');
     }
 
     public function create(Request $request)

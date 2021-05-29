@@ -15,11 +15,11 @@
                     </div>
                     <div class="mt-4">
                         <label for="amount" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Amount') }} <span class="text-xs text-gray-500 variable-font-normal">({{ __('Toman') }})</span></label>
-                        <input type="number" name="amount" id="amount" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
-                        {{-- <div class="flex items-center justify-end text-sm text-gray-600 mt-2">
-                            <span class="ml-1">1,000,000</span>
+                        <input type="number" name="amount" id="amount" autocomplete="off" data-numberformat="amout-view" class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus">
+                        <div class="flex items-center justify-end text-sm text-gray-600 mt-2">
+                            <span class="ml-1" id="amout-view">1,000,000</span>
                             <span>@lang('Toman')</span>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
                 <div class="mt-4">

@@ -19,18 +19,5 @@
     <span class="font-medium">{{ __('Edit') }}</span>
 </a>
 @endcan
-
-@can('acceptation', $center)
-<a href="{{route('dashboard.centers.request', $center->id)}}" data-lijax="click" data-method="POST" class="flex justify-center items-center flex-shrink-0 text-white bg-green-600 hover:bg-green-700 w-auto px-8 h-9 rounded-full text-sm leading-normal transition mr-2 spinner">
-    <span class="font-medium">{{ __('Acceptation request') }}</span>
-</a>
-@elseif ($center->acceptation)
-    @if(!$center->acceptation->accepted_at && !$center->acceptation->kicked_at)
-        <span class="text-sm text-yellow-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('Awaiting for acceptation') }}</span>
-    @elseif($center->acceptation->accepted_at && $center->acceptation->kicked_at)
-        <span class="text-xs text-red-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('Kicked') }}</span>
-    @elseif($center->acceptation->accepted_at && !$center->acceptation->kicked_at)
-        <span class="text-xs text-gray-500 flex justify-center items-center px-4 h-9 rounded-full">{{ __('You are is :position of this cenetr', ['position' => __(ucfirst($center->acceptation->position))]) }}</span>
-    @endif
-@endcan
+    @include('dashboard.centers.acceptationButton')
 </div>

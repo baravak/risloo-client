@@ -31,12 +31,7 @@
                     @endforeach
                 </div>
             @endisset
-
-            {{-- <div class="flex items-center text-xs mt-2">
-                <span class="text-yellow-500">{{ __('Awaiting for acceptation') }}</span>
-                <span class="text-red-500">{{ __('Kicked') }}</span>
-                <span class="text-gray-500">{{ __('You are is :position of this cenetr', ['position' => __(ucfirst($center->acceptation->position))]) }}</span>
-            </div> --}}
+            @include('dashboard.centers.acceptation')
         </div>
     </div>
     @yield('relationship-detail')

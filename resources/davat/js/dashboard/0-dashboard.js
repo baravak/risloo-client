@@ -6,6 +6,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         davat.select2($('.select2-select', this));
         davat.avatar($('.input-avatar', this));
         davat.dropdown($('.dropdown', this));
+        davat.numberFormat($('[data-numberformat]', this));
         $('[data-paymental]', this).on('jresp', JResp.opener)
         $('.magnific-popup', this).magnificPopup({
             type:'image',
