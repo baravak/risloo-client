@@ -45,6 +45,7 @@ class ClientReportController extends Controller
         $this->data->case = $case = $report->case;
         if($report->session){
             $this->data->session = $session = $report->session;
+            $this->data->case = $case = $session->case;
         }
         return $this->view($request, 'dashboard.client-reports.create');
     }
