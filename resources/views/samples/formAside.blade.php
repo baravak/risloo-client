@@ -1,13 +1,13 @@
 <div class="sticky top-4">
     <div class="flex">
-        <a id="nav-prev" data-nav-prev class="flex flex-shrink-0 justify-center items-center w-9 h-9 border border-gray-200 rounded disabled direct">
+        <a id="nav-prev" data-nav-prev class="flex flex-shrink-0 justify-center items-center w-9 h-9 border border-gray-200 hover:border-brand transation hover:text-brand rounded disabled direct cursor-pointer">
             <i class="fal fa-chevron-right"></i>
         </a>
 
-        <select id="nav-count" data-nav-count class="flex flex-1 text-xs mx-1 h-9 border border-gray-200 rounded fa-static">
+        <select id="nav-count" data-nav-count class="flex flex-1 text-xs mx-1 h-9 border border-gray-200 hover:border-brand transation hover:text-brand rounded fa-static cursor-pointer">
         </select>
 
-        <a id="nav-next" data-nav-next class="flex flex-shrink-0 justify-center items-center w-9 h-9 border border-gray-200 rounded direct">
+        <a id="nav-next" data-nav-next class="flex flex-shrink-0 justify-center items-center w-9 h-9 border border-gray-200 hover:border-brand transation hover:text-brand rounded direct cursor-pointer">
             <i class="fal fa-chevron-left"></i>
         </a>
     </div>
