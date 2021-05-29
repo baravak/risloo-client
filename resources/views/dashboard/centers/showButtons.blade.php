@@ -1,23 +1,38 @@
-<div class="absolute top-3 left-3 flex" data-xhr="center-button">
+<div class="absolute top-3 left-3 flex items-center dir-ltr" data-xhr="center-button">
 
-@can('viewAny', [App\CenterUser::class, $center])
-<a href="{{ route('dashboard.center.users.index', $center->id) }}" title="{{ __('Users') }}" class="flex justify-center items-center flex-shrink-0 text-brand border border-brand hover:bg-blue-50 w-9 h-9 rounded-full transition">
-    <i class="fal fa-users"></i>
-</a>
-@endcan
-<a href="{{ route('dashboard.center.schedules.index', $center->id) }}" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
-    <span class="font-medium">{{ __('Therapy Schedules') }}</span>
-</a>
-@if (auth()->center($center->id))
-<a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $center->acceptation->id]) }}" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
-    <span class="font-medium">{{ __('My profile') }}</span>
-</a>
-@endif
+    <div class="relative dropdown">
+        <button type="button" class="flex items-center justify-center border border-gray-300 rounded-full h-9 w-9 hover:bg-gray-100 transition text-2xl text-gray-400 focus mr-2 dropdown-toggle">
+            <i class="fal fa-ellipsis-v"></i>
+        </button>
+        <div class="rounded bg-white border border-gray-200 mt-2 shadow-md dropdown-menu min-w-max absolute left-0">
+            @can('viewAny', [App\CenterUser::class, $center])
+                <a href="{{ route('dashboard.center.users.index', $center->id) }}" title="{{ __('Users') }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                    <i class="w-6 text-center fal fa-users pb-1"></i>
+                    <span class="vaiable-font-medium mr-2">@lang('Users')</span>
+                </a>
+            @endcan
 
-@can('update', $center)
-<a href="{{ $center->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 h-9 rounded-full text-sm leading-normal transition mr-2">
-    <span class="font-medium">{{ __('Edit') }}</span>
-</a>
-@endcan
+            <a href="{{ route('dashboard.center.schedules.index', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                <i class="w-6 text-center fal fa-calendar-alt pb-1"></i>
+                <span class="vaiable-font-medium mr-2">@lang('Therapy Schedules')</span>
+            </a>
+
+            @if (auth()->center($center->id))
+                <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $center->acceptation->id]) }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                    <i class="w-6 text-center fal fa-user-circle pb-1"></i>
+                    <span class="vaiable-font-medium mr-2">@lang('My profile')</span>
+                </a>
+            @endif
+
+            @can('update', $center)
+                <a href="{{ $center->route('edit') }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                    <i class="w-6 text-center fal fa-edit pb-1"></i>
+                    <span class="vaiable-font-medium mr-2">@lang('Edit')</span>
+                </a>
+            @endcan
+        </div>
+    </div>
+
     @include('dashboard.centers.acceptationButton')
+
 </div>
