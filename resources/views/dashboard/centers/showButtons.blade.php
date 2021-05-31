@@ -35,4 +35,13 @@
 
     @include('dashboard.centers.acceptationButton')
 
+    {{-- <div class="flex items-center">
+        <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $center->acceptation->id]) }}" class="flex items-center justify-center border border-gray-300 rounded-full h-9 w-9 hover:bg-gray-100 transition text-gray-400 focus mr-2" title="@lang('My profile')" aria-label="@lang('My profile')">
+            <i class="fal fa-user"></i>
+        </a>
+        <a href="{{ route('dashboard.center.schedules.index', $center->id) }}" class="flex justify-center items-center flex-shrink-0 text-brand hover:text-white hover:bg-brand border border-brand w-auto px-4 sm:px-8 h-9 rounded-full text-xs sm:text-sm transition focus">
+            <span class="vaiable-font-medium">@lang('Therapy Schedules')</span>
+        </a>
+    </div> --}}
+
 </div>
