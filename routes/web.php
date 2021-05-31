@@ -11,3 +11,7 @@ Route::post( '/$/{sample}/items', 'SampleFormController@storeItems')->middleware
 Route::put('/$/{sample}/close', 'SampleFormController@close')->middleware('auth')->name('samples.close');
 
 Route::view('/newview', 'davat');
+
+Route::get('/svg', function(){
+    return response(view('svg'))->header('Content-Type', 'image/svg+xml');
+});
