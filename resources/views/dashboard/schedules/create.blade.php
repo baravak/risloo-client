@@ -1,6 +1,9 @@
 @section('form_action'){{ isset($session) ? route('dashboard.sessions.update', $session->id) : route('dashboard.room.schedules.store',$room->id) }}@endsection
 @extends('dashboard.create')
 @section('form_content')
+@isset($session)
+    <input type="hidden" name="change_id" value="{{ $session->change_id }}">
+@endisset
 <div class="mt-4">
     <ul data-tabs>
         <li><a data-tabby-default href="#time-tab" class="focus direct" role="presentation">@lang('Time') </a></li>
