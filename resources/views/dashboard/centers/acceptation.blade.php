@@ -1,6 +1,6 @@
 <div data-xhr="center-acceptation">
     @if ($center->acceptation)
-        <div class="flex items-center text-xs mt-2">
+        <div class="flex items-center text-xs mt-2 cursor-default">
             @if (!$center->acceptation->accepted_at)
                 <span class="text-yellow-500">{{ __('Awaiting for acceptation') }}</span>
             @elseif($center->acceptation->kicked_at)

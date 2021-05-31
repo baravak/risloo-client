@@ -1,7 +1,7 @@
 @extends($layouts->dashboard)
 
 @section('content')
-    <div class="border border-gray-200 rounded-sm overflow-hidden">
+    <div class="border border-gray-200 rounded-sm">
         <div class="h-24 sm:h-44 bg-gradient-to-b from-blue-100 to-white border-b border-gray-200"></div>
         <div class="relative p-4">
             @include('dashboard.centers.showButtons')
