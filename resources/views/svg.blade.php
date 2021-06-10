@@ -13,7 +13,7 @@ $report_text =['احساس گناه کم', "احساس گناه متوسط", "ا
 $item_text =['معیارهای اخلاقی', "حالت گناه", "خصیصه گناه"];
 @endphp
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1006 1446" xml:space="preserve">
+<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1006 1556" xml:space="preserve">
     <style>
         @font-face {
             font-family: 'dana';
@@ -28,7 +28,9 @@ $item_text =['معیارهای اخلاقی', "حالت گناه", "خصیصه �
             <stop offset="100%" stop-color="rgba(255, 255, 255, .1)" stop-opacity="0" />
         </radialGradient>
     </defs>
-    <rect width="1006" height="1446" fill="white" />
+
+
+    <rect width="1006" height="1556" fill="white" />
     <circle cx="502" cy="502" r="{{($total * 501) / 225}}" stroke="none" fill="url(#radGrad)" />
 
     <rect x="{{2 + ($report * 333.5)}}" y="1004" width="334" height="100" fill="#007ba4" rx="15" />
@@ -48,6 +50,9 @@ $item_text =['معیارهای اخلاقی', "حالت گناه", "خصیصه �
     @endforeach
 
     @foreach ($item_text as $text)
-        <text x="{{2 + 167 + (334 * $loop->index)}}" y="1410" font-family="dana" dominant-baseline="middle" text-anchor="middle" font-size="28px">{{$text}}</text>
+        <text x="{{2 + 167 + (334 * $loop->index)}}" y="1420" font-family="dana" dominant-baseline="middle" text-anchor="middle" font-size="28px">{{$text}}</text>
     @endforeach
+
+    <rect width="1002" height="60" x="2" y="1496" fill="#007ba4" />
+    <text x="501" y="1528" font-family="dana" dominant-baseline="middle" text-anchor="middle" font-size="22px" fill="#fff" letter-spacing="15px">WWW.RISLOO.IR</text>
 </svg>
