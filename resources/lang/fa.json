@@ -375,7 +375,9 @@
     "Reports of session" : "گزارشات جلسه",
     "Auth theory sampleLogin" : "ورود به آزمون",
     "Confirm registration" : "تأیید عضویت کاربر",
-    "Registration_awaiting" : "در حال نوبت‌گیری"
-
+    "Registration_awaiting" : "در حال نوبت‌گیری",
+    "Download :item schedule export" : "دریافت فایل برنامه کاری :item",
+    "today" : "امروز",
+    "tomorrow" : "فردا"
 }
 
