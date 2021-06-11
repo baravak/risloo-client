@@ -25,7 +25,7 @@
                 <select class="text-xs text-gray-700 border border-gray-400 rounded-full py-1 px-8" name="position" data-lijax="change" data-action="{{ route('dashboard.center.users.update', ['center'=> $center->id, 'user'=> $user->id]) }}" data-method="PUT" data-xhrBase='row'>
                     @php
                         $positions = ['manager', 'operator', 'client', 'psychologist'];
-                        if(!auth()->isAdmin() && $center->manager->id != auth()->id())
+                        if(!auth()->isAdmin() && $center->manager->user_id != auth()->id())
                         {
                             array_shift($positions);
                             if($center->acceptation->position != 'manager')

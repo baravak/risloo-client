@@ -50,7 +50,7 @@ class RoomPolicy
                 return true;
             }
             if($center->acceptation){
-                if($center->acceptation->accepted_at && !$center->acceptation->kicked_at && in_array($center->acceptation->position, ['operator', 'manager'])){
+                if($center->acceptation->accepted_at && !$center->acceptation->kicked_at && in_array($center->acceptation->position, ['manager'])){
                     return true;
                 }
             }
