@@ -82,10 +82,10 @@ class CenterUserPolicy
     }
     public function kick(User $user, CenterUser $cUser, Center $center){
         if($cUser->id == $center->manager->id) return false;
-        if($user->isAdmin() || $user->centers->whereIn('acceptation.position', ['operator', 'manager'])->where('id', $center->id)->count()){
-            if(!$cUser->kicked_at){
-                return true;
-            }
+        if(!$cUser->kicked_at){
+            if($user->isAdmin() || $center->manager->user_id == $user->id) return true;
+            if($user->centers->where('acceptation.position', 'manager')->where('id', $center->id)->count() && $cUser->position != 'manager') return true;
+            if($user->centers->where('acceptation.position', 'operator')->where('id', $center->id)->count() && $cUser->position == 'client') return true;
         }
         return false;
     }
