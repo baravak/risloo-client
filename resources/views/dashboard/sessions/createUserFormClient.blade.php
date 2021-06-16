@@ -9,6 +9,17 @@
             @endforeach
     </select>
 </div>
+
+<div class="mt-4">
+    <label class="block mb-2 text-sm text-gray-700 font-medium">@lang('محل برگزاری جلسه')</label>
+    <select id="session-place" name="session-place" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus">
+        <option disabled selected>@lang('انتخاب کنید')</option>
+        <option>تماس تلفنی</option>
+        <option>گوگل میت</option>
+        <option>حضور در مرکز</option>
+    </select>
+</div>
+
 @if ($session->type == 'selective')
     <div class="mt-4">
         <label for="session_type" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع جلسه')</label>
