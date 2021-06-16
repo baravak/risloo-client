@@ -2,7 +2,7 @@
     <div class="p-4 border border-gray-300 rounded">
         <div class="flex justify-end items-center mb-4">
             <div class="relative inline-block w-8 mr-2 align-middle select-none transition ease-in-out duration-700">
-                <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                <input checked type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
                 <label for="toggle" class="toggle-label block overflow-hidden h-4 rounded-full bg-gray-300 cursor-pointer"></label>
             </div>
         </div>
@@ -24,6 +24,12 @@
                     <option value="">متن</option>
                 </select>
             </div>
+        </div>
+        <div class="mt-4">
+            <label class="inline-flex items-start group">
+                <input type="checkbox" name="default" id="default" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
+                <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600">@lang('به صورت پیشفرض برای اتاق درمان و جلسه درمانی فعال باشد.')</span>
+            </label>
         </div>
     </div>
 

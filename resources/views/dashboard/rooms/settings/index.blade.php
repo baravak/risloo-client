@@ -5,7 +5,7 @@
             <li><a href="#sessions-seetings" data-tabby-default class="direct focus flex" title="{{ __('Sessions Settings') }}">{{ __('Sessions Settings') }}</a></li>
         </ul>
         <div id="sessions-seetings">
-            @include('dashboard.centers.settings.sessionsSettings')
+            @include('dashboard.rooms.settings.sessionsSettings')
         </div>
     </div>
 @endsection

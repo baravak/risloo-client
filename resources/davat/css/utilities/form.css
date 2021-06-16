@@ -15,5 +15,5 @@
 }
 
 .toggle-checkbox:checked:hover, .toggle-checkbox:checked:focus {
-    @apply bg-green-600;
+    @apply bg-greذen-600;
 }
