@@ -1,10 +1,10 @@
-@extends('dashboard.create')
-@section('form-tag')
+@extends($layouts->dashboard)
+@section('content')
     <div class="mx-auto w-full sm:w-1/2">
         <ul data-tabs>
-            <li><a href="#sessions-seetings" data-tabby-default class="direct focus flex" title="{{ __('Sessions Settings') }}">{{ __('Sessions Settings') }}</a></li>
+            <li><a href="#sessions-platforms" data-tabby-default class="direct focus flex" title="{{ __('Sessions Settings') }}">{{ __('Sessions Settings') }}</a></li>
         </ul>
-        <div id="sessions-seetings">
+        <div id="sessions-platforms">
             @include('dashboard.centers.settings.sessionsSettings')
         </div>
     </div>
