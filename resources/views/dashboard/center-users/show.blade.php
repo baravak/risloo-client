@@ -13,7 +13,6 @@
             </div>
 
             <h2 class="font-bold text-lg text-gray-900 cursor-default">@displayName($user)</h2>
-
             @if ($user->mobile)
                 <div class="flex flex-wrap items-center mt-2">
                     <div class="inline-flex items-center text-gray-500 mb-2 sm:mb-0 ml-6">
@@ -22,6 +21,9 @@
                     </div>
                 </div>
             @endif
+            @can('update', $user)
+                <a  class="inline-block mr-2 text-sm leading-relaxed text-gray-600 hover:text-blue-600" href="{{ route('dashboard.center.users.edit', ['center' => $center->id, 'user' => $user->id]) }}" alt="ویرایش"><i class="fal fa-edit "></i> @lang('Edit user')</a>
+            @endcan
         </div>
     </div>
 

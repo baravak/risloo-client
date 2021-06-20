@@ -44,7 +44,7 @@
         </div>
         @endcan
 </div>
-<div class="grid grdi-cols-1 sm:grid-cols-3 gap-4 mt-2 border border-gray-300 rounded p-4">
+{{-- <div class="grid grdi-cols-1 sm:grid-cols-3 gap-4 mt-2 border border-gray-300 rounded p-4">
     <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 sm:border-l border-gray-200">
         <div class="text-xs text-gray-400">نوع جلسه</div>
         <div class="text-sm text-gray-600 variable-font-medium mt-2">@lang($session->type)</div>
@@ -57,11 +57,15 @@
         <div class="text-xs text-gray-400">نوع پرداخت</div>
         <div class="text-sm text-gray-600 variable-font-medium mt-2">@lang($session->payment_status)</div>
     </div>
-</div>
+</div> --}}
 <div class="grid grdi-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-2 border border-gray-300 rounded p-4">
-    <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 sm:border-l border-gray-200">
+    {{-- <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 sm:border-l border-gray-200">
         <div class="text-xs text-gray-400">نوع انتخاب مراجع</div>
         <div class="text-sm text-gray-600 variable-font-medium mt-2">@lang($session->selection_type)</div>
+    </div> --}}
+    <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 xl:border-l border-gray-200">
+        <div class="text-xs text-gray-400">نوع پرداخت</div>
+        <div class="text-sm text-gray-600 variable-font-medium mt-2">@lang($session->payment_status)</div>
     </div>
     <div class="cursor-default text-center border-b sm:border-b-0 pb-4 sm:pb-0 xl:border-l border-gray-200">
         <div class="text-xs text-gray-400">نوع مراجعین درخواست دهنده</div>

@@ -10,4 +10,11 @@ class SessionPlatform extends API
         $model = new static;
         return $model->execute(sprintf($model->endpointPath, $center) ."/$id", $params, 'put');
     }
+
+    public static function apiShow($center, $id, array $params = [])
+    {
+        $model = new static;
+        return $model->execute(sprintf($model->endpointPath, $center) ."/$id", $params, 'get');
+    }
+
 }

@@ -14,6 +14,8 @@ class User extends _User
         $this->with['cases'] = TherapyCase::class;
         $this->with['samples'] = SampleSummary::class;
         $this->with['treasuries'] = Treasury::class;
+        $this->with['session_platform'] = SessionPlatform::class;
+
         parent::__construct(...func_get_args());
     }
 

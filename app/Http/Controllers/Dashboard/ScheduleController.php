@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Cache;
 
 class ScheduleController extends Controller
 {
-    public function create(Request $request,Room $room){
+    public function create(Request $request,$room){
+        $room = Room::apiShow($room, ['session_platforms' => true]);
         $this->authorize('create', [Schedule::class, $room]);
         $this->data->room = $room;
         $this->data->center = $room->center;

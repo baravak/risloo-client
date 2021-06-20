@@ -82,10 +82,15 @@ Route::get('client-report/{report}', 'ClientReportController@show')->name('clien
 Route::get('client-report/{report}/edit', 'ClientReportController@edit')->name('client-reports.edit');
 Route::match(['put', 'patch'],'client-report/{report}', 'ClientReportController@update')->name('client-reports.update');
 
-Route::get('centers/{center}/settings/session-platforms', 'SessionPlatformController@center')->name('center.setting.session-platforms.center');
+Route::get('centers/{center}/settings/session-platforms', 'SessionPlatformController@center')->name('center.setting.session-platforms');
 Route::get('centers/{center}/settings/session-platforms/create', 'SessionPlatformController@create')->name('center.setting.session-platforms.create');
+Route::get('centers/{center}/settings/session-platforms/{platform}/edit', 'SessionPlatformController@edit')->name('center.setting.session-platforms.edit');
 Route::post('centers/{center}/settings/session-platforms', 'SessionPlatformController@store')->name('center.setting.session-platforms.store');
 Route::put('centers/{center}/settings/session-platforms/{platform}', 'SessionPlatformController@update')->name('center.setting.session-platforms.update');
+
+
+Route::get('rooms/{room}/settings/session-platforms', 'SessionPlatformController@room')->name('room.setting.session-platforms');
+Route::put('rooms/{room}/settings/session-platforms/{platform}', 'SessionPlatformController@roomUpdate')->name('room.setting.session-platforms.update');
 
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');

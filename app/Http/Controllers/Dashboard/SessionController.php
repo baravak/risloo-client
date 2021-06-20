@@ -37,8 +37,9 @@ class SessionController extends Controller
         return $this->view($request, 'dashboard.sessions.create');
     }
 
-    public function edit(Request $request, Session $session)
+    public function edit(Request $request, $session)
     {
+        $session = Session::apiShow($session, ['session_platforms' => true]);
         $this->data->global->title = __('Edit session');
         $this->authorize('dashboard.sessions.update', [$session]);
 

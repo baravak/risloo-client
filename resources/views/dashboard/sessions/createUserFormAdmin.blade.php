@@ -9,6 +9,17 @@
             @endforeach
     </select>
 </div>
+<div class="mt-4">
+    <label class="block mb-2 text-sm text-gray-700 font-medium">@lang('محل برگزاری جلسه')</label>
+    <select id="session_platform" name="session_platform" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus">
+        @if ($session->session_platforms->count() > 1)
+            <option disabled selected>@lang('انتخاب کنید')</option>
+        @endif
+        @foreach ($session->session_platforms as $platform)
+            <option value="{{ $platform->id }}">{{ $platform->title }} (@lang($platform->type))</option>
+        @endforeach
+    </select>
+</div>
 @isset($case)
 <div class="mt-4">
     <h3 class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Select client') }}</h3>

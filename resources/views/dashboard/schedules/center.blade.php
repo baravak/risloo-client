@@ -62,19 +62,29 @@
                                         </div>
                                     </div>
                                 @endif
-
                                 <div class="mt-4">
                                     <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
                                     <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
                                         <div class="inline text-xs text-gray-500">
-                                            @foreach ($schedule->fields as $field)
-                                                <span title="@lang('amount :amount Toman', ['amount' => $field->amount])">{{ $field->title }}</span>
+                                            @foreach ($schedule->clients && $schedule->clients->count() ? $schedule->clients->pluck('field')->unique() : $schedule->fields as $field)
+                                                <span title="@lang('amount :amount Toman', ['amount' => isset($field->amount) ? $field->amount : 0])">{{ $field->title }}</span>
                                                 @if (!$loop->last)
                                                     <span class="mx-1">|</span>
                                                 @endif
                                             @endforeach
                                         </div>
                                     </div>
+                                </div>
+                                <div class="mt-4">
+                                    <span class="text-xs variable-font-medium text-gray-600 mb-2">مکان‌های برگزاری جلسه:</span>
+                                        <div class="inline text-xs text-gray-500">
+                                            @foreach ($schedule->clients && $schedule->clients->count() ? $schedule->clients->pluck('session_platform')->unique() : $schedule->session_platforms as $platform)
+                                                <span >{{ isset($platform->title) ? $platform->title : '' }}</span>
+                                                @if (!$loop->last)
+                                                    <span class="mx-1">|</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
                                 </div>
                             </div>
                         </div>

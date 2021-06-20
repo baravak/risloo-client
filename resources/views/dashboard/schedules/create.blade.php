@@ -11,7 +11,7 @@
             <li><a href="#clients-tab" class="focus direct" role="presentation">@lang('Clients')</a></li>
         @endif
         <li><a href="#session-tab" class="focus direct" role="presentation">@lang('Session')</a></li>
-        <li><a href="#session-place" class="focus direct" role="presentation">@lang('Sessions place')</a></li>
+        <li><a href="#platform" class="focus direct" role="presentation">@lang('Sessions place')</a></li>
         <li><a href="#payment-tab" class="focus direct" role="presentation">@lang('Payment')</a></li>
     </ul>
 </div>
@@ -31,8 +31,8 @@
     @include('dashboard.schedules.create.session')
 </div>
 
-<div id="session-place">
-    @include('dashboard.schedules.create.place')
+<div id="platform">
+    @include('dashboard.schedules.create.platform')
 </div>
 
 <div id="payment-tab">

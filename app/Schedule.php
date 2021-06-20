@@ -18,9 +18,11 @@ class Schedule extends API
     ];
     public $with = [
         'client' => User::class,
+        'clients' => User::class,
         'case' => TherapyCase::class,
         'room' => Room::class,
         'fields' => Field::class,
+        'session_platforms' => SessionPlatform::class
     ];
     public static function apiStore($room, array $params = [])
     {

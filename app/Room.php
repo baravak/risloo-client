@@ -9,6 +9,7 @@ class Room extends API
         'creator' => User::class,
         'center' => Center::class,
         'acceptation' => RoomUser::class,
+        'session_platforms' => SessionPlatformRoom::class
     ];
 
     public $filterWith = [

@@ -11,7 +11,7 @@
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Problem') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Description') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Field') }}</th>
-                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Type') }}</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('بستر') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Case') }}</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
                         </tr>
@@ -26,7 +26,7 @@
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
-                                        <a href="#" class="text-xs text-gray-600 hover:text-blue-600 transition">{{ $user->name }}</a>
+                                        <a href="{{ route('dashboard.center.users.show', [$center->id, $user->id]) }}" class="text-xs text-gray-600 hover:text-blue-600 transition">{{ $user->name }}</a>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
@@ -56,7 +56,7 @@
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
-                                        <span class="text-xs text-gray-600">@lang($user->session_type ?: '-')</span>
+                                        <span class="text-xs text-gray-600">{{ $user->session_platform ? $user->session_platform->title : '-' }}</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
@@ -74,7 +74,9 @@
                                             </select>
                                             <span class="spinner relative"></span>
                                         @else
-                                        @lang($user->position)
+                                        <span class="text-xs text-gray-700 py-1 px-8">
+                                            @lang($user->position)
+                                        </span>
                                         @endcan
                                     </div>
                                 </td>
