@@ -21,6 +21,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         davat.avatar($('.input-avatar', this));
         davat.dropdown($('.dropdown', this));
         davat.numberFormat($('[data-numberformat]', this));
+        $('[data-autosubmit]', this).trigger('submit');
         $('[data-paymental]', this).on('jresp', JResp.opener)
         $('.magnific-popup', this).magnificPopup({
             type:'image',
@@ -330,14 +331,14 @@ $(document).on('tabby', function(e){
     $(e.detail.content).trigger('tabby.show');
 });
 
-$('body').on('statio:auth:theory:payment', function () {
-    if($('#payment-status').val() == 'success' && opener){
-        if(opener.PaymentSuccess){
-            opener.PaymentSuccess();
-        }
-        window.close();
-    }
-});
+// $('body').on('statio:auth:theory:payment', function () {
+//     if($('#payment-status').val() == 'success' && opener){
+//         if(opener.PaymentSuccess){
+//             opener.PaymentSuccess();
+//         }
+//         window.close();
+//     }
+// });
 
 $('body').on('statio:dashboard:cases:show', function () {
     $('.sample-record').hover(function(){

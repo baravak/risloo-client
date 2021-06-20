@@ -7,6 +7,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         davat.avatar($('.input-avatar', this));
         davat.dropdown($('.dropdown', this));
         davat.numberFormat($('[data-numberformat]', this));
+        $('[data-autosubmit]', this).trigger('submit');
         $('[data-paymental]', this).on('jresp', JResp.opener)
         $('.magnific-popup', this).magnificPopup({
             type:'image',

@@ -7,7 +7,9 @@ use App\Schedule;
 use App\TherapyCase;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\URL;
 
 class ScheduleController extends Controller
 {
@@ -20,8 +22,8 @@ class ScheduleController extends Controller
     }
 
     public function show(Request $request, Schedule $schedule){
-        if(Cache::get($request->payment)){
-            $this->data->callbackPayment = (object) Cache::get($request->payment)['request'];
+        if(Cache::get($request->payment_id)){
+            $this->data->callbackPayment = (object) (Cache::get($request->payment_id)['data']);
         }
         $this->data->session = $schedule;
         if($schedule->parentModel instanceof Room){
@@ -41,11 +43,18 @@ class ScheduleController extends Controller
             ]);
         } catch (\App\Exceptions\APIException $th) {
             if($th->response()->message == 'POVERTY'){
+                $fill = [
+                    'url' => request()->create(url()->previous(), 'GET', ['payment_id' => $th->response()->payment->authorized_key])->getUri(),
+                    'data' => $request->all()
+                ];
+                Cache::put($th->response()->payment->authorized_key, $fill, 300);
                 return response()->json([
                     'is_ok' => true,
                     'message' => $th->response()->message,
                     'message_text' => $th->response()->message_text,
-                    'window_open' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key])
+                    'redirect' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key]),
+                    'direct' => true
+                    // 'window_open' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key])
                 ]);
             }else{
                 throw $th;

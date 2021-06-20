@@ -5,7 +5,7 @@
         <option></option>
         @endif
             @foreach ($session->fields as $field)
-                <option value="{{ $field->id }}" @formValue($callbackPayment->field)>{{ $field->title }} | @lang(':amount T', ['amount' => $field->amount])</option>
+                <option @selectChecked($callbackPayment->field, $field->id) value="{{ $field->id }}" @formValue($callbackPayment->field)>{{ $field->title }} | @lang(':amount T', ['amount' => $field->amount])</option>
             @endforeach
     </select>
 </div>
@@ -17,7 +17,7 @@
             <option disabled selected>@lang('انتخاب کنید')</option>
         @endif
         @foreach ($session->session_platforms as $platform)
-            <option value="{{ $platform->id }}">{{ $platform->title }} (@lang($platform->type))</option>
+            <option value="{{ $platform->id }}" @selectChecked($callbackPayment->session_platform, $platform->id)>{{ $platform->title }} (@lang($platform->type))</option>
         @endforeach
     </select>
 </div>
@@ -27,6 +27,9 @@
     <div class="mt-4">
         <label class="block mb-2 text-sm text-gray-700 font-medium">انتخاب پرونده</label>
         <select class="select2-select"  id="case_id" name="case_id" data-url="{{ route('dashboard.cases.index', ['room' => $room->id, 'instance' => 1]) }}" data-allow-clear="true" data-placeholder="@lang('Search')">
+            @if (isset($callbackPayment->case_id))
+                <option value="{{ $callbackPayment->case_id }}" selected>{{ $callbackPayment->case_id }}</option>
+            @endif
         </select>
         <div class="flex text-xs text-gray-400 mt-2">
             <i class="fal fa-info-circle ml-1"></i>
@@ -36,7 +39,7 @@
 @else
 <div class="mt-4">
     <label for="nickname" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('DisplayName')</label>
-    <input type="text" id="nickname" name="nickname" value="{{ auth()->user()->name }}" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+    <input type="text" @formValue($callbackPayment->nickname) id="nickname" name="nickname" value="{{ auth()->user()->name }}" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
     <div class="flex text-xs text-gray-400 mt-2">
         <i class="fal fa-info-circle ml-1"></i>
         <span>شما عضو این مرکز درمانی نیستید، پس از درخواست، عضو این مرکز خواهید شد؛ ما شما را با آن نامی که وارد می‌کنید به مرکز معرفی خواهیم کرد</span>

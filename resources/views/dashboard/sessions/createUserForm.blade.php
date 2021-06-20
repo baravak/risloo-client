@@ -1,5 +1,5 @@
 <div class="m-auto w-full md:w-1/2 mt-4">
-    <form class="w-full" data-paymental method="POST" action="{{ route($session->status =='registration_awaiting' ? 'dashboard.schedules.booking' : 'dashboard.session.users.store', $session->id) }}">
+    <form class="w-full" data-paymental method="POST" action="{{ route($session->status =='registration_awaiting' ? 'dashboard.schedules.booking' : 'dashboard.session.users.store', $session->id) }}" {{ isset($callbackPayment) ? 'data-autosubmit' : '' }}>
         @method('POST')
         <div class="border border-gray-300 rounded p-4">
             @can('admin', $room)
