@@ -1,11 +1,11 @@
 <div class="flex items-center justify-between mt-8">
     @if (config('app.env') == 'local')
     <div class="relative dropdown">
-        <button role="button" class="schedules-filter-active text-sm text-gray-500 border border-gray-500 rounded-full h-8 px-4 hover:bg-gray-100 transition focus-current ring-gray-500 dropdown-toggle" data-toggle="dropdownx" aria-haspopup="true">
+        <button role="button" class="schedules-filter-active text-sm text-gray-500 border border-gray-500 rounded-full h-8 w-8 sm:w-auto sm:px-4 hover:bg-gray-100 transition focus-current ring-gray-500 dropdown-toggle" data-toggle="dropdownx" aria-haspopup="true">
             <i class="fal fa-filter relative top-0.5"></i>
-            <span class="mr-1">@lang('فیلتر')</span>
+            <span class="mr-1 hidden sm:inline-flex">@lang('فیلتر')</span>
         </button>
-        <div class="rounded bg-white border border-gray-200 mt-2 shadow-md dropdown-menu min-w-64 absolute p-4 right-4">
+        <div class="rounded bg-white border border-gray-200 mt-2 shadow-md dropdown-menu min-w-64 absolute p-4 right:0 sm:right-4">
             <div>
                 <span class="text-sm text-gray-600 variable-font-medium cursor-default">بر اساس اتاق درمان</span>
                 <div class="border border-gray-200 rounded bg-white mt-2 p-2 overflow-y-auto max-h-28">
@@ -78,24 +78,24 @@
     </div>
 </div>
 @if (config('app.env') == 'local')
-<div class="flex items-center mt-4">
-    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2">
+<div class="flex items-center flex-wrap mt-4">
+    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
         <span class="text-xs text-gray-800 ml-2 cursor-default">محمدحسن صالحی</span>
         <button class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></button>
     </div>
-    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2">
+    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
         <span class="text-xs text-gray-800 ml-2 cursor-default">محمدعلی نخلی</span>
         <button class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></button>
     </div>
-    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2">
+    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
         <span class="text-xs text-gray-800 ml-2 cursor-default">زهرا سادات گل محمدی</span>
         <button class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></button>
     </div>
-    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2">
+    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
         <span class="text-xs text-gray-800 ml-2 cursor-default">عباسعلی غلامرضایی حسینعلی نژاد</span>
         <button class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></button>
     </div>
-    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2">
+    <div class="flex items-center bg-blue-100 px-2 h-7 rounded ml-2 mt-2">
         <span class="text-xs text-gray-800 ml-2 cursor-default">در حال نوبت گیری</span>
         <button class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></button>
     </div>
