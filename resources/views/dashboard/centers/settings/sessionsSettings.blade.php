@@ -66,7 +66,7 @@
 
         <a href="{{ route('dashboard.center.setting.session-platforms.create', $center->id) }}" class="border border-green-600 border-dashed p-4 rounded mt-4 flex items-center justify-center flex-col text-green-600 hover:bg-green-50 transition focus-current ring-green-600">
             <i class="fal fa-plus"></i>
-            <span class="text-sm mt-1">افزودن محل برگزاری جدید</span>
+            <span class="text-sm mt-1">@lang('افزودن محل برگزاری جدید')</span>
         </a>
     </div>
 </div>

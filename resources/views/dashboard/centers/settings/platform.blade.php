@@ -16,15 +16,19 @@
         @if ($platform->identifier)
             <div class="mb-3">
                 @if ($platform->identifier_type =='phone')
-                    <a href="tel:{{ $platform->identifier }}" class="flex items-center text-sm text-gray-600 hover:text-blue-600 transition">
-                        <i class="fal fa-phone ml-2"></i>
-                        <span class="underline">{{ $platform->identifier }}</span>
-                    </a>
-                    @elseif($platform->identifier_type =='uri')
-                        <a href="{{ $platform->identifier }}" class="flex items-center text-sm text-gray-600 hover:text-blue-600 transition">
-                            <i class="fal fa-link ml-2"></i>
+                    <div class="text-left dir-ltr">
+                        <a href="tel:{{ $platform->identifier }}" class="inline-flex items-center text-sm text-gray-600 hover:text-blue-600 transition">
+                            <i class="fal fa-phone mr-2"></i>
                             <span class="underline">{{ $platform->identifier }}</span>
                         </a>
+                    </div>
+                    @elseif($platform->identifier_type =='uri')
+                        <div class="text-left dir-ltr">
+                            <a href="{{ $platform->identifier }}" class="inline-flex items-center text-sm text-gray-600 hover:text-blue-600 transition">
+                                <i class="fal fa-link mr-2"></i>
+                                <span class="underline">{{ $platform->identifier }}</span>
+                            </a>
+                        </div>
                     @else
                         <div class="flex items-center text-sm text-gray-500 cursor-default">
                             <i class="fal fa-file-alt ml-2 pb-1"></i>

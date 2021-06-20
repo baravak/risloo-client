@@ -382,6 +382,9 @@
     "Sessions Settings" : "محل برگزاری جلسات درمانی",
     "Sessions place" : "محل برگزاری",
     "Settings" : "تنظیمات",
-    "client" : "مراجع"
+    "client" : "مراجع",
+    "virtual" : "مجازی",
+    "Edit session-platform" : "ویرایش",
+    "Create session-platform" : "ایجاد"
 }
 

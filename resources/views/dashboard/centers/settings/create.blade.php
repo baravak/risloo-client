@@ -14,12 +14,12 @@
                 <input type="text" name="title" id="title" @formValue($platform->title) placeholder="@lang('Title')" class="flex-1 border border-gray-500 h-10 rounded px-4 pl-32 w-full text-sm focus:border-brand focus placeholder-gray-400">
                 <select name="type" id="type" class="absolute left-1 top-1 bg-gray-100 border-gray-100 h-8 rounded text-xs focus:ring-1 focus:ring-offset-0 w-28">
                     <option disabled selected>نوع جلسه</option>
-                    <option value="face-to-face" @selectChecked($platform->type, 'face-to-face')>حضوری</option>
-                    <option value="virtual" @selectChecked($platform->type, 'virtual')>غیرحضوری</option>
+                    <option value="face-to-face" @selectChecked($platform->type, 'face-to-face')>@lang('face_to_face')</option>
+                    <option value="virtual" @selectChecked($platform->type, 'virtual')>@lang('virtual')</option>
                 </select>
             </div>
             <div class="flex relative">
-                <input type="text" name="identifier" id="identifier" @formValue($platform->identifier) placeholder="آدرس اینترنتی، شماره تماس یا متن را وارد نمایید" class="flex-1 border border-gray-500 h-10 rounded px-4 pl-32 w-full text-sm focus:border-brand focus placeholder-gray-400">
+                <input type="text" name="identifier" id="identifier" @formValue($platform->identifier) placeholder="آدرس اینترنتی، شماره تماس یا متن را وارد نمایید" class="flex-1 border border-gray-500 h-10 rounded px-4 pl-32 w-full text-sm focus:border-brand focus placeholder-gray-400 text-left dir-ltr placeholder-right">
                 <select name="identifier_type" id="identifier_type" class="absolute left-1 top-1 bg-gray-100 border-gray-100 h-8 rounded text-xs focus:ring-1 focus:ring-offset-0 w-28">
                     <option disabled selected>نوع مقدار</option>
                     <option value="uri" @selectChecked($platform->identifier_type, 'uri')>آدرس اینترنتی</option>
