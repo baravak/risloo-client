@@ -1,5 +1,5 @@
 @isset($session)
-    @foreach ($session->session_platforms as $sPlatform)
+    @foreach ($session->session_platforms ?: [] as $sPlatform)
     @php
         $platform = $room->session_platforms->where('id', $sPlatform->id)->first();
     @endphp
@@ -26,7 +26,7 @@
 @endisset
 @foreach ($room->session_platforms as $platform)
 @php
-    if(isset($session) && $session->session_platforms->where('id', $platform->id)->first()) continue;
+    if(isset($session) && $session->session_platforms && $session->session_platforms->where('id', $platform->id)->first()) continue;
 @endphp
 <div class="bg-gray-50 p-4 rounded mb-2 platform-card">
         <div class="flex justify-between items-center mb-4">

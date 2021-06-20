@@ -78,7 +78,7 @@
                                 <div class="mt-4">
                                     <span class="text-xs variable-font-medium text-gray-600 mb-2">مکان‌های برگزاری جلسه:</span>
                                         <div class="inline text-xs text-gray-500">
-                                            @foreach ($schedule->clients && $schedule->clients->count() ? $schedule->clients->pluck('session_platform')->unique() : $schedule->session_platforms as $platform)
+                                            @foreach ($schedule->clients && $schedule->clients->count() ? $schedule->clients->pluck('session_platform')->unique() : ($schedule->session_platforms ?: []) as $platform)
                                                 <span >{{ isset($platform->title) ? $platform->title : '' }}</span>
                                                 @if (!$loop->last)
                                                     <span class="mx-1">|</span>
