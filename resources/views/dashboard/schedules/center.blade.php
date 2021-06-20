@@ -15,7 +15,11 @@
         <div>
             @foreach ($weeks as $key => $day)
             <div id="{{ $key }}">
-                {{-- <div class="text-sm text-center text-gray-400 pb-8 pt-14">برنامه درمانی‌ای برای این روز تعریف نشده است.</div> --}}
+
+                @if (config('app.env') == 'local')
+                    <div class="text-sm text-center text-gray-400 pb-8 pt-14">برنامه درمانی‌ای برای این روز تعریف نشده است.</div>
+                @endif
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">
                     @foreach ($schedules->where('started_at', '>=', $day)->where('started_at', '<=', (clone $day)->endOfDay()) as $schedule)
                     <a href="{{ $schedule->status == 'registration_awaiting' ? route('dashboard.schedules.show', $schedule->id) : route('dashboard.sessions.show', $schedule->id) }}" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
@@ -94,108 +98,6 @@
                         </div>
                     </a>
                     @endforeach
-                    {{-- <a href="#" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
-                        <div>
-                            <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت 12:30</span></div>
-                            <div class="p-3">
-                                <div class="flex items-center mb-4">
-                                    <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
-                                        <span>ف‌م</span>
-                                    </div>
-                                    <div class="text-xs variable-font-medium text-gray-600 mr-2">
-                                        <span>فاطمه مدنی</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center text-xs text-gray-500">
-                                    <i class="fal fa-folder ml-2"></i>
-                                    <span>پرونده RS966669Y</span>
-                                </div>
-                                <div class="flex items-center text-xs text-gray-500 mt-2">
-                                    <i class="fal fa-clock ml-2"></i>
-                                    <span>40 دقیقه</span>
-                                </div>
-                                <div class="flex items-center text-xs text-gray-500 mt-2">
-                                    <i class="fal fa-user-friends ml-2"></i>
-                                    <span>7</span>
-                                </div>
-
-                                <div class="mt-4">
-                                    <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
-                                    <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
-                                        <div class="inline text-xs text-gray-500">
-                                            <span>درمان وسواس</span>
-                                            <span class="mx-1">|</span>
-                                            <span>زوج درمانی</span>
-                                            <span class="mx-1">|</span>
-                                            <span>مشاوره پیش از ازدواج</span>
-                                            <span class="mx-1">|</span>
-                                            <span>خانواده درمانی</span>
-                                            <span class="mx-1">|</span>
-                                            <span>افسردگی مزمن</span>
-                                            <span class="mx-1">|</span>
-                                            <span>زوج درمانی</span>
-                                            <span class="mx-1">|</span>
-                                            <span>مشاوره پیش از ازدواج</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center text-xs text-gray-500 px-3 pt-1 pb-3">
-                            <span></span>
-                            <span>در انتظار تشکیل جلسه</span>
-                        </div>
-                    </a>
-                    <a href="#" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus opacity-60 bg-gray-50">
-                        <div>
-                            <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت 12:30</span></div>
-                            <div class="p-3">
-                                <div class="flex items-center mb-4">
-                                    <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
-                                        <span>ف‌م</span>
-                                    </div>
-                                    <div class="text-xs variable-font-medium text-gray-600 mr-2">
-                                        <span>فاطمه مدنی</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center text-xs text-gray-500">
-                                    <i class="fal fa-folder ml-2"></i>
-                                    <span>پرونده RS966669Y</span>
-                                </div>
-                                <div class="flex items-center text-xs text-gray-500 mt-2">
-                                    <i class="fal fa-clock ml-2"></i>
-                                    <span>40 دقیقه</span>
-                                </div>
-                                <div class="flex items-center text-xs text-gray-500 mt-2">
-                                    <i class="fal fa-user-friends ml-2"></i>
-                                    <span>7</span>
-                                </div>
-
-                                <div class="mt-4">
-                                    <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
-                                    <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
-                                        <div class="inline text-xs text-gray-500">
-                                            <span>درمان وسواس</span>
-                                            <span class="mx-1">|</span>
-                                            <span>زوج درمانی</span>
-                                            <span class="mx-1">|</span>
-                                            <span>مشاوره پیش از ازدواج</span>
-                                            <span class="mx-1">|</span>
-                                            <span>خانواده درمانی</span>
-                                            <span class="mx-1">|</span>
-                                            <span>افسردگی مزمن</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center text-xs text-gray-500 px-3 pt-1 pb-3">
-                            <span>گروهی</span>
-                            <span>بسته شده</span>
-                        </div>
-                    </a> --}}
                 </div>
             </div>
             @endforeach

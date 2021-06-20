@@ -41,3 +41,15 @@
         @apply bg-gray-100 text-gray-600 !important;
     }
 }
+
+.schedules-filter-active {
+    @apply bg-gray-100 !important;
+}
+
+.schedules-filter-active .fa-filter {
+    font-weight: 900 !important;
+}
+
+.schedules-filter-active span {
+    @apply variable-font-medium !important;
+}

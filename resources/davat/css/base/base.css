@@ -46,5 +46,9 @@ th {
         .underline {
             text-underline-offset: 0.25rem;
         }
+
+        .min-w-64 {
+            min-width: 16rem;
+        }
     }
 }
