@@ -44,6 +44,9 @@
             </div>
         </section>
     </main>
+    <footer>
+        <div class="bg-brand flex items-center justify-center w-full py-2 px-4 text-center text-sm text-white">© تمامی حقوق این وب‌سایت متعلق به شرکت ریس اعتماد ایرانیان می‌باشد.</div>
+    </footer>
 </body>
 
 </html>
