@@ -55,8 +55,21 @@
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
-                                    <div class="flex items-center cursor-default">
-                                        <span class="text-xs text-gray-600">{{ $user->session_platform ? $user->session_platform->title : '-' }}</span>
+                                    @can('update', $session)
+                                            <select class="text-xs text-gray-700 border border-gray-400 rounded-full py-1 px-8" name="session_platform" data-lijax="change" data-action="{{ route('dashboard.session.users.update', ['session' => $session->id, 'user'=> $user->id]) }}" data-method="PUT">
+                                                @if (!$user->session_platform)
+                                                <option disabled selected>----</option>
+                                                @endif
+                                                @foreach ($session->available_session_platforms as $item)
+                                                    <option value="{{ $item->id }}" @selectChecked($user->session_platform->id, $item->id)>{{ $item->title }}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="spinner relative"></span>
+                                        @else
+                                        <div class="flex items-center cursor-default">
+                                            <span class="text-xs text-gray-600">{{ $user->session_platform ? $user->session_platform->title : '-' }}</span>
+                                        </div>
+                                        @endcan
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">

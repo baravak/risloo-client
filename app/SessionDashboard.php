@@ -13,7 +13,8 @@ class SessionDashboard extends Session
         'fields' => Field::class,
         'clients' => User::class,
         'transactions' => PublicTransaction::class,
-        'session_platforms' => SessionPlatform::class
+        'session_platforms' => SessionPlatform::class,
+        'available_session_platforms' => SessionPlatform::class,
 
     ];
     public function parentClass($parent){

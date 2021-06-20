@@ -10,7 +10,7 @@ class Session extends API
         'case' => TherapyCase::class,
         'room' => Room::class,
         'fields' => Field::class,
-        'session_platforms' => SessionPlatform::class
+        'session_platforms' => SessionPlatform::class,
     ];
     protected $casts = [
         'started_at' => 'datetime',
