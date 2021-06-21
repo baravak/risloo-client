@@ -30,12 +30,12 @@
                         <i class="w-6 text-center fal fa-edit pb-1"></i>
                         <span class="vaiable-font-medium mr-2">@lang('Edit')</span>
                     </a>
+                    <a href="{{ route('dashboard.center.setting.session-platforms', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                        <i class="w-6 text-center fal fa-cog pb-1"></i>
+                        <span class="vaiable-font-medium mr-2">@lang('Settings')</span>
+                    </a>
                 @endcan
 
-                <a href="{{ route('dashboard.center.setting.session-platforms', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                    <i class="w-6 text-center fal fa-cog pb-1"></i>
-                    <span class="vaiable-font-medium mr-2">@lang('Settings')</span>
-                </a>
             </div>
         </div>
     @endif
