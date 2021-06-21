@@ -62,8 +62,8 @@ class ScheduleController extends Controller
         }
     }
 
-    public function caseCreate(Request $request,TherapyCase $case){
-        $this->data->case = $case;
+    public function caseCreate(Request $request,$case){
+        $this->data->case = $case = TherapyCase::apiShow($case, ['session_platforms' => true]);
         $room = $this->data->room = $case->room;
         $this->data->center = $room->center;
         $this->authorize('create', [Schedule::class, $room]);
