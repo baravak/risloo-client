@@ -1,4 +1,6 @@
-<div class="flex items-center justify-between mt-8">
+<div class="flex justify-center items-start">
+
+{{-- <div class="flex items-center justify-between mt-8"> --}}
     @if (config('app.env') == 'local')
     <div class="relative dropdown">
         <button role="button" class="schedules-filter-active text-sm text-gray-500 border border-gray-500 rounded-full h-8 w-8 sm:w-auto sm:px-4 hover:bg-gray-100 transition focus-current ring-gray-500 dropdown-toggle" data-toggle="dropdownx" aria-haspopup="true">
