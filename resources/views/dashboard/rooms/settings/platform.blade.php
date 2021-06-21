@@ -11,21 +11,19 @@
     </div>
     <div class="platform-detail">
         <div class="flex items-center mb-4 cursor-pointer">
-            <input {{ $platform->pin ? 'disabled' : '' }} type="text" name="identifier" id="identifier-{{ $platform->id }}" value="{{ $platform->identifier }}" class="opacity-60 flex-1 border border-gray-500 w-full h-8 rounded px-4 text-sm focus:border-brand focus placeholder-gray-400 text-gray-500 lijax" data-method="PUT" data-action="{{ route('dashboard.room.setting.session-platforms.update', [$room->id, $platform->id]) }}" data-lijax="change 1000">
+            <input {{ $platform->pin ? 'disabled' : '' }} type="text" name="identifier" id="identifier-{{ $platform->id }}" value="{{ $platform->identifier }}" class="opacity-60 flex-1 border border-gray-500 w-full h-8 rounded px-4 text-sm focus:border-brand focus placeholder-gray-400 text-gray-500 lijax text-left dir-ltr placeholder:text-right" data-method="PUT" data-action="{{ route('dashboard.room.setting.session-platforms.update', [$room->id, $platform->id]) }}" data-lijax="change 1000">
             <label class="inline-flex items-center group h-8 px-2 border border-gray-500 rounded mr-1">
                 <input @radioChecked($platform->pin, true) type="checkbox" name="pin" id="pin-{{ $platform->id }}" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1 platform-pin-input lijax" data-method="PUT" data-action="{{ route('dashboard.room.setting.session-platforms.update', [$room->id, $platform->id]) }}">
                 <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600">@lang('اتصال به مرکز')</span>
             </label>
         </div>
         <div>
-            <label class="inline-flex items-start group">
-                <select name="selected_level" id="selected-level-{{ $platform->id }}" class="lijax" data-method="PUT" data-action="{{ route('dashboard.room.setting.session-platforms.update', [$room->id, $platform->id]) }}">
+            <span class="text-xs text-gray-500 ml-2 cursor-default">@lang('تنظیمات پیش‌فرض هنگام ایجاد جلسه:')</span>
+            <select name="selected_level" id="selected-level-{{ $platform->id }}" class="border border-gray-300 rounded h-8 text-xs lijax" data-method="PUT" data-action="{{ route('dashboard.room.setting.session-platforms.update', [$room->id, $platform->id]) }}">
                 <option value="1" {{ $platform->selected_level === 1 ? 'selected' : '' }}>@lang('پیشفرض مرکز') (@lang($platform->selected_default ? 'Active' : 'Deactive'))</option>
                 <option value="2" {{ $platform->selected_level === 2 ? 'selected' : '' }}>@lang('فعال')</option>
                 <option value="0" {{ $platform->selected_level === 0 ? 'selected' : '' }}>@lang('غیرفعال')</option>
-                </select>
-                <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600">@lang('به صورت پیشفرض برای جلسه درمانی فعال باشد.')</span>
-            </label>
+            </select>
         </div>
     </div>
 
