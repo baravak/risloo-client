@@ -24,7 +24,7 @@
     </div>
     @endforeach
 @endisset
-@foreach ($room->session_platforms as $platform)
+@foreach ($room->session_platforms ?: [] as $platform)
 @php
     if(isset($session) && $session->session_platforms && $session->session_platforms->where('id', $platform->id)->first()) continue;
 @endphp

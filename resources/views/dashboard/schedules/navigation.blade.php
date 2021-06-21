@@ -9,43 +9,21 @@
             <div>
                 <span class="text-sm text-gray-600 variable-font-medium cursor-default">بر اساس اتاق درمان</span>
                 <div class="border border-gray-200 rounded bg-white mt-2 p-2 overflow-y-auto max-h-28">
-                    <label class="flex items-center group cursor-pointer mb-2" title="">
-                        <input checked type="checkbox" name="" id="" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
-                        <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">محمدحسن صالحی</span>
-                    </label>
-                    <label class="flex items-center group cursor-pointer mb-2" title="">
-                        <input checked type="checkbox" name="" id="" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
-                        <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">محمدعلی نخلی</span>
-                    </label>
-                    <label class="flex items-center group cursor-pointer mb-2" title="">
-                        <input checked type="checkbox" name="" id="" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
-                        <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">زهرا سادات گل محمدی</span>
-                    </label>
-                    <label class="flex items-center group cursor-pointer mb-2" title="عباسعلی غلامرضایی حسین محمد علینژاد">
-                        <input checked type="checkbox" name="" id="" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
-                        <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">عباسعلی غلامرضایی حسین محمد علینژاد</span>
-                    </label>
-                    <label class="flex items-center group cursor-pointer" title="">
-                        <input type="checkbox" name="" id="" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
-                        <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">علی عباسی</span>
-                    </label>
+                    @foreach ($schedules->pluck('room.manager.name', 'room.id') as $filter_room_id => $filter_room_name)
+                        <label class="flex items-center group cursor-pointer mb-2" title="">
+                            <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">{{ $filter_room_name }}</span>
+                        </label>
+                    @endforeach
                 </div>
             </div>
             <div class="mt-4">
                 <span class="text-sm text-gray-600 variable-font-medium cursor-default">بر اساس وضعیت</span>
                 <div class="border border-gray-200 rounded bg-white mt-2 p-2 overflow-y-auto max-h-16">
-                    <label class="flex items-center group cursor-pointer mb-2" title="">
-                        <input checked type="checkbox" name="" id="" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
-                        <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">در حال نوبت گیری</span>
-                    </label>
-                    <label class="flex items-center group cursor-pointer mb-2" title="">
-                        <input type="checkbox" name="" id="" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
-                        <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">پیش نویس</span>
-                    </label>
-                    <label class="flex items-center group cursor-pointer" title="">
-                        <input type="checkbox" name="" id="" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
-                        <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">در جلسه</span>
-                    </label>
+                    @foreach ($schedules->pluck('status')->unique() as $filter_status)
+                        <label class="flex items-center group cursor-pointer mb-2" title="">
+                            <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600 truncate">@lang($filter_status)</span>
+                        </label>
+                    @endforeach
                 </div>
             </div>
             <div class="flex items-center justify-between mt-4">
