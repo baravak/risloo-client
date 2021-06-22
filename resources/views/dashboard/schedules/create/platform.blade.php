@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="flex items-center cursor-pointer platform-detail">
-            <input {{ $sPlatform->pin ? 'disabled' : '' }} type="text" name="identifier_platform[{{ $platform->id }}]" id="identifier-{{ $platform->id }}" value="{{ $sPlatform->identifier }}" class="{{ $sPlatform->pin ? 'opacity-60' : '' }} flex-1 border border-gray-500 w-full h-8 rounded px-4 text-sm focus:border-brand focus placeholder-gray-400 text-gray-500">
+            <input {{ $sPlatform->pin ? 'disabled' : '' }} type="text" name="identifier_platform[{{ $platform->id }}]" id="identifier-{{ $platform->id }}" value="{{ $sPlatform->identifier }}" placeholder="آدرس اینترنتی، شماره تماس یا متن را وارد نمایید" class="{{ $sPlatform->pin ? 'opacity-60' : '' }} flex-1 border border-gray-500 w-full h-8 rounded px-4 text-sm focus:border-brand focus placeholder-gray-400 text-gray-500 text-left dir-ltr placeholder-right">
             <label class="inline-flex items-center group h-8 px-2 border border-gray-500 rounded mr-1">
                 <input {{ $sPlatform->pin ? 'checked' : '' }} type="checkbox" name="pin_platform[{{ $platform->id }}]" id="pin-{{ $platform->id }}" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1 platform-pin-input">
                 <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600">@lang('اتصال به اتاق')</span>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="flex items-center cursor-pointer platform-detail {{ !isset($session) && $platform->selected ? '' : 'opacity-40' }}">
-            <input disabled type="text" name="identifier_platform[{{ $platform->id }}]" id="identifier-{{ $platform->id }}" value="{{ $platform->identifier }}" class="opacity-60 flex-1 border border-gray-500 w-full h-8 rounded px-4 text-sm focus:border-brand focus placeholder-gray-400 text-gray-500">
+            <input disabled type="text" name="identifier_platform[{{ $platform->id }}]" id="identifier-{{ $platform->id }}" value="{{ $platform->identifier }}" placeholder="آدرس اینترنتی، شماره تماس یا متن را وارد نمایید" class="opacity-60 flex-1 border border-gray-500 w-full h-8 rounded px-4 text-sm focus:border-brand focus placeholder-gray-400 text-gray-500 text-left dir-ltr placeholder-right">
             <label class="inline-flex items-center group h-8 px-2 border border-gray-500 rounded mr-1">
                 <input checked type="checkbox" name="pin_platform[{{ $platform->id }}]" id="pin-{{ $platform->id }}" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1 platform-pin-input">
                 <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600">@lang('اتصال به اتاق')</span>

@@ -11,7 +11,7 @@
     </div>
     <div class="platform-detail">
         <div class="flex items-center mb-4 cursor-pointer">
-            <input {{ $platform->pin ? 'disabled' : '' }} type="text" name="identifier" id="identifier-{{ $platform->id }}" value="{{ $platform->identifier }}" class="opacity-60 flex-1 border border-gray-500 w-full h-8 rounded px-4 text-sm focus:border-brand focus placeholder-gray-400 text-gray-500 lijax text-left dir-ltr placeholder:text-right" data-method="PUT" data-action="{{ route('dashboard.room.setting.session-platforms.update', [$room->id, $platform->id]) }}" data-lijax="change 1000">
+            <input {{ $platform->pin ? 'disabled' : '' }} type="text" name="identifier" id="identifier-{{ $platform->id }}" value="{{ $platform->identifier }}" class="opacity-60 flex-1 border border-gray-500 w-full h-8 rounded px-4 text-sm focus:border-brand focus placeholder-gray-400 text-gray-500 lijax text-left dir-ltr placeholder-right" data-method="PUT" data-action="{{ route('dashboard.room.setting.session-platforms.update', [$room->id, $platform->id]) }}" data-lijax="change 1000">
             <label class="inline-flex items-center group h-8 px-2 border border-gray-500 rounded mr-1">
                 <input @radioChecked($platform->pin, true) type="checkbox" name="pin" id="pin-{{ $platform->id }}" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1 platform-pin-input lijax" data-method="PUT" data-action="{{ route('dashboard.room.setting.session-platforms.update', [$room->id, $platform->id]) }}">
                 <span class="text-xs text-gray-500 mr-2 group-hover:text-blue-600">@lang('اتصال به مرکز')</span>
