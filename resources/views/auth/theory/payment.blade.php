@@ -8,7 +8,7 @@
             <div>
                 مشکلی در روند تراکنش به وجود آمده‌است! اگر احساس می‌کنید اشکال در سیستم ریسلو هست، با مرکز خود مورد را در جریان بگذارید
             </div>
-            <a href="{{ route('dashboard.home') }}">رفتن به میزکار</a>
+            <a href="{{ route('dashboard.payments.index') }}" class="direct">رفتن به میزکار</a>
         @endif
     </div>
 @endsection
