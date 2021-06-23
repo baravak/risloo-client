@@ -21,7 +21,8 @@
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#007ba4">
 
-        <meta name="description" content="@yield('description', $global->description)">
+        <meta name="description" content="شما به عنوان روان‌شناس، روی کار اصلی خود تمرکز کنید؛ دغدغه کارهای جانبی درمان، آموزش و پژوهش را نداشته باشید و به خود آن‌ها فقط فکر کنید. ریسلو بستری یک‌پارچه است که کارهای شما را در این سه حوزه تسهیل می‌کند.">
+        <meta name="keywords" content="سرویس روان‌شناسی, سرویس اتوماسیون روان‌شناسی, سرویس نوبت‌دهی کلینیک‌های روان‌شناسی, سرویس نوبت‌دهی مطلب‌های روان‌شناسی, سرویس نوبت‌دهی مراکز روان‌شناسی"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @yield('head-styles')
