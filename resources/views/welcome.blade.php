@@ -17,8 +17,11 @@
         <nav class="bg-white shadow py-4 fixed top-0 right-0 left-0 w-full">
             <div class="container mx-auto px-4">
                 <div class="flex justify-between items-center">
-                    <h1 class="text-2xl text-brand variable-font-black">
-                        <a href="/">ریسلو</a>
+                    <h1 class="">
+                        <a href="/" class="text-2xl text-brand variable-font-black">ریسلو</a>
+                        @if (config('app.env') == 'local')
+                            <span style="background: #DC2626; color: #fff; font-size: 12px; margin-right: 4px; border-radius: 4px; padding: 2px 6px; position: relative; top: -4px;">نسخه آزمایشی</span>
+                        @endif
                     </h1>
 
                     <div class="flex items-center">

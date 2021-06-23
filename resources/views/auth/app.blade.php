@@ -3,6 +3,9 @@
 
 @section('main')
     <div class="flex-1 bg-gray-50">
+        @if (config('app.env') == 'local')
+            <div class="flex items-center justify-center bg-red-600 text-sm text-white py-3 px-2">شما هم اکنون در نسخه آزمایشی ریسلو هستید. هیچ اطلاعاتی در این نسخه حقیقی و ماندگار نیست.</div>
+        @endif
         <div class="flex justify-center">
             <div class="rounded w-full sm:w-80 mx-4 sm:mx-auto relative top-20">
                 @if (auth()->check() && auth()->user())
