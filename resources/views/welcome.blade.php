@@ -13,7 +13,7 @@
 </head>
 
 <body class="flex flex-col text-gray-900 bg-gray-50">
-    <main class="flex-1 pt-32">
+    <main class="flex-1 pt-32" style="padding-bottom: 4rem;">
         <nav class="bg-white shadow py-4 fixed top-0 right-0 left-0 w-full">
             <div class="container mx-auto px-4">
                 <div class="flex justify-between items-center">
@@ -47,8 +47,17 @@
             </div>
         </section>
     </main>
-    <footer>
-        <div class="bg-brand flex items-center justify-center w-full py-2 px-4 text-center text-sm text-white">© تمامی حقوق این وب‌سایت متعلق به شرکت ریس اعتماد ایرانیان می‌باشد.</div>
+    <footer class="bg-brand py-2 w-full">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between text-center text-sm text-white">
+                <span>
+                    © تمامی حقوق این وب‌سایت متعلق به شرکت ریس اعتماد ایرانیان می‌باشد.
+                </span>
+                <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=223057&amp;Code=nI17RKpP7XMHZTzmer28" title="نماد اعتماد الکترونیکی ریسلو" aria-label="نماد اعتماد الکترونیکی ریسلو">
+                    <img referrerpolicy="origin" src="{{ asset('/images/logo/enamad-risloo.png') }}" alt="" style="cursor:pointer;" id="nI17RKpP7XMHZTzmer28">
+                </a>
+            </div>
+        </div>
     </footer>
 </body>
 
