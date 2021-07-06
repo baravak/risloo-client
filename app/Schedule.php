@@ -24,18 +24,21 @@ class Schedule extends API
         'fields' => Field::class,
         'session_platforms' => SessionPlatform::class
     ];
+    public $filterWith = [
+        'room' => Room::class
+    ];
     public static function apiStore($room, array $params = [])
     {
         return (new static)->execute("rooms/$room/schedules", $params, 'POST');
     }
 
-    public static function center(String $center, int $timestamp = null) : ApiCollection
+    public static function center(String $center, int $timestamp = null, $params = []) : ApiCollection
     {
-        return (new static)->execute("centers/$center/schedules", ['time' => $timestamp], 'GET');
+        return (new static)->execute("centers/$center/schedules", array_merge($params, ['time' => $timestamp]), 'GET');
     }
-    public static function room(String $room, int $timestamp = null) : ApiCollection
+    public static function room(String $room, int $timestamp = null, $params = []) : ApiCollection
     {
-        return (new static)->execute("rooms/$room/schedules", ['time' => $timestamp], 'GET');
+        return (new static)->execute("rooms/$room/schedules", array_merge($params, ['time' => $timestamp]), 'GET');
     }
 
     public function parentClass($parent){

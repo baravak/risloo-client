@@ -88,7 +88,12 @@ class ScheduleController extends Controller
             'thu' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(5),
             'fri' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(6),
         ];
-        $schedules = $this->data->schedules =  Schedule::center($center, $time);
+        $schedules = $this->data->schedules =  Schedule::center($center, $time, $request->all());
+        $this->data->allowedFilters = $schedules->allowedFilters();
+        $this->data->allowedFilters->room = Room::hydrate($schedules->allowedFilter('room'));
+
+        $this->data->filters = $schedules->filters();
+
         $this->data->center = $schedules->parentModel;
         if($this->data->center->type == 'personal_clinic'){
             $this->data->room = $this->data->center;
@@ -109,7 +114,11 @@ class ScheduleController extends Controller
             'thu' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(5),
             'fri' => Carbon::createFromTimestamp($time)->startOfWeek()->addDays(6),
         ];
-        $schedules = $this->data->schedules =  Schedule::room($room, $time);
+        $schedules = $this->data->schedules =  Schedule::room($room, $time, $request->all());
+        $this->data->allowedFilters = $schedules->allowedFilters();
+
+        $this->data->filters = $schedules->filters();
+
         $this->data->room = $room = $schedules->parentModel;
         $this->data->center = $room->center;
         return $this->view($request, 'dashboard.schedules.index');

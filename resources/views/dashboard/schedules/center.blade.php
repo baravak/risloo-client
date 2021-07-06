@@ -1,14 +1,33 @@
 @extends($layouts->dashboard)
+@php
+    $borders = [
+        'draft' => 'gray',
+        'registration_awaiting' => 'yellow',
+        'client_awaiting' => 'yellow',
+        'awaiting' => 'yellow',
+        'session_awaiting' => 'brand',
+        'in_session' => 'green',
+        'finished' => 'purple',
+        'canceled_by_client' => 'red',
+        'canceled_by_center' => 'red',
+    ];
+@endphp
 @section('content')
+<span style="display: none" class="text-gray-400 text-yellow-400 text-brand-400 text-green-400 text-purple-400 text-red-400"></span>
     @include('dashboard.schedules.navigation')
     <div data-page="dashboard-schedules" class="border border-gray-300 rounded mt-4">
         <ul data-tabs class="space-x-4 space-x-reverse p-4 overflow-x-auto">
             @foreach ($weeks as $key => $day)
-                <li>
+                <li class="relative">
                     <a href="#{{ $key }}" {{ $day->format('Ymd') == date('Ymd') || ($weeks->sat->timestamp > time() && $key == 'sat') ? 'data-tabby-default': ''}} class="direct focus {{ $day->format('Ymd') < date('Ymd') ? 'disable' : '' }}">
                         <span class="text-sm variable-font-medium">@time($day, '%A')</span>
                         <span class="text-xs">@time($day, 'Y/m/d')</span>
                     </a>
+                    @if ($schedules->where('started_at', '>=', $day)->where('status', 'session_awaiting')->where('started_at', '<=', (clone $day)->endOfDay())->count())
+                        <span class="text-brand-400 absolute" style="font-size:8px;right: 5px; bottom: 5px">⬤</span>
+                    @elseif($schedules->where('started_at', '>=', $day)->where('started_at', '<=', (clone $day)->endOfDay())->count())
+                        <span class="text-gray-400 absolute" style="font-size:8px;right: 5px; bottom: 5px">⬤</span>
+                    @endif
                 </li>
             @endforeach
         </ul>
@@ -22,7 +41,10 @@
                     @foreach ($schedules->where('started_at', '>=', $day)->where('started_at', '<=', (clone $day)->endOfDay()) as $schedule)
                     <a href="{{ $schedule->status == 'registration_awaiting' ? route('dashboard.schedules.show', $schedule->id) : route('dashboard.sessions.show', $schedule->id) }}" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
                         <div>
-                            <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2"><span>ساعت {{ $schedule->started_at->format('H:i') }}</span></div>
+                            <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2">
+                                <span class="text-xs text-{{ isset($borders[$schedule->status]) ? $borders[$schedule->status] : 'gray' }}-400" style="float: right">⬤</span>
+                                <span>ساعت {{ $schedule->started_at->format('H:i') }}</span>
+                            </div>
                             <div class="p-3">
                                 @if (!isset($RoomMode))
                                     <div class="flex items-center mb-4">
