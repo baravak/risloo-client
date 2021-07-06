@@ -9,7 +9,7 @@ class SampleFormController extends Controller
 {
     public function form(Request $request, $serial)
     {
-        $sample = $this->data->sample = Sample::apiShow($serial);
+        $sample = $this->data->sample = Sample::apiForm($serial);
         if(!$sample->client){
             return abort(403, 'Sample has not client');
         }

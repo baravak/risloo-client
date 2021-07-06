@@ -38,6 +38,11 @@ class Sample extends API
         return (new static)->execute("%s/$serial/scoring", [], 'POST');
     }
 
+    public static function _form($serial)
+    {
+        return (new static)->execute("%s/$serial", [], 'GET');
+    }
+
     public function getSerialAttribute()
     {
         return [substr($this->id, 0, 1), substr($this->id, 1)];
