@@ -13,7 +13,7 @@
     ];
 @endphp
 @section('content')
-<span style="display: none" class="text-gray-400 text-yellow-400 text-brand-400 text-green-400 text-purple-400 text-red-400"></span>
+<span style="display: none" class="text-gray-400 text-yellow-400 text-brand-400 text-green-400 text-purple-400 text-red-400 opacity-30 opacity-40"></span>
     @include('dashboard.schedules.navigation')
     <div data-page="dashboard-schedules" class="border border-gray-300 rounded mt-4">
         <ul data-tabs class="space-x-4 space-x-reverse p-4 overflow-x-auto">
@@ -39,7 +39,7 @@
                 @endif
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">
                     @foreach ($schedules->where('started_at', '>=', $day)->where('started_at', '<=', (clone $day)->endOfDay()) as $schedule)
-                    <a href="{{ $schedule->status == 'registration_awaiting' ? route('dashboard.schedules.show', $schedule->id) : route('dashboard.sessions.show', $schedule->id) }}" class=" flex flex-col justify-between border border-gray-300 hover:border-brand transition rounded focus">
+                    <a href="{{ $schedule->status == 'registration_awaiting' ? route('dashboard.schedules.show', $schedule->id) : route('dashboard.sessions.show', $schedule->id) }}" class=" flex flex-col justify-between border hover:border-brand transition rounded focus {{ $schedule->status == 'draft' ? 'opacity-30' : '' }} {{ in_array($schedule->status, ['canceled_by_client','canceled_by_center', 'finished']) ? 'bg-gray-50 opacity-40' : '' }} {{ $schedule->status == 'session_awaiting' ? 'border-gray-300' : 'border-gray-300' }}">
                         <div>
                             <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2">
                                 <span class="text-xs text-{{ isset($borders[$schedule->status]) ? $borders[$schedule->status] : 'gray' }}-400" style="float: right">⬤</span>
@@ -114,7 +114,7 @@
                         </div>
                         <div class="flex justify-between items-center text-xs text-gray-500 px-3 pt-1 pb-3">
                             <span>@lang($schedule->group_session ? 'Group session' : '')</span>
-                            <span>@lang(ucfirst($schedule->status))</span>
+                            <span class="text-{{ isset($borders[$schedule->status]) ? $borders[$schedule->status] : 'gray' }}-400">@lang(ucfirst($schedule->status))</span>
                         </div>
                     </a>
                     @endforeach
