@@ -1,18 +1,10 @@
 @extends('dashboard.create', ['callbackCancel' => $room->route('show')])
 @section('form_content')
     <div>
+        <input type="hidden" name="room_id" value="{{ $room->id }}">
         <div class="mt-4">
-            <label for="room_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Room') }}</label>
-            <select name="room_id" id="room_id" data-url="{{route('dashboard.rooms.index', ['my_management' => 1])}}" data-relation="client_id" class="select2-select">
-                @isset($room)
-                    <option value="{{ $room->id }}" selected="{{ $room->manager->name }}"></option>
-                @endisset
-            </select>
-            @isset($room)
-            <div data-for="room_id" class="hidden">
-                @include('dashboard.rooms.select2', ['rooms' => [$room]])
-            </div>
-            @endisset
+            <label for="title" class="block mb-2 text-sm text-gray-700 font-medium">عنوان یا سریال داخلی</label>
+            <input type="text" name="title" id="title" autocomplete="off" placeholder="عنوان پرونده یا سریال داخلی‌ای که استفاده می‌کنید" class="border border-gray-500 h-10 rounded px-4 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
         </div>
 
         <div class="mt-4">
@@ -34,4 +26,9 @@
             <textarea id="problem" name="problem" autocomplete="off" @formValue($case->problem) class="resize-none border border-gray-500 h-24 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
         </div>
     </div>
+
+    <div class="form-group mt-4">
+        <label for="tag-finder" data-alias="tag_finder" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Tags')</label>
+        <select class="select2-select"  id="tag-finder" data-fill="tags" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}" data-tags="true" multiple></select>
+</div>
 @endsection

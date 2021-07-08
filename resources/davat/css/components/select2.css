@@ -61,6 +61,14 @@
 	@apply flex items-center justify-between flex-row-reverse w-full p-1 bg-gray-50 border border-gray-200 !important;
 	max-width: 99% !important;
 }
+.select2-container--default .select2-selection--multiple .select2-selection__choice:last-of-type {
+    animation:select2-selection__choice 300ms forwards;
+}
+
+@keyframes select2-selection__choice {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
 
 .select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear {
 	left: 45px;
