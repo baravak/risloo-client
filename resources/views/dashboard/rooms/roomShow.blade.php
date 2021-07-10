@@ -17,6 +17,10 @@
                                 <i class="fal fa-ellipsis-v"></i>
                             </button>
                             <div class="rounded bg-white border border-gray-200 mt-2 shadow-md dropdown-menu min-w-max absolute left-0">
+                                <a href="{{ route('dashboard.room.schedules.create', $room->id) }}" title="@lang('Define new schedule')" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                                    <i class="w-6 text-center fal fa-calendar-alt pb-1"></i>
+                                    <span class="vaiable-font-medium mr-2">@lang('Define new schedule')</span>
+                                </a>
                                 <a href="{{ route($room->type == 'personal_clinic' ? 'dashboard.center.users.index' : 'dashboard.room.users.index', $room->id) }}" title="{{ __('Users') }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
                                     <i class="w-6 text-center fal fa-users pb-1"></i>
                                     <span class="vaiable-font-medium mr-2">@lang('Users')</span>
