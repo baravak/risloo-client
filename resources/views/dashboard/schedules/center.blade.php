@@ -24,9 +24,9 @@
                         <span class="text-xs">@time($day, 'Y/m/d')</span>
                     </a>
                     @if ($schedules->where('started_at', '>=', $day)->where('status', 'session_awaiting')->where('started_at', '<=', (clone $day)->endOfDay())->count())
-                        <span class="text-brand-400 absolute" style="font-size:8px;right: 5px; bottom: 5px">⬤</span>
+                        <span class="absolute top-2 left-2 rounded-full h-1 w-1 bg-brand"></span>
                     @elseif($schedules->where('started_at', '>=', $day)->where('started_at', '<=', (clone $day)->endOfDay())->count())
-                        <span class="text-gray-400 absolute" style="font-size:8px;right: 5px; bottom: 5px">⬤</span>
+                        <span class="absolute top-2 left-2 rounded-full h-1 w-1 bg-gray-400"></span>
                     @endif
                 </li>
             @endforeach
@@ -38,86 +38,232 @@
                     <div class="text-sm text-center text-gray-400 pb-8 pt-14">برنامه درمانی‌ای برای این روز در دسترس نیست.</div>
                 @endif
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-4">
-                    @foreach ($schedules->where('started_at', '>=', $day)->where('started_at', '<=', (clone $day)->endOfDay()) as $schedule)
-                    <a href="{{ $schedule->status == 'registration_awaiting' ? route('dashboard.schedules.show', $schedule->id) : route('dashboard.sessions.show', $schedule->id) }}" class=" flex flex-col justify-between border hover:border-brand transition rounded focus {{ $schedule->status == 'draft' ? 'opacity-30' : '' }} {{ in_array($schedule->status, ['canceled_by_client','canceled_by_center', 'finished']) ? 'bg-gray-50 opacity-40' : '' }} {{ $schedule->status == 'session_awaiting' ? 'border-gray-300' : 'border-gray-300' }}">
-                        <div>
-                            <div class="text-gray-700 text-sm variable-font-semibold text-center border-b border-gray-300 p-2">
-                                <span class="text-xs text-{{ isset($borders[$schedule->status]) ? $borders[$schedule->status] : 'gray' }}-400" style="float: right">⬤</span>
-                                <span>ساعت {{ $schedule->started_at->format('H:i') }}</span>
+                    <a href="#" class="flex flex-col border border-brand rounded relative focus-current ring-brand transition overflow-hidden">
+                        <div class="flex items-center justify-between px-2 py-1 border-b border-gray-100 bg-blue-50">
+                            <div class="flex flex-col">
+                                <span class="variable-font-semibold">16:30</span>
+                                <span class="text-xs text-gray-500">45 دقیقه</span>
                             </div>
-                            <div class="p-3">
-                                @if (!isset($RoomMode))
-                                    <div class="flex items-center mb-4">
-                                        <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
-                                            @avatarOrName($schedule->room->manager)
-                                        </div>
-                                        <div class="text-xs variable-font-medium text-gray-600 mr-2">
-                                            <span>@displayName($schedule->room->manager)</span>
-                                        </div>
-                                    </div>
-                                @endif
-                                @if ($schedule->case)
-                                    <div class="flex items-center text-xs text-gray-500">
-                                        <i class="fal fa-folder ml-2"></i>
-                                        <span>@lang('Therapy case :serial', ['serial' => $schedule->case->id])</span>
-                                    </div>
-                                @endif
-                                <div class="flex items-center text-xs text-gray-500 mt-2">
-                                    <i class="fal fa-clock ml-2"></i>
-                                    <span>@lang(':time minute(s)', ['time' => $schedule->duration])</span>
+                            <div class="flex flex-col dir-ltr text-left">
+                                <div class="flex h-2 w-2 relative">
+                                    <span class="absolute animate-ping inline-flex h-full w-full rounded-full bg-brand opacity-80"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
                                 </div>
-                                @if ($schedule->clients_number > 1)
-                                    <div class="flex items-center text-xs text-gray-500 mt-2">
-                                        <i class="fal fa-user-friends ml-2"></i>
-                                        <span>{{ $schedule->clients_number }}</span>
-                                    </div>
-                                @endif
-
-                                @if ($schedule->clients)
-                                    <div class="mt-4">
-                                        <span class="inline text-xs variable-font-medium text-gray-600 mb-2">مراجعین:</span>
-                                            <div class="inline text-xs text-gray-500">
-                                                @foreach ($schedule->clients as $client)
-                                                    <span>{{ $client->name }}</span>
-                                                    @if (!$loop->last)
-                                                        <span class="mx-1">|</span>
-                                                    @endif
-                                                @endforeach
-                                        </div>
-                                    </div>
-                                @endif
-                                <div class="mt-4">
-                                    <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
-                                    <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
-                                        <div class="inline text-xs text-gray-500">
-                                            @foreach ($schedule->clients && $schedule->clients->count() ? $schedule->clients->pluck('field')->unique() : $schedule->fields as $field)
-                                                <span title="@lang('amount :amount Toman', ['amount' => isset($field->amount) ? $field->amount : 0])">{{ $field->title }}</span>
-                                                @if (!$loop->last)
-                                                    <span class="mx-1">|</span>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <span class="text-xs variable-font-medium text-gray-600 mb-2">مکان‌های برگزاری جلسه:</span>
-                                        <div class="inline text-xs text-gray-500">
-                                            @foreach ($schedule->clients && $schedule->clients->count() ? $schedule->clients->pluck('session_platform')->unique() : ($schedule->session_platforms ?: []) as $platform)
-                                                <span >{{ isset($platform->title) ? $platform->title : '' }}</span>
-                                                @if (!$loop->last)
-                                                    <span class="mx-1">|</span>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                </div>
+                                <div class="text-brand text-xs mt-2">در انتظار تشکیل جلسه</div>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center text-xs text-gray-500 px-3 pt-1 pb-3">
-                            <span>@lang($schedule->group_session ? 'Group session' : '')</span>
-                            <span class="text-{{ isset($borders[$schedule->status]) ? $borders[$schedule->status] : 'gray' }}-400">@lang(ucfirst($schedule->status))</span>
+                        <div class="p-2">
+                            <div class="flex items-center mb-4">
+                                <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
+                                    <span>م‌ص</span>
+                                </div>
+                                <div class="text-xs variable-font-medium text-gray-600 mr-2">
+                                    <span>محمدحسن صالحی</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <i class="fal fa-folder ml-2"></i>
+                                <span>پرونده درمانی CS96666DT</span>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-500 mt-2">
+                                <i class="fal fa-user-friends ml-2"></i>
+                                <span>12</span>
+                            </div>
+                            <div class="mt-2">
+                                <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
+                                <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
+                                    <div class="inline text-xs text-gray-500">
+                                        <span>محور 1</span>
+                                        <span class="mx-1">|</span>
+                                        <span>محور 2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="text-xs variable-font-medium text-gray-600 mb-2">مکان‌های برگزاری جلسه:</span>
+                                <div class="inline text-xs text-gray-500">
+                                    <span>گوگل میت</span>
+                                    <span class="mx-1">|</span>
+                                    <span>ملاقات حضوری</span>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="inline text-xs variable-font-medium text-gray-600 mb-2">مراجعین:</span>
+                                <div class="inline text-xs text-gray-500">
+                                    <span>محمدعلی نخلی</span>
+                                    <span class="mx-1">|</span>
+                                    <span>محمدرضا امامیان</span>
+                                </div>
+                            </div>
                         </div>
                     </a>
-                    @endforeach
+                    <a href="#" class="flex flex-col border border-yellow-600 rounded relative focus-current ring-yellow-600 transition overflow-hidden">
+                        <div class="flex items-center justify-between px-2 py-1 border-b border-gray-100 bg-yellow-50">
+                            <div class="flex flex-col">
+                                <span class="variable-font-semibold">17:30</span>
+                                <span class="text-xs text-gray-500">30 دقیقه</span>
+                            </div>
+                            <div class="flex flex-col dir-ltr text-left">
+                                <div class="flex h-2 w-2 relative">
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-600"></span>
+                                </div>
+                                <div class="text-yellow-600 text-xs mt-2">در حال نوبت‌دهی</div>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="flex items-center mb-4">
+                                <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
+                                    <span>ح‌م</span>
+                                </div>
+                                <div class="text-xs variable-font-medium text-gray-600 mr-2">
+                                    <span>حسین مهدوی‌نسب</span>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="block text-xs variable-font-medium text-gray-600 mb-2">محورهای جلسه</span>
+                                <div class="bg-gray-100 p-2 rounded max-h-16 overflow-y-auto leading-snug">
+                                    <div class="inline text-xs text-gray-500">
+                                        <span>بررسی وضعیت استرس</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-xs variable-font-medium text-gray-600 mb-2">مکان‌های برگزاری جلسه:</span>
+                                <div class="inline text-xs text-gray-500">
+                                    <span>تماس تلفنی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="flex flex-col border border-gray-400 rounded relative focus-current ring-gray-400 transition overflow-hidden opacity-60">
+                        <div class="flex items-center justify-between px-2 py-1 border-b border-gray-100 bg-gray-50">
+                            <div class="flex flex-col">
+                                <span class="variable-font-semibold">17:30</span>
+                                <span class="text-xs text-gray-500">30 دقیقه</span>
+                            </div>
+                            <div class="flex flex-col dir-ltr text-left">
+                                <div class="flex h-2 w-2 relative">
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-gray-400"></span>
+                                </div>
+                                <div class="text-gray-400 text-xs mt-2">در انتظار تأیید مراجع</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center flex-1 flex-col p-2">
+                            <div class="flex flex-col items-center mb-4">
+                                <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
+                                    <span>ح‌م</span>
+                                </div>
+                                <div class="text-xs variable-font-medium text-gray-600 mt-2">
+                                    <span>حسین مهدوی‌نسب</span>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="inline text-xs variable-font-medium text-gray-600 mb-2">مراجعین:</span>
+                                <div class="inline text-xs text-gray-500">
+                                    <span>محمدعلی نخلی</span>
+                                    <span class="mx-1">|</span>
+                                    <span>محمدرضا امامیان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="flex flex-col border border-gray-400 rounded relative focus transition overflow-hidden opacity-60">
+                        <div class="flex items-center justify-between px-2 py-1 border-b border-gray-100 bg-gray-50">
+                            <div class="flex flex-col">
+                                <span class="variable-font-semibold">17:30</span>
+                                <span class="text-xs text-gray-500">30 دقیقه</span>
+                            </div>
+                            <div class="flex flex-col dir-ltr text-left">
+                                <div class="flex h-2 w-2 relative">
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                                </div>
+                                <div class="text-red-500 text-xs mt-2">لغو شده توسط مرکز</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center flex-1 flex-col p-2">
+                            <div class="flex flex-col items-center mb-4">
+                                <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
+                                    <span>ح‌م</span>
+                                </div>
+                                <div class="text-xs variable-font-medium text-gray-600 mt-2">
+                                    <span>حسین مهدوی‌نسب</span>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="inline text-xs variable-font-medium text-gray-600 mb-2">مراجعین:</span>
+                                <div class="inline text-xs text-gray-500">
+                                    <span>محمدعلی نخلی</span>
+                                    <span class="mx-1">|</span>
+                                    <span>محمدرضا امامیان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="flex flex-col border border-gray-400 rounded relative focus transition overflow-hidden opacity-60">
+                        <div class="flex items-center justify-between px-2 py-1 border-b border-gray-100 bg-gray-50">
+                            <div class="flex flex-col">
+                                <span class="variable-font-semibold">17:30</span>
+                                <span class="text-xs text-gray-500">30 دقیقه</span>
+                            </div>
+                            <div class="flex flex-col dir-ltr text-left">
+                                <div class="flex h-2 w-2 relative">
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                                </div>
+                                <div class="text-purple-500 text-xs mt-2">تمام شده</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center flex-1 flex-col p-2">
+                            <div class="flex flex-col items-center mb-4">
+                                <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
+                                    <span>ح‌م</span>
+                                </div>
+                                <div class="text-xs variable-font-medium text-gray-600 mt-2">
+                                    <span>حسین مهدوی‌نسب</span>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="inline text-xs variable-font-medium text-gray-600 mb-2">مراجعین:</span>
+                                <div class="inline text-xs text-gray-500">
+                                    <span>محمدعلی نخلی</span>
+                                    <span class="mx-1">|</span>
+                                    <span>محمدرضا امامیان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="flex flex-col border border-gray-400 rounded relative focus transition overflow-hidden opacity-60">
+                        <div class="flex items-center justify-between px-2 py-1 border-b border-gray-100 bg-gray-50">
+                            <div class="flex flex-col">
+                                <span class="variable-font-semibold">17:30</span>
+                                <span class="text-xs text-gray-500">30 دقیقه</span>
+                            </div>
+                            <div class="flex flex-col dir-ltr text-left">
+                                <div class="flex h-2 w-2 relative">
+                                    <span class="absolute animate-ping inline-flex h-full w-full rounded-full bg-green-600 opacity-80"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
+                                </div>
+                                <div class="text-green-600 text-xs mt-2">در جلسه</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center flex-1 flex-col p-2">
+                            <div class="flex flex-col items-center mb-4">
+                                <div href="#" class="flex justify-center items-center flex-shrink-0 w-7 h-7 bg-gray-300 text-gray-600 text-xs rounded-full overflow-hidden">
+                                    <span>ح‌م</span>
+                                </div>
+                                <div class="text-xs variable-font-medium text-gray-600 mt-2">
+                                    <span>حسین مهدوی‌نسب</span>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="inline text-xs variable-font-medium text-gray-600 mb-2">مراجعین:</span>
+                                <div class="inline text-xs text-gray-500">
+                                    <span>محمدعلی نخلی</span>
+                                    <span class="mx-1">|</span>
+                                    <span>محمدرضا امامیان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
             @endforeach
