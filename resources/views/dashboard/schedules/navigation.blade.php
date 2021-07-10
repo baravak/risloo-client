@@ -62,18 +62,20 @@
     </div>
 </div>
 @if (config('app.env') == 'local')
-<div class="flex items-center flex-wrap mt-4">
-    @isset($filters->room)
-    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
-        <span class="text-xs text-gray-800 ml-2 cursor-default">{{ $filters->room->manager->name }}</span>
-        <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['room' => null]))->getUri() }}" class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></a>
-    </div>
-    @endisset
-    @isset($filters->status)
-    <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
-        <span class="text-xs text-gray-800 ml-2 cursor-default">@lang(ucfirst($filters->status))</span>
-        <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['status' => null]))->getUri() }}" class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></a>
-    </div>
-    @endisset
-</div>
+    @if (isset($filters->room) || isset($filters->status))
+        <div class="flex items-center flex-wrap mt-4">
+            @isset($filters->room)
+            <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
+                <span class="text-xs text-gray-800 ml-2 cursor-default">{{ $filters->room->manager->name }}</span>
+                <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['room' => null]))->getUri() }}" class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></a>
+            </div>
+            @endisset
+            @isset($filters->status)
+            <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
+                <span class="text-xs text-gray-800 ml-2 cursor-default">@lang(ucfirst($filters->status))</span>
+                <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['status' => null]))->getUri() }}" class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></a>
+            </div>
+            @endisset
+        </div>
+    @endif
 @endif
