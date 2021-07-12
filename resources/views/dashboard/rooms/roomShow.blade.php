@@ -29,10 +29,12 @@
                                     <i class="w-6 text-center fal fa-cog pb-1"></i>
                                     <span class="vaiable-font-medium mr-2">@lang('Platform settings')</span>
                                 </a>
-                                <a href="#" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                                    <i class="w-6 text-center fal fa-tags pb-1"></i>
-                                    <span class="vaiable-font-medium mr-2">@lang('Tags settings')</span>
-                                </a>
+                                @if (config('app.env') == 'local')
+                                    <a href="#" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                                        <i class="w-6 text-center fal fa-tags pb-1"></i>
+                                        <span class="vaiable-font-medium mr-2">@lang('Tags settings')</span>
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     @endcan
