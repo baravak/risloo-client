@@ -14,17 +14,17 @@
         <p>{{$case->detail->problem}}</p>
     </div>
 
-    @if (config('app.env') == 'local')
+    @can('manager', $case)
         <div class="flex items-center flex-wrap mt-4">
             <span class="ml-2 text-gray-700 text-xs variable-font-medium">برچسب‌ها:</span>
             <div class="flex items-center flex-wrap">
-                <span class="flex items-center text-xs text-gray-500 bg-gray-100 rounded h-6 px-2 ml-1 mb-1">استرس</span>
-                <span class="flex items-center text-xs text-gray-500 bg-gray-100 rounded h-6 px-2 ml-1 mb-1">اضطراب</span>
-                <span class="flex items-center text-xs text-gray-500 bg-gray-100 rounded h-6 px-2 ml-1 mb-1">آسیب‌های اجتماعی</span>
+                @foreach ($case->tags ?: [] as $tag)
+                    <span class="flex items-center text-xs text-gray-500 bg-gray-100 rounded h-6 px-2 ml-1 mb-1">{{ $tag->title }}</span>
+                @endforeach
                 <a href="#" class="flex items-center border border-brand text-xs text-brand hover:bg-brand hover:text-white transition rounded h-6 px-2 ml-1 mb-1">ویرایش برچسب‌ها</a>
             </div>
         </div>
-    @endif
+    @endcan
 
     <div class="flex sm:items-center flex-col sm:flex-row sm:justify-between">
         <div class="flex items-center text-xs text-gray-500 mt-4">
