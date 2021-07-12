@@ -92,6 +92,8 @@ Route::put('centers/{center}/settings/session-platforms/{platform}', 'SessionPla
 Route::get('rooms/{room}/settings/session-platforms', 'SessionPlatformController@room')->name('room.setting.session-platforms');
 Route::put('rooms/{room}/settings/session-platforms/{platform}', 'SessionPlatformController@roomUpdate')->name('room.setting.session-platforms.update');
 
+Route::get('tags','TagController@index')->name('tags.index');
+
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
     Route::get('/billings/items', 'LocalController@billingItems');

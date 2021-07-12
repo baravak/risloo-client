@@ -14,7 +14,7 @@
                 if(!data.id) return data.text;
                 if(!data.html){
                     var html =  $(data.element).parent().data('default-value');
-                    data.html = $('[data-id="'+data.id+'"]', $(html));
+                    data.html = $('[data-id="'+data.id+'"]', $(html)).length ? $('[data-id="'+data.id+'"]', $(html)) : undefined;
                 }
                 return data.html ? $('[data-selection]', data.html) : data.text;
             },
@@ -58,15 +58,20 @@
                 },
                 processResults: function (data) {
                     data = data.data || data;
-                    var split = data.split(/\n/, 1);
-                    var html = $('<div>' + data.substr(split[0].length)  + '</div>');
-                    data = JSON.parse(split[0]);
+                    if(typeof data == 'string'){
+                        var split = data.split(/\n/, 1);
+                        var html = $('<div>' + data.substr(split[0].length)  + '</div>');
+                        data = JSON.parse(split[0]);
+                    }else{
+                        data = data;
+                        html = undefined;
+                    }
                     var result = { results: [] };
                     for (var i = 0; i < data.length; i++) {
                         result.results.push({
                             id: data[i].id,
                             text: data[i].title,
-                            html : $('[data-id="'+ data[i].id +'"]', html).get(0).outerHTML
+                            html : html ? $('[data-id="'+ data[i].id +'"]', html).get(0).outerHTML: undefined
                         });
                     }
                     return result;

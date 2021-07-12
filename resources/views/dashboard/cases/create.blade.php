@@ -29,6 +29,6 @@
 
     <div class="form-group mt-4">
         <label for="tag-finder" data-alias="tag_finder" class="block mb-2 text-sm text-gray-700 font-medium">@lang('Tags')</label>
-        <select class="select2-select"  id="tag-finder" data-fill="tags" data-url="{{route('dashboard.users.index', isset($center) ? ['personal_clinic' => $center->type == 'counseling_center' ? 'yes' : 'no'] : null)}}" data-tags="true" multiple></select>
+        <select class="select2-select"  id="tag-finder" data-fill="tags" name="tags[]" data-url="{{route('dashboard.tags.index', ['region' => $center->id])}}" data-tags="true" multiple></select>
 </div>
 @endsection
