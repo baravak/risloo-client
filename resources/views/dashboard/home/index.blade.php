@@ -4,7 +4,7 @@
 @include('dashboard.home.alerts')
 @if ($user->rooms && $user->rooms->where('acceptation.position', 'manager')->count())
     @include('dashboard.home.schedules')
-    @include('dashboard.home.myRooms')
+    @include('dashboard.home.newMyRooms')
 @endif
 
 @if (config('app.env') == 'local')
