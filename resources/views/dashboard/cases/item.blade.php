@@ -1,4 +1,4 @@
-<a href="{{ $case->route('show') }}" class="flex flex-col justify-between border border-gray-200 rounded hover:bg-gray-50 transition">
+<a href="{{ $case->route('show') }}" class="flex flex-col justify-between border border-brand rounded hover:bg-blue-50 transition overflow-hidden">
     <div class="p-4">
         <div class="flex items-center justify-between">
             <span class="text-gray-600 text-xs">{{ $case->status }}</span>
@@ -16,7 +16,7 @@
             @endforeach
         </div>
     </div>
-    <div class="flex items-center justify-between border-t border-gray-200 px-4 py-3">
+    <div class="flex items-center justify-between border-t border-gray-100 bg-blue-50 px-4 py-3">
             <div class="text-xs text-gray-500">
                 <i class="fal fa-clock ml-1"></i>
                 <span>@time($case->created_at, '%A %d %B %y')</span>
