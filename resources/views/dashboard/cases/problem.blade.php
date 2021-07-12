@@ -14,13 +14,15 @@
         <p>{{$case->detail->problem}}</p>
     </div>
 
-    <div class="flex items-center flex-wrap mt-4">
-        <span class="ml-2 text-gray-700 text-xs variable-font-medium">برچسب‌ها:</span>
-        <div class="flex items-center flex-wrap">
-            <span class="ml-1 text-xs text-gray-500">استرس،</span>
-            <span class="ml-1 text-xs text-gray-500">آسیب شناسی اجتماعی</span>
+    @if (config('app.env') == 'local')
+        <div class="flex items-center flex-wrap mt-4">
+            <span class="ml-2 text-gray-700 text-xs variable-font-medium">برچسب‌ها:</span>
+            <div class="flex items-center flex-wrap">
+                <span class="ml-1 text-xs text-gray-500">استرس،</span>
+                <span class="ml-1 text-xs text-gray-500">آسیب شناسی اجتماعی</span>
+            </div>
         </div>
-    </div>
+    @endif
 
     <div class="flex items-center justify-between">
         <div class="flex items-center text-xs text-gray-500 mt-4">
