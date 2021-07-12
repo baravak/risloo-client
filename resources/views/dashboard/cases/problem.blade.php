@@ -18,19 +18,24 @@
         <div class="flex items-center flex-wrap mt-4">
             <span class="ml-2 text-gray-700 text-xs variable-font-medium">برچسب‌ها:</span>
             <div class="flex items-center flex-wrap">
-                <span class="ml-1 text-xs text-gray-500">استرس،</span>
-                <span class="ml-1 text-xs text-gray-500">آسیب شناسی اجتماعی</span>
+                <span class="flex items-center text-xs text-gray-500 bg-gray-100 rounded h-6 px-2 ml-1 mb-1">استرس</span>
+                <span class="flex items-center text-xs text-gray-500 bg-gray-100 rounded h-6 px-2 ml-1 mb-1">اضطراب</span>
+                <span class="flex items-center text-xs text-gray-500 bg-gray-100 rounded h-6 px-2 ml-1 mb-1">آسیب‌های اجتماعی</span>
+                <a href="#" class="flex items-center border border-brand text-xs text-brand hover:bg-brand hover:text-white transition rounded h-6 px-2 ml-1 mb-1">ویرایش برچسب‌ها</a>
             </div>
         </div>
     @endif
 
-    <div class="flex items-center justify-between">
+    <div class="flex sm:items-center flex-col sm:flex-row sm:justify-between">
         <div class="flex items-center text-xs text-gray-500 mt-4">
             <i class="fal fa-clock ml-1"></i>
             <span>@time($case->created_at, '%A %d %B %y ساعت H:i')</span>
         </div>
         @can('manager', $case)
-            <a href="{{ route('dashboard.client-reports.index', $case->id) }}" class="flex items-center text-xs text-brand mt-4 border border-brand hover:bg-brand hover:text-white transition rounded-full px-4 h-8">@lang('Reports of case')</a>
+            <div class="dir-ltr text-left flex items-center">
+                <a href="#" class="flex items-center justify-center w-10 h-8 border border-gray-400 text-sm text-gray-500 hover:bg-gray-50 rounded-full mr-2 mt-4"><i class="fal fa-edit"></i></a>
+                <a href="{{ route('dashboard.client-reports.index', $case->id) }}" class="flex items-center text-xs text-brand mt-4 border border-brand hover:bg-brand hover:text-white transition rounded-full px-4 h-8">@lang('Reports of case')</a>
+            </div>
         @endif
     </div>
 </div>
