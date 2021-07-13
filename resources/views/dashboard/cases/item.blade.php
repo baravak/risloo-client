@@ -7,12 +7,10 @@
                 <span class="font-medium text-sm">{{ $case->id }}</span>
             </div>
         </div>
-        <div class="mt-4">
+        <div class="flex flex-wrap items-start mt-4">
+            <i class="fal fa-user text-xs align-middle text-gray-700 ml-2"></i>
             @foreach ($case->clients ?: [] as $client)
-                <div class="text-xs">
-                    <i class="fal fa-user align-middle text-gray-700 ml-2"></i>
-                    <span class="text-gray-500">@displayName($client)</span>
-                </div>
+                <span class="text-xs text-gray-500 ml-1 mb-1">@displayName($client) ،</span>
             @endforeach
         </div>
     </div>
