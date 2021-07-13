@@ -58,7 +58,7 @@
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-	@apply flex items-center justify-between flex-row-reverse w-full p-1 bg-gray-50 border border-gray-200 !important;
+	@apply inline-flex items-center flex-row-reverse w-auto p-1 bg-gray-50 border border-gray-200 !important;
 	max-width: 99% !important;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice:last-of-type {
