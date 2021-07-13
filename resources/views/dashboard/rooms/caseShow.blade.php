@@ -11,18 +11,7 @@
         @endcan
     </div>
     @if (config('app.env') == 'local')
-        <div class="mb-4">
-            <div class="flex items-center flex-wrap">
-                <label for="room-cases-tags" class="ml-2 text-gray-600 text-sm mb-2">فیلتر بر اساس برچسب‌ها:</label>
-                <div class="flex items-center flex-wrap room-cases-tags">
-                    <a href="#">استرس</a>
-                    <a href="#">اضطراب</a>
-                    <a href="#">زندگی زناشویی</a>
-                    <a href="#" class="active">اعصاب و روان</a>
-                    <a href="#">آسیب شناسی اجتماعی</a>
-                </div>
-            </div>
-        </div>
+        @include('dashboard.rooms.casesTagsFilter')
     @endif
     @include($cases->count() ? 'dashboard.rooms.caseItems' : 'dashboard.emptyContent')
 @endcan

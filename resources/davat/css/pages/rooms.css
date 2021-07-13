@@ -1,7 +1,3 @@
-.room-cases-tags a {
-    @apply flex items-center justify-center bg-gray-200 text-sm text-gray-700 px-2 h-6 rounded ml-2 hover:bg-gray-300 transition mb-2;
-}
-
-.room-cases-tags .active {
-    @apply bg-brand text-white hover:bg-red-600;
+.room-case-tag input:checked ~ span {
+    @apply text-brand;
 }
